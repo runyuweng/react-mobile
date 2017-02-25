@@ -3,13 +3,20 @@ import "./MainLayout.scss";
 import { Link } from 'react-router';
 
 class MainLayout extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
   render() {
+
     return(
         <div>
           {this.props.children}
+
           <footer>
             <div>
-              <Link to="/index" activeStyle={{color:'#000'}}>
+              <Link to="/" activeStyle={{color:'#000'}}>
                 <div>
                   <img src="/src/images/home.png"/>
                   <p>首页</p>
