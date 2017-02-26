@@ -4,6 +4,8 @@ import { Router , Route , browserHistory , hashHistory , IndexRoute } from 'reac
 import MainLayout from './src/components/MainLayout/MainLayout.jsx';
 import Index from './src/components/Index/Index.jsx';
 import Zhaoda from './src/components/Zhaoda/Zhaoda.jsx';
+import ZhaoDaIndex from './src/components/ZhaoDaIndex/ZhaoDaIndex.jsx';
+import ZhaoDaDiscover from './src/components/ZhaoDaDiscover/ZhaoDaDiscover.jsx';
 import QueueAnim from 'rc-queue-anim';
 
 const page1 = () => {
@@ -14,13 +16,13 @@ const page1 = () => {
   )
 }
 
-// const page2 = () => {
-//   return(
-//     <div key="2">
-//       <span>这里是直播</span>
-//     </div>
-//   )
-// }
+const page3 = () => {
+  return(
+    <div key="2">
+      <span>这里是直播</span>
+    </div>
+  )
+}
 
 
 const Routes = () => {
@@ -29,7 +31,10 @@ const Routes = () => {
         <Route path="/" component={MainLayout}>
           <IndexRoute component={Index}/>
           <Route path="page1" component={page1}></Route>
-          <Route path="Zhaoda" component={Zhaoda}></Route>
+          <Route path="Zhaoda" component={Zhaoda}>
+            <Route path="main" component={ZhaoDaIndex}></Route>
+            <Route path="discover" component={ZhaoDaDiscover}></Route>
+          </Route>
           <Route path="page3" component={page3}></Route>
         </Route>
       </Router>
