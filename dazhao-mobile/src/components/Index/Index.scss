@@ -1,5 +1,4 @@
 .index{
-  background: rgb(247, 247, 247);
   color: #363f4a;
   position: relative;
   img{
@@ -40,6 +39,21 @@
         }
       }
     }
+    .active0{
+      div:first-child{
+        color: rgba(250,190,0,0.7);
+      }
+    }
+    .active1{
+      div:nth-child(2){
+        color: rgba(250,190,0,0.7);
+      }
+    }
+    .active2{
+      div:nth-child(3){
+        color: rgba(250,190,0,0.7);
+      }
+    }
     .rotation{
       position: absolute;
       display: flex;
@@ -67,6 +81,12 @@
       span{
         display: inline-block;
         margin-left: .1rem;
+      }
+      .more{
+        display: inline-block;
+        color: #6a7d91;
+        font-size: .14rem;
+        float: right;
       }
     }
     section{

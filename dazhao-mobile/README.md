@@ -14,8 +14,8 @@
 -|
  |- src ----------------------------------|
  |                                        |- components //所有jsx文件，各个组件
- |- .gitignore  //git上传忽略文件           |
- |                                        |- MainLayout //项目主要布局
+ |- .gitignore  //git上传忽略文件           
+ |
  |- index.html  //项目主页
  |
  |- main.js   //项目js的入口，包含了前端路由

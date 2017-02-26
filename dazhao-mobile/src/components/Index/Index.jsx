@@ -4,21 +4,63 @@ import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 
 class Index extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      currentNum: 0,
+    }
+  }
+
+  componentDidMount(){
+     var bannerChange = setInterval(()=>{
+       if(this.state.currentNum<2){
+        this.setState({
+          currentNum: Number(this.state.currentNum) + 1,
+        });
+       }else{
+        this.setState({
+          currentNum: 0
+        });
+       }
+     }, 4000);
+     this.setState({bannerChange: bannerChange});
+  }
+
+  componentWillUnmount(){
+     clearInterval(this.state.bannerChange);
+  }
+
+
+
   render() {
+    const { currentNum } = this.state;
+    const images = ['/src/images/banner1.jpg','/src/images/banner2.png','/src/images/banner3.png'];
+    const activeList = ['active0','active1','active2'];
+    const dotList = images.map((value,i)=>{
+      return (
+        <div key={i} onClick={()=>{
+          this.setState({
+            currentNum:i,
+          })
+        }}>.</div>
+      )
+    })
+    const currentImage = images[currentNum];
+    const activeStyle = activeList[currentNum];
+
+
     return(
       <div className="index">
         <header>
-          <img src="/src/images/banner1.jpg"/>
+          <img src={currentImage}/>
           <div className="search">
             <input type="text" placeholder="课程名称"/>
             <button>
               <img src="/src/images/searchico.png"/>
             </button>
           </div>
-          <div className="rotation">
-            <div>.</div>
-            <div>.</div>
-            <div>.</div>
+          <div className={"rotation "+activeStyle}>
+            {dotList}
           </div>
         </header>
         <div className="container">
@@ -30,7 +72,10 @@ class Index extends React.Component {
             </div>
           </section>
           <section>
-            <div className="title"><span>课程推荐</span></div>
+            <div className="title">
+              <span>课程推荐</span>
+              <span className="more">更多 ></span>
+            </div>
             <div className="content-two">
               <div className="content">
                 <img src="/src/images/1487917069l108992947.png"/>
@@ -43,7 +88,10 @@ class Index extends React.Component {
             </div>
           </section>
           <section>
-            <div className="title"><span>职场通识</span></div>
+            <div className="title">
+              <span>职场通识</span>
+              <span className="more">更多 ></span>
+            </div>
             <div className="content-two">
               <div className="content">
                 <img src="/src/images/1481979697l859459990.png"/>
@@ -56,7 +104,10 @@ class Index extends React.Component {
             </div>
           </section>
           <section>
-            <div className="title"><span>行业解读</span></div>
+            <div className="title">
+              <span>行业解读</span>
+                <span className="more">更多 ></span>
+              </div>
             <div className="content-two">
               <div className="content">
                 <img src="/src/images/1487917069l108992947.png"/>
@@ -69,7 +120,10 @@ class Index extends React.Component {
             </div>
           </section>
           <section>
-            <div className="title"><span>学长学姐</span></div>
+            <div className="title">
+              <span>学长学姐</span>
+              <span className="more">更多 ></span>
+            </div>
             <div className="content-two">
               <div className="content">
                 <img src="/src/images/1478935977l996178167.jpg"/>
