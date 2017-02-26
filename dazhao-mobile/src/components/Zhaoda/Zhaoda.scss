@@ -79,22 +79,12 @@
 
             li{
                 list-style:none;
-                width:25%;
+                width:0.4rem;
                 text-align:center;
                 line-height:0.35rem;
             }
-            .bg{
-                width:0.4rem;
-                position: absolute;
-                left:0.13rem;
-                bottom:0rem;
-                height:0.02rem;
-                background:#FFD112;
-                font-size:0.15rem;
-                font-family:"苹方";
-                color:#FFD112;
-            }
             .active{
+                border-bottom:0.02rem #FFD112 solid;
                 color:#FFD112;
             }
         }
@@ -192,11 +182,15 @@
                 color:#666666;
                 margin-top:0.16rem;
                 color:#696969;
+                line-height:0.2rem;
+                display:flex;
+                align-items:center;
                 .vip,img{
                     width:0.16rem;
                     height:0.16rem;
                 }
                 .vip{
+                    margin-left:0.03rem;
                     display:inline-block;
                 }
                 span{
@@ -246,7 +240,10 @@
                 font-family:"苹方";
                 color:#ADADAD;
                 margin:0.15rem 0rem;
+                line-height:0.2rem;
                 span{
+                    display:inline-flex;
+                    align-items:center;
                     margin-right:0.2rem;
                     b{
                         display:inline-block;

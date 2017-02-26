@@ -22,7 +22,6 @@ class Zhaoda extends React.Component {
             <li>发现</li>
             <li>专栏</li>
             <li>消息</li>
-            <li className="bg"></li>
           </ul>
         </nav>
         <div id="show">
@@ -53,7 +52,7 @@ class Zhaoda extends React.Component {
             <p className="theme">研究生和本科学历在求职过程中真的会有很大差别吗？</p>
             <div className="publisher">
               Michal
-              <span className="vip"><img src="/src/images/vip.png"/></span>,
+              <span className="vip"><img src="/src/images/vip.png"/></span>，
               <span>骨灰级教练</span>
             </div>
             <div className="comment">
@@ -70,7 +69,7 @@ class Zhaoda extends React.Component {
             <p className="theme"><strong>研究生和本科学历在求职过程中真的会有很大差别吗？</strong></p>
             <div className="publisher">
               Michal
-              <span className="vip"><img src="/src/images/vip.png"/></span>,
+              <span className="vip"><img src="/src/images/vip.png"/></span>，
               <span>骨灰级教练</span>
             </div>
             <div className="comment">
@@ -87,7 +86,7 @@ class Zhaoda extends React.Component {
             <p className="theme"><strong>研究生和本科学历在求职过程中真的会有很大差别吗？</strong></p>
             <div className="publisher">
               Michal
-              <span className="vip"><img src="/src/images/vip.png"/></span>,
+              <span className="vip"><img src="/src/images/vip.png"/></span>，
               <span>骨灰级教练</span>
             </div>
             <div className="comment">
@@ -105,7 +104,7 @@ class Zhaoda extends React.Component {
             <p className="theme"><strong>研究生和本科学历在求职过程中真的会有很大差别吗？</strong></p>
             <div className="publisher">
               Michal
-              <span className="vip"><img src="/src/images/vip.png"/></span>,
+              <span className="vip"><img src="/src/images/vip.png"/></span>，
               <span>骨灰级教练</span>
             </div>
             <div className="comment">
