@@ -1,4 +1,6 @@
 .index{
+  background: rgb(247, 247, 247);
+  color: #363f4a;
   position: relative;
   img{
     width: 100%;
@@ -34,13 +36,47 @@
   }
   .rotation{
     position: absolute;
+    display: flex;
     left: 50%;
+    height: .3rem;
+    width: .6rem;
     font-size: .9rem;
     margin-left: -.35rem;
-    bottom: .1rem;
     color: rgba(255,255,255,0.7);
-    li{
-      float: left;
+    // align-items: flex-start;
+    div{
+      height: .2rem;
+      flex-grow: 1;
+    }
+  }
+  .container{
+    font-size: .16rem;
+    padding: 0 .1rem;
+    .title{
+      border-left: 4px solid #50d2c2;
+      margin-bottom: .15rem;
+      span{
+        display: inline-block;
+        margin-left: .1rem;
+      }
+    }
+    section{
+      .content-large{
+        border-radius: .1rem;
+        overflow: hidden;
+        margin-bottom: .15rem;
+      }
+      .content-two{
+        display: flex;
+        .content{
+          flex-grow: 1;
+          border-radius: .1rem;
+          overflow: hidden;
+          .info{
+            background: #fff;
+          }
+        }
+      }
     }
   }
 }
