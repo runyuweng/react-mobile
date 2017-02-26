@@ -5,51 +5,60 @@
   img{
     width: 100%;
   }
-  .search{
-    display: flex;
-    position: absolute;
-    left: 50%;
-    margin-left: -1.5rem;
-    top: .18rem;
-    z-index: 2;
-    width:3rem;
-    height: .32rem;
-    // background: #fff;
-    input{
-      width:100%;
-      border-radius: .16rem;
-      border: none;
-      opacity: .3;
-      text-align: center;
-    }
-    button{
+  header{
+    position: relative;
+    .search{
+      display: flex;
       position: absolute;
-      right: .1rem;
-      top: .05rem;
-      width: 19px;
-      height: 19px;
-      img{
+      left: 50%;
+      margin-left: -1.5rem;
+      top: .18rem;
+      z-index: 2;
+      width:3rem;
+      height: .32rem;
+      // background: #fff;
+      input{
+        width:100%;
+        border-radius: .16rem;
+        border: none;
+        opacity: .3;
+        text-align: center;
+        height: .3rem;
+        line-height: .3rem;
+        font-size: .14rem;
+        color: #363f4a;
+      }
+      button{
+        position: absolute;
+        right: .1rem;
+        top: .05rem;
         width: 19px;
         height: 19px;
+        img{
+          width: 19px;
+          height: 19px;
+        }
+      }
+    }
+    .rotation{
+      position: absolute;
+      display: flex;
+      bottom: 1.1rem;
+      left: 50%;
+      height: .3rem;
+      width: .6rem;
+      font-size: .9rem;
+      margin-left: -.35rem;
+      color: rgba(255,255,255,0.7);
+      // align-items: flex-start;
+      div{
+        height: .2rem;
+        flex-grow: 1;
       }
     }
   }
-  .rotation{
-    position: absolute;
-    display: flex;
-    left: 50%;
-    height: .3rem;
-    width: .6rem;
-    font-size: .9rem;
-    margin-left: -.35rem;
-    color: rgba(255,255,255,0.7);
-    // align-items: flex-start;
-    div{
-      height: .2rem;
-      flex-grow: 1;
-    }
-  }
   .container{
+    margin-top: -.35rem;
     font-size: .16rem;
     padding: 0 .1rem;
     .title{
@@ -61,18 +70,35 @@
       }
     }
     section{
+      margin-top: .2rem;
       .content-large{
+        position: relative;
         border-radius: .1rem;
         overflow: hidden;
         margin-bottom: .15rem;
+        .tips{
+          position: absolute;
+          width: 90%;
+          left: 0;
+          bottom: .03rem;
+          padding: .04rem 5%;
+          color: #fff;
+          background: rgba(0,0,0,0.5);
+          border-radius: 0 0 .05rem .05rem;
+          font-size: .14rem;
+          font-family: arial;
+        }
       }
       .content-two{
         display: flex;
+        justify-content: space-around;
         .content{
-          flex-grow: 1;
+          width: 49%;
           border-radius: .1rem;
           overflow: hidden;
           .info{
+            padding: 8px 10px;
+            font-size: 13px;
             background: #fff;
           }
         }
