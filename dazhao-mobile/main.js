@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router , Route , browserHistory , hashHistory , IndexRoute } from 'react-router';
 import MainLayout from './src/components/MainLayout/MainLayout.jsx';
 import Index from './src/components/Index/Index.jsx';
+import Zhaoda from './src/components/Zhaoda/Zhaoda.jsx';
 import QueueAnim from 'rc-queue-anim';
 
 const page1 = () => {
@@ -13,13 +14,13 @@ const page1 = () => {
   )
 }
 
-const page2 = () => {
-  return(
-    <div key="2">
-      <span>这里是直播</span>
-    </div>
-  )
-}
+// const page2 = () => {
+//   return(
+//     <div key="2">
+//       <span>这里是直播</span>
+//     </div>
+//   )
+// }
 
 const page3 = () => {
   return(
@@ -35,7 +36,7 @@ const Routes = () => {
         <Route path="/" component={MainLayout}>
           <IndexRoute component={Index}/>
           <Route path="page1" component={page1}></Route>
-          <Route path="page2" component={page2}></Route>
+          <Route path="Zhaoda" component={Zhaoda}></Route>
           <Route path="page3" component={page3}></Route>
         </Route>
       </Router>

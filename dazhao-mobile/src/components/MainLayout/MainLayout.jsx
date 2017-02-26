@@ -32,7 +32,7 @@ class MainLayout extends React.Component {
               </Link>
             </div>
             <div>
-              <Link to="/page2" activeStyle={{color:'#000'}}>
+              <Link to="/Zhaoda" activeStyle={{color:'#000'}}>
                 <div>
                   <img src="/src/images/zhaoda.png"/>
                   <p>招答</p>

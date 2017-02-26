@@ -1,0 +1,208 @@
+html{
+    margin:0rem;
+    padding:0rem;
+}
+header{
+    width:100%;
+    height:0.66rem;
+    padding:0.12rem 0rem;
+    .search{
+        height:0.42rem;
+        margin: 0.12rem 0.22rem;
+        display:flex;
+        justify-content:space-around;
+        border:none;
+
+        input{
+            width:3.96rem;
+            border: 1px lightgray solid;
+            border-radius:0.42rem;
+            text-indent:0.32rem;
+        }
+        span{
+            color:#79cfb6;
+            width:0.86rem;
+            height:0.40rem;
+            margin-left:0.14rem;
+            line-height:0.42rem;
+            border: 1px #79cfb6 solid;
+            border-radius:0.16rem;
+            font-size:0.14rem;
+            text-align:center;
+            -webkit-box-sizing:border-box;
+        }
+    }
+}
+
+nav{
+    width:100%;
+    height:0.5rem;
+    padding:0rem 0.22rem;
+    -webkit-box-sizing:border-box;
+    display:flex;
+    justify-content:space-around;
+    ul{
+        width:100%;
+        font-size:0.18rem;
+        display:flex;
+        list-style:none;
+        position:relative;
+
+        li{
+            list-style:none;
+            width:25%;
+            text-align:center;
+            line-height:0.5rem;
+        }
+        .bg{
+            width:25%;
+            position: absolute;
+            left:0rem;
+            bottom:0rem;
+            height:0.04rem;
+            background:#79cfb6;
+        }
+        .active{
+            color:#79cfb6;
+        }
+    }
+}
+
+#show{
+    width:100%;
+    height:2.18rem;
+    background:lightgray;
+    position:relative;
+    ol{
+        list-style:none;
+    }
+    .item{
+        width:100%;
+        height:2.18rem;
+        position: absolute;
+        left:0rem;
+        top:0rem;
+    }
+    img{
+        width:100%;
+        height:2.18rem;
+    }
+    .carousel-indicators{
+        width:100%;
+        height:0.2rem;
+        display:flex;
+        position:absolute;
+        justify-content:center;
+        bottom:0.1rem;
+        li{
+            width:0.1rem;
+            height:0.1rem;
+            border-radius:50%;
+            background:white;
+            margin:0rem 0.05rem;
+            z-index:9999;
+        }
+    }
+
+}
+
+#latest{
+    width:100%;
+    margin-bottom:0.8rem;
+    .title{
+        width:100%;
+        height:0.64rem;
+        line-height:0.64rem;
+        font-size:0.2rem;
+        background:#f8f8f8;
+        border-top:0.01rem lightgray solid;
+        border-bottom:0.01rem lightgray solid;
+        span{
+            width:0.26rem;
+            height:0.31rem;
+            display:flex;
+            float:left;
+            margin-top:0.18rem;
+            margin-left:0.14rem;
+            margin-right:0.1rem;
+        }
+    }
+    article{
+        width:100%;
+        height:3.1rem;
+        padding:0 0.14rem;
+        box-sizing:border-box;
+        border:0.01rem lightgray  solid;
+        margin-bottom:0.2rem;
+
+        .topic{
+            width:100%;
+            height:0.6rem;
+            display:flex;
+            line-height:0.6rem;
+            font-size:0.16rem;
+            color:#9e9e9e;
+            i{
+                font-style:normal;
+            }
+        }
+        .theme{
+            width:100%;
+            font-size:0.24rem;
+            color:#838383;
+        }
+        .publisher{
+            width:100%;
+            height:0.3rem;
+            font-size:0.16rem;
+            margin-top:0.16rem;
+            color:#696969;
+            .vip,img{
+                width:0.22rem;
+                height:0.22rem;
+            }
+            .vip{
+                display:inline-block;
+            }
+            span{
+                color:#b4b4b4;
+            }
+        }
+        .comment{
+            width:100%;
+            font-size:0.18rem;
+            padding:0.1rem 0rem;
+            color:#a0a0a0;
+        }
+        .more{
+            width:100%;
+            height:0.42rem;
+            font-size:0.18rem;
+            color:#bfbfbf;
+            margin:0.1rem 0rem;
+            span{
+                margin-right:0.2rem;
+                b{
+                    display:inline-block;
+                    width:0.2rem;
+                    height:0.2rem;
+                    margin-right:0.08rem;
+                }
+            }
+            img{
+                width:0.18rem;
+                height:0.18rem;
+            }
+        }
+    }
+    .Formore{
+        width:92%;
+        height:0.58rem;
+        border:0.02rem #3ccda4 solid;
+        color:#3ccda4;
+        margin:0.4rem auto 0rem;
+        font-size:0.18rem;
+        text-align:center;
+        line-height:0.58rem;
+    }
+}
