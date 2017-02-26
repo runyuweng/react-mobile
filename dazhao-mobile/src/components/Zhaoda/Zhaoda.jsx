@@ -104,7 +104,6 @@ class Zhaoda extends React.Component {
 
         <div id="moreTopic">
           <div className="topic">
-            <
 
           </div>
         </div>
