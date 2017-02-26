@@ -6,7 +6,7 @@ import QueueAnim from 'rc-queue-anim';
 class Zhaoda extends React.Component {
   render() {
     return(
-      <div className="container ">
+      <div className="container zhaoda">
         <header>
           <div className="search">
             <div className="input">
