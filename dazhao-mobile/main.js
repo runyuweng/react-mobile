@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
 import { Router , Route , browserHistory , hashHistory , IndexRoute } from 'react-router';
 import MainLayout from './src/components/MainLayout/MainLayout.jsx';
 import Index from './src/components/Index/Index.jsx';
 import Zhaoda from './src/components/Zhaoda/Zhaoda.jsx';
 import ZhaoDaIndex from './src/components/ZhaoDaIndex/ZhaoDaIndex.jsx';
 import ZhaoDaDiscover from './src/components/ZhaoDaDiscover/ZhaoDaDiscover.jsx';
-import QueueAnim from 'rc-queue-anim';
+
+import { Provider } from 'react-redux';
+import reducer from './src/reducers/index.js';
+
+const store = createStore(reducer);
 
 const page1 = () => {
   return(
@@ -27,6 +32,7 @@ const page3 = () => {
 
 const Routes = () => {
   return(
+    <Provider store={store}>
       <Router history = {hashHistory}>
         <Route path="/" component={MainLayout}>
           <IndexRoute component={Index}/>
@@ -38,6 +44,7 @@ const Routes = () => {
           <Route path="page3" component={page3}></Route>
         </Route>
       </Router>
+    </Provider>
   )
 }
 
