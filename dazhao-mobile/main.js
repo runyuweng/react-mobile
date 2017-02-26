@@ -22,13 +22,6 @@ const page1 = () => {
 //   )
 // }
 
-const page3 = () => {
-  return(
-    <div key="3">
-      <span>这里是个人中心</span>
-    </div>
-  )
-}
 
 const Routes = () => {
   return(
