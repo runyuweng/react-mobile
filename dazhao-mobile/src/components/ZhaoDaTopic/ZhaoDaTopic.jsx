@@ -1,5 +1,6 @@
 import React from 'react';
 import "./ZhaoDaTopic.scss";
+import TopBar from "../TopBar/TopBar.jsx";
 import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 
@@ -17,10 +18,7 @@ class ZhaoDaTopic extends React.Component {
     return(
       <div className="container ZhaoDaTopic">
         <header>
-          <div className="top">
-            <span><img src="/src/images/arrow-left.png"/></span>
-            <span>话题广场</span>
-          </div>
+          <TopBar title="话题广场" border="noboder"/>
           <div className="select">
             <ul>
               <li className="active">全部</li>

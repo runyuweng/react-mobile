@@ -1,0 +1,23 @@
+.TopBar{
+  background: #fff;
+  position: relative;
+  height: .45rem;
+  line-height: .45rem;
+  font-size: .17rem;
+  color: #000;
+  display: flex;
+  justify-content:center;
+  span:nth-child(1){
+    position: absolute;
+    top: .03rem;
+    left: .2rem;
+    width: .1rem;
+    height: .18rem;
+    img{
+      width: .1rem;
+      height: .18rem;
+    }
+  }
+  span:nth-child(2){
+  }
+}
