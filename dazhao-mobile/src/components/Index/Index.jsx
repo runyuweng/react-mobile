@@ -32,7 +32,6 @@ class Index extends React.Component {
   }
 
 
-
   render() {
     const { currentNum } = this.state;
     const images = ['/src/images/banner1.jpg','/src/images/banner2.png','/src/images/banner3.png'];
