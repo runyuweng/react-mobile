@@ -1,3 +1,105 @@
 .ZhaoDaDiscover{
-  
+      #dynamic{
+        width:100%;
+        background:#f8f8f8;
+        .title{
+            font-family:"苹方";
+            font-size:0.16rem;
+            font-weight:bold;
+            color:#666666;
+            background:#f8f8f8;
+            display:flex;
+            align-items:center;
+            padding:0.13rem 0.14rem 0.12rem;
+            img{
+                width:0.15rem;
+                height:0.18rem;
+                display:flex;
+                float:left;
+                margin-right:0.06rem;
+            }
+        }
+    }
+
+    .content{
+            border:0.01rem #D8D8D8 solid;
+            background:#FFFFFF;
+            padding:0.1rem;
+            .Myarticle{
+                padding:0;
+                display:flex;
+                justify-content:space-around;
+                border:none;
+                margin-bottom:0.1rem;
+
+                .Citems:nth-of-type(2n-1)
+                {
+                    margin-right:0.1rem;
+                }
+                .Citems{
+                width:50%;
+                height:0.6rem;
+                border:0.01rem #D8D8D8 solid;
+                background:#FFFFFF;
+                position:relative;
+                .img{
+                    display:block;
+                    width:30%;
+                    height:0.6rem;
+                    background:#e5e5e5;
+                }
+                .detail{
+                    // display:flex;
+                    width:70%;
+                    height:0.6rem;
+                    position:absolute;
+                    top:0rem;
+                    left:30%;
+                    .theme{
+                        width:100%;
+                        font-family:"苹方";
+                        font-size:0.16rem;
+                        font-weight:bold;
+                        color:#666666;
+                    }
+
+                    .span2{
+                        display:block;
+                        height:0.14rem;
+                        line-height:0.14rem;
+                        font-size:0.14rem;
+                        font-family:"苹方";
+                        font-weight:bold;
+                        color:#333333;
+                        text-align:center;
+                        margin:0.13rem 0 0.12rem;
+                    }
+                    .care{
+                        width:100%;
+                        display:block;
+                        text-align:center;
+                        font-family:"苹方";
+                        font-size:0.115rem;
+                        color:#ADADAD;
+                        text-align:center;
+                        margin:0.08rem 0;
+                    }
+                    .care span:nth-of-type(2){
+                            margin-left:0.06rem;
+                    }
+                }
+            }
+        }
+        .Formore1{
+            height:0.4rem;
+            border:0.01rem #FFE25C solid;
+            color:#666666;
+            font-size:0.14rem;
+            text-align:center;
+            line-height:0.4rem;
+            border-radius:0.05rem;
+            background:#ffe25c;
+            margin:0.15rem 0.05rem 0.1rem;
+        }
+    }
 }
