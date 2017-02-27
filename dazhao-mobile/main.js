@@ -7,11 +7,15 @@ import Index from './src/components/Index/Index.jsx';
 import Zhaoda from './src/components/Zhaoda/Zhaoda.jsx';
 import ZhaoDaIndex from './src/components/ZhaoDaIndex/ZhaoDaIndex.jsx';
 import ZhaoDaDiscover from './src/components/ZhaoDaDiscover/ZhaoDaDiscover.jsx';
+import ZhaoDaFeature from './src/components/ZhaoDaFeature/ZhaoDaFeature.jsx';
 
 import { Provider } from 'react-redux';
 import reducer from './src/reducers/index.js';
 
 const store = createStore(reducer);
+
+
+
 
 const page1 = () => {
   return(
@@ -39,7 +43,10 @@ const Routes = () => {
           <Route path="page1" component={page1}></Route>
           <Route path="Zhaoda" component={Zhaoda}>
             <Route path="main" component={ZhaoDaIndex}></Route>
-            <Route path="discover" component={ZhaoDaDiscover}></Route>
+            <Route path="discover" component={ZhaoDaDiscover}>
+            </Route>
+            <Route path="feature" component={ZhaoDaFeature}>
+            </Route>
           </Route>
           <Route path="page3" component={page3}></Route>
         </Route>

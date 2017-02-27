@@ -1,6 +1,5 @@
 .zhaoda{
     background:#f8f8f8;
-    padding-bottom:0.9rem;
     html{
         margin:0rem;
         padding:0rem;
@@ -130,8 +129,8 @@
 
     #latest{
         width:100%;
-        padding-bottom:0.63rem;
         background:#f8f8f8;
+        margin-bottom:0.7rem;
         .title{
             font-size:0.16rem;
             font-weight:bold;
@@ -277,7 +276,7 @@
 
     #moreTopic{
         width:100%;
-        padding:0 0.14rem;
+        padding:0 0.1rem;
         box-sizing:border-box;
         background:#f8f8f8;
         padding-bottom:0.1rem;
@@ -414,6 +413,7 @@
         color:#ADADAD;
         line-height:0.19rem;
         text-align:center;
+        margin-top:0.5rem;
     }
 
 }
