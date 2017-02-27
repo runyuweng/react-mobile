@@ -1,0 +1,63 @@
+.ZhaoDaTopic{
+  .top{
+    background: #fff;
+    position: relative;
+    height: .45rem;
+    line-height: .45rem;
+    font-size: .17rem;
+    color: #000;
+    display: flex;
+    justify-content:center;
+    span:nth-child(1){
+      position: absolute;
+      top: .03rem;
+      left: .2rem;
+      width: .1rem;
+      height: .18rem;
+      img{
+        width: .1rem;
+        height: .18rem;
+      }
+    }
+    span:nth-child(2){
+    }
+  }
+  .select{
+    background: #fff;
+    width: 100%;
+    overflow: hidden;
+    font-size: .16rem;
+    ul{
+      width: 4.2rem;
+      .active{
+        border-bottom: .02rem solid #000;
+      }
+      li{
+        padding: .05rem 0;
+        float: left;
+        width: .66rem;
+        text-align: center;
+      }
+    }
+  }
+  .content{
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    .item{
+      background: #666;
+      p:nth-child(1){
+        font-weight: bold;
+        font-size: .14rem;
+        color: #fff;
+      }
+      p:nth-child(2){
+        font-weight: bold;
+        font-size: .115rem;
+        color: #fff;
+      }
+    }
+  }
+}

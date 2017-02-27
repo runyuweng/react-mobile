@@ -8,6 +8,7 @@ import Zhaoda from './src/components/Zhaoda/Zhaoda.jsx';
 import ZhaoDaIndex from './src/components/ZhaoDaIndex/ZhaoDaIndex.jsx';
 import ZhaoDaDiscover from './src/components/ZhaoDaDiscover/ZhaoDaDiscover.jsx';
 import ZhaoDaFeature from './src/components/ZhaoDaFeature/ZhaoDaFeature.jsx';
+import ZhaoDaTopic from './src/components/ZhaoDaTopic/ZhaoDaTopic.jsx';
 
 import { Provider } from 'react-redux';
 import reducer from './src/reducers/index.js';
@@ -48,6 +49,7 @@ const Routes = () => {
             <Route path="feature" component={ZhaoDaFeature}>
             </Route>
           </Route>
+          <Route path="topic" component={ZhaoDaTopic}></Route>
           <Route path="page3" component={page3}></Route>
         </Route>
       </Router>

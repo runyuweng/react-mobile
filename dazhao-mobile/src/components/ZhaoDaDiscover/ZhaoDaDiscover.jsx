@@ -132,7 +132,7 @@ class ZhaoDaDiscover extends React.Component {
               </div>
             </div>
 
-            <div className="Formore1">更多话题</div>
+            <div className="Formore1"><Link to="/topic">更多话题</Link></div>
 
 
           </div>

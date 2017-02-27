@@ -26,7 +26,7 @@ class Layout extends React.Component {
     return(
         <div>
           {childrenWithProps}
-          {show.show_top?
+          {show.show_bottom?
             <footer>
               <div>
                 <Link to="/" activeStyle={{color:'#000'}}>
