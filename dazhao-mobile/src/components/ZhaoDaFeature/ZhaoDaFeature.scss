@@ -13,12 +13,12 @@
             // position:absolute;
             // left:0rem;
             // top:0rem;
-            display:flex;
-            height:2.4rem;
+            // display:flex;
+            //
+            margin-bottom:-0.07rem;
             img{
                 width:100%;
                 margin-top:0.15rem;
-                margin-bottom:0.19rem;
             }
         }
         .fTheme{
@@ -58,6 +58,7 @@
             padding:0 0.12rem;
             font-size:0.12rem;
             line-height:0.18rem;
+            text-align:center;
             color:#ADADAD;
         }
     }
