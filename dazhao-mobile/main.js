@@ -65,7 +65,7 @@ const Routes = () => {
           <Route path="message" component={ZhaoDaMessage}></Route>
           <Route path="search" component={ZhaoDaSearch}></Route>
           <Route path="response" component={ZhaoDaResponse}></Route>
-          <Route path="quiz" component={ZhaoDaQuiz}></Route>
+          // <Route path="quiz" component={ZhaoDaQuiz}></Route>
           <Route path="consult" component={ZhaoDaConsult}></Route>
           <Route path="detail" component={ZhaoDaQuesDetail}></Route>
           <Route path="page3" component={page3}></Route>
