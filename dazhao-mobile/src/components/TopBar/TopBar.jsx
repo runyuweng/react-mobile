@@ -14,7 +14,7 @@ class TopBar extends React.Component {
     const { title , border } = this.props;
     console.log(border)
     return(
-      <div className="TopBar" style={border=="noboder"?{'borderBottom':'none'}:{'borderBottom':'1px solid #000'}}>
+      <div className="TopBar" style={border=="noboder"?{'borderBottom':'none'}:{'borderBottom':'1px solid #DBDBDB'}}>
         <span><img src="/src/images/arrow-left.png"/></span>
         <span>{title}</span>
       </div>

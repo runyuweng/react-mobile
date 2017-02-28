@@ -6,6 +6,41 @@ import QueueAnim from 'rc-queue-anim';
 
 class ZhaoDaIndex extends React.Component {
   render() {
+       const data = [
+      {
+        topic : '考研',
+        theme : '研究生和本科学历在求职过程中真的会有很大差别吗？',
+        coach : 'Michal',
+        imgsrc : '/src/images/vip.png',
+        remark : 9,
+        agree : 14,
+        comment : '这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...',
+        collect : false
+      },
+      {
+        topic : '考研',
+        theme : '研究生和本科学历在求职过程中真的会有很大差别吗？',
+        coach : 'Michal',
+        imgsrc : '/src/images/vip.png',
+        remark : 12,
+        agree : 14,
+        comment : '这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...',
+        collect : false
+      },
+      {
+        topic : '考研',
+        theme : '研究生和本科学历在求职过程中真的会有很大差别吗？',
+        coach : 'Michal',
+        imgsrc : '/src/images/vip.png',
+        remark : 13,
+        agree : 14,
+        comment : '这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...',
+        collect : false
+      }
+    ]
+    const ZhaoDaAnswerList = data.map((value,i)=>{
+      return (<ZhaoDaAnswer key = {i} data = {value}/>)
+    })
     return(
       <div className="ZhaoDaIndex">
         <div id="show">
@@ -32,7 +67,7 @@ class ZhaoDaIndex extends React.Component {
           <div className="title"><span><img src="/src/images/latest.png"/></span>最新动态
           </div>
 
-          <ZhaoDaAnswer />
+            {ZhaoDaAnswerList}
 
           <div className="Formore">展开更多</div>
         </div>

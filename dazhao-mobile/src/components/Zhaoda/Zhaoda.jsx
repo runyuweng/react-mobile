@@ -11,9 +11,9 @@ class Zhaoda extends React.Component {
           <div className="search">
             <div className="input">
               <input type="text" placeholder="搜索话题、问题、行家..."/>
-              <span><img src="/src/images/search.png"/></span>
+              <Link to = "/search"><span><img src="/src/images/search.png"/></span></Link>
             </div>
-            <span className="query">提问</span>
+            <Link to = "/quiz"><span className="query">提问</span></Link>
           </div>
         </header>
         <nav>

@@ -1,0 +1,50 @@
+.ZhaoDaQuesDetail{
+    background:#fff;
+    header{
+        background:#FFFFFF;
+        padding:0.07rem 0 0.08rem;
+        border-bottom:0.01rem #ADADAD solid;
+        .search{
+                width:96%;
+                margin:0 auto;
+                text-align:center;
+                font-size:0.16rem;
+                span{
+                    font-size:0.17rem;
+                    font-family:"苹方";
+                    color:#FFE25C;
+                    line-height:0.3rem;
+                }
+                span:nth-of-type(1){
+                    margin:0 0.08rem 0 0;
+                }
+                span:nth-of-type(2){
+                    display:inline-block;
+                    width:61%;
+                    color:#000000;
+                }
+                span:nth-of-type(3){
+                    margin:0 0 0 0.08rem;
+                }
+        }
+    }
+
+    .intro{
+        font-size:.16rem;
+        padding:0 .15rem;
+        textarea{
+            width:100%;
+            resize:none;
+            border:none;
+            font-size:0.16rem;
+            font-family:"苹方";
+            color:#ADADAD;
+            margin:.24rem 0 0;
+        }
+    }
+    .blank{
+        height:3.2rem;
+        background:#FFFFFF;
+    }
+
+}

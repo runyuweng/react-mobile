@@ -1,0 +1,86 @@
+.ZhaoDaConsult{
+    background:#fff;
+    header{
+        background:#FFFFFF;
+        padding:0.07rem 0 0.08rem;
+        border-bottom:0.01rem #ADADAD solid;
+        .search{
+                width:96%;
+                margin:0 auto;
+                text-align:center;
+                font-size:0.16rem;
+                span{
+                    font-size:0.17rem;
+                    font-family:"苹方";
+                    color:#FFE25C;
+                    line-height:0.3rem;
+                }
+                span:nth-of-type(1){
+                    margin:0 0.08rem 0 0;
+                }
+                span:nth-of-type(2){
+                    display:inline-block;
+                    width:61%;
+                    color:#000000;
+                }
+                span:nth-of-type(3){
+                    color:#b8ece7;
+                    margin:0 0 0 0.08rem;
+                }
+                a{
+                    color:#FFE25C;
+                }
+        }
+    }
+    .quiztitle{
+            font-size:0.17rem;
+            font-family:"苹方";
+            color:#ADADAD;
+            margin:0 .15rem;
+            border-bottom:.01rem solid #B1B1B1;
+            input{
+                width:100%;
+                line-height:0.5rem;
+                border:none;
+                color:#333333;
+            }
+    }
+    .havefind{
+        margin:0 .15rem;
+        p,div{
+            font-size:0.14rem;
+            font-family:"苹方";
+            color:#696969;
+            border-bottom:.01rem solid #e0e0e0;
+        }
+        div{
+            display:flex;
+            align-items:center;
+            color:#ffd112;
+            font-size:.14em;
+            line-height:.24rem;
+            padding:.11rem 0;
+            img{
+                width:.15rem;
+                height:.15rem;
+            }
+            span{
+                display:inline-flex;
+                width:.15rem;
+                height:.15rem;
+                margin-right:.012rem;
+            }
+        }
+        p:nth-of-type(1),p:nth-of-type(2),p:nth-of-type(3),p:nth-of-type(4){
+            line-height:.24rem;
+            font-size:.15rem;
+            padding:.11rem 0;
+            span{
+                color:#ADADAD;
+                font-size:.14rem;
+                margin-left:.1rem;
+            }
+        }
+    }
+
+}

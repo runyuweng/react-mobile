@@ -1,0 +1,65 @@
+.ZhaoDaMessage{
+    nav{
+        width:100%;
+        height:0.35rem;
+        padding:0rem 0.22rem;
+        -webkit-box-sizing:border-box;
+        display:flex;
+        justify-content:space-around;
+        background:#ffffff;
+        ul{
+            width:100%;
+            font-size:0.15rem;
+            display:flex;
+            list-style:none;
+            position:relative;
+            justify-content:space-around;
+
+            li{
+                list-style:none;
+                width:0.4rem;
+                text-align:center;
+                line-height:0.35rem;
+            }
+            .active{
+                border-bottom:0.02rem #FFD112 solid;
+                color:#FFD112;
+            }
+        }
+    }
+
+    #MessageMain{
+        .message:nth-of-type(1){
+            background:#FFF8DC;
+        }
+        .message:nth-of-type(2){
+            background:#FFF8DC;
+        }
+        .message:nth-of-type(3){
+            background:#FFF8DC;
+        }
+        .message{
+            display:flex;
+            flex-direction: column;
+            // height:0.65rem;
+            background:#FFF;
+            border-bottom:0.01rem solid #d8d8d8;
+            padding:0.09rem 0rem;
+            .who{
+                font-family:"苹方";
+                font-size:0.13rem;
+                color:#ADADAD;
+                line-height:0.19rem;
+                margin:0rem 0.12rem 0.09rem;
+            }
+            p{
+                font-family:"苹方";
+                font-size:0.14rem;
+                font-weight:bold;
+                color:#333333;
+                line-height:0.19rem;
+                margin:0rem 0.12rem;
+            }
+        }
+    }
+}

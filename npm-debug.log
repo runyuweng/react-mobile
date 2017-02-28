@@ -1,21 +1,21 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/Users/wengwengweng/.nvm/versions/node/v7.4.0/bin/node',
-1 verbose cli   '/Users/wengwengweng/.nvm/versions/node/v7.4.0/bin/npm',
+1 verbose cli [ 'E:\\node\\node\\node.exe',
+1 verbose cli   'E:\\node\\node\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'start' ]
-2 info using npm@4.0.5
-3 info using node@v7.4.0
-4 verbose stack Error: ENOENT: no such file or directory, open '/Users/wengwengweng/Code/react-mobile/package.json'
-5 verbose cwd /Users/wengwengweng/Code/react-mobile
-6 error Darwin 16.4.0
-7 error argv "/Users/wengwengweng/.nvm/versions/node/v7.4.0/bin/node" "/Users/wengwengweng/.nvm/versions/node/v7.4.0/bin/npm" "start"
-8 error node v7.4.0
-9 error npm  v4.0.5
-10 error path /Users/wengwengweng/Code/react-mobile/package.json
+2 info using npm@2.15.1
+3 info using node@v4.4.3
+4 verbose stack Error: ENOENT: no such file or directory, open 'E:\react-mobile\package.json'
+4 verbose stack     at Error (native)
+5 verbose cwd E:\react-mobile
+6 error Windows_NT 10.0.14393
+7 error argv "E:\\node\\node\\node.exe" "E:\\node\\node\\node_modules\\npm\\bin\\npm-cli.js" "start"
+8 error node v4.4.3
+9 error npm  v2.15.1
+10 error path E:\react-mobile\package.json
 11 error code ENOENT
-12 error errno -2
+12 error errno -4058
 13 error syscall open
-14 error enoent ENOENT: no such file or directory, open '/Users/wengwengweng/Code/react-mobile/package.json'
-15 error enoent ENOENT: no such file or directory, open '/Users/wengwengweng/Code/react-mobile/package.json'
-15 error enoent This is most likely not a problem with npm itself
-15 error enoent and is related to npm not being able to find a file.
-16 verbose exit [ -2, true ]
+14 error enoent ENOENT: no such file or directory, open 'E:\react-mobile\package.json'
+14 error enoent This is most likely not a problem with npm itself
+14 error enoent and is related to npm not being able to find a file.
+15 verbose exit [ -4058, true ]

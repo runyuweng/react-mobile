@@ -1,0 +1,87 @@
+.ZhaoDaResponse{
+
+    .question{
+        height:0.64rem;
+        font-size:0.16rem;
+        display:flex;
+        align-items:center;
+        border-bottom:0.01rem solid #D8D8D8;
+        background:#ffffff;
+        margin-bottom:0.2rem;
+        .title{
+            display: inline-block;
+            width: 85%;
+            font-family:"苹方";
+            font-size:0.16rem;
+            font-weight:bold;
+            color:#333333;
+            line-height:0.24rem;
+            margin:.08rem 0.12rem;
+        }
+        .img{
+            width: .1rem;
+            height: .18rem;
+            margin-top:.03rem;
+            margin-right:.2rem;
+            float:right;
+            cursor:pointer;
+            img{
+              width: .1rem;
+              height: .18rem;
+            }
+        }
+
+    }
+    .comment{
+        height:100%;
+        font-size:0.16rem;
+        padding:0.24rem .12rem 0;
+        background:#FFFFFF;
+
+        .author{
+            display:flex;
+            margin:0 0 .24rem 0;
+            overflow:hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+                img{
+                    width:0.18rem;
+                    height:0.18rem;
+                }
+                em{
+                        font-size:0.14rem;
+                        font-family:"苹方";
+                        color:#ADADAD;
+                        font-style:normal;
+                }
+                em:nth-of-type(1)
+                {
+                    color:#696969;
+                    font-weight:bold;
+                    margin:0 .04rem 0 .06rem;
+                }
+                em:nth-of-type(2)
+                {
+                    height:.22rem;
+                }
+        }
+        p{
+            font-size:0.16rem;
+            line-height:.25rem;
+            font-family:"苹方";
+            color:#464646;
+        }
+        time{
+            float:right;
+            font-size:0.14rem;
+            font-family:"苹方";
+            color:#ADADAD;
+            margin-top:.24rem;
+        }
+    }
+
+    .blank{
+        height:.6rem;
+        background:#FFFFFF;
+    }
+}

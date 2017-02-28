@@ -30,7 +30,7 @@ class ZhaoDaAnswer extends React.Component {
               <span className="vip"><img src={imgsrc}/></span>，
               <span>骨灰级教练</span>
             </div>
-            <div className="comment">{comment}</div>
+            <Link to = "/message"><div className="comment">{comment}</div></Link>
             <div className="more">
               <span><b><img src="/src/images/zan.png"/></b>赞同{agree}</span>
               <span><b><img src="/src/images/comment.png"/></b>评论{remark}</span>
