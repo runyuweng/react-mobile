@@ -48,10 +48,12 @@ class ZhaoDaSearch extends React.Component {
               <input type="text"
               placeholder="研究生"
               value={Keyword}
-              onChange={(e)=>{
-                this.setState({
-                  Keyword:e.target.value
-                });
+              onChange={function(e){
+                return(
+                  this.setState({
+                    Keyword:e.target.value
+                  })
+                )
               }}/>
               <span>搜索</span>
           </div>
