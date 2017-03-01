@@ -33,7 +33,7 @@ class Zhaoda extends React.Component {
                 专栏
               </li>
             </Link>
-            <li>消息</li>
+            <Link to = "/message"><li>消息</li></Link>
           </ul>
         </nav>
         {this.props.children}

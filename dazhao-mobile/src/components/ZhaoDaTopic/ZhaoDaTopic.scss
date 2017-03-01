@@ -25,39 +25,60 @@
   .select{
     background: #fff;
     width: 100%;
-    overflow: hidden;
     font-size: .16rem;
+    white-space: nowrap;
     ul{
-      width: 4.2rem;
+      overflow: hidden;
+      white-space: nowrap;
+      width:100%;
       .active{
         border-bottom: .02rem solid #000;
       }
       li{
         padding: .05rem 0;
-        float: left;
         width: .66rem;
         text-align: center;
+        display:inline-block;
       }
     }
   }
   .content{
-    display: flex;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: space-between;
-    .item{
-      background: #666;
-      p:nth-child(1){
-        font-weight: bold;
-        font-size: .14rem;
-        color: #fff;
-      }
-      p:nth-child(2){
-        font-weight: bold;
-        font-size: .115rem;
-        color: #fff;
-      }
+    .itemGroup{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items:center;
+        .item{
+          display: flex;
+          font-size:0rem;
+          width:32.9%;
+          position:relative;
+          align-items:center;
+          margin-bottom:.03rem;
+          img{
+            width:100%;
+          }
+          p:nth-of-type(1){
+            width:100%;
+            text-align:center;
+            font-family:"苹方";
+            font-weight: bold;
+            font-size: .14rem;
+            color: #fff;
+            position: absolute;
+
+          }
+          p:nth-of-type(2){
+            width:100%;
+            text-align:center;
+            font-family:"苹方";
+            font-size: .115rem;
+            color: #fff;
+            position:absolute;
+            bottom:10%;
+          }
+        }
     }
+
   }
 }
