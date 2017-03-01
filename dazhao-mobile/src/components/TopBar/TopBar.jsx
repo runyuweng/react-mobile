@@ -15,7 +15,11 @@ class TopBar extends React.Component {
     console.log(border)
     return(
       <div className="TopBar" style={border=="noboder"?{'borderBottom':'none'}:{'borderBottom':'1px solid #DBDBDB'}}>
-        <span><img src="/src/images/arrow-left.png"/></span>
+        <span onClick={(e)=>{
+            history.back();
+          }}>
+          <img src="/src/images/arrow-left.png"/>
+        </span>
         <span>{title}</span>
       </div>
     )
