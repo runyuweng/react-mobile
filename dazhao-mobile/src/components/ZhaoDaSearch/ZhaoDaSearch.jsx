@@ -11,7 +11,7 @@ class ZhaoDaSearch extends React.Component {
       response:[
         {
           id:1,
-          title:'研究生和本科学历在求职过程中真的会有很大差别吗？',
+          title:'研究生和本科学历在求职过程中真的会有很大影响吗？',
           answer:'这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...'
         },
         {
@@ -21,7 +21,7 @@ class ZhaoDaSearch extends React.Component {
         },
         {
           id:3,
-          title:'研究生和本科学历在求职过程中真的会有很大差别吗？',
+          title:'研究生和本科学历在求职过程中真的会有很大影响吗？',
           answer:'这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...'
         }
       ]
@@ -34,8 +34,8 @@ class ZhaoDaSearch extends React.Component {
     const responseList = response.map(function(item) {
       return (
           <div className="items" key={item.id}>
-            <Link to = "/response"><span>{item.title}</span></Link>
-            <p>{item.answer}</p>
+            <Link to = "/toquestion"><span>{item.title}</span></Link>
+            <Link to = "/response"><p>{item.answer}</p></Link>
           </div>
         );
     })

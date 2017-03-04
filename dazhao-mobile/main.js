@@ -10,6 +10,7 @@ import {
 from 'react-router';
 import MainLayout from './src/components/MainLayout/MainLayout.jsx';
 import Index from './src/components/Index/Index.jsx';
+import ZhaoDaMine from './src/components/ZhaoDaMine/ZhaoDaMine.jsx';
 import Zhaoda from './src/components/Zhaoda/Zhaoda.jsx';
 import ZhaoDaIndex from './src/components/ZhaoDaIndex/ZhaoDaIndex.jsx';
 import ZhaoDaDiscover from './src/components/ZhaoDaDiscover/ZhaoDaDiscover.jsx';
@@ -19,8 +20,16 @@ import ZhaoDaMessage from './src/components/ZhaoDaMessage/ZhaoDaMessage.jsx';
 import ZhaoDaSearch from './src/components/ZhaoDaSearch/ZhaoDaSearch.jsx';
 import ZhaoDaResponse from './src/components/ZhaoDaResponse/ZhaoDaResponse.jsx';
 import ZhaoDaQuiz from './src/components/ZhaoDaQuiz/ZhaoDaQuiz.jsx';
+
 import ZhaoDaConsult from './src/components/ZhaoDaConsult/ZhaoDaConsult.jsx';
+
 import ZhaoDaQuesDetail from './src/components/ZhaoDaQuesDetail/ZhaoDaQuesDetail.jsx';
+
+import ZhaoDaToQuestion from './src/components/ZhaoDaToQuestion/ZhaoDaToQuestion.jsx';
+
+import ZhaoDaCvCenter from './src/components/ZhaoDaCvCenter/ZhaoDaCvCenter.jsx';
+
+import ZhaoDaGrowRecord from './src/components/ZhaoDaGrowRecord/ZhaoDaGrowRecord.jsx';
 
 import {
   Provider
@@ -36,14 +45,6 @@ const page1 = () => {
   return (
     <div key="1">
       <span>这里是课程页面</span>
-    </div>
-  )
-}
-
-const page3 = () => {
-  return (
-    <div key="2">
-      <span>这里是直播</span>
     </div>
   )
 }
@@ -68,7 +69,10 @@ const Routes = () => {
           // <Route path="quiz" component={ZhaoDaQuiz}></Route>
           <Route path="consult" component={ZhaoDaConsult}></Route>
           <Route path="detail" component={ZhaoDaQuesDetail}></Route>
-          <Route path="page3" component={page3}></Route>
+          <Route path="toquestion" component={ZhaoDaToQuestion}></Route>
+          <Route path="cvcenter" component={ZhaoDaCvCenter}></Route>
+          <Route path="growrecord" component={ZhaoDaGrowRecord}></Route>
+          <Route path="mine" component={ZhaoDaMine}></Route>
         </Route>
       </Router>
     </Provider>

@@ -29,7 +29,7 @@ class Layout extends React.Component {
           {show.show_bottom?
             <footer>
               <div>
-                <Link to="/" activeStyle={{color:'#000'}}>
+                <Link to="/page1" activeStyle={{color:'#000'}}>
                   <div>
                     <img src="/src/images/home.png"/>
                     <p>首页</p>
@@ -37,7 +37,7 @@ class Layout extends React.Component {
                 </Link>
               </div>
               <div>
-                <Link to="/page1" activeStyle={{color:'#000'}}>
+                <Link to="/" activeStyle={{color:'#000'}}>
                   <div>
                     <img src="/src/images/zhiguan.png"/>
                     <p>职观</p>
@@ -53,7 +53,7 @@ class Layout extends React.Component {
                 </Link>
               </div>
               <div>
-                <Link to="/page3" activeStyle={{color:'#000'}}>
+                <Link to="/mine" activeStyle={{color:'#000'}}>
                   <div>
                     <img src="/src/images/userpage.png"/>
                     <p>我的</p>

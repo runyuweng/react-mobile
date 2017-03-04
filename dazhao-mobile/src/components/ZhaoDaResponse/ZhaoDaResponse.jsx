@@ -21,12 +21,12 @@ class ZhaoDaResponse extends React.Component {
           <TopBar title="回答" border="boder"/>
         </header>
         <div className="question">
-          <span className="title">研究生和本科学历在求职过程中真的会有很大差别吗？</span>
+          <span className="title">研究生和本科学历在求职过程中真的会有很大影响吗？</span>
           <span className="img"><img src="/src/images/Back_Button.png"/></span>
         </div>
         <div className="comment">
           <div className="author">
-            <span><img src="/src/images/userpage.png"/></span>
+            <span><img src="/src/images/user.png"/></span>
             <em>Michal</em>
             <span><img src="/src/images/vip.png"/></span>
             <em>，骨灰级教练，WIT Advisory Group 总裁</em>

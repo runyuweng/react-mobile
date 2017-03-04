@@ -1,0 +1,101 @@
+.ZhaoDaCvCenter{
+    h3{
+        font-family: "苹方";
+        font-size: .14rem;
+        color:#666666;
+        font-weight: normal;
+        line-height: .25rem;
+        padding:.1rem .31rem .1rem .24rem;
+        border-bottom:.01rem solid #EAEAEA;
+        margin-top: .2rem;
+        background:#fff;
+    }
+    .main{
+        font-size: 0rem;
+        background:#fff;
+        padding: 0rem .31rem 0rem .24rem;
+
+        .cvitems:nth-of-type(1)
+        {
+            border-bottom:.01rem solid #EAEAEA;
+        }
+
+        .cvitems{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:.24rem 0;
+            .cvleft{
+                span:nth-of-type(1){
+                    font-family: "苹方";
+                    font-size: .14rem;
+                    color:#666666;
+                    font-weight: bold;
+                    display: block;
+                    line-height: .25rem;
+                }
+                span:nth-of-type(2){
+                    display: block;
+                    font-family: "苹方";
+                    font-size: .13rem;
+                    color:#ADADAD;
+                    line-height: .25rem;
+                    em{
+                        font-style: normal;
+                        margin-left: .2rem;
+                    }
+                }
+            }
+
+            .cvright{
+                em{
+                    width:.5rem;
+                    height:.25rem;
+                    font-family: "苹方";
+                    font-size: .13rem;
+                    font-style: normal;
+                    text-align: center;
+                    line-height: .25rem;
+                    display: inline-block;
+                    border:.01rem solid #FFD112;
+                    color:#FFD112;
+                    border-radius:.05rem;
+                }
+                em:nth-of-type(1){
+                    margin-right: .08rem;
+                }
+            }
+        }
+    }
+
+    .options{
+        font-size: 0rem;
+        background:#fff;
+        margin-top: .2rem;
+        p{
+            padding:.14rem .24rem .14rem .31rem;
+            border-bottom: .01rem solid #D8D8D8;
+            line-height: .25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            em{
+                font-style: normal;
+                font-family: "苹方";
+                font-size: .14rem;
+                color:#666666;
+            }
+            span{
+                display:inline-block;
+                width:.14rem;
+                height:.18rem;
+                cursor:pointer;
+                img{
+                    width:.10rem;
+                    height:.14rem;
+                }
+            }
+        }
+    }
+
+}

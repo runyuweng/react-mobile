@@ -47,7 +47,6 @@ class ZhaoDaConsult extends React.Component {
             autoFocus="autoFocus"
             onChange={(e)=>{
               this.setState({question:e.target.value});
-              //
             }}/>
         </div>
         <div className="havefind">
