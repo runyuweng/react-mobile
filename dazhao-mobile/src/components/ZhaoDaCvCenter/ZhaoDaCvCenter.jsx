@@ -30,7 +30,7 @@ class ZhaoDaCvCenter extends React.Component {
             </div>
             <span className="cvright">
               <em>预览</em>
-              <em>编辑</em>
+              <Link to = "/cvmessage"><em>编辑</em></Link>
             </span>
           </div>
           <div className="cvitems">

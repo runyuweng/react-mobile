@@ -31,6 +31,16 @@ import ZhaoDaCvCenter from './src/components/ZhaoDaCvCenter/ZhaoDaCvCenter.jsx';
 
 import ZhaoDaGrowRecord from './src/components/ZhaoDaGrowRecord/ZhaoDaGrowRecord.jsx';
 
+import ZhaoDaNotify from './src/components/ZhaoDaNotify/ZhaoDaNotify.jsx';
+
+import ZhaoDaCvMessage from './src/components/ZhaoDaCvMessage/ZhaoDaCvMessage.jsx';
+
+import ZhaoDaEditMg from './src/components/ZhaoDaEditMg/ZhaoDaEditMg.jsx';
+
+import ZhaoDaEduEx from './src/components/ZhaoDaEduEx/ZhaoDaEduEx.jsx';
+
+import ZhaoDaPractice from './src/components/ZhaoDaPractice/ZhaoDaPractice.jsx';
+
 import {
   Provider
 }
@@ -72,6 +82,11 @@ const Routes = () => {
           <Route path="toquestion" component={ZhaoDaToQuestion}></Route>
           <Route path="cvcenter" component={ZhaoDaCvCenter}></Route>
           <Route path="growrecord" component={ZhaoDaGrowRecord}></Route>
+          <Route path="notify" component={ZhaoDaNotify}></Route>
+          <Route path="cvmessage" component={ZhaoDaCvMessage}></Route>
+          <Route path="edmessage" component={ZhaoDaEditMg}></Route>
+          <Route path="edupexp" component={ZhaoDaEduEx}></Route>
+          <Route path="practice" component={ZhaoDaPractice}></Route>
           <Route path="mine" component={ZhaoDaMine}></Route>
         </Route>
       </Router>

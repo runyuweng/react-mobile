@@ -41,22 +41,25 @@ class ZhaoDaMine extends React.Component {
           </div>
         </header>
         <div className="experience">
-          <Link to="growrecord">
             <div>
-              <span><img src="/src/images/grow.png"/>
-              <em>成长记录</em></span>
+              <Link to="growrecord">
+                <span><img src="/src/images/grow.png"/>
+                <em>成长记录</em></span>
+              </Link>
             </div>
-          </Link>
-          <Link to = "/cvcenter">
             <div>
-              <span><img src="/src/images/cv.png"/>
-              <em>简历/求职</em></span>
+              <Link to = "/cvcenter">
+                <span><img src="/src/images/cv.png"/>
+                <em>简历/求职</em></span>
+              </Link>
             </div>
-          </Link>
-          <div>
-            <span><img src="/src/images/message.png"/>
-            <em>消息通知</em></span>
-          </div>
+
+            <div>
+              <Link to = "/notify">
+                <span><img src="/src/images/message.png"/>
+                <em>消息通知</em></span>
+              </Link>
+            </div>
         </div>
 
         <div className="options">
