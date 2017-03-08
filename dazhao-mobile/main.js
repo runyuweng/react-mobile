@@ -41,6 +41,10 @@ import ZhaoDaEduEx from './src/components/ZhaoDaEduEx/ZhaoDaEduEx.jsx';
 
 import ZhaoDaPractice from './src/components/ZhaoDaPractice/ZhaoDaPractice.jsx';
 
+import ZhaoDaToFeatures from './src/components/ZhaoDaToFeatures/ZhaoDaToFeatures.jsx';
+
+import ZhaoDaToTopic from './src/components/ZhaoDaToTopic/ZhaoDaToTopic.jsx';
+
 import {
   Provider
 }
@@ -87,6 +91,8 @@ const Routes = () => {
           <Route path="edmessage" component={ZhaoDaEditMg}></Route>
           <Route path="edupexp" component={ZhaoDaEduEx}></Route>
           <Route path="practice" component={ZhaoDaPractice}></Route>
+          <Route path="tofeature" component={ZhaoDaToFeatures}></Route>
+          <Route path="totopic" component={ZhaoDaToTopic}></Route>
           <Route path="mine" component={ZhaoDaMine}></Route>
         </Route>
       </Router>

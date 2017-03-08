@@ -50,16 +50,19 @@ class ZhaoDaDiscover extends React.Component {
           </div>
           <div className="content">
 
+
             <div className="Myarticle">
               <div className="Citems">
-                <span className="img"></span>
-                <div className="detail">
-                    <span className="span2">#考研#</span>
-                    <span className="care">
-                      <span>回答:12</span>
-                      <span>关注:101</span>
-                    </span>
-                </div>
+                <Link to = "/totopic">
+                    <span className="img"></span>
+                    <div className="detail">
+                        <span className="span2">#考研#</span>
+                        <span className="care">
+                          <span>回答:12</span>
+                          <span>关注:101</span>
+                        </span>
+                    </div>
+                </Link>
               </div>
 
               <div className="Citems">

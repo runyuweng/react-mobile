@@ -8,9 +8,12 @@ class ZhaoDaFeature extends React.Component {
     return(
       <div className="ZhaoDaFeature">
         <div className="feature">
-          <div className="featureImg"><img src="/src/images/1481373795l515443385.png"/>
-          </div>
-          <span className="fTheme">#麦力达#第一期--考研那些事儿..</span>
+          <Link to = "tofeature">
+            <div className="featureImg"><img src="/src/images/1481373795l515443385.png"/>
+            </div>
+            <span className="fTheme">#麦力达#第一期--考研那些事儿..
+            </span>
+          </Link>
           <div className="publisher">
             <span className="cicle"></span>
             Michal
