@@ -29,7 +29,7 @@ class Layout extends React.Component {
           {show.show_bottom?
             <footer>
               <div>
-                <Link to="/page1" activeStyle={{color:'#000'}}>
+                <Link to="/home" activeStyle={{color:'#000'}}>
                   <div>
                     <img src="/src/images/home.png"/>
                     <p>首页</p>

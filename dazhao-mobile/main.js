@@ -45,6 +45,8 @@ import ZhaoDaToFeatures from './src/components/ZhaoDaToFeatures/ZhaoDaToFeatures
 
 import ZhaoDaToTopic from './src/components/ZhaoDaToTopic/ZhaoDaToTopic.jsx';
 
+import ZhaoDaHome from './src/components/ZhaoDaHome/ZhaoDaHome.jsx';
+
 import {
   Provider
 }
@@ -70,7 +72,7 @@ const Routes = () => {
       <Router history = {hashHistory}>
         <Route path="/" component={MainLayout}>
           <IndexRoute component={Index}/>
-          <Route path="page1" component={page1}></Route>
+          <Route path="home" component={ZhaoDaHome}></Route>
           <Route path="Zhaoda" component={Zhaoda}>
             <Route path="main" component={ZhaoDaIndex}></Route>
             <Route path="discover" component={ZhaoDaDiscover}></Route>

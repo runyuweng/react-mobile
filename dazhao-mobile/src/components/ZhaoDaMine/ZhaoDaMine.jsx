@@ -21,7 +21,7 @@ class ZhaoDaMine extends React.Component {
         <header className="head">
           <div className="top">
             <span className="imgone"><img src="/src/images/boy1.png"/></span>
-            <span className="topshadow"></span>
+            <span className="topshadow"><img src="/src/images/个人中心背景.png"/></span>
             <div className="circle1">
                 <span className="circle2"><img src="/src/images/boy.png"/></span>
             </div>
