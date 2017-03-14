@@ -47,6 +47,14 @@ import ZhaoDaToTopic from './src/components/ZhaoDaToTopic/ZhaoDaToTopic.jsx';
 
 import ZhaoDaHome from './src/components/ZhaoDaHome/ZhaoDaHome.jsx';
 
+import ZhaoDaJobDetail from './src/components/ZhaoDaJobDetail/ZhaoDaJobDetail.jsx';
+
+import ZhaoDaCompany from './src/components/ZhaoDaCompany/ZhaoDaCompany.jsx';
+
+import ZhaoDaShRecruit from './src/components/ZhaoDaShRecruit/ZhaoDaShRecruit.jsx';
+
+import ZhaoDaEnterprise from './src/components/ZhaoDaEnterprise/ZhaoDaEnterprise.jsx';
+
 import {
   Provider
 }
@@ -95,6 +103,10 @@ const Routes = () => {
           <Route path="practice" component={ZhaoDaPractice}></Route>
           <Route path="tofeature" component={ZhaoDaToFeatures}></Route>
           <Route path="totopic" component={ZhaoDaToTopic}></Route>
+          <Route path="jobdetail" component={ZhaoDaJobDetail}></Route>
+          <Route path="company" component={ZhaoDaCompany}></Route>
+          <Route path="schoolRecruit" component={ZhaoDaShRecruit}></Route>
+          <Route path="enterprise" component={ZhaoDaEnterprise}></Route>
           <Route path="mine" component={ZhaoDaMine}></Route>
         </Route>
       </Router>

@@ -38,20 +38,20 @@ class ZhaoDaHome extends React.Component {
 
         <div className="experience">
             <div>
-              <Link to="/">
+              <Link to="/schoolRecruit">
                 <span><img src="/src/images/首页icon1.png"/>
                 <em>校招</em></span>
               </Link>
             </div>
             <div>
-              <Link to = "/">
+              <Link to = "/schoolRecruit">
                 <span><img src="/src/images/首页icon2.png"/>
                 <em>实习</em></span>
               </Link>
             </div>
 
             <div>
-              <Link to = "/">
+              <Link to = "/enterprise">
                 <span><img src="/src/images/首页icon3.png"/>
                 <em>企业</em></span>
               </Link>
@@ -68,26 +68,28 @@ class ZhaoDaHome extends React.Component {
         <div id="homeMain">
           <h2><span><img src="/src/images/latest.png"/></span>推荐职位
           </h2>
-          <div className="jobitems">
-            <span className="pics"><img src="/src/images/ali.png"/></span>
-            <div className="jobintro">
-              <h2>JAVA研发工程师</h2>
-              <h3>阿里巴巴网络技术有限公司</h3>
-              <span>
-                <em>上海</em>
-                <em>本科</em>
-              </span>
-              <span>
-                <em>互联网</em>
-                <b>|</b>
-                <em>外商独资</em>
-                <b>|</b>
-                <em>上市</em>
-                <b>|</b>
-                <em>1000人以上</em>
-              </span>
+          <Link to = "jobdetail">
+            <div className="jobitems">
+              <span className="pics"><img src="/src/images/ali.png"/></span>
+              <div className="jobintro">
+                <h2>JAVA研发工程师</h2>
+                <h3>阿里巴巴网络技术有限公司</h3>
+                <span>
+                  <em>上海</em>
+                  <em>本科</em>
+                </span>
+                <span>
+                  <em>互联网</em>
+                  <b>|</b>
+                  <em>外商独资</em>
+                  <b>|</b>
+                  <em>上市</em>
+                  <b>|</b>
+                  <em>1000人以上</em>
+                </span>
+              </div>
             </div>
-          </div>
+          </Link>
 
           <div className="jobitems">
             <span className="pics"><img src="/src/images/ali.png"/></span>
