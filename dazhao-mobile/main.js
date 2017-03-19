@@ -20,39 +20,22 @@ import ZhaoDaMessage from './src/components/ZhaoDaMessage/ZhaoDaMessage.jsx';
 import ZhaoDaSearch from './src/components/ZhaoDaSearch/ZhaoDaSearch.jsx';
 import ZhaoDaResponse from './src/components/ZhaoDaResponse/ZhaoDaResponse.jsx';
 import ZhaoDaQuiz from './src/components/ZhaoDaQuiz/ZhaoDaQuiz.jsx';
-
 import ZhaoDaConsult from './src/components/ZhaoDaConsult/ZhaoDaConsult.jsx';
-
 import ZhaoDaQuesDetail from './src/components/ZhaoDaQuesDetail/ZhaoDaQuesDetail.jsx';
-
 import ZhaoDaToQuestion from './src/components/ZhaoDaToQuestion/ZhaoDaToQuestion.jsx';
-
 import ZhaoDaCvCenter from './src/components/ZhaoDaCvCenter/ZhaoDaCvCenter.jsx';
-
 import ZhaoDaGrowRecord from './src/components/ZhaoDaGrowRecord/ZhaoDaGrowRecord.jsx';
-
 import ZhaoDaNotify from './src/components/ZhaoDaNotify/ZhaoDaNotify.jsx';
-
 import ZhaoDaCvMessage from './src/components/ZhaoDaCvMessage/ZhaoDaCvMessage.jsx';
-
 import ZhaoDaEditMg from './src/components/ZhaoDaEditMg/ZhaoDaEditMg.jsx';
-
 import ZhaoDaEduEx from './src/components/ZhaoDaEduEx/ZhaoDaEduEx.jsx';
-
 import ZhaoDaPractice from './src/components/ZhaoDaPractice/ZhaoDaPractice.jsx';
-
 import ZhaoDaToFeatures from './src/components/ZhaoDaToFeatures/ZhaoDaToFeatures.jsx';
-
 import ZhaoDaToTopic from './src/components/ZhaoDaToTopic/ZhaoDaToTopic.jsx';
-
 import ZhaoDaHome from './src/components/ZhaoDaHome/ZhaoDaHome.jsx';
-
 import ZhaoDaJobDetail from './src/components/ZhaoDaJobDetail/ZhaoDaJobDetail.jsx';
-
 import ZhaoDaCompany from './src/components/ZhaoDaCompany/ZhaoDaCompany.jsx';
-
 import ZhaoDaShRecruit from './src/components/ZhaoDaShRecruit/ZhaoDaShRecruit.jsx';
-
 import ZhaoDaEnterprise from './src/components/ZhaoDaEnterprise/ZhaoDaEnterprise.jsx';
 
 import {
@@ -73,13 +56,20 @@ const page1 = () => {
   )
 }
 
+const zhiGuan = () => {
+  return(
+    <h1 style={{'fontSize':'0.1rem'}}>招答页面</h1>
+  )
+}
+
 
 const Routes = () => {
   return (
     <Provider store={store}>
       <Router history = {hashHistory}>
         <Route path="/" component={MainLayout}>
-          <IndexRoute component={Index}/>
+          <IndexRoute component={ZhaoDaHome}/>
+          <Route path="zhiGuan" component={zhiGuan}></Route>
           <Route path="home" component={ZhaoDaHome}></Route>
           <Route path="Zhaoda" component={Zhaoda}>
             <Route path="main" component={ZhaoDaIndex}></Route>

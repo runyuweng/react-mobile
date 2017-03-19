@@ -10,7 +10,9 @@ class ZhaoDaQuesDetail extends React.Component {
       <div className="ZhaoDaQuesDetail">
         <header>
           <div className="search">
-              <span >上一步</span>
+              <span onClick={()=>{
+                  history.go(-1);
+                }}>上一步</span>
               <span>问题详情</span>
               <span>下一步</span>
           </div>

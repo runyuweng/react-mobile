@@ -4,13 +4,13 @@ export const SHOW_BOTTOM = 'SHOW_BOTTOM';
 export function showTop(text){
   return {
     type:SHOW_TOP,
-    text
+    text:text
   }
 }
 
 export function showBottom(text){
   return {
     type:SHOW_BOTTOM,
-    text
+    text:text
   }
 }

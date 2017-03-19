@@ -4,6 +4,12 @@ import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 
 class ZhaoDaHome extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  componentDidMount(){
+    this.props.showBottom(true);
+  }
   render() {
     return(
       <div className="ZhaoDaHome">

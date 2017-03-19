@@ -37,7 +37,7 @@ class Layout extends React.Component {
                 </Link>
               </div>
               <div>
-                <Link to="/" activeStyle={{color:'#000'}}>
+                <Link to="/zhiGuan" activeStyle={{color:'#000'}}>
                   <div>
                     <img src="/src/images/zhiguan.png"/>
                     <p>职观</p>

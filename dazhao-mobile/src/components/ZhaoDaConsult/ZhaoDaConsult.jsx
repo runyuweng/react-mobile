@@ -35,7 +35,9 @@ class ZhaoDaConsult extends React.Component {
       <div className="ZhaoDaConsult">
         <header>
           <div className="search">
-              <span >取消</span>
+              <span onClick={()=>{
+                  history.go(-1);
+                }}>取消</span>
               <span>提问</span>
               <span><Link to = "/detail">下一步</Link></span>
           </div>

@@ -8,10 +8,11 @@ class ZhaoDaMine extends React.Component {
 
   constructor(props){
     super(props);
+    console.log('props',props);
   }
 
   componentDidMount(){
-    this.props.showBottom();
+    this.props.showBottom(true);
   }
 
   render() {
