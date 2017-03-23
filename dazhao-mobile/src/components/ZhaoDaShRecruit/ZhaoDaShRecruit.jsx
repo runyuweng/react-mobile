@@ -44,7 +44,8 @@ class ZhaoDaShRecruit extends React.Component {
           <div id="homeMain">
             <Link to = "jobdetail">
               <div className="jobitems">
-                <span className="pics"><img src="/src/images/ali.png"/></span>
+                <div className="pics"><span><img src="/src/images/ali.png"/></span>
+                </div>
                 <div className="jobintro">
                   <h2>JAVA研发工程师</h2>
                   <h3>阿里巴巴网络技术有限公司</h3>
@@ -66,7 +67,8 @@ class ZhaoDaShRecruit extends React.Component {
             </Link>
 
             <div className="jobitems">
-              <span className="pics"><img src="/src/images/ali.png"/></span>
+              <div className="pics"><span><img src="/src/images/ali.png"/></span>
+              </div>
               <div className="jobintro">
                 <h2>JAVA研发工程师</h2>
                 <h3>阿里巴巴网络技术有限公司</h3>
@@ -87,7 +89,8 @@ class ZhaoDaShRecruit extends React.Component {
             </div>
 
             <div className="jobitems">
-              <span className="pics"><img src="/src/images/ali.png"/></span>
+              <div className="pics"><span><img src="/src/images/ali.png"/></span>
+              </div>
               <div className="jobintro">
                 <h2>JAVA研发工程师</h2>
                 <h3>阿里巴巴网络技术有限公司</h3>
@@ -108,7 +111,8 @@ class ZhaoDaShRecruit extends React.Component {
             </div>
 
             <div className="jobitems">
-              <span className="pics"><img src="/src/images/ali.png"/></span>
+              <div className="pics"><span><img src="/src/images/ali.png"/></span>
+              </div>
               <div className="jobintro">
                 <h2>JAVA研发工程师</h2>
                 <h3>阿里巴巴网络技术有限公司</h3>
@@ -129,7 +133,8 @@ class ZhaoDaShRecruit extends React.Component {
             </div>
 
             <div className="jobitems">
-              <span className="pics"></span>
+              <div className="pics"><span><img src="/src/images/ali.png"/></span>
+              </div>
               <div className="jobintro">
                 <h2>JAVA研发工程师</h2>
                 <h3>阿里巴巴网络技术有限公司</h3>

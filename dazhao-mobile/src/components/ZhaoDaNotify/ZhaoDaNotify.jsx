@@ -27,7 +27,7 @@ class ZhaoDaNotify extends React.Component {
               <em>投递状态</em></span>
             </div>
             <div>
-              <span><img src="/src/images/invite.png"/>
+              <span><img src="/src/images/资源 46@2x.png"/>
               <em>校招邀约</em></span>
             </div>
             <div>

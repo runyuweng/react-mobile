@@ -6,6 +6,8 @@
         position:relative;
         ol{
             list-style:none;
+            margin:0;
+            padding:0;
         }
         .item{
             width:100%;
@@ -25,14 +27,17 @@
             display:flex;
             position:absolute;
             justify-content:center;
-            bottom:0.02rem;
+            bottom:0.01rem;
             li{
                 width:0.08rem;
                 height:0.08rem;
                 border-radius:50%;
-                background:white;
-                margin:0rem 0.05rem;
+                background:#f8f8f8;
+                margin:.06rem 0.05rem;
                 z-index:9999;
+            }
+            .active{
+                background:white;
             }
         }
 
@@ -51,7 +56,6 @@
             align-items:center;
             padding:0.13rem 0.14rem 0.14rem;
             img{
-                width:0.15rem;
                 height:0.18rem;
                 display:flex;
                 float:left;
@@ -173,21 +177,19 @@
         .Formore{
             width:92%;
             height:0.4rem;
-            border:0.01rem #FFE25C solid;
-            color:#666666;
+            border:0.01rem #21c6cd solid;
+            color:#21c6cd;
             font-size:0.14rem;
             text-align:center;
             line-height:0.4rem;
             border-radius:0.05rem;
             margin:0.3rem auto 0;
-            background:#ffe25c;
         }
     }
 
 
     #moreTopic{
         width:100%;
-        padding:0 0.08rem;
         box-sizing:border-box;
         background:#f8f8f8;
         padding-bottom:0.1rem;
@@ -200,6 +202,7 @@
                     font-family:"苹方";
                     font-weight:bold;
                     color:#666666;
+                    padding-left: .1rem;
 
                 img{
                     width:0.23rem;
@@ -210,9 +213,9 @@
             .all{
                 font-size:0.13rem;
                 font-family:"苹方";
-                color:#FFD112;
+                color:#21c6cd;
                 position:absolute;
-                right:0rem;
+                right:.1rem;
                 cursor: pointer;
                 img{
                     width:0.1rem;
@@ -232,9 +235,17 @@
             margin-top:0.2rem;
             position:relative;
             overflow:hidden;
-            .img:nth-of-type(n){
+            .img:nth-of-type(1){
                 top:0rem;
-                left:(0.1+1.75n)rem;
+                left:0.1rem;
+            }
+            .img:nth-of-type(2){
+                top:0rem;
+                left:1.85rem;
+            }
+            .img:nth-of-type(3){
+                top:0rem;
+                left:3.6rem;
             }
             .img{
                 width:1.6rem;
@@ -250,7 +261,7 @@
                     display:block;
                     width:0.75rem;
                     height:0.75rem;
-                    border-radius:0.05rem;
+                    border-radius:0.06rem;
                     background:#dadada;
                     margin:0 auto;
                 }
@@ -311,10 +322,10 @@
     }
 
     .bottom{
-        font-size:0.16rem;
+        font-size:0.14rem;
         font-family:"苹方";
         color:#ADADAD;
-        line-height:0.19rem;
+        line-height:0.2rem;
         text-align:center;
     }
 

@@ -44,7 +44,7 @@ class ZhaoDaToQuestion extends React.Component {
               </div>
               <div className="right">
                 <span><em>15</em>人关注</span>
-                <span>+关注</span>
+                <span>+ 关注</span>
               </div>
             </div>
           </div>

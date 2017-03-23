@@ -1,5 +1,5 @@
 .ZhaoDaDiscover{
-      #dynamic{
+      #dynamic,#latest{
         width:100%;
         background:#f8f8f8;
         .title{
@@ -12,7 +12,6 @@
             align-items:center;
             padding:0.13rem 0.14rem 0.12rem;
             img{
-                width:0.15rem;
                 height:0.18rem;
                 display:flex;
                 float:left;
@@ -93,14 +92,16 @@
         }
         .Formore1{
             height:0.4rem;
-            border:0.01rem #FFE25C solid;
-            color:#666666;
+            border:0.01rem #21c6cd solid;
+            color:#21c6cd;
             font-size:0.14rem;
             text-align:center;
             line-height:0.4rem;
             border-radius:0.05rem;
-            background:#ffe25c;
             margin:0.15rem 0.05rem 0.1rem;
+        }
+        .Formore1 a{
+            color:#21c6cd;
         }
     }
 }

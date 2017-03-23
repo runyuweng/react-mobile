@@ -1,15 +1,19 @@
 .ZhaoDaSearch{
     header{
         background:#FFFFFF;
-        padding:0.07rem 0 0.08rem;
+        height:.45rem;
+        padding:0 .12rem;
         .search{
-                width:96%;
                 margin:0 auto;
                 text-align:center;
                 font-size:0.16rem;
+                height:.45rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 input{
-                    width:72%;
-                    height:0.3rem;
+                    width:78%;
+                    height:0.28rem;
                     border: 1px #e5e5e5 solid;
                     border-radius:0.42rem;
                     font-size:0.13rem;
@@ -17,12 +21,12 @@
                     color:#333333;
                     text-indent:0.1rem;
                     box-sizing:border-box;
-                    line-height:0.3rem;
+                    line-height:0.28rem;
                 }
                 span{
                     font-size:0.14rem;
                     font-family:"苹方";
-                    color:#FFE25C;
+                    color:#21c5c6;
                     line-height:0.3rem;
                 }
                 span:nth-of-type(1){
@@ -57,20 +61,20 @@
                 line-height:0.35rem;
             }
             .active{
-                border-bottom:0.02rem #FFD112 solid;
-                color:#FFD112;
+                border-bottom:0.02rem #21c5c6 solid;
+                color:#21c5c6;
             }
         }
     }
 
     .getting{
-        font-size:0.16rem;
+        font-size:0;
         background:#FFFFFF;
         .items{
-            padding:0.16rem 0.14rem 0.14rem;
+            padding:0.21rem 0.14rem 0.21rem;
             border-top:0.01rem solid #D8D8D8;
             span{
-                    font-size:0.15rem;
+                    font-size:0.16rem;
                     font-family:"苹方";
                     color:#333333;
                     font-weight:bold;
@@ -85,6 +89,30 @@
             }
             b{
                 color:#FFD112;
+            }
+            .more{
+                width:100%;
+                font-family:"苹方";
+                color:#ADADAD;
+                margin:0.15rem 0rem 0;
+                line-height:0.2rem;
+                span{
+                    font-size:0.14rem;
+                    font-weight: normal;
+                    display:inline-flex;
+                    align-items:center;
+                    margin-right:0.2rem;
+                    b{
+                        display:inline-block;
+                        width:0.16rem;
+                        height:0.16rem;
+                        margin-right:0.06rem;
+                    }
+                }
+                img{
+                    width:0.15rem;
+                    height:0.15rem;
+                }
             }
         }
 

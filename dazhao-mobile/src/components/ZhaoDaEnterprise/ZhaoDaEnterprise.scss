@@ -51,23 +51,32 @@
         .hotjob{
             .jobitems{
                 background:#fff;
-                padding:.21rem .12rem;
                 display: flex;
                 .pics{
+                    box-sizing: border-box;
+                    width:22%;
+                    padding:.2rem .12rem;
                     display:inline-block;
-                    width:.6rem;
-                    height:.6rem;
-                    border:.01rem solid #EAEAEA;
-                    margin-right: .12rem;
-                    background:#f8f8f8;
-                    img{
+                    text-align: center;
+                    span{
+                        display:inline-block;
                         width:.6rem;
                         height:.6rem;
+                        border:.01rem solid #EAEAEA;
+                        background:#f8f8f8;
+                        img{
+                            width:.6rem;
+                            height:.6rem;
+                        }
                     }
                 }
 
                 .jobintro{
+                    padding:.16rem .12rem .16rem 0;
+                    width:78%;
+                    box-sizing: border-box;
                     display:inline-block;
+                    border-bottom: .01rem solid rgba(234,234,234,1);
                     h2{
                         font-family: "苹方";
                         font-size: .15rem;

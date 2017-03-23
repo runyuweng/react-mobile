@@ -42,7 +42,7 @@ class ZhaoDaEnterprise extends React.Component {
           <div className="hotjob">
 
             <div className="jobitems">
-              <span className="pics"></span>
+              <div className="pics"><span></span></div>
               <div className="jobintro">
                 <h2>JAVA研发工程师<span>认证</span></h2>
                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
@@ -62,7 +62,7 @@ class ZhaoDaEnterprise extends React.Component {
             </div>
 
             <div className="jobitems">
-              <span className="pics"></span>
+              <div className="pics"><span></span></div>
               <div className="jobintro">
                 <h2>JAVA研发工程师<span>认证</span></h2>
                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
@@ -82,7 +82,7 @@ class ZhaoDaEnterprise extends React.Component {
             </div>
 
             <div className="jobitems">
-              <span className="pics"></span>
+              <div className="pics"><span></span></div>
               <div className="jobintro">
                 <h2>JAVA研发工程师<span>认证</span></h2>
                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
@@ -102,7 +102,7 @@ class ZhaoDaEnterprise extends React.Component {
             </div>
 
             <div className="jobitems">
-              <span className="pics"></span>
+              <div className="pics"><span></span></div>
               <div className="jobintro">
                 <h2>JAVA研发工程师<span>认证</span></h2>
                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>

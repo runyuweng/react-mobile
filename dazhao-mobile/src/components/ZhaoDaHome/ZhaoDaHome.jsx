@@ -10,8 +10,10 @@ class ZhaoDaHome extends React.Component {
         <header>
           <span className="log"><img src="/src/images/zhaodalog.png"/></span>
           <div className="input">
+          <Link to = '/homesearch'>
             <input type="text" placeholder="搜索期望中的公司、岗位、地点"/>
             <span><img src="/src/images/搜素.png"/></span>
+          </Link>
           </div>
         </header>
 

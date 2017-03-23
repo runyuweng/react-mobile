@@ -43,7 +43,7 @@ class ZhaoDaJobDetail extends React.Component {
             <div className="jobitems">
               <div className="jobintro">
                 <h2>阿里巴巴网络技术有限公司<span>认证</span></h2>
-                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>hr实习生</span></h3>
                 <span>
                   <em>互联网</em>
                   <b>|</b>

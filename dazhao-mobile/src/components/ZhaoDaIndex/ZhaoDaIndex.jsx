@@ -76,7 +76,7 @@ class ZhaoDaIndex extends React.Component {
           <div className="topic topic1">
             <div className="head">
               <span className="hot"><b><img src="/src/images/hot.png"/></b>热门话题</span>
-              <span className="all">全部话题<b></b><img src="/src/images/right.png"/></span>
+              <span className="all">全部话题<b></b><img src="/src/images/查看更多@2x.png"/></span>
             </div>
             <div className="content">
               <div className="img">
@@ -109,7 +109,7 @@ class ZhaoDaIndex extends React.Component {
           <div className="topic topic2">
             <div className="head">
               <span className="hot"><b><img src="/src/images/special.png"/></b>人气行家</span>
-              <span className="all">全部行家<b><img src="/src/images/right.png"/></b></span>
+              <span className="all">全部行家<b><img src="/src/images/查看更多@2x.png"/></b></span>
             </div>
             <div className="content">
               <div className="img">
@@ -142,7 +142,7 @@ class ZhaoDaIndex extends React.Component {
           <div className="topic topic3">
             <div className="head">
               <span className="hot"><b><img src="/src/images/special.png"/></b>最新专栏</span>
-              <span className="all">全部专栏<b><img src="/src/images/right.png"/></b></span>
+              <span className="all">全部专栏<b><img src="/src/images/查看更多@2x.png"/></b></span>
             </div>
             <div className="content">
               <div className="img">
@@ -162,7 +162,7 @@ class ZhaoDaIndex extends React.Component {
 
         </div>
 
-        <p className="bottom">反馈建议.成为行家.问答是什么</p>
+        <p className="bottom">反馈建议·成为行家·问答是什么</p>
 
       </div>
     )
