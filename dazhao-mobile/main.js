@@ -71,7 +71,7 @@ const Routes = () => {
     <Provider store={store}>
       <Router history = {hashHistory}>
         <Route path="/" component={MainLayout}>
-          <IndexRoute component={Index}/>
+          <IndexRoute component={ZhaoDaHome}/>
           <Route path="home" component={ZhaoDaHome}></Route>
           <Route path="Zhaoda" component={Zhaoda}>
             <Route path="main" component={ZhaoDaIndex}></Route>
