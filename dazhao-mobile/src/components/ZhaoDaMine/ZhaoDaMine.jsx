@@ -12,7 +12,6 @@ class ZhaoDaMine extends React.Component {
   }
 
   componentDidMount(){
-    this.props.showBottom(true);
   }
 
   render() {

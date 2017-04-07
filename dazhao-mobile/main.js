@@ -58,7 +58,7 @@ const page1 = () => {
 
 const zhiGuan = () => {
   return(
-    <h1 style={{'fontSize':'0.1rem'}}>招答页面</h1>
+    <h1 style={{'fontSize':'0.1rem'}}>职官页面</h1>
   )
 }
 
