@@ -1,0 +1,172 @@
+.CvMessage{
+    a{
+        color:#21C6CD;
+    }
+    font-size: 0rem;
+    .cvmain{
+        padding:0 .16rem;
+        .cvitems{
+            .cvhead{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin:.16rem 0 .12rem;
+                span:nth-of-type(1){
+                    font-family: "苹方";
+                    font-size: .14rem;
+                    font-weight: bold;
+                    color:#666666;
+                }
+
+                span:nth-of-type(2){
+                    width:.5rem;
+                    height:.25rem;
+                    font-family: "苹方";
+                    font-size: .13rem;
+                    text-align: center;
+                    line-height: .25rem;
+                    display: inline-block;
+                    border:.01rem solid #21C6CD;
+                    color:#21C6CD;
+                    border-radius:.05rem;
+                }
+            }
+
+            .cvbody{
+                background:#fff;
+                padding:.16rem;
+                span{
+                    display: block;
+                    em:nth-of-type(1)
+                    {
+                        font-style: normal;
+                        font-family: "苹方";
+                        font-size: .13rem;
+                        color:#999999;
+                        line-height: .22rem;
+                    }
+                    em:nth-of-type(2){          font-style: normal;
+                        font-family: "苹方";
+                        font-size: .13rem;
+                        color:#999999;
+                        line-height: .22rem;
+                    }
+                }
+
+                .personal{
+                    width:.64rem;
+                    height:.64rem;
+                    display:block;
+                    margin: 0 auto .24rem;
+                    background:#f8f8f8;
+                    border-radius:.05rem;
+                }
+            }
+        }
+
+        .cvitems{
+            .cvbody{
+                span:nth-last-of-type(1){
+                    display: flex;
+
+                    .lastpre{
+                        display:inline-block;
+                        height:1rem;
+                    }
+                    .lastEm{
+                        height:1rem;
+                    }
+
+                }
+            }
+        }
+
+        .cvedu{
+            .cvbody{
+                background:#fff;
+                padding:.16rem .16rem;
+                .edutop{
+                    span{
+                        width:.16rem;
+                        height:.16rem;
+                        border:.01rem solid #FFD112;
+                        border-radius:50%;
+                        display:inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: .06rem;
+                        em{
+                            width:.12rem;
+                            height:.12rem;
+                            display:inline-block;
+                            background:#FFD112;
+                            border-radius:50%;
+                        }
+                    }
+                    time{
+                        font-family: "苹方";
+                        font-size: .13rem;
+                        text-align: center;
+                        line-height: .25rem;
+                        color:#999999;
+                    }
+                }
+
+                .locate{
+                    padding-left: .22rem ;
+                    display: flex;
+                    justify-content: space-between;
+                    span{
+                        font-family: "苹方";
+                        font-size: .14rem;
+                        color:#666666;
+                        line-height: .25rem;
+                    }
+                    span:nth-of-type(1){
+                        font-weight: bold;
+                    }
+                    span:nth-of-type(2){
+                        font-size: .13rem;
+                    }
+                }
+
+                .cvtext{
+                    padding-left: .22rem ;
+                    font-family: "苹方";
+                    font-size: .13rem;
+                    color:#999999;
+                    line-height: .24rem;
+                }
+            }
+
+            .cvbody:nth-of-type(3){
+                padding-top: 0rem;
+            }
+        }
+
+        .cvsch{
+            .cvbody{
+                p{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height:1rem;
+                    span{
+                        width:.24rem;
+                        height:.24rem;
+                        margin-right: .06rem;
+                        img{
+                            width:.24rem;
+                            height:.24rem;
+                        }
+                    }
+                    em{                    font-family: "苹方";
+                        font-size: .24rem;
+                        font-style: normal;
+                        color:#999999;
+                    }
+                }
+            }
+        }
+    }
+}

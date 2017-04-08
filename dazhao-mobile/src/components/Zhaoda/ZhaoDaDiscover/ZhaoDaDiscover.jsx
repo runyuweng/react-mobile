@@ -1,5 +1,5 @@
 import React from 'react';
-import ZhaoDaAnswer from '../../ZhaoDaAnswer/ZhaoDaAnswer.jsx';
+import AnswerMain from '../../MainLayout/AnswerMain/AnswerMain.jsx';
 import "./ZhaoDaDiscover.scss";
 import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
@@ -39,8 +39,8 @@ class ZhaoDaDiscover extends React.Component {
         collect : false
       }
     ]
-    const ZhaoDaAnswerList = data.map((value,i)=>{
-      return (<ZhaoDaAnswer key = {i} data = {value}/>)
+    const AnswerMainList = data.map((value,i)=>{
+      return (<AnswerMain key = {i} data = {value}/>)
     })
 
     return(
@@ -182,7 +182,7 @@ class ZhaoDaDiscover extends React.Component {
           <div className="title"><span><img src="/src/images/latest.png"/></span>精品回答
           </div>
 
-          {ZhaoDaAnswerList}
+          {AnswerMainList}
 
         </div>
       </div>

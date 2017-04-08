@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ZhaoDaToQuestion.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
-import ZhaoDaAnswer from '../../ZhaoDaAnswer/ZhaoDaAnswer.jsx';
+import AnswerMain from '../../MainLayout/AnswerMain/AnswerMain.jsx';
 import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 
@@ -52,7 +52,7 @@ class ZhaoDaToQuestion extends React.Component {
 
         <span className="answers"><em>50</em>个回答</span>
 
-        <div className="ZhaoDaAnswer">
+        <div className="AnswerMain">
           <article>
               <Link to="/response">
                 <div className="publisher">

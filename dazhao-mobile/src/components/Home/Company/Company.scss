@@ -1,0 +1,191 @@
+.Company{
+    header{
+        background:#FFFFFF;
+        padding:0.07rem .15rem 0.08rem;
+        border-bottom:0.01rem rgba(234,234,234,1) solid;
+        .search{
+                text-align:center;
+                font-size:0.16rem;
+                display: flex;
+                justify-content: space-between;
+                span{
+                    display:inline-block;
+                    font-size:0.16rem;
+                    font-family:"苹方";
+                    color:#FFE25C;
+                    line-height:0.3rem;
+                    img{
+                        height: .16rem;
+                    }
+                }
+        }
+    }
+    #jobTop{
+        font-size: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background:#fff;
+        padding-bottom: .24rem;
+        .joblog{
+                display:inline-block;
+                width:.6rem;
+                height:.6rem;
+                margin-top: .18rem;
+            img{
+                width:.6rem;
+                height:.6rem;
+                border:.01rem solid #EAEAEA;
+            }
+        }
+
+        h2{
+            font-size: .16rem;
+            color:#333333;
+            margin:.12rem 0;
+        }
+
+        div{
+            span:nth-of-type(1){
+                display: inline-flex;
+                align-items: center;
+                font-size: .13rem;
+                color:#999999;
+                margin-right: .12rem;
+                img{
+                    height:.16rem;
+                    margin-right: .06rem;
+                }
+                em{
+                    font-style: normal;
+                }
+            }
+            span:nth-of-type(2){
+                display: inline-block;
+                width:.38rem;
+                height:.19rem;
+                color:#21C6Cd;
+                border: .01rem solid #21c6cd;
+                text-align: center;
+                line-height: .19rem;
+                font-size: .13rem;
+                margin-left: .12rem;
+                border-radius:.05rem;
+            }
+        }
+
+        p{
+            margin-top: .12rem;
+            span{
+                display:inline-block;
+                color:#999999;
+                font-size: .13rem;
+            }
+            em{
+                color:#999999;
+                font-size: .13rem;
+                font-style: normal;
+                margin:0 .06rem;
+            }
+        }
+    }
+
+    .companyMain{
+        margin-top: .16rem;
+        ul{
+            display: flex;
+            justify-content: space-around;
+            border-bottom: .01rem solid rgba(234,234,234,1);
+            background:#fff;
+            li{
+                list-style: none;
+                width:.58rem;
+                height:.35rem;
+                font-size: .14rem;
+                color:#666666;
+                line-height: .35rem;
+            }
+            .active{
+                color:#21C6Cd;
+                border-bottom: .02rem solid #21C6Cd;
+            }
+        }
+
+        .careTopic{
+            background:#ffffff;
+            font-size:0rem;
+            padding:.28rem .125rem .21rem .125rem;
+            .caretitle{
+                font-family:"苹方";
+                font-size:0.14rem;
+                font-weight:bold;
+                line-height: .24rem;
+                color:#333333;
+                margin-bottom: .12rem;
+                display:block;
+            }
+            .caremain{
+                .carecontent{
+                    display:block;
+                    font-family:"苹方";
+                    font-size:0.14rem;
+                    line-height: .25rem;
+                    color:#464646;
+                    height:1rem;
+                    overflow-y: hidden;
+                    background:#ffffff;
+                    position:relative;
+
+                    .shade{
+                        display:block;
+                        width:100%;
+                        height:.5rem;
+                        background:-webkit-gradient(linear ,left top,left bottom,from(rgba(255,255,255,0)), to(rgba(255,255,255,1)));
+                        position: absolute;
+                        bottom:0rem;
+                    }
+                }
+                .strech{
+                    display:flex;
+                    font-family:"苹方";
+                    font-size:0.12rem;
+                    color:#576B95;
+                    align-items:center;
+                    justify-content:center;
+                    margin-top: .12rem;
+                    span{
+                        display:inline-block;
+                        width:.16rem;
+                        height:.12rem;
+                        margin-left: .04rem;
+                        img{
+                            width:.16rem;
+                            height:.12rem;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .compangMsg{
+            padding:.24rem .12rem;
+            background:#fff;
+            margin-top: .24rem;
+            h3{
+                font-family: "苹方";
+                font-size: .14rem;
+                line-height: .25rem;
+                color:#333333;
+            }
+            p{
+                font-family: "苹方";
+                font-size: .14rem;
+                line-height: .25rem;
+                color:#999999;
+            }
+        }
+    }
+
+}

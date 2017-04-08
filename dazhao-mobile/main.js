@@ -12,11 +12,11 @@ from 'react-router';
 import MainLayout from './src/components/MainLayout/MainLayout.jsx';
 
 //首页部分
-import ZhaoDaHome from './src/components/Home/ZhaoDaHome/ZhaoDaHome.jsx';
-import ZhaoDaJobDetail from './src/components/Home/ZhaoDaJobDetail/ZhaoDaJobDetail.jsx';
-import ZhaoDaCompany from './src/components/Home/ZhaoDaCompany/ZhaoDaCompany.jsx';
-import ZhaoDaShRecruit from './src/components/Home/ZhaoDaShRecruit/ZhaoDaShRecruit.jsx';
-import ZhaoDaEnterprise from './src/components/Home/ZhaoDaEnterprise/ZhaoDaEnterprise.jsx';
+import Home from './src/components/Home/Home/Home.jsx';
+import HomeJobDetail from './src/components/Home/JobDetail/JobDetail.jsx';
+import HomeCompany from './src/components/Home/Company/Company.jsx';
+import HomeShRecruit from './src/components/Home/ShRecruit/ShRecruit.jsx';
+import HomeEnterprise from './src/components/Home/Enterprise/Enterprise.jsx';
 
 //招答部分
 import Zhaoda from './src/components/Zhaoda/Zhaoda/Zhaoda.jsx';
@@ -34,16 +34,16 @@ import ZhaoDaConsult from './src/components/Zhaoda/ZhaoDaConsult/ZhaoDaConsult.j
 import ZhaoDaQuesDetail from './src/components/Zhaoda/ZhaoDaQuesDetail/ZhaoDaQuesDetail.jsx';
 
 //个人中心部分
-import ZhaoDaMine from './src/components/Mine/ZhaoDaMine/ZhaoDaMine.jsx';
-import ZhaoDaGrowRecord from './src/components/Mine/ZhaoDaGrowRecord/ZhaoDaGrowRecord.jsx';
-import ZhaoDaCvCenter from './src/components/Mine/ZhaoDaCvCenter/ZhaoDaCvCenter.jsx';
-import ZhaoDaNotify from './src/components/Mine/ZhaoDaNotify/ZhaoDaNotify.jsx';
-import ZhaoDaCvMessage from './src/components/Mine/ZhaoDaCvMessage/ZhaoDaCvMessage.jsx';
-import ZhaoDaEditMg from './src/components/Mine/ZhaoDaEditMg/ZhaoDaEditMg.jsx';
-import ZhaoDaEduEx from './src/components/Mine/ZhaoDaEduEx/ZhaoDaEduEx.jsx';
-import ZhaoDaPractice from './src/components/Mine/ZhaoDaPractice/ZhaoDaPractice.jsx';
+import Mine from './src/components/Mine/Mine/Mine.jsx';
+import MineGrowRecord from './src/components/Mine/GrowRecord/GrowRecord.jsx';
+import MineCvCenter from './src/components/Mine/CvCenter/CvCenter.jsx';
+import MineNotify from './src/components/Mine/Notify/Notify.jsx';
+import MineCvMessage from './src/components/Mine/CvMessage/CvMessage.jsx';
+import MineEditMg from './src/components/Mine/EditMg/EditMg.jsx';
+import MineEduEx from './src/components/Mine/EduEx/EduEx.jsx';
+import MinePractice from './src/components/Mine/Practice/Practice.jsx';
 
-import ZhaoDaQuiz from './src/components/ZhaoDaQuiz/ZhaoDaQuiz.jsx';
+import ZhaoDaQuiz from './src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx';
 
 
 
@@ -79,9 +79,9 @@ const Routes = () => {
     <Provider store={store}>
       <Router history = {hashHistory}>
         <Route path="/" component={MainLayout}>
-          <IndexRoute component={ZhaoDaHome}/>
+          <IndexRoute component={Home}/>
           <Route path="zhiGuan" component={zhiGuan}></Route>
-          <Route path="home" component={ZhaoDaHome}></Route>
+          <Route path="home" component={Home}></Route>
           <Route path="Zhaoda" component={Zhaoda}>
             <Route path="main" component={ZhaoDaIndex}></Route>
             <Route path="discover" component={ZhaoDaDiscover}></Route>
@@ -95,20 +95,22 @@ const Routes = () => {
           <Route path="consult" component={ZhaoDaConsult}></Route>
           <Route path="detail" component={ZhaoDaQuesDetail}></Route>
           <Route path="toquestion" component={ZhaoDaToQuestion}></Route>
-          <Route path="cvcenter" component={ZhaoDaCvCenter}></Route>
-          <Route path="growrecord" component={ZhaoDaGrowRecord}></Route>
-          <Route path="notify" component={ZhaoDaNotify}></Route>
-          <Route path="cvmessage" component={ZhaoDaCvMessage}></Route>
-          <Route path="edmessage" component={ZhaoDaEditMg}></Route>
-          <Route path="edupexp" component={ZhaoDaEduEx}></Route>
-          <Route path="practice" component={ZhaoDaPractice}></Route>
           <Route path="tofeature" component={ZhaoDaToFeatures}></Route>
           <Route path="totopic" component={ZhaoDaToTopic}></Route>
-          <Route path="jobdetail" component={ZhaoDaJobDetail}></Route>
-          <Route path="company" component={ZhaoDaCompany}></Route>
-          <Route path="schoolRecruit" component={ZhaoDaShRecruit}></Route>
-          <Route path="enterprise" component={ZhaoDaEnterprise}></Route>
-          <Route path="mine" component={ZhaoDaMine}></Route>
+
+          <Route path="jobdetail" component={HomeJobDetail}></Route>
+          <Route path="company" component={HomeCompany}></Route>
+          <Route path="schoolRecruit" component={HomeShRecruit}></Route>
+          <Route path="enterprise" component={HomeEnterprise}></Route>
+
+          <Route path="mine" component={Mine}></Route>
+          <Route path="cvcenter" component={MineCvCenter}></Route>
+          <Route path="growrecord" component={MineGrowRecord}></Route>
+          <Route path="notify" component={MineNotify}></Route>
+          <Route path="cvmessage" component={MineCvMessage}></Route>
+          <Route path="edmessage" component={MineEditMg}></Route>
+          <Route path="edupexp" component={MineEduEx}></Route>
+          <Route path="practice" component={MinePractice}></Route>
         </Route>
       </Router>
     </Provider>
