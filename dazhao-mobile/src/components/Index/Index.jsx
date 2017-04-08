@@ -6,7 +6,6 @@ import QueueAnim from 'rc-queue-anim';
 class Index extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
     this.state={
       currentNum: 0,
     }

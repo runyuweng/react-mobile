@@ -8,35 +8,46 @@ import {
   Router, Route, browserHistory, hashHistory, IndexRoute
 }
 from 'react-router';
+//公共部分
 import MainLayout from './src/components/MainLayout/MainLayout.jsx';
-import Index from './src/components/Index/Index.jsx';
-import ZhaoDaMine from './src/components/ZhaoDaMine/ZhaoDaMine.jsx';
-import Zhaoda from './src/components/Zhaoda/Zhaoda.jsx';
-import ZhaoDaIndex from './src/components/ZhaoDaIndex/ZhaoDaIndex.jsx';
-import ZhaoDaDiscover from './src/components/ZhaoDaDiscover/ZhaoDaDiscover.jsx';
-import ZhaoDaFeature from './src/components/ZhaoDaFeature/ZhaoDaFeature.jsx';
-import ZhaoDaTopic from './src/components/ZhaoDaTopic/ZhaoDaTopic.jsx';
-import ZhaoDaMessage from './src/components/ZhaoDaMessage/ZhaoDaMessage.jsx';
-import ZhaoDaSearch from './src/components/ZhaoDaSearch/ZhaoDaSearch.jsx';
-import ZhaoDaResponse from './src/components/ZhaoDaResponse/ZhaoDaResponse.jsx';
+
+//首页部分
+import ZhaoDaHome from './src/components/Home/ZhaoDaHome/ZhaoDaHome.jsx';
+import ZhaoDaJobDetail from './src/components/Home/ZhaoDaJobDetail/ZhaoDaJobDetail.jsx';
+import ZhaoDaCompany from './src/components/Home/ZhaoDaCompany/ZhaoDaCompany.jsx';
+import ZhaoDaShRecruit from './src/components/Home/ZhaoDaShRecruit/ZhaoDaShRecruit.jsx';
+import ZhaoDaEnterprise from './src/components/Home/ZhaoDaEnterprise/ZhaoDaEnterprise.jsx';
+
+//招答部分
+import Zhaoda from './src/components/Zhaoda/Zhaoda/Zhaoda.jsx';
+import ZhaoDaDiscover from './src/components/Zhaoda/ZhaoDaDiscover/ZhaoDaDiscover.jsx';
+import ZhaoDaFeature from './src/components/Zhaoda/ZhaoDaFeature/ZhaoDaFeature.jsx';
+import ZhaoDaMessage from './src/components/Zhaoda/ZhaoDaMessage/ZhaoDaMessage.jsx';
+import ZhaoDaToFeatures from './src/components/Zhaoda/ZhaoDaToFeatures/ZhaoDaToFeatures.jsx';
+import ZhaoDaToTopic from './src/components/Zhaoda/ZhaoDaToTopic/ZhaoDaToTopic.jsx';
+import ZhaoDaIndex from './src/components/Zhaoda/ZhaoDaIndex/ZhaoDaIndex.jsx';
+import ZhaoDaTopic from './src/components/Zhaoda/ZhaoDaTopic/ZhaoDaTopic.jsx';
+import ZhaoDaSearch from './src/components/Zhaoda/ZhaoDaSearch/ZhaoDaSearch.jsx';
+import ZhaoDaToQuestion from './src/components/Zhaoda/ZhaoDaToQuestion/ZhaoDaToQuestion.jsx';
+import ZhaoDaResponse from './src/components/Zhaoda/ZhaoDaResponse/ZhaoDaResponse.jsx';
+import ZhaoDaConsult from './src/components/Zhaoda/ZhaoDaConsult/ZhaoDaConsult.jsx';
+import ZhaoDaQuesDetail from './src/components/Zhaoda/ZhaoDaQuesDetail/ZhaoDaQuesDetail.jsx';
+
+//个人中心部分
+import ZhaoDaMine from './src/components/Mine/ZhaoDaMine/ZhaoDaMine.jsx';
+import ZhaoDaGrowRecord from './src/components/Mine/ZhaoDaGrowRecord/ZhaoDaGrowRecord.jsx';
+import ZhaoDaCvCenter from './src/components/Mine/ZhaoDaCvCenter/ZhaoDaCvCenter.jsx';
+import ZhaoDaNotify from './src/components/Mine/ZhaoDaNotify/ZhaoDaNotify.jsx';
+import ZhaoDaCvMessage from './src/components/Mine/ZhaoDaCvMessage/ZhaoDaCvMessage.jsx';
+import ZhaoDaEditMg from './src/components/Mine/ZhaoDaEditMg/ZhaoDaEditMg.jsx';
+import ZhaoDaEduEx from './src/components/Mine/ZhaoDaEduEx/ZhaoDaEduEx.jsx';
+import ZhaoDaPractice from './src/components/Mine/ZhaoDaPractice/ZhaoDaPractice.jsx';
+
 import ZhaoDaQuiz from './src/components/ZhaoDaQuiz/ZhaoDaQuiz.jsx';
-import ZhaoDaConsult from './src/components/ZhaoDaConsult/ZhaoDaConsult.jsx';
-import ZhaoDaQuesDetail from './src/components/ZhaoDaQuesDetail/ZhaoDaQuesDetail.jsx';
-import ZhaoDaToQuestion from './src/components/ZhaoDaToQuestion/ZhaoDaToQuestion.jsx';
-import ZhaoDaCvCenter from './src/components/ZhaoDaCvCenter/ZhaoDaCvCenter.jsx';
-import ZhaoDaGrowRecord from './src/components/ZhaoDaGrowRecord/ZhaoDaGrowRecord.jsx';
-import ZhaoDaNotify from './src/components/ZhaoDaNotify/ZhaoDaNotify.jsx';
-import ZhaoDaCvMessage from './src/components/ZhaoDaCvMessage/ZhaoDaCvMessage.jsx';
-import ZhaoDaEditMg from './src/components/ZhaoDaEditMg/ZhaoDaEditMg.jsx';
-import ZhaoDaEduEx from './src/components/ZhaoDaEduEx/ZhaoDaEduEx.jsx';
-import ZhaoDaPractice from './src/components/ZhaoDaPractice/ZhaoDaPractice.jsx';
-import ZhaoDaToFeatures from './src/components/ZhaoDaToFeatures/ZhaoDaToFeatures.jsx';
-import ZhaoDaToTopic from './src/components/ZhaoDaToTopic/ZhaoDaToTopic.jsx';
-import ZhaoDaHome from './src/components/ZhaoDaHome/ZhaoDaHome.jsx';
-import ZhaoDaJobDetail from './src/components/ZhaoDaJobDetail/ZhaoDaJobDetail.jsx';
-import ZhaoDaCompany from './src/components/ZhaoDaCompany/ZhaoDaCompany.jsx';
-import ZhaoDaShRecruit from './src/components/ZhaoDaShRecruit/ZhaoDaShRecruit.jsx';
-import ZhaoDaEnterprise from './src/components/ZhaoDaEnterprise/ZhaoDaEnterprise.jsx';
+
+
+
+
 
 import {
   Provider
