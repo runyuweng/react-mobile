@@ -84,7 +84,7 @@ class Home extends React.Component {
 
             <div className="experience">
                 <div>
-                  <Link to="/">
+                  <Link to="/schoolRecruit">
                     <span><img src="/src/images/首页icon1.png"/>
                     <em>校招</em></span>
                   </Link>
@@ -97,7 +97,7 @@ class Home extends React.Component {
                 </div>
 
                 <div>
-                  <Link to = "/">
+                  <Link to = "/enterprise">
                     <span><img src="/src/images/首页icon3.png"/>
                     <em>企业</em></span>
                   </Link>

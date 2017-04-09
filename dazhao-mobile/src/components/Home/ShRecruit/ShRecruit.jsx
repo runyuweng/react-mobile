@@ -21,12 +21,14 @@ class ShRecruit extends React.Component {
           <TopBar title="校招职位" border="boder"/>
         </header>
         <nav>
+          <p>行业分类</p>
           <ul>
-            <li>行业分类</li>
             <li className="active">不限</li>
             <li>互联网</li>
             <li>金融</li>
             <li>工业制造</li>
+            <li>咨询</li>
+            <li>咨询</li>
             <li>咨询</li>
           </ul>
         </nav>
