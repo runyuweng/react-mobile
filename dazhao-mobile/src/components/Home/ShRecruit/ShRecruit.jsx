@@ -1,70 +1,42 @@
 import React from 'react';
 import "./ShRecruit.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import { Link } from 'react-router';
-import QueueAnim from 'rc-queue-anim';
 
 class ShRecruit extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {
-        startPoint : 0,
-        currentPoint : 0,
-        currentLeft : 0,
-        currentWidth : 0,
-        titleWidth : 0
+    this.state={
+        industry : []
     }
   }
 
   componentDidMount(){
-    this.props.showBottom();
-    this.setState({
-        currentWidth : this.refs.industryList.offsetWidth,
-        titleWidth : this.refs.title.offsetWidth,
-    })
-  }
-
-  startMove(e){
       this.setState({
-          startPoint: e.touches[0].pageX
+          industry:[
+              {industry_name : '不限', industry_id : '0'},
+              {industry_name : '互联网', industry_id : '1'},
+              {industry_name : '金融', industry_id : '2'},
+              {industry_name : '工业制造', industry_id : '3'},
+              {industry_name : '咨询', industry_id : '4'},
+              {industry_name : '教育', industry_id : '5'},
+              {industry_name : '科技', industry_id : '6'},
+          ]
       })
-  }
-  handleMove(e){
-      console.log(document.body.clientWidth,this.state.titleWidth);
-      let displacement = e.touches[0].pageX-this.state.startPoint;
-      let minLeft = this.state.currentWidth-(document.body.clientWidth-this.state.titleWidth);
-      let currentLeft = displacement > 0 ? 0 : (displacement < -minLeft ? -minLeft : displacement);
-
-      this.setState({currentLeft: currentLeft})
-      console.log(displacement);
   }
 
   render() {
-    const {currentLeft} = this.state;
+    const {industry} = this.state;
 
     return(
       <div className="ShRecruit">
         <header>
           <TopBar title="校招职位" border="boder"/>
         </header>
-        <nav>
-          <p ref = "title">行业分类</p>
-          <ul
-           style = {{"left":currentLeft}}
-           ref="industryList"
-           onTouchStart={(e)=>{this.startMove(e)}}
-           onTouchMove={(e)=>{this.handleMove(e)}}
-          >
-            <li className="active">不限</li>
-            <li>互联网</li>
-            <li>金融</li>
-            <li>工业制造</li>
-            <li>咨询</li>
-            <li>咨询</li>
-            <li>咨询</li>
-          </ul>
-        </nav>
+
+        <SlideBar industry={industry}/>
 
         <div className="srMain">
           <div className="sort">

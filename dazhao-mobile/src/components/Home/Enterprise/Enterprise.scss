@@ -1,33 +1,4 @@
 .Enterprise{
-    nav{
-        font-size: 0;
-        background:#fff;
-        ul{
-            overflow: hidden;
-            white-space: nowrap;
-
-            li{
-                list-style: none;
-                display: inline-block;
-                font-size: .14rem;
-                color:#B0B0B0;
-                margin-right: .25rem;
-                line-height: .35rem;
-                text-align: center;
-            }
-            li:nth-of-type(1){
-                padding:0 .12rem;
-                border-right:.01rem solid rgba(234,234,234,1);
-                margin-right:.12rem;
-                line-height: .2rem;
-            }
-            .active{
-                font-weight: bold;
-                color:#21c6cd;
-                border-bottom: .02rem solid #21c6cd;
-            }
-        }
-    }
 
     .srMain{
         font-size: 0;

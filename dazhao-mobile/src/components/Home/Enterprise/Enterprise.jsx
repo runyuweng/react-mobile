@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Enterprise.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import { Link } from 'react-router';
 import QueueAnim from 'rc-queue-anim';
 
@@ -8,28 +9,36 @@ class Enterprise extends React.Component {
 
   constructor(props){
     super(props);
+    this.state={
+        industry : []
+    }
   }
 
   componentDidMount(){
     this.props.showBottom();
+    this.setState({
+        industry:[
+            {industry_name : '不限', industry_id : '0'},
+            {industry_name : '互联网', industry_id : '1'},
+            {industry_name : '金融', industry_id : '2'},
+            {industry_name : '工业制造', industry_id : '3'},
+            {industry_name : '咨询', industry_id : '4'},
+            {industry_name : '教育', industry_id : '5'},
+            {industry_name : '科技', industry_id : '6'},
+        ]
+    })
   }
 
   render() {
+    const {industry} = this.state;
+
     return(
       <div className="Enterprise">
         <header>
           <TopBar title="企业" border="boder"/>
         </header>
-        <nav>
-          <ul>
-            <li>行业分类</li>
-            <li className="active">不限</li>
-            <li>互联网</li>
-            <li>金融</li>
-            <li>工业制造</li>
-            <li>咨询</li>
-          </ul>
-        </nav>
+
+        <SlideBar industry={industry}/>
 
         <div className="srMain">
           <div className="sort">
