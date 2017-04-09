@@ -8,21 +8,54 @@ class ShRecruit extends React.Component {
 
   constructor(props){
     super(props);
+    this.state = {
+        startPoint : 0,
+        currentPoint : 0,
+        currentLeft : 0,
+        currentWidth : 0,
+        titleWidth : 0
+    }
   }
 
   componentDidMount(){
     this.props.showBottom();
+    this.setState({
+        currentWidth : this.refs.industryList.offsetWidth,
+        titleWidth : this.refs.title.offsetWidth,
+    })
+  }
+
+  startMove(e){
+      this.setState({
+          startPoint: e.touches[0].pageX
+      })
+  }
+  handleMove(e){
+      console.log(document.body.clientWidth,this.state.titleWidth);
+      let displacement = e.touches[0].pageX-this.state.startPoint;
+      let minLeft = this.state.currentWidth-(document.body.clientWidth-this.state.titleWidth);
+      let currentLeft = displacement > 0 ? 0 : (displacement < -minLeft ? -minLeft : displacement);
+
+      this.setState({currentLeft: currentLeft})
+      console.log(displacement);
   }
 
   render() {
+    const {currentLeft} = this.state;
+
     return(
       <div className="ShRecruit">
         <header>
           <TopBar title="校招职位" border="boder"/>
         </header>
         <nav>
-          <p>行业分类</p>
-          <ul>
+          <p ref = "title">行业分类</p>
+          <ul
+           style = {{"left":currentLeft}}
+           ref="industryList"
+           onTouchStart={(e)=>{this.startMove(e)}}
+           onTouchMove={(e)=>{this.handleMove(e)}}
+          >
             <li className="active">不限</li>
             <li>互联网</li>
             <li>金融</li>
