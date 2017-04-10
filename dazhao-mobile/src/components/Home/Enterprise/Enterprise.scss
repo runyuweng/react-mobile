@@ -38,6 +38,7 @@
                 }
 
                 .jobintro{
+                    overflow: hidden;
                     display:inline-block;
                     h2{
                         font-family: "苹方";
@@ -61,7 +62,9 @@
                             margin-left: .12rem;
                         }
                     }
-                    h3{                            font-size: .13rem;
+                    h3{
+                        white-space: nowrap;
+                        font-size: .13rem;
                         line-height: .18rem;
                         color:#999999;
                         font-weight: normal;

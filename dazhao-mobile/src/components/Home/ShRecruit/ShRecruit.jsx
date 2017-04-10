@@ -10,7 +10,10 @@ class ShRecruit extends React.Component {
     constructor (props) {
 
         super(props);
-        this.state = {"industry": []};
+        this.state = {
+            "industry": [],
+            "jobs": []
+        };
 
     }
 
@@ -20,8 +23,27 @@ class ShRecruit extends React.Component {
         then((response) => response.json()).
         then((data) => {
 
-            console.log(data);
             this.setState({"industry": data.contents});
+
+        });
+
+        fetch("/zhaoda/jobs/school?industryid=5", {"method": "GET"}).
+        then((response) => response.json()).
+        then((data) => {
+
+            this.setState({"jobs": data.contents});
+
+        });
+
+    }
+
+    changeCategory (id) {
+
+        fetch(`/zhaoda/jobs/school?industryid=${id}`, {"method": "GET"}).
+        then((response) => response.json()).
+        then((data) => {
+
+            this.setState({"jobs": data.contents});
 
         });
 
@@ -29,7 +51,31 @@ class ShRecruit extends React.Component {
 
     render () {
 
-        const {industry} = this.state;
+        const {industry, jobs} = this.state;
+        const jobList = jobs.map((value, i) =>
+            <Link to="jobdetail" key={i}>
+                <div className="jobitems">
+                    <span className="pics"><img src="/src/images/ali.png" /></span>
+                    <div className="jobintro">
+                        <h2>{value.job_name}</h2>
+                        <h3>{value.company.name}</h3>
+                        <span>
+                            <em>{value.company.city}</em>
+                            <em>{value.education}</em>
+                        </span>
+                        <span>
+                            <em>{value.company.type}</em>
+                            <b>|</b>
+                            <em>外商独资(暂无)</em>
+                            <b>|</b>
+                            <em>{value.company.stage}</em>
+                            <b>|</b>
+                            <em>{value.company.numbers}</em>
+                        </span>
+                    </div>
+                </div>
+            </Link>
+            );
 
         return (
             <div className="ShRecruit">
@@ -37,7 +83,7 @@ class ShRecruit extends React.Component {
                     <TopBar title="校招职位" border="boder" />
                 </header>
 
-                <SlideBar industry={industry} />
+                <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
                     <div className="sort">
@@ -50,112 +96,8 @@ class ShRecruit extends React.Component {
                     </div>
 
                     <div id="homeMain">
-                        <Link to="jobdetail">
-                            <div className="jobitems">
-                                <span className="pics"><img src="/src/images/ali.png" /></span>
-                                <div className="jobintro">
-                                    <h2>JAVA研发工程师</h2>
-                                    <h3>阿里巴巴网络技术有限公司</h3>
-                                    <span>
-                                        <em>上海</em>
-                                        <em>本科</em>
-                                    </span>
-                                    <span>
-                                        <em>互联网</em>
-                                        <b>|</b>
-                                        <em>外商独资</em>
-                                        <b>|</b>
-                                        <em>上市</em>
-                                        <b>|</b>
-                                        <em>1000人以上</em>
-                                    </span>
-                                </div>
-                            </div>
-                        </Link>
+                        {jobList}
 
-                        <div className="jobitems">
-                            <span className="pics"><img src="/src/images/ali.png" /></span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师</h2>
-                                <h3>阿里巴巴网络技术有限公司</h3>
-                                <span>
-                                    <em>上海</em>
-                                    <em>本科</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="jobitems">
-                            <span className="pics"><img src="/src/images/ali.png" /></span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师</h2>
-                                <h3>阿里巴巴网络技术有限公司</h3>
-                                <span>
-                                    <em>上海</em>
-                                    <em>本科</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="jobitems">
-                            <span className="pics"><img src="/src/images/ali.png" /></span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师</h2>
-                                <h3>阿里巴巴网络技术有限公司</h3>
-                                <span>
-                                    <em>上海</em>
-                                    <em>本科</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="jobitems">
-                            <span className="pics" />
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师</h2>
-                                <h3>阿里巴巴网络技术有限公司</h3>
-                                <span>
-                                    <em>上海</em>
-                                    <em>本科</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
                         <p>加载更多</p>
                     </div>
                 </div>

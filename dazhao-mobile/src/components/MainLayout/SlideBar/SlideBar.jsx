@@ -9,7 +9,6 @@ class SlideBar extends React.Component {
         super(props);
         this.state = {
             "startPoint": 0,
-            "currentPoint": 0,
             "currentLeft": 0,
             "currentWidth": 0,
             "titleWidth": 0,
@@ -21,7 +20,6 @@ class SlideBar extends React.Component {
 
     componentWillReceiveProps (props) {
 
-        console.log(props);
         this.setState({"industry": props.industry}, () => {
 
             this.setState({
@@ -42,8 +40,22 @@ class SlideBar extends React.Component {
     handleMove (e) {
 
         let displacement = e.touches[0].pageX - this.state.startPoint,
-            minLeft = this.state.currentWidth - (document.body.clientWidth - this.state.titleWidth),
-            currentLeft = displacement > 0 ? 0 : displacement < -minLeft ? -minLeft : displacement;
+            maxLeft = this.state.currentWidth - (document.body.clientWidth - this.state.titleWidth),
+            currentLeft = 0;
+
+        if (this.state.currentLeft + displacement >= 0) {
+
+            currentLeft = 0;
+
+        } else if (-(this.state.currentLeft + displacement) >= maxLeft) {
+
+            currentLeft = -maxLeft;
+
+        } else {
+
+            currentLeft = this.state.currentLeft + displacement;
+
+        }
 
         this.setState({currentLeft});
 
@@ -52,18 +64,18 @@ class SlideBar extends React.Component {
     render () {
 
         const {currentLeft, industry, active} = this.state;
-        const listItem = industry.map((value, i) => {
-            return (<li
+        const listItem = industry.map((value, i) => <li
             className={active == i ? "active" : ""}
             onClick={() => {
 
                 this.setState({"active": i});
+                this.props.change(value.category_id);
 
             }}
             key={value.category_id}
                                                     >
             {value.category_name}
-        </li>)}
+        </li>
     );
 
         return (
