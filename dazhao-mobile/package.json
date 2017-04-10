@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot",
+    "lint": "eslint **/*.jsx",
+    "lint-html": "eslint **/*.jsx -f html -o ./reports/lint-results.html",
+    "lint-fix": "eslint --fix **/*.jsx"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^1.6.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
@@ -17,10 +21,15 @@
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
+    "babel-eslint": "^7.2.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.10.0",
     "node-sass": "^4.5.0",
     "rc-animate": "^2.3.1",

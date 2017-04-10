@@ -1,0 +1,11 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+        "react"
+    ],
+    "extends": ["eslint:all", "plugin:react/all"],
+    "rules": {
+        "prop-types": [1]
+    }
+}

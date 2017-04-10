@@ -1,84 +1,92 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import "./MainLayout.scss";
-import { Link } from 'react-router';
+import {Link} from "react-router";
 
-import * as actionCreators from '../../actions/show.js';
+import * as actionCreators from "../../actions/show.js";
 
 class Layout extends React.Component {
 
-  constructor(props){
-    super(props);
-  }
+    constructor (props) {
 
-  render() {
-    const { actions , show } = this.props;
+        super(props);
 
-    const childrenWithProps = React.Children.map(this.props.children,
+    }
+
+    render () {
+
+        const {actions, show} = this.props;
+
+        const childrenWithProps = React.Children.map(this.props.children,
      (child) => React.cloneElement(child, {
-       showTop:(text)=>{actions.showTop(text)},
-       showBottom:(text)=>{actions.showBottom(text)},
-       show: show
+         "showTop": (text) => {
+
+             actions.showTop(text);
+
+         },
+         "showBottom": (text) => {
+
+             actions.showBottom(text);
+
+         },
+         show
      })
     );
 
-    return(
-        <div>
-          {childrenWithProps}
-          {show.show_bottom?
-            <footer>
-              <div>
-                <Link to="/home" activeStyle={{color:'#000'}}>
+        return (
+            <div>
+                {childrenWithProps}
+                {show.show_bottom
+              ? <footer>
                   <div>
-                    <img src="/src/images/home.png"/>
-                    <p>首页</p>
+                      <Link to="/home" activeStyle={{"color": "#000"}}>
+                          <div>
+                              <img src="/src/images/home.png" />
+                              <p>首页</p>
+                          </div>
+                      </Link>
                   </div>
-                </Link>
-              </div>
-              <div>
-                <Link to="/zhiGuan" activeStyle={{color:'#000'}}>
                   <div>
-                    <img src="/src/images/zhiguan.png"/>
-                    <p>职观</p>
+                      <Link to="/zhiGuan" activeStyle={{"color": "#000"}}>
+                          <div>
+                              <img src="/src/images/zhiguan.png" />
+                              <p>职观</p>
+                          </div>
+                      </Link>
                   </div>
-                </Link>
-              </div>
-              <div>
-                <Link to="/Zhaoda/main" activeStyle={{color:'#000'}}>
                   <div>
-                    <img src="/src/images/zhaoda.png"/>
-                    <p>招答</p>
+                      <Link to="/Zhaoda/main" activeStyle={{"color": "#000"}}>
+                          <div>
+                              <img src="/src/images/zhaoda.png" />
+                              <p>招答</p>
+                          </div>
+                      </Link>
                   </div>
-                </Link>
-              </div>
-              <div>
-                <Link to="/mine" activeStyle={{color:'#000'}}>
                   <div>
-                    <img src="/src/images/userpage.png"/>
-                    <p>我的</p>
+                      <Link to="/mine" activeStyle={{"color": "#000"}}>
+                          <div>
+                              <img src="/src/images/userpage.png" />
+                              <p>我的</p>
+                          </div>
+                      </Link>
                   </div>
-                </Link>
-              </div>
-            </footer>:''}
-        </div>
-    )
-  }
+              </footer> : ""}
+            </div>
+        );
+
+    }
 }
 
 
-const mapStateToProps = (state) => {
-  return { show : state.show}
-}
+const mapStateToProps = (state) => ({"show": state.show});
 
-const mapDispatchToProps = (dispatch) => {
-  return { actions: bindActionCreators(actionCreators, dispatch) }
-}
+const mapDispatchToProps = (dispatch) => ({"actions": bindActionCreators(actionCreators, dispatch)});
 
 
 const MainLayout = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Layout)
+)(Layout);
 
 export default MainLayout;
