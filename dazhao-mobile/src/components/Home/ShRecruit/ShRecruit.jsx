@@ -2,6 +2,7 @@ import React from "react";
 import "./ShRecruit.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
+import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
 
@@ -11,6 +12,7 @@ class ShRecruit extends React.Component {
 
         super(props);
         this.state = {
+            "showLoading": true,
             "industry": [],
             "jobs": []
         };
@@ -18,6 +20,7 @@ class ShRecruit extends React.Component {
     }
 
     componentDidMount () {
+        this.props.showBottom(false);
 
         fetch("/zhaoda/industry/category", {"method": "GET"}).
         then((response) => response.json()).
@@ -31,19 +34,24 @@ class ShRecruit extends React.Component {
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"jobs": data.contents});
+            this.setState({"jobs": data.contents},()=>{
+                this.setState({showLoading: false});
+            });
 
         });
 
     }
 
     changeCategory (id) {
+        this.setState({showLoading: true})
 
         fetch(`/zhaoda/jobs/school?industryid=${id}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"jobs": data.contents});
+            this.setState({"jobs": data.contents},()=>{
+                this.setState({showLoading: false});
+            });
 
         });
 
@@ -51,7 +59,7 @@ class ShRecruit extends React.Component {
 
     render () {
 
-        const {industry, jobs} = this.state;
+        const {industry, jobs, showLoading} = this.state;
         const jobList = jobs.map((value, i) =>
             <Link to="jobdetail" key={i}>
                 <div className="jobitems">
@@ -94,7 +102,7 @@ class ShRecruit extends React.Component {
                             <li>本科<img src="/src/images/Back_down.png" /></li>
                         </ul>
                     </div>
-
+                    {showLoading?<Loading/>:""}
                     <div id="homeMain">
                         {jobList}
 

@@ -1,0 +1,47 @@
+.loading{
+    position: absolute;
+    width: 100%;
+    background: #000;
+    opacity: 0.6;
+    display: flex;
+    justify-content: center;
+    .content{
+        position: fixed;
+        top: 3rem;
+        width: .6rem;
+        height: .6rem;
+        animation: rotate 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        .dot{
+            position: absolute;
+            width: .2rem;
+            height: .2rem;
+            border-radius: 50%;
+            background: #fff;
+            animation: zoom 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        .dot1{
+            left: 0;
+            top: 0;
+        }
+        .dot2{
+            right: 0;
+            bottom: 0;
+            animation-delay: 1s;
+        }
+    }
+    @keyframes rotate
+    {
+        0%   {transform:rotate(0deg);}
+        100% {transform:rotate(360deg);}
+    }
+    @keyframes zoom
+    {
+        0%   {width: .2rem; height: .2rem}
+        50% {width: .4rem; height: .4rem}
+        100% {width: .2rem; height: .2rem}
+    }
+}

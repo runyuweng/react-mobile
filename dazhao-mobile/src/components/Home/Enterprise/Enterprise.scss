@@ -24,6 +24,7 @@
                 background:#fff;
                 padding:.21rem .12rem;
                 display: flex;
+                flex-flow: row;
                 .pics{
                     display:inline-block;
                     width:.6rem;
@@ -38,6 +39,7 @@
                 }
 
                 .jobintro{
+                    flex: 1;
                     overflow: hidden;
                     display:inline-block;
                     h2{

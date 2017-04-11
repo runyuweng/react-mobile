@@ -2,6 +2,7 @@ import React from "react";
 import "./Enterprise.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
+import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
 import QueueAnim from "rc-queue-anim";
@@ -12,6 +13,7 @@ class Enterprise extends React.Component {
 
         super(props);
         this.state = {
+            "showLoading": true,
             "industry": [],
             "enterprise": []
         };
@@ -20,7 +22,8 @@ class Enterprise extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        this.props.showBottom(false);
+
         fetch("/zhaoda/industry/category", {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
@@ -32,18 +35,23 @@ class Enterprise extends React.Component {
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"enterprise": data.contents});
+            this.setState({"enterprise": data.contents},()=>{
+                this.setState({showLoading: false});
+            });
 
         });
 
     }
     changeCategory (id) {
+        this.setState({showLoading: true})
 
         fetch(`/zhaoda/jobs/enterprise?industryid=${id}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"enterprise": data.contents});
+            this.setState({"enterprise": data.contents},()=>{
+                this.setState({showLoading: false});
+            });
 
         });
 
@@ -51,7 +59,7 @@ class Enterprise extends React.Component {
 
     render () {
 
-        const {industry, enterprise} = this.state;
+        const {industry, enterprise, showLoading} = this.state;
         const enterpriseList = enterprise.map((value, i) =>
             <div className="jobitems" key={i}>
                 <span className="pics" />
@@ -60,8 +68,6 @@ class Enterprise extends React.Component {
                     <h3>
                         <span>[<em>{value.jobs.length}</em>个]</span>
                         {value.jobs.length > 0 ? value.jobs.map((value, i) => {
-
-                            console.log(value);
 
                             return (
                                 <span key={i}>{value.job_name}、</span>
@@ -101,9 +107,9 @@ class Enterprise extends React.Component {
                             <li>本科<img src="/src/images/Back_down.png" /></li>
                         </ul>
                     </div>
+                    {showLoading?<Loading/>:""}
                     <div className="hotjob">
                         {enterpriseList}
-
                         <p>加载更多</p>
                     </div>
 
