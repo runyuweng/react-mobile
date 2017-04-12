@@ -1,7 +1,6 @@
 import React from "react";
 import "./Home.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
 
 class Home extends React.Component {
 

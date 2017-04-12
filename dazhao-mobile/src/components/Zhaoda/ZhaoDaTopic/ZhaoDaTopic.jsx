@@ -14,7 +14,7 @@ class ZhaoDaTopic extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        this.props.showBottom(true);
 
     }
 
