@@ -91,7 +91,7 @@ class Home extends React.Component {
                         </Link>
                     </div>
                     <div>
-                        <Link to="/">
+                        <Link to="/intern">
                             <span><img src="/src/images/首页icon2.png" />
                                 <em>实习</em></span>
                         </Link>

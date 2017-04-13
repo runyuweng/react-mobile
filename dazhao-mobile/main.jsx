@@ -17,6 +17,7 @@ import HomeJobDetail from "./src/components/Home/JobDetail/JobDetail.jsx";
 import HomeCompany from "./src/components/Home/Company/Company.jsx";
 import HomeShRecruit from "./src/components/Home/ShRecruit/ShRecruit.jsx";
 import HomeEnterprise from "./src/components/Home/Enterprise/Enterprise.jsx";
+import HomeIntern from "./src/components/Home/Intern/Intern.jsx";
 
 // 招答部分
 import Zhaoda from "./src/components/Zhaoda/Zhaoda/Zhaoda.jsx";
@@ -81,6 +82,7 @@ const store = createStore(reducer),
                     <Route path="company" component={HomeCompany} />
                     <Route path="schoolRecruit" component={HomeShRecruit} />
                     <Route path="enterprise" component={HomeEnterprise} />
+                    <Route path="intern" component={HomeIntern} />
 
                     <Route path="mine" component={Mine} />
                     <Route path="cvcenter" component={MineCvCenter} />

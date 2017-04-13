@@ -1,13 +1,13 @@
 import React from "react";
-import "./ShRecruit.scss";
+import ReactDOM from "react-dom";
+import "./Intern.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
-import Loading from "../../MainLayout/Loading/Loading.jsx";
 import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
+import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
 import DropdownList from '../../MainLayout/DropdownList/DropdownList.jsx'
-import ReactDOM from "react-dom";
 
 class ShRecruit extends React.Component {
 
@@ -68,6 +68,7 @@ class ShRecruit extends React.Component {
 
     }
 
+
     render () {
 
         const {industry, jobs, showLoading} = this.state;
@@ -94,12 +95,12 @@ class ShRecruit extends React.Component {
                     </div>
                 </div>
             </Link>
-            );
+        );
 
         return (
             <div className="ShRecruit">
                 <header>
-                    <TopBar title="校招职位" border="boder" />
+                    <TopBar title="实习职位" border="boder" />
                 </header>
 
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
@@ -109,7 +110,6 @@ class ShRecruit extends React.Component {
                     {showLoading?<Loading/>:""}
                     <div id="homeMain">
                         {jobList}
-
                         <p>加载更多</p>
                     </div>
                 </div>

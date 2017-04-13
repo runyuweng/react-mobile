@@ -12,9 +12,13 @@
                     font-size: .14rem;
                     color:#B0B0B0;
                     text-align: center;
+                    position: relative;
                     img{
                         height:.08rem;
                         margin-left: .06rem;
+                    }
+                    #list1,#list2,#list3,#list4{
+                        display:none
                     }
                 }
             }

@@ -1,0 +1,15 @@
+.DropdownList{
+    position: absolute;
+    top:.3rem;
+    width:100%;
+    background:#f7f7f7;
+    span{
+        display: inline-block;
+        width:100%;
+        height:.32rem;
+        text-align: center;
+        line-height: .32rem;
+        font-size: .14rem;
+        color:#000;
+    }
+}
