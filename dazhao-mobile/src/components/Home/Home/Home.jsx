@@ -20,7 +20,7 @@ class Home extends React.Component {
     componentDidMount () {
 
         this.props.showBottom(true);
-        Fetch("/zhaoda/getjobs", {"method": "GET"}).
+        fetch("/zhaoda/getjobs", {"method": "GET"}).
         Then((response) => response.json()).
         Then((data) => {
 
