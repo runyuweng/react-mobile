@@ -1,5 +1,7 @@
 import React from "react";
 import "./Home.scss";
+import fetch from "../../../services/xFetch";
+import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 import {Link} from "react-router";
 
 class Home extends React.Component {
@@ -7,23 +9,47 @@ class Home extends React.Component {
     constructor (props) {
 
         super(props);
-        this.state = {"position": []};
+        this.state = {
+            "position": [],
+            "loadingMore": false,
+            "jobPage": 0
+        };
 
     }
 
     componentDidMount () {
 
         this.props.showBottom(true);
-        const request = new Request("http://115.159.159.79/zhaoda/getjobs", {
-            "method": "GET",
-            "mode": "cors"
-        });
+        // Fetch("/zhaoda/getjobs", {"method": "GET"}).
+        // Then((response) => response.json()).
+        // Then((data) => {
+        //
+        //     This.setState({"position": data.contents});
+        //
+        // });
 
-        fetch(request).
+    }
+
+    getMore (type) {
+
+        this.setState({"loadingMore": true});
+        fetch(`/zhaoda/get${type}?page=${this.state.jobPage}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"position": data.contents});
+            if (data.code === "S01") {
+
+                this.setState({"position": this.state.position.concat(data.contents)}, () => {
+
+                    this.setState({"loadingMore": false});
+
+                });
+
+            } else {
+
+                this.setState({"loadingMore": false});
+
+            }
 
         });
 
@@ -31,7 +57,7 @@ class Home extends React.Component {
 
     render () {
 
-        const {position} = this.state;
+        const {position, loadingMore} = this.state;
         const posList = position.map((value, i) => <div className="jobitems" key={i}>
             <span className="pics"><img src="/src/images/ali.png" /></span>
             <div className="jobintro">
@@ -118,7 +144,9 @@ class Home extends React.Component {
 
                     {posList}
 
-                    <div className="morejob">展开更多</div>
+                    <div className="morejob" onClick={() => this.getMore("jobs")}>
+                        {loadingMore ? <LoadingMore /> : "展开更多"}
+                    </div>
 
                 </div>
 

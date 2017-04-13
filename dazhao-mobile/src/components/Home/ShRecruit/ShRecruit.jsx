@@ -20,6 +20,7 @@ class ShRecruit extends React.Component {
     }
 
     componentDidMount () {
+
         this.props.showBottom(false);
 
         fetch("/zhaoda/industry/category", {"method": "GET"}).
@@ -34,8 +35,10 @@ class ShRecruit extends React.Component {
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"jobs": data.contents},()=>{
-                this.setState({showLoading: false});
+            this.setState({"jobs": data.contents}, () => {
+
+                this.setState({"showLoading": false});
+
             });
 
         });
@@ -43,14 +46,17 @@ class ShRecruit extends React.Component {
     }
 
     changeCategory (id) {
-        this.setState({showLoading: true})
+
+        this.setState({"showLoading": true});
 
         fetch(`/zhaoda/jobs/school?industryid=${id}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"jobs": data.contents},()=>{
-                this.setState({showLoading: false});
+            this.setState({"jobs": data.contents}, () => {
+
+                this.setState({"showLoading": false});
+
             });
 
         });
@@ -102,7 +108,7 @@ class ShRecruit extends React.Component {
                             <li>本科<img src="/src/images/Back_down.png" /></li>
                         </ul>
                     </div>
-                    {showLoading?<Loading/>:""}
+                    {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
                         {jobList}
 
