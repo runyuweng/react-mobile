@@ -45,12 +45,16 @@ class ZhaoDaIndex extends React.Component {
                         left += this.state.delateX;
 
                         //边界判断
-                        if (left > windowWidth - 540 && left<0) {
-                            element.style.left = left + 'px';
-                        }else if (left < windowWidth - 540) {
-                            element.style.left = windowWidth - 540 + 'px';
-                        }else if (left > 0) {
-                            element.style.left = '0px';
+                        if (windowWidth>width) {
+                            return;
+                        }else{
+                            if (left > windowWidth - width - 10 && left<0) {
+                                element.style.left = left + 'px';
+                            }else if (left < windowWidth - width - 10) {
+                                element.style.left = windowWidth - width - 10 + 'px';
+                            }else if (left > 0) {
+                                element.style.left = '0px';
+                            }
                         }
                     }
                 })
@@ -151,6 +155,22 @@ class ZhaoDaIndex extends React.Component {
                                 <span className="care">
                                     <span>回答:12</span>
                                     <span>关注:101</span>
+                                </span>
+                            </div>
+                            <div className="img">
+                                <span className="span1" />
+                                <span className="span2">#职场素养#</span>
+                                <span className="care">
+                                    <span>回答:12</span>
+                                    <span>关注:102</span>
+                                </span>
+                            </div>
+                            <div className="img">
+                                <span className="span1" />
+                                <span className="span2">#职场素养#</span>
+                                <span className="care">
+                                    <span>回答:12</span>
+                                    <span>关注:102</span>
                                 </span>
                             </div>
                             <div className="img">

@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-  createStore
+  createStore,
+  applyMiddleware
 }
 from "redux";
+import logger from "redux-logger";
 import {
   IndexRoute, Route, Router, hashHistory
 }
@@ -53,7 +55,7 @@ import {
 from "react-redux";
 import reducer from "./src/reducers/index.js";
 
-const store = createStore(reducer),
+const store = createStore(reducer,applyMiddleware(logger)),
     zhiGuan = () => <h1 style={{"fontSize": "0.1rem"}}>职官页面</h1>,
     Routes = () =>
         <Provider store={store}>

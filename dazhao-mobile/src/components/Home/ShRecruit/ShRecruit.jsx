@@ -48,12 +48,6 @@ class ShRecruit extends React.Component {
 
     changeCategory (id) {
 
-        ["list1","list2","list3","list4"].map((index) => {
-
-            document.getElementById(index).style.display = "none";
-
-        })
-
         this.setState({showLoading: true})
 
         fetch(`/zhaoda/jobs/school?industryid=${id}`, {"method": "GET"}).
