@@ -6,7 +6,6 @@ import Loading from "../../MainLayout/Loading/Loading.jsx";
 import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
-import DropdownList from '../../MainLayout/DropdownList/DropdownList.jsx'
 import ReactDOM from "react-dom";
 
 class ShRecruit extends React.Component {
@@ -62,6 +61,10 @@ class ShRecruit extends React.Component {
 
     }
 
+    changeSort(id){
+        console.log(id)
+    }
+
     render () {
 
         const {industry, jobs, showLoading} = this.state;
@@ -99,7 +102,7 @@ class ShRecruit extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy showLoading={this.state.showLoading}/>
+                    <SortBy sortChange={(id) => this.changeSort(id)}/>
                     {showLoading?<Loading/>:""}
                     <div id="homeMain">
                         {jobList}
