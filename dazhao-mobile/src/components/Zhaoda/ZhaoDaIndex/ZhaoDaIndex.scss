@@ -1,4 +1,6 @@
 .ZhaoDaIndex{
+    width:100%;
+    overflow: hidden;
     #show{
         width:100%;
         height:1.5rem;
@@ -91,7 +93,6 @@
                 font-size:0.14rem;
                 font-family:"苹方";
                 font-weight:bold;
-                color:#666666;
                 margin-top:0.16rem;
                 color:#696969;
                 line-height:0.2rem;
@@ -227,15 +228,9 @@
             }
         }
         .content{
-            width:100%;
             height:2rem;
             margin-top:0.2rem;
             position:relative;
-            overflow:hidden;
-            .img:nth-of-type(n){
-                top:0rem;
-                left:(0.1+1.75n)rem;
-            }
             .img{
                 width:1.6rem;
                 height:1.65rem;
@@ -245,7 +240,6 @@
                 background:#FFF;
                 padding-top:0.14rem;
                 margin-right:0.1rem;
-                position:absolute;
                 .span1{
                     display:block;
                     width:0.75rem;
@@ -289,20 +283,20 @@
                 .img{
                     padding-top:0rem;
                     border-radius:0.03rem;
+                    white-space: normal;
                     img{
                         width:1.6rem;
                         height:1.1rem;
                         border-radius:0.03rem 0.03rem 0 0;
                     }
                     p{
-                        position:absolute;
-                        bottom:0.11rem;
                         font-size:0.13rem;
                         font-family:"苹方";
                         color:#666666;
                         line-height:0.19rem;
                         text-align:left;
                         padding:0rem 0.1rem;
+                        margin-top: .11rem;
                     }
                 }
             }

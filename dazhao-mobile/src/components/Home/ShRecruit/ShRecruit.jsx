@@ -3,8 +3,10 @@ import "./ShRecruit.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
+import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
+import ReactDOM from "react-dom";
 
 class ShRecruit extends React.Component {
 
@@ -14,7 +16,8 @@ class ShRecruit extends React.Component {
         this.state = {
             "showLoading": true,
             "industry": [],
-            "jobs": []
+            "jobs": [],
+            "listDisplay": false
         };
 
     }
@@ -63,6 +66,12 @@ class ShRecruit extends React.Component {
 
     }
 
+    changeSort (id) {
+
+        console.log(id);
+
+    }
+
     render () {
 
         const {industry, jobs, showLoading} = this.state;
@@ -100,14 +109,7 @@ class ShRecruit extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <div className="sort">
-                        <ul>
-                            <li>默认排序<img src="/src/images/Back_down.png" /></li>
-                            <li>全国<img src="/src/images/Back_down.png" /></li>
-                            <li>5k-8k<img src="/src/images/Back_down.png" /></li>
-                            <li>本科<img src="/src/images/Back_down.png" /></li>
-                        </ul>
-                    </div>
+                    <SortBy sortChange={(id) => this.changeSort(id)} />
                     {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
                         {jobList}

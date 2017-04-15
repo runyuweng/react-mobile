@@ -1,8 +1,11 @@
-import { combineReducers } from 'redux'
+import {
+    combineReducers
+}
+from 'redux'
 import show from './show.js'
 
 const rootReducer = combineReducers({
-  show
+    show
 })
 
 export default rootReducer

@@ -1,67 +1,76 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./SortBy.scss";
-import { createStore ,applyMiddleware} from 'redux';
-import sortfilter from "../../../reducers/sortfilter.js";
+import {applyMiddleware, createStore} from "redux";
+import logger from "redux-logger";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
-import DropdownList from '../../MainLayout/DropdownList/DropdownList.jsx'
-
-const store = createStore(sortfilter,applyMiddleware(logger));
 
 class SortBy extends React.Component {
-    constructor(props){
+    constructor (props) {
+
         super(props);
         this.state = {
-            sortBy : [
-                {defaultSort:["默认排序","排序一","排序二"]},
-                {defaultSort:["全国","排序三","排序四"]},
-                {defaultSort:["5k-8k","排序五","排序六"]},
-                {defaultSort:["本科","排序七","排序八"]}
+            "sortBy": [
+
+                {"defaultSort": ["默认排序", "排序一", "排序二1", "排序二2", "排序二3", "排序二4"]},
+
+                {"defaultSort": ["全国", "排序三", "排序四"]},
+                {"defaultSort": ["5k-8k", "排序五", "排序六"]},
+                {"defaultSort": ["本科", "排序七", "排序八"]}
             ],
-            listDisplay : [true,true,true,true],
-            prev : null
-        }
+
+            "display": [false, false, false, false], // 控制下拉框的显示与否
+            "whichItem": [0, 0, 0, 0] // 控制每种排序方式的当前显示的项索引
+
+        };
+
     }
 
 
-    onClick(element,i){
+    handleClick (index) {
 
+        const display = this.state.display;
 
-        console.log(this.state.listDisplay[i])
+        for (let i = 0; i < this.state.display.length; i++) {
 
-        this.state.sortBy.map((elem,index) => {
-            index !== i ?
-            ReactDOM.render( <div></div> , document.getElementById(`list${index}`)) :
-            (
-                this.state.listDisplay[i] ?
-                ReactDOM.render(<DropdownList store={store} id={i} sortItems={this.state.sortBy[i]}/> , document.getElementById(element)) :
-                ReactDOM.render( <div></div> , document.getElementById(`list${index}`))
-            )
-        })
+            i === index ? display[i] = !this.state.display[i] : display[i] = false;
 
-        const listDisplay = this.state.listDisplay;
-
-        for (var j = 0; j < listDisplay.length; j++) {
-            j === i ? (listDisplay[j] = !this.state.listDisplay[i]) : (listDisplay[j] = true)
         }
+        this.setState({display});
 
-        this.setState({
-            listDisplay : listDisplay
-        })
+    }
+
+    itemClick (i, index) {
+
+        const whichItem = this.state.whichItem;
+
+        whichItem[i] = index;
+        this.setState({whichItem});
+        this.props.sortChange(index);
 
     }
 
     render () {
 
-        const { sortBy } = this.state;
-        const sortList = sortBy.map((elem,i) => {
-            return  <li key={elem.defaultSort} onClick={this.onClick.bind(this,`list${i}`,i)}>
-                        {this.state.sortBy[i].defaultSort[parseInt(store.getState()[i])%10]}
-                        <img src="/src/images/Back_down.png" />
-                        <div id={"list"+i}></div>
-                    </li>
-        })
+        const {sortBy} = this.state;
+
+
+        const sortList = sortBy.map((elem, i) => <li key={i} onClick={this.handleClick.bind(this, i)}>
+            {this.state.sortBy[i].defaultSort[this.state.whichItem[i]]}
+            <img src="/src/images/Back_down.png" />
+            {
+                            this.state.display[i]
+                            ? <div>
+                                {this.state.sortBy[i].defaultSort.map((elem, index) => <span
+                                    onClick={this.itemClick.bind(this, i, index)}
+                                    key={index}
+                                                                                       >{this.state.sortBy[i].defaultSort[index]}
+                                </span>)}
+                            </div> : ""
+
+                        }
+        </li>);
+
         return (
 
             <div className="sort">
