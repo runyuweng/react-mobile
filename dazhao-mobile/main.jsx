@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-  createStore,
-  applyMiddleware
+  applyMiddleware,
+  createStore
 }
 from "redux";
 import logger from "redux-logger";

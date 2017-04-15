@@ -11,7 +11,7 @@ class Home extends React.Component {
         super(props);
         this.state = {
             "job": [],
-            'enterprise': [],
+            "enterprise": [],
             "jobsMore": false,
             "enterpriseMore": false,
             "jobPage": 1,
@@ -35,8 +35,9 @@ class Home extends React.Component {
 
     getMore (type) {
 
-        let newState ={};
-        newState[type+"More"] = true;
+        let newState = {};
+
+        newState[`${type}More`] = true;
         this.setState(newState);
         newState = {};
         fetch(`/zhaoda/get${type}?page=${this.state.jobPage}`, {"method": "GET"}).
@@ -46,17 +47,23 @@ class Home extends React.Component {
             if (data.code === "S01") {
 
                 this.setState({"job": this.state.job.concat(data.contents)}, () => {
-                    let newState ={};
-                    newState[type+"More"] = false;
+
+                    let newState = {};
+
+                    newState[`${type}More`] = false;
                     this.setState(newState);
                     newState = {};
+
                 });
 
             } else {
-                let newState ={};
-                newState[type+"More"] = false;
+
+                let newState = {};
+
+                newState[`${type}More`] = false;
                 this.setState(newState);
                 newState = {};
+
             }
 
         });

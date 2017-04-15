@@ -17,7 +17,7 @@ class ShRecruit extends React.Component {
             "showLoading": true,
             "industry": [],
             "jobs": [],
-            listDisplay : false
+            "listDisplay": false
         };
 
     }
@@ -50,7 +50,7 @@ class ShRecruit extends React.Component {
 
     changeCategory (id) {
 
-        this.setState({showLoading: true})
+        this.setState({"showLoading": true});
 
         fetch(`/zhaoda/jobs/school?industryid=${id}`, {"method": "GET"}).
         then((response) => response.json()).
@@ -66,8 +66,10 @@ class ShRecruit extends React.Component {
 
     }
 
-    changeSort(id){
-        console.log(id)
+    changeSort (id) {
+
+        console.log(id);
+
     }
 
     render () {
@@ -107,8 +109,8 @@ class ShRecruit extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy sortChange={(id) => this.changeSort(id)}/>
-                    {showLoading?<Loading/>:""}
+                    <SortBy sortChange={(id) => this.changeSort(id)} />
+                    {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
                         {jobList}
 

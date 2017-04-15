@@ -1,4 +1,4 @@
-import React,{ defaultProps } from "react";
+import React, {defaultProps} from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
 import {Link} from "react-router";
@@ -6,74 +6,108 @@ import QueueAnim from "rc-queue-anim";
 
 
 class ZhaoDaIndex extends React.Component {
-    constructor(props){
+    constructor (props) {
+
         super(props);
         this.state = {
-            pressDownX : 0,//鼠标按下的位置
-            nowX : 0,//鼠标移动后的位置
-            delateX : 0,//移动的距离
-            currentX : 0,
-        }
-    }
-
-    componentDidMount() {
-        ["topic1","topic2","topic3"].map((elem) => {
-            this._touchEvent(elem)
-        })
+            "pressDownX": 0, // 鼠标按下的位置
+            "nowX": 0, // 鼠标移动后的位置
+            "delateX": 0, // 移动的距离
+            "currentX": 0
+        };
 
     }
 
-    _touchEvent(elem){
-            //触屏开始
-            document.getElementById(elem).addEventListener("touchstart",(e)=>{
-                let _this = document.getElementById(elem);
-                let isStart = true;
-                const event = e || window.event;
-                const pressDownX = event.touches[0].pageX;
-                const left = parseInt(_this.style.left || _this.offsetLeft);
-                this.setState({ pressDownX : pressDownX, currentX : left});
+    componentDidMount () {
 
-                //触屏移动
-                document.addEventListener("touchmove",(e)=>{
-                    if(isStart){
-                        var left = this.state.currentX;
-                        const element = _this;
-                        const width = element.clientWidth;
-                        const windowWidth = window.innerWidth;
-                        const event = e || window.event;
-                        this.setState({nowX : event.touches[0].pageX, delateX : event.touches[0].pageX - this.state.pressDownX});
-                        left += this.state.delateX;
+        ["topic1", "topic2", "topic3"].map((elem) => {
 
-                        //边界判断
-                        if (windowWidth>width) {
-                            return;
-                        }else{
-                            if (left > windowWidth - width - 10 && left<0) {
-                                element.style.left = left + 'px';
-                            }else if (left < windowWidth - width - 10) {
-                                element.style.left = windowWidth - width - 10 + 'px';
-                            }else if (left > 0) {
-                                element.style.left = '0px';
-                            }
-                        }
+            this._touchEvent(elem);
+
+        });
+
+    }
+
+    _touchEvent (elem) {
+
+            // 触屏开始
+        document.getElementById(elem).addEventListener("touchstart", (e) => {
+
+            const _this = document.getElementById(elem);
+            let isStart = true;
+            const event = e || window.event;
+            const pressDownX = event.touches[0].pageX;
+            const left = parseInt(_this.style.left || _this.offsetLeft);
+
+            this.setState({
+                pressDownX,
+                "currentX": left
+            });
+
+                // 触屏移动
+            document.addEventListener("touchmove", (e) => {
+
+                if (isStart) {
+
+                    let left = this.state.currentX;
+                    const element = _this;
+                    const width = element.clientWidth;
+                    const windowWidth = window.innerWidth;
+                    const event = e || window.event;
+
+                    this.setState({
+                        "nowX": event.touches[0].pageX,
+                        "delateX": event.touches[0].pageX - this.state.pressDownX
+                    });
+                    left += this.state.delateX;
+
+                        // 边界判断
+                    if (windowWidth > width) {
+
+                        return;
+
                     }
-                })
 
-                //触屏结束
-                document.addEventListener("touchend",()=>{
-                    if(isStart){
-                        const element = _this;
-                        const currentX = parseInt(element.style.left);
-                        this.setState({
-                            pressDownX : 0,
-                            nowX : 0,
-                            currentX : currentX,
-                            delateX : 0,
-                        })
+                    if (left > windowWidth - width - 10 && left < 0) {
+
+                        element.style.left = `${left}px`;
+
+                    } else if (left < windowWidth - width - 10) {
+
+                        element.style.left = `${windowWidth - width - 10}px`;
+
+                    } else if (left > 0) {
+
+                        element.style.left = "0px";
+
                     }
-                    isStart = false;
-                })
-            })
+
+
+                }
+
+            });
+
+                // 触屏结束
+            document.addEventListener("touchend", () => {
+
+                if (isStart) {
+
+                    const element = _this;
+                    const currentX = parseInt(element.style.left);
+
+                    this.setState({
+                        "pressDownX": 0,
+                        "nowX": 0,
+                        currentX,
+                        "delateX": 0
+                    });
+
+                }
+                isStart = false;
+
+            });
+
+        });
 
     }
 
