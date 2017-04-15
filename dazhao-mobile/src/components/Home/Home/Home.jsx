@@ -21,10 +21,10 @@ class Home extends React.Component {
 
         this.props.showBottom(true);
         fetch("/zhaoda/getjobs", {"method": "GET"}).
-        Then((response) => response.json()).
-        Then((data) => {
+        then((response) => response.json()).
+        then((data) => {
 
-            This.setState({"position": data.contents});
+            this.setState({"position": data.contents});
 
         });
 
