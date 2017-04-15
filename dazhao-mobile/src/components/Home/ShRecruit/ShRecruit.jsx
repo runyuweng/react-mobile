@@ -102,7 +102,7 @@ class ShRecruit extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy sortChange={(id) => this.changeSort(id)}/>
+                    <SortBy count="4" sortChange={(id) => this.changeSort(id)}/>
                     {showLoading?<Loading/>:""}
                     <div id="homeMain">
                         {jobList}

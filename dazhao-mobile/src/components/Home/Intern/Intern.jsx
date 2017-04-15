@@ -63,6 +63,10 @@ class Intern extends React.Component {
     }
 
 
+    changeSort(id){
+        console.log(id)
+    }
+
     render () {
 
         const {industry, jobs, showLoading} = this.state;
@@ -100,7 +104,7 @@ class Intern extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy />
+                    <SortBy count="4" sortChange={(id) => this.changeSort(id)}/>
                     {showLoading?<Loading/>:""}
                     <div id="homeMain">
                         {jobList}

@@ -17,7 +17,8 @@ class ZhaoDaIndex extends React.Component {
     }
 
     componentDidMount() {
-        ["topic1","topic2","topic3"].map((elem) => {
+        const elements = [this.refs.topic1,this.refs.topic2,this.refs.topic3];
+        elements.map((elem) => {
             this._touchEvent(elem)
         })
 
@@ -25,8 +26,8 @@ class ZhaoDaIndex extends React.Component {
 
     _touchEvent(elem){
             //触屏开始
-            document.getElementById(elem).addEventListener("touchstart",(e)=>{
-                let _this = document.getElementById(elem);
+            elem.addEventListener("touchstart",(e)=>{
+                let _this = elem;
                 let isStart = true;
                 const event = e || window.event;
                 const pressDownX = event.touches[0].pageX;

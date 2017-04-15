@@ -2,6 +2,7 @@ import React from "react";
 import "./Enterprise.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
+import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
@@ -57,6 +58,11 @@ class Enterprise extends React.Component {
 
     }
 
+
+    changeSort(id){
+        console.log(id)
+    }
+
     render () {
 
         const {industry, enterprise, showLoading} = this.state;
@@ -100,6 +106,8 @@ class Enterprise extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
+                    <SortBy count="3" sortChange={(id) => this.changeSort(id)}/>
+                    {/*
                     <div className="sort">
                         <ul>
                             <li>默认排序<img src="/src/images/Back_down.png" /></li>
@@ -107,6 +115,7 @@ class Enterprise extends React.Component {
                             <li>本科<img src="/src/images/Back_down.png" /></li>
                         </ul>
                     </div>
+                    */}
                     {showLoading?<Loading/>:""}
                     <div className="hotjob">
                         {enterpriseList}

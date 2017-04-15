@@ -25,8 +25,9 @@ class SortBy extends React.Component {
 
     handleClick(index){
 
-        const display = this.state.display;
-        for (var i = 0 ; i < this.state.display.length; i++) {
+        const display = JSON.parse(JSON.stringify(this.state)).display;
+
+        for (var i = 0 ; i < display.length; i++) {
             i === index ? (display[i] = !this.state.display[i]) : (display[i] = false)
         }
         this.setState({
@@ -36,7 +37,7 @@ class SortBy extends React.Component {
     }
 
     itemClick(i,index){
-        const whichItem = this.state.whichItem;
+        const whichItem = JSON.parse(JSON.stringify(this.state)).whichItem;
         whichItem[i] = index;
         this.setState({
             whichItem : whichItem
@@ -49,23 +50,29 @@ class SortBy extends React.Component {
         const { sortBy } = this.state;
 
         const sortList = sortBy.map((elem,i) => {
+            const count = parseInt(this.props.count);
+            if (i < count) {
+                return  <li key={i} onClick={this.handleClick.bind(this,i)}>
+                            {this.state.sortBy[i].defaultSort[this.state.whichItem[i]]}
+                            <img src="/src/images/Back_down.png" />
+                            {
+                                this.state.display[i] ?
+                                <div>
+                                    {this.state.sortBy[i].defaultSort.map((elem, index) => {
+                                    return  <span
+                                                onClick={this.itemClick.bind(this,i,index)}
+                                                key={index}>
+                                                {this.state.sortBy[i].defaultSort[index]}
+                                            </span>
+                                    })}
+                                </div> : ""
 
-            return  <li key={i} onClick={this.handleClick.bind(this,i)}>
-                        {this.state.sortBy[i].defaultSort[this.state.whichItem[i]]}
-                        <img src="/src/images/Back_down.png" />
-                        {
-                            this.state.display[i] ?
-                            <div>
-                                {this.state.sortBy[i].defaultSort.map((elem, index) => {
-                                return  <span
-                                            onClick={this.itemClick.bind(this,i,index)}
-                                            key={index}>{this.state.sortBy[i].defaultSort[index]}
-                                        </span>
-                                })}
-                            </div> : ""
-
-                        }
-                    </li>
+                            }
+                        </li>
+                }
+            else{
+                return;
+            }
         })
 
         return (
