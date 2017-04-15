@@ -10,24 +10,30 @@ class Home extends React.Component {
 
         super(props);
         this.state = {
-            "job": [],
+            "jobs": [],
             "enterprise": [],
-            "jobsMore": false,
-            "enterpriseMore": false,
-            "jobPage": 1,
+            "jobsLoading": false,
+            "enterpriseLoading": false,
+            "jobsPage": 1,
             "enterprisePage": 1
         };
 
     }
 
     componentDidMount () {
+        this.setState({
+            jobsLoading: true,
+            enterpriseLoading: true
+        })
 
         this.props.showBottom(true);
         fetch("/zhaoda/getjobs", {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"job": data.contents});
+            this.setState({"jobs": data.contents,"jobsPage": (this.state.jobsPage+1)},()=>{
+                this.setState({"jobsLoading": false})
+            });
 
         });
 
@@ -37,20 +43,21 @@ class Home extends React.Component {
 
         let newState = {};
 
-        newState[`${type}More`] = true;
+        newState[`${type}Loading`] = true;
         this.setState(newState);
         newState = {};
-        fetch(`/zhaoda/get${type}?page=${this.state.jobPage}`, {"method": "GET"}).
+        fetch(`/zhaoda/get${type}?page=${this.state.jobsPage}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
             if (data.code === "S01") {
 
-                this.setState({"job": this.state.job.concat(data.contents)}, () => {
+                this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
 
                     let newState = {};
 
-                    newState[`${type}More`] = false;
+                    newState[`${type}Loading`] = false;
+                    newState[`${type}Page`] = this.state[`${type}Page`]+1;
                     this.setState(newState);
                     newState = {};
 
@@ -60,7 +67,8 @@ class Home extends React.Component {
 
                 let newState = {};
 
-                newState[`${type}More`] = false;
+                newState[`${type}Loading`] = false;
+                newState[`${type}Page`] = this.state[`${type}Page`]+1;
                 this.setState(newState);
                 newState = {};
 
@@ -72,8 +80,8 @@ class Home extends React.Component {
 
     render () {
 
-        const {job, jobsMore, enterprise, enterpriseMore} = this.state;
-        const posList = job.map((value, i) => <div className="jobitems" key={i}>
+        const {jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
+        const posList = jobs.map((value, i) => <div className="jobitems" key={i}>
             <span className="pics"><img src="/src/images/ali.png" /></span>
             <div className="jobintro">
                 <h2>{value.job_name}</h2>
@@ -159,8 +167,8 @@ class Home extends React.Component {
 
                     {posList}
 
-                    <div className="morejob" onClick={() => this.getMore("jobs")}>
-                        {jobsMore ? <LoadingMore /> : "展开更多"}
+                    <div className="morejob" onClick={jobsLoading?"":() => this.getMore("jobs")}>
+                        {jobsLoading ? <LoadingMore /> : "展开更多"}
                     </div>
 
                 </div>
@@ -249,8 +257,8 @@ class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="morejob" onClick={() => this.getMore("enterprise")}>
-                        {enterpriseMore ? <LoadingMore /> : "展开更多"}
+                    <div className="morejob" onClick={enterpriseLoading?"":() => this.getMore("enterprise")}>
+                        {enterpriseLoading ? <LoadingMore /> : "展开更多"}
                     </div>
 
                 </div>

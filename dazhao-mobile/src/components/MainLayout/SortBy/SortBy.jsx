@@ -55,16 +55,15 @@ class SortBy extends React.Component {
             {this.state.sortBy[i].defaultSort[this.state.whichItem[i]]}
             <img src="/src/images/Back_down.png" />
             {
-                            this.state.display[i]
-                            ? <div>
-                                {this.state.sortBy[i].defaultSort.map((elem, index) => <span
-                                    onClick={this.itemClick.bind(this, i, index)}
-                                    key={index}
-                                                                                       >{this.state.sortBy[i].defaultSort[index]}
-                                </span>)}
-                            </div> : ""
+                this.state.display[i]
+                ? <div>
+                    {this.state.sortBy[i].defaultSort.map((elem, index) => <span
+                        onClick={this.itemClick.bind(this, i, index)}
+                        key={index}>{this.state.sortBy[i].defaultSort[index]}
+                    </span>)}
+                </div> : ""
 
-                        }
+            }
         </li>);
 
         return (
