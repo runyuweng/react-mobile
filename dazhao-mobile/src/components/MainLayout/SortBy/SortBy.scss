@@ -1,3 +1,14 @@
-.sort{
-    z-index:999;
+
+li>div>span{
+    display: block;
+    line-height: 32px;
+}
+li>div{
+    width:100%;
+    position: absolute;
+    z-index: 999;
+    background:#f7f7f7;
+}
+li>div>span:nth-of-type(1){
+    margin-top: 12px;
 }

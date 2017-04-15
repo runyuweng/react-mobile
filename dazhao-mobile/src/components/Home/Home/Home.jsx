@@ -10,9 +10,12 @@ class Home extends React.Component {
 
         super(props);
         this.state = {
-            "position": [],
-            "loadingMore": false,
-            "jobPage": 0
+            "job": [],
+            'enterprise': [],
+            "jobsMore": false,
+            "enterpriseMore": false,
+            "jobPage": 1,
+            "enterprisePage": 1
         };
 
     }
@@ -20,11 +23,11 @@ class Home extends React.Component {
     componentDidMount () {
 
         this.props.showBottom(true);
-        Fetch("/zhaoda/getjobs", {"method": "GET"}).
-        Then((response) => response.json()).
-        Then((data) => {
+        fetch("/zhaoda/getjobs", {"method": "GET"}).
+        then((response) => response.json()).
+        then((data) => {
 
-            This.setState({"position": data.contents});
+            this.setState({"job": data.contents});
 
         });
 
@@ -32,23 +35,28 @@ class Home extends React.Component {
 
     getMore (type) {
 
-        this.setState({"loadingMore": true});
+        let newState ={};
+        newState[type+"More"] = true;
+        this.setState(newState);
+        newState = {};
         fetch(`/zhaoda/get${type}?page=${this.state.jobPage}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
             if (data.code === "S01") {
 
-                this.setState({"position": this.state.position.concat(data.contents)}, () => {
-
-                    this.setState({"loadingMore": false});
-
+                this.setState({"job": this.state.job.concat(data.contents)}, () => {
+                    let newState ={};
+                    newState[type+"More"] = false;
+                    this.setState(newState);
+                    newState = {};
                 });
 
             } else {
-
-                this.setState({"loadingMore": false});
-
+                let newState ={};
+                newState[type+"More"] = false;
+                this.setState(newState);
+                newState = {};
             }
 
         });
@@ -57,8 +65,8 @@ class Home extends React.Component {
 
     render () {
 
-        const {position, loadingMore} = this.state;
-        const posList = position.map((value, i) => <div className="jobitems" key={i}>
+        const {job, jobsMore, enterprise, enterpriseMore} = this.state;
+        const posList = job.map((value, i) => <div className="jobitems" key={i}>
             <span className="pics"><img src="/src/images/ali.png" /></span>
             <div className="jobintro">
                 <h2>{value.job_name}</h2>
@@ -116,7 +124,7 @@ class Home extends React.Component {
                         </Link>
                     </div>
                     <div>
-                        <Link to="/">
+                        <Link to="/intern">
                             <span><img src="/src/images/首页icon2.png" />
                                 <em>实习</em></span>
                         </Link>
@@ -145,7 +153,7 @@ class Home extends React.Component {
                     {posList}
 
                     <div className="morejob" onClick={() => this.getMore("jobs")}>
-                        {loadingMore ? <LoadingMore /> : "展开更多"}
+                        {jobsMore ? <LoadingMore /> : "展开更多"}
                     </div>
 
                 </div>
@@ -234,7 +242,9 @@ class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="morejob">展开更多</div>
+                    <div className="morejob" onClick={() => this.getMore("enterprise")}>
+                        {enterpriseMore ? <LoadingMore /> : "展开更多"}
+                    </div>
 
                 </div>
 
