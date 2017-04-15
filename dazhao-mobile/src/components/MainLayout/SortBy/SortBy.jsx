@@ -11,17 +11,13 @@ class SortBy extends React.Component {
         super(props);
         this.state = {
             "sortBy": [
-
                 {"defaultSort": ["默认排序", "排序一", "排序二1", "排序二2", "排序二3", "排序二4"]},
-
                 {"defaultSort": ["全国", "排序三", "排序四"]},
                 {"defaultSort": ["5k-8k", "排序五", "排序六"]},
                 {"defaultSort": ["本科", "排序七", "排序八"]}
             ],
-
             "display": [false, false, false, false], // 控制下拉框的显示与否
             "whichItem": [0, 0, 0, 0] // 控制每种排序方式的当前显示的项索引
-
         };
 
     }
@@ -59,16 +55,15 @@ class SortBy extends React.Component {
             {this.state.sortBy[i].defaultSort[this.state.whichItem[i]]}
             <img src="/src/images/Back_down.png" />
             {
-                            this.state.display[i]
-                            ? <div>
-                                {this.state.sortBy[i].defaultSort.map((elem, index) => <span
-                                    onClick={this.itemClick.bind(this, i, index)}
-                                    key={index}
-                                                                                       >{this.state.sortBy[i].defaultSort[index]}
-                                </span>)}
-                            </div> : ""
+                this.state.display[i]
+                ? <div>
+                    {this.state.sortBy[i].defaultSort.map((elem, index) => <span
+                        onClick={this.itemClick.bind(this, i, index)}
+                        key={index}>{this.state.sortBy[i].defaultSort[index]}
+                    </span>)}
+                </div> : ""
 
-                        }
+            }
         </li>);
 
         return (
