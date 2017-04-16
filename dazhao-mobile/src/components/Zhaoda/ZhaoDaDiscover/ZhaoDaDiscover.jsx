@@ -3,7 +3,6 @@ import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaDiscover.scss";
 import {Link} from "react-router";
 
-
 class ZhaoDaDiscover extends React.Component {
 
     render () {

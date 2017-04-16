@@ -2,7 +2,6 @@ import React from "react";
 import "./TopicMain.scss";
 import {Link} from "react-router";
 
-
 class TopicMain extends React.Component {
 
     constructor (props) {

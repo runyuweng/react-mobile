@@ -2,7 +2,6 @@ import React from "react";
 import "./Practice.scss";
 import {Link} from "react-router";
 
-
 class Practice extends React.Component {
 
 

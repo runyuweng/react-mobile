@@ -69,7 +69,7 @@ class ShRecruit extends React.Component {
 
     changeSort (id) {
 
-        // console.log(id);
+        // Console.log(id);
 
     }
 

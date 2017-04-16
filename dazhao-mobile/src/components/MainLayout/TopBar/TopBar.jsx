@@ -2,7 +2,6 @@ import React from "react";
 import "./TopBar.scss";
 import {Link} from "react-router";
 
-
 class TopBar extends React.Component {
 
     constructor (props) {

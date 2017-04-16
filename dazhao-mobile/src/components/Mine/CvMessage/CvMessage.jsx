@@ -3,7 +3,6 @@ import "./CvMessage.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
-
 class CvMessage extends React.Component {
 
     constructor (props) {

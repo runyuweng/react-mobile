@@ -2,7 +2,6 @@ import React from "react";
 import "./ZhaoDaSearch.scss";
 import {Link} from "react-router";
 
-
 class ZhaoDaSearch extends React.Component {
     constructor (props) {
 

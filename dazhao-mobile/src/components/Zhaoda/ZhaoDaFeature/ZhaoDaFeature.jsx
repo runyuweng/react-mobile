@@ -2,7 +2,6 @@ import React from "react";
 import "./ZhaoDaFeature.scss";
 import {Link} from "react-router";
 
-
 class ZhaoDaFeature extends React.Component {
     render () {
 

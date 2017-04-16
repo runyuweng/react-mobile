@@ -2,7 +2,6 @@ import React from "react";
 import "./Zhaoda.scss";
 import {Link} from "react-router";
 
-
 class Zhaoda extends React.Component {
     constructor (props) {
 

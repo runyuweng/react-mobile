@@ -2,7 +2,6 @@ import React from "react";
 import "./ZhaoDaQuiz.scss";
 import {Link} from "react-router";
 
-
 class ZhaoDaQuiz extends React.Component {
 
     render () {

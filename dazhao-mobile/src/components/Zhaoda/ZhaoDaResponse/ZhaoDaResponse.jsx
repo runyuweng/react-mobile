@@ -3,7 +3,6 @@ import "./ZhaoDaResponse.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
-
 class ZhaoDaResponse extends React.Component {
 
     constructor (props) {

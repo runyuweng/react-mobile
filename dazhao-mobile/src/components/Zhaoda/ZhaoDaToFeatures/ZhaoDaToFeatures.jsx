@@ -3,7 +3,6 @@ import "./ZhaoDaToFeatures.scss";
 import "../../MainLayout/AnswerMain/AnswerMain.scss";
 import {Link} from "react-router";
 
-
 class ZhaoDaToFeatures extends React.Component {
 
     constructor (props) {

@@ -3,7 +3,6 @@ import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
 import {Link} from "react-router";
 
-
 class ZhaoDaIndex extends React.Component {
     constructor (props) {
 

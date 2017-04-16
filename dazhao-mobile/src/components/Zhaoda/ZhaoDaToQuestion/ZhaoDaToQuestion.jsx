@@ -4,7 +4,6 @@ import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import {Link} from "react-router";
 
-
 class ZhaoDaToQuestion extends React.Component {
 
 

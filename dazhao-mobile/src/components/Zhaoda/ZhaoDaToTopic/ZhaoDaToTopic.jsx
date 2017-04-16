@@ -2,7 +2,6 @@ import React from "react";
 import "./ZhaoDaToTopic.scss";
 import {Link} from "react-router";
 
-
 class ZhaoDaToTopic extends React.Component {
 
     constructor (props) {

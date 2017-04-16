@@ -6,7 +6,6 @@ import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
 
-
 class Enterprise extends React.Component {
 
     constructor (props) {

@@ -2,7 +2,6 @@ import React from "react";
 import "./EditMg.scss";
 import {Link} from "react-router";
 
-
 class EditMg extends React.Component {
 
 

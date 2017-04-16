@@ -2,7 +2,6 @@ import React from "react";
 import "./EduEx.scss";
 import {Link} from "react-router";
 
-
 class EduEx extends React.Component {
 
 

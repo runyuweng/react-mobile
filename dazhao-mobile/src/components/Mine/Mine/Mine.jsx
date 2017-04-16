@@ -2,7 +2,6 @@ import React from "react";
 import "./Mine.scss";
 import {Link} from "react-router";
 
-
 class Mine extends React.Component {
 
     constructor (props) {

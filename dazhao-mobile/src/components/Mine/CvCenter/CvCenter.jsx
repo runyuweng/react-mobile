@@ -3,7 +3,6 @@ import "./CvCenter.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
-
 class CvCenter extends React.Component {
 
     constructor (props) {
