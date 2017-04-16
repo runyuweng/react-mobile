@@ -1,18 +1,19 @@
-import React from 'react';
+import React from "react";
 import "./ZhaoDaSearchTop.scss";
-import { Link } from 'react-router';
+import {Link} from "react-router";
 
-class ZhaoDaSearchTop extends React.Component{
-    render(){
-        return(
+class ZhaoDaSearchTop extends React.Component {
+    render () {
+
+        return (
             <div className="ZhaoDaSearchTop">
                 <header>
                     <div className="search">
                         <span >取消</span>
                         <input type="text"
-                        placeholder="Michael"
+                            placeholder="Michael"
                         />
-                      <span>搜索</span>
+                        <span>搜索</span>
                     </div>
                 </header>
                 <nav>
@@ -32,7 +33,8 @@ class ZhaoDaSearchTop extends React.Component{
                     </ul>
                 </nav>
             </div>
-        )
+        );
+
     }
 }
 
