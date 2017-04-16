@@ -40,7 +40,7 @@ class SlideBar extends React.Component {
 
     handleMove (e) {
 
-        let displacement = e.touches[0].pageX - this.state.startPoint,
+        let displacement = parseInt((e.touches[0].pageX - this.state.startPoint)/10),
             maxLeft = this.state.currentWidth - (document.body.clientWidth - this.state.titleWidth),
             currentLeft = 0;
 

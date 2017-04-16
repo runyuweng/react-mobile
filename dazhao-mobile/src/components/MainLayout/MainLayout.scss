@@ -32,6 +32,16 @@ footer{
   display: flex;
   align-items:center;/*垂直居中*/
   color: #B7B7B7;
+  .zhaoda{
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: .46rem;
+      background: url("/src/images/zhaoda.png");
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size:.25rem .25rem;
+  }
   img{
     width: 25px;
     height: 25px;

@@ -57,8 +57,7 @@ class Layout extends React.Component {
                   </div>
                   <div>
                       <Link to="/Zhaoda/main" activeStyle={{"color": "#000"}}>
-                          <div>
-                              <img src="/src/images/zhaoda.png" />
+                          <div className="zhaoda">
                               <p>招答</p>
                           </div>
                       </Link>
@@ -66,7 +65,7 @@ class Layout extends React.Component {
                   <div>
                       <Link to="/mine" activeStyle={{"color": "#000"}}>
                           <div>
-                              <img src="/src/images/userpage.png" />
+                              <img src="/src/images/mine.png" />
                               <p>我的</p>
                           </div>
                       </Link>
