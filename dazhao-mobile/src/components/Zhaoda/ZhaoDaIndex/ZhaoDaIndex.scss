@@ -174,14 +174,16 @@
         .Formore{
             width:92%;
             height:0.4rem;
-            border:0.01rem #FFE25C solid;
-            color:#666666;
+            border:0.01rem #21c5cd solid;
+            color:#21c5cd;
             font-size:0.14rem;
             text-align:center;
             line-height:0.4rem;
             border-radius:0.05rem;
             margin:0.3rem auto 0;
-            background:#ffe25c;
+            a{
+                color:#21c5cd;
+            }
         }
     }
 
@@ -211,7 +213,7 @@
             .all{
                 font-size:0.13rem;
                 font-family:"苹方";
-                color:#FFD112;
+                color:#21c5cd;
                 position:absolute;
                 right:0rem;
                 cursor: pointer;

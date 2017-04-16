@@ -1,0 +1,23 @@
+.ZhaoDaTalk{
+    .usermain{
+        .item{
+            .left{
+                .circle{
+                    border-radius:0;
+                }
+                p{
+                    span:nth-of-type(2){
+                        em{
+                            font-style: normal;
+                            margin-right: .1rem;
+                            font-size: .14rem;
+                            b{
+                                font-weight: normal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

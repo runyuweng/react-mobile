@@ -1,5 +1,6 @@
 import React from "react";
 import "./ZhaoDaSearch.scss";
+import ZhaoDaSearchTop from "../ZhaoDaSearchTop/ZhaoDaSearchTop.jsx";
 import {Link} from "react-router";
 
 class ZhaoDaSearch extends React.Component {
@@ -42,29 +43,7 @@ class ZhaoDaSearch extends React.Component {
 
         return (
             <div className="ZhaoDaSearch">
-                <header>
-                    <div className="search">
-                        <span >取消</span>
-                        <input type="text"
-                            placeholder="研究生"
-                            value={Keyword}
-                            onChange={function (e) {
-
-                                this.setState({"Keyword": e.target.value});
-
-                            }}
-                        />
-                        <span>搜索</span>
-                    </div>
-                </header>
-                <nav>
-                    <ul>
-                        <li className="active">问答</li>
-                        <li>话题</li>
-                        <li>专栏</li>
-                        <li>用户</li>
-                    </ul>
-                </nav>
+                <ZhaoDaSearchTop />
                 <div className="getting">
                     {/*
           <div className="items">
