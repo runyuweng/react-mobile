@@ -7,7 +7,7 @@ import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
-
+import PropTypes from 'prop-types';
 
 class Intern extends React.Component {
 
@@ -118,5 +118,6 @@ class Intern extends React.Component {
     }
 }
 
+Intern.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default Intern;

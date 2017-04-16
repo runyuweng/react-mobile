@@ -1,7 +1,6 @@
 import React from "react";
 import "./Company.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
 
 class Company extends React.Component {
 

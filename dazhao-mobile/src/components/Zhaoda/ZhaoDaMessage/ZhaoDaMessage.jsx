@@ -2,7 +2,7 @@ import React from "react";
 import "./ZhaoDaMessage.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+import PropTypes from 'prop-types';
 
 class ZhaoDaMessage extends React.Component {
     constructor (props) {
@@ -60,4 +60,6 @@ class ZhaoDaMessage extends React.Component {
 
     }
 }
+ZhaoDaMessage.propTypes = {"showBottom": PropTypes.func.isRequired};
+
 export default ZhaoDaMessage;

@@ -1,7 +1,7 @@
 import React from "react";
 import "./ZhaoDaFeature.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+
 
 class ZhaoDaFeature extends React.Component {
     render () {

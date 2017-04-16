@@ -1,7 +1,7 @@
 import React from "react";
 import "./Practice.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+
 
 class Practice extends React.Component {
 

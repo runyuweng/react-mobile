@@ -1,7 +1,7 @@
 import React from "react";
 import "./EditMg.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+
 
 class EditMg extends React.Component {
 

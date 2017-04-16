@@ -2,8 +2,7 @@ import React, {defaultProps} from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
-
+import PropTypes from 'prop-types';
 
 class ZhaoDaIndex extends React.Component {
     constructor (props) {
@@ -289,5 +288,6 @@ class ZhaoDaIndex extends React.Component {
 
     }
 }
+ZhaoDaIndex.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default ZhaoDaIndex;

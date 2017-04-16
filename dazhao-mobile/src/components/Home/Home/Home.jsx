@@ -3,10 +3,13 @@ import "./Home.scss";
 import fetch from "../../../services/xFetch";
 import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 import {Link} from "react-router";
+import PropTypes from 'prop-types';
 
 class Home extends React.Component {
 
     constructor (props) {
+
+        console.log(props);
 
         super(props);
         this.state = {
@@ -21,18 +24,24 @@ class Home extends React.Component {
     }
 
     componentDidMount () {
+
         this.setState({
-            jobsLoading: true,
-            enterpriseLoading: true
-        })
+            "jobsLoading": true,
+            "enterpriseLoading": true
+        });
 
         this.props.showBottom(true);
         fetch("/zhaoda/getjobs", {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"jobs": data.contents,"jobsPage": (this.state.jobsPage+1)},()=>{
-                this.setState({"jobsLoading": false})
+            this.setState({
+                "jobs": data.contents,
+                "jobsPage": this.state.jobsPage + 1
+            }, () => {
+
+                this.setState({"jobsLoading": false});
+
             });
 
         });
@@ -57,7 +66,7 @@ class Home extends React.Component {
                     let newState = {};
 
                     newState[`${type}Loading`] = false;
-                    newState[`${type}Page`] = this.state[`${type}Page`]+1;
+                    newState[`${type}Page`] = this.state[`${type}Page`] + 1;
 
                     this.setState(newState);
                     newState = {};
@@ -70,7 +79,7 @@ class Home extends React.Component {
 
 
                 newState[`${type}Loading`] = false;
-                newState[`${type}Page`] = this.state[`${type}Page`]+1;
+                newState[`${type}Page`] = this.state[`${type}Page`] + 1;
 
                 this.setState(newState);
                 newState = {};
@@ -170,7 +179,7 @@ class Home extends React.Component {
 
                     {posList}
 
-                    <div className="morejob" onClick={jobsLoading?"":() => this.getMore("jobs")}>
+                    <div className="morejob" onClick={jobsLoading ? "" : () => this.getMore("jobs")}>
                         {jobsLoading ? <LoadingMore /> : "展开更多"}
                     </div>
 
@@ -260,7 +269,7 @@ class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="morejob" onClick={enterpriseLoading?"":() => this.getMore("enterprise")}>
+                    <div className="morejob" onClick={enterpriseLoading ? "" : () => this.getMore("enterprise")}>
                         {enterpriseLoading ? <LoadingMore /> : "展开更多"}
                     </div>
 
@@ -271,4 +280,6 @@ class Home extends React.Component {
 
     }
 }
+Home.propTypes = {"showBottom": PropTypes.func.isRequired};
+
 export default Home;

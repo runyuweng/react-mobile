@@ -1,7 +1,7 @@
 import React from "react";
 import "./ZhaoDaToTopic.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+import PropTypes from 'prop-types';
 
 class ZhaoDaToTopic extends React.Component {
 
@@ -116,4 +116,6 @@ class ZhaoDaToTopic extends React.Component {
 
     }
 }
+ZhaoDaToTopic.propTypes = {"showBottom": PropTypes.func.isRequired};
+
 export default ZhaoDaToTopic;

@@ -1,14 +1,18 @@
 import React from "react";
 import "./TopicMain.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+import PropTypes from 'prop-types';
 
 class TopicMain extends React.Component {
 
     constructor (props) {
 
         super(props);
-        props.showBottom();
+
+    }
+    componentDidMount () {
+
+        this.props.showBottom();
 
     }
 
@@ -37,4 +41,6 @@ class TopicMain extends React.Component {
 
     }
 }
+TopicMain.propTypes = {"showBottom": PropTypes.func.isRequired};
+
 export default TopicMain;

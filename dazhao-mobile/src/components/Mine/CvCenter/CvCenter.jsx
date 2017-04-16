@@ -2,7 +2,7 @@ import React from "react";
 import "./CvCenter.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+import PropTypes from 'prop-types';
 
 class CvCenter extends React.Component {
 
@@ -62,4 +62,6 @@ class CvCenter extends React.Component {
 
     }
 }
+CvCenter.propTypes = {"showBottom": PropTypes.func.isRequired};
+
 export default CvCenter;

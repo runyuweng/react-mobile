@@ -1,6 +1,7 @@
 import React from "react";
 import "./SlideBar.scss";
 import {Link} from "react-router";
+import PropTypes from 'prop-types';
 
 class SlideBar extends React.Component {
 
@@ -39,7 +40,7 @@ class SlideBar extends React.Component {
 
     handleMove (e) {
 
-        let displacement = (e.touches[0].pageX - this.state.startPoint),
+        let displacement = e.touches[0].pageX - this.state.startPoint,
             maxLeft = this.state.currentWidth - (document.body.clientWidth - this.state.titleWidth),
             currentLeft = 0;
 
@@ -102,4 +103,9 @@ class SlideBar extends React.Component {
 
     }
 }
+SlideBar.propTypes = {
+    "industry": PropTypes.array.isRequired,
+    "change": PropTypes.func.isRequired
+};
+
 export default SlideBar;

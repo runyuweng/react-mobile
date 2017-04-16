@@ -1,7 +1,7 @@
 import React from "react";
 import "./ZhaoDaSearch.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+
 
 class ZhaoDaSearch extends React.Component {
     constructor (props) {
@@ -95,4 +95,5 @@ class ZhaoDaSearch extends React.Component {
 
     }
 }
+
 export default ZhaoDaSearch;

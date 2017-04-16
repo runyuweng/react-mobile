@@ -1,7 +1,7 @@
 import React from "react";
 import "./ZhaoDaConsult.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+import PropTypes from 'prop-types';
 
 class ZhaoDaConsult extends React.Component {
     constructor (props) {
@@ -68,4 +68,6 @@ class ZhaoDaConsult extends React.Component {
 
     }
 }
+ZhaoDaConsult.propTypes = {"showBottom": PropTypes.func.isRequired};
+
 export default ZhaoDaConsult;
