@@ -1,8 +1,10 @@
+const path = require('path');
+
 var config = {
    entry: './main.jsx',
 
    output: {
-      path:'./',
+      path: path.resolve(__dirname, './'),
       filename: 'index.js',
    },
 
