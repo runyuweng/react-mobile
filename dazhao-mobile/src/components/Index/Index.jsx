@@ -1,7 +1,7 @@
 import React from "react";
 import "./Index.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class Index extends React.Component {
     constructor (props) {

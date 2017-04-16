@@ -2,7 +2,7 @@ import React from "react";
 import "./Notify.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class Notify extends React.Component {
 

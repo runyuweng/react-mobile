@@ -5,7 +5,7 @@ import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class Enterprise extends React.Component {
 

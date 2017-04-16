@@ -2,7 +2,7 @@ import React, {defaultProps} from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 
 class ZhaoDaIndex extends React.Component {

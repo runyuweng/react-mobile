@@ -1,7 +1,7 @@
 import React from "react";
 import "./TopBar.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class TopBar extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./EduEx.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class EduEx extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Zhaoda.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class Zhaoda extends React.Component {
     constructor (props) {

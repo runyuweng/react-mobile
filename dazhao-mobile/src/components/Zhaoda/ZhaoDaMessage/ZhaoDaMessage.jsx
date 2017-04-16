@@ -2,7 +2,7 @@ import React from "react";
 import "./ZhaoDaMessage.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class ZhaoDaMessage extends React.Component {
     constructor (props) {

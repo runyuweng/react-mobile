@@ -2,7 +2,7 @@ import React from "react";
 import "./ZhaoDaTopic.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class ZhaoDaTopic extends React.Component {
 

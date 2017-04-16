@@ -2,7 +2,7 @@ import React from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaDiscover.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class ZhaoDaDiscover extends React.Component {
 

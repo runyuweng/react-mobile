@@ -1,7 +1,7 @@
 import React from "react";
 import "./TopicMain.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class TopicMain extends React.Component {
 

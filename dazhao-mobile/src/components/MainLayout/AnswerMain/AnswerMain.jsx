@@ -1,7 +1,7 @@
 import React from "react";
 import "./AnswerMain.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class AnswerMain extends React.Component {
     constructor (props) {

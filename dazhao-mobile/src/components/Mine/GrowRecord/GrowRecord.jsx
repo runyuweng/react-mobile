@@ -2,7 +2,7 @@ import React from "react";
 import "./GrowRecord.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class GrowRecord extends React.Component {
 

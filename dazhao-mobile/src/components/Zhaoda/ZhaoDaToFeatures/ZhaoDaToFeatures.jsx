@@ -2,7 +2,7 @@ import React from "react";
 import "./ZhaoDaToFeatures.scss";
 import "../../MainLayout/AnswerMain/AnswerMain.scss";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
+ 
 
 class ZhaoDaToFeatures extends React.Component {
 
