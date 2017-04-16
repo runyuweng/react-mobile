@@ -32,12 +32,39 @@ footer{
   display: flex;
   align-items:center;/*垂直居中*/
   color: #B7B7B7;
+  .home{
+      background: url("/src/images/home.png");
+  }
+  .home2{
+      background: url("/src/images/home2.png");
+      color: #21C6CD;
+  }
+  .zhiguan{
+      background: url("/src/images/zhiguan.png");
+  }
+  .zhiguan2{
+      background: url("/src/images/zhiguan2.png");
+      color: #21C6CD;
+  }
   .zhaoda{
+      background: url("/src/images/zhaoda.png");
+  }
+  .zhaoda2{
+      background: url("/src/images/zhaoda2.png");
+      color: #21C6CD;
+  }
+  .mine{
+      background: url("/src/images/mine.png");
+  }
+  .mine2{
+      background: url("/src/images/mine2.png");
+      color: #21C6CD;
+  }
+  .bg{
       display: flex;
       justify-content: center;
       align-items: flex-end;
       height: .46rem;
-      background: url("/src/images/zhaoda.png");
       background-repeat: no-repeat;
       background-position: center top;
       background-size:.25rem .25rem;

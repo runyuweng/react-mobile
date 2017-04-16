@@ -40,32 +40,29 @@ class Layout extends React.Component {
                 {show.show_bottom
               ? <footer>
                   <div>
-                      <Link to="/home" activeStyle={{"color": "#000"}}>
+                      <Link to="/home" className="bg home" activeClassName="home2">
                           <div>
-                              <img src="/src/images/home.png" />
                               <p>首页</p>
                           </div>
                       </Link>
                   </div>
                   <div>
-                      <Link to="/zhiGuan" activeStyle={{"color": "#000"}}>
+                      <Link to="/zhiGuan" className="bg zhiguan" activeClassName="zhiguan2">
                           <div>
-                              <img src="/src/images/zhiguan.png" />
                               <p>职观</p>
                           </div>
                       </Link>
                   </div>
                   <div>
-                      <Link to="/Zhaoda/main" activeStyle={{"color": "#000"}}>
-                          <div className="zhaoda">
+                      <Link to="/Zhaoda/main" className="bg zhaoda" activeClassName="zhaoda2">
+                          <div>
                               <p>招答</p>
                           </div>
                       </Link>
                   </div>
                   <div>
-                      <Link to="/mine" activeStyle={{"color": "#000"}}>
+                      <Link to="/mine" className="bg mine" activeClassName="mine2">
                           <div>
-                              <img src="/src/images/mine.png" />
                               <p>我的</p>
                           </div>
                       </Link>
