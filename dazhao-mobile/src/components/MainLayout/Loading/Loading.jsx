@@ -15,8 +15,6 @@ class Loading extends React.Component {
         const pageHeight = document.body.clientHeight,
             winHeight = window.screen.height;
 
-        console.log("pageHeight", pageHeight);
-        console.log("winHeight", winHeight);
         this.setState({"height": pageHeight > winHeight ? pageHeight : winHeight});
 
     }

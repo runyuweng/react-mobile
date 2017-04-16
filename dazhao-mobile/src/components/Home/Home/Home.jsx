@@ -3,13 +3,11 @@ import "./Home.scss";
 import fetch from "../../../services/xFetch";
 import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class Home extends React.Component {
 
     constructor (props) {
-
-        console.log(props);
 
         super(props);
         this.state = {
@@ -280,6 +278,5 @@ class Home extends React.Component {
 
     }
 }
-Home.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default Home;

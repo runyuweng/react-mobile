@@ -5,7 +5,7 @@ import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class Enterprise extends React.Component {
 
@@ -122,5 +122,4 @@ class Enterprise extends React.Component {
     }
 }
 
-Enterprise.propTypes = {"showBottom": PropTypes.func.isRequired};
 export default Enterprise;

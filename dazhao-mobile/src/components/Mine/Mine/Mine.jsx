@@ -1,7 +1,7 @@
 import React from "react";
 import "./Mine.scss";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class Mine extends React.Component {
 
@@ -75,6 +75,5 @@ class Mine extends React.Component {
 
     }
 }
-Mine.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default Mine;

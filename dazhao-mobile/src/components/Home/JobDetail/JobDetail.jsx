@@ -2,7 +2,7 @@ import React from "react";
 import "./JobDetail.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class JobDetail extends React.Component {
 
@@ -205,6 +205,5 @@ class JobDetail extends React.Component {
 
     }
 }
-JobDetail.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default JobDetail;

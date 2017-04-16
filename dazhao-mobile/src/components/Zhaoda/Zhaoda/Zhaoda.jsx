@@ -1,7 +1,7 @@
 import React from "react";
 import "./Zhaoda.scss";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class Zhaoda extends React.Component {
     constructor (props) {
@@ -54,6 +54,5 @@ class Zhaoda extends React.Component {
 
     }
 }
-Zhaoda.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default Zhaoda;

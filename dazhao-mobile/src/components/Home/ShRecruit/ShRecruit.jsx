@@ -7,7 +7,7 @@ import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
 import ReactDOM from "react-dom";
-import PropTypes from 'prop-types';
+
 
 class ShRecruit extends React.Component {
 
@@ -69,7 +69,7 @@ class ShRecruit extends React.Component {
 
     changeSort (id) {
 
-        console.log(id);
+        // console.log(id);
 
     }
 
@@ -124,6 +124,5 @@ class ShRecruit extends React.Component {
     }
 }
 
-ShRecruit.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default ShRecruit;

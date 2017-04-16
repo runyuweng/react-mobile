@@ -3,7 +3,7 @@ import "./ZhaoDaToQuestion.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class ZhaoDaToQuestion extends React.Component {
 
@@ -144,6 +144,5 @@ class ZhaoDaToQuestion extends React.Component {
 
     }
 }
-ZhaoDaToQuestion.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default ZhaoDaToQuestion;

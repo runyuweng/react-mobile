@@ -2,7 +2,7 @@ import React from "react";
 import "./Notify.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class Notify extends React.Component {
 
@@ -46,6 +46,5 @@ class Notify extends React.Component {
 
     }
 }
-Notify.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default Notify;

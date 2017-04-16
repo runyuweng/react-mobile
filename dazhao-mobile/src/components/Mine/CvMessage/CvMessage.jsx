@@ -2,7 +2,7 @@ import React from "react";
 import "./CvMessage.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class CvMessage extends React.Component {
 
@@ -185,6 +185,5 @@ class CvMessage extends React.Component {
 
     }
 }
-CvMessage.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default CvMessage;

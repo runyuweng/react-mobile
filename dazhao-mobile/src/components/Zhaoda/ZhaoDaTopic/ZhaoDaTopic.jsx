@@ -2,7 +2,7 @@ import React from "react";
 import "./ZhaoDaTopic.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class ZhaoDaTopic extends React.Component {
 
@@ -126,6 +126,5 @@ class ZhaoDaTopic extends React.Component {
 
     }
 }
-ZhaoDaTopic.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default ZhaoDaTopic;

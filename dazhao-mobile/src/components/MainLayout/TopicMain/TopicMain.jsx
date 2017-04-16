@@ -1,7 +1,7 @@
 import React from "react";
 import "./TopicMain.scss";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class TopicMain extends React.Component {
 
@@ -41,6 +41,5 @@ class TopicMain extends React.Component {
 
     }
 }
-TopicMain.propTypes = {"showBottom": PropTypes.func.isRequired};
 
 export default TopicMain;

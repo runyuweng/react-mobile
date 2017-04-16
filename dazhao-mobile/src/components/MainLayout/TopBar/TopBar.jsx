@@ -1,7 +1,7 @@
 import React from "react";
 import "./TopBar.scss";
 import {Link} from "react-router";
-import PropTypes from 'prop-types';
+
 
 class TopBar extends React.Component {
 
@@ -33,8 +33,4 @@ class TopBar extends React.Component {
 
     }
 }
-TopBar.propTypes = {
-    "title": PropTypes.string.isRequired,
-    "border": PropTypes.string.isRequired
-};
 export default TopBar;
