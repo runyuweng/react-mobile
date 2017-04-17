@@ -2,6 +2,7 @@
       #dynamic{
         width:100%;
         background:#f8f8f8;
+        font-size: 0;
         .title{
             font-family:"苹方";
             font-size:0.16rem;
@@ -19,35 +20,37 @@
                 margin-right:0.06rem;
             }
         }
-    }
 
-    .content{
+
+        .content{
             border:0.01rem #D8D8D8 solid;
             background:#FFFFFF;
-            padding:0.1rem;
-            .Myarticle{
-                padding:0;
-                display:flex;
-                justify-content:space-around;
-                border:none;
-                margin-bottom:0.1rem;
+            padding:0 0.1rem 0.1rem;
 
-                .Citems:nth-of-type(2n-1)
-                {
-                    margin-right:0.1rem;
-                }
+            .Citems:nth-of-type(2n-1){
+                margin-right: 4%;
+            }
 
-                .Citems{
-                width:50%;
-                height:0.6rem;
+            .Citems{
+                width:48%;
+                height:0.62rem;
                 border:0.01rem #D8D8D8 solid;
                 background:#FFFFFF;
                 position:relative;
+                font-size: 0;
+                display: inline-block;
+                box-sizing: border-box;
+                margin-top: .13rem;
+                font-size: 0;
                 .img{
                     display:block;
                     width:.6rem;
                     height:0.6rem;
                     background:#e5e5e5;
+                    img{
+                        width:.6rem;
+                        height:0.6rem;
+                    }
                 }
                 .detail{
                     // display:flex;
@@ -90,19 +93,21 @@
                     }
                 }
             }
-        }
-        .Formore1{
-            height:0.4rem;
-            border:0.01rem #21c6cd solid;
-            color:#666666;
-            font-size:0.14rem;
-            text-align:center;
-            line-height:0.4rem;
-            border-radius:0.05rem;
-            margin:0.15rem 0.05rem 0.1rem;
-            a{
-                color:#21c6cd;
+
+            .Formore1{
+                height:0.4rem;
+                border:0.01rem #21c6cd solid;
+                color:#666666;
+                font-size:0.14rem;
+                text-align:center;
+                line-height:0.4rem;
+                border-radius:0.05rem;
+                margin:0.15rem 0.05rem 0.1rem;
+                a{
+                    color:#21c6cd;
+                }
             }
         }
+
     }
 }

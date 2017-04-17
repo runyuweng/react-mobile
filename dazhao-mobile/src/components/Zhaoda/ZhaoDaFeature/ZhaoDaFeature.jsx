@@ -3,49 +3,71 @@ import "./ZhaoDaFeature.scss";
 import {Link} from "react-router";
 
 class ZhaoDaFeature extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            "zhuanlan" : [
+                {
+                    "imgsrc" : "/src/images/zhuanlan.png",
+                    "topic" : "#麦力达#第一期--考研那些事儿..",
+                    "name" : "Michal",
+                    "vipImgsrc" : "/src/images/vip.png",
+                    "theme" : "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
+
+                },
+                {
+                    "imgsrc" : "/src/images/zhuanlan.png",
+                    "topic" : "#麦力达#第一期--考研那些事儿..",
+                    "name" : "Michal",
+                    "vipImgsrc" : "/src/images/vip.png",
+                    "theme" : "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
+
+                },
+                {
+                    "imgsrc" : "/src/images/zhuanlan.png",
+                    "topic" : "#麦力达#第一期--考研那些事儿..",
+                    "name" : "Michal",
+                    "vipImgsrc" : "/src/images/vip.png",
+                    "theme" : "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
+
+                }
+            ]
+        }
+    }
+
+    //专栏信息
+    fetchZhuanlan(){
+
+    }
+
     render () {
 
-        return (
-            <div className="ZhaoDaFeature">
-                <div className="feature">
+        const { zhuanlan } = this.state;
+
+        const ZhuanLanList = zhuanlan.map((elem,index) => {
+            return(
+                <div className="feature" key={index}>
                     <Link to="tofeature">
-                        <div className="featureImg"><img src="/src/images/1481373795l515443385.png" />
+                        <div className="featureImg">
+                            <img src={elem.imgsrc} />
                         </div>
-                        <span className="fTheme">#麦力达#第一期--考研那些事儿..
-            </span>
+                        <span className="fTheme">{elem.topic}</span>
                     </Link>
                     <div className="publisher">
                         <span className="cicle" />
-            Michal
-            <span className="vip"><img src="/src/images/vip.png" /></span>
+                        {elem.name}
+                        <span className="vip"><img src={elem.vipImgsrc} /></span>
                     </div>
-                    <p>读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？</p>
+                    <p>{elem.theme}</p>
                 </div>
+            )
+        })
 
-                <div className="feature">
-                    <div className="featureImg"><img src="/src/images/1481373795l515443385.png" />
-                    </div>
-                    <span className="fTheme">#麦力达#第一期--考研那些事儿..</span>
-                    <div className="publisher">
-                        <span className="cicle" />
-            Michal
-            <span className="vip"><img src="/src/images/vip.png" /></span>
-                    </div>
-                    <p>读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？</p>
-                </div>
+        return (
+            <div className="ZhaoDaFeature">
 
-                <div className="feature">
-                    <div className="featureImg"><img src="/src/images/1481373795l515443385.png" />
-                    </div>
-                    <span className="fTheme">#麦力达#第一期--考研那些事儿..</span>
-                    <div className="publisher">
-                        <span className="cicle" />
-            Michal
-            <span className="vip"><img src="/src/images/vip.png" /></span>
-                    </div>
-                    <p>读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？</p>
-                </div>
-
+            {ZhuanLanList}
 
             </div>
         );
