@@ -47,7 +47,7 @@ var config = {
              'index.html'
          ],
          network: ['*'],
-         output: path.resolve(__dirname, './cache.appcache')
+         output: './cache.appcache'
        })
  ]
 }
