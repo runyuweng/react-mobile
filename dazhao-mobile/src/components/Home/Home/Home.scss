@@ -9,10 +9,11 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        .log{
+        .logo{
             display:inline-block;
-            img{
-                height:.45rem;
+            object{
+                height: .26rem;
+                width: .82rem;
             }
         }
 

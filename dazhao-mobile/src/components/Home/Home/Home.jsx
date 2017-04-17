@@ -116,7 +116,9 @@ class Home extends React.Component {
         return (
             <div className="Home">
                 <header>
-                    <span className="log"><img src="/src/images/zhaodalog.png" /></span>
+                    <span className="logo">
+                        <object data="/src/images/logo.svg" type="image/svg+xml"/>
+                    </span>
                     <div className="input">
                         <input type="text" placeholder="搜索期望中的公司、岗位、地点" />
                         <span><img src="/src/images/搜素.png" /></span>
