@@ -1,7 +1,7 @@
 const path = require('path');
 
 var config = {
-   entry: './main.jsx',
+   entry: path.resolve(__dirname, './main.jsx'),
 
    output: {
       path: path.resolve(__dirname, './'),
