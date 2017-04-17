@@ -1,4 +1,5 @@
 const path = require('path');
+const AppCachePlugin = require('appcache-webpack-plugin');
 
 var config = {
    entry: path.resolve(__dirname, './main.jsx'),
@@ -37,8 +38,18 @@ var config = {
           {
             test: /.(png|jpg)$/,
             loader: "url-loader?limit=8192"
-          }]
-   }
+        }]
+   },
+   plugins: [
+       new AppCachePlugin({
+         cache: [
+             'index.js',
+             'index.html'
+         ],
+         network: ['*'],
+         output: path.resolve(__dirname, './cache.appcache')
+       })
+ ]
 }
 
 module.exports = config;
