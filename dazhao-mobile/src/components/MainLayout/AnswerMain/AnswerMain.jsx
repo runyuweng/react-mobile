@@ -9,7 +9,8 @@ class AnswerMain extends React.Component {
         this.state = {
             "topic": this.props.data.topic || "",
             "theme": this.props.data.theme || "",
-            "coach": this.props.data.coach || "",
+            "name": this.props.data.name || "",
+            "job" : this.props.data.job || "",
             "imgsrc": this.props.data.imagesrc || "/src/images/vip.png",
             "comment": this.props.data.comment || "",
             "agree": this.props.data.agree || "0",
@@ -20,7 +21,7 @@ class AnswerMain extends React.Component {
     }
     render () {
 
-        const {topic, theme, coach, imgsrc, comment, agree, remark, collect} = this.state;
+        const {topic, theme, name, job , imgsrc, comment, agree, remark, collect} = this.state;
 
 
         return (
@@ -29,9 +30,9 @@ class AnswerMain extends React.Component {
                     <span className="topic">话题：<i>{topic}</i></span>
                     <p className="theme">{theme}</p>
                     <div className="publisher">
-                        {coach}
+                        {name}
                         <span className="vip"><img src={imgsrc} /></span>，
-              <span>骨灰级教练</span>
+                        <span>{job}</span>
                     </div>
                     <div className="comment">{comment}</div>
                     <div className="more">

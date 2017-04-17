@@ -193,7 +193,6 @@
         padding:0 0.08rem;
         box-sizing:border-box;
         background:#f8f8f8;
-        padding-bottom:0.1rem;
         .head{
             display:flex;
             align-items:center;
@@ -242,6 +241,7 @@
                 background:#FFF;
                 padding-top:0.14rem;
                 margin-right:0.1rem;
+                font-size: 0;
                 .span1{
                     display:block;
                     width:0.75rem;
@@ -249,6 +249,11 @@
                     border-radius:0.05rem;
                     background:#dadada;
                     margin:0 auto;
+                    img{
+                        width:0.75rem;
+                        height:0.75rem;
+                        border-radius:0.05rem;
+                    }
                 }
                 .span2{
                     display:block;
@@ -276,6 +281,11 @@
             .img{
                 .span1{
                     border-radius:50%;
+                    img{
+                        width:0.75rem;
+                        height:0.75rem;
+                        border-radius:50%;
+                    }
                 }
             }
         }
@@ -307,7 +317,7 @@
     }
 
     .bottom{
-        font-size:0.16rem;
+        font-size:0.15rem;
         font-family:"苹方";
         color:#ADADAD;
         line-height:0.19rem;
