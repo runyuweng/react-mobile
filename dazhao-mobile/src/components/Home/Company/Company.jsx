@@ -21,7 +21,7 @@ class Company extends React.Component {
                     <span className="joblog"><img src="/src/images/ali.png" /></span>
                     <h2>阿里巴巴网络技术有限公司</h2>
                     <div>
-                        <span><img src="/src/images/资源 58.png" /><em>上海</em></span>
+                        <span><img src="/src/images/source58.png" /><em>上海</em></span>
                         <span>认证</span>
                     </div>
                     <p>

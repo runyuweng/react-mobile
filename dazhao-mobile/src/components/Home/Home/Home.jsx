@@ -144,27 +144,27 @@ class Home extends React.Component {
                 <div className="experience">
                     <div>
                         <Link to="/schoolRecruit">
-                            <span><img src="/src/images/首页icon1@2x.png" />
+                            <span><img src="/src/images/homeIcon1.png" />
                                 <em>校招</em></span>
                         </Link>
                     </div>
                     <div>
                         <Link to="/intern">
-                            <span><img src="/src/images/首页icon2@2x.png" />
+                            <span><img src="/src/images/homeIcon2.png" />
                                 <em>实习</em></span>
                         </Link>
                     </div>
 
                     <div>
                         <Link to="/enterprise">
-                            <span><img src="/src/images/首页icon3@2x.png" />
+                            <span><img src="/src/images/homeIcon3.png" />
                                 <em>企业</em></span>
                         </Link>
                     </div>
 
                     <div>
                         <Link to="/">
-                            <span><img src="/src/images/首页icon4@2x.png" />
+                            <span><img src="/src/images/homeIcon4.png" />
                                 <em>空中宣讲</em></span>
                         </Link>
                     </div>

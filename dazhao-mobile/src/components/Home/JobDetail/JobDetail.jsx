@@ -30,9 +30,9 @@ class JobDetail extends React.Component {
                     <h2>JAVA研发工程师<span>[<em>8</em>K-<em>12</em>K]</span>
                     </h2>
                     <div>
-                        <span><img src="/src/images/资源 58.png" /><em>上海</em></span>
-                        <span><img src="/src/images/资源 59.png" /><em>本科</em></span>
-                        <span><img src="/src/images/资源 61.png" /><em>校招</em></span>
+                        <span><img src="/src/images/source58.png" /><em>上海</em></span>
+                        <span><img src="/src/images/source59.png" /><em>本科</em></span>
+                        <span><img src="/src/images/source61.png" /><em>校招</em></span>
                     </div>
                     <p>
                         <span>扁平管理</span>
@@ -64,7 +64,7 @@ class JobDetail extends React.Component {
                 </Link>
 
                 <div className="jobrequire">
-                    <h2 className="positionde"><span><img src="/src/images/资源 55.png" /></span>
+                    <h2 className="positionde"><span><img src="/src/images/source55.png" /></span>
             职位详情
           </h2>
                     <div className="jobde">
@@ -89,7 +89,7 @@ class JobDetail extends React.Component {
 
 
                 <div className="jobAddDetail">
-                    <h2 className="jobAddress"><span><img src="/src/images/资源 55.png" /></span>工作地址
+                    <h2 className="jobAddress"><span><img src="/src/images/source55.png" /></span>工作地址
           </h2>
                     <div className="jobwrap">
                         <div className="address">
