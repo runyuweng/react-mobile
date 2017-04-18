@@ -1,5 +1,5 @@
 .ZhaoDaDiscover{
-      #dynamic{
+    #dynamic{
         width:100%;
         background:#f8f8f8;
         .title{
@@ -22,22 +22,22 @@
     }
 
     .content{
-            border:0.01rem #D8D8D8 solid;
-            background:#FFFFFF;
-            padding:0.1rem;
-            .Myarticle{
-                padding:0;
-                display:flex;
-                justify-content:space-around;
-                border:none;
-                margin-bottom:0.1rem;
+        border:0.01rem #D8D8D8 solid;
+        background:#FFFFFF;
+        padding:0.1rem;
+        .Myarticle{
+            padding:0;
+            display:flex;
+            justify-content:space-around;
+            border:none;
+            margin-bottom:0.1rem;
 
-                .Citems:nth-of-type(2n-1)
-                {
-                    margin-right:0.1rem;
-                }
+            .Citems:nth-of-type(2n-1)
+            {
+                margin-right:0.1rem;
+            }
 
-                .Citems{
+            .Citems{
                 width:50%;
                 height:0.6rem;
                 border:0.01rem #D8D8D8 solid;
@@ -93,14 +93,36 @@
         }
         .Formore1{
             height:0.4rem;
-            border:0.01rem #FFE25C solid;
-            color:#666666;
+            border:0.01rem #21c6cd solid;
+            color:#21c6cd;
             font-size:0.14rem;
             text-align:center;
             line-height:0.4rem;
             border-radius:0.05rem;
-            background:#ffe25c;
             margin:0.15rem 0.05rem 0.1rem;
+            a{
+                color:#21c6cd;
+            }
+        }
+    }
+    #latest{
+        width:100%;
+        padding-bottom:0.63rem;
+        background:#f8f8f8;
+        .title{
+            font-size:0.16rem;
+            font-weight:bold;
+            color:#666666;
+            background:#f8f8f8;
+            display:flex;
+            align-items:center;
+            padding:0.13rem 0.14rem 0.14rem;
+            img{
+                height:0.18rem;
+                display:flex;
+                float:left;
+                margin-right:0.06rem;
+            }
         }
     }
 }

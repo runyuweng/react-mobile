@@ -22,21 +22,15 @@
                 line-height:0.35rem;
             }
             .active{
-                border-bottom:0.02rem #FFD112 solid;
-                color:#FFD112;
+                border-bottom:0.02rem #21c6cd solid;
+                color:#21c6cd;
             }
         }
     }
 
     #MessageMain{
-        .message:nth-of-type(1){
-            background:#FFF8DC;
-        }
-        .message:nth-of-type(2){
-            background:#FFF8DC;
-        }
-        .message:nth-of-type(3){
-            background:#FFF8DC;
+        .message:nth-of-type(1),.message:nth-of-type(2),.message:nth-of-type(3){
+            background:#EAF9F9;
         }
         .message{
             display:flex;

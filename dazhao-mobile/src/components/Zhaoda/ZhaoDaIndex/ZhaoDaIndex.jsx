@@ -1,4 +1,4 @@
-import React,{ defaultProps } from "react";
+import React, {defaultProps} from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
 import {Link} from "react-router";
@@ -6,15 +6,18 @@ import QueueAnim from "rc-queue-anim";
 
 
 class ZhaoDaIndex extends React.Component {
-    constructor(props){
+    constructor (props) {
+
         super(props);
         this.state = {
-            pressDownX : 0,//鼠标按下的位置
-            nowX : 0,//鼠标移动后的位置
-            delateX : 0,//移动的距离
-            currentX : 0,
-        }
+            "pressDownX": 0, // 鼠标按下的位置
+            "nowX": 0, // 鼠标移动后的位置
+            "delateX": 0, // 移动的距离
+            "currentX": 0
+        };
+
     }
+
 
     componentDidMount() {
         const elements = [this.refs.topic1,this.refs.topic2,this.refs.topic3];
@@ -24,57 +27,88 @@ class ZhaoDaIndex extends React.Component {
 
     }
 
-    _touchEvent(elem){
-            //触屏开始
-            elem.addEventListener("touchstart",(e)=>{
-                let _this = elem;
-                let isStart = true;
-                const event = e || window.event;
-                const pressDownX = event.touches[0].pageX;
-                const left = parseInt(_this.style.left || _this.offsetLeft);
-                this.setState({ pressDownX : pressDownX, currentX : left});
 
-                //触屏移动
-                document.addEventListener("touchmove",(e)=>{
-                    if(isStart){
-                        var left = this.state.currentX;
-                        const element = _this;
-                        const width = element.clientWidth;
-                        const windowWidth = window.innerWidth;
-                        const event = e || window.event;
-                        this.setState({nowX : event.touches[0].pageX, delateX : event.touches[0].pageX - this.state.pressDownX});
-                        left += this.state.delateX;
+    _touchEvent (elem) {
 
-                        //边界判断
-                        if (windowWidth>width) {
-                            return;
-                        }else{
-                            if (left > windowWidth - width - 10 && left<0) {
-                                element.style.left = left + 'px';
-                            }else if (left < windowWidth - width - 10) {
-                                element.style.left = windowWidth - width - 10 + 'px';
-                            }else if (left > 0) {
-                                element.style.left = '0px';
-                            }
-                        }
+            // 触屏开始
+        elem.addEventListener("touchstart", (e) => {
+
+            const _this = elem;
+            let isStart = true;
+            const event = e || window.event;
+            const pressDownX = event.touches[0].pageX;
+            const left = parseInt(_this.style.left || _this.offsetLeft);
+
+            this.setState({
+                pressDownX,
+                "currentX": left
+            });
+
+                // 触屏移动
+            document.addEventListener("touchmove", (e) => {
+
+                if (isStart) {
+
+                    let left = this.state.currentX;
+                    const element = _this;
+                    const width = element.clientWidth;
+                    const windowWidth = window.innerWidth;
+                    const event = e || window.event;
+
+                    this.setState({
+                        "nowX": event.touches[0].pageX,
+                        "delateX": event.touches[0].pageX - this.state.pressDownX
+                    });
+                    left += this.state.delateX;
+
+                        // 边界判断
+                    if (windowWidth > width) {
+
+                        return;
+
+
                     }
-                })
 
-                //触屏结束
-                document.addEventListener("touchend",()=>{
-                    if(isStart){
-                        const element = _this;
-                        const currentX = parseInt(element.style.left);
-                        this.setState({
-                            pressDownX : 0,
-                            nowX : 0,
-                            currentX : currentX,
-                            delateX : 0,
-                        })
+                    if (left > windowWidth - width - 10 && left < 0) {
+
+                        element.style.left = `${left}px`;
+
+                    } else if (left < windowWidth - width - 10) {
+
+                        element.style.left = `${windowWidth - width - 10}px`;
+
+                    } else if (left > 0) {
+
+                        element.style.left = "0px";
+
                     }
-                    isStart = false;
-                })
-            })
+
+
+                }
+
+            });
+
+                // 触屏结束
+            document.addEventListener("touchend", () => {
+
+                if (isStart) {
+
+                    const element = _this;
+                    const currentX = parseInt(element.style.left);
+
+                    this.setState({
+                        "pressDownX": 0,
+                        "nowX": 0,
+                        "currentX" : 0,
+                        "delateX": 0
+                    });
+
+                }
+                isStart = false;
+
+            });
+
+        });
 
     }
 
@@ -147,7 +181,7 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic1">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/hot.png" /></b>热门话题</span>
-                            <span className="all">全部话题<b /><img src="/src/images/right.png" /></span>
+                            <span className="all">全部话题<b /><img src="/src/images/查看更多@2x.png" /></span>
                         </div>
                         <div id="topic1" ref="topic1" className="content">
                             <div className="img">
@@ -196,7 +230,7 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic2">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/special.png" /></b>人气行家</span>
-                            <span className="all">全部行家<b><img src="/src/images/right.png" /></b></span>
+                            <span className="all">全部行家<b><img src="/src/images/查看更多@2x.png" /></b></span>
                         </div>
                         <div id="topic2" ref="topic2" className="content">
                             <div className="img">
@@ -229,7 +263,7 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic3">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/special.png" /></b>最新专栏</span>
-                            <span className="all">全部专栏<b><img src="/src/images/right.png" /></b></span>
+                            <span className="all">全部专栏<b><img src="/src/images/查看更多@2x.png" /></b></span>
                         </div>
                         <div id="topic3" ref="topic3" className="content" >
                             <div className="img">

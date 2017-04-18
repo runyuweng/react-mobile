@@ -4,6 +4,7 @@ var config = {
    output: {
       path:'./',
       filename: 'index.js',
+      chunkFilename: '[name].[chunkhash:5].chunk.js'
    },
 
    devServer: {

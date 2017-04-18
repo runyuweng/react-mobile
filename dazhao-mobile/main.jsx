@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-  createStore,
-  applyMiddleware
+  applyMiddleware,
+  createStore
 }
 from "redux";
 import logger from "redux-logger";
@@ -55,9 +55,10 @@ import {
 from "react-redux";
 import reducer from "./src/reducers/index.js";
 
-const store = createStore(reducer,applyMiddleware(logger)),
-    zhiGuan = () => <h1 style={{"fontSize": "0.1rem"}}>职官页面</h1>,
-    Routes = () =>
+const store = createStore(reducer,applyMiddleware(logger));
+const zhiGuan = () => <h1 style={{"fontSize": "0.1rem"}}>职官页面</h1>;
+
+    /*Routes = () =>
         <Provider store={store}>
             <Router history={hashHistory}>
                 <Route path="/" component={MainLayout}>
@@ -69,34 +70,45 @@ const store = createStore(reducer,applyMiddleware(logger)),
                         <Route path="discover" component={ZhaoDaDiscover} />
                         <Route path="feature" component={ZhaoDaFeature} />
                     </Route>
-                    <Route path="topic" component={ZhaoDaTopic} />
-                    <Route path="message" component={ZhaoDaMessage} />
-                    <Route path="search" component={ZhaoDaSearch} />
-                    <Route path="response" component={ZhaoDaResponse} />
-          // <Route path="quiz" component={ZhaoDaQuiz} />
-                    <Route path="consult" component={ZhaoDaConsult} />
-                    <Route path="detail" component={ZhaoDaQuesDetail} />
-                    <Route path="toquestion" component={ZhaoDaToQuestion} />
-                    <Route path="tofeature" component={ZhaoDaToFeatures} />
-                    <Route path="totopic" component={ZhaoDaToTopic} />
-
-                    <Route path="jobdetail" component={HomeJobDetail} />
-                    <Route path="company" component={HomeCompany} />
-                    <Route path="schoolRecruit" component={HomeShRecruit} />
-                    <Route path="enterprise" component={HomeEnterprise} />
-                    <Route path="intern" component={HomeIntern} />
-
                     <Route path="mine" component={Mine} />
-                    <Route path="cvcenter" component={MineCvCenter} />
-                    <Route path="growrecord" component={MineGrowRecord} />
-                    <Route path="notify" component={MineNotify} />
-                    <Route path="cvmessage" component={MineCvMessage} />
-                    <Route path="edmessage" component={MineEditMg} />
-                    <Route path="edupexp" component={MineEduEx} />
-                    <Route path="practice" component={MinePractice} />
                 </Route>
             </Router>
-        </Provider>;
+        </Provider>;*/
+
+const roouRoutes = {
+    path : "/",
+    getComponents(location, callback) {
+        require.ensure([], ()=>{
+        callback(null, MainLayout)
+        },"layout")
+    },
+
+    getChildRoutes(location, callback) {
+        require.ensure([], (require)=>{
+        callback(null, [
+            require('./routes/Home'),
+            require('./routes/Mine'),
+            require('./routes/Zhaoda'),
+            require('./routes/Zhiguan'),
+            ])
+        })
+    },
+
+    indexRoute: {
+        getComponent(nextState, callback) {
+            require.ensure([], () => {
+                callback(null, Home)
+            }, 'HomePage')
+        },
+    }
+}
 
 
-ReactDOM.render(<Routes />, document.getElementById("app"));
+ReactDOM.render((
+    <Provider store={store}>
+        <Router
+        history={hashHistory}
+        routes={roouRoutes}
+        />
+    </Provider>
+), document.getElementById("app"));

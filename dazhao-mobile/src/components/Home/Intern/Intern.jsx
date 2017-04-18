@@ -18,12 +18,13 @@ class Intern extends React.Component {
             "showLoading": true,
             "industry": [],
             "jobs": [],
-            listDisplay : false
+            "listDisplay": false
         };
 
     }
 
     componentDidMount () {
+
         this.props.showBottom(false);
 
         fetch("/zhaoda/industry/category", {"method": "GET"}).
@@ -38,8 +39,10 @@ class Intern extends React.Component {
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"jobs": data.contents},()=>{
-                this.setState({showLoading: false});
+            this.setState({"jobs": data.contents}, () => {
+
+                this.setState({"showLoading": false});
+
             });
 
         });
@@ -48,14 +51,16 @@ class Intern extends React.Component {
 
     changeCategory (id) {
 
-        this.setState({showLoading: true})
+        this.setState({"showLoading": true});
 
         fetch(`/zhaoda/jobs/school?industryid=${id}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"jobs": data.contents},()=>{
-                this.setState({showLoading: false});
+            this.setState({"jobs": data.contents}, () => {
+
+                this.setState({"showLoading": false});
+
             });
 
         });
@@ -104,8 +109,10 @@ class Intern extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
+
                     <SortBy count="4" sortChange={(id) => this.changeSort(id)}/>
                     {showLoading?<Loading/>:""}
+
                     <div id="homeMain">
                         {jobList}
                         <p>加载更多</p>

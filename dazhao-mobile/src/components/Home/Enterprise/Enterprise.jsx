@@ -36,22 +36,27 @@ class Enterprise extends React.Component {
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"enterprise": data.contents},()=>{
-                this.setState({showLoading: false});
+            this.setState({"enterprise": data.contents}, () => {
+
+                this.setState({"showLoading": false});
+
             });
 
         });
 
     }
     changeCategory (id) {
-        this.setState({showLoading: true})
+
+        this.setState({"showLoading": true});
 
         fetch(`/zhaoda/jobs/enterprise?industryid=${id}`, {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"enterprise": data.contents},()=>{
-                this.setState({showLoading: false});
+            this.setState({"enterprise": data.contents}, () => {
+
+                this.setState({"showLoading": false});
+
             });
 
         });
@@ -73,13 +78,9 @@ class Enterprise extends React.Component {
                     <h2>{value.name}<span>认证</span></h2>
                     <h3>
                         <span>[<em>{value.jobs.length}</em>个]</span>
-                        {value.jobs.length > 0 ? value.jobs.map((value, i) => {
-
-                            return (
-                                <span key={i}>{value.job_name}、</span>
-                            );
-
-                        }) : "暂无"}
+                        {value.jobs.length > 0 ? value.jobs.map((value, i) =>
+                            <span key={i}>{value.job_name}、</span>
+                            ) : "暂无"}
                     </h3>
                     <span className="address">
                         <em>{value.city}</em>
@@ -115,8 +116,12 @@ class Enterprise extends React.Component {
                             <li>本科<img src="/src/images/Back_down.png" /></li>
                         </ul>
                     </div>
+<<<<<<< HEAD
                     */}
                     {showLoading?<Loading/>:""}
+=======
+                    {showLoading ? <Loading /> : ""}
+>>>>>>> origin/master
                     <div className="hotjob">
                         {enterpriseList}
                         <p>加载更多</p>

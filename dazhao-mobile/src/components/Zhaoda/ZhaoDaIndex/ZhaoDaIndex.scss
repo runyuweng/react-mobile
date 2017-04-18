@@ -53,7 +53,6 @@
             align-items:center;
             padding:0.13rem 0.14rem 0.14rem;
             img{
-                width:0.15rem;
                 height:0.18rem;
                 display:flex;
                 float:left;
@@ -93,6 +92,7 @@
                 font-size:0.14rem;
                 font-family:"苹方";
                 font-weight:bold;
+                color:#666666;
                 margin-top:0.16rem;
                 color:#696969;
                 line-height:0.2rem;
@@ -174,135 +174,16 @@
         .Formore{
             width:92%;
             height:0.4rem;
-            border:0.01rem #FFE25C solid;
-            color:#666666;
+            border:0.01rem #21c6cd solid;
+            color:#21c6cd;
             font-size:0.14rem;
             text-align:center;
             line-height:0.4rem;
             border-radius:0.05rem;
             margin:0.3rem auto 0;
-            background:#ffe25c;
         }
     }
 
-
-    #moreTopic{
-        width:100%;
-        padding:0 0.08rem;
-        box-sizing:border-box;
-        background:#f8f8f8;
-        padding-bottom:0.1rem;
-        .head{
-            display:flex;
-            align-items:center;
-            position:relative;
-            .hot{
-                    font-size:0.16rem;
-                    font-family:"苹方";
-                    font-weight:bold;
-                    color:#666666;
-
-                img{
-                    width:0.23rem;
-                    height:0.16rem;
-                    margin-right:0.06rem;
-                }
-            }
-            .all{
-                font-size:0.13rem;
-                font-family:"苹方";
-                color:#FFD112;
-                position:absolute;
-                right:0rem;
-                cursor: pointer;
-                img{
-                    width:0.1rem;
-                    height:0.13rem;
-                    margin-left:0.06rem;
-                }
-            }
-
-            img{
-                width:0.16rem;
-                height:0.16rem;
-            }
-        }
-        .content{
-            height:2rem;
-            margin-top:0.2rem;
-            position:relative;
-            .img{
-                width:1.6rem;
-                height:1.65rem;
-                box-sizing:border-box;
-                border-radius:0.03rem;
-                box-shadow:0 0 0.06rem rgba(0,0,0,0.15);
-                background:#FFF;
-                padding-top:0.14rem;
-                margin-right:0.1rem;
-                .span1{
-                    display:block;
-                    width:0.75rem;
-                    height:0.75rem;
-                    border-radius:0.05rem;
-                    background:#dadada;
-                    margin:0 auto;
-                }
-                .span2{
-                    display:block;
-                    font-size:0.14rem;
-                    font-family:"苹方";
-                    font-weight:bold;
-                    color:#333333;
-                    text-align:center;
-                    margin:0.17rem 0 0.12rem;
-                }
-                .care{
-                    display:block;
-                    text-align:center;
-                    font-size:0.14rem;
-                    font-family:"苹方";
-                    color:#333333;
-                }
-
-               .care span:nth-child(1){
-                    margin-right:0.08rem;
-                }
-            }
-        }
-        .topic2{
-            .img{
-                .span1{
-                    border-radius:50%;
-                }
-            }
-        }
-
-        .topic3{
-            .content {
-                .img{
-                    padding-top:0rem;
-                    border-radius:0.03rem;
-                    white-space: normal;
-                    img{
-                        width:1.6rem;
-                        height:1.1rem;
-                        border-radius:0.03rem 0.03rem 0 0;
-                    }
-                    p{
-                        font-size:0.13rem;
-                        font-family:"苹方";
-                        color:#666666;
-                        line-height:0.19rem;
-                        text-align:left;
-                        padding:0rem 0.1rem;
-                        margin-top: .11rem;
-                    }
-                }
-            }
-
-        }
-    }
 
     .bottom{
         font-size:0.16rem;

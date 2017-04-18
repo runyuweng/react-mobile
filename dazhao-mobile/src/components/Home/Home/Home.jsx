@@ -1,30 +1,81 @@
 import React from "react";
 import "./Home.scss";
+import fetch from "../../../services/xFetch";
+import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 import {Link} from "react-router";
-import QueueAnim from "rc-queue-anim";
 
 class Home extends React.Component {
 
     constructor (props) {
 
         super(props);
-        this.state = {"position": []};
+        this.state = {
+            "jobs": [],
+            "enterprise": [],
+            "jobsLoading": false,
+            "enterpriseLoading": false,
+            "jobsPage": 1,
+            "enterprisePage": 1
+        };
 
     }
 
     componentDidMount () {
-
+        this.setState({
+            jobsLoading: true,
+            enterpriseLoading: true
+        })
+        // console.log(this.props.showBottom)
         this.props.showBottom(true);
-        const request = new Request("http://115.159.159.79/zhaoda/getjobs", {
-            "method": "GET",
-            "mode": "cors"
-        });
-
-        fetch(request).
+        fetch("/zhaoda/getjobs", {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
 
-            this.setState({"position": data.contents});
+            this.setState({"jobs": data.contents,"jobsPage": (this.state.jobsPage+1)},()=>{
+                this.setState({"jobsLoading": false})
+            });
+
+        });
+
+    }
+
+    getMore (type) {
+
+        let newState = {};
+
+        newState[`${type}Loading`] = true;
+        this.setState(newState);
+        newState = {};
+        fetch(`/zhaoda/get${type}?page=${this.state.jobsPage}`, {"method": "GET"}).
+        then((response) => response.json()).
+        then((data) => {
+
+            if (data.code === "S01") {
+
+                this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
+
+                    let newState = {};
+
+                    newState[`${type}Loading`] = false;
+                    newState[`${type}Page`] = this.state[`${type}Page`]+1;
+
+                    this.setState(newState);
+                    newState = {};
+
+                });
+
+            } else {
+
+                let newState = {};
+
+
+                newState[`${type}Loading`] = false;
+                newState[`${type}Page`] = this.state[`${type}Page`]+1;
+
+                this.setState(newState);
+                newState = {};
+
+            }
 
         });
 
@@ -32,8 +83,8 @@ class Home extends React.Component {
 
     render () {
 
-        const {position} = this.state;
-        const posList = position.map((value, i) => <div className="jobitems" key={i}>
+        const {jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
+        const posList = jobs.map((value, i) => <div className="jobitems" key={i}>
             <span className="pics"><img src="/src/images/ali.png" /></span>
             <div className="jobintro">
                 <h2>{value.job_name}</h2>
@@ -60,7 +111,7 @@ class Home extends React.Component {
                 <header>
                     <span className="log"><img src="/src/images/zhaodalog.png" /></span>
                     <div className="input">
-                        <input type="text" placeholder="搜索期望中的公司、岗位、地点" />
+                        <input type="text" placeholder="搜索期望中的公司、岗位、地点111" />
                         <span><img src="/src/images/搜素.png" /></span>
                     </div>
                 </header>
@@ -119,7 +170,9 @@ class Home extends React.Component {
 
                     {posList}
 
-                    <div className="morejob">展开更多</div>
+                    <div className="morejob" onClick={jobsLoading?"":() => this.getMore("jobs")}>
+                        {jobsLoading ? <LoadingMore /> : "展开更多"}
+                    </div>
 
                 </div>
 
@@ -207,7 +260,9 @@ class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="morejob">展开更多</div>
+                    <div className="morejob" onClick={enterpriseLoading?"":() => this.getMore("enterprise")}>
+                        {enterpriseLoading ? <LoadingMore /> : "展开更多"}
+                    </div>
 
                 </div>
 
