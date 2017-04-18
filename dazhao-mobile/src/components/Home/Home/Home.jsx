@@ -10,6 +10,7 @@ class Home extends React.Component {
     constructor (props) {
 
         super(props);
+        console.log(props);
         this.state = {
             "jobs": [],
             "enterprise": [],
@@ -29,9 +30,11 @@ class Home extends React.Component {
         });
 
         this.props.showBottom(true);
-        fetch("/zhaoda/getjobs", {"method": "GET"}).
+
+        fetch("/zhaoda/getjobs?page=1", {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
+            console.log(data);
 
             this.setState({
                 "jobs": data.contents,
@@ -43,6 +46,22 @@ class Home extends React.Component {
             });
 
         });
+
+        // fetch("/zhaoda/enterprise?page=1", {"method": "GET"}).
+        // then((response) => response.json()).
+        // then((data) => {
+        //     console.log(data);
+        //
+        //     this.setState({
+        //         "enterprise": data.contents,
+        //         "enterprisePage": this.state.enterprisePage + 1
+        //     }, () => {
+        //
+        //         this.setState({"enterpriseLoading": false});
+        //
+        //     });
+        //
+        // });
 
     }
 
@@ -71,13 +90,24 @@ class Home extends React.Component {
 
                 });
 
-            } else {
+            } else if(data.code === "S02"){
 
                 let newState = {};
 
+                newState[`${type}Loading`] = false;
+
+                this.props.showMessage("已加载完全部");
+
+                this.setState(newState);
+                newState = {};
+
+            } else if(date.code === "E01"){
+
+                let newState = {};
 
                 newState[`${type}Loading`] = false;
-                newState[`${type}Page`] = this.state[`${type}Page`] + 1;
+
+                this.props.showMessage("请求错误，请稍后重试");
 
                 this.setState(newState);
                 newState = {};
@@ -91,8 +121,8 @@ class Home extends React.Component {
     render () {
 
         const {jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
-        const posList = jobs.map((value, i) => <div className="jobitems" key={i}>
-            <span className="pics"><img src="/src/images/ali.png" /></span>
+        const jobList = jobs.map((value, i) => <div className="jobitems" key={i}>
+            <span className="pics"><img src={value.company.img}/></span>
             <div className="jobintro">
                 <h2>{value.job_name}</h2>
                 <h3>{value.company.name}</h3>
@@ -177,7 +207,7 @@ class Home extends React.Component {
               </h2>
 
 
-                    {posList}
+                    {jobList}
 
                     <div className="morejob" onClick={jobsLoading ? "" : () => this.getMore("jobs")}>
                         {jobsLoading ? <LoadingMore /> : "展开更多"}

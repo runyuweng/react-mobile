@@ -1,0 +1,44 @@
+.message{
+    display: flex;
+    position: fixed;
+    top: .6rem;
+    width: 100%;
+    z-index: 999;
+    justify-content: center;
+    animation:show 1s;
+    @keyframes show
+    {
+        from {transform: translate3d(0, -0.2rem, 0); opacity: 0}
+        to {transform: translate3d(0, 0, 0); opacity: 1}
+    }
+    div{
+        font-size: .14rem;
+        border-radius: .05rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 .04rem;
+        color: rgba(0,0,0,.65);
+        background-color: #fff;
+        border: 1px solid #d9d9d9;
+        box-shadow: 0 .01rem .06rem rgba(0,0,0,.2);
+        img{
+            height: .14rem;
+        }
+        p{
+            padding-left: .04rem;
+            text-align: center;
+            line-height: .22rem;
+
+        }
+    }
+    .hide{
+        opacity: 0;
+        animation: hide 1s;
+        @keyframes hide
+        {
+            from {opacity: 1}
+            to {opacity: 0}
+        }
+    }
+}
