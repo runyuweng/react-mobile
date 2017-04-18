@@ -12,7 +12,6 @@ class Layout extends React.Component {
     constructor (props) {
 
         super(props);
-        console.log(props);
 
     }
 
@@ -43,9 +42,12 @@ class Layout extends React.Component {
 
         return (
             <div>
-                {show.show_message?<Message content = {show.show_message} showMessage = {(text) => {
+                {show.show_message ? <Message content={show.show_message} showMessage={(text) => {
+
                     actions.showMessage(text);
-                }} />:''}
+
+                }}
+                                     /> : ""}
                 {childrenWithProps}
                 {show.show_bottom
               ? <footer>

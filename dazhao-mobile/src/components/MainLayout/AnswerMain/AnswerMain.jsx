@@ -10,7 +10,7 @@ class AnswerMain extends React.Component {
             "topic": this.props.data.topic || "",
             "theme": this.props.data.theme || "",
             "name": this.props.data.name || "",
-            "job" : this.props.data.job || "",
+            "job": this.props.data.job || "",
             "imgsrc": this.props.data.imagesrc || "/src/images/vip.png",
             "comment": this.props.data.comment || "",
             "agree": this.props.data.agree || "0",
@@ -21,7 +21,7 @@ class AnswerMain extends React.Component {
     }
     render () {
 
-        const {topic, theme, name, job , imgsrc, comment, agree, remark, collect} = this.state;
+        const {topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
 
 
         return (

@@ -12,7 +12,7 @@ class ZhaoDaIndex extends React.Component {
             "nowX": 0, // 鼠标移动后的位置
             "delateX": 0, // 移动的距离
             "currentX": 0,
-            "latestDynamic":[
+            "latestDynamic": [
                 {
                     "topic": "考研",
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
@@ -47,77 +47,77 @@ class ZhaoDaIndex extends React.Component {
                     "collect": false
                 }
             ],
-            "hotTopic":[
+            "hotTopic": [
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
-                } //热门话题
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
+                } // 热门话题
             ],
-            "popularityPople" : [
+            "popularityPople": [
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
-                } //人气行家
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
+                } // 人气行家
             ],
-            "latestZhuanlan" : [
+            "latestZhuanlan": [
                 {
-                    "imgsrc" : "/src/images/banner2.png",
-                    "topic" : "#麦力克#第一期---考研那些事儿"
+                    "imgsrc": "/src/images/banner2.png",
+                    "topic": "#麦力克#第一期---考研那些事儿"
                 },
                 {
-                    "imgsrc" : "/src/images/banner2.png",
-                    "topic" : "#麦力克#第一期---考研那些事儿"
+                    "imgsrc": "/src/images/banner2.png",
+                    "topic": "#麦力克#第一期---考研那些事儿"
                 },
                 {
-                    "imgsrc" : "/src/images/banner2.png",
-                    "topic" : "#麦力克#第一期---考研那些事儿"
-                } //最新专栏
+                    "imgsrc": "/src/images/banner2.png",
+                    "topic": "#麦力克#第一期---考研那些事儿"
+                } // 最新专栏
             ]
         };
 
@@ -133,28 +133,28 @@ class ZhaoDaIndex extends React.Component {
 
     }
 
-    //最新动态
-    fetchLatestDynamic(){
+    // 最新动态
+    fetchLatestDynamic () {
 
     }
 
 
-    //热门话题
-    fetchHotTopic(args){
+    // 热门话题
+    fetchHotTopic (args) {
 
     }
 
-    //人气行家
-    fetchPopularity(args){
+    // 人气行家
+    fetchPopularity (args) {
 
     }
 
-    //最新专栏
-    fetchLatestZhuanlan(args){
+    // 最新专栏
+    fetchLatestZhuanlan (args) {
 
     }
 
-    //滑动事件
+    // 滑动事件
     _touchEvent (elem) {
 
             // 触屏开始
@@ -240,48 +240,42 @@ class ZhaoDaIndex extends React.Component {
 
     render () {
 
-        const {latestDynamic , hotTopic , popularityPople , latestZhuanlan} = this.state;
+        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan} = this.state;
 
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
 
-        const hotTopicList = hotTopic.map((elem,index)=>{
-            return(
-                    <div className="img" key={index}>
-                        <span className="span1">
-                            <img src={elem.imgsrc} alt="热门话题" />
-                        </span>
-                        <span className="span2">{elem.topic}</span>
-                        <span className="care">
-                            <span>回答:{elem.answer}</span>
-                            <span>关注:{elem.care}</span>
-                        </span>
-                    </div>
-            )
-        })
+        const hotTopicList = hotTopic.map((elem, index) =>
+            <div className="img" key={index}>
+                <span className="span1">
+                    <img src={elem.imgsrc} alt="热门话题" />
+                </span>
+                <span className="span2">{elem.topic}</span>
+                <span className="care">
+                    <span>回答:{elem.answer}</span>
+                    <span>关注:{elem.care}</span>
+                </span>
+            </div>
+            );
 
-        const popularityPopleList = popularityPople.map((elem,index) => {
-            return(
-                <div className="img" key={index}>
-                    <span className="span1" >
-                        <img src={elem.imgsrc} alt="人气行家" />
-                    </span>
-                    <span className="span2">{elem.topic}</span>
-                    <span className="care">
-                        <span>回答:{elem.answer}</span>
-                        <span>关注:{elem.care}</span>
-                    </span>
-                </div>
-            )
-        })
+        const popularityPopleList = popularityPople.map((elem, index) =>
+            <div className="img" key={index}>
+                <span className="span1" >
+                    <img src={elem.imgsrc} alt="人气行家" />
+                </span>
+                <span className="span2">{elem.topic}</span>
+                <span className="care">
+                    <span>回答:{elem.answer}</span>
+                    <span>关注:{elem.care}</span>
+                </span>
+            </div>
+            );
 
-        const latestZhuanlanList = latestZhuanlan.map((elem,index) => {
-            return(
-                <div className="img" key={index}>
-                    <img src={elem.imgsrc} />
-                    <p>{elem.topic}</p>
-                </div>
-            )
-        })
+        const latestZhuanlanList = latestZhuanlan.map((elem, index) =>
+            <div className="img" key={index}>
+                <img src={elem.imgsrc} />
+                <p>{elem.topic}</p>
+            </div>
+            );
 
         return (
             <div className="ZhaoDaIndex">

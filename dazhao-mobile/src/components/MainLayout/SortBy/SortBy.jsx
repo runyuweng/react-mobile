@@ -8,7 +8,7 @@ import constants from "../../../constants/constants";
 
 class SortBy extends React.Component {
     constructor (props) {
-        console.log(constants);
+
         super(props);
         this.state = {
             "sortBy": [
@@ -61,7 +61,7 @@ class SortBy extends React.Component {
                     {this.state.sortBy[i].map((elem, index) => <span
                         onClick={this.itemClick.bind(this, i, index)}
                         key={index}
-                                                                           >{this.state.sortBy[i][index]}
+                                                               >{this.state.sortBy[i][index]}
                     </span>)}
                 </div> : ""
 

@@ -10,7 +10,6 @@ class Home extends React.Component {
     constructor (props) {
 
         super(props);
-        console.log(props);
         this.state = {
             "jobs": [],
             "enterprise": [],
@@ -34,7 +33,6 @@ class Home extends React.Component {
         fetch("/zhaoda/getjobs?page=1", {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
-            console.log(data);
 
             this.setState({
                 "jobs": data.contents,
@@ -47,17 +45,17 @@ class Home extends React.Component {
 
         });
 
-        // fetch("/zhaoda/enterprise?page=1", {"method": "GET"}).
-        // then((response) => response.json()).
-        // then((data) => {
-        //     console.log(data);
+        // Fetch("/zhaoda/enterprise?page=1", {"method": "GET"}).
+        // Then((response) => response.json()).
+        // Then((data) => {
+        //     Console.log(data);
         //
-        //     this.setState({
+        //     This.setState({
         //         "enterprise": data.contents,
         //         "enterprisePage": this.state.enterprisePage + 1
         //     }, () => {
         //
-        //         this.setState({"enterpriseLoading": false});
+        //         This.setState({"enterpriseLoading": false});
         //
         //     });
         //
@@ -90,7 +88,7 @@ class Home extends React.Component {
 
                 });
 
-            } else if(data.code === "S02"){
+            } else if (data.code === "S02") {
 
                 let newState = {};
 
@@ -101,7 +99,7 @@ class Home extends React.Component {
                 this.setState(newState);
                 newState = {};
 
-            } else if(date.code === "E01"){
+            } else if (date.code === "E01") {
 
                 let newState = {};
 
@@ -122,7 +120,7 @@ class Home extends React.Component {
 
         const {jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
         const jobList = jobs.map((value, i) => <div className="jobitems" key={i}>
-            <span className="pics"><img src={value.company.img}/></span>
+            <span className="pics"><img src={value.company.img} /></span>
             <div className="jobintro">
                 <h2>{value.job_name}</h2>
                 <h3>{value.company.name}</h3>
@@ -147,7 +145,7 @@ class Home extends React.Component {
             <div className="Home">
                 <header>
                     <span className="logo">
-                        <object data="/src/images/logo.svg" type="image/svg+xml"/>
+                        <object data="/src/images/logo.svg" type="image/svg+xml" />
                     </span>
                     <div className="input">
                         <input type="text" placeholder="搜索期望中的公司、岗位、地点" />
