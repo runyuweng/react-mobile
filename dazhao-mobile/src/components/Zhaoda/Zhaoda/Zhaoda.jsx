@@ -47,7 +47,6 @@ class Zhaoda extends React.Component {
                     </ul>
                 </nav>
                 {this.props.children}
-
             </div>
         );
 

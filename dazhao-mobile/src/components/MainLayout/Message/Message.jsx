@@ -10,7 +10,6 @@ class Message extends React.Component {
         this.state = {
             hide: false
         }
-        console.log(props);
 
     }
 
@@ -31,7 +30,7 @@ class Message extends React.Component {
         const {hide} = this.state;
 
         return (
-            <div className="message">
+            <div className="publicMessage">
                 <div className={hide?'hide':''}>
                     <img src="/src/images/icon/info.png"/>
                     <p>{content}</p>

@@ -10,7 +10,6 @@ class Home extends React.Component {
     constructor (props) {
 
         super(props);
-        console.log(props);
         this.state = {
             "jobs": [],
             "enterprise": [],
@@ -34,8 +33,7 @@ class Home extends React.Component {
         fetch("/zhaoda/getjobs?page=1", {"method": "GET"}).
         then((response) => response.json()).
         then((data) => {
-            console.log(data);
-
+            
             this.setState({
                 "jobs": data.contents,
                 "jobsPage": this.state.jobsPage + 1

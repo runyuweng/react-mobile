@@ -4,21 +4,22 @@ import {bindActionCreators} from "redux";
 import "./MainLayout.scss";
 import Message from "./Message/Message.jsx";
 import {Link} from "react-router";
-
 import * as actionCreators from "../../actions/show.js";
+import QueueAnim from 'rc-queue-anim';
 
 class Layout extends React.Component {
 
     constructor (props) {
 
         super(props);
-        console.log(props);
 
     }
 
     render () {
-
+        console.log(this.props.location.pathname);
         const {actions, show} = this.props;
+
+        const arr = [1,2,3,4]
 
         const childrenWithProps = React.Children.map(this.props.children,
      (child) => React.cloneElement(child, {
@@ -37,6 +38,7 @@ class Layout extends React.Component {
              actions.showMessage(text);
 
          },
+         "key":this.props.location.pathname,
          show
      })
     );
@@ -46,7 +48,9 @@ class Layout extends React.Component {
                 {show.show_message?<Message content = {show.show_message} showMessage = {(text) => {
                     actions.showMessage(text);
                 }} />:''}
-                {childrenWithProps}
+                <QueueAnim>
+                    {childrenWithProps}
+                </QueueAnim>
                 {show.show_bottom
               ? <footer>
                   <div>

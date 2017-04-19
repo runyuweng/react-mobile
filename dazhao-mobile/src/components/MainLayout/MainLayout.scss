@@ -1,86 +1,107 @@
-*{
-  padding: 0;
-  margin: 0;
-  font-family: "Microsoft Yahei";
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-body{
-  background: rgb(247, 247, 247);
-  padding-bottom: .8rem;
-}
-button,input,textarea,select{
-  outline: none;
-}
-a:hover, a:visited, a:link, a:active {
-  text-decoration: none;
-  outline: none;
-  color: #666;
-}
-li{
-  list-style: none;
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft Yahei";
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+body {
+    background: rgb(247, 247, 247);
+    padding-bottom: 0.8rem;
+}
 
+button,
+input,
+select,
+textarea {
+    outline: none;
+}
 
-footer{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  box-shadow: .01rem 0.01rem .03rem #999;
-  background: #fff;
-  height: 0.57rem;
-  display: flex;
-  align-items:center;/*垂直居中*/
-  color: #B7B7B7;
-  .home{
-      background: url("/src/images/home.png");
-  }
-  .home2{
-      background: url("/src/images/home2.png");
-      color: #21C6CD;
-  }
-  .zhiguan{
-      background: url("/src/images/zhiguan.png");
-  }
-  .zhiguan2{
-      background: url("/src/images/zhiguan2.png");
-      color: #21C6CD;
-  }
-  .zhaoda{
-      background: url("/src/images/zhaoda.png");
-  }
-  .zhaoda2{
-      background: url("/src/images/zhaoda2.png");
-      color: #21C6CD;
-  }
-  .mine{
-      background: url("/src/images/mine.png");
-  }
-  .mine2{
-      background: url("/src/images/mine2.png");
-      color: #21C6CD;
-  }
-  .bg{
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      height: .46rem;
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size:.25rem .25rem;
-  }
-  img{
-    width: 25px;
-    height: 25px;
-  }
-  &>div{
-    font-size: 0.12rem;
-    text-align: center;
-    flex-grow: 1;
-  }
-  .icon{
-    width: 0.25rem;
-    height: 0.25rem;
-  }
+a:active,
+a:hover,
+a:link,
+a:visited {
+    text-decoration: none;
+    outline: none;
+    color: #666;
+}
+
+li {
+    list-style: none;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0.01rem 0.01rem 0.03rem #999;
+    background: #fff;
+    height: 0.57rem;
+    display: flex;
+    align-items: center;
+    /*垂直居中*/
+    color: #B7B7B7;
+
+    .home {
+        background: url("/src/images/home.png");
+    }
+
+    .home2 {
+        background: url("/src/images/home2.png");
+        color: #21C6CD;
+    }
+
+    .zhiguan {
+        background: url("/src/images/zhiguan.png");
+    }
+
+    .zhiguan2 {
+        background: url("/src/images/zhiguan2.png");
+        color: #21C6CD;
+    }
+
+    .zhaoda {
+        background: url("/src/images/zhaoda.png");
+    }
+
+    .zhaoda2 {
+        background: url("/src/images/zhaoda2.png");
+        color: #21C6CD;
+    }
+
+    .mine {
+        background: url("/src/images/mine.png");
+    }
+
+    .mine2 {
+        background: url("/src/images/mine2.png");
+        color: #21C6CD;
+    }
+
+    .bg {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 0.46rem;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: 0.25rem 0.25rem;
+    }
+
+    img {
+        width: 25px;
+        height: 25px;
+    }
+
+    & > div {
+        font-size: 0.12rem;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .icon {
+        width: 0.25rem;
+        height: 0.25rem;
+    }
 }

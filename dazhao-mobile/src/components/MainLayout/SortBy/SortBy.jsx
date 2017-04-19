@@ -8,7 +8,6 @@ import constants from "../../../constants/constants";
 
 class SortBy extends React.Component {
     constructor (props) {
-        console.log(constants);
         super(props);
         this.state = {
             "sortBy": [
