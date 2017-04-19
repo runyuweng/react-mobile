@@ -75,7 +75,7 @@ class ZhaoDaMessage extends React.Component {
             })
 
             return(
-                <div className="message" key={index}>
+                <div className="zhaodamessage" key={index}>
                     <span className="who">
                     {FromList}
                     {elem.from.length > limit ? (" 等" + elem.from.length + "人") :

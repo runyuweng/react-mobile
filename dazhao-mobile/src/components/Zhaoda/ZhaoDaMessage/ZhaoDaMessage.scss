@@ -29,10 +29,10 @@
     }
 
     #MessageMain{
-        .message:nth-of-type(1),.message:nth-of-type(2),.message:nth-of-type(3){
+        .zhaodamessage:nth-of-type(1),.zhaodamessage:nth-of-type(2),.zhaodamessage:nth-of-type(3){
             background:#EAF9F9;
         }
-        .message{
+        .zhaodamessage{
             display:flex;
             flex-direction: column;
             // height:0.65rem;
@@ -46,14 +46,18 @@
                 line-height:0.19rem;
                 margin:0rem 0.12rem 0.09rem;
             }
-            p{
-                font-family:"苹方";
-                font-size:0.14rem;
-                font-weight:bold;
-                color:#333333;
-                line-height:0.19rem;
-                margin:0rem 0.12rem;
+            p
+            {
+                font-family: '苹方';
+                font-size: .14rem;
+                font-weight: bold;
+                line-height: .19rem;
+
+                margin: 0rem .12rem;
+
+                color: #333;
             }
+
         }
     }
 }

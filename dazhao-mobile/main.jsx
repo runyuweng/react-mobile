@@ -1,15 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  applyMiddleware,
-  createStore
-}
-from "redux";
+import { applyMiddleware, createStore } from "redux";
 import logger from "redux-logger";
-import {
-  IndexRoute, Route, Router, hashHistory
-}
-from "react-router";
+import { IndexRoute, Route, Router, hashHistory } from "react-router";
 // 公共部分
 import MainLayout from "./src/components/MainLayout/MainLayout.jsx";
 
