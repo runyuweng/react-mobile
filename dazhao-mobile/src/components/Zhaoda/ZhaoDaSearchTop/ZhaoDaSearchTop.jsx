@@ -3,16 +3,16 @@ import "./ZhaoDaSearchTop.scss";
 import {Link} from "react-router";
 
 class ZhaoDaSearchTop extends React.Component {
-    render () {
+    render() {
 
         return (
             <div className="ZhaoDaSearchTop">
                 <header>
                     <div className="search">
-                        <span >取消</span>
-                        <input type="text"
-                            placeholder="Michael"
-                        />
+                        <Link to="/Zhaoda/main">
+                            <span >取消</span>
+                        </Link>
+                        <input type="text" placeholder="Michael"/>
                         <span>搜索</span>
                     </div>
                 </header>

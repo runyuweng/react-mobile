@@ -105,3 +105,23 @@ footer {
         height: 0.25rem;
     }
 }
+
+
+.enter-enter {
+    opacity: 0.1;
+    transform: translate3d(-1rem,0,0);
+}
+
+.enter-enter.enter-enter-active {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: all 300ms ease;
+}
+.example-leave {
+  opacity: 0.9;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
+  transition: opacity 0 ease;
+}

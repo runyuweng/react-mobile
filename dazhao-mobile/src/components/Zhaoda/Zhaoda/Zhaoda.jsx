@@ -1,6 +1,7 @@
 import React from "react";
 import "./Zhaoda.scss";
 import {Link} from "react-router";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Zhaoda extends React.Component {
     constructor (props) {
@@ -46,7 +47,12 @@ class Zhaoda extends React.Component {
                         <Link to="/message"><li>消息</li></Link>
                     </ul>
                 </nav>
-                {this.props.children}
+                <ReactCSSTransitionGroup
+                  transitionName="enter"
+                  transitionEnterTimeout={300}
+                  transitionLeaveTimeout={300}>
+                    {this.props.children}
+                </ReactCSSTransitionGroup>
             </div>
         );
 

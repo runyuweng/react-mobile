@@ -43,7 +43,7 @@ class Mine extends React.Component {
                 </header>
                 <div className="experience">
                     <div>
-                        <Link to="growrecord">
+                        <Link to="/growrecord">
                             <span><img src="/src/images/grow.png" />
                                 <em>成长记录</em></span>
                         </Link>

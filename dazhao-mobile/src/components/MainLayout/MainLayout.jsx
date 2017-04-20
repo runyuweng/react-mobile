@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import "./MainLayout.scss";
 import Message from "./Message/Message.jsx";
-import {Link} from "react-router";
+import {Link, IndexLink} from "react-router";
 import * as actionCreators from "../../actions/show.js";
-import QueueAnim from 'rc-queue-anim';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Layout extends React.Component {
 
@@ -16,10 +16,16 @@ class Layout extends React.Component {
     }
 
     render () {
-        console.log(this.props.location.pathname);
-        const {actions, show} = this.props;
+        const { actions, show } = this.props;
+        const enterList = ['/','/Zhaoda/main','/mine','/zhiGuan','/notify','/cvcenter','/growrecord','/schoolRecruit','/intern','/enterprise'],
+              pathname = this.props.location.pathname;
+        let animate = false;
 
-        const arr = [1,2,3,4]
+        enterList.map((value)=>{
+            if(value===pathname){
+                animate = true;
+            }
+        })
 
         const childrenWithProps = React.Children.map(this.props.children,
      (child) => React.cloneElement(child, {
@@ -48,17 +54,20 @@ class Layout extends React.Component {
                 {show.show_message?<Message content = {show.show_message} showMessage = {(text) => {
                     actions.showMessage(text);
                 }} />:''}
-                <QueueAnim>
+                {animate?<ReactCSSTransitionGroup
+                  transitionName="enter"
+                  transitionEnterTimeout={300}
+                  transitionLeaveTimeout={1}>
                     {childrenWithProps}
-                </QueueAnim>
+                </ReactCSSTransitionGroup>:childrenWithProps}
                 {show.show_bottom
               ? <footer>
                   <div>
-                      <Link to="/home" className="bg home" activeClassName="home2">
+                      <IndexLink to="/" className="bg home" activeClassName="home2">
                           <div>
                               <p>首页</p>
                           </div>
-                      </Link>
+                    </IndexLink>
                   </div>
                   <div>
                       <Link to="/zhiGuan" className="bg zhiguan" activeClassName="zhiguan2">
