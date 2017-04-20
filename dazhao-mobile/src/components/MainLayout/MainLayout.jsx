@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import "./MainLayout.scss";
+import Message from "./Message/Message.jsx";
 import {Link} from "react-router";
 
 import * as actionCreators from "../../actions/show.js";
@@ -30,12 +31,23 @@ class Layout extends React.Component {
              actions.showBottom(text);
 
          },
+         "showMessage": (text) => {
+
+             actions.showMessage(text);
+
+         },
          show
      })
     );
 
         return (
             <div>
+                {show.show_message ? <Message content={show.show_message} showMessage={(text) => {
+
+                    actions.showMessage(text);
+
+                }}
+                                     /> : ""}
                 {childrenWithProps}
                 {show.show_bottom
               ? <footer>

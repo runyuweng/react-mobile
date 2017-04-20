@@ -1,19 +1,31 @@
+.sort{
+    ul>li:nth-child(2){
+        div{
+            left: -100%;
+            width: 400%;
+            text-align: left;
+            span{
+                display: inline-block;
+                padding: 2px 6px;
+            }
+        }
+    }
+    li>div>span{
+        display: block;
+        line-height: 32px;
+    }
+    li>div{
+        width:100%;
+        position: absolute;
+        z-index: 999;
+        background:#f7f7f7;
+        max-height:1.8rem;
+        overflow-y: auto;
+        top:.3rem;
+        border:none;
+    }
+    li>div>span:nth-of-type(1){
+        margin-top: 12px;
+    }
 
-
-li>div>span{
-    display: block;
-    line-height: 32px;
-}
-li>div{
-    width:100%;
-    position: absolute;
-    z-index: 999;
-    background:#f7f7f7;
-    max-height:1.8rem;
-    overflow-y: auto;
-    top:.3rem;
-    border:none;
-}
-li>div>span:nth-of-type(1){
-    margin-top: 12px;
 }

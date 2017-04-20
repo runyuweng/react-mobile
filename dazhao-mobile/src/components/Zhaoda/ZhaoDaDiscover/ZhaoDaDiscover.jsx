@@ -4,48 +4,49 @@ import "./ZhaoDaDiscover.scss";
 import {Link} from "react-router";
 
 class ZhaoDaDiscover extends React.Component {
-    constructor(props){
+    constructor (props) {
+
         super(props);
         this.state = {
-            "latestDynamic" : [
+            "latestDynamic": [
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 },
                 {
-                    "imgsrc" : "/src/images/topicImg.png",
-                    "topic" : "#考研#",
-                    "answer" : 12,
-                    "care" : 101
+                    "imgsrc": "/src/images/topicImg.png",
+                    "topic": "#考研#",
+                    "answer": 12,
+                    "care": 101
                 }
             ],
-            "goodAnswer":[
+            "goodAnswer": [
                 {
                     "topic": "考研",
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
@@ -80,42 +81,44 @@ class ZhaoDaDiscover extends React.Component {
                     "collect": false
                 }
             ]
-        }
-    }
-
-    //精品回答
-    fetchGoodAnswer(){
+        };
 
     }
 
-    //最新动态
-    fetchLatestDynamic(){
+    // 精品回答
+    fetchGoodAnswer () {
+
+    }
+
+    // 最新动态
+    fetchLatestDynamic () {
 
     }
 
     render () {
-        const { goodAnswer , latestDynamic} = this.state;
+
+        const {goodAnswer, latestDynamic} = this.state;
 
         const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain key={i} data={value} />);
 
-        const LatestDynamicList = latestDynamic.map((elem,index) => {
-            return(
-                <div className="Citems" key={index}>
-                    <Link to="/totopic">
-                        <span className="img">
-                            <img src={elem.imgsrc}  alt="最新动态" />
+        const LatestDynamicList = latestDynamic.map((elem, index) =>
+            <div className="Citems" key={index}>
+                <Link to="/totopic">
+                    <span className="img">
+                        <img src={elem.imgsrc} alt="最新动态" />
+                    </span>
+                    <div className="detail">
+                        <span className="span2">{elem.topic}</span>
+                        <span className="care">
+                            <span>回答:{elem.answer}</span>
+                            <span>关注:{elem.care}</span>
                         </span>
-                        <div className="detail">
-                            <span className="span2">{elem.topic}</span>
-                            <span className="care">
-                                <span>回答:{elem.answer}</span>
-                                <span>关注:{elem.care}</span>
-                            </span>
-                        </div>
-                    </Link>
-                </div>
-            )
-        })
+                    </div>
+                </Link>
+            </div>
+            );
+
+
         return (
             <div className="ZhaoDaDiscover">
                 <div id="dynamic">
