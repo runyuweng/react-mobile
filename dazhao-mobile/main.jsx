@@ -55,6 +55,9 @@ import MinePractice from "./src/components/Mine/Practice/Practice.jsx";
 
 import ZhaoDaQuiz from "./src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 
+//用户验证
+import Login from "./src/components/Verify/Login/Login.jsx";
+import Register from "./src/components/Verify/Register/Register.jsx";
 
 import {
   Provider
@@ -103,6 +106,8 @@ const Routes = () =>
                 <Route path="edmessage" component={MineEditMg} />
                 <Route path="edupexp" component={MineEduEx} />
                 <Route path="practice" component={MinePractice} />
+                <Route path="login" component={Login} />
+                <Route path="register" component={Register} />
             </Route>
         </Router>
     </Provider>;

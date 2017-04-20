@@ -13,7 +13,7 @@ class TopBar extends React.Component {
 
     render () {
 
-        const {title, border} = this.props;
+        const {title, border, link} = this.props;
 
 
         return (
@@ -27,6 +27,9 @@ class TopBar extends React.Component {
                     <img src="/src/images/arrow-left.png" />
                 </span>
                 <span>{title}</span>
+                {link?<span>
+                    <Link to={link.url}>{link.content}</Link>
+                </span>:''}
             </div>
         );
 
