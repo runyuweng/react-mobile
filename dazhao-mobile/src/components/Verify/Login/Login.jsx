@@ -4,12 +4,15 @@ import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
 class Login extends React.Component {
-    constructor(props){
+    constructor (props) {
+
         super(props);
 
     }
-    componentDidMount(){
+    componentDidMount () {
+
         this.props.showBottom(false);
+
     }
 
     render () {
@@ -17,7 +20,11 @@ class Login extends React.Component {
         return (
             <div className="Login">
                 <header>
-                    <TopBar title="登录" border="boder" link={{content:'注册',url:'/register'}}/>
+                    <TopBar title="登录" border="boder" link={{
+                        "content": "注册",
+                        "url": "/register"
+                    }}
+                    />
                 </header>
                 <div className="container">
                     <object data="/src/images/logo_2.svg" type="image/svg+xml" />

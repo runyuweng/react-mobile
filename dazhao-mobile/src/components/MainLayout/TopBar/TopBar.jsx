@@ -27,9 +27,9 @@ class TopBar extends React.Component {
                     <img src="/src/images/arrow-left.png" />
                 </span>
                 <span>{title}</span>
-                {link?<span>
+                {link ? <span>
                     <Link to={link.url}>{link.content}</Link>
-                </span>:''}
+                </span> : ""}
             </div>
         );
 

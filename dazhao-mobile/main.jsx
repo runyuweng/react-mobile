@@ -55,7 +55,7 @@ import MinePractice from "./src/components/Mine/Practice/Practice.jsx";
 
 import ZhaoDaQuiz from "./src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 
-//用户验证
+// 用户验证
 import Login from "./src/components/Verify/Login/Login.jsx";
 import Register from "./src/components/Verify/Register/Register.jsx";
 
