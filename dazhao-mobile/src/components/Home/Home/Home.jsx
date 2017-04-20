@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import fetch from "../../../services/xFetch";
+import ajax from "../../../services/ajax";
 import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 import {Link} from "react-router";
 
@@ -30,8 +30,7 @@ class Home extends React.Component {
 
         this.props.showBottom(true);
 
-        fetch("/zhaoda/getjobs?page=1", {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({"url":"/zhaoda/getjobs?page=1"}).
         then((data) => {
 
             this.setState({
@@ -45,22 +44,6 @@ class Home extends React.Component {
 
         });
 
-        // Fetch("/zhaoda/enterprise?page=1", {"method": "GET"}).
-        // Then((response) => response.json()).
-        // Then((data) => {
-        //     Console.log(data);
-        //
-        //     This.setState({
-        //         "enterprise": data.contents,
-        //         "enterprisePage": this.state.enterprisePage + 1
-        //     }, () => {
-        //
-        //         This.setState({"enterpriseLoading": false});
-        //
-        //     });
-        //
-        // });
-
     }
 
     getMore (type) {
@@ -70,8 +53,8 @@ class Home extends React.Component {
         newState[`${type}Loading`] = true;
         this.setState(newState);
         newState = {};
-        fetch(`/zhaoda/get${type}?page=${this.state.jobsPage}`, {"method": "GET"}).
-        then((response) => response.json()).
+
+        ajax({url:`/zhaoda/get${type}?page=${this.state.jobsPage}`}).
         then((data) => {
 
             if (data.code === "S01") {

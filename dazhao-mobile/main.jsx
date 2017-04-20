@@ -1,15 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  applyMiddleware,
-  createStore
-}
-from "redux";
+import {applyMiddleware, createStore} from "redux";
 import logger from "redux-logger";
-import {
-  IndexRoute, Route, Router, hashHistory
-}
-from "react-router";
+import {IndexRoute, Route, Router, hashHistory} from "react-router";
 // 公共部分
 import MainLayout from "./src/components/MainLayout/MainLayout.jsx";
 
@@ -23,7 +16,6 @@ import HomeIntern from "./src/components/Home/Intern/Intern.jsx";
 
 // 职官部分
 import ZhiGuanHome from "./src/components/ZhiGuan/Home/Home.jsx";
-
 
 // 招答部分
 import Zhaoda from "./src/components/Zhaoda/Zhaoda/Zhaoda.jsx";
@@ -59,58 +51,67 @@ import ZhaoDaQuiz from "./src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 import Login from "./src/components/Verify/Login/Login.jsx";
 import Register from "./src/components/Verify/Register/Register.jsx";
 
-import {
-  Provider
-}
-from "react-redux";
+import {Provider} from "react-redux";
 import reducer from "./src/reducers/index.js";
 
+function requireAuth(nextState, replace) {
+    if (true) {
+        replace({
+            pathname: '/login',
+            state: {
+                nextPathname: nextState.location.pathname
+            }
+        })
+    }
+}
+
+
 const store = createStore(reducer);
-const Routes = () =>
-    <Provider store={store}>
-        <Router history={hashHistory}>
-            <Route path="/" component={MainLayout}>
-                <IndexRoute component={Home} />
-                <Route path="zhiGuan" component={ZhiGuanHome} />
-                <Route path="home" component={Home} />
-                <Route path="Zhaoda" component={Zhaoda}>
-                    <Route path="main" component={ZhaoDaIndex} />
-                    <Route path="discover" component={ZhaoDaDiscover} />
-                    <Route path="feature" component={ZhaoDaFeature} />
-                </Route>
-                <Route path="topic" component={ZhaoDaTopic} />
-                <Route path="message" component={ZhaoDaMessage} />
-                <Route path="search" component={ZhaoDaSearch} />
-                <Route path="response" component={ZhaoDaResponse} />
-          // <Route path="quiz" component={ZhaoDaQuiz} />
-                <Route path="consult" component={ZhaoDaConsult} />
-                <Route path="detail" component={ZhaoDaQuesDetail} />
-                <Route path="toquestion" component={ZhaoDaToQuestion} />
-                <Route path="tofeature" component={ZhaoDaToFeatures} />
-                <Route path="totopic" component={ZhaoDaToTopic} />
-                <Route path="user" component={ZhaoDaUser} />
-                <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
-                <Route path="talk" component={ZhaoDaTalk} />
-
-                <Route path="jobdetail" component={HomeJobDetail} />
-                <Route path="company" component={HomeCompany} />
-                <Route path="schoolRecruit" component={HomeShRecruit} />
-                <Route path="enterprise" component={HomeEnterprise} />
-                <Route path="intern" component={HomeIntern} />
-
-                <Route path="mine" component={Mine} />
-                <Route path="cvcenter" component={MineCvCenter} />
-                <Route path="growrecord" component={MineGrowRecord} />
-                <Route path="notify" component={MineNotify} />
-                <Route path="cvmessage" component={MineCvMessage} />
-                <Route path="edmessage" component={MineEditMg} />
-                <Route path="edupexp" component={MineEduEx} />
-                <Route path="practice" component={MinePractice} />
-                <Route path="login" component={Login} />
-                <Route path="register" component={Register} />
+const Routes = () => <Provider store={store}>
+    <Router history={hashHistory}>
+        <Route path="/" component={MainLayout}>
+            <IndexRoute component={Home}/>
+            <Route path="zhiGuan" component={ZhiGuanHome}/>
+            <Route path="home" component={Home}/>
+            <Route path="Zhaoda" component={Zhaoda}>
+                <Route path="main" component={ZhaoDaIndex}/>
+                <Route path="discover" component={ZhaoDaDiscover}/>
+                <Route path="feature" component={ZhaoDaFeature}/>
             </Route>
-        </Router>
-    </Provider>;
+            <Route path="topic" component={ZhaoDaTopic}/>
+            <Route path="message" component={ZhaoDaMessage}/>
+            <Route path="search" component={ZhaoDaSearch}/>
+            <Route path="response" component={ZhaoDaResponse}/>
+            //
+            <Route path="quiz" component={ZhaoDaQuiz}/>
+            <Route path="consult" component={ZhaoDaConsult}/>
+            <Route path="detail" component={ZhaoDaQuesDetail}/>
+            <Route path="toquestion" component={ZhaoDaToQuestion}/>
+            <Route path="tofeature" component={ZhaoDaToFeatures}/>
+            <Route path="totopic" component={ZhaoDaToTopic}/>
+            <Route path="user" component={ZhaoDaUser}/>
+            <Route path="zhuanlan" component={ZhaoDaZhuanLan}/>
+            <Route path="talk" component={ZhaoDaTalk}/>
 
+            <Route path="jobdetail" component={HomeJobDetail}/>
+            <Route path="company" component={HomeCompany}/>
+            <Route path="schoolRecruit" component={HomeShRecruit}/>
+            <Route path="enterprise" component={HomeEnterprise}/>
+            <Route path="intern" component={HomeIntern}/>
 
-ReactDOM.render(<Routes />, document.getElementById("app"));
+            <Route path="mine" component={Mine}/>
+            <Route path="cvcenter" component={MineCvCenter} onEnter={requireAuth}/>
+            <Route path="growrecord" component={MineGrowRecord} onEnter={requireAuth}/>
+            <Route path="notify" component={MineNotify} onEnter={requireAuth}/>
+            <Route path="cvmessage" component={MineCvMessage}/>
+            <Route path="edmessage" component={MineEditMg}/>
+            <Route path="edupexp" component={MineEduEx}/>
+            <Route path="practice" component={MinePractice}/>
+            <Route path="login" component={Login}/>
+            <Route path="register" component={Register}/>
+        </Route>
+    </Router>
+</Provider>;
+
+ReactDOM.render(
+    <Routes/>, document.getElementById("app"));
