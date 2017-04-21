@@ -11,24 +11,15 @@ class SlideBar extends React.Component {
         this.state = {
             "startPoint": 0,
             "currentLeft": 0,
-            "currentWidth": 0,
-            "titleWidth": 0,
-            "industry": [],
-            "active": 0
+            "active": 0,
+            "industry": []
         };
 
     }
 
     componentWillReceiveProps (props) {
 
-        this.setState({"industry": props.industry}, () => {
-
-            this.setState({
-                "currentWidth": this.refs.industryList.offsetWidth,
-                "titleWidth": this.refs.title.offsetWidth
-            });
-
-        });
+        this.setState({"industry": props.industry});
 
     }
 
@@ -40,25 +31,28 @@ class SlideBar extends React.Component {
 
     handleMove (e) {
 
-        let displacement = parseInt((e.touches[0].pageX - this.state.startPoint) / 10),
-            maxLeft = this.state.currentWidth - (document.body.clientWidth - this.state.titleWidth),
+        let displacement = parseInt((e.touches[0].pageX - this.state.startPoint)>0?'5':'-5'),
+            maxLeft = -(this.refs.industryList.offsetWidth-(document.body.clientWidth - this.refs.title.offsetWidth)),
+            preLeft = this.state.currentLeft,
             currentLeft = 0;
 
-        if (this.state.currentLeft + displacement >= 0) {
+        console.log('displacement',displacement,'e.touches[0].pageX',e.touches[0].pageX,'preLeft',preLeft,'maxLeft',maxLeft);
+
+        if ((preLeft + displacement) >= 0) {
 
             currentLeft = 0;
 
-        } else if (-(this.state.currentLeft + displacement) >= maxLeft) {
+        } else if ((preLeft + displacement) <= maxLeft) {
 
-            currentLeft = -maxLeft;
+            currentLeft = maxLeft;
 
         } else {
 
-            currentLeft = this.state.currentLeft + displacement;
+            currentLeft = preLeft + displacement;
 
         }
 
-        this.setState({currentLeft});
+        this.setState({currentLeft: currentLeft});
 
     }
 
