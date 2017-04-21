@@ -159,7 +159,7 @@ class ZhaoDaIndex extends React.Component {
 
             // 触屏开始
         elem.addEventListener("touchstart", (e) => {
-
+            e.preventDefault();
             const _this = elem;
             let isStart = true;
             const event = e || window.event;
@@ -172,8 +172,8 @@ class ZhaoDaIndex extends React.Component {
             });
 
                 // 触屏移动
-            document.addEventListener("touchmove", (e) => {
-
+            _this.addEventListener("touchmove", (e) => {
+                e.preventDefault();
                 if (isStart) {
 
                     let left = this.state.currentX;
@@ -215,8 +215,8 @@ class ZhaoDaIndex extends React.Component {
             });
 
                 // 触屏结束
-            document.addEventListener("touchend", () => {
-
+            _this.addEventListener("touchend", () => {
+                e.preventDefault();
                 if (isStart) {
 
                     const element = _this;
