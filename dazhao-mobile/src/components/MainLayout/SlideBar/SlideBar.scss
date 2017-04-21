@@ -1,6 +1,7 @@
 .SlideBar{
     overflow: hidden;
-    padding: .09rem 0;
+    // padding: .09rem 0;
+    // height: .4rem;
     font-size: 0;
     background:#fff;
     display: -webkit-flex; /* Safari */
@@ -13,11 +14,14 @@
         font-size: .14rem;
         color:#B0B0B0;
         text-align: center;
-        padding:0 .12rem;
-        border-right:.01rem solid rgba(234,234,234,1);
-        margin-right:.12rem;
-        line-height: .2rem;
+        padding:0 0 0 .12rem;
+        line-height: .4rem;
         background: #fff;
+        box-sizing: border-box;
+        em{
+            padding:0 .12rem;
+            font-style: normal;
+        }
     }
     ul{
         z-index: 1;
@@ -29,8 +33,10 @@
             font-size: .14rem;
             color:#B0B0B0;
             margin-right: .25rem;
-            line-height: .2rem;
+            line-height: .4rem;
             text-align: center;
+            box-sizing: border-box;
+            padding: 0 .04rem;
         }
         .active{
             font-weight: bold;

@@ -36,7 +36,7 @@
                 line-height:0.3rem;
                 position:absolute;
                 left:0rem;
-
+                color: #999999;
             }
             img{
                 margin-top:0.06rem;
@@ -145,26 +145,33 @@
                 }
             }
         }
-
         .jobitems{
             background:#fff;
-            padding:.21rem .12rem;
-            display: flex;
+            padding:.21rem 0 0 .12rem;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
             .pics{
+                width: 20%;
                 display:inline-block;
-                width:.6rem;
                 height:.6rem;
-                border:.01rem solid #EAEAEA;
                 margin-right: .12rem;
-                background:#f8f8f8;
+                text-align: center;
                 img{
                     width:.6rem;
                     height:.6rem;
+                    border:.01rem solid #EAEAEA;
                 }
             }
 
             .jobintro{
-                display:inline-block;
+                width: 80%;
+                padding-bottom: .21rem;
+                padding-right: .04rem;
+                box-sizing: border-box;
+                border-bottom: .01rem solid #EAEAEA;
+                font-size: 0;
                 h2{
                     font-family: "苹方";
                     font-size: .15rem;
@@ -181,7 +188,7 @@
                 }
 
                 span:nth-of-type(1){
-                    display:block;
+                    display:inline-block;
                     em{
                         font-family: "苹方";
                         font-size: .13rem;
@@ -195,6 +202,7 @@
                 }
 
                 span:nth-of-type(2){
+                    display: block;
                     em{
                         font-family: "苹方";
                         font-size: .13rem;
@@ -212,8 +220,17 @@
             }
 
         }
+        .jobitems:nth-of-type(1){
+            border-top:.01rem solid #EAEAEA;
+        }
+        .jobitems:nth-last-of-type(1){
+            border-bottom:.01rem solid #EAEAEA;
+            .jobintro{
+                border-bottom:none;
+            }
+        }
         .morejob{
-                background:none;
+                background:#fff;
                 border:.01rem solid #21c6cd;
                 height:.4rem;
                 border-radius:.05rem;
@@ -249,23 +266,29 @@
 
         .jobitems{
             background:#fff;
-            padding:.21rem .12rem;
+            padding:.21rem 0 0 .12rem;
             display: flex;
             .pics{
+                width: 20%;
                 display:inline-block;
-                width:.6rem;
+                // width:.6rem;
                 height:.6rem;
-                border:.01rem solid #EAEAEA;
                 margin-right: .12rem;
-                background:#f8f8f8;
+                text-align: center;
+                // background:#f8f8f8;
                 img{
                     width:.6rem;
                     height:.6rem;
+                    border:.01rem solid #EAEAEA;
                 }
             }
 
             .jobintro{
+                width: 80%;
                 display:inline-block;
+                border-bottom:.01rem solid #EAEAEA;
+                padding-bottom:.21rem;
+                padding-right: .04rem;
                 h2{
                     font-family: "苹方";
                     font-size: .15rem;
@@ -333,9 +356,20 @@
                 }
             }
         }
+        
+        .jobitems:nth-of-type(1){
+            border-top:.01rem solid #EAEAEA;
+        }
 
+        .jobitems:nth-last-of-type(1){
+            border-bottom:.01rem solid #EAEAEA;
+            .jobintro{
+                border-bottom:none;
+            }
+        }
+        
         .morejob{
-                background:none;
+                background:#fff;
                 border:.01rem solid #21c6cd;
                 height:.4rem;
                 border-radius:.05rem;
@@ -349,5 +383,6 @@
                 margin-top: .16rem;
         }
     }
+
 
 }

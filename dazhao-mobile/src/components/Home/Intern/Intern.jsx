@@ -5,7 +5,7 @@ import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
-import fetch from "../../../services/xFetch";
+import ajax from "../../../services/ajax";
 import {Link} from "react-router";
 
 
@@ -26,16 +26,14 @@ class Intern extends React.Component {
 
         this.props.showBottom(false);
 
-        fetch("/zhaoda/industry/category", {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({url: "/zhaoda/industry/category"}).
         then((data) => {
 
             this.setState({"industry": data.contents});
 
         });
 
-        fetch("/zhaoda/jobs/school?industryid=5", {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({url: "/zhaoda/jobs/school?industryid=5"}).
         then((data) => {
 
             this.setState({"jobs": data.contents}, () => {
@@ -52,8 +50,7 @@ class Intern extends React.Component {
 
         this.setState({"showLoading": true});
 
-        fetch(`/zhaoda/jobs/school?industryid=${id}`, {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({url: `/zhaoda/jobs/school?industryid=${id}`}).
         then((data) => {
 
             this.setState({"jobs": data.contents}, () => {

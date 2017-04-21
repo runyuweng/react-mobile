@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import fetch from "../../../services/xFetch";
+import ajax from "../../../services/ajax";
 import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 import {Link} from "react-router";
 
@@ -30,8 +30,7 @@ class Home extends React.Component {
 
         this.props.showBottom(true);
 
-        fetch("/zhaoda/getjobs?page=1", {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({"url":"/zhaoda/getjobs?page=1"}).
         then((data) => {
 
             this.setState({
@@ -45,22 +44,6 @@ class Home extends React.Component {
 
         });
 
-        // Fetch("/zhaoda/enterprise?page=1", {"method": "GET"}).
-        // Then((response) => response.json()).
-        // Then((data) => {
-        //     Console.log(data);
-        //
-        //     This.setState({
-        //         "enterprise": data.contents,
-        //         "enterprisePage": this.state.enterprisePage + 1
-        //     }, () => {
-        //
-        //         This.setState({"enterpriseLoading": false});
-        //
-        //     });
-        //
-        // });
-
     }
 
     getMore (type) {
@@ -70,8 +53,8 @@ class Home extends React.Component {
         newState[`${type}Loading`] = true;
         this.setState(newState);
         newState = {};
-        fetch(`/zhaoda/get${type}?page=${this.state.jobsPage}`, {"method": "GET"}).
-        then((response) => response.json()).
+
+        ajax({url:`/zhaoda/get${type}?page=${this.state.jobsPage}`}).
         then((data) => {
 
             if (data.code === "S01") {
@@ -204,8 +187,7 @@ class Home extends React.Component {
                     <h2><span><img src="/src/images/latest.png" /></span>推荐职位
               </h2>
 
-
-                    {jobList}
+                    <div className="jobWrap">{jobList}</div>
 
                     <div className="morejob" onClick={jobsLoading ? "" : () => this.getMore("jobs")}>
                         {jobsLoading ? <LoadingMore /> : "展开更多"}
@@ -217,83 +199,93 @@ class Home extends React.Component {
                     <h2><span><img src="/src/images/latest.png" /></span>热门企业
               </h2>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                    <div>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>100人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>100人以上</em>
+                                </span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>1000人以上</em>
+                                </span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>1000人以上</em>
+                                </span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>1000人以上</em>
+                                </span>
+                            </div>
                         </div>
                     </div>
 

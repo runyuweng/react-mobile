@@ -1,6 +1,6 @@
 const path = require('path');
 const AppCachePlugin = require('appcache-webpack-plugin');
-
+const webpack = require('webpack');
 var config = {
     entry: path.resolve(__dirname, './main.jsx'),
 
@@ -45,6 +45,11 @@ var config = {
             ],
             network: ['*'],
             output: './cache.appcache'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
         })
     ]
 }

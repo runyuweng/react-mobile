@@ -3,7 +3,7 @@ import "./Enterprise.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
-import fetch from "../../../services/xFetch";
+import ajax from "../../../services/ajax";
 import {Link} from "react-router";
 
 class Enterprise extends React.Component {
@@ -23,15 +23,13 @@ class Enterprise extends React.Component {
 
         this.props.showBottom(false);
 
-        fetch("/zhaoda/industry/category", {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({url: "/zhaoda/industry/category"}).
         then((data) => {
 
             this.setState({"industry": data.contents});
 
         });
-        fetch("/zhaoda/jobs/enterprise?industryid=5", {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({url: "/zhaoda/jobs/enterprise?industryid=5"}).
         then((data) => {
 
             this.setState({"enterprise": data.contents}, () => {
@@ -47,8 +45,7 @@ class Enterprise extends React.Component {
 
         this.setState({"showLoading": true});
 
-        fetch(`/zhaoda/jobs/enterprise?industryid=${id}`, {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({url: `/zhaoda/jobs/enterprise?industryid=${id}`}).
         then((data) => {
 
             this.setState({"enterprise": data.contents}, () => {

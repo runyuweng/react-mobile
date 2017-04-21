@@ -1,0 +1,55 @@
+.positions{
+    padding: 0 .12rem;
+    background: #fff;
+    .position{
+        font-size: 0;
+        padding: .12rem 0 .08rem;
+        border-bottom: .01rem solid #EAEAEA;
+        div:nth-of-type(1){
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+
+            justify-content: space-between;
+            span:nth-of-type(1){
+                font-family: "苹方";
+                font-size: .15rem;
+                color: #333333;
+                font-weight: bold;
+            }
+            span:nth-of-type(2){
+                font-family: "苹方";
+                font-size: .13rem;
+                color: #21c6cd;
+                em{
+                    font-style: normal;
+                }
+            }
+        }
+        div:nth-of-type(2){
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            justify-content: space-between;
+            line-height: .24rem;
+            span:nth-of-type(1){
+                em{
+                    font-family: "苹方";
+                    font-size: .13rem;
+                    color: #999999;
+                    margin-right: 1em;
+                    font-style: normal;
+                }
+            }
+            span:nth-of-type(2){
+                font-family: "苹方";
+                font-size: .13rem;
+                color: #999999;
+            }
+        }
+    }
+}

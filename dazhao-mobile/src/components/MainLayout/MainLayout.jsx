@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import "./MainLayout.scss";
 import Message from "./Message/Message.jsx";
-import {Link} from "react-router";
-
+import {IndexLink, Link} from "react-router";
 import * as actionCreators from "../../actions/show.js";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Layout extends React.Component {
 
@@ -18,6 +18,19 @@ class Layout extends React.Component {
     render () {
 
         const {actions, show} = this.props;
+        const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise","/login","/register"],
+            pathname = this.props.location.pathname;
+        let animate = false;
+
+        enterList.map((value) => {
+
+            if (value === pathname) {
+
+                animate = true;
+
+            }
+
+        });
 
         const childrenWithProps = React.Children.map(this.props.children,
      (child) => React.cloneElement(child, {
@@ -36,6 +49,7 @@ class Layout extends React.Component {
              actions.showMessage(text);
 
          },
+         "key": this.props.location.pathname,
          show
      })
     );
@@ -48,15 +62,22 @@ class Layout extends React.Component {
 
                 }}
                                      /> : ""}
-                {childrenWithProps}
+                {animate ? <ReactCSSTransitionGroup
+                    transitionName="enter"
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={1}
+                           >
+                    {childrenWithProps}
+                </ReactCSSTransitionGroup> : childrenWithProps}
+
                 {show.show_bottom
               ? <footer>
                   <div>
-                      <Link to="/home" className="bg home" activeClassName="home2">
+                      <IndexLink to="/" className="bg home" activeClassName="home2">
                           <div>
                               <p>首页</p>
                           </div>
-                      </Link>
+                      </IndexLink>
                   </div>
                   <div>
                       <Link to="/zhiGuan" className="bg zhiguan" activeClassName="zhiguan2">

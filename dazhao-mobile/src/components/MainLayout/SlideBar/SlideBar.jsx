@@ -81,7 +81,7 @@ class SlideBar extends React.Component {
 
         return (
             <nav className="SlideBar">
-                <p ref="title">行业分类</p>
+                <p ref="title">行业分类<em>|</em></p>
                 <ul
                     style={{"left": currentLeft}}
                     ref="industryList"
