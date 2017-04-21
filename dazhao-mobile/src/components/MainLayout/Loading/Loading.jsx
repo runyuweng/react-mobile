@@ -27,9 +27,69 @@ class Loading extends React.Component {
 
         return (
             <div className="loading" style={{height}}>
-                <div className="content">
-                    <div className="dot1 dot" />
-                    <div className="dot2 dot" />
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div className="block">
+                    <div className="img"></div>
+                    <div className="word">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
             </div>
         );
