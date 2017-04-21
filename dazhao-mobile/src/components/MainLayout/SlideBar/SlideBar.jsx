@@ -49,8 +49,8 @@ class SlideBar extends React.Component {
             currentLeft = preLeft + displacement;
 
         }
-        alert('displacement:'+displacement+';industryList:'+this.refs.industryList.offsetWidth+';clientWidth:'+document.body.clientWidth);
-        alert('currentLeft:'+currentLeft+';preLeft:'+preLeft+';e.touches[0].pageX:'+e.touches[0].pageX)
+        // alert('displacement:'+displacement+';industryList:'+this.refs.industryList.offsetWidth+';clientWidth:'+document.body.clientWidth);
+        // alert('currentLeft:'+currentLeft+';preLeft:'+preLeft+';e.touches[0].pageX:'+e.touches[0].pageX)
         this.setState({
             currentLeft: currentLeft,
             startPoint: e.touches[0].pageX
@@ -78,6 +78,7 @@ class SlideBar extends React.Component {
         return (
             <nav className="SlideBar">
                 <p ref="title">行业分类</p>
+                <p>{currentLeft}</p>
                 <ul
                     style={{"left": currentLeft}}
                     ref="industryList"
