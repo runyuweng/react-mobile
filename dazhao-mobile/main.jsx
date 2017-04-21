@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import {applyMiddleware, createStore} from "redux";
 import logger from "redux-logger";
 import {IndexRoute, Route, Router, hashHistory} from "react-router";
@@ -55,7 +56,7 @@ import {Provider} from "react-redux";
 import reducer from "./src/reducers/index.js";
 
 function requireAuth(nextState, replace) {
-    if (true) {
+    if (false) {
         replace({
             pathname: '/login',
             state: {

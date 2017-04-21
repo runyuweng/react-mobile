@@ -10,7 +10,6 @@ import {Link} from "react-router";
 
 
 class Intern extends React.Component {
-
     constructor (props) {
 
         super(props);
