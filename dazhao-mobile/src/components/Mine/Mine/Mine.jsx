@@ -21,8 +21,7 @@ class Mine extends React.Component {
             <div className="Mine">
                 <header className="head">
                     <div className="top">
-                        <span className="imgone"><img src="/src/images/boy1.png" /></span>
-                        <span className="topshadow"><img src="/src/images/personalBg.png" /></span>
+                        <span className="imgone"><img src="/src/images/boy1.png" className="blur" /></span>
                         <div className="circle1">
                             <span className="circle2"><img src="/src/images/boy.png" /></span>
                         </div>
