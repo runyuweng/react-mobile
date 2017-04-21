@@ -23,20 +23,12 @@ class SlideBar extends React.Component {
 
     }
 
-    startMove (e) {
-
-        this.setState({"startPoint": e.touches[0].pageX});
-
-    }
-
     handleMove (e) {
 
         let displacement = parseInt((e.touches[0].pageX - this.state.startPoint)>0?'5':'-5'),
             maxLeft = -(this.refs.industryList.offsetWidth-(document.body.clientWidth - this.refs.title.offsetWidth)),
             preLeft = this.state.currentLeft,
             currentLeft = 0;
-
-        console.log('displacement',displacement,'e.touches[0].pageX',e.touches[0].pageX,'preLeft',preLeft,'maxLeft',maxLeft);
 
         if ((preLeft + displacement) >= 0) {
 
@@ -52,7 +44,10 @@ class SlideBar extends React.Component {
 
         }
 
-        this.setState({currentLeft: currentLeft});
+        this.setState({
+            currentLeft: currentLeft,
+            startPoint: e.touches[0].pageX
+        });
 
     }
 
@@ -79,11 +74,6 @@ class SlideBar extends React.Component {
                 <ul
                     style={{"left": currentLeft}}
                     ref="industryList"
-                    onTouchStart={(e) => {
-
-                        this.startMove(e);
-
-                    }}
                     onTouchMove={(e) => {
 
                         this.handleMove(e);
