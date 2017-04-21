@@ -2,54 +2,51 @@ const path = require('path');
 const AppCachePlugin = require('appcache-webpack-plugin');
 
 var config = {
-   entry: path.resolve(__dirname, './main.jsx'),
+    entry: path.resolve(__dirname, './main.jsx'),
 
-   output: {
-      path: path.resolve(__dirname, './'),
-      filename: 'index.js',
-   },
+    output: {
+        path: path.resolve(__dirname, './'),
+        filename: 'index.js',
+    },
 
-   devServer: {
-      inline: true,
-      port: 7777
-   },
+    devServer: {
+        inline: true,
+        port: 7777
+    },
 
-   module: {
+    module: {
         loaders: [{
-             test: /\.jsx?$/,
-             exclude: /node_modules/,
-             loader: 'babel-loader',
-             query: {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
                 presets: ['es2015', 'react']
-             }
-          },
-          {
-               test: /\.js?$/,
-               exclude: /node_modules/,
-               loader: 'babel-loader',
-               query: {
-                  presets: ['es2015']
-               }
-            },
-          {
+            }
+        }, {
+            test: /\.js?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015']
+            }
+        }, {
             test: /\.scss$/,
             loader: 'style-loader!css-loader!sass-loader'
-          },
-          {
+        }, {
             test: /.(png|jpg)$/,
             loader: "url-loader?limit=8192"
         }]
-   },
-   plugins: [
-       new AppCachePlugin({
-         cache: [
-             'index.js',
-             'index.html'
-         ],
-         network: ['*'],
-         output: './cache.appcache'
-       })
- ]
+    },
+    plugins: [
+        new AppCachePlugin({
+            cache: [
+                'index.js',
+                'index.html'
+            ],
+            network: ['*'],
+            output: './cache.appcache'
+        })
+    ]
 }
 
 module.exports = config;
