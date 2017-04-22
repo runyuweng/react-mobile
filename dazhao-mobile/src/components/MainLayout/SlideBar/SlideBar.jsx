@@ -29,7 +29,19 @@ class SlideBar extends React.Component {
             {category_id:6,category_name:'test'},
             {category_id:7,category_name:'test'},
             {category_id:8,category_name:'test'}
-        ]});
+        ]},()=>{
+            this.setState({"industry": [
+                {category_id:1,category_name:'body:'+document.body.clientWidth},
+                {category_id:2,category_name:'title:'+this.refs.title.offsetWidth},
+                {category_id:3,category_name:'industry'+this.refs.industryList.offsetWidth},
+                {category_id:4,category_name:'left:'+this.state.currentLeft},
+                {category_id:5,category_name:'test'},
+                {category_id:6,category_name:'test'},
+                {category_id:7,category_name:'test'},
+                {category_id:8,category_name:'test'},
+                {category_id:9,category_name:'industry(new)'+this.refs.industryList.offsetWidth}
+            ]})
+        });
 
     }
 
@@ -40,6 +52,17 @@ class SlideBar extends React.Component {
     }
 
     handleMove (e) {
+        this.setState({"industry": [
+            {category_id:1,category_name:'body:'+document.body.clientWidth},
+            {category_id:2,category_name:'title:'+this.refs.title.offsetWidth},
+            {category_id:3,category_name:'industry'+this.refs.industryList.offsetWidth},
+            {category_id:4,category_name:'left:'+this.state.currentLeft},
+            {category_id:5,category_name:'test'},
+            {category_id:6,category_name:'test'},
+            {category_id:7,category_name:'test'},
+            {category_id:8,category_name:'test'},
+            {category_id:9,category_name:'industry(new)'+this.refs.industryList.offsetWidth}
+        ]})
 
         let displacement = parseInt((parseInt(e.touches[0].pageX) - this.state.startPoint)>0?'5':'-5'),
             maxLeft = -(this.refs.industryList.offsetWidth-(document.body.clientWidth - this.refs.title.offsetWidth)),

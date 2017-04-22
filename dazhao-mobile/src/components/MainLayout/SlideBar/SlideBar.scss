@@ -21,6 +21,7 @@
         background: #fff;
     }
     ul{
+        flex-shrink: 0;
         z-index: 1;
         position: relative;
         white-space: nowrap;
