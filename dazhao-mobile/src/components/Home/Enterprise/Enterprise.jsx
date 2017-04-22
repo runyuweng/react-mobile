@@ -23,13 +23,13 @@ class Enterprise extends React.Component {
 
         this.props.showBottom(false);
 
-        ajax({url: "/zhaoda/industry/category"}).
+        ajax({"url": "/zhaoda/industry/category"}).
         then((data) => {
 
             this.setState({"industry": data.contents});
 
         });
-        ajax({url: "/zhaoda/jobs/enterprise?industryid=5"}).
+        ajax({"url": "/zhaoda/jobs/enterprise?industryid=5"}).
         then((data) => {
 
             this.setState({"enterprise": data.contents}, () => {
@@ -45,7 +45,7 @@ class Enterprise extends React.Component {
 
         this.setState({"showLoading": true});
 
-        ajax({url: `/zhaoda/jobs/enterprise?industryid=${id}`}).
+        ajax({"url": `/zhaoda/jobs/enterprise?industryid=${id}`}).
         then((data) => {
 
             this.setState({"enterprise": data.contents}, () => {

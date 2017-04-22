@@ -60,7 +60,8 @@ class SortBy extends React.Component {
                 ? <div>
                     {this.state.sortBy[i].map((elem, index) => <span
                         onClick={this.itemClick.bind(this, i, index)}
-                        key={index}>
+                        key={index}
+                                                               >
                         {this.state.sortBy[i][index]}
                     </span>)}
                 </div> : ""

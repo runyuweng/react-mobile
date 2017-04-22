@@ -19,29 +19,7 @@ class SlideBar extends React.Component {
 
     componentWillReceiveProps (props) {
 
-        // this.setState({"industry": props.industry});
-        this.setState({"industry": [
-            {category_id:1,category_name:'body:'+document.body.clientWidth},
-            {category_id:2,category_name:'title:'+this.refs.title.offsetWidth},
-            {category_id:3,category_name:'industry'+this.refs.industryList.offsetWidth},
-            {category_id:4,category_name:'left:'+this.state.currentLeft},
-            {category_id:5,category_name:'test'},
-            {category_id:6,category_name:'test'},
-            {category_id:7,category_name:'test'},
-            {category_id:8,category_name:'test'}
-        ]},()=>{
-            this.setState({"industry": [
-                {category_id:1,category_name:'body:'+document.body.clientWidth},
-                {category_id:2,category_name:'title:'+this.refs.title.offsetWidth},
-                {category_id:3,category_name:'industry'+this.refs.industryList.offsetWidth},
-                {category_id:4,category_name:'left:'+this.state.currentLeft},
-                {category_id:5,category_name:'test'},
-                {category_id:6,category_name:'test'},
-                {category_id:7,category_name:'test'},
-                {category_id:8,category_name:'test'},
-                {category_id:9,category_name:'industry(new)'+this.refs.industryList.offsetWidth}
-            ]})
-        });
+        this.setState({"industry": props.industry});
 
     }
 
@@ -52,28 +30,17 @@ class SlideBar extends React.Component {
     }
 
     handleMove (e) {
-        this.setState({"industry": [
-            {category_id:1,category_name:'body:'+document.body.clientWidth},
-            {category_id:2,category_name:'title:'+this.refs.title.offsetWidth},
-            {category_id:3,category_name:'industry'+this.refs.industryList.offsetWidth},
-            {category_id:4,category_name:'left:'+this.state.currentLeft},
-            {category_id:5,category_name:'test'},
-            {category_id:6,category_name:'test'},
-            {category_id:7,category_name:'test'},
-            {category_id:8,category_name:'test'},
-            {category_id:9,category_name:'industry(new)'+this.refs.industryList.offsetWidth}
-        ]})
 
-        let displacement = parseInt((parseInt(e.touches[0].pageX) - this.state.startPoint)>0?'5':'-5'),
-            maxLeft = -(this.refs.industryList.offsetWidth-(document.body.clientWidth - this.refs.title.offsetWidth)),
+        let displacement = parseInt(parseInt(e.touches[0].pageX) - this.state.startPoint > 0 ? "5" : "-5"),
+            maxLeft = -(this.refs.industryList.offsetWidth - (document.body.clientWidth - this.refs.title.offsetWidth)),
             preLeft = this.state.currentLeft,
             currentLeft = 0;
 
-        if ((preLeft + displacement) >= 0) {
+        if (preLeft + displacement >= 0) {
 
             currentLeft = 0;
 
-        } else if ((preLeft + displacement) <= maxLeft) {
+        } else if (preLeft + displacement <= maxLeft) {
 
             currentLeft = maxLeft;
 
@@ -84,8 +51,8 @@ class SlideBar extends React.Component {
         }
 
         this.setState({
-            currentLeft: currentLeft,
-            startPoint: e.touches[0].pageX
+            currentLeft,
+            "startPoint": e.touches[0].pageX
         });
 
     }
@@ -114,7 +81,9 @@ class SlideBar extends React.Component {
                     style={{"left": currentLeft}}
                     ref="industryList"
                     onTouchStart={(e) => {
+
                         this.startMove(e);
+
                     }}
                     onTouchMove={(e) => {
 

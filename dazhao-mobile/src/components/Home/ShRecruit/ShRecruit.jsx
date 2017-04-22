@@ -27,14 +27,14 @@ class ShRecruit extends React.Component {
 
         this.props.showBottom(false);
 
-        ajax({url: "/zhaoda/industry/category"}).
+        ajax({"url": "/zhaoda/industry/category"}).
         then((data) => {
 
             this.setState({"industry": data.contents});
 
         });
 
-        ajax({url: "/zhaoda/jobs/school?industryid=5"}).
+        ajax({"url": "/zhaoda/jobs/school?industryid=5"}).
         then((data) => {
 
             this.setState({"jobs": data.contents}, () => {
@@ -51,7 +51,7 @@ class ShRecruit extends React.Component {
 
         this.setState({"showLoading": true});
 
-        ajax({url: `/zhaoda/jobs/school?industryid=${id}`}).
+        ajax({"url": `/zhaoda/jobs/school?industryid=${id}`}).
         then((data) => {
 
             this.setState({"jobs": data.contents}, () => {

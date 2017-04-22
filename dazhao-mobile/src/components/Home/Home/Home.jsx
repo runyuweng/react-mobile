@@ -20,7 +20,7 @@ class Home extends React.Component {
         };
 
     }
-    
+
     componentDidMount () {
 
         this.setState({
@@ -30,7 +30,7 @@ class Home extends React.Component {
 
         this.props.showBottom(true);
 
-        ajax({"url":"/zhaoda/getjobs?page=1"}).
+        ajax({"url": "/zhaoda/getjobs?page=1"}).
         then((data) => {
 
             this.setState({
@@ -54,7 +54,7 @@ class Home extends React.Component {
         this.setState(newState);
         newState = {};
 
-        ajax({url:`/zhaoda/get${type}?page=${this.state.jobsPage}`}).
+        ajax({"url": `/zhaoda/get${type}?page=${this.state.jobsPage}`}).
         then((data) => {
 
             if (data.code === "S01") {
