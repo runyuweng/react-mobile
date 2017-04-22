@@ -9,26 +9,18 @@ class SlideBar extends React.Component {
 
         super(props);
         this.state = {
+            "industryWidth":'',
             "startPoint": 0,
             "currentLeft": 0,
-            "currentWidth": 0,
-            "titleWidth": 0,
-            "industry": [],
-            "active": 0
+            "active": 0,
+            "industry": []
         };
 
     }
 
     componentWillReceiveProps (props) {
 
-        this.setState({"industry": props.industry}, () => {
-
-            this.setState({
-                "currentWidth": this.refs.industryList.offsetWidth,
-                "titleWidth": this.refs.title.offsetWidth
-            });
-
-        });
+        this.setState({"industry": props.industry});
 
     }
 
@@ -40,31 +32,35 @@ class SlideBar extends React.Component {
 
     handleMove (e) {
 
-        let displacement = parseInt((e.touches[0].pageX - this.state.startPoint) / 10),
-            maxLeft = this.state.currentWidth - (document.body.clientWidth - this.state.titleWidth),
+        let displacement = parseInt((parseInt(e.touches[0].pageX) - this.state.startPoint)>0?'5':'-5'),
+            maxLeft = -(this.refs.industryList.offsetWidth-(document.body.clientWidth - this.refs.title.offsetWidth)),
+            preLeft = this.state.currentLeft,
             currentLeft = 0;
 
-        if (this.state.currentLeft + displacement >= 0) {
+        if ((preLeft + displacement) >= 0) {
 
             currentLeft = 0;
 
-        } else if (-(this.state.currentLeft + displacement) >= maxLeft) {
+        } else if ((preLeft + displacement) <= maxLeft) {
 
-            currentLeft = -maxLeft;
+            currentLeft = maxLeft;
 
         } else {
 
-            currentLeft = this.state.currentLeft + displacement;
+            currentLeft = preLeft + displacement;
 
         }
-
-        this.setState({currentLeft});
+        this.setState({
+            industryWidth: this.refs.industryList.offsetWidth,
+            currentLeft: currentLeft,
+            startPoint: e.touches[0].pageX
+        });
 
     }
 
     render () {
 
-        const {currentLeft, industry, active} = this.state;
+        const {currentLeft, industry, active, industryWidth} = this.state;
         const listItem = industry.map((value, i) => <li
             className={active == i ? "active" : ""}
             onClick={() => {
@@ -81,14 +77,14 @@ class SlideBar extends React.Component {
 
         return (
             <nav className="SlideBar">
+
                 <p ref="title">行业分类<em>|</em></p>
+
                 <ul
                     style={{"left": currentLeft}}
                     ref="industryList"
                     onTouchStart={(e) => {
-
                         this.startMove(e);
-
                     }}
                     onTouchMove={(e) => {
 

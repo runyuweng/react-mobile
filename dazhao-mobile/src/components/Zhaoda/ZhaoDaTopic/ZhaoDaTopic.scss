@@ -45,16 +45,18 @@
   .content{
     margin-top:.24rem;
     .itemGroup{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items:center;
         .item{
-          display: flex;
           font-size:0rem;
-          width:32.9%;
+          width:33%;
           position:relative;
-          align-items:center;
           margin-bottom:.03rem;
           img{
             width:100%;
@@ -67,6 +69,8 @@
             font-size: .14rem;
             color: #fff;
             position: absolute;
+            left: 0;
+            top: 45%;
 
           }
           p:nth-of-type(2){
@@ -77,6 +81,7 @@
             color: #fff;
             position:absolute;
             bottom:10%;
+            left: 0;
           }
         }
     }

@@ -25,18 +25,19 @@
                 font-size:0.13rem;
                 font-family:"苹方";
                 position:relative;
+                overflow: hidden;
                 input{
-                    width:88%;
-                    height:0.26rem;
+                    width:83%;
+                    height:0.28rem;
                     border-radius:0.42rem;
-                    text-indent:0.1rem;
                     font-size:0.13rem;
                     font-family:"苹方";
                     border:none;
-                    line-height:0.3rem;
                     position:absolute;
                     left:0rem;
                     color: #999999;
+                    display: block;
+                    padding: 0 .12rem;
                 }
                 img{
                     margin-top:0.06rem;
@@ -96,7 +97,6 @@
     #latest{
         width:100%;
         background:#f8f8f8;
-        margin-bottom:0.7rem;
         .title{
             font-size:0.16rem;
             font-weight:bold;
@@ -158,7 +158,7 @@
             }
         }
         .content{
-            height:2rem;
+            margin-bottom: .2rem;
             margin-top:0.2rem;
             position:relative;
             white-space: nowrap;

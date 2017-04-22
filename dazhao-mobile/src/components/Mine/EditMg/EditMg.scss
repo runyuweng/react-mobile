@@ -23,7 +23,7 @@
         position: absolute;
         right: .2rem;
         font-size: .16rem;
-        color:#FFD112;
+        color:#21c6cd;
         line-height: .45rem;
       }
     }
@@ -50,12 +50,38 @@
             }
             p{
                 width:80%;
-                padding:.12rem .12rem;
+                padding:.08rem .12rem;
                 border-bottom: .01rem solid #EAEAEA;
                 span{
                     font-family: "苹方";
                     font-size: .13rem;
                     color:#adadad;
+                    display: inline-block;
+                    width: 100%;
+                    input{
+                        height: .3rem;
+                        outline: none;
+                        box-sizing: border-box;
+                        color:#3f3f3f;
+                        font-size: .13rem;
+                        width: 80%;
+                    }
+                    ::-webkit-input-placeholder { /* WebKit browsers */ 
+                        color: #3f3f3f; 
+                        font-size: .13rem;
+                    } 
+                    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+                        color: #3f3f3f; 
+                        font-size: .13rem;
+                    } 
+                    ::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+                        color: #3f3f3f; 
+                        font-size: .13rem;
+                    } 
+                    :-ms-input-placeholder { /* Internet Explorer 10+ */ 
+                        color: #3f3f3f; 
+                        font-size: .13rem;
+                    } 
                 }
             }
         }

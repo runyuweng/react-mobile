@@ -73,10 +73,10 @@
             border-radius:.03rem;
             font-family: "苹方";
             font-size: .13rem;
-            color:#666666;
-            background:#FFE25C;
+            color:#21c6cd;
             text-align: center;
             line-height: .25rem;
+            border:.01rem solid #21c6cd;
         }
     }
 
@@ -98,9 +98,9 @@
                 text-align: center;
             }
             .active{
-                color:#FFD112;
+                color:#21c6cd;
                 font-weight: bold;
-                border-bottom: .02rem solid #FFD112;
+                border-bottom: .02rem solid #21c6cd;
             }
         }
         article{

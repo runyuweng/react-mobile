@@ -26,17 +26,17 @@
             font-family:"苹方";
             position:relative;
             input{
-                width:86%;
+                width:85%;
                 height:0.28rem;
                 border-radius:0.42rem;
-                text-indent:0.1rem;
                 font-size:0.13rem;
                 font-family:"苹方";
                 border:none;
-                line-height:0.3rem;
                 position:absolute;
                 left:0rem;
                 color: #999999;
+                display: block;
+                padding-left: .12rem;
             }
             img{
                 margin-top:0.06rem;

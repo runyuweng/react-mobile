@@ -57,7 +57,8 @@ class GrowRecord extends React.Component {
                             </div>
                             <div className="Rdetail">
                                 <h3>情商低到底有多可怕？  ——李博士</h3>
-                                <p><span><img src="/src/images/1481373795l515443385.png" /></span>
+                                <p>
+                                    <span><img src="/src/images/1481373795l515443385.png" /></span>
                                     <em>大学生情商模型；推荐书籍；身体情绪地图；身体情绪地图...</em>
                                 </p>
                             </div>
