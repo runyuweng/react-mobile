@@ -19,7 +19,17 @@ class SlideBar extends React.Component {
 
     componentWillReceiveProps (props) {
 
-        this.setState({"industry": props.industry});
+        // this.setState({"industry": props.industry});
+        this.setState({"industry": [
+            {category_id:1,category_name:'body:'+document.body.clientWidth},
+            {category_id:2,category_name:'title:'+this.refs.title.offsetWidth},
+            {category_id:3,category_name:'industry'+this.refs.industryList.offsetWidth},
+            {category_id:4,category_name:'left:'+this.state.currentLeft},
+            {category_id:5,category_name:'test'},
+            {category_id:6,category_name:'test'},
+            {category_id:7,category_name:'test'},
+            {category_id:8,category_name:'test'}
+        ]});
 
     }
 
@@ -49,8 +59,7 @@ class SlideBar extends React.Component {
             currentLeft = preLeft + displacement;
 
         }
-        // alert('displacement:'+displacement+';industryList:'+this.refs.industryList.offsetWidth+';clientWidth:'+document.body.clientWidth);
-        // alert('currentLeft:'+currentLeft+';preLeft:'+preLeft+';e.touches[0].pageX:'+e.touches[0].pageX)
+
         this.setState({
             currentLeft: currentLeft,
             startPoint: e.touches[0].pageX
@@ -78,7 +87,6 @@ class SlideBar extends React.Component {
         return (
             <nav className="SlideBar">
                 <p ref="title">行业分类</p>
-                <p>{currentLeft}</p>
                 <ul
                     style={{"left": currentLeft}}
                     ref="industryList"
