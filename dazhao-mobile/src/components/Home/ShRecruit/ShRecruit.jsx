@@ -64,9 +64,14 @@ class ShRecruit extends React.Component {
 
     }
 
-    changeSort (id) {
+    changeSort (id, type) {
+        ajax({"url": "/zhaoda/jobs/condition?province=320000&salary=3&sort=default&degree=3"}).
+        then((data) => {
+            console.log(data);
 
-        // Console.log(id);
+        });
+
+        console.log(id, type);
 
     }
 
@@ -107,7 +112,7 @@ class ShRecruit extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy sortChange={(id) => this.changeSort(id)} />
+                    <SortBy sortChange={(id, type) => this.changeSort(id, type)} />
                     {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
                         {jobList}

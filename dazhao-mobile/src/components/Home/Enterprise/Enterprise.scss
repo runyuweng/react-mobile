@@ -5,13 +5,17 @@
         .sort{
             margin: .12rem 0;
             ul{
+                display: flex;
+                // justify-content: space-around;
                 li{
+                    flex-grow: 1;
+                    width:30%;
                     display:inline-block;
                     list-style: none;
-                    width:33.33%;
                     font-size: .14rem;
                     color:#B0B0B0;
                     text-align: center;
+                    position: relative;
                     img{
                         height:.08rem;
                         margin-left: .06rem;

@@ -2,9 +2,11 @@ import React from "react";
 import "./Enterprise.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
+import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
-import ajax from "../../../services/ajax";
+import fetch from "../../../services/xFetch";
 import {Link} from "react-router";
+import QueueAnim from "rc-queue-anim";
 
 class Enterprise extends React.Component {
 
@@ -23,13 +25,32 @@ class Enterprise extends React.Component {
 
         this.props.showBottom(false);
 
-        ajax({"url": "/zhaoda/industry/category"}).
+        fetch("/zhaoda/industry/category", {"method": "GET"}).
+        then((response) => response.json()).
         then((data) => {
 
             this.setState({"industry": data.contents});
 
         });
-        ajax({"url": "/zhaoda/jobs/enterprise?industryid=5"}).
+        // fetch("/zhaoda/jobs/enterprise?industryid=5", {"method": "GET"}).
+        // then((response) => response.json()).
+        // then((data) => {
+        //
+        //     this.setState({"enterprise": data.contents}, () => {
+        //
+        //         this.setState({"showLoading": false});
+        //
+        //     });
+        //
+        // });
+
+    }
+    changeCategory (id) {
+
+        this.setState({"showLoading": true});
+
+        fetch(`/zhaoda/jobs/enterprise?industryid=${id}`, {"method": "GET"}).
+        then((response) => response.json()).
         then((data) => {
 
             this.setState({"enterprise": data.contents}, () => {
@@ -41,21 +62,10 @@ class Enterprise extends React.Component {
         });
 
     }
-    changeCategory (id) {
 
-        this.setState({"showLoading": true});
 
-        ajax({"url": `/zhaoda/jobs/enterprise?industryid=${id}`}).
-        then((data) => {
-
-            this.setState({"enterprise": data.contents}, () => {
-
-                this.setState({"showLoading": false});
-
-            });
-
-        });
-
+    changeSort(id){
+        console.log(id)
     }
 
     render () {
@@ -97,6 +107,8 @@ class Enterprise extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
+                    <SortBy count="3" sortChange={(id) => this.changeSort(id)}/>
+                    {/*
                     <div className="sort">
                         <ul>
                             <li>默认排序<img src="/src/images/Back_down.png" /></li>
@@ -104,7 +116,10 @@ class Enterprise extends React.Component {
                             <li>本科<img src="/src/images/Back_down.png" /></li>
                         </ul>
                     </div>
-                    {showLoading ? <Loading /> : ""}
+
+                    */}
+                    {showLoading?<Loading/>:""}
+
                     <div className="hotjob">
                         {enterpriseList}
                         <p>加载更多</p>
@@ -117,5 +132,4 @@ class Enterprise extends React.Component {
 
     }
 }
-
 export default Enterprise;

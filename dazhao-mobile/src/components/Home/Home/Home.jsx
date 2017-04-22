@@ -11,6 +11,7 @@ class Home extends React.Component {
 
         super(props);
         this.state = {
+            "lock": false,
             "jobs": [],
             "enterprise": [],
             "jobsLoading": false,
@@ -27,26 +28,35 @@ class Home extends React.Component {
             "jobsLoading": true,
             "enterpriseLoading": true
         });
-
         this.props.showBottom(true);
 
         ajax({"url": "/zhaoda/getjobs?page=1"}).
         then((data) => {
 
-            this.setState({
-                "jobs": data.contents,
-                "jobsPage": this.state.jobsPage + 1
-            }, () => {
+            if(!this.state.lock){
 
-                this.setState({"jobsLoading": false});
+                this.setState({
+                    "jobs": data.contents,
+                    "jobsPage": this.state.jobsPage + 1
+                }, () => {
 
-            });
+                    this.setState({"jobsLoading": false});
+
+                });
+            }
 
         });
 
     }
 
+    componentWillUnmount(){
+        this.setState({
+            lock: true
+        })
+    }
+
     getMore (type) {
+        console.log('lock',this.state.lock);
 
         let newState = {};
 
@@ -96,6 +106,8 @@ class Home extends React.Component {
             }
 
         });
+
+
 
     }
 

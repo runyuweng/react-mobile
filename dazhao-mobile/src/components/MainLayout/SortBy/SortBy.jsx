@@ -12,10 +12,10 @@ class SortBy extends React.Component {
         super(props);
         this.state = {
             "sortBy": [
-                constants.sort,
-                constants.city,
-                constants.salary,
-                constants.edu
+                {name:'sort',content:constants.sort},
+                {name:'province',content:constants.province},
+                {name:'salary',content:constants.salary},
+                {name:'degree',content:constants.degree}
             ],
             "display": [false, false, false, false], // 控制下拉框的显示与否
             "whichItem": [0, 0, 0, 0] // 控制每种排序方式的当前显示的项索引
@@ -37,42 +37,49 @@ class SortBy extends React.Component {
 
     }
 
-    itemClick (i, index) {
+    itemClick (i, index, id, type) {
 
         const whichItem = this.state.whichItem;
 
         whichItem[i] = index;
         this.setState({whichItem});
-        this.props.sortChange(index);
+        this.props.sortChange(id,type);
 
     }
 
     render () {
 
-        const {sortBy} = this.state;
 
+        const { sortBy } = this.state;
+        const count = parseInt(this.props.count)||4;
 
-        const sortList = sortBy.map((elem, i) => <li key={i} onClick={this.handleClick.bind(this, i)}>
-            {this.state.sortBy[i][this.state.whichItem[i]]}
-            <img src="/src/images/Back_down.png" />
-            {
-                this.state.display[i]
-                ? <div>
-                    {this.state.sortBy[i].map((elem, index) => <span
-                        onClick={this.itemClick.bind(this, i, index)}
-                        key={index}
-                                                               >
-                        {this.state.sortBy[i][index]}
-                    </span>)}
-                </div> : ""
-
+        const sortList = sortBy.map((elem,i) => {
+            if (i < count) {
+                return  <li key={i} onClick={this.handleClick.bind(this,i)}>
+                        {sortBy[i].content[this.state.whichItem[i]].name}
+                            <img src="/src/images/Back_down.png" />
+                            {
+                                this.state.display[i] ?
+                                <div>
+                                    {sortBy[i].content.map((value, index) => {
+                                    return  <span
+                                                onClick={this.itemClick.bind(this, i, index, value.id,  sortBy[i].name)}
+                                                key={value.id}>
+                                                {value.name}
+                                            </span>
+                                    })}
+                                </div> : ""
+                            }
+                        </li>
             }
-        </li>);
-
+            else{
+                return;
+            }
+        })
         return (
 
             <div className="sort">
-                <ul>
+                <ul className={count==4?"list4":"list3"}>
                     {sortList}
                 </ul>
             </div>
