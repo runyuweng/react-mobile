@@ -7,24 +7,30 @@
     flex-direction: column;
     .block {
         flex-shrink: 1;
-        padding: .21rem .12rem;
+        margin: .21rem 0;
         width: 100%;
         display: flex;
         justify-content: flex-start;
         height: 0.6rem;
         .img {
             flex-shrink: 0;
-            width: 0.6rem;
-            height: 0.6rem;
-            margin-right: 0.12rem;
-            background: #f8f8f8;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            div{
+                width: 0.6rem;
+                height: 0.6rem;
+                background: #f8f8f8;
+            }
         }
 
         .word {
+            width: 80%;
+            flex-shrink: 1;
             p {
+                width: 94%;
                 margin-bottom: 0.08rem;
                 background: #f8f8f8;
-                width: 2.7rem;
                 height: 0.14rem;
             }
         }
