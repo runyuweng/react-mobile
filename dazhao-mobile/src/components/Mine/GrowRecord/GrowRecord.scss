@@ -107,12 +107,18 @@
 
         .Rdetail{
             p{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 span{
-                    display:inline-block;
-                    width:1.3rem;
+                    width: 50%;
+                    display:block;
+                    // width:1.3rem;
+                    text-align: center;
                     height:.76rem;
                     img{
                         width:1.3rem;
@@ -121,8 +127,10 @@
                 }
 
                 em{
+                    width: 50%;
+                    display: block;
                     font-style: normal;
-                    margin-left: .1rem;
+                    margin-left: .14rem;
                 }
             }
         }

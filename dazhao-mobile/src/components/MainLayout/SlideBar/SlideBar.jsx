@@ -9,6 +9,7 @@ class SlideBar extends React.Component {
 
         super(props);
         this.state = {
+            "industryWidth":'',
             "startPoint": 0,
             "currentLeft": 0,
             "active": 0,
@@ -59,7 +60,7 @@ class SlideBar extends React.Component {
 
     render () {
 
-        const {currentLeft, industry, active} = this.state;
+        const {currentLeft, industry, active, industryWidth} = this.state;
         const listItem = industry.map((value, i) => <li
             className={active == i ? "active" : ""}
             onClick={() => {
@@ -76,7 +77,9 @@ class SlideBar extends React.Component {
 
         return (
             <nav className="SlideBar">
-                <p ref="title">行业分类</p>
+
+                <p ref="title">行业分类<em>|</em></p>
+
                 <ul
                     style={{"left": currentLeft}}
                     ref="industryList"

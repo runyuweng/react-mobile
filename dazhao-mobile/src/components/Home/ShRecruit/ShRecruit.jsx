@@ -115,7 +115,7 @@ class ShRecruit extends React.Component {
                     <SortBy sortChange={(id, type) => this.changeSort(id, type)} />
                     {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
-                        {jobList}
+                        <div>{jobList}</div>
 
                         <p>加载更多</p>
                     </div>

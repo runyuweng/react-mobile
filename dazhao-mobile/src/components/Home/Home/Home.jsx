@@ -199,8 +199,7 @@ class Home extends React.Component {
                     <h2><span><img src="/src/images/latest.png" /></span>推荐职位
               </h2>
 
-
-                    {jobList}
+                    <div className="jobWrap">{jobList}</div>
 
                     <div className="morejob" onClick={jobsLoading ? "" : () => this.getMore("jobs")}>
                         {jobsLoading ? <LoadingMore /> : "展开更多"}
@@ -212,83 +211,93 @@ class Home extends React.Component {
                     <h2><span><img src="/src/images/latest.png" /></span>热门企业
               </h2>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                    <div>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>100人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>100人以上</em>
+                                </span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>1000人以上</em>
+                                </span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>1000人以上</em>
+                                </span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="jobitems">
-                        <span className="pics" />
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师<span>认证</span></h2>
-                            <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                            <span className="address">
-                                <em>上海</em>
+                        <div className="jobitems">
+                            <span className="pics">
+                                <img src="/src/images/ali.png" />
                             </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
+                            <div className="jobintro">
+                                <h2>JAVA研发工程师<span>认证</span></h2>
+                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                                <span className="address">
+                                    <em>上海</em>
+                                </span>
+                                <span>
+                                    <em>互联网</em>
+                                    <b>|</b>
+                                    <em>外商独资</em>
+                                    <b>|</b>
+                                    <em>上市</em>
+                                    <b>|</b>
+                                    <em>1000人以上</em>
+                                </span>
+                            </div>
                         </div>
                     </div>
 

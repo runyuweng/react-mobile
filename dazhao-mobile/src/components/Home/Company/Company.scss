@@ -1,25 +1,4 @@
 .Company{
-    header{
-        background:#FFFFFF;
-        padding:0.07rem .15rem 0.08rem;
-        border-bottom:0.01rem rgba(234,234,234,1) solid;
-        .search{
-                text-align:center;
-                font-size:0.16rem;
-                display: flex;
-                justify-content: space-between;
-                span{
-                    display:inline-block;
-                    font-size:0.16rem;
-                    font-family:"苹方";
-                    color:#FFE25C;
-                    line-height:0.3rem;
-                    img{
-                        height: .16rem;
-                    }
-                }
-        }
-    }
     #jobTop{
         font-size: 0;
         display: flex;
@@ -132,7 +111,7 @@
                     font-size:0.14rem;
                     line-height: .25rem;
                     color:#464646;
-                    height:1rem;
+                    height:2rem;
                     overflow-y: hidden;
                     background:#ffffff;
                     position:relative;
