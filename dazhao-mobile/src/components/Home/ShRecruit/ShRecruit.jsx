@@ -25,6 +25,8 @@ class ShRecruit extends React.Component {
 
     componentDidMount () {
 
+        this.handleLoad(document);
+
         this.props.showBottom(false);
 
         ajax({"url": "/zhaoda/industry/category"}).
@@ -47,6 +49,35 @@ class ShRecruit extends React.Component {
 
     }
 
+    handleLoad(elem){
+        elem.addEventListener("touchstart",(e)=>{
+            const height = document.body.scrollHeight;
+            const event = e || window.event;
+            const startPoint = event.touches[0].pageY;
+            elem.addEventListener("touchmove",(e)=>{
+                const event = e || window.event;
+                const currentY = event.touches[0].pageY;
+                const changeY = currentY-startPoint;
+                // console.log(startPoint,currentY,currentY-startPoint);
+                // console.log(document.body.scrollTop,window.innerHeight,document.body.scrollHeight);
+                if(((document.body.scrollTop+window.innerHeight)>=document.body.scrollHeight) && changeY<0){
+                    console.log('true');
+                    document.body.style.height = (document.body.offsetHeight + 5)+'px';
+                }
+            });
+            elem.addEventListener("touchend",(e)=>{
+                if(height<document.body.offsetHeight){
+                    console.log(height);
+                    document.body.style.height = height + 'px';
+                    console.log('height',height + 'px');
+                    console.log('end',document.body.offsetHeight);
+                    //ajax
+                }
+            })
+        })
+
+    }
+
     changeCategory (id) {
 
         this.setState({"showLoading": true});
@@ -65,7 +96,7 @@ class ShRecruit extends React.Component {
     }
 
     changeSort (id, type) {
-        ajax({"url": "/zhaoda/jobs/condition?province=320000&salary=3&sort=default&degree=3"}).
+        ajax({"url": "/zhaoda/jobs/condition?province=320000&salary=3&sort=default&degree=3&faq=1"}).
         then((data) => {
             console.log(data);
 
