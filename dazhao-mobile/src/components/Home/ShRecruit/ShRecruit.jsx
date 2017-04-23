@@ -17,15 +17,21 @@ class ShRecruit extends React.Component {
         this.state = {
             "showLoading": true,
             "industry": [],
+            "industryid": '5',
             "jobs": [],
-            "listDisplay": false
+            "listDisplay": false,
+            "data":{
+                "province": '110000',
+                "sort": 'hot',
+                "salary": '2',
+                "degree": '0',
+                "page":'1'
+            }
         };
 
     }
 
     componentDidMount () {
-
-        this.handleLoad(document);
 
         this.props.showBottom(false);
 
@@ -42,6 +48,7 @@ class ShRecruit extends React.Component {
             this.setState({"jobs": data.contents}, () => {
 
                 this.setState({"showLoading": false});
+                this.handleLoad(document);
 
             });
 
@@ -58,19 +65,13 @@ class ShRecruit extends React.Component {
                 const event = e || window.event;
                 const currentY = event.touches[0].pageY;
                 const changeY = currentY-startPoint;
-                // console.log(startPoint,currentY,currentY-startPoint);
-                // console.log(document.body.scrollTop,window.innerHeight,document.body.scrollHeight);
                 if(((document.body.scrollTop+window.innerHeight)>=document.body.scrollHeight) && changeY<0){
-                    console.log('true');
                     document.body.style.height = (document.body.offsetHeight + 5)+'px';
                 }
             });
             elem.addEventListener("touchend",(e)=>{
                 if(height<document.body.offsetHeight){
-                    console.log(height);
                     document.body.style.height = height + 'px';
-                    console.log('height',height + 'px');
-                    console.log('end',document.body.offsetHeight);
                     //ajax
                 }
             })
@@ -80,7 +81,10 @@ class ShRecruit extends React.Component {
 
     changeCategory (id) {
 
-        this.setState({"showLoading": true});
+        this.setState({
+            "showLoading": true,
+            "industryid": id
+        });
 
         ajax({"url": `/zhaoda/jobs/school?industryid=${id}`}).
         then((data) => {
@@ -95,15 +99,20 @@ class ShRecruit extends React.Component {
 
     }
 
-    changeSort (id, type) {
-        ajax({"url": "/zhaoda/jobs/condition?province=320000&salary=3&sort=default&degree=3&faq=1"}).
+    loadData(id, type){
+        let data = JSON.parse(JSON.stringify(this.state.data))
+        data[type] = id;
+        console.log(data);
+        ajax({"url": "/zhaoda/jobs/condition?province="+data.province+"&salary="+data.salary+"&sort="+data.sort+"&degree="+data.degree+"&faq=1&industryid="+this.state.industryid+"&page="+data.page}).
         then((data) => {
+            this.setState({jobs:data.contents||[]})
             console.log(data);
-
         });
+        this.setState({data:data})
+    }
 
-        console.log(id, type);
-
+    changeSort (id,type) {
+        this.loadData(id,type);
     }
 
     render () {
