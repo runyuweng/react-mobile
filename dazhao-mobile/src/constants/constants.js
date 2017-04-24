@@ -1,7 +1,8 @@
 const sort = [
-    {id:'defaut',name:'默认排序'},
+    {id:'default',name:'默认排序'},
     {id:'hot',name:'热门排序'}]
 const province = [
+    {id:'unlimited',name:'全国'},
     {id:'110000',name:'北京'},
     {id:'120000',name:'天津'},
     {id:'130000',name:'河北'},
@@ -39,7 +40,7 @@ const province = [
 ]
 
 const salary = [
-    {id:'2',name:'薪资不限'},
+    {id:'unlimited',name:'薪资不限'},
     {id:'3',name:'2k以下'},
     {id:'4',name:'2k~5k'},
     {id:'5',name:'5k~8k'},
@@ -48,7 +49,7 @@ const salary = [
  ]
 
 const degree = [
-    {id:'0',name:'学位不限'},
+    {id:'unlimited',name:'学位不限'},
     {id:'3',name:'大专'},
     {id:'4',name:'本科'},
     {id:'5',name:'硕士'},

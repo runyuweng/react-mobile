@@ -21,12 +21,14 @@ class ShRecruit extends React.Component {
             "jobs": [],
             "listDisplay": false,
             "data":{
-                "province": '110000',
-                "sort": 'hot',
-                "salary": '2',
-                "degree": '0',
-                "page":'1'
-            }
+                "province": 'unlimited',
+                "sort": 'default',
+                "salary": 'unlimited',
+                "degree": 'unlimited',
+                "page":1
+            },
+            "reset": false,
+            "tips": "加载更多"
         };
 
     }
@@ -42,21 +44,43 @@ class ShRecruit extends React.Component {
 
         });
 
-        ajax({"url": "/zhaoda/jobs/school?industryid=5"}).
-        then((data) => {
-
-            this.setState({"jobs": data.contents}, () => {
-
-                this.setState({"showLoading": false});
-                this.handleLoad(document);
-
-            });
-
+        this.loadData(()=>{
+            this.handleLoad(document);
         });
 
     }
 
+    loadData(id, type){
+        //通过arguments来判断是不是加载更多
+        let data = JSON.parse(JSON.stringify(this.state.data));
+        if(id && type){
+            data[type] = id;
+        }
+        ajax({"url": "/zhaoda/jobs/condition?faq=1&province="+data.province+"&salary="+data.salary+"&sort="+data.sort+"&degree="+data.degree+"&industryid="+this.state.industryid+"&page="+data.page}).
+        then((data) => {
+            console.log('data',data,'arguments',arguments.length);
+            const jobs = (arguments.length===1?(this.state.jobs).concat(data.contents||[]):data.contents)||[];
+            console.log('jobs',jobs);
+            this.setState({
+                "jobs" : jobs,
+                "reset": false
+            },()=>{
+                console.log('offsetHeight',this.refs.container.offsetHeight);
+                document.body.style.height = this.refs.container.offsetHeight+'px';
+                this.setState({
+                    "showLoading": false,
+                    "tips":data.code === "S02"?"已加载全部":"加载更多"
+                });
+                if(arguments.length===1&&typeof(arguments[0])==="function"){
+                    arguments[0]();
+                }
+            })
+        });
+        this.setState({data:data})
+    }
+
     handleLoad(elem){
+        var that = this;
         elem.addEventListener("touchstart",(e)=>{
             const height = document.body.scrollHeight;
             const event = e || window.event;
@@ -65,14 +89,19 @@ class ShRecruit extends React.Component {
                 const event = e || window.event;
                 const currentY = event.touches[0].pageY;
                 const changeY = currentY-startPoint;
-                if(((document.body.scrollTop+window.innerHeight)>=document.body.scrollHeight) && changeY<0){
-                    document.body.style.height = (document.body.offsetHeight + 5)+'px';
+                if(((document.body.scrollTop+window.innerHeight)>=document.body.scrollHeight) && changeY<0 && this.state.tips === "加载更多"){
+                    document.body.style.height = (document.body.offsetHeight + 2)+'px';
                 }
             });
             elem.addEventListener("touchend",(e)=>{
-                if(height<document.body.offsetHeight){
+                if(height<document.body.offsetHeight&&this.state.tips === "加载更多"){
                     document.body.style.height = height + 'px';
-                    //ajax
+                    let data = JSON.parse(JSON.stringify(this.state.data));
+                    data.page = parseInt(data.page) + 1;
+                    this.setState({
+                        data: data
+                    })
+                    that.loadData('loadMore');
                 }
             })
         })
@@ -83,45 +112,39 @@ class ShRecruit extends React.Component {
 
         this.setState({
             "showLoading": true,
-            "industryid": id
-        });
-
-        ajax({"url": `/zhaoda/jobs/school?industryid=${id}`}).
-        then((data) => {
-
-            this.setState({"jobs": data.contents}, () => {
-
-                this.setState({"showLoading": false});
-
-            });
-
+            "industryid": id,
+            "data":{
+                "province": 'unlimited',
+                "sort": 'default',
+                "salary": 'unlimited',
+                "degree": 'unlimited',
+                "page":'1'
+            },
+            "reset": true
+        },()=>{
+            this.loadData();
         });
 
     }
 
-    loadData(id, type){
-        let data = JSON.parse(JSON.stringify(this.state.data))
-        data[type] = id;
-        console.log(data);
-        ajax({"url": "/zhaoda/jobs/condition?province="+data.province+"&salary="+data.salary+"&sort="+data.sort+"&degree="+data.degree+"&faq=1&industryid="+this.state.industryid+"&page="+data.page}).
-        then((data) => {
-            this.setState({jobs:data.contents||[]})
-            console.log(data);
-        });
-        this.setState({data:data})
-    }
+
 
     changeSort (id,type) {
-        this.loadData(id,type);
+        let data = JSON.parse(JSON.stringify(this.state.data));
+        data.page = 1;
+        this.setState({data:data},()=>{
+            this.loadData(id,type);
+
+        })
     }
 
     render () {
 
-        const {industry, jobs, showLoading} = this.state;
+        const {industry, jobs, showLoading, reset, tips} = this.state;
         const jobList = jobs.map((value, i) =>
             <Link to="jobdetail" key={i}>
                 <div className="jobitems">
-                    <span className="pics"><img src="/src/images/ali.png" /></span>
+                    <span className="pics"><img src={value.company.img} /></span>
                     <div className="jobintro">
                         <h2>{value.job_name}</h2>
                         <h3>{value.company.name}</h3>
@@ -144,7 +167,7 @@ class ShRecruit extends React.Component {
             );
 
         return (
-            <div className="ShRecruit">
+            <div className="ShRecruit" ref="container">
                 <header>
                     <TopBar title="校招职位" border="boder" />
                 </header>
@@ -152,12 +175,12 @@ class ShRecruit extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy sortChange={(id, type) => this.changeSort(id, type)} />
+                    <SortBy reset={reset}  sortChange={(id, type) => this.changeSort(id, type)} />
                     {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
                         <div>{jobList}</div>
 
-                        <p>加载更多</p>
+                        <p>{tips}</p>
                     </div>
                 </div>
             </div>

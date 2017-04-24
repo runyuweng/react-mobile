@@ -22,6 +22,15 @@ class SortBy extends React.Component {
         };
 
     }
+    componentWillReceiveProps(props){
+        console.log(props);
+        if(props.reset){
+            this.setState({
+                "display": [false, false, false, false], // 控制下拉框的显示与否
+                "whichItem": [0, 0, 0, 0] // 控制每种排序方式的当前显示的项索引
+            });
+        }
+    }
 
 
     handleClick (index) {
