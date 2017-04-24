@@ -15,15 +15,15 @@ class Intern extends React.Component {
         this.state = {
             "showLoading": true,
             "industry": [],
-            "industryid": '5',
+            "industryid": "5",
             "jobs": [],
             "listDisplay": false,
-            "data":{
-                "province": 'unlimited',
-                "sort": 'default',
-                "salary": 'unlimited',
-                "degree": 'unlimited',
-                "page":1
+            "data": {
+                "province": "unlimited",
+                "sort": "default",
+                "salary": "unlimited",
+                "degree": "unlimited",
+                "page": 1
             },
             "reset": false,
             "tips": "加载更多"
@@ -42,67 +42,92 @@ class Intern extends React.Component {
 
         });
 
-        this.loadData(()=>{
+        this.loadData(() => {
+
             this.handleLoad(document);
+
         });
 
     }
 
-    loadData(id, type){
-        //通过arguments来判断是不是加载更多
-        let data = JSON.parse(JSON.stringify(this.state.data));
-        if(id && type){
+    loadData (id, type) {
+
+        // 通过arguments来判断是不是加载更多
+        const data = JSON.parse(JSON.stringify(this.state.data));
+
+        if (id && type) {
+
             data[type] = id;
+
         }
-        ajax({"url": "/zhaoda/jobs/condition?faq=1&province="+data.province+"&salary="+data.salary+"&sort="+data.sort+"&degree="+data.degree+"&industryid="+this.state.industryid+"&page="+data.page}).
+        ajax({"url": `/zhaoda/jobs/condition?faq=1&province=${data.province}&salary=${data.salary}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
-            console.log('data',data,'arguments',arguments.length);
-            const jobs = (arguments.length===1?(this.state.jobs).concat(data.contents||[]):data.contents)||[];
-            console.log('jobs',jobs);
+
+            console.log("data", data, "arguments", arguments.length);
+            const jobs = (arguments.length === 1 ? this.state.jobs.concat(data.contents || []) : data.contents) || [];
+
+            console.log("jobs", jobs);
             this.setState({
-                "jobs" : jobs,
+                jobs,
                 "reset": false
-            },()=>{
-                console.log('offsetHeight',this.refs.container.offsetHeight);
-                document.body.style.height = this.refs.container.offsetHeight+'px';
+            }, () => {
+
                 this.setState({
                     "showLoading": false,
-                    "tips":data.code === "S02"?"已加载全部":"加载更多"
+                    "tips": data.code === "S02" ? "已加载全部" : "加载更多"
                 });
-                if(arguments.length===1&&typeof(arguments[0])==="function"){
+                if (arguments.length === 1 && typeof arguments[0] === "function") {
+
                     arguments[0]();
+
                 }
-            })
+
+            });
+
         });
-        this.setState({data:data})
+        this.setState({data});
+
     }
 
-    handleLoad(elem){
-        var that = this;
-        elem.addEventListener("touchstart",(e)=>{
+    handleLoad (elem) {
+
+        const that = this;
+
+        elem.addEventListener("touchstart", (e) => {
+
             const height = document.body.scrollHeight;
             const event = e || window.event;
             const startPoint = event.touches[0].pageY;
-            elem.addEventListener("touchmove",(e)=>{
+
+            elem.addEventListener("touchmove", (e) => {
+
                 const event = e || window.event;
                 const currentY = event.touches[0].pageY;
-                const changeY = currentY-startPoint;
-                if(((document.body.scrollTop+window.innerHeight)>=document.body.scrollHeight) && changeY<0 && this.state.tips === "加载更多"){
-                    document.body.style.height = (document.body.offsetHeight + 2)+'px';
+                const changeY = currentY - startPoint;
+
+                if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight && changeY < 0 && this.state.tips === "加载更多") {
+
+                    document.body.style.height = `${document.body.offsetHeight + 2}px`;
+
                 }
+
             });
-            elem.addEventListener("touchend",(e)=>{
-                if(height<document.body.offsetHeight&&this.state.tips === "加载更多"){
-                    document.body.style.height = height + 'px';
-                    let data = JSON.parse(JSON.stringify(this.state.data));
+            elem.addEventListener("touchend", (e) => {
+
+                if (height < document.body.offsetHeight && this.state.tips === "加载更多") {
+
+                    document.body.style.height = "auto";
+                    const data = JSON.parse(JSON.stringify(this.state.data));
+
                     data.page = parseInt(data.page) + 1;
-                    this.setState({
-                        data: data
-                    })
-                    that.loadData('loadMore');
+                    this.setState({data});
+                    that.loadData("loadMore");
+
                 }
-            })
-        })
+
+            });
+
+        });
 
     }
 
@@ -111,29 +136,34 @@ class Intern extends React.Component {
         this.setState({
             "showLoading": true,
             "industryid": id,
-            "data":{
-                "province": 'unlimited',
-                "sort": 'default',
-                "salary": 'unlimited',
-                "degree": 'unlimited',
-                "page":'1'
+            "data": {
+                "province": "unlimited",
+                "sort": "default",
+                "salary": "unlimited",
+                "degree": "unlimited",
+                "page": "1"
             },
             "reset": true
-        },()=>{
+        }, () => {
+
             this.loadData();
+
         });
 
     }
 
 
+    changeSort (id, type) {
 
-    changeSort (id,type) {
-        let data = JSON.parse(JSON.stringify(this.state.data));
+        const data = JSON.parse(JSON.stringify(this.state.data));
+
         data.page = 1;
-        this.setState({data:data},()=>{
-            this.loadData(id,type);
+        this.setState({data}, () => {
 
-        })
+            this.loadData(id, type);
+
+        });
+
     }
 
 
@@ -166,7 +196,7 @@ class Intern extends React.Component {
         );
 
         return (
-            <div className="ShRecruit" ref="container">
+            <div className="ShRecruit">
                 <header>
                     <TopBar title="实习职位" border="boder" />
                 </header>
@@ -174,7 +204,7 @@ class Intern extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy reset={reset} sortChange={(id, type) => this.changeSort(id, type)}/>
+                    <SortBy reset={reset} sortChange={(id, type) => this.changeSort(id, type)} />
                     {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
                         {jobList}

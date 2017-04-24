@@ -88,36 +88,36 @@ const Routes = () => <Provider store={store}>
             <Route path="search" component={ZhaoDaSearch} />
             <Route path="response" component={ZhaoDaResponse} />
             //
-            <Route path="quiz" component={ZhaoDaQuiz}/>
-            <Route path="consult" component={ZhaoDaConsult}/>
-            <Route path="detail" component={ZhaoDaQuesDetail}/>
-            <Route path="toquestion" component={ZhaoDaToQuestion}/>
-            <Route path="tofeature" component={ZhaoDaToFeatures}/>
-            <Route path="totopic" component={ZhaoDaToTopic}/>
-            <Route path="user" component={ZhaoDaUser}/>
-            <Route path="zhuanlan" component={ZhaoDaZhuanLan}/>
-            <Route path="talk" component={ZhaoDaTalk}/>
+            <Route path="quiz" component={ZhaoDaQuiz} />
+            <Route path="consult" component={ZhaoDaConsult} />
+            <Route path="detail" component={ZhaoDaQuesDetail} />
+            <Route path="toquestion" component={ZhaoDaToQuestion} />
+            <Route path="tofeature" component={ZhaoDaToFeatures} />
+            <Route path="totopic" component={ZhaoDaToTopic} />
+            <Route path="user" component={ZhaoDaUser} />
+            <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
+            <Route path="talk" component={ZhaoDaTalk} />
 
-            <Route path="jobdetail" component={HomeJobDetail}/>
+            <Route path="jobdetail" component={HomeJobDetail} />
             <Route path="company" component={HomeCompany}>
-                <IndexRoute component={HomeCompanyIntro}/>
-                <Route path="compantintro" component={HomeCompanyIntro}/>
-                <Route path="positions" component={HomePositions}/>
+                <IndexRoute component={HomeCompanyIntro} />
+                <Route path="compantintro" component={HomeCompanyIntro} />
+                <Route path="positions" component={HomePositions} />
             </Route>
-            <Route path="schoolRecruit" component={HomeShRecruit}/>
-            <Route path="enterprise" component={HomeEnterprise}/>
-            <Route path="intern" component={HomeIntern}/>
+            <Route path="schoolRecruit" component={HomeShRecruit} />
+            <Route path="enterprise" component={HomeEnterprise} />
+            <Route path="intern" component={HomeIntern} />
 
-            <Route path="mine" component={Mine}/>
-            <Route path="cvcenter" component={MineCvCenter} onEnter={requireAuth}/>
-            <Route path="growrecord" component={MineGrowRecord} onEnter={requireAuth}/>
-            <Route path="notify" component={MineNotify} onEnter={requireAuth}/>
-            <Route path="cvmessage" component={MineCvMessage}/>
-            <Route path="edmessage" component={MineEditMg}/>
-            <Route path="edupexp" component={MineEduEx}/>
-            <Route path="practice" component={MinePractice}/>
-            <Route path="login" component={Login}/>
-            <Route path="register" component={Register}/>
+            <Route path="mine" component={Mine} />
+            <Route path="cvcenter" component={MineCvCenter} onEnter={requireAuth} />
+            <Route path="growrecord" component={MineGrowRecord} onEnter={requireAuth} />
+            <Route path="notify" component={MineNotify} onEnter={requireAuth} />
+            <Route path="cvmessage" component={MineCvMessage} />
+            <Route path="edmessage" component={MineEditMg} />
+            <Route path="edupexp" component={MineEduEx} />
+            <Route path="practice" component={MinePractice} />
+            <Route path="login" component={Login} />
+            <Route path="register" component={Register} />
         </Route>
     </Router>
 </Provider>;

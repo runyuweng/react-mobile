@@ -11,7 +11,7 @@ class Company extends React.Component {
         return (
             <div className="Company">
                 <header>
-                    <TopBar border='border' title="企业详情" img="/src/images/love.png"/>
+                    <TopBar border="border" title="企业详情" img="/src/images/love.png" />
                 </header>
 
                 <div id="jobTop">
@@ -34,10 +34,10 @@ class Company extends React.Component {
 
                 <div className="companyMain">
                     <ul>
-                        <Link to="/company/compantintro"  activeClassName="active">
+                        <Link to="/company/compantintro" activeClassName="active">
                             <li>企业介绍</li>
                         </Link>
-                        <Link to="/company/positions"  activeClassName="active">
+                        <Link to="/company/positions" activeClassName="active">
                             <li>招聘岗位</li>
                         </Link>
                         <li>空中宣讲</li>

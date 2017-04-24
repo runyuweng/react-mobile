@@ -29,7 +29,7 @@ class Loading extends React.Component {
             <div className="loading" style={{height}}>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />
@@ -39,7 +39,7 @@ class Loading extends React.Component {
                 </div>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />
@@ -49,7 +49,7 @@ class Loading extends React.Component {
                 </div>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />
@@ -59,7 +59,7 @@ class Loading extends React.Component {
                 </div>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />
@@ -69,7 +69,7 @@ class Loading extends React.Component {
                 </div>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />
@@ -79,7 +79,7 @@ class Loading extends React.Component {
                 </div>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />
@@ -89,7 +89,7 @@ class Loading extends React.Component {
                 </div>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />
@@ -99,7 +99,7 @@ class Loading extends React.Component {
                 </div>
                 <div className="block">
                     <div className="img">
-                        <div></div>
+                        <div />
                     </div>
                     <div className="word">
                         <p />

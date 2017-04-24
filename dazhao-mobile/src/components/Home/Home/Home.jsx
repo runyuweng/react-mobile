@@ -33,7 +33,7 @@ class Home extends React.Component {
         ajax({"url": "/zhaoda/getjobs?page=1"}).
         then((data) => {
 
-            if(!this.state.lock){
+            if (!this.state.lock) {
 
                 this.setState({
                     "jobs": data.contents,
@@ -43,20 +43,22 @@ class Home extends React.Component {
                     this.setState({"jobsLoading": false});
 
                 });
+
             }
 
         });
 
     }
 
-    componentWillUnmount(){
-        this.setState({
-            lock: true
-        })
+    componentWillUnmount () {
+
+        this.setState({"lock": true});
+
     }
 
     getMore (type) {
-        console.log('lock',this.state.lock);
+
+        console.log("lock", this.state.lock);
 
         let newState = {};
 
@@ -106,7 +108,6 @@ class Home extends React.Component {
             }
 
         });
-
 
 
     }

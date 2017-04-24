@@ -9,7 +9,7 @@ class SlideBar extends React.Component {
 
         super(props);
         this.state = {
-            "industryWidth":'',
+            "industryWidth": "",
             "startPoint": 0,
             "currentLeft": 0,
             "active": 0,

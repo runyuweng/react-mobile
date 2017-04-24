@@ -32,13 +32,13 @@ class Enterprise extends React.Component {
             this.setState({"industry": data.contents});
 
         });
-        // fetch("/zhaoda/jobs/enterprise?industryid=5", {"method": "GET"}).
-        // then((response) => response.json()).
-        // then((data) => {
+        // Fetch("/zhaoda/jobs/enterprise?industryid=5", {"method": "GET"}).
+        // Then((response) => response.json()).
+        // Then((data) => {
         //
-        //     this.setState({"enterprise": data.contents}, () => {
+        //     This.setState({"enterprise": data.contents}, () => {
         //
-        //         this.setState({"showLoading": false});
+        //         This.setState({"showLoading": false});
         //
         //     });
         //
@@ -64,8 +64,10 @@ class Enterprise extends React.Component {
     }
 
 
-    changeSort(id){
-        console.log(id)
+    changeSort (id) {
+
+        console.log(id);
+
     }
 
     render () {
@@ -107,7 +109,7 @@ class Enterprise extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy count="3" sortChange={(id) => this.changeSort(id)}/>
+                    <SortBy count="3" sortChange={(id) => this.changeSort(id)} />
                     {/*
                     <div className="sort">
                         <ul>
@@ -118,7 +120,7 @@ class Enterprise extends React.Component {
                     </div>
 
                     */}
-                    {showLoading?<Loading/>:""}
+                    {showLoading ? <Loading /> : ""}
 
                     <div className="hotjob">
                         {enterpriseList}

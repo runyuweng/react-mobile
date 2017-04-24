@@ -13,7 +13,7 @@ class TopBar extends React.Component {
 
     render () {
 
-        const {title, border, link ,img} = this.props;
+        const {title, border, link, img} = this.props;
 
 
         return (
