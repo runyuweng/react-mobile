@@ -100,7 +100,6 @@ class ShRecruit extends React.Component {
             const height = document.body.scrollHeight;
             const event = e || window.event;
             const startPoint = event.touches[0].pageY;
-            event.preventDefault()
 
             elem.addEventListener("touchmove", (e) => {
 
