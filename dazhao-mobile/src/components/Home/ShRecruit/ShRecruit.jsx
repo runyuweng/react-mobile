@@ -65,10 +65,8 @@ class ShRecruit extends React.Component {
         ajax({"url": `/zhaoda/jobs/condition?faq=1&province=${data.province}&salary=${data.salary}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
 
-            console.log("data", data, "arguments", arguments.length);
             const jobs = (arguments.length === 1 ? this.state.jobs.concat(data.contents || []) : data.contents) || [];
 
-            console.log("jobs", jobs);
             this.setState({
                 jobs,
                 "reset": false
@@ -107,7 +105,6 @@ class ShRecruit extends React.Component {
                 const event = e || window.event;
                 const currentY = event.touches[0].pageY;
                 const changeY = currentY - startPoint;
-
                 if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight && document.body.scrollHeight <= (height+25)&& changeY < 0 && this.state.tips === "加载更多") {
 
                     document.body.style.height = `${document.body.offsetHeight + 1}px`;
