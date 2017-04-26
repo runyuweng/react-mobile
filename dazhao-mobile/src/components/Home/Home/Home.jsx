@@ -48,6 +48,24 @@ class Home extends React.Component {
 
         });
 
+        ajax({"url": "/zhaoda/company/condition?province=unlimited&sort=default&degree=unlimited&industryid=5&page=1"}).
+        then((data) => {
+
+            if (!this.state.lock) {
+
+                this.setState({
+                    "enterprise": data.contents,
+                    "enterprisePage": this.state.jobsPage + 1
+                }, () => {
+
+                    this.setState({"enterpriseLoading": false});
+
+                });
+
+            }
+
+        });
+
     }
 
     componentWillUnmount () {
@@ -64,11 +82,10 @@ class Home extends React.Component {
         this.setState(newState);
         newState = {};
 
-        ajax({"url": `/zhaoda/get${type}?page=${this.state.jobsPage}`}).
+        ajax({"url": type==="jobs"?`/zhaoda/getjobs?page=${this.state.jobsPage}`:`/zhaoda/company/condition?province=unlimited&sort=default&degree=unlimited&industryid=5&page${this.state.enterprisePage}`}).
         then((data) => {
 
             if (data.code === "S01") {
-
                 this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
 
                     let newState = {};
@@ -133,6 +150,32 @@ class Home extends React.Component {
                 </span>
             </div>
         </div>);
+
+        const enterpriseList = enterprise.map((value,i)=>{
+            return (
+                <div className="jobitems" key={i}>
+                    <span className="pics">
+                        <img src={value.img} />
+                    </span>
+                    <div className="jobintro">
+                        <h2>{value.name}<span>认证</span></h2>
+                        <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                        <span className="address">
+                            <em>{value.city}</em>
+                        </span>
+                        <span>
+                            <em>{value.type}</em>
+                            <b>|</b>
+                            <em>外商独资</em>
+                            <b>|</b>
+                            <em>{value.stage}</em>
+                            <b>|</b>
+                            <em>{value.numbers}</em>
+                        </span>
+                    </div>
+                </div>
+            )
+        })
 
 
         return (
@@ -211,93 +254,7 @@ class Home extends React.Component {
               </h2>
 
                     <div>
-                        <div className="jobitems">
-                            <span className="pics">
-                                <img src="/src/images/ali.png" />
-                            </span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师<span>认证</span></h2>
-                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                                <span className="address">
-                                    <em>上海</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>100人以上</em>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="jobitems">
-                            <span className="pics">
-                                <img src="/src/images/ali.png" />
-                            </span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师<span>认证</span></h2>
-                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                                <span className="address">
-                                    <em>上海</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="jobitems">
-                            <span className="pics">
-                                <img src="/src/images/ali.png" />
-                            </span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师<span>认证</span></h2>
-                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                                <span className="address">
-                                    <em>上海</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="jobitems">
-                            <span className="pics">
-                                <img src="/src/images/ali.png" />
-                            </span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师<span>认证</span></h2>
-                                <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                                <span className="address">
-                                    <em>上海</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
+                        {enterpriseList}
                     </div>
 
                     <div className="morejob" onClick={enterpriseLoading ? "" : () => this.getMore("enterprise")}>

@@ -30,15 +30,16 @@
                 display: flex;
                 flex-flow: row;
                 .pics{
-                    display:inline-block;
+                    display:inline-flex;
                     width:.6rem;
                     height:.6rem;
                     border:.01rem solid #EAEAEA;
                     margin-right: .12rem;
-                    background:#f8f8f8;
+                    background:#fff;
+                    justify-content: center;
+                    align-items: center;
                     img{
-                        width:.6rem;
-                        height:.6rem;
+                        max-width:.6rem;
                     }
                 }
 
