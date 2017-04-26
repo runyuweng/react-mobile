@@ -153,15 +153,16 @@
             display: -ms-flex;
             display: -o-flex;
             .pics{
-                width: 20%;
-                display:inline-block;
+                display:inline-flex;
+                width:.6rem;
                 height:.6rem;
+                border:.01rem solid #EAEAEA;
                 margin-right: .12rem;
-                text-align: center;
+                background:#fff;
+                justify-content: center;
+                align-items: center;
                 img{
-                    width:.6rem;
-                    height:.6rem;
-                    border:.01rem solid #EAEAEA;
+                    max-width:.6rem;
                 }
             }
 
@@ -269,17 +270,16 @@
             padding:.21rem 0 0 .12rem;
             display: flex;
             .pics{
-                width: 20%;
-                display:inline-block;
-                // width:.6rem;
+                display:inline-flex;
+                width:.6rem;
                 height:.6rem;
+                border:.01rem solid #EAEAEA;
                 margin-right: .12rem;
-                text-align: center;
-                // background:#f8f8f8;
+                background:#fff;
+                justify-content: center;
+                align-items: center;
                 img{
-                    width:.6rem;
-                    height:.6rem;
-                    border:.01rem solid #EAEAEA;
+                    max-width:.6rem;
                 }
             }
 
@@ -356,7 +356,7 @@
                 }
             }
         }
-        
+
         .jobitems:nth-of-type(1){
             border-top:.01rem solid #EAEAEA;
         }
@@ -367,7 +367,7 @@
                 border-bottom:none;
             }
         }
-        
+
         .morejob{
                 background:#fff;
                 border:.01rem solid #21c6cd;

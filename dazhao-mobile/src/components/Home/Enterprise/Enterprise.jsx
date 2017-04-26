@@ -98,7 +98,6 @@ class Enterprise extends React.Component {
             const height = document.body.scrollHeight;
             const event = e || window.event;
             const startPoint = event.touches[0].pageY;
-            event.preventDefault()
 
             elem.addEventListener("touchmove", (e) => {
 
@@ -122,7 +121,7 @@ class Enterprise extends React.Component {
                     data.page = parseInt(data.page) + 1;
                     this.setState({data},()=>{
                         that.loadData("loadMore");
-                        
+
                     });
 
                 }
@@ -174,7 +173,9 @@ class Enterprise extends React.Component {
         const enterpriseList = enterprise.map((value, i) =>
             <div className="jobitems" key={i}>
 
-                <img className="pics" src={value.img}/>
+                <div className="pics">
+                    <img src={value.img}/>
+                </div>
                 <div className="jobintro">
                     <h2>{value.name}<span>认证</span></h2>
                     <h3>
