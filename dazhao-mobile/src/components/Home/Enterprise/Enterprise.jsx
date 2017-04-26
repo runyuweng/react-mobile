@@ -104,8 +104,8 @@ class Enterprise extends React.Component {
                 const event = e || window.event;
                 const currentY = event.touches[0].pageY;
                 const changeY = currentY - startPoint;
-                if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight && document.body.scrollHeight <= (height+25)&& changeY < 0 && this.state.tips === "加载更多") {
 
+                if (document.body.scrollHeight >= height &&  document.body.scrollHeight <= (height+25)&& changeY < 0 && this.state.tips === "加载更多") {
                     document.body.style.height = `${document.body.offsetHeight + 1}px`;
 
                 }
@@ -117,12 +117,9 @@ class Enterprise extends React.Component {
 
                     document.body.style.height = "auto";
                     const data = JSON.parse(JSON.stringify(this.state.data));
-
                     data.page = parseInt(data.page) + 1;
-                    this.setState({data},()=>{
-                        that.loadData("loadMore");
-
-                    });
+                    this.setState({data});
+                    that.loadData("loadMore");
 
                 }
 
