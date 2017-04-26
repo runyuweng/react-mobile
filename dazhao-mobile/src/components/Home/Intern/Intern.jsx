@@ -63,10 +63,8 @@ class Intern extends React.Component {
         ajax({"url": `/zhaoda/jobs/condition?faq=1&province=${data.province}&salary=${data.salary}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
 
-            console.log("data", data, "arguments", arguments.length);
             const jobs = (arguments.length === 1 ? this.state.jobs.concat(data.contents || []) : data.contents) || [];
 
-            console.log("jobs", jobs);
             this.setState({
                 jobs,
                 "reset": false

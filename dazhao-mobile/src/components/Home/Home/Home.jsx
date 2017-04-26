@@ -58,8 +58,6 @@ class Home extends React.Component {
 
     getMore (type) {
 
-        console.log("lock", this.state.lock);
-
         let newState = {};
 
         newState[`${type}Loading`] = true;

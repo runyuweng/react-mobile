@@ -4,7 +4,7 @@ import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
 import Loading from "../../MainLayout/Loading/Loading.jsx";
-import fetch from "../../../services/xFetch";
+import ajax from "../../../services/ajax";
 import {Link} from "react-router";
 import QueueAnim from "rc-queue-anim";
 
@@ -16,7 +16,18 @@ class Enterprise extends React.Component {
         this.state = {
             "showLoading": true,
             "industry": [],
-            "enterprise": []
+            "industryid": "5",
+            "enterprise": [],
+            "listDisplay": false,
+            "data": {
+                "province": "unlimited",
+                "sort": "default",
+                "salary": "unlimited",
+                "degree": "unlimited",
+                "page": 1
+            },
+            "reset": false,
+            "tips": "加载更多"
         };
 
     }
@@ -25,37 +36,96 @@ class Enterprise extends React.Component {
 
         this.props.showBottom(false);
 
-        fetch("/zhaoda/industry/category", {"method": "GET"}).
-        then((response) => response.json()).
+        ajax({"url": "/zhaoda/industry/category"}).
         then((data) => {
 
             this.setState({"industry": data.contents});
 
         });
-        // Fetch("/zhaoda/jobs/enterprise?industryid=5", {"method": "GET"}).
-        // Then((response) => response.json()).
-        // Then((data) => {
-        //
-        //     This.setState({"enterprise": data.contents}, () => {
-        //
-        //         This.setState({"showLoading": false});
-        //
-        //     });
-        //
-        // });
+
+        this.loadData(() => {
+
+            this.handleLoad(document);
+
+        });
 
     }
-    changeCategory (id) {
 
-        this.setState({"showLoading": true});
+    loadData (id, type) {
 
-        fetch(`/zhaoda/jobs/enterprise?industryid=${id}`, {"method": "GET"}).
-        then((response) => response.json()).
+        // 通过arguments来判断是不是加载更多
+        const data = JSON.parse(JSON.stringify(this.state.data));
+
+        if (id && type) {
+
+            data[type] = id;
+
+        }
+        ajax({"url": `/zhaoda/company/condition?province=${data.province}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
 
-            this.setState({"enterprise": data.contents}, () => {
+            const enterprise = (arguments.length === 1 ? this.state.enterprise.concat(data.contents || []) : data.contents) || [];
+            console.log(data);
 
-                this.setState({"showLoading": false});
+            this.setState({
+                enterprise,
+                "reset": false
+            }, () => {
+
+                this.setState({
+                    "showLoading": false,
+                    "tips": data.code === "S02" ? "已加载全部" : "加载更多"
+                });
+                if (arguments.length === 1 && typeof arguments[0] === "function") {
+
+                    arguments[0]();
+
+                }
+
+            });
+
+        });
+        this.setState({data});
+
+    }
+
+    handleLoad (elem) {
+
+        const that = this;
+
+        elem.addEventListener("touchstart", (e) => {
+
+            const height = document.body.scrollHeight;
+            const event = e || window.event;
+            const startPoint = event.touches[0].pageY;
+            event.preventDefault()
+
+            elem.addEventListener("touchmove", (e) => {
+
+                const event = e || window.event;
+                const currentY = event.touches[0].pageY;
+                const changeY = currentY - startPoint;
+                if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight && document.body.scrollHeight <= (height+25)&& changeY < 0 && this.state.tips === "加载更多") {
+
+                    document.body.style.height = `${document.body.offsetHeight + 1}px`;
+
+                }
+
+            });
+            elem.addEventListener("touchend", (e) => {
+
+                if (height < document.body.offsetHeight && this.state.tips === "加载更多") {
+
+                    document.body.style.height = "auto";
+                    const data = JSON.parse(JSON.stringify(this.state.data));
+
+                    data.page = parseInt(data.page) + 1;
+                    this.setState({data},()=>{
+                        that.loadData("loadMore");
+                        
+                    });
+
+                }
 
             });
 
@@ -63,19 +133,48 @@ class Enterprise extends React.Component {
 
     }
 
+    changeCategory (id) {
 
-    changeSort (id) {
+        this.setState({
+            "showLoading": true,
+            "industryid": id,
+            "data": {
+                "province": "unlimited",
+                "sort": "default",
+                "salary": "unlimited",
+                "degree": "unlimited",
+                "page": "1"
+            },
+            "reset": true
+        }, () => {
 
-        console.log(id);
+            this.loadData();
+
+        });
+
+    }
+
+
+    changeSort (id, type) {
+
+        const data = JSON.parse(JSON.stringify(this.state.data));
+
+        data.page = 1;
+        this.setState({data}, () => {
+
+            this.loadData(id, type);
+
+        });
 
     }
 
     render () {
 
-        const {industry, enterprise, showLoading} = this.state;
+        const {industry, enterprise, showLoading,reset,tips} = this.state;
         const enterpriseList = enterprise.map((value, i) =>
             <div className="jobitems" key={i}>
-                <span className="pics" />
+
+                <img className="pics" src={value.img}/>
                 <div className="jobintro">
                     <h2>{value.name}<span>认证</span></h2>
                     <h3>
@@ -109,22 +208,12 @@ class Enterprise extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy count="3" sortChange={(id) => this.changeSort(id)} />
-                    {/*
-                    <div className="sort">
-                        <ul>
-                            <li>默认排序<img src="/src/images/Back_down.png" /></li>
-                            <li>全国<img src="/src/images/Back_down.png" /></li>
-                            <li>本科<img src="/src/images/Back_down.png" /></li>
-                        </ul>
-                    </div>
-
-                    */}
+                    <SortBy count="3" reset={reset} sortChange={(id, type) => this.changeSort(id, type)} sortChange={(id,type) => this.changeSort(id,type)} />
                     {showLoading ? <Loading /> : ""}
 
                     <div className="hotjob">
                         {enterpriseList}
-                        <p>加载更多</p>
+                        <p>{tips}</p>
                     </div>
 
                 </div>

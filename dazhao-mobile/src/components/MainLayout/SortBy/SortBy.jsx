@@ -34,9 +34,29 @@ class SortBy extends React.Component {
         };
 
     }
+    componentWillMount(){
+        if(parseInt(this.props.count) === 3){
+            this.setState({
+                "sortBy": [
+                    {
+                        "name": "sort",
+                        "content": constants.sort
+                    },
+                    {
+                        "name": "province",
+                        "content": constants.province
+                    },
+                    {
+                        "name": "degree",
+                        "content": constants.degree
+                    }
+                ]
+            })
+        }
+
+    }
     componentWillReceiveProps (props) {
 
-        console.log(props);
         if (props.reset) {
 
             this.setState({
@@ -80,24 +100,20 @@ class SortBy extends React.Component {
 
         const sortList = sortBy.map((elem, i) => {
 
-            if (i < count) {
-
-                return (<li key={i} onClick={this.handleClick.bind(this, i)}>
-                    {sortBy[i].content[this.state.whichItem[i]].name}
-                    <img src="/src/images/Back_down.png" />
-                    {
-                                this.state.display[i]
-                                ? <div>
-                                    {sortBy[i].content.map((value, index) => <span
-                                                onClick={this.itemClick.bind(this, i, index, value.id,  sortBy[i].name)}
-                                                key={value.id}>
-                                                {value.name}
-                                            </span>)}
-                                </div> : ""
-                            }
-                </li>);
-
-            }
+            return (<li key={i} onClick={this.handleClick.bind(this, i)}>
+                {sortBy[i].content[this.state.whichItem[i]].name}
+                <img src="/src/images/Back_down.png" />
+                {
+                            this.state.display[i]
+                            ? <div>
+                                {sortBy[i].content.map((value, index) => <span
+                                            onClick={this.itemClick.bind(this, i, index, value.id,  sortBy[i].name)}
+                                            key={value.id}>
+                                            {value.name}
+                                        </span>)}
+                            </div> : ""
+                        }
+            </li>);
 
 
         });
