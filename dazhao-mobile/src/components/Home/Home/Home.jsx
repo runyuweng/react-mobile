@@ -48,7 +48,7 @@ class Home extends React.Component {
 
         });
 
-        ajax({"url": "/zhaoda/company/condition?province=unlimited&sort=default&degree=unlimited&industryid=5&page=1"}).
+        ajax({"url": "/zhaoda/jobs/enterprise?industryid=-1&page=1"}).
         then((data) => {
 
             if (!this.state.lock) {
@@ -82,21 +82,36 @@ class Home extends React.Component {
         this.setState(newState);
         newState = {};
 
-        ajax({"url": type==="jobs"?`/zhaoda/getjobs?page=${this.state.jobsPage}`:`/zhaoda/company/condition?province=unlimited&sort=default&degree=unlimited&industryid=5&page${this.state.enterprisePage}`}).
+        ajax({"url": type==="jobs"?`/zhaoda/getjobs?page=${this.state.jobsPage}`:`/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`}).
         then((data) => {
 
             if (data.code === "S01") {
-                this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
+                if(type==="jobs"){
+                    this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
 
-                    let newState = {};
+                        let newState = {};
 
-                    newState[`${type}Loading`] = false;
-                    newState[`${type}Page`] = this.state[`${type}Page`] + 1;
+                        newState[`${type}Loading`] = false;
+                        newState[`${type}Page`] = this.state[`${type}Page`] + 1;
 
-                    this.setState(newState);
-                    newState = {};
+                        this.setState(newState);
+                        newState = {};
 
-                });
+                    });
+                }else if(type==="enterprise"){
+                    this.setState({"enterprise": this.state.enterprise.concat(data.contents)}, () => {
+
+                        let newState = {};
+
+                        newState[`${type}Loading`] = false;
+                        newState[`${type}Page`] = this.state[`${type}Page`] + 1;
+
+                        this.setState(newState);
+                        newState = {};
+
+                    });
+                }
+
 
             } else if (data.code === "S02") {
 
