@@ -56,6 +56,9 @@ class Enterprise extends React.Component {
         // 通过arguments来判断是不是加载更多
         const data = JSON.parse(JSON.stringify(this.state.data));
 
+        this.setState({"tips": "加载中..."});
+
+
         if (id && type) {
 
             data[type] = id;
@@ -65,6 +68,7 @@ class Enterprise extends React.Component {
         then((data) => {
 
             const enterprise = (arguments.length === 1 ? this.state.enterprise.concat(data.contents || []) : data.contents) || [];
+
             console.log(data);
 
             this.setState({
@@ -105,7 +109,8 @@ class Enterprise extends React.Component {
                 const currentY = event.touches[0].pageY;
                 const changeY = currentY - startPoint;
 
-                if (document.body.scrollHeight >= height &&  document.body.scrollHeight <= (height+25)&& changeY < 0 && this.state.tips === "加载更多") {
+                if (document.body.scrollHeight >= height && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
+
                     document.body.style.height = `${document.body.offsetHeight + 1}px`;
 
                 }
@@ -117,6 +122,7 @@ class Enterprise extends React.Component {
 
                     document.body.style.height = "auto";
                     const data = JSON.parse(JSON.stringify(this.state.data));
+
                     data.page = parseInt(data.page) + 1;
                     this.setState({data});
                     that.loadData("loadMore");
@@ -166,12 +172,12 @@ class Enterprise extends React.Component {
 
     render () {
 
-        const {industry, enterprise, showLoading,reset,tips} = this.state;
+        const {industry, enterprise, showLoading, reset, tips} = this.state;
         const enterpriseList = enterprise.map((value, i) =>
             <div className="jobitems" key={i}>
 
                 <div className="pics">
-                    <img src={value.img}/>
+                    <img src={value.img} />
                 </div>
                 <div className="jobintro">
                     <h2>{value.name}<span>认证</span></h2>
@@ -206,7 +212,7 @@ class Enterprise extends React.Component {
                 <SlideBar industry={industry} change={(id) => this.changeCategory(id)} />
 
                 <div className="srMain">
-                    <SortBy count="3" reset={reset} sortChange={(id, type) => this.changeSort(id, type)} sortChange={(id,type) => this.changeSort(id,type)} />
+                    <SortBy count="3" reset={reset} sortChange={(id, type) => this.changeSort(id, type)} sortChange={(id, type) => this.changeSort(id, type)} />
                     {showLoading ? <Loading /> : ""}
 
                     <div className="hotjob">

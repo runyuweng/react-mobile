@@ -82,11 +82,13 @@ class Home extends React.Component {
         this.setState(newState);
         newState = {};
 
-        ajax({"url": type==="jobs"?`/zhaoda/getjobs?page=${this.state.jobsPage}`:`/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`}).
+        ajax({"url": type === "jobs" ? `/zhaoda/getjobs?page=${this.state.jobsPage}` : `/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`}).
         then((data) => {
 
             if (data.code === "S01") {
-                if(type==="jobs"){
+
+                if (type === "jobs") {
+
                     this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
 
                         let newState = {};
@@ -98,7 +100,9 @@ class Home extends React.Component {
                         newState = {};
 
                     });
-                }else if(type==="enterprise"){
+
+                } else if (type === "enterprise") {
+
                     this.setState({"enterprise": this.state.enterprise.concat(data.contents)}, () => {
 
                         let newState = {};
@@ -110,6 +114,7 @@ class Home extends React.Component {
                         newState = {};
 
                     });
+
                 }
 
 
@@ -166,31 +171,29 @@ class Home extends React.Component {
             </div>
         </div>);
 
-        const enterpriseList = enterprise.map((value,i)=>{
-            return (
-                <div className="jobitems" key={i}>
-                    <span className="pics">
-                        <img src={value.img} />
+        const enterpriseList = enterprise.map((value, i) =>
+            <div className="jobitems" key={i}>
+                <span className="pics">
+                    <img src={value.img} />
+                </span>
+                <div className="jobintro">
+                    <h2>{value.name}<span>认证</span></h2>
+                    <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                    <span className="address">
+                        <em>{value.city}</em>
                     </span>
-                    <div className="jobintro">
-                        <h2>{value.name}<span>认证</span></h2>
-                        <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
-                        <span className="address">
-                            <em>{value.city}</em>
-                        </span>
-                        <span>
-                            <em>{value.type}</em>
-                            <b>|</b>
-                            <em>外商独资</em>
-                            <b>|</b>
-                            <em>{value.stage}</em>
-                            <b>|</b>
-                            <em>{value.numbers}</em>
-                        </span>
-                    </div>
+                    <span>
+                        <em>{value.type}</em>
+                        <b>|</b>
+                        <em>外商独资</em>
+                        <b>|</b>
+                        <em>{value.stage}</em>
+                        <b>|</b>
+                        <em>{value.numbers}</em>
+                    </span>
                 </div>
-            )
-        })
+            </div>
+            );
 
 
         return (

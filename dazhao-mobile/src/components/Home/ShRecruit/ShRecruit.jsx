@@ -54,6 +54,8 @@ class ShRecruit extends React.Component {
 
     loadData (id, type) {
 
+        this.setState({"tips": "加载中..."});
+
         // 通过arguments来判断是不是加载更多
         const data = JSON.parse(JSON.stringify(this.state.data));
 
@@ -104,7 +106,8 @@ class ShRecruit extends React.Component {
                 const event = e || window.event;
                 const currentY = event.touches[0].pageY;
                 const changeY = currentY - startPoint;
-                if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight && document.body.scrollHeight <= (height+25)&& changeY < 0 && this.state.tips === "加载更多") {
+
+                if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
 
                     document.body.style.height = `${document.body.offsetHeight + 1}px`;
 

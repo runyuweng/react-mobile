@@ -34,8 +34,10 @@ class SortBy extends React.Component {
         };
 
     }
-    componentWillMount(){
-        if(parseInt(this.props.count) === 3){
+    componentWillMount () {
+
+        if (parseInt(this.props.count) === 3) {
+
             this.setState({
                 "sortBy": [
                     {
@@ -51,7 +53,8 @@ class SortBy extends React.Component {
                         "content": constants.degree
                     }
                 ]
-            })
+            });
+
         }
 
     }
@@ -98,25 +101,21 @@ class SortBy extends React.Component {
         const {sortBy} = this.state;
         const count = parseInt(this.props.count) || 4;
 
-        const sortList = sortBy.map((elem, i) => {
-
-            return (<li key={i} onClick={this.handleClick.bind(this, i)}>
-                {sortBy[i].content[this.state.whichItem[i]].name}
-                <img src="/src/images/Back_down.png" />
-                {
+        const sortList = sortBy.map((elem, i) => <li key={i} onClick={this.handleClick.bind(this, i)}>
+            {sortBy[i].content[this.state.whichItem[i]].name}
+            <img src="/src/images/Back_down.png" />
+            {
                             this.state.display[i]
                             ? <div>
                                 {sortBy[i].content.map((value, index) => <span
-                                            onClick={this.itemClick.bind(this, i, index, value.id,  sortBy[i].name)}
-                                            key={value.id}>
-                                            {value.name}
-                                        </span>)}
+                                    onClick={this.itemClick.bind(this, i, index, value.id, sortBy[i].name)}
+                                    key={value.id}
+                                                                         >
+                                    {value.name}
+                                </span>)}
                             </div> : ""
                         }
-            </li>);
-
-
-        });
+        </li>);
 
 
         return (
