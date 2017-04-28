@@ -47,7 +47,9 @@ import MineCvMessage from "./src/components/Mine/CvMessage/CvMessage.jsx";
 import MineEditMg from "./src/components/Mine/EditMg/EditMg.jsx";
 import MineEduEx from "./src/components/Mine/EduEx/EduEx.jsx";
 import MinePractice from "./src/components/Mine/Practice/Practice.jsx";
-
+import MineDropInBox from "./src/components/Mine/DropInBox/DropInBox.jsx";
+import MinePlatformDropIn from "./src/components/Mine/PlatformDropIn/PlatformDropIn.jsx";
+import MineEmailDropIn from "./src/components/Mine/EmailDropIn/EmailDropIn.jsx";
 import ZhaoDaQuiz from "./src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 
 // 用户验证
@@ -116,6 +118,11 @@ const Routes = () => <Provider store={store}>
             <Route path="edmessage" component={MineEditMg} />
             <Route path="edupexp" component={MineEduEx} />
             <Route path="practice" component={MinePractice} />
+            <Route path="dropinbox" component={MineDropInBox}>
+                <IndexRoute component={MinePlatformDropIn} />
+                <Route path="platformdropin" component={MinePlatformDropIn} />
+                <Route path="emaildropin" component={MineEmailDropIn} />
+            </Route>
             <Route path="login" component={Login} />
             <Route path="register" component={Register} />
         </Route>

@@ -39,81 +39,81 @@ class ZhaoDaTopic extends React.Component {
                     <div className="itemGroup">
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#职业素养#</p>
+                            <p>职业素养</p>
                             <p>24个问题</p>
                         </div>
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#汽车行业#</p>
+                            <p>汽车行业</p>
                             <p>24个问题</p>
                         </div>
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#PK985/211#</p>
-                            <p>24个问题</p>
-                        </div>
-
-                        <div className="item">
-                            <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#职业素养#</p>
-                            <p>24个问题</p>
-                        </div>
-                        <div className="item">
-                            <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#汽车行业#</p>
-                            <p>24个问题</p>
-                        </div>
-                        <div className="item">
-                            <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#PK985/211#</p>
+                            <p>PK985/211</p>
                             <p>24个问题</p>
                         </div>
 
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#职业素养#</p>
+                            <p>职业素养</p>
                             <p>24个问题</p>
                         </div>
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#汽车行业#</p>
+                            <p>汽车行业</p>
                             <p>24个问题</p>
                         </div>
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#PK985/211#</p>
-                            <p>24个问题</p>
-                        </div>
-
-                        <div className="item">
-                            <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#职业素养#</p>
-                            <p>24个问题</p>
-                        </div>
-                        <div className="item">
-                            <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#汽车行业#</p>
-                            <p>24个问题</p>
-                        </div>
-                        <div className="item">
-                            <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#PK985/211#</p>
+                            <p>PK985/211</p>
                             <p>24个问题</p>
                         </div>
 
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#职业素养#</p>
+                            <p>职业素养</p>
                             <p>24个问题</p>
                         </div>
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#汽车行业#</p>
+                            <p>汽车行业</p>
                             <p>24个问题</p>
                         </div>
                         <div className="item">
                             <span><img src="/src/images/topicImg.png" /></span>
-                            <p>#PK985/211#</p>
+                            <p>PK985/211</p>
+                            <p>24个问题</p>
+                        </div>
+
+                        <div className="item">
+                            <span><img src="/src/images/topicImg.png" /></span>
+                            <p>职业素养</p>
+                            <p>24个问题</p>
+                        </div>
+                        <div className="item">
+                            <span><img src="/src/images/topicImg.png" /></span>
+                            <p>汽车行业</p>
+                            <p>24个问题</p>
+                        </div>
+                        <div className="item">
+                            <span><img src="/src/images/topicImg.png" /></span>
+                            <p>PK985/211</p>
+                            <p>24个问题</p>
+                        </div>
+
+                        <div className="item">
+                            <span><img src="/src/images/topicImg.png" /></span>
+                            <p>职业素养</p>
+                            <p>24个问题</p>
+                        </div>
+                        <div className="item">
+                            <span><img src="/src/images/topicImg.png" /></span>
+                            <p>汽车行业</p>
+                            <p>24个问题</p>
+                        </div>
+                        <div className="item">
+                            <span><img src="/src/images/topicImg.png" /></span>
+                            <p>PK985/211</p>
                             <p>24个问题</p>
                         </div>
 

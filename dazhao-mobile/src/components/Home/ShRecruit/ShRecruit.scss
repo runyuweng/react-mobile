@@ -23,9 +23,11 @@
 
         #homeMain{
             .jobitems{
+                height: 1.1rem;
                 background:#fff;
-                padding:.21rem 0 0 .12rem;
+                padding:.15rem 0 0 .13rem;
                 display: flex;
+                box-sizing: border-box;
                 .pics{
                     display:inline-flex;
                     width:.6rem;
@@ -44,7 +46,7 @@
                     width: 80%;
                     display:inline-block;
                     border-bottom: .01rem solid #EAEAEA;
-                    padding-bottom: .21rem;
+                    padding-bottom: .14rem;
                     padding-right: .04rem;
                     h2{
                         font-family: "苹方";

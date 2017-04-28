@@ -34,9 +34,9 @@ class Mine extends React.Component {
                             <span>机械设计制造及自动化</span>
                         </div>
                         <div className="fans">
-                            <span><b>310</b><br />粉丝</span>
+                            <span><b>12</b><br />已投递</span>
                             <em />
-                            <span><b>21</b><br />赞同</span>
+                            <span><b>0</b><br />待面试</span>
                         </div>
                     </div>
                 </header>

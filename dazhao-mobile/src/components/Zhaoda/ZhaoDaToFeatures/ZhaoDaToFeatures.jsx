@@ -22,9 +22,9 @@ class ZhaoDaToFeatures extends React.Component {
         return (
             <div className="ZhaoDaToFeatures">
                 <header>
-                    <video id="video" controls poster="source" >
-                        <source src="/src/images/Intermission-Walk-in.ogv" />
-                        <source src="/src/images/Intermission-Walk-in_512kb.mp4" />
+                    <video id="video" controls poster="/src/images/zhuanlan.png" >
+                        <source src="http://html5videoformatconverter.com/data/images/happyfit2.ogv" />
+                        <source src="http://www.100sucai.com/img/video/happyfit2.mp4" />
                     </video>
                     <div className="TopBar">
                         <span onClick={(e) => {
@@ -71,7 +71,7 @@ class ZhaoDaToFeatures extends React.Component {
                 <div id="album">
                     <h3>专辑列表</h3>
                     <div className="albunItems">
-                        <span><img src="/src/images/1481189424l698185646.png" /></span>
+                        <span><img src="/src/images/zhuanlan.png" /></span>
                         <div className="itemsR">
                             <h3>#麦力答#第二期----三年国考  成就万里挑一</h3>
                             <span><em>243</em>次播放</span>
@@ -79,7 +79,7 @@ class ZhaoDaToFeatures extends React.Component {
                     </div>
 
                     <div className="albunItems">
-                        <span><img src="/src/images/1481189424l698185646.png" /></span>
+                        <span><img src="/src/images/zhuanlan.png" /></span>
                         <div className="itemsR">
                             <h3>#麦力答#第二期----三年国考  成就万里挑一</h3>
                             <span><em>243</em>次播放</span>
@@ -87,7 +87,7 @@ class ZhaoDaToFeatures extends React.Component {
                     </div>
 
                     <div className="albunItems">
-                        <span><img src="/src/images/1481189424l698185646.png" /></span>
+                        <span><img src="/src/images/zhuanlan.png" /></span>
                         <div className="itemsR">
                             <h3>#麦力答#第二期----三年国考  成就万里挑一</h3>
                             <span><em>243</em>次播放</span>
@@ -95,7 +95,7 @@ class ZhaoDaToFeatures extends React.Component {
                     </div>
 
                     <div className="albunItems">
-                        <span><img src="/src/images/1481189424l698185646.png" /></span>
+                        <span><img src="/src/images/zhuanlan.png" /></span>
                         <div className="itemsR">
                             <h3>#麦力答#第二期----三年国考  成就万里挑一</h3>
                             <span><em>243</em>次播放</span>

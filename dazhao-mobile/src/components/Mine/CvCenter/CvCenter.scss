@@ -1,4 +1,5 @@
 .CvCenter{
+    height: 100%;
     h3{
         font-family: "苹方";
         font-size: .14rem;
@@ -70,6 +71,9 @@
         font-size: 0rem;
         background:#fff;
         margin-top: .2rem;
+        p:nth-of-type(1){
+            border-top: .01rem solid #D8D8D8;
+        }
         p{
             padding:.14rem .24rem .14rem .31rem;
             border-bottom: .01rem solid #D8D8D8;
@@ -82,6 +86,25 @@
                 font-family: "苹方";
                 font-size: .14rem;
                 color:#666666;
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                align-items: center;
+                b{
+                    display: inline-block;
+                    width:.2rem;
+                    height: .2rem;
+                    border-radius: 50%;
+                    background: red;
+                    color:#fff;
+                    font-size: .13rem;
+                    text-align: center;
+                    padding-bottom: .05rem;
+                    margin-left: .1rem;
+                    box-sizing: border-box;
+                }
             }
             span{
                 display:inline-block;
@@ -95,5 +118,65 @@
             }
         }
     }
-
+    
+    #deleteModal{
+        font-size: 24px;
+        position: fixed;
+        background: rgba(0,0,0,0.5);
+        left: 0;
+        top:0;
+        width:100%;
+        height: 100%;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .dialog{
+            background: #fff;
+            width:80%;
+            border-radius: .1rem;
+            .deleteheader{
+                margin: .24rem 0;
+                font-family: "苹方";
+                font-size: .2rem;
+                text-align: center;
+            }
+            .deletemain{
+                p{
+                    text-align: center;
+                    font-size: .16rem;
+                    color:#000;
+                    line-height: .26rem;
+                }
+            }
+            .deletefooter{
+                margin-top: .3rem;
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                justify-content: space-between;
+                span{
+                    display: inline-block;
+                    height: .52rem;
+                    font-size: .18rem;
+                    border-top: .01rem solid #DBDBDB;
+                    width:50%;
+                    text-align: center;
+                    line-height: .52rem;
+                }
+                span:nth-of-type(1){
+                    border-right: .01rem solid #DBDBDB;
+                    color:#21c6cd;
+                }
+                span:nth-of-type(2){
+                    color:#666666;
+                }
+            }
+        }
+    }
 }
