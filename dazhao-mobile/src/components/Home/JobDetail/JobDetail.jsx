@@ -8,6 +8,110 @@ class JobDetail extends React.Component {
     constructor (props) {
 
         super(props);
+        this.state = {
+            data:{
+                job_name:'name',
+                education:'education',
+                salary:'8K-12K',
+                type:'校招',
+                location:[
+                    '上海市',
+                    '徐汇区',
+                    '淮海中路'
+                ],
+                company:{
+                    name:'company.name',
+                    city:'company.city',
+                    type:'company.type',
+                    stage:'company.stage',
+                    img:'',
+                    numbers:'100人',
+                    jobs:[]
+                },
+                tips:['扁平化管理','发展空间大','带薪休假'],
+                discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                similarJobs:[
+                    {
+                        job_name:'name',
+                        education:'education',
+                        salary:'8K-12K',
+                        type:'校招',
+                        location:[
+                            '上海市',
+                            '徐汇区',
+                            '淮海中路'
+                        ],
+                        company:{
+                            name:'company.name',
+                            city:'company.city',
+                            type:'company.type',
+                            stage:'company.stage',
+                            img:'',
+                            numbers:'100人',
+                            jobs:[]
+                        },
+                        tips:['扁平化管理','发展空间大','带薪休假'],
+                        discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                        require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+
+                    },
+                    {
+                        job_name:'name',
+                        education:'education',
+                        salary:'8K-12K',
+                        type:'校招',
+                        location:[
+                            '上海市',
+                            '徐汇区',
+                            '淮海中路'
+                        ],
+                        company:{
+                            name:'company.name',
+                            city:'company.city',
+                            type:'company.type',
+                            stage:'company.stage',
+                            img:'',
+                            numbers:'100人',
+                            jobs:[]
+                        },
+                        tips:['扁平化管理','发展空间大','带薪休假'],
+                        discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                        require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+
+                    },
+                    {
+                        job_name:'name',
+                        education:'education',
+                        salary:'8K-12K',
+                        type:'校招',
+                        location:[
+                            '上海市',
+                            '徐汇区',
+                            '淮海中路'
+                        ],
+                        company:{
+                            name:'company.name',
+                            city:'company.city',
+                            type:'company.type',
+                            stage:'company.stage',
+                            img:'',
+                            numbers:'100人',
+                            jobs:[]
+                        },
+                        tips:['扁平化管理','发展空间大','带薪休假'],
+                        discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                        require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+
+                    }
+                ]
+            }
+
+        }
+
+    }
+
+    componentWillMount(){
 
     }
 
@@ -19,6 +123,34 @@ class JobDetail extends React.Component {
 
     render () {
 
+        const {data} = this.state;
+        const jobs = data.similarJobs.map((value,i)=>{
+            return (
+                <Link to="/jobdetail" key={i}>
+                    <div className="jobitems">
+                        <span className="pics"><img src="/src/images/ali.png" /></span>
+                        <div className="jobintro">
+                            <h2>{value.job_name}</h2>
+                            <h3>{value.company.name}</h3>
+                            <span>
+                                <em>{value.location[0]}</em>
+                                <em>{value.education}</em>
+                            </span>
+                            <span>
+                                <em>{value.company.type}</em>
+                                <b>|</b>
+                                <em>外商独资</em>
+                                <b>|</b>
+                                <em>{value.company.stage}</em>
+                                <b>|</b>
+                                <em>{value.company.numbers}</em>
+                            </span>
+                        </div>
+                    </div>
+                </Link>
+            )
+        })
+
         return (
             <div className="JobDetail">
                 <header>
@@ -27,17 +159,17 @@ class JobDetail extends React.Component {
 
                 <div id="jobTop">
                     <span className="joblog"><img src="/src/images/ali.png" /></span>
-                    <h2>JAVA研发工程师<span>[<em>8</em>K-<em>12</em>K]</span>
+                    <h2>{data.job_name}<span>[{data.salary}]</span>
                     </h2>
                     <div>
-                        <span><img src="/src/images/source58.png" /><em>上海</em></span>
-                        <span><img src="/src/images/source59.png" /><em>本科</em></span>
-                        <span><img src="/src/images/source61.png" /><em>校招</em></span>
+                        <span><img src="/src/images/source58.png" /><em>{data.location[0]}</em></span>
+                        <span><img src="/src/images/source59.png" /><em>{data.education}</em></span>
+                        <span><img src="/src/images/source61.png" /><em>{data.type}</em></span>
                     </div>
                     <p>
-                        <span>扁平管理</span>
-                        <span>发展空间大</span>
-                        <span>带薪年假</span>
+                        {data.tips.map((value, i)=>
+                            <span key={i}>{value}</span>
+                        )}
                     </p>
 
                 </div>
@@ -46,16 +178,16 @@ class JobDetail extends React.Component {
                     <div className="job">
                         <div className="jobitems">
                             <div className="jobintro">
-                                <h2>阿里巴巴网络技术有限公司<span>认证</span></h2>
+                                <h2>{data.company.name}<span>认证</span></h2>
                                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
                                 <span>
-                                    <em>互联网</em>
+                                    <em>{data.company.type}</em>
                                     <b>|</b>
                                     <em>外商独资</em>
                                     <b>|</b>
-                                    <em>上市</em>
+                                    <em>{data.company.stage}</em>
                                     <b>|</b>
-                                    <em>1000人以上</em>
+                                    <em>{data.company.numbers}</em>
                                 </span>
                             </div>
                             <span><img src="/src/images/Back_Button.png" /></span>
@@ -69,21 +201,11 @@ class JobDetail extends React.Component {
           </h2>
                     <div className="jobde">
                         <h3>职位描述</h3>
-                        <ol>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                        </ol>
+                        <div dangerouslySetInnerHTML={{__html:data.discribe}}></div>
                     </div>
                     <div className="jobde">
                         <h3>任职要求</h3>
-                        <ol>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                        </ol>
+                        <div dangerouslySetInnerHTML={{__html:data.require}}></div>
                     </div>
                 </div>
 
@@ -94,10 +216,10 @@ class JobDetail extends React.Component {
                     <div className="jobwrap">
                         <div className="address">
                             <p>
-                                <span>上海市</span>
-                                <span>徐汇区</span>
+                                <span>{data.location[0]}</span>
+                                <span>{data.location[1]}</span>
                             </p>
-                            <p>淮海中路1010号嘉华中心1606</p>
+                            <p>{data.location[2]}</p>
                         </div>
                         <span className="map">地图</span>
                     </div>
@@ -107,91 +229,7 @@ class JobDetail extends React.Component {
                 <div id="homeMain">
                     <h2><span><img src="/src/images/latest.png" /></span>相似职位
           </h2>
-                    <Link to="jobdetail">
-                        <div className="jobitems">
-                            <span className="pics"><img src="/src/images/ali.png" /></span>
-                            <div className="jobintro">
-                                <h2>JAVA研发工程师</h2>
-                                <h3>阿里巴巴网络技术有限公司</h3>
-                                <span>
-                                    <em>上海</em>
-                                    <em>本科</em>
-                                </span>
-                                <span>
-                                    <em>互联网</em>
-                                    <b>|</b>
-                                    <em>外商独资</em>
-                                    <b>|</b>
-                                    <em>上市</em>
-                                    <b>|</b>
-                                    <em>1000人以上</em>
-                                </span>
-                            </div>
-                        </div>
-                    </Link>
-
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师</h2>
-                            <h3>阿里巴巴网络技术有限公司</h3>
-                            <span>
-                                <em>上海</em>
-                                <em>本科</em>
-                            </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师</h2>
-                            <h3>阿里巴巴网络技术有限公司</h3>
-                            <span>
-                                <em>上海</em>
-                                <em>本科</em>
-                            </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师</h2>
-                            <h3>阿里巴巴网络技术有限公司</h3>
-                            <span>
-                                <em>上海</em>
-                                <em>本科</em>
-                            </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
-                        </div>
-                    </div>
+                    {jobs}
 
                 </div>
 
