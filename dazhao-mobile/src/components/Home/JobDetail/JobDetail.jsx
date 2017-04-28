@@ -9,109 +9,109 @@ class JobDetail extends React.Component {
 
         super(props);
         this.state = {
-            data:{
-                job_name:'name',
-                education:'education',
-                salary:'8K-12K',
-                type:'校招',
-                location:[
-                    '上海市',
-                    '徐汇区',
-                    '淮海中路'
+            "data": {
+                "job_name": "name",
+                "education": "education",
+                "salary": "8K-12K",
+                "type": "校招",
+                "location": [
+                    "上海市",
+                    "徐汇区",
+                    "淮海中路"
                 ],
-                company:{
-                    name:'company.name',
-                    city:'company.city',
-                    type:'company.type',
-                    stage:'company.stage',
-                    img:'',
-                    numbers:'100人',
-                    jobs:[]
+                "company": {
+                    "name": "company.name",
+                    "city": "company.city",
+                    "type": "company.type",
+                    "stage": "company.stage",
+                    "img": "",
+                    "numbers": "100人",
+                    "jobs": []
                 },
-                tips:['扁平化管理','发展空间大','带薪休假'],
-                discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
-                require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
-                similarJobs:[
+                "tips": ["扁平化管理", "发展空间大", "带薪休假"],
+                "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                "similarJobs": [
                     {
-                        job_name:'name',
-                        education:'education',
-                        salary:'8K-12K',
-                        type:'校招',
-                        location:[
-                            '上海市',
-                            '徐汇区',
-                            '淮海中路'
+                        "job_name": "name",
+                        "education": "education",
+                        "salary": "8K-12K",
+                        "type": "校招",
+                        "location": [
+                            "上海市",
+                            "徐汇区",
+                            "淮海中路"
                         ],
-                        company:{
-                            name:'company.name',
-                            city:'company.city',
-                            type:'company.type',
-                            stage:'company.stage',
-                            img:'',
-                            numbers:'100人',
-                            jobs:[]
+                        "company": {
+                            "name": "company.name",
+                            "city": "company.city",
+                            "type": "company.type",
+                            "stage": "company.stage",
+                            "img": "",
+                            "numbers": "100人",
+                            "jobs": []
                         },
-                        tips:['扁平化管理','发展空间大','带薪休假'],
-                        discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
-                        require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                        "tips": ["扁平化管理", "发展空间大", "带薪休假"],
+                        "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                        "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
 
                     },
                     {
-                        job_name:'name',
-                        education:'education',
-                        salary:'8K-12K',
-                        type:'校招',
-                        location:[
-                            '上海市',
-                            '徐汇区',
-                            '淮海中路'
+                        "job_name": "name",
+                        "education": "education",
+                        "salary": "8K-12K",
+                        "type": "校招",
+                        "location": [
+                            "上海市",
+                            "徐汇区",
+                            "淮海中路"
                         ],
-                        company:{
-                            name:'company.name',
-                            city:'company.city',
-                            type:'company.type',
-                            stage:'company.stage',
-                            img:'',
-                            numbers:'100人',
-                            jobs:[]
+                        "company": {
+                            "name": "company.name",
+                            "city": "company.city",
+                            "type": "company.type",
+                            "stage": "company.stage",
+                            "img": "",
+                            "numbers": "100人",
+                            "jobs": []
                         },
-                        tips:['扁平化管理','发展空间大','带薪休假'],
-                        discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
-                        require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                        "tips": ["扁平化管理", "发展空间大", "带薪休假"],
+                        "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                        "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
 
                     },
                     {
-                        job_name:'name',
-                        education:'education',
-                        salary:'8K-12K',
-                        type:'校招',
-                        location:[
-                            '上海市',
-                            '徐汇区',
-                            '淮海中路'
+                        "job_name": "name",
+                        "education": "education",
+                        "salary": "8K-12K",
+                        "type": "校招",
+                        "location": [
+                            "上海市",
+                            "徐汇区",
+                            "淮海中路"
                         ],
-                        company:{
-                            name:'company.name',
-                            city:'company.city',
-                            type:'company.type',
-                            stage:'company.stage',
-                            img:'',
-                            numbers:'100人',
-                            jobs:[]
+                        "company": {
+                            "name": "company.name",
+                            "city": "company.city",
+                            "type": "company.type",
+                            "stage": "company.stage",
+                            "img": "",
+                            "numbers": "100人",
+                            "jobs": []
                         },
-                        tips:['扁平化管理','发展空间大','带薪休假'],
-                        discribe:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
-                        require:'<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>',
+                        "tips": ["扁平化管理", "发展空间大", "带薪休假"],
+                        "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                        "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
 
                     }
                 ]
             }
 
-        }
+        };
 
     }
 
-    componentWillMount(){
+    componentWillMount () {
 
     }
 
@@ -124,32 +124,30 @@ class JobDetail extends React.Component {
     render () {
 
         const {data} = this.state;
-        const jobs = data.similarJobs.map((value,i)=>{
-            return (
-                <Link to="/jobdetail" key={i}>
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>{value.job_name}</h2>
-                            <h3>{value.company.name}</h3>
-                            <span>
-                                <em>{value.location[0]}</em>
-                                <em>{value.education}</em>
-                            </span>
-                            <span>
-                                <em>{value.company.type}</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>{value.company.stage}</em>
-                                <b>|</b>
-                                <em>{value.company.numbers}</em>
-                            </span>
-                        </div>
+        const jobs = data.similarJobs.map((value, i) =>
+            <Link to="/jobdetail" key={i}>
+                <div className="jobitems">
+                    <span className="pics"><img src="/src/images/ali.png" /></span>
+                    <div className="jobintro">
+                        <h2>{value.job_name}</h2>
+                        <h3>{value.company.name}</h3>
+                        <span>
+                            <em>{value.location[0]}</em>
+                            <em>{value.education}</em>
+                        </span>
+                        <span>
+                            <em>{value.company.type}</em>
+                            <b>|</b>
+                            <em>外商独资</em>
+                            <b>|</b>
+                            <em>{value.company.stage}</em>
+                            <b>|</b>
+                            <em>{value.company.numbers}</em>
+                        </span>
                     </div>
-                </Link>
-            )
-        })
+                </div>
+            </Link>
+            );
 
         return (
             <div className="JobDetail">
@@ -167,7 +165,7 @@ class JobDetail extends React.Component {
                         <span><img src="/src/images/source61.png" /><em>{data.type}</em></span>
                     </div>
                     <p>
-                        {data.tips.map((value, i)=>
+                        {data.tips.map((value, i) =>
                             <span key={i}>{value}</span>
                         )}
                     </p>
@@ -201,11 +199,11 @@ class JobDetail extends React.Component {
           </h2>
                     <div className="jobde">
                         <h3>职位描述</h3>
-                        <div dangerouslySetInnerHTML={{__html:data.discribe}}></div>
+                        <div dangerouslySetInnerHTML={{"__html": data.discribe}} />
                     </div>
                     <div className="jobde">
                         <h3>任职要求</h3>
-                        <div dangerouslySetInnerHTML={{__html:data.require}}></div>
+                        <div dangerouslySetInnerHTML={{"__html": data.require}} />
                     </div>
                 </div>
 
