@@ -1,5 +1,6 @@
 .Home{
     font-size: 0;
+    margin-bottom: .72rem;
     header{
         font-size: 0;
         width:100%;
@@ -133,7 +134,6 @@
             font-weight: bold;
             color:#666666;
             display: inline-flex;
-            align-items: center;
             margin: .24rem 0 .2rem 0;
             // height: 1.03rem;
             span{
@@ -255,7 +255,6 @@
             font-weight: bold;
             color:#666666;
             display: inline-flex;
-            align-items: center;
             margin: .24rem 0 .2rem 0;
             span{
                 display:inline-block;
@@ -269,8 +268,10 @@
 
         .jobitems{
             background:#fff;
-            padding:.21rem 0 0 .12rem;
+            padding:.15rem 0 0 .13rem;
             display: flex;
+            height: 1.1rem;
+            box-sizing: border-box;
             .pics{
                 display:inline-flex;
                 width:.6rem;
@@ -289,7 +290,7 @@
                 width: 80%;
                 display:inline-block;
                 border-bottom:.01rem solid #EAEAEA;
-                padding-bottom:.21rem;
+                padding-bottom:.1rem;
                 padding-right: .04rem;
                 h2{
                     font-family: "苹方";

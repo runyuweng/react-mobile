@@ -1,0 +1,77 @@
+#invitation{
+    .alldropin{
+        margin-top: .16rem;
+        .dropindetail{
+            padding: .2rem .12rem;
+            border-top: .01rem solid #EAEAEA;
+            border-bottom: .01rem solid #EAEAEA;
+            background: #fff;
+            margin-bottom: .16rem;
+            p:nth-of-type(1){
+                color:#21c6cd;
+                font-size: .16rem;
+                line-height: .24rem;
+            }
+            p:nth-of-type(2){
+                color:#333333;
+                font-size: .15rem;
+                line-height: .24rem;
+            }
+            p:nth-of-type(3){
+                color:#333333;
+                font-size: .15rem;
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                justify-content: space-between;
+                line-height: .24rem;
+                time{
+                    em{
+                        display: inline-block;
+                        margin: 0 .1rem;
+                    }
+                }
+                span{
+                    display: -webkit-flex;
+                    display: -moz-flex;
+                    display: -ms-flex;
+                    display: -o-flex;
+                    display: flex;
+                    align-items: center;
+                    img{
+                        width: .2rem;
+                        height: .1rem;
+                    }
+                }
+            }
+            div{
+                color:#333333;
+                font-size: .15rem;
+                line-height: .24rem;
+                .dropinmain{
+                    margin-top: .16rem;
+                    border-top: .01rem solid #ADADAD;
+                    p{
+                        font-size: .14rem;
+                        color:#21c6cd;
+                        padding: .16rem 0;
+                    }
+                }
+                span{
+                    display: -webkit-flex;
+                    display: -moz-flex;
+                    display: -ms-flex;
+                    display: -o-flex;
+                    display: flex;
+                    justify-content: flex-end;
+                    img{
+                        width: .2rem;
+                        height: .1rem;
+                    }
+                }
+            }
+        }
+    }
+}

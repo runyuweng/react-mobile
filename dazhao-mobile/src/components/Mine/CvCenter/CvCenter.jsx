@@ -109,11 +109,15 @@ class CvCenter extends React.Component {
                 </div>
 
                 <div className="options">
-                    <Link to="dropinbox">
+                    <Link to="dropinbox/platformdropin">
                         <p><em>投递箱<b>5</b></em><span><img src="/src/images/Back_Button.png" /></span></p>
                     </Link>
-                    <p><em>邀请函</em><span><img src="/src/images/Back_Button.png" /></span></p>
-                    <p><em>收藏夹</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    <Link to="/invitation">
+                        <p><em>邀请函</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    </Link>
+                    <Link to="/favoritepage/favoritejobs">
+                        <p><em>收藏夹</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    </Link>
                 </div>
 
                 {

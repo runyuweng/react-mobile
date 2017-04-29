@@ -34,10 +34,12 @@ class Notify extends React.Component {
                         <span><img src="/src/images/invite.png" />
                             <em>校招邀约</em></span>
                     </div>
-                    <div>
-                        <span><img src="/src/images/zdmessage.png" />
-                            <em>大招活动</em></span>
-                    </div>
+                    <Link to="/activity">
+                        <div>
+                            <span><img src="/src/images/zdmessage.png" />
+                                <em>大招活动</em></span>
+                        </div>
+                    </Link>
                 </div>
 
                 <div className="notifyContent">

@@ -1,0 +1,25 @@
+#quiz{
+    .question{
+        font-size: 0;
+        padding: .15rem .2rem;
+        background: #fff;
+        border-bottom: .01rem solid #D8D8D8;
+        h3{
+            font-size: .16rem;
+            margin: 0;
+            line-height: .24rem;
+            margin-bottom: .06rem;
+        }
+        span{
+            font-size: .14rem;
+            color:#ADADAD;
+            line-height: .24rem;
+            em{
+                font-style: normal;
+            }
+        }
+    }
+    .question:nth-of-type(1){
+        border-top: .01rem solid #D8D8D8;
+    }
+}

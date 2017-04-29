@@ -63,8 +63,10 @@ class Mine extends React.Component {
                 </div>
 
                 <div className="options">
-                    <p><em>招答</em><span><img src="/src/images/Back_Button.png" /></span></p>
-                    <p><em>职观</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    <Link to="minezhaoda/concern/concernquestion">
+                        <p><em>我的招答</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    </Link>
+                    <p><em>听课记录</em><span><img src="/src/images/Back_Button.png" /></span></p>
                     <p><em>账号设置</em><span><img src="/src/images/Back_Button.png" /></span></p>
                     <p><em>建议反馈</em><span><img src="/src/images/Back_Button.png" /></span></p>
                 </div>

@@ -1,0 +1,38 @@
+#favoritePage{
+    margin-bottom: .72rem;
+    .fgnav{
+        background: #fff;
+        border-top: .01rem solid #F5F5F5;
+        border-bottom: .01rem solid #d8d8d8;
+        height: .4rem;
+        box-sizing: border-box;
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: .4rem;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            a>li{
+                list-style: none;
+                width: 100%;
+                font-size: .16rem;
+                line-height: .38rem;
+                text-align: center;
+            }
+            a{
+                display: inline-block;
+                width: 50%;
+            }
+            .active{
+                color:#21c6cd;
+                border-bottom: .02rem solid #21c6cd;
+            }
+        }
+    }
+}

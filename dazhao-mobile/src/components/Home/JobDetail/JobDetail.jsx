@@ -42,7 +42,7 @@ class JobDetail extends React.Component {
 
                 </div>
 
-                <Link to="company">
+                <Link to="company/compantintro">
                     <div className="job">
                         <div className="jobitems">
                             <div className="jobintro">

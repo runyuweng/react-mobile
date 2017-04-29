@@ -8,7 +8,7 @@ class ZhaoDaTalk extends React.Component {
     render () {
 
         return (
-            <div className="ZhaoDaTalk ZhaoDaUser ZhaoDaHomeSearch">
+            <div className="ZhaoDaTalk ZhaoDaUser">
                 <ZhaoDaSearchTop />
                 <div className="usermain">
                     <div className="item">

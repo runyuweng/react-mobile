@@ -1,0 +1,28 @@
+#concern{
+    .concernOptions{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: .16rem 0;
+        font-size: 0;
+        span{
+            width: 1.05rem;
+            height: .35rem;
+            border:.01rem solid #EAEAEA;
+            color:#333333;
+            text-align: center;
+            display: inline-block;
+            background: #fff;
+            font-size: .14rem;
+            line-height: .35rem;
+        }
+        .active>span{
+            background: #21c6cd;
+            color:#fff;
+        }
+    }
+}
