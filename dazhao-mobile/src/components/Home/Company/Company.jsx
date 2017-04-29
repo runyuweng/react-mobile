@@ -4,9 +4,25 @@ import {Link} from "react-router";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 
 class Company extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            data : {
+                img:'',
+                name:'阿里巴巴网络技术有限公司',
+                type:'互联网',
+                stage:'上市',
+                numbers:'1000人以上'
+            }
+        }
+    }
 
+    componentDidMount(){
+        //ajax
+    }
 
     render () {
+        const { data } = this.state;
 
         return (
             <div className="Company">
@@ -16,19 +32,19 @@ class Company extends React.Component {
 
                 <div id="jobTop">
                     <span className="joblog"><img src="/src/images/ali.png" /></span>
-                    <h2>阿里巴巴网络技术有限公司</h2>
+                    <h2>{data.name}</h2>
                     <div>
                         <span><img src="/src/images/source58.png" /><em>上海</em></span>
                         <span>认证</span>
                     </div>
                     <p>
-                        <span>互联网</span>
+                        <span>{data.type}</span>
                         <em>|</em>
                         <span>外商独资</span>
                         <em>|</em>
-                        <span>上市</span>
+                        <span>{data.stage}</span>
                         <em>|</em>
-                        <span>1000人以上</span>
+                        <span>{data.numbers}</span>
                     </p>
                 </div>
 
