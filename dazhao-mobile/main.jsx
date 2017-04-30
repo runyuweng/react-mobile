@@ -47,6 +47,21 @@ import MineCvMessage from "./src/components/Mine/CvMessage/CvMessage.jsx";
 import MineEditMg from "./src/components/Mine/EditMg/EditMg.jsx";
 import MineEduEx from "./src/components/Mine/EduEx/EduEx.jsx";
 import MinePractice from "./src/components/Mine/Practice/Practice.jsx";
+import MineDropInBox from "./src/components/Mine/DropInBox/DropInBox.jsx";
+import MinePlatformDropIn from "./src/components/Mine/PlatformDropIn/PlatformDropIn.jsx";
+import MineEmailDropIn from "./src/components/Mine/EmailDropIn/EmailDropIn.jsx";
+import MineInvitation from "./src/components/Mine/Invitation/Invitation.jsx";
+import MineActivity from "./src/components/Mine/Activity/Activity.jsx";
+import MineZhaoDa  from "./src/components/Mine/MineZhaoDa/MineZhaoDa.jsx";
+import MineConcern from "./src/components/Mine/Concern/Concern.jsx";
+import MineConcernQuestion from "./src/components/Mine/ConcernQuestion/ConcernQuestion.jsx";
+import MineConcernTopic from "./src/components/Mine/ConcernTopic/ConcernTopic.jsx";
+import MineConcernUser from "./src/components/Mine/ConcernUser/ConcernUser.jsx";
+import MineQuiz from "./src/components/Mine/Quiz/Quiz.jsx";
+import MineAnswers from "./src/components/Mine/Answers/Answers.jsx";
+import MineFavoritePage from "./src/components/Mine/FavoritePage/FavoritePage.jsx";
+import MineFavoriteJobs from "./src/components/Mine/FavoriteJobs/FavoriteJobs.jsx";
+import MineFavoriteCompanys from "./src/components/Mine/FavoriteCompanys/FavoriteCompanys.jsx";
 
 import ZhaoDaQuiz from "./src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 
@@ -112,6 +127,26 @@ const Routes = () => <Provider store={store}>
             <Route path="edmessage" component={MineEditMg} />
             <Route path="edupexp" component={MineEduEx} />
             <Route path="practice" component={MinePractice} />
+            <Route path="dropinbox" component={MineDropInBox}>
+                <Route path="platformdropin" component={MinePlatformDropIn} />
+                <Route path="emaildropin" component={MineEmailDropIn} />
+            </Route>
+            <Route path="invitation" component={MineInvitation} />
+            <Route path="activity" component={MineActivity} />
+            <Route path="minezhaoda" component={MineZhaoDa}>
+                <Route path="concern" component={MineConcern}>
+                    <IndexRoute component={MineConcernQuestion} />
+                    <Route path="concernquestion" component={MineConcernQuestion} />
+                    <Route path="concerntopic" component={MineConcernTopic} />
+                    <Route path="concernuser" component={MineConcernUser} />
+                </Route>
+                <Route path="quiz" component={MineQuiz} />
+                <Route path="answer" component={MineAnswers} />
+            </Route>
+            <Route path="favoritepage" component={MineFavoritePage}>
+                <Route path="favoritejobs" component={MineFavoriteJobs} />
+                <Route path="favoritecompanys" component={MineFavoriteCompanys} />
+            </Route>
             <Route path="login" component={Login} />
             <Route path="register" component={Register} />
         </Route>

@@ -1,4 +1,5 @@
 .Mine{
+    margin-bottom: .72rem;
     .head{
         background:#fff;
         .top{
@@ -130,7 +131,6 @@
             display: inline-flex;
             width:33%;
             height:.82rem;
-            border-top:.01rem solid #EAEAEA;
             border-bottom:.01rem solid #EAEAEA;
             text-align: center;
             align-items: center;
@@ -138,8 +138,7 @@
             span{
                 display:inline-block;
                 img{
-                    width:.26rem;
-                    height:.22rem;
+                    height:.24rem;
                 }
             }
             em{
@@ -154,12 +153,14 @@
         }
         div:nth-of-type(2){
             border:.01rem solid #EAEAEA;
+            border-top: none;
         }
     }
 
     .options{
         font-size: 0rem;
         background:#fff;
+        border-top: .01rem solid #D8D8D8;
         p{
             padding:.14rem .24rem .14rem .31rem;
             border-bottom: .01rem solid #D8D8D8;

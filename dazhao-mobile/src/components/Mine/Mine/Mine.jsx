@@ -34,9 +34,9 @@ class Mine extends React.Component {
                             <span>机械设计制造及自动化</span>
                         </div>
                         <div className="fans">
-                            <span><b>310</b><br />粉丝</span>
+                            <span><b>12</b><br />已投递</span>
                             <em />
-                            <span><b>21</b><br />赞同</span>
+                            <span><b>0</b><br />待面试</span>
                         </div>
                     </div>
                 </header>
@@ -63,8 +63,10 @@ class Mine extends React.Component {
                 </div>
 
                 <div className="options">
-                    <p><em>招答</em><span><img src="/src/images/Back_Button.png" /></span></p>
-                    <p><em>职观</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    <Link to="minezhaoda/concern/concernquestion">
+                        <p><em>我的招答</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    </Link>
+                    <p><em>听课记录</em><span><img src="/src/images/Back_Button.png" /></span></p>
                     <p><em>账号设置</em><span><img src="/src/images/Back_Button.png" /></span></p>
                     <p><em>建议反馈</em><span><img src="/src/images/Back_Button.png" /></span></p>
                 </div>

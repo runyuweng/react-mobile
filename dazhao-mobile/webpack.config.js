@@ -12,6 +12,7 @@ var config = {
     devServer: {
         inline: true,
         host: '127.0.0.1',
+        // host: '192.168.74.1',
         port: 7777
     },
 

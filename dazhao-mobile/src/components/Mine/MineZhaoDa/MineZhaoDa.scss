@@ -1,0 +1,32 @@
+#mineZhaoDa{
+    margin-bottom: .72rem;
+    .minezdnav{
+        background: #fff;
+        ul{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: .4rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-bottom: .01rem solid #D8D8D8;
+            box-sizing: border-box;
+            li{
+                width: .4rem;
+                text-align: center;
+                list-style: none;
+                font-size: .15rem;
+                line-height: .38rem;
+            }
+            .active{
+                color:#21c6cd;
+                border-bottom: .02rem solid #21c6cd;
+            }
+        }
+    }
+}
