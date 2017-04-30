@@ -99,11 +99,7 @@ const Routes = () => <Provider store={store}>
             <Route path="talk" component={ZhaoDaTalk} />
 
             <Route path="jobdetail" component={HomeJobDetail} />
-            <Route path="company" component={HomeCompany}>
-                <IndexRoute component={HomeCompanyIntro} />
-                <Route path="compantintro" component={HomeCompanyIntro} />
-                <Route path="positions" component={HomePositions} />
-            </Route>
+            <Route path="company" component={HomeCompany} />
             <Route path="schoolRecruit" component={HomeShRecruit} />
             <Route path="enterprise" component={HomeEnterprise} />
             <Route path="intern" component={HomeIntern} />
