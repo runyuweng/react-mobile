@@ -37,6 +37,7 @@ import ZhaoDaQuesDetail from "./src/components/Zhaoda/ZhaoDaQuesDetail/ZhaoDaQue
 import ZhaoDaZhuanLan from "./src/components/Zhaoda/ZhaoDaZhuanLan/ZhaoDaZhuanLan.jsx";
 import ZhaoDaUser from "./src/components/Zhaoda/ZhaoDaUser/ZhaoDaUser.jsx";
 import ZhaoDaTalk from "./src/components/Zhaoda/ZhaoDaTalk/ZhaoDaTalk.jsx";
+import ZhaoDaChooseTopic from "./src/components/Zhaoda/ChooseTopic/ChooseTopic.jsx";
 
 // 个人中心部分
 import Mine from "./src/components/Mine/Mine/Mine.jsx";
@@ -112,6 +113,7 @@ const Routes = () => <Provider store={store}>
             <Route path="user" component={ZhaoDaUser} />
             <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
             <Route path="talk" component={ZhaoDaTalk} />
+            <Route path="choosetopic" component={ZhaoDaChooseTopic} />
 
             <Route path="jobdetail" component={HomeJobDetail} />
             <Route path="company" component={HomeCompany}>

@@ -60,8 +60,7 @@ class Layout extends React.Component {
 
                     actions.showMessage(text);
 
-                }}
-                                     /> : ""}
+                }}/> : ""}
                 {animate ? <ReactCSSTransitionGroup
                     transitionName="enter"
                     transitionEnterTimeout={300}

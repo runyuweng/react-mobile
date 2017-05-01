@@ -1,31 +1,31 @@
 #favoriteCompany{
     font-size: 0;
+    border-top:.01rem solid #EAEAEA;
     .jobitems{
         background:#fff;
         padding:.15rem 0 0 .13rem;
         display: flex;
-        height: 1.1rem;
+        // height: 1.1rem;
         box-sizing: border-box;
         .pics{
             display:inline-flex;
-            width:.6rem;
+            width:19%;
             height:.6rem;
-            border:.01rem solid #EAEAEA;
-            margin-right: .12rem;
             background:#fff;
             justify-content: center;
-            align-items: center;
+            // align-items: center;
             img{
-                max-width:.6rem;
+                max-width:.58rem;
+                border:.01rem solid #EAEAEA;
             }
         }
 
         .jobintro{
-            width: 80%;
+            width: 78%;
             display:inline-block;
             border-bottom:.01rem solid #EAEAEA;
-            padding-bottom:.1rem;
-            padding-right: .04rem;
+            padding-bottom:.14rem;
+            margin-left: 3%;
             h2{
                 font-family: "苹方";
                 font-size: .15rem;
@@ -33,7 +33,7 @@
                 color:#333333;
                 margin:0;
                 line-height: .24rem;
-                margin-bottom: .04rem;
+                display: flex;
                 span{
                     display:inline-block;
                     width:.38rem;
@@ -42,15 +42,16 @@
                     border-radius:.05rem;
                     font-size: .13rem;
                     color:#21C6CD;
-                    line-height: .19rem;
+                    line-height: .2rem;
                     text-align: center;
                     font-weight: normal;
-                    margin-left: .1rem;
+                    margin: .02rem .12rem 0;
+                    box-sizing: border-box;
                 }
             }
             h3{
                 font-size: .13rem;
-                line-height: .18rem;
+                line-height: .19rem;
                 color:#999999;
                 font-weight: normal;
                 span{
@@ -76,28 +77,28 @@
                 }
             }
 
-            span:nth-last-of-type(1){
-                display:inline-block;
-                em{
-                    font-family: "苹方";
-                    font-size: .13rem;
-                    color:#999999;
-                    font-style: normal;
-                    line-height: .18rem;
-                }
-                b{
-                    font-weight: normal;
-                    margin:0 .06rem;
-                    font-size: .14rem;
-                    color:#999999;
-                }
+        }
+        .jobintro>span:nth-last-of-type(1){
+            display:inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            em{
+                font-family: "苹方";
+                font-size: .13rem;
+                color:#999999;
+                font-style: normal;
+                line-height: .18rem;
+            }
+            b{
+                font-weight: normal;
+                margin:0 .06rem;
+                font-size: .14rem;
+                color:#999999;
             }
         }
     }
 
-    .jobitems:nth-of-type(1){
-        border-top:.01rem solid #EAEAEA;
-    }
 
     .jobitems:nth-last-of-type(1){
         border-bottom:.01rem solid #EAEAEA;

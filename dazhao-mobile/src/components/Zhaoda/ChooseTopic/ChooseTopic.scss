@@ -1,0 +1,256 @@
+#chooseTopic{
+    header{
+        background:#FFFFFF;
+        padding:0.07rem 0 0.08rem;
+        border-bottom:0.01rem #ADADAD solid;
+        .search{
+                width:96%;
+                margin:0 auto;
+                text-align:center;
+                font-size:0.16rem;
+                span{
+                    font-size:0.17rem;
+                    font-family:"苹方";
+                    color:#21c6cd;
+                    line-height:0.3rem;
+                }
+                span:nth-of-type(1){
+                    margin:0 0.08rem 0 0;
+                }
+                span:nth-of-type(2){
+                    display:inline-block;
+                    width:61%;
+                    color:#000000;
+                }
+                span:nth-of-type(3){
+                    margin:0 0 0 0.08rem;
+                }
+        }
+    }
+    .choosemain{
+        font-size: 0;
+        padding: .15rem;
+        background: #fff;
+        .choosedtopic{
+            // padding: .12rem 0;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-wrap:wrap;
+            .chooseditem:nth-of-type(3n){
+                margin-right: 0;
+            }
+            .chooseditem{
+                width: 32%;
+                margin-right: 2%;
+                display: -webkit-inline-flex;
+                display: -moz-inline-flex;
+                display: -ms-inline-flex;
+                display: -o-inline-flex;
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-around;
+                line-height: .24rem;
+                color:#fff;
+                background: #21c6cd;
+                font-size: .13rem;
+                padding: .04rem .08rem;
+                border-radius: .05rem;
+                margin-bottom: .15rem;
+                box-sizing: border-box;
+                .cancle{
+                    display: inline-block;
+                    margin-left: .08rem;
+                    height: .13rem;
+                    font-size: 0;
+                    img{
+                        height: .13rem;
+                    }
+                }
+            }
+        }
+
+        .topicfilter{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            align-items: center;
+            height: .4rem;
+            background: #f8f8f8;
+            border-radius: .05rem;
+            span{
+                display: inline-block;
+                margin: 0 .1rem;
+                img{
+                    height: .18rem;
+                }
+            }
+            input{
+                width: 100%;
+                height: .3rem;
+                background: #f8f8f8;
+                color:#333333;
+                font-size: .13rem;
+                outline:none;
+                border:none;
+            }
+        }
+
+        .topicfound{
+            margin-top: .1rem;
+            .topicitem{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                align-items: center;
+                height: .36rem;
+                border-bottom: .01rem solid #d8d8d8;
+                span:nth-of-type(1){
+                    width: .16rem;
+                    height: .16rem;
+                    display: inline-block;
+                    background: #d8d8d8;
+                    border-radius: .04rem;
+                    img{
+                        height: .16rem;
+                    }
+                }
+                
+                span:nth-of-type(2){
+                    font-size: .13rem;
+                    color:#666666;
+                    margin-left: .08rem;
+                }
+            }
+        }
+    }
+    .submitpage{
+        font-size: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0,0,0,0.5);
+        position: fixed;
+        left: 0;
+        top:0;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index:999;
+        .submitcontent{
+            width: 94%;
+            background: #fff;
+            padding: .15rem .15rem .32rem;
+            box-sizing: border-box;
+            border-radius: .05rem;
+            p{
+                text-align: right;
+                span{
+                    display: inline-block;
+                    img{
+                        height: .2rem;
+                    }
+                }
+            }
+            h3{
+                font-size: .14rem;
+                font-weight: bold;
+                font-family: "苹方";
+                color:#333333;
+                line-height: .24rem;
+                margin: .12rem 0;
+                text-align: center;
+            }
+            .specialists{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                flex-wrap:wrap;
+                .specialist:nth-of-type(3n){
+                    margin-right: 0;
+                }
+                .specialist{
+                    width: 32%;
+                    margin-right: 2%;
+                    text-align: center;
+                    margin-top: .2rem;
+                    .img{
+                        display: inline-block;
+                        width: .65rem;
+                        height: .65rem;
+                        position: relative;
+                        border-radius: 50%;
+                        background: #D8D8D8;
+                        span{
+                            display: inline-block;
+                            position: absolute;
+                            bottom:0;
+                            right:-0.06rem;
+                            img{
+                                width: .24rem;
+                            }
+                        }
+                    }
+                    .specialistname{
+                        display: block;
+                        text-align: center;
+                        font-size: .16rem;
+                        font-weight: bold;
+                        font-family: "苹方";
+                        color:#333333;
+                        margin-top: .1rem;
+                        line-height: .19rem;
+                    }
+                    .specialiststage{
+                        display: block;
+                        text-align: center;
+                        font-size: .13rem;
+                        font-family: "苹方";
+                        color:#D8D8D8;
+                        line-height: .19rem;
+                    }
+                }
+            }
+            .bottombutton{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                justify-content: center;
+                margin-top: .42rem;
+                span{
+                    width: 1.34rem;
+                    height: .39rem;
+                    display: inline-block;
+                    border-radius: .03rem;
+                    font-size: .14rem;
+                    text-align: center;
+                    line-height: .39rem;
+                }
+                span:nth-of-type(1){
+                    border:.01rem solid #21c6cd;
+                    box-sizing: border-box;
+                    color:#21c6cd;
+                    margin-right: .15rem;
+                }
+                span:nth-of-type(2){
+                    background: #21c6cd;
+                    box-sizing: border-box;
+                    color:#fff;
+                }
+            }
+        }
+    }
+}
