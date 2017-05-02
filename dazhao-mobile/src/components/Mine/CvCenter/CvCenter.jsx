@@ -34,6 +34,9 @@ class CvCenter extends React.Component {
         this.setState({
             showdialog : !this.state.showdialog,
             deleteIndex : args
+        },()=>{
+            console.log(this.state.showdialog)
+            this.state.showdialog ? this.refs.deleteModal.addEventListener("touchmove", (e)=>{e.preventDefault();}, true) : ""
         })
     }
 
@@ -74,7 +77,6 @@ class CvCenter extends React.Component {
                 </div>
             )
         })
-        console.log(onlineResumeList);
         return (
             <div className="CvCenter">
                 <header>
@@ -122,7 +124,7 @@ class CvCenter extends React.Component {
 
                 {
                     this.state.showdialog?
-                    <div id="deleteModal">
+                    <div id="deleteModal" ref="deleteModal">
                         <div className="dialog">
                             <div className="deleteheader">删除简历</div>
                             <div className="deletemain">
