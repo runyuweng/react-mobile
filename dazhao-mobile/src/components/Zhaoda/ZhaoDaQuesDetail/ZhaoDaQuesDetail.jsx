@@ -17,7 +17,9 @@ class ZhaoDaQuesDetail extends React.Component {
                         }}
                         >上一步</span>
                         <span>问题详情</span>
-                        <span>下一步</span>
+                        <Link to="choosetopic">
+                            <span>下一步</span>
+                        </Link>
                     </div>
                 </header>
                 <div className="intro">

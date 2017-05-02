@@ -178,7 +178,7 @@ class Home extends React.Component {
                 </span>
                 <div className="jobintro">
                     <h2>{value.name}<span>认证</span></h2>
-                    <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
+                    <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>JAVAEE研发工程</span>、<span>JAVAEE研发工程</span></h3>
                     <span className="address">
                         <em>{value.city}</em>
                     </span>
@@ -271,7 +271,7 @@ class Home extends React.Component {
                     <h2><span><img src="/src/images/latest.png" /></span>热门企业
               </h2>
 
-                    <div>
+                    <div className="enterprisewrap">
                         {enterpriseList}
                     </div>
 
