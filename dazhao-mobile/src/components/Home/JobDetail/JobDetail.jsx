@@ -1,5 +1,6 @@
 import React from "react";
 import "./JobDetail.scss";
+import ajax from "../../../services/ajax";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
@@ -29,7 +30,7 @@ class JobDetail extends React.Component {
                     "jobs": []
                 },
                 "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
                 "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
                 "similarJobs": [
                     {
@@ -52,7 +53,7 @@ class JobDetail extends React.Component {
                             "jobs": []
                         },
                         "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                        "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                        "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
                         "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
 
                     },
@@ -76,7 +77,7 @@ class JobDetail extends React.Component {
                             "jobs": []
                         },
                         "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                        "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                        "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
                         "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
 
                     },
@@ -100,7 +101,7 @@ class JobDetail extends React.Component {
                             "jobs": []
                         },
                         "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                        "discribe": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
+                        "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
                         "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
 
                     }
@@ -112,6 +113,16 @@ class JobDetail extends React.Component {
     }
 
     componentWillMount () {
+        const id = this.props.params.id;
+        console.log('id',id);
+        ajax({"url": "/zhaoda/jobs/jobinfo?id=535"}).
+        then((data) => {
+            let record = data.contents[0];
+            console.log('record',record);
+            record.similarJobs=[];
+            this.setState({data: record});
+        });
+
 
     }
 
@@ -132,7 +143,7 @@ class JobDetail extends React.Component {
                         <h2>{value.job_name}</h2>
                         <h3>{value.company.name}</h3>
                         <span>
-                            <em>{value.location[0]}</em>
+                            <em>{value.location}</em>
                             <em>{value.education}</em>
                         </span>
                         <span>
@@ -160,14 +171,15 @@ class JobDetail extends React.Component {
                     <h2>{data.job_name}<span>[{data.salary}]</span>
                     </h2>
                     <div>
-                        <span><img src="/src/images/source58.png" /><em>{data.location[0]}</em></span>
+                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0,3)}...</em></span>
                         <span><img src="/src/images/source59.png" /><em>{data.education}</em></span>
                         <span><img src="/src/images/source61.png" /><em>{data.type}</em></span>
                     </div>
                     <p>
-                        {data.tips.map((value, i) =>
+                        {data.tips}
+                        {/*data.tips.map((value, i) =>
                             <span key={i}>{value}</span>
-                        )}
+                        )*/}
                     </p>
 
                 </div>
@@ -199,11 +211,11 @@ class JobDetail extends React.Component {
           </h2>
                     <div className="jobde">
                         <h3>职位描述</h3>
-                        <div dangerouslySetInnerHTML={{"__html": data.discribe}} />
+                        <div className="detail" dangerouslySetInnerHTML={{"__html": data.description}} />
                     </div>
                     <div className="jobde">
                         <h3>任职要求</h3>
-                        <div dangerouslySetInnerHTML={{"__html": data.require}} />
+                        <div className="detail" dangerouslySetInnerHTML={{"__html": data.require}} />
                     </div>
                 </div>
 
@@ -214,10 +226,8 @@ class JobDetail extends React.Component {
                     <div className="jobwrap">
                         <div className="address">
                             <p>
-                                <span>{data.location[0]}</span>
-                                <span>{data.location[1]}</span>
+                                <span>{data.location}</span>
                             </p>
-                            <p>{data.location[2]}</p>
                         </div>
                         <span className="map">地图</span>
                     </div>

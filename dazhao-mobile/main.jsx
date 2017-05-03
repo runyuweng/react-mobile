@@ -115,7 +115,7 @@ const Routes = () => <Provider store={store}>
             <Route path="talk" component={ZhaoDaTalk} />
             <Route path="choosetopic" component={ZhaoDaChooseTopic} />
 
-            <Route path="jobdetail" component={HomeJobDetail} />
+            <Route path="jobdetail/:id" component={HomeJobDetail} />
             <Route path="company" component={HomeCompany} />
             <Route path="schoolRecruit" component={HomeShRecruit} />
             <Route path="enterprise" component={HomeEnterprise} />

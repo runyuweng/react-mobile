@@ -1,6 +1,7 @@
 body{
     position: relative;
 .JobDetail{
+    margin-bottom: .375rem;
     height:100%;
 
     #jobTop{
@@ -24,10 +25,13 @@ body{
         }
 
         h2{
+            text-align: center;
+            width: 80%;
             font-size: .16rem;
             color:#333333;
             margin:.12rem 0;
             span{
+                display: inline-block;
                 font-size: .16rem;
                 color:#21c6cd;
                 font-weight: normal;
@@ -150,7 +154,11 @@ body{
     }
 
     .jobrequire{
-        font-size: 0;
+        .detail{
+            font-size: .14rem;
+            color: #999999;
+            line-height: .25rem;
+        }
         .positionde{
             font-size: .16rem;
             color:#666666;
