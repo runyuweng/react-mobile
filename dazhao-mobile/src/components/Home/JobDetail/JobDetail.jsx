@@ -113,11 +113,15 @@ class JobDetail extends React.Component {
     }
 
     componentWillMount () {
+
         const id = this.props.params.id;
-        ajax({"url": "/zhaoda/jobs/jobinfo?id="+id}).
+
+        ajax({"url": `/zhaoda/jobs/jobinfo?id=${id}`}).
         then((data) => {
+
             console.log(data);
-            this.setState({data: data.contents[0]});
+            this.setState({"data": data.contents[0]});
+
         });
 
 
@@ -132,9 +136,10 @@ class JobDetail extends React.Component {
     render () {
 
         const {data} = this.state;
+
         console.log(data.similarJobs);
         const jobs = data.similarJobs.map((value, i) =>
-            <Link to={"/jobdetail/"+value.jobid} key={i}>
+            <Link to={`/jobdetail/${value.jobid}`} key={i}>
                 <div className="jobitems">
                     <span className="pics"><img src="/src/images/ali.png" /></span>
                     <div className="jobintro">
@@ -169,13 +174,13 @@ class JobDetail extends React.Component {
                     <h2>{data.job_name}<span>[{data.salary}]</span>
                     </h2>
                     <div>
-                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0,3)}...</em></span>
+                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0, 3)}...</em></span>
                         <span><img src="/src/images/source59.png" /><em>{data.education}</em></span>
                         <span><img src="/src/images/source61.png" /><em>{data.type}</em></span>
                     </div>
                     <p>
                         {data.tips}
-                        {/*data.tips.map((value, i) =>
+                        {/* Data.tips.map((value, i) =>
                             <span key={i}>{value}</span>
                         )*/}
                     </p>

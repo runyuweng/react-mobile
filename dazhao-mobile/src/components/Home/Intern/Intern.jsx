@@ -173,7 +173,7 @@ class Intern extends React.Component {
 
         const {industry, jobs, showLoading, reset, tips} = this.state;
         const jobList = jobs.map((value, i) =>
-            <Link to={"/jobdetail/"+value.jobid} key={i}>
+            <Link to={`/jobdetail/${value.jobid}`} key={i}>
                 <div className="jobitems">
                     <span className="pics"><img src={value.company.img} /></span>
                     <div className="jobintro">

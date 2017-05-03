@@ -14,7 +14,6 @@ import HomeCompany from "./src/components/Home/Company/Company.jsx";
 import HomeShRecruit from "./src/components/Home/ShRecruit/ShRecruit.jsx";
 import HomeEnterprise from "./src/components/Home/Enterprise/Enterprise.jsx";
 import HomeIntern from "./src/components/Home/Intern/Intern.jsx";
-import HomeCompanyIntro from "./src/components/Home/CompanyIntro/CompanyIntro.jsx";
 import HomePositions from "./src/components/Home/Positions/Positions.jsx";
 
 // 职官部分
@@ -53,7 +52,7 @@ import MinePlatformDropIn from "./src/components/Mine/PlatformDropIn/PlatformDro
 import MineEmailDropIn from "./src/components/Mine/EmailDropIn/EmailDropIn.jsx";
 import MineInvitation from "./src/components/Mine/Invitation/Invitation.jsx";
 import MineActivity from "./src/components/Mine/Activity/Activity.jsx";
-import MineZhaoDa  from "./src/components/Mine/MineZhaoDa/MineZhaoDa.jsx";
+import MineZhaoDa from "./src/components/Mine/MineZhaoDa/MineZhaoDa.jsx";
 import MineConcern from "./src/components/Mine/Concern/Concern.jsx";
 import MineConcernQuestion from "./src/components/Mine/ConcernQuestion/ConcernQuestion.jsx";
 import MineConcernTopic from "./src/components/Mine/ConcernTopic/ConcernTopic.jsx";
