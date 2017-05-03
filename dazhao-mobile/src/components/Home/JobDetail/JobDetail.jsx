@@ -114,13 +114,10 @@ class JobDetail extends React.Component {
 
     componentWillMount () {
         const id = this.props.params.id;
-        console.log('id',id);
-        ajax({"url": "/zhaoda/jobs/jobinfo?id=535"}).
+        ajax({"url": "/zhaoda/jobs/jobinfo?id="+id}).
         then((data) => {
-            let record = data.contents[0];
-            console.log('record',record);
-            record.similarJobs=[];
-            this.setState({data: record});
+            console.log(data);
+            this.setState({data: data.contents[0]});
         });
 
 
@@ -135,8 +132,9 @@ class JobDetail extends React.Component {
     render () {
 
         const {data} = this.state;
+        console.log(data.similarJobs);
         const jobs = data.similarJobs.map((value, i) =>
-            <Link to="/jobdetail" key={i}>
+            <Link to={"/jobdetail/"+value.jobid} key={i}>
                 <div className="jobitems">
                     <span className="pics"><img src="/src/images/ali.png" /></span>
                     <div className="jobintro">

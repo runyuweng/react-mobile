@@ -66,7 +66,7 @@ class Intern extends React.Component {
         then((data) => {
 
             console.log(data);
-            
+
             const jobs = (arguments.length === 1 ? this.state.jobs.concat(data.contents || []) : data.contents) || [];
 
             this.setState({
@@ -173,7 +173,7 @@ class Intern extends React.Component {
 
         const {industry, jobs, showLoading, reset, tips} = this.state;
         const jobList = jobs.map((value, i) =>
-            <Link to="jobdetail" key={i}>
+            <Link to={"/jobdetail/"+value.jobid} key={i}>
                 <div className="jobitems">
                     <span className="pics"><img src={value.company.img} /></span>
                     <div className="jobintro">

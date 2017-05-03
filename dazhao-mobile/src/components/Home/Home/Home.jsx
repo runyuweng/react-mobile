@@ -150,7 +150,8 @@ class Home extends React.Component {
     render () {
 
         const {jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
-        const jobList = jobs.map((value, i) => <div className="jobitems" key={i}>
+        const jobList = jobs.map((value, i) => <Link to={"/jobdetail/"+value.jobid} key={i}>
+        <div className="jobitems" key={i}>
             <span className="pics"><img src={value.company.img} /></span>
             <div className="jobintro">
                 <h2>{value.job_name}</h2>
@@ -169,7 +170,8 @@ class Home extends React.Component {
                     <em>100人以上</em>
                 </span>
             </div>
-        </div>);
+        </div>
+    </Link>);
 
         const enterpriseList = enterprise.map((value, i) =>
             <div className="jobitems" key={i}>
