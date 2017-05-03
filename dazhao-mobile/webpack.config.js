@@ -33,7 +33,7 @@ var config = {
             }
         }, {
             test: /\.scss$/,
-            loader: 'style-loader!css-loader!sass-loader'
+            loader: 'style-loader!css-loader?minimize!sass-loader'
         }, {
             test: /.(png|jpg)$/,
             loader: "url-loader?limit=8192"
@@ -48,12 +48,14 @@ var config = {
             network: ['*'],
             output: './cache.appcache'
         })
-        // ,
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false
-        //     }
-        // })
+        ,
+        new webpack.optimize.UglifyJsPlugin({
+            beauty: false,
+            comments: false,
+            compress: {
+                warnings: false
+            }
+        })
     ]
 }
 
