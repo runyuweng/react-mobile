@@ -11,37 +11,37 @@ class ZhaoDaDiscover extends React.Component {
             "latestDynamic": [
                 {
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
+                    "topic": "职业素养",
                     "answer": 12,
                     "care": 101
                 },
                 {
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
+                    "topic": "职业素养",
                     "answer": 12,
                     "care": 101
                 },
                 {
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
+                    "topic": "职业素养",
                     "answer": 12,
                     "care": 101
                 },
                 {
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
+                    "topic": "职业素养",
                     "answer": 12,
                     "care": 101
                 },
                 {
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
+                    "topic": "职业素养",
                     "answer": 12,
                     "care": 101
                 },
                 {
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
+                    "topic": "职业素养",
                     "answer": 12,
                     "care": 101
                 }
@@ -122,12 +122,12 @@ class ZhaoDaDiscover extends React.Component {
         return (
             <div className="ZhaoDaDiscover">
                 <div id="dynamic">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>最新动态
+                    <div className="title"><span><img src="/src/images/latest.png" /></span>热门话题
           </div>
                     <div className="content">
-
-                        {LatestDynamicList}
-
+                        <div className="citemswrap">
+                            {LatestDynamicList}
+                        </div>
                         <div className="Formore1"><Link to="/topic">更多话题</Link></div>
 
 

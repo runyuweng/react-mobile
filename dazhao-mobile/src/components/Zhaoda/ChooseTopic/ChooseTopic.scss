@@ -180,11 +180,17 @@
                 .specialist:nth-of-type(3n){
                     margin-right: 0;
                 }
+                .specialist>.img>img{
+                    width: .65rem;
+                    height: .65rem;
+                    border-radius: 50%;
+                }
                 .specialist{
                     width: 32%;
                     margin-right: 2%;
                     text-align: center;
                     margin-top: .2rem;
+                    font-size: 0;
                     .img{
                         display: inline-block;
                         width: .65rem;

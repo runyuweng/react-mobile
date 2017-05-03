@@ -26,14 +26,18 @@
             border:0.01rem #D8D8D8 solid;
             background:#FFFFFF;
             padding:0 0.1rem 0.1rem;
-
-            .Citems:nth-of-type(2n-1){
-                margin-right: 4%;
+            .citemswrap{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap:wrap;
             }
-
             .Citems{
-                width:48%;
-                height:0.62rem;
+                width:1.73rem;
+                height:0.6rem;
                 border:0.01rem #D8D8D8 solid;
                 background:#FFFFFF;
                 position:relative;
@@ -53,12 +57,16 @@
                     }
                 }
                 .detail{
-                    // display:flex;
-                    width:66%;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    width:1.13rem;
                     height:0.6rem;
                     position:absolute;
                     top:0rem;
                     left:.6rem;
+                    padding: .06rem 0;
+                    box-sizing: border-box;
                     .theme{
                         width:100%;
                         font-family:"苹方";
@@ -68,25 +76,23 @@
                     }
 
                     .span2{
-                        display:block;
+                        display: inline-block;
+                        width: 93%;
+                        padding-left: 7%;
                         height:0.14rem;
                         line-height:0.14rem;
                         font-size:0.14rem;
                         font-family:"苹方";
                         font-weight:bold;
                         color:#333333;
-                        text-align:center;
-                        margin:0.13rem 0 0.12rem;
                     }
                     .care{
-                        width:100%;
+                        width:93%;
                         display:block;
-                        text-align:center;
                         font-family:"苹方";
                         font-size:0.115rem;
                         color:#ADADAD;
-                        text-align:center;
-                        margin:0.08rem 0;
+                        padding-left: 7%;
                     }
                     .care span:nth-of-type(2){
                             margin-left:0.06rem;
