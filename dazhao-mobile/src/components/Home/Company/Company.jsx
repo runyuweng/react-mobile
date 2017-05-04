@@ -9,6 +9,7 @@ class Company extends React.Component {
         super(props);
         this.state = {
             "current": "part1",
+            "showMore": true,
             "data": {
                 "img": "",
                 "name": "阿里巴巴网络技术有限公司",
@@ -65,7 +66,7 @@ class Company extends React.Component {
 
     render () {
 
-        const {current, data} = this.state;
+        const {current, showMore, data} = this.state;
 
         const jobs = data.jobs.map((value, i) => <div className="position" key={i}>
             <div>
@@ -107,19 +108,19 @@ class Company extends React.Component {
 
                 <div className="companyMain">
                     <ul>
-                        <li className="active" onClick={() => {
+                        <li className={current==="part1"?"active":""} onClick={() => {
 
                             this.setState({"current": "part1"});
 
                         }}
                         >企业介绍</li>
-                        <li onClick={() => {
+                        <li className={current==="part2"?"active":""} onClick={() => {
 
                             this.setState({"current": "part2"});
 
                         }}
                         >招聘岗位</li>
-                        <li onClick={() => {
+                        <li className={current==="part3"?"active":""} onClick={() => {
 
                             this.setState({"current": "part3"});
 
@@ -133,13 +134,15 @@ class Company extends React.Component {
                             <div className="careTopic">
                                 <span className="caretitle">企业介绍：</span>
                                 <div className="caremain">
-                                    <span className="carecontent">
+                                    <span className="carecontent" style={{height:showMore?'2rem':'auto'}}>
                                         {data.intro}
-                                        <span className="shade" />
+                                        {showMore?<span className="shade" />:""}
                                     </span>
-                                    <span className="strech">展开查看全部
-                                <span><img src="/src/images/down.png" /></span>
-                                    </span>
+                                    {showMore?<span className="strech" onClick={()=>{
+                                            this.setState({showMore:false})
+                                        }}>
+                                        展开查看全部<span><img src="/src/images/down.png" /></span>
+                                </span>:''}
                                 </div>
                             </div>
 
