@@ -10,48 +10,59 @@ class CvCenter extends React.Component {
 
         super(props);
         this.state = {
-            showdialog : false,
-            onlineResume : [
+            "showdialog": false,
+            "onlineResume": [
                 {
-                    jobposition : "互联网产品岗",
-                    prodeuctcategory : "互联网产品",
-                    add : "上海市"
+                    "jobposition": "互联网产品岗",
+                    "prodeuctcategory": "互联网产品",
+                    "add": "上海市"
                 },
                 {
-                    jobposition : "互联网产品岗",
-                    prodeuctcategory : "互联网产品",
-                    add : "上海市"
+                    "jobposition": "互联网产品岗",
+                    "prodeuctcategory": "互联网产品",
+                    "add": "上海市"
                 }
             ],
-            deleteIndex: null
+            "deleteIndex": null
         };
         this.handleClick = this.handleClick.bind(this);
-        this.cancleClick = this.cancleClick.bind(this)
-        this.deleteClick = this.deleteClick.bind(this)
+        this.cancleClick = this.cancleClick.bind(this);
+        this.deleteClick = this.deleteClick.bind(this);
+
     }
 
-    handleClick(args){
+    handleClick (args) {
+
         this.setState({
-            showdialog : !this.state.showdialog,
-            deleteIndex : args
-        },()=>{
-            console.log(this.state.showdialog)
-            this.state.showdialog ? this.refs.deleteModal.addEventListener("touchmove", (e)=>{e.preventDefault();}, true) : ""
-        })
+            "showdialog": !this.state.showdialog,
+            "deleteIndex": args
+        }, () => {
+
+            console.log(this.state.showdialog);
+            this.state.showdialog ? this.refs.deleteModal.addEventListener("touchmove", (e) => {
+
+                e.preventDefault();
+
+            }, true) : "";
+
+        });
+
     }
 
-    cancleClick(){
-        this.setState({
-            showdialog : !this.state.showdialog
-        })
+    cancleClick () {
+
+        this.setState({"showdialog": !this.state.showdialog});
+
     }
 
-    deleteClick(){
+    deleteClick () {
+
         this.state.onlineResume.splice(this.state.deleteIndex, 1);
         this.setState({
-            showdialog : !this.state.showdialog,
-            onlineResume : this.state.onlineResume
-        })
+            "showdialog": !this.state.showdialog,
+            "onlineResume": this.state.onlineResume
+        });
+
     }
 
     componentDidMount () {
@@ -62,21 +73,21 @@ class CvCenter extends React.Component {
 
     render () {
 
-        const { onlineResume } = this.state;
-        const onlineResumeList = onlineResume.map((elem,index)=>{
-            return(
-                <div className="cvitems" key={index}>
-                    <div className="cvleft">
-                        <span>{elem.jobposition}</span>
-                        <span>{elem.prodeuctcategory}<em>{elem.add}</em></span>
-                    </div>
-                    <span className="cvright">
-                        <Link to="/cvmessage"><em>编辑</em></Link>
-                        <em onClick={this.handleClick.bind(this,`${index}`)}>删除</em>
-                    </span>
+        const {onlineResume} = this.state;
+        const onlineResumeList = onlineResume.map((elem, index) =>
+            <div className="cvitems" key={index}>
+                <div className="cvleft">
+                    <span>{elem.jobposition}</span>
+                    <span>{elem.prodeuctcategory}<em>{elem.add}</em></span>
                 </div>
-            )
-        })
+                <span className="cvright">
+                    <Link to="/cvmessage"><em>编辑</em></Link>
+                    <em onClick={this.handleClick.bind(this, `${index}`)}>删除</em>
+                </span>
+            </div>
+            );
+
+
         return (
             <div className="CvCenter">
                 <header>
@@ -85,8 +96,8 @@ class CvCenter extends React.Component {
 
                 <h3>在线简历</h3>
                 <div className="main">
-                {onlineResumeList}
-                {/*
+                    {onlineResumeList}
+                    {/*
                     <div className="cvitems">
                         <div className="cvleft">
                             <span>互联网产品岗</span>
@@ -123,21 +134,21 @@ class CvCenter extends React.Component {
                 </div>
 
                 {
-                    this.state.showdialog?
-                    <div id="deleteModal" ref="deleteModal">
-                        <div className="dialog">
-                            <div className="deleteheader">删除简历</div>
-                            <div className="deletemain">
-                                <p><span>“互联网产品岗”</span>将被删除</p>
-                                <p>此操作不能撤销</p>
-                            </div>
-                            <div className="deletefooter">
-                                <span onClick={this.cancleClick}>取消</span>
-                                <span onClick={this.deleteClick}>删除简历</span>
+                    this.state.showdialog
+                        ? <div id="deleteModal" ref="deleteModal">
+                            <div className="dialog">
+                                <div className="deleteheader">删除简历</div>
+                                <div className="deletemain">
+                                    <p><span>“互联网产品岗”</span>将被删除</p>
+                                    <p>此操作不能撤销</p>
+                                </div>
+                                <div className="deletefooter">
+                                    <span onClick={this.cancleClick}>取消</span>
+                                    <span onClick={this.deleteClick}>删除简历</span>
+                                </div>
                             </div>
                         </div>
-                    </div>:
-                    ""
+                    : ""
                 }
 
             </div>

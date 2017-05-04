@@ -112,12 +112,12 @@
                 }
             }
             em{
+                margin-top: .06rem;
                 display: block;
                 font-style: normal;
                 font-size: .13rem;
                 font-family: "苹方";
-                color:#ADADAD;
-                line-height: .32rem;
+                color: #ADADAD;
             }
         }
         div:nth-of-type(2){
@@ -127,7 +127,7 @@
             border-left:.01rem solid #EAEAEA;
         }
     }
-    
+
     #homeMain>h2{
 
             font-family: "苹方";
@@ -146,11 +146,11 @@
                     height:.18rem;
                 }
             }
-        
+
     }
     #homeMain{
         font-size: 0;
-        
+
         .jobWrap{
             border-top:.01rem solid #EAEAEA;
         }
@@ -260,7 +260,7 @@
                 margin-top: .16rem;
         }
     }
-    
+
     .hotjob>h2{
             font-family: "苹方";
             font-size: .16rem;
@@ -279,7 +279,7 @@
             }
         }
     .hotjob{
-        
+
         .enterprisewrap{
             border-top:.01rem solid #EAEAEA;
         }
@@ -372,7 +372,7 @@
             }
 
             .jobintro>span:nth-last-of-type(1){
-                display:block;                    
+                display:block;
                 white-space: nowrap;
                 overflow:hidden;
                 text-overflow:ellipsis;

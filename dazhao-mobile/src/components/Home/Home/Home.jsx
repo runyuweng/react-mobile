@@ -11,6 +11,7 @@ class Home extends React.Component {
 
         super(props);
         this.state = {
+            "search": "",
             "lock": false,
             "jobs": [],
             "enterprise": [],
@@ -71,6 +72,13 @@ class Home extends React.Component {
     componentWillUnmount () {
 
         this.setState({"lock": true});
+
+    }
+
+    searchDetail () {
+
+        console.log(this.state.search);
+        // Ajax
 
     }
 
@@ -149,31 +157,34 @@ class Home extends React.Component {
 
     render () {
 
-        const {jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
-        console.log(enterprise)
-        const jobList = jobs.map((value, i) => <div className="jobitems" key={i}>
-            <span className="pics"><img src={value.company.img} /></span>
-            <div className="jobintro">
-                <h2>{value.job_name}</h2>
-                <h3>{value.company.name}</h3>
-                <span>
-                    <em>{value.company.city}</em>
-                    <em>学历</em>
-                </span>
-                <span>
-                    <em>{value.company.type}</em>
-                    <b>|</b>
-                    <em>外商独资</em>
-                    <b>|</b>
-                    <em>{value.company.stage}</em>
-                    <b>|</b>
-                    <em>100人以上</em>
-                </span>
-            </div>
-        </div>);
 
-        const enterpriseList = enterprise.map((value, i) =>
+        const {search, jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
+        const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
+
             <div className="jobitems" key={i}>
+                <span className="pics"><img src={value.company.img} /></span>
+                <div className="jobintro">
+                    <h2>{value.job_name}</h2>
+                    <h3>{value.company.name}</h3>
+                    <span>
+                        <em>{value.company.city}</em>
+                        <em>学历</em>
+                    </span>
+                    <span>
+                        <em>{value.company.type}</em>
+                        <b>|</b>
+                        <em>外商独资</em>
+                        <b>|</b>
+                        <em>{value.company.stage}</em>
+                        <b>|</b>
+                        <em>100人以上</em>
+                    </span>
+                </div>
+            </div>
+        </Link>);
+
+        const enterpriseList = enterprise.map((value, i) => <Link to={`/company/${value.companyid}`} key={i}>
+            <div className="jobitems">
                 <span className="pics">
                     <img src={value.img} />
                 </span>
@@ -194,7 +205,7 @@ class Home extends React.Component {
                     </span>
                 </div>
             </div>
-            );
+        </Link>);
 
 
         return (
@@ -204,8 +215,13 @@ class Home extends React.Component {
                         <object data="/src/images/logo.svg" type="image/svg+xml" />
                     </span>
                     <div className="input">
-                        <input type="text" placeholder="搜索期望中的公司、岗位、地点" />
-                        <span><img src="/src/images/搜素.png" /></span>
+                        <input onChange={(e) => {
+
+                            this.setState({"search": e.target.value});
+
+                        }} value={search} type="text" placeholder="搜索期望中的公司、岗位、地点"
+                        />
+                        <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
                     </div>
                 </header>
 

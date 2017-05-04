@@ -1,87 +1,90 @@
-import React from 'react';
-import './FavoriteJobs.scss';
+import React from "react";
+import "./FavoriteJobs.scss";
 
 class FavoriteJobs extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-        jobs:[
-            {
-                company:{
-                    img: '/src/images/ali.png',
-                    name:'社会科学文献出版社',
-                    city:'北京市',
-                    type:'广告/公关/会展',
-                    stage:'成熟'
-                },
-                job_name:'市场部社会学实习生'
-            },
-            {
-                company:{
-                    img: '/src/images/ali.png',
-                    name:'社会科学文献出版社',
-                    city:'北京市',
-                    type:'广告/公关/会展',
-                    stage:'成熟'
-                },
-                job_name:'市场部社会学实习生'
-            },
-            {
-                company:{
-                    img: '/src/images/ali.png',
-                    name:'社会科学文献出版社',
-                    city:'北京市',
-                    type:'广告/公关/会展',
-                    stage:'成熟'
-                },
-                job_name:'市场部社会学实习生'
-            },
-            {
-                company:{
-                    img: '/src/images/ali.png',
-                    name:'社会科学文献出版社',
-                    city:'北京市',
-                    type:'广告/公关/会展',
-                    stage:'成熟'
-                },
-                job_name:'市场部社会学实习生'
-            },
-            {
-                company:{
-                    img: '/src/images/ali.png',
-                    name:'社会科学文献出版社',
-                    city:'北京市',
-                    type:'广告/公关/会展',
-                    stage:'成熟'
-                },
-                job_name:'市场部社会学实习生'
-            },
-            {
-                company:{
-                    img: '/src/images/ali.png',
-                    name:'社会科学文献出版社',
-                    city:'北京市',
-                    type:'广告/公关/会展',
-                    stage:'成熟'
-                },
-                job_name:'市场部社会学实习生'
-            },
-            {
-                company:{
-                    img: '/src/images/ali.png',
-                    name:'社会科学文献出版社',
-                    city:'北京市',
-                    type:'广告/公关/会展',
-                    stage:'成熟'
-                },
-                job_name:'市场部社会学实习生'
-            }
-        ]
-    }
-  }
+    constructor (props) {
 
-  render() {
+        super(props);
+        this.state = {
+            "jobs": [
+                {
+                    "company": {
+                        "img": "/src/images/ali.png",
+                        "name": "社会科学文献出版社",
+                        "city": "北京市",
+                        "type": "广告/公关/会展",
+                        "stage": "成熟"
+                    },
+                    "job_name": "市场部社会学实习生"
+                },
+                {
+                    "company": {
+                        "img": "/src/images/ali.png",
+                        "name": "社会科学文献出版社",
+                        "city": "北京市",
+                        "type": "广告/公关/会展",
+                        "stage": "成熟"
+                    },
+                    "job_name": "市场部社会学实习生"
+                },
+                {
+                    "company": {
+                        "img": "/src/images/ali.png",
+                        "name": "社会科学文献出版社",
+                        "city": "北京市",
+                        "type": "广告/公关/会展",
+                        "stage": "成熟"
+                    },
+                    "job_name": "市场部社会学实习生"
+                },
+                {
+                    "company": {
+                        "img": "/src/images/ali.png",
+                        "name": "社会科学文献出版社",
+                        "city": "北京市",
+                        "type": "广告/公关/会展",
+                        "stage": "成熟"
+                    },
+                    "job_name": "市场部社会学实习生"
+                },
+                {
+                    "company": {
+                        "img": "/src/images/ali.png",
+                        "name": "社会科学文献出版社",
+                        "city": "北京市",
+                        "type": "广告/公关/会展",
+                        "stage": "成熟"
+                    },
+                    "job_name": "市场部社会学实习生"
+                },
+                {
+                    "company": {
+                        "img": "/src/images/ali.png",
+                        "name": "社会科学文献出版社",
+                        "city": "北京市",
+                        "type": "广告/公关/会展",
+                        "stage": "成熟"
+                    },
+                    "job_name": "市场部社会学实习生"
+                },
+                {
+                    "company": {
+                        "img": "/src/images/ali.png",
+                        "name": "社会科学文献出版社",
+                        "city": "北京市",
+                        "type": "广告/公关/会展",
+                        "stage": "成熟"
+                    },
+                    "job_name": "市场部社会学实习生"
+                }
+            ]
+        };
+
+    }
+
+    render () {
+
         const {jobs} = this.state;
         const jobList = jobs.map((value, i) => <div className="jobitems" key={i}>
             <span className="pics"><img src={value.company.img} /></span>
@@ -103,12 +106,14 @@ class FavoriteJobs extends React.Component {
                 </span>
             </div>
         </div>);
-    return (
-      <div id="favoriteJobs">
-        {jobList}
-      </div>
-    );
-  }
+
+        return (
+            <div id="favoriteJobs">
+                {jobList}
+            </div>
+        );
+
+    }
 }
 
 export default FavoriteJobs;

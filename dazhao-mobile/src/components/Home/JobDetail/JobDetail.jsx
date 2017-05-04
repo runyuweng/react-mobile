@@ -1,5 +1,6 @@
 import React from "react";
 import "./JobDetail.scss";
+import ajax from "../../../services/ajax";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
@@ -8,6 +9,48 @@ class JobDetail extends React.Component {
     constructor (props) {
 
         super(props);
+        this.state = {
+            "data": {
+                "job_name": "",
+                "education": "",
+                "salary": "",
+                "type": "",
+                "location": [
+                    "",
+                    "",
+                    ""
+                ],
+                "company": {
+                    "name": "",
+                    "city": "",
+                    "type": "",
+                    "stage": "",
+                    "img": "",
+                    "numbers": "",
+                    "jobs": []
+                },
+                "tips": ["", "", ""],
+                "description": "",
+                "require": "",
+                "similarJobs": []
+            }
+
+        };
+
+    }
+
+    componentWillMount () {
+
+        const id = this.props.params.id;
+
+        ajax({"url": `/zhaoda/jobs/jobinfo?id=${id}`}).
+        then((data) => {
+
+            console.log(data);
+            this.setState({"data": data.contents[0]});
+
+        });
+
 
     }
 
@@ -19,6 +62,34 @@ class JobDetail extends React.Component {
 
     render () {
 
+        const {data} = this.state;
+
+        console.log(data.similarJobs);
+        const jobs = data.similarJobs.map((value, i) =>
+            <Link to={`/jobdetail/${value.jobid}`} key={i}>
+                <div className="jobitems">
+                    <span className="pics"><img src="/src/images/ali.png" /></span>
+                    <div className="jobintro">
+                        <h2>{value.job_name || "未知"}</h2>
+                        <h3>{value.company.name || "未知"}</h3>
+                        <span>
+                            <em>{value.location || "未知"}</em>
+                            <em>{value.education || "未知"}</em>
+                        </span>
+                        <span>
+                            <em>{value.company.type || "未知"}</em>
+                            <b>|</b>
+                            <em>{value.company.nature || "未知"}</em>
+                            <b>|</b>
+                            <em>{value.company.stage || "未知"}</em>
+                            <b>|</b>
+                            <em>{value.company.numbers || "未知"}</em>
+                        </span>
+                    </div>
+                </div>
+            </Link>
+            );
+
         return (
             <div className="JobDetail">
                 <header>
@@ -27,35 +98,33 @@ class JobDetail extends React.Component {
 
                 <div id="jobTop">
                     <span className="joblog"><img src="/src/images/ali.png" /></span>
-                    <h2>JAVA研发工程师<span>[<em>8</em>K-<em>12</em>K]</span>
+                    <h2>{data.job_name || "未知"}<span>[{data.salary || "未知"}]</span>
                     </h2>
                     <div>
-                        <span><img src="/src/images/source58.png" /><em>上海</em></span>
-                        <span><img src="/src/images/source59.png" /><em>本科</em></span>
-                        <span><img src="/src/images/source61.png" /><em>校招</em></span>
+                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0, 3) || "未知"}...</em></span>
+                        <span><img src="/src/images/source59.png" /><em>{data.education || "未知"}</em></span>
+                        <span><img src="/src/images/source61.png" /><em>{data.type || "未知"}</em></span>
                     </div>
                     <p>
-                        <span>扁平管理</span>
-                        <span>发展空间大</span>
-                        <span>带薪年假</span>
+                        {data.tips || "暂无"}
                     </p>
 
                 </div>
 
-                <Link to="company/compantintro">
+                <Link to={`/company/${data.company.companyid}`}>
                     <div className="job">
                         <div className="jobitems">
                             <div className="jobintro">
-                                <h2>阿里巴巴网络技术有限公司<span>认证</span></h2>
+                                <h2>{data.company.name || "未知"}<span>认证</span></h2>
                                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
                                 <span>
-                                    <em>互联网</em>
+                                    <em>{data.company.type || "未知"}</em>
                                     <b>|</b>
-                                    <em>外商独资</em>
+                                    <em>{data.company.nature || "未知"}</em>
                                     <b>|</b>
-                                    <em>上市</em>
+                                    <em>{data.company.stage || "未知"}</em>
                                     <b>|</b>
-                                    <em>1000人以上</em>
+                                    <em>{data.company.numbers || "未知"}</em>
                                 </span>
                             </div>
                             <span><img src="/src/images/Back_Button.png" /></span>
@@ -69,21 +138,11 @@ class JobDetail extends React.Component {
           </h2>
                     <div className="jobde">
                         <h3>职位描述</h3>
-                        <ol>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                        </ol>
+                        <div className="detail" dangerouslySetInnerHTML={{"__html": data.description}} />
                     </div>
                     <div className="jobde">
                         <h3>任职要求</h3>
-                        <ol>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                            <li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li>
-                        </ol>
+                        <div className="detail" dangerouslySetInnerHTML={{"__html": data.require}} />
                     </div>
                 </div>
 
@@ -94,10 +153,8 @@ class JobDetail extends React.Component {
                     <div className="jobwrap">
                         <div className="address">
                             <p>
-                                <span>上海市</span>
-                                <span>徐汇区</span>
+                                <span>{data.location || "未知"}</span>
                             </p>
-                            <p>淮海中路1010号嘉华中心1606</p>
                         </div>
                         <span className="map">地图</span>
                     </div>
@@ -105,91 +162,9 @@ class JobDetail extends React.Component {
                 </div>
 
                 <div id="homeMain">
-                    <h2><span><img src="/src/images/latest.png" /></span>相似职位</h2>
-                    
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师</h2>
-                            <h3>阿里巴巴网络技术有限公司</h3>
-                            <span>
-                                <em>上海</em>
-                                <em>本科</em>
-                            </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
-                        </div>
-                    </div>
 
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师</h2>
-                            <h3>阿里巴巴网络技术有限公司</h3>
-                            <span>
-                                <em>上海</em>
-                                <em>本科</em>
-                            </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
-                        </div>
-                    </div>
+                    {jobs}
 
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师</h2>
-                            <h3>阿里巴巴网络技术有限公司</h3>
-                            <span>
-                                <em>上海</em>
-                                <em>本科</em>
-                            </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="jobitems">
-                        <span className="pics"><img src="/src/images/ali.png" /></span>
-                        <div className="jobintro">
-                            <h2>JAVA研发工程师</h2>
-                            <h3>阿里巴巴网络技术有限公司</h3>
-                            <span>
-                                <em>上海</em>
-                                <em>本科</em>
-                            </span>
-                            <span>
-                                <em>互联网</em>
-                                <b>|</b>
-                                <em>外商独资</em>
-                                <b>|</b>
-                                <em>上市</em>
-                                <b>|</b>
-                                <em>1000人以上</em>
-                            </span>
-                        </div>
-                    </div>
 
                 </div>
 

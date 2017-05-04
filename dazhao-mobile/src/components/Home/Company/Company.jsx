@@ -1,12 +1,66 @@
 import React from "react";
 import "./Company.scss";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 
 class Company extends React.Component {
+    constructor (props) {
 
+        super(props);
+        this.state = {
+            "current": "part1",
+            "showMore": true,
+            "data": {
+                "img": "",
+                "name": "",
+                "location": "",
+                "url": "",
+                "type": "",
+                "nature": "",
+                "stage": "",
+                "numbers": "",
+                "Authentication": false,
+                "introduce": "",
+                "jobs": []
+            }
+        };
+
+    }
+
+    componentDidMount () {
+
+        const id = this.props.params.id;
+
+        ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
+        then((data) => {
+
+            console.log(data.contents[0]);
+            this.setState({"data": data.contents[0]});
+
+        });
+
+    }
 
     render () {
+
+        const {current, showMore, data} = this.state;
+
+        const jobs = (data.jobs || []).map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
+            <div className="position">
+                <div>
+                    <span>{value.job_name || "未知"}</span>
+                    <span><em>[{value.salary || "未知"}]</em></span>
+                </div>
+                <div>
+                    <span>
+                        <em>{value.location || "未知"}</em>
+                        <em>{value.education || "未知"}</em>
+                    </span>
+                    <span>{value.time || "未知"}</span>
+                </div>
+            </div>
+        </Link>);
 
         return (
             <div className="Company">
@@ -15,34 +69,84 @@ class Company extends React.Component {
                 </header>
 
                 <div id="jobTop">
-                    <span className="joblog"><img src="/src/images/ali.png" /></span>
-                    <h2>阿里巴巴网络技术有限公司</h2>
+                    <span className="joblog"><img src={data.img} /></span>
+                    <h2>{data.name}</h2>
                     <div>
                         <span><img src="/src/images/source58.png" /><em>上海</em></span>
-                        <span>认证</span>
+                        {data.Authentication ? <span>认证</span> : ""}
                     </div>
                     <p>
-                        <span>互联网</span>
+                        <span>{data.industry || "未知"}</span>
                         <em>|</em>
-                        <span>外商独资</span>
+                        <span>{data.nature || "未知"}</span>
                         <em>|</em>
-                        <span>上市</span>
+                        <span>{data.stage || "未知"}</span>
                         <em>|</em>
-                        <span>1000人以上</span>
+                        <span>{data.numbers || "未知"}</span>
                     </p>
                 </div>
 
                 <div className="companyMain">
                     <ul>
-                        <Link to="/company/compantintro" activeClassName="active">
-                            <li>企业介绍</li>
-                        </Link>
-                        <Link to="/company/positions" activeClassName="active">
-                            <li>招聘岗位</li>
-                        </Link>
-                        <li>空中宣讲</li>
+                        <li className={current === "part1" ? "active" : ""} onClick={() => {
+
+                            this.setState({"current": "part1"});
+
+                        }}
+                        >企业介绍</li>
+                        <li className={current === "part2" ? "active" : ""} onClick={() => {
+
+                            this.setState({"current": "part2"});
+
+                        }}
+                        >招聘岗位</li>
+                        <li className={current === "part3" ? "active" : ""} onClick={() => {
+
+                            this.setState({"current": "part3"});
+
+                        }}
+                        >空中宣讲</li>
                     </ul>
-                    {this.props.children}
+
+
+                    {current === "part1"
+                        ? <div>
+                            <div className="careTopic">
+                                <span className="caretitle">企业介绍：</span>
+                                <div className="caremain">
+                                    <span className="carecontent" style={{"maxHeight": showMore ? "2rem" : "none"}}>
+                                        <div className="detail" dangerouslySetInnerHTML={{"__html": data.introduce}} />
+                                        {showMore ? <span className="shade" /> : ""}
+                                    </span>
+                                    {showMore ? <span className="strech" onClick={() => {
+
+                                        this.setState({"showMore": false});
+
+                                    }}
+                                                >
+                                        展开查看全部<span><img src="/src/images/down.png" /></span>
+                                    </span> : ""}
+                                </div>
+                            </div>
+
+                            <div className="compangMsg">
+                                <h3>企业基本信息：</h3>
+                                <p>企业性质：<span>{data.nature || "未知"}</span></p>
+                                <p>发展阶段：<span>{data.stage || "未知"}</span></p>
+                                <p>企业领域：<span />{data.type || "未知"}</p>
+                                <p>企业规模：<span>{data.numbers || "未知"}</span></p>
+                                <p>企业网址：<span>{data.url || "未知"}</span></p>
+                                <p>公司地址：<span>{data.location || "未知"}</span></p>
+                            </div>
+                        </div>
+                    : ""}
+
+
+                    {current === "part2" ? <div className="positions">
+                        {jobs}
+                    </div>
+                    : ""}
+
 
                 </div>
 
