@@ -70,20 +70,20 @@ class JobDetail extends React.Component {
                 <div className="jobitems">
                     <span className="pics"><img src="/src/images/ali.png" /></span>
                     <div className="jobintro">
-                        <h2>{value.job_name||"未知"}</h2>
-                        <h3>{value.company.name||"未知"}</h3>
+                        <h2>{value.job_name || "未知"}</h2>
+                        <h3>{value.company.name || "未知"}</h3>
                         <span>
-                            <em>{value.location||"未知"}</em>
-                            <em>{value.education||"未知"}</em>
+                            <em>{value.location || "未知"}</em>
+                            <em>{value.education || "未知"}</em>
                         </span>
                         <span>
-                            <em>{value.company.type||"未知"}</em>
+                            <em>{value.company.type || "未知"}</em>
                             <b>|</b>
-                            <em>{value.company.nature||"未知"}</em>
+                            <em>{value.company.nature || "未知"}</em>
                             <b>|</b>
-                            <em>{value.company.stage||"未知"}</em>
+                            <em>{value.company.stage || "未知"}</em>
                             <b>|</b>
-                            <em>{value.company.numbers||"未知"}</em>
+                            <em>{value.company.numbers || "未知"}</em>
                         </span>
                     </div>
                 </div>
@@ -98,15 +98,15 @@ class JobDetail extends React.Component {
 
                 <div id="jobTop">
                     <span className="joblog"><img src="/src/images/ali.png" /></span>
-                    <h2>{data.job_name||"未知"}<span>[{data.salary||"未知"}]</span>
+                    <h2>{data.job_name || "未知"}<span>[{data.salary || "未知"}]</span>
                     </h2>
                     <div>
-                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0, 3)||"未知"}...</em></span>
-                        <span><img src="/src/images/source59.png" /><em>{data.education||"未知"}</em></span>
-                        <span><img src="/src/images/source61.png" /><em>{data.type||"未知"}</em></span>
+                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0, 3) || "未知"}...</em></span>
+                        <span><img src="/src/images/source59.png" /><em>{data.education || "未知"}</em></span>
+                        <span><img src="/src/images/source61.png" /><em>{data.type || "未知"}</em></span>
                     </div>
                     <p>
-                        {data.tips||"暂无"}
+                        {data.tips || "暂无"}
                     </p>
 
                 </div>
@@ -115,16 +115,16 @@ class JobDetail extends React.Component {
                     <div className="job">
                         <div className="jobitems">
                             <div className="jobintro">
-                                <h2>{data.company.name||"未知"}<span>认证</span></h2>
+                                <h2>{data.company.name || "未知"}<span>认证</span></h2>
                                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
                                 <span>
-                                    <em>{data.company.type||"未知"}</em>
+                                    <em>{data.company.type || "未知"}</em>
                                     <b>|</b>
-                                    <em>{data.company.nature||"未知"}</em>
+                                    <em>{data.company.nature || "未知"}</em>
                                     <b>|</b>
-                                    <em>{data.company.stage||"未知"}</em>
+                                    <em>{data.company.stage || "未知"}</em>
                                     <b>|</b>
-                                    <em>{data.company.numbers||"未知"}</em>
+                                    <em>{data.company.numbers || "未知"}</em>
                                 </span>
                             </div>
                             <span><img src="/src/images/Back_Button.png" /></span>
@@ -153,7 +153,7 @@ class JobDetail extends React.Component {
                     <div className="jobwrap">
                         <div className="address">
                             <p>
-                                <span>{data.location||"未知"}</span>
+                                <span>{data.location || "未知"}</span>
                             </p>
                         </div>
                         <span className="map">地图</span>

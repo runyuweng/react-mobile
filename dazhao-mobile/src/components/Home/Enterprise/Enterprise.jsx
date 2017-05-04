@@ -174,35 +174,35 @@ class Enterprise extends React.Component {
 
         const {industry, enterprise, showLoading, reset, tips} = this.state;
         const enterpriseList = enterprise.map((value, i) =>
-        <Link to={`/company/${value.companyid}`} key={i}>
-            <div className="jobitems" key={i}>
+            <Link to={`/company/${value.companyid}`} key={i}>
+                <div className="jobitems" key={i}>
 
-                <div className="pics">
-                    <img src={value.img} />
-                </div>
-                <div className="jobintro">
-                    <h2>{value.name}<span>认证</span></h2>
-                    <h3>
-                        <span>[<em>{value.jobs.length}</em>个]</span>
-                        {value.jobs.length > 0 ? value.jobs.map((value, i) =>
-                            <span key={i}>{value.job_name}、</span>
+                    <div className="pics">
+                        <img src={value.img} />
+                    </div>
+                    <div className="jobintro">
+                        <h2>{value.name}<span>认证</span></h2>
+                        <h3>
+                            <span>[<em>{value.jobs.length}</em>个]</span>
+                            {value.jobs.length > 0 ? value.jobs.map((value, i) =>
+                                <span key={i}>{value.job_name}、</span>
                             ) : "暂无"}
-                    </h3>
-                    <span className="address">
-                        <em>{value.city}</em>
-                    </span>
-                    <span>
-                        <em>互联网(暂无)</em>
-                        <b>|</b>
-                        <em>外商独资(暂无)</em>
-                        <b>|</b>
-                        <em>{value.stage}</em>
-                        <b>|</b>
-                        <em>{value.numbers}</em>
-                    </span>
+                        </h3>
+                        <span className="address">
+                            <em>{value.city}</em>
+                        </span>
+                        <span>
+                            <em>互联网(暂无)</em>
+                            <b>|</b>
+                            <em>外商独资(暂无)</em>
+                            <b>|</b>
+                            <em>{value.stage}</em>
+                            <b>|</b>
+                            <em>{value.numbers}</em>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </Link>);
+            </Link>);
 
         return (
             <div className="Enterprise">
