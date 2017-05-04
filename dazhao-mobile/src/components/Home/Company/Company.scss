@@ -125,6 +125,13 @@
                         position: absolute;
                         bottom:0rem;
                     }
+                    .detail{
+                      p,span{
+                        font-size:0.14rem !important;
+                        line-height: .25rem !important;
+                        color:#999999 !important;
+                      }
+                    }
                 }
                 .strech{
                     display:flex;

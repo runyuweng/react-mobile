@@ -162,9 +162,9 @@ class JobDetail extends React.Component {
                 </div>
 
                 <div id="homeMain">
-                    <h2><span><img src="/src/images/latest.png" /></span>相似职位
-          </h2>
+
                     {jobs}
+
 
                 </div>
 

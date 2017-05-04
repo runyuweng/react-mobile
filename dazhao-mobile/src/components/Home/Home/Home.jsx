@@ -157,8 +157,10 @@ class Home extends React.Component {
 
     render () {
 
+
         const {search, jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
         const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
+
             <div className="jobitems" key={i}>
                 <span className="pics"><img src={value.company.img} /></span>
                 <div className="jobintro">

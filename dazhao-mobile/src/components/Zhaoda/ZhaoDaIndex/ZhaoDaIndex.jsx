@@ -1,6 +1,7 @@
 import React, {defaultProps} from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
+import ajax from '../../../services/ajax.js';
 import {Link} from "react-router";
 
 class ZhaoDaIndex extends React.Component {
@@ -49,35 +50,26 @@ class ZhaoDaIndex extends React.Component {
             ],
             "hotTopic": [
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"1",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 },
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"1",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 },
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
-                },
-                {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
-                },
-                {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
-                } // 热门话题
+                    "tid":"1",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
+                }
             ],
             "popularityPople": [
                 {
@@ -107,19 +99,35 @@ class ZhaoDaIndex extends React.Component {
             ],
             "latestZhuanlan": [
                 {
-                    "imgsrc": "/src/images/banner2.png",
-                    "topic": "#麦力克#第一期---考研那些事儿"
+                    "tid":"2",
+                    "colposter":"/src/images/zhuanlan.png",
+                    "colposterbig":"/src/images/zhuanlan.png",
+                    "colid":"1",
+                    "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                    "colname":"#光爸说# 第一期——写简历的正确姿势"
                 },
                 {
-                    "imgsrc": "/src/images/banner2.png",
-                    "topic": "#麦力克#第一期---考研那些事儿"
+                    "tid":"2",
+                    "colposter":"/src/images/zhuanlan.png",
+                    "colposterbig":"/src/images/zhuanlan.png",
+                    "colid":"1",
+                    "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                    "colname":"#光爸说# 第一期——写简历的正确姿势"
                 },
                 {
-                    "imgsrc": "/src/images/banner2.png",
-                    "topic": "#麦力克#第一期---考研那些事儿"
-                } // 最新专栏
+                    "tid":"2",
+                    "colposter":"/src/images/zhuanlan.png",
+                    "colposterbig":"/src/images/zhuanlan.png",
+                    "colid":"1",
+                    "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                    "colname":"#光爸说# 第一期——写简历的正确姿势"
+                }
             ]
         };
+        this.fetchHotTopic = this.fetchHotTopic.bind(this);
+        this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
+        this.fetchLatestDynamic = this.fetchLatestDynamic.bind(this);
+        this.fetchPopularity = this.fetchPopularity.bind(this);
 
     }
 
@@ -130,7 +138,9 @@ class ZhaoDaIndex extends React.Component {
             this._touchEvent(elem);
 
         });
-
+        
+        this.fetchHotTopic();
+        this.fetchLatestZhuanlan();
     }
 
     // 最新动态
@@ -140,18 +150,45 @@ class ZhaoDaIndex extends React.Component {
 
 
     // 热门话题
-    fetchHotTopic (args) {
-
+    fetchHotTopic () {
+        ajax({"url" : '/zhaoda/topic/hottopics'})
+        .then((data)=>{
+            if (data.code === "S01") {
+                //查询成功
+                this.setState({
+                    "hotTopic": data.contents
+                })
+            }
+            else if (date.code === "E01"){
+                //如果查询出错，启用备用数据
+                this.setState({
+                    "hotTopic": this.state.hotTopic
+                })
+            }
+        })
     }
 
     // 人气行家
-    fetchPopularity (args) {
+    fetchPopularity () {
 
     }
 
     // 最新专栏
-    fetchLatestZhuanlan (args) {
-
+    fetchLatestZhuanlan () {
+        ajax({"url" : '/zhaoda/zhuanlan/lastestzhuanlan'})
+        .then((data)=>{
+            if (data.code === "S01") {
+                this.setState({
+                    "latestZhuanlan": data.contents
+                })
+            }
+            else if (date.code === "E01"){
+                //如果查询出错，启用备用数据
+                this.setState({
+                    "latestZhuanlan": this.state.latestZhuanlan
+                })
+            }
+        })
     }
 
     // 滑动事件
@@ -245,16 +282,17 @@ class ZhaoDaIndex extends React.Component {
 
         const {latestDynamic, hotTopic, popularityPople, latestZhuanlan} = this.state;
 
+
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
 
         const hotTopicList = hotTopic.map((elem, index) =>
             <div className="img" key={index}>
                 <span className="span1">
-                    <img src={elem.imgsrc} alt="热门话题" />
+                    <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
                 </span>
-                <span className="span2">{elem.topic}</span>
+                <span className="span2">{elem.tipic}</span>
                 <span className="care">
-                    <span>回答:{elem.answer}</span>
+                    <span>回答:{elem.question}</span>
                     <span>关注:{elem.care}</span>
                 </span>
             </div>
@@ -275,8 +313,8 @@ class ZhaoDaIndex extends React.Component {
 
         const latestZhuanlanList = latestZhuanlan.map((elem, index) =>
             <div className="img" key={index}>
-                <img src={elem.imgsrc} />
-                <p>{elem.topic}</p>
+                <img src={ "/src/images/zhuanlan.png" || elem.colposter } />
+                <p>{elem.colname}</p>
             </div>
             );
 
