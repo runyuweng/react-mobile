@@ -181,29 +181,29 @@ class Home extends React.Component {
             </div>
         </Link>);
 
-        const enterpriseList = enterprise.map((value, i) =>
-            <div className="jobitems" key={i}>
-                <span className="pics">
-                    <img src={value.img} />
-                </span>
-                <div className="jobintro">
-                    <h2>{value.name}<span>认证</span></h2>
-                    <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>JAVAEE研发工程</span>、<span>JAVAEE研发工程</span></h3>
-                    <span className="address">
-                        <em>{value.city}</em>
+        const enterpriseList = enterprise.map((value, i) =><Link to={`/company/${value.companyid}`} key={i}>
+                <div className="jobitems">
+                    <span className="pics">
+                        <img src={value.img} />
                     </span>
-                    <span>
-                        <em>{value.type}</em>
-                        <b>|</b>
-                        <em>外商独资</em>
-                        <b>|</b>
-                        <em>{value.stage}</em>
-                        <b>|</b>
-                        <em>{value.numbers}</em>
-                    </span>
+                    <div className="jobintro">
+                        <h2>{value.name}<span>认证</span></h2>
+                        <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>JAVAEE研发工程</span>、<span>JAVAEE研发工程</span></h3>
+                        <span className="address">
+                            <em>{value.city}</em>
+                        </span>
+                        <span>
+                            <em>{value.type}</em>
+                            <b>|</b>
+                            <em>外商独资</em>
+                            <b>|</b>
+                            <em>{value.stage}</em>
+                            <b>|</b>
+                            <em>{value.numbers}</em>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            );
+            </Link>);
 
 
         return (

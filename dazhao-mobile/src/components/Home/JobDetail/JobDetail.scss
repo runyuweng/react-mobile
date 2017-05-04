@@ -155,9 +155,14 @@ body{
 
     .jobrequire{
         .detail{
-            font-size: .14rem;
-            color: #999999;
-            line-height: .25rem;
+            font-size: .14rem !important;
+            color: #999999 !important;
+            line-height: .25rem !important;
+            span{
+                font-size: .14rem !important;
+                color: #999999 !important;
+                line-height: .25rem !important;
+            }
         }
         .positionde{
             font-size: .16rem;

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Company.scss";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 
 class Company extends React.Component {
@@ -12,75 +13,52 @@ class Company extends React.Component {
             "showMore": true,
             "data": {
                 "img": "",
-                "name": "阿里巴巴网络技术有限公司",
-                "location": "上海",
-                "url": "www.baidu.com",
-                "type": "互联网",
-                "nature": "外商独资",
-                "stage": "上市",
-                "numbers": "1000人以上",
-                "Authentication": true,
-                "intro": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学历还是本科学历；对于一些管理类的岗位的话，本身不是很需要学历的岗位，只要你的综合能力强，研究生还是本科神差距就不是很大。所以总的来说，还是要看你想去什么样的企业，想从事什么样的工作，然后决定读不读研或者读什么专业的研究生。<br />所以总的来说，还是要看你想去什么样的企业，想从事什么样的工作，然后决定读不读研或者读什么专业的研究生",
-                "jobs": [
-                    {
-                        "name": "JAVA",
-                        "id": "1",
-                        "location": "上海",
-                        "education": "本科",
-                        "time": "一周内",
-                        "salary": "8-12k"
-                    },
-                    {
-                        "name": "JAVA",
-                        "id": "1",
-                        "location": "上海",
-                        "education": "本科",
-                        "time": "一周内",
-                        "salary": "8-12k"
-                    },
-                    {
-                        "name": "JAVA",
-                        "id": "1",
-                        "location": "上海",
-                        "education": "本科",
-                        "time": "一周内",
-                        "salary": "8-12k"
-                    },
-                    {
-                        "name": "JAVA",
-                        "id": "1",
-                        "location": "上海",
-                        "education": "本科",
-                        "time": "一周内",
-                        "salary": "8-12k"
-                    }
-                ]
+                "name": "",
+                "location": "",
+                "url": "",
+                "type": "",
+                "nature": "",
+                "stage": "",
+                "numbers": "",
+                "Authentication": false,
+                "introduce":"",
+                "jobs": []
             }
         };
 
     }
 
     componentDidMount () {
-        // Ajax
+
+        const id = this.props.params.id;
+        ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
+        then((data) => {
+
+            console.log(data.contents[0]);
+            this.setState({data: data.contents[0]})
+
+        });
     }
 
     render () {
 
         const {current, showMore, data} = this.state;
 
-        const jobs = data.jobs.map((value, i) => <div className="position" key={i}>
-            <div>
-                <span>{value.name}</span>
-                <span><em>[{value.salary}]</em></span>
+        const jobs = (data.jobs||[]).map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
+            <div className="position">
+                <div>
+                    <span>{value.job_name||"未知"}</span>
+                    <span><em>[{value.salary||"未知"}]</em></span>
+                </div>
+                <div>
+                    <span>
+                        <em>{value.location||"未知"}</em>
+                        <em>{value.education||"未知"}</em>
+                    </span>
+                    <span>{value.time||"未知"}</span>
+                </div>
             </div>
-            <div>
-                <span>
-                    <em>{value.location}</em>
-                    <em>{value.education}</em>
-                </span>
-                <span>{value.time}</span>
-            </div>
-        </div>);
+        </Link>);
 
         return (
             <div className="Company">
@@ -89,20 +67,20 @@ class Company extends React.Component {
                 </header>
 
                 <div id="jobTop">
-                    <span className="joblog"><img src="/src/images/ali.png" /></span>
+                    <span className="joblog"><img src={data.img} /></span>
                     <h2>{data.name}</h2>
                     <div>
                         <span><img src="/src/images/source58.png" /><em>上海</em></span>
-                        <span>认证</span>
+                        {data.Authentication?<span>认证</span>:''}
                     </div>
                     <p>
-                        <span>{data.type}</span>
+                        <span>{data.industry||"未知"}</span>
                         <em>|</em>
-                        <span>{data.nature}</span>
+                        <span>{data.nature||"未知"}</span>
                         <em>|</em>
-                        <span>{data.stage}</span>
+                        <span>{data.stage||"未知"}</span>
                         <em>|</em>
-                        <span>{data.numbers}</span>
+                        <span>{data.numbers||"未知"}</span>
                     </p>
                 </div>
 
@@ -134,8 +112,8 @@ class Company extends React.Component {
                             <div className="careTopic">
                                 <span className="caretitle">企业介绍：</span>
                                 <div className="caremain">
-                                    <span className="carecontent" style={{height:showMore?'2rem':'auto'}}>
-                                        {data.intro}
+                                    <span className="carecontent" style={{maxHeight:showMore?'2rem':'none'}}>
+                                        <div className="detail" dangerouslySetInnerHTML={{"__html": data.introduce}} />
                                         {showMore?<span className="shade" />:""}
                                     </span>
                                     {showMore?<span className="strech" onClick={()=>{
@@ -148,12 +126,12 @@ class Company extends React.Component {
 
                             <div className="compangMsg">
                                 <h3>企业基本信息：</h3>
-                                <p>企业性质：<span>{data.nature}</span></p>
-                                <p>发展阶段：<span>{data.stage}</span></p>
-                                <p>企业领域：<span />{data.type}</p>
-                                <p>企业规模：<span>{data.numbers}</span></p>
-                                <p>企业网址：<span>{data.url}</span></p>
-                                <p>公司地址：<span>{data.location}</span></p>
+                                <p>企业性质：<span>{data.nature||"未知"}</span></p>
+                                <p>发展阶段：<span>{data.stage||"未知"}</span></p>
+                                <p>企业领域：<span />{data.type||"未知"}</p>
+                                <p>企业规模：<span>{data.numbers||"未知"}</span></p>
+                                <p>企业网址：<span>{data.url||"未知"}</span></p>
+                                <p>公司地址：<span>{data.location||"未知"}</span></p>
                             </div>
                         </div>
                     : ""}

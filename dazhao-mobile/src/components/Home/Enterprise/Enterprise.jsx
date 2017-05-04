@@ -174,6 +174,7 @@ class Enterprise extends React.Component {
 
         const {industry, enterprise, showLoading, reset, tips} = this.state;
         const enterpriseList = enterprise.map((value, i) =>
+        <Link to={`/company/${value.companyid}`} key={i}>
             <div className="jobitems" key={i}>
 
                 <div className="pics">
@@ -201,7 +202,7 @@ class Enterprise extends React.Component {
                     </span>
                 </div>
             </div>
-            );
+        </Link>);
 
         return (
             <div className="Enterprise">

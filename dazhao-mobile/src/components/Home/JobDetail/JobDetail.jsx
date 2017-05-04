@@ -11,101 +11,28 @@ class JobDetail extends React.Component {
         super(props);
         this.state = {
             "data": {
-                "job_name": "name",
-                "education": "education",
-                "salary": "8K-12K",
-                "type": "校招",
+                "job_name": "",
+                "education": "",
+                "salary": "",
+                "type": "",
                 "location": [
-                    "上海市",
-                    "徐汇区",
-                    "淮海中路"
+                    "",
+                    "",
+                    ""
                 ],
                 "company": {
-                    "name": "company.name",
-                    "city": "company.city",
-                    "type": "company.type",
-                    "stage": "company.stage",
+                    "name": "",
+                    "city": "",
+                    "type": "",
+                    "stage": "",
                     "img": "",
-                    "numbers": "100人",
+                    "numbers": "",
                     "jobs": []
                 },
-                "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
-                "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
-                "similarJobs": [
-                    {
-                        "job_name": "name",
-                        "education": "education",
-                        "salary": "8K-12K",
-                        "type": "校招",
-                        "location": [
-                            "上海市",
-                            "徐汇区",
-                            "淮海中路"
-                        ],
-                        "company": {
-                            "name": "company.name",
-                            "city": "company.city",
-                            "type": "company.type",
-                            "stage": "company.stage",
-                            "img": "",
-                            "numbers": "100人",
-                            "jobs": []
-                        },
-                        "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                        "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
-                        "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
-
-                    },
-                    {
-                        "job_name": "name",
-                        "education": "education",
-                        "salary": "8K-12K",
-                        "type": "校招",
-                        "location": [
-                            "上海市",
-                            "徐汇区",
-                            "淮海中路"
-                        ],
-                        "company": {
-                            "name": "company.name",
-                            "city": "company.city",
-                            "type": "company.type",
-                            "stage": "company.stage",
-                            "img": "",
-                            "numbers": "100人",
-                            "jobs": []
-                        },
-                        "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                        "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
-                        "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
-
-                    },
-                    {
-                        "job_name": "name",
-                        "education": "education",
-                        "salary": "8K-12K",
-                        "type": "校招",
-                        "location": [
-                            "上海市",
-                            "徐汇区",
-                            "淮海中路"
-                        ],
-                        "company": {
-                            "name": "company.name",
-                            "city": "company.city",
-                            "type": "company.type",
-                            "stage": "company.stage",
-                            "img": "",
-                            "numbers": "100人",
-                            "jobs": []
-                        },
-                        "tips": ["扁平化管理", "发展空间大", "带薪休假"],
-                        "description": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>",
-                        "require": "<ol><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li><li>负责UC头条产品的日志处理和分析，为业务发展提供数据报表支持；</li></ol>"
-
-                    }
-                ]
+                "tips": ["", "", ""],
+                "description": "",
+                "require": "",
+                "similarJobs": []
             }
 
         };
@@ -143,20 +70,20 @@ class JobDetail extends React.Component {
                 <div className="jobitems">
                     <span className="pics"><img src="/src/images/ali.png" /></span>
                     <div className="jobintro">
-                        <h2>{value.job_name}</h2>
-                        <h3>{value.company.name}</h3>
+                        <h2>{value.job_name||"未知"}</h2>
+                        <h3>{value.company.name||"未知"}</h3>
                         <span>
-                            <em>{value.location}</em>
-                            <em>{value.education}</em>
+                            <em>{value.location||"未知"}</em>
+                            <em>{value.education||"未知"}</em>
                         </span>
                         <span>
-                            <em>{value.company.type}</em>
+                            <em>{value.company.type||"未知"}</em>
                             <b>|</b>
-                            <em>外商独资</em>
+                            <em>{value.company.nature||"未知"}</em>
                             <b>|</b>
-                            <em>{value.company.stage}</em>
+                            <em>{value.company.stage||"未知"}</em>
                             <b>|</b>
-                            <em>{value.company.numbers}</em>
+                            <em>{value.company.numbers||"未知"}</em>
                         </span>
                     </div>
                 </div>
@@ -171,36 +98,33 @@ class JobDetail extends React.Component {
 
                 <div id="jobTop">
                     <span className="joblog"><img src="/src/images/ali.png" /></span>
-                    <h2>{data.job_name}<span>[{data.salary}]</span>
+                    <h2>{data.job_name||"未知"}<span>[{data.salary||"未知"}]</span>
                     </h2>
                     <div>
-                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0, 3)}...</em></span>
-                        <span><img src="/src/images/source59.png" /><em>{data.education}</em></span>
-                        <span><img src="/src/images/source61.png" /><em>{data.type}</em></span>
+                        <span><img src="/src/images/source58.png" /><em>{data.location.slice(0, 3)||"未知"}...</em></span>
+                        <span><img src="/src/images/source59.png" /><em>{data.education||"未知"}</em></span>
+                        <span><img src="/src/images/source61.png" /><em>{data.type||"未知"}</em></span>
                     </div>
                     <p>
-                        {data.tips}
-                        {/* Data.tips.map((value, i) =>
-                            <span key={i}>{value}</span>
-                        )*/}
+                        {data.tips||"暂无"}
                     </p>
 
                 </div>
 
-                <Link to="/company">
+                <Link to={`/company/${data.company.companyid}`}>
                     <div className="job">
                         <div className="jobitems">
                             <div className="jobintro">
-                                <h2>{data.company.name}<span>认证</span></h2>
+                                <h2>{data.company.name||"未知"}<span>认证</span></h2>
                                 <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
                                 <span>
-                                    <em>{data.company.type}</em>
+                                    <em>{data.company.type||"未知"}</em>
                                     <b>|</b>
-                                    <em>外商独资</em>
+                                    <em>{data.company.nature||"未知"}</em>
                                     <b>|</b>
-                                    <em>{data.company.stage}</em>
+                                    <em>{data.company.stage||"未知"}</em>
                                     <b>|</b>
-                                    <em>{data.company.numbers}</em>
+                                    <em>{data.company.numbers||"未知"}</em>
                                 </span>
                             </div>
                             <span><img src="/src/images/Back_Button.png" /></span>
@@ -229,7 +153,7 @@ class JobDetail extends React.Component {
                     <div className="jobwrap">
                         <div className="address">
                             <p>
-                                <span>{data.location}</span>
+                                <span>{data.location||"未知"}</span>
                             </p>
                         </div>
                         <span className="map">地图</span>
