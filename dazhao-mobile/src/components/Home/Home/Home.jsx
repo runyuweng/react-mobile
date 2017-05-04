@@ -150,6 +150,7 @@ class Home extends React.Component {
     render () {
 
         const {jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
+        console.log(enterprise)
         const jobList = jobs.map((value, i) => <div className="jobitems" key={i}>
             <span className="pics"><img src={value.company.img} /></span>
             <div className="jobintro">
