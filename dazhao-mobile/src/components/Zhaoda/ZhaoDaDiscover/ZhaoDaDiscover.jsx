@@ -8,7 +8,7 @@ class ZhaoDaDiscover extends React.Component {
 
         super(props);
         this.state = {
-            "latestDynamic": [
+            "hotTopics": [
                 {
                     "imgsrc": "/src/images/topicImg.png",
                     "topic": "职业素养",
@@ -97,11 +97,11 @@ class ZhaoDaDiscover extends React.Component {
 
     render () {
 
-        const {goodAnswer, latestDynamic} = this.state;
+        const {goodAnswer, hotTopics} = this.state;
 
-        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain key={i} data={value} />);
+        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic='0' key={i} data={value} />);
 
-        const LatestDynamicList = latestDynamic.map((elem, index) =>
+        const LatestDynamicList = hotTopics.map((elem, index) =>
             <div className="Citems" key={index}>
                 <Link to="/totopic">
                     <span className="img">
@@ -122,8 +122,7 @@ class ZhaoDaDiscover extends React.Component {
         return (
             <div className="ZhaoDaDiscover">
                 <div id="dynamic">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>热门话题
-          </div>
+                    <div className="title"><span><img src="/src/images/latest.png" /></span>热门话题</div>
                     <div className="content">
                         <div className="citemswrap">
                             {LatestDynamicList}

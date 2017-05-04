@@ -10,6 +10,41 @@ class ZhaoDaToQuestion extends React.Component {
     constructor (props) {
 
         super(props);
+        this.state = {
+            topic:"考研",
+            question:{
+                "sid":1,
+                "title":"研究生和本科学历在求职过程中真的会有很大影响吗?",
+                "authorAnswer":"这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学历还是本科学历；对于一些管理类的岗位的话，本身不是很需要学历的岗位，只要你的综合能力强，研究生还是本科神差距就不是很大。所以总的来说，还是要看你想去什么样的企业，想从事什么样的工作，然后决定读不读研或者读什么专业的研究生。",
+                "authorName":"马军",
+                "time":"2016年11月30日",
+                "careNum":15,
+                "isCare":false,
+                "authorpic" : "/src/images/down.png",
+                "otherAnswers":[
+                    {
+                        "id": 1,
+                        "name": "Michal",
+                        "job": "骨灰级教练",
+                        "imgsrc": "/src/images/vip.png",
+                        "remark": 9,
+                        "agree": 14,
+                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                        "collect": false
+                    },
+                    {
+                        "id":2,
+                        "name": "Michal",
+                        "job": "骨灰级教练",
+                        "imgsrc": "/src/images/vip.png",
+                        "remark": 9,
+                        "agree": 14,
+                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                        "collect": false
+                    }
+                ]
+            }
+        }
 
     }
 
@@ -17,9 +52,33 @@ class ZhaoDaToQuestion extends React.Component {
 
         this.props.showBottom();
 
+
     }
 
     render () {
+
+        const { topic, question } = this.state;
+        const otherAnswersList = question.otherAnswers.map((value,num)=>{
+            return(
+                <article key={num}>
+                    <div>
+                        <div className="publisher" key={num}>
+                          {value.name}
+                          <span className="vip"><img src={value.imgsrc} /></span>，
+                          <span>{value.job}</span>
+                        </div>
+                        <Link to="/response">
+                            <div className="comment">{value.comment}</div>
+                        </Link>
+                        <div className="more">
+                            <span><b><img src="/src/images/zan.png" /></b>赞同{value.agree}</span>
+                            <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
+                            <span><b><img src="/src/images/cang.png" /></b>收藏</span>
+                        </div>
+                    </div>
+                </article>
+            )
+        });
 
         return (
             <div className="ZhaoDaToQuestion">
@@ -28,115 +87,32 @@ class ZhaoDaToQuestion extends React.Component {
                 </header>
 
                 <div className="question">
-                    <span className="title">父话题：<span className="topTopic">考研</span></span>
+                    <span className="title">父话题：<span className="topTopic">{topic}</span></span>
                     <span className="img"><img src="/src/images/Back_Button.png" /></span>
                 </div>
 
                 <div className="careTopic">
-                    <span className="caretitle">研究生和本科学历在求职过程中真的会有很大影响吗?</span>
+                    <span className="caretitle">{question.title}</span>
                     <div className="caremain">
-                        <span className="carecontent">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学历还是本科学历；对于一些管理类的岗位的话，本身不是很需要学历的岗位，只要你的综合能力强，研究生还是本科神差距就不是很大。所以总的来说，还是要看你想去什么样的企业，想从事什么样的工作，然后决定读不读研或者读什么专业的研究生。
-              <span className="shade" />
-                        </span>
-                        <span className="strech">展开查看全部<span><img src="/src/images/down.png" /></span></span>
+                        <span className="carecontent">{question.authorAnswer}<span className="shade" /></span>
+                        <span className="strech">展开查看全部<span><img src={question.authorpic} /></span></span>
                         <div className="bottom">
                             <div className="left">
                                 <span><img src="/src/images/user.png" /></span>
-                                <span>马军</span>
-                                <span>2016年11月30日</span>
+                                <span>{question.authorName}</span>
+                                <span>{question.time}</span>
                             </div>
                             <div className="right">
-                                <span><em>15</em>人关注</span>
+                                <span><em>{question.careNum}</em>人关注</span>
                                 <span>+关注</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <span className="answers"><em>50</em>个回答</span>
+                <span className="answers"><em>{ question.otherAnswers.length }</em>个回答</span>
 
-                <div className="AnswerMain">
-                    <article>
-                        <Link to="/response">
-                            <div className="publisher">
-                  Michal
-                  <span className="vip"><img src="/src/images/vip.png" /></span>，
-                  <span>骨灰级教练</span>
-                            </div>
-                            <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                            <div className="more">
-                                <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                                <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                                <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                            </div>
-                        </Link>
-                    </article>
-
-                    <article>
-                        <Link to="/response">
-                            <div className="publisher">
-                  Michal
-                  <span className="vip"><img src="/src/images/vip.png" /></span>，
-                  <span>骨灰级教练</span>
-                            </div>
-                            <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                            <div className="more">
-                                <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                                <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                                <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                            </div>
-                        </Link>
-                    </article>
-
-                    <article>
-                        <Link to="/response">
-                            <div className="publisher">
-                  Michal
-                  <span className="vip"><img src="/src/images/vip.png" /></span>，
-                  <span>骨灰级教练</span>
-                            </div>
-                            <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                            <div className="more">
-                                <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                                <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                                <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                            </div>
-                        </Link>
-                    </article>
-
-                    <article>
-                        <Link to="/response">
-                            <div className="publisher">
-                  Michal
-                  <span className="vip"><img src="/src/images/vip.png" /></span>，
-                  <span>骨灰级教练</span>
-                            </div>
-                            <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                            <div className="more">
-                                <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                                <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                                <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                            </div>
-                        </Link>
-                    </article>
-
-                    <article>
-                        <Link to="/response">
-                            <div className="publisher">
-                  Michal
-                  <span className="vip"><img src="/src/images/vip.png" /></span>，
-                  <span>骨灰级教练</span>
-                            </div>
-                            <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                            <div className="more">
-                                <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                                <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                                <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                            </div>
-                        </Link>
-                    </article>
-
-                </div>
+                <div className="AnswerMain">{otherAnswersList}</div>
 
             </div>
         );
