@@ -20,7 +20,7 @@ class ZhaoDaToQuestion extends React.Component {
                 "time":"2016年11月30日",
                 "careNum":15,
                 "isCare":false,
-                "authorpic" : "/src/images/down.png",
+                "authorpic" : "/src/images/user.png",
                 "otherAnswers":[
                     {
                         "id": 1,
@@ -43,15 +43,23 @@ class ZhaoDaToQuestion extends React.Component {
                         "collect": false
                     }
                 ]
-            }
-        }
+            },
+            stretch : false
+        };
 
+        this.stretchClick = this.stretchClick.bind(this);
+
+    }
+
+    stretchClick(){
+        this.setState({
+            stretch : true
+        })
     }
 
     componentDidMount () {
 
         this.props.showBottom();
-
 
     }
 
@@ -86,7 +94,9 @@ class ZhaoDaToQuestion extends React.Component {
                     <TopBar title="问题" border="boder" />
                 </header>
 
-                <div className="question">
+                <div className="question" onClick={() => {
+                    history.go(-1);
+                }}>
                     <span className="title">父话题：<span className="topTopic">{topic}</span></span>
                     <span className="img"><img src="/src/images/Back_Button.png" /></span>
                 </div>
@@ -94,11 +104,17 @@ class ZhaoDaToQuestion extends React.Component {
                 <div className="careTopic">
                     <span className="caretitle">{question.title}</span>
                     <div className="caremain">
-                        <span className="carecontent">{question.authorAnswer}<span className="shade" /></span>
-                        <span className="strech">展开查看全部<span><img src={question.authorpic} /></span></span>
-                        <div className="bottom">
+                        <span className="carecontent" style={{"height":!this.state.stretch ? ".8rem" : "auto"}}>
+                            {question.authorAnswer}
+                            {!this.state.stretch?<span className="shade" /> : ""}
+                        </span>
+                        {
+                            !this.state.stretch?
+                        <span className="strech" onClick={this.stretchClick}>展开查看全部<span><img src="/src/images/down.png" /></span></span> : ""
+                        }
+                        <div className="bottom clearfix">
                             <div className="left">
-                                <span><img src="/src/images/user.png" /></span>
+                                <span><img src={question.authorpic} /></span>
                                 <span>{question.authorName}</span>
                                 <span>{question.time}</span>
                             </div>

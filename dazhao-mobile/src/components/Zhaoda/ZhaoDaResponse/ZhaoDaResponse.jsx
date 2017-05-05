@@ -39,11 +39,11 @@ class ZhaoDaResponse extends React.Component {
                 <header>
                     <TopBar title="回答" border="boder" />
                 </header>
-                <div className="question">
+                <div className="question"  onClick={() => {
+                    history.go(-1);
+                }}>
                     <span className="title">{title}</span>
-                    <Link to="/toquestion">
-                        <span className="img"><img src="/src/images/Back_Button.png" /></span>
-                    </Link>
+                    <span className="img"><img src="/src/images/Back_Button.png" /></span>
                 </div>
                 <div className="comment">
                     <div className="author">

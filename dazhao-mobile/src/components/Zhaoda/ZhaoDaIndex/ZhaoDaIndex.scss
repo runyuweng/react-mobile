@@ -278,6 +278,9 @@
                     font-size:0.14rem;
                     font-family:"苹方";
                     color:#333333;
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
                 }
 
                .care span:nth-child(1){

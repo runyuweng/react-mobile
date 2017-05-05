@@ -134,8 +134,8 @@ class JobDetail extends React.Component {
 
                 <div className="jobrequire">
                     <h2 className="positionde"><span><img src="/src/images/source55.png" /></span>
-            职位详情
-          </h2>
+                        职位详情
+                    </h2>
                     <div className="jobde">
                         <h3>职位描述</h3>
                         <div className="detail" dangerouslySetInnerHTML={{"__html": data.description}} />
@@ -163,8 +163,8 @@ class JobDetail extends React.Component {
 
                 <div id="homeMain">
 
-                    {jobs}
-
+                    <h2><span><img src="/src/images/latest.png" /></span>相似职位</h2>
+                    <div className="jobWrap">{jobs}</div>
 
                 </div>
 

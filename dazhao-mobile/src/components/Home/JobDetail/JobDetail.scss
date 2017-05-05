@@ -181,9 +181,12 @@ body{
                 }
             }
         }
+        .jobde:nth-of-type(1){
+            padding-bottom: 0;
+        }
         .jobde{
             background:#fff;
-            padding:.24rem .12rem .24rem .12rem;
+            padding:.24rem .12rem;
             h3{
                 font-family: "苹方";
                 font-size: .14rem;
@@ -334,7 +337,11 @@ body{
                 }
 
                 span:nth-of-type(1){
-                    display:inline-block;
+                    display: block;
+                    width: 100%;
+                    white-space: nowrap;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
                     em{
                         font-family: "苹方";
                         font-size: .13rem;
@@ -370,7 +377,7 @@ body{
             }
 
         }
-        .jobitems:nth-last-of-type(1){
+        a:nth-last-of-type(1) .jobitems{
             border-bottom:.01rem solid #EAEAEA;
             .jobintro{
                 border-bottom:none;

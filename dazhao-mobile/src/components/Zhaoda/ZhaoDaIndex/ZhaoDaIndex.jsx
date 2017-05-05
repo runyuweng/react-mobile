@@ -73,28 +73,28 @@ class ZhaoDaIndex extends React.Component {
             ],
             "popularityPople": [
                 {
+                    "id":1,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 },
                 {
+                    "id":2,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 },
                 {
+                    "id":3,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 },
                 {
+                    "id":4,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 } // 人气行家
             ],
             "latestZhuanlan": [
@@ -155,11 +155,12 @@ class ZhaoDaIndex extends React.Component {
         .then((data)=>{
             if (data.code === "S01") {
                 //查询成功
+                const hotTopic = data.contents.slice(0,5);
                 this.setState({
-                    "hotTopic": data.contents
+                    "hotTopic": hotTopic
                 })
             }
-            else if (date.code === "E01"){
+            else if (data.code === "E01"){
                 //如果查询出错，启用备用数据
                 this.setState({
                     "hotTopic": this.state.hotTopic
@@ -175,11 +176,12 @@ class ZhaoDaIndex extends React.Component {
 
     // 最新专栏
     fetchLatestZhuanlan () {
-        ajax({"url" : '/zhaoda/zhuanlan/lastestzhuanlan'})
+        ajax({"url" : '/zhaoda/zhuanlan/lastestzhuanlan?page=-1'})
         .then((data)=>{
             if (data.code === "S01") {
+                const zhuanlan = data.contents.slice(0,5);
                 this.setState({
-                    "latestZhuanlan": data.contents
+                    "latestZhuanlan": zhuanlan
                 })
             }
             else if (date.code === "E01"){
@@ -305,8 +307,7 @@ class ZhaoDaIndex extends React.Component {
                 </span>
                 <span className="span2">{elem.topic}</span>
                 <span className="care">
-                    <span>回答:{elem.answer}</span>
-                    <span>关注:{elem.care}</span>
+                    {elem.position}
                 </span>
             </div>
             );
@@ -350,7 +351,9 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic1">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/hot.png" /></b>热门话题</span>
-                            <span className="all">全部话题<b /><img src="/src/images/seeMore.png" /></span>
+                            <Link to="/Zhaoda/discover">
+                                <span className="all">全部话题<b /><img src="/src/images/seeMore.png" /></span>
+                            </Link>
                         </div>
                         <div id="topic1" ref="topic1" className="content">
                             {hotTopicList}
@@ -360,7 +363,9 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic2">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/special.png" /></b>人气行家</span>
-                            <span className="all">全部行家<b><img src="/src/images/seeMore.png" /></b></span>
+                            <Link to="">
+                                <span className="all">全部行家<b><img src="/src/images/seeMore.png" /></b></span>
+                            </Link>
                         </div>
                         <div id="topic2" ref="topic2" className="content">
                             {popularityPopleList}
@@ -370,7 +375,9 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic3">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/special.png" /></b>最新专栏</span>
-                            <span className="all">全部专栏<b><img src="/src/images/seeMore.png" /></b></span>
+                            <Link to="/Zhaoda/feature">
+                                <span className="all">全部专栏<b><img src="/src/images/seeMore.png" /></b></span>
+                            </Link>
                         </div>
                         <div id="topic3" ref="topic3" className="content" >
                             {latestZhuanlanList}
