@@ -7,31 +7,39 @@ class Login extends React.Component {
     constructor (props) {
 
         super(props);
+        this.state = {"agree": false};
 
     }
-    componentDidMount () {
-
-        this.props.showBottom(false);
-
+    componentDidMount(){
+      this.props.showBottom(false);
     }
 
+    handleAgree () {
+
+        this.setState({"agree": !this.state.agree});
+
+    }
     render () {
+
+        const {agree} = this.state;
 
         return (
             <div className="Login">
                 <header>
                     <TopBar title="登录" border="boder" link={{
-                        "content": "注册",
+                        "content": "切换到注册",
                         "url": "/register"
                     }}
                     />
                 </header>
                 <div className="container">
-                    <object data="/src/images/logo_2.svg" type="image/svg+xml" />
-                </div>
-                <div className="button-group">
-                    <button>邮箱或手机号登录</button>
-                    <button>微信快速登录</button>
+                    <p>用户账号</p>
+                    <input type="text" placeholder="输入您注册的手机号码或邮箱号码" />
+
+                    <p>设置密码</p>
+                    <input type="text" placeholder="请输入您的密码" />
+
+                    <button className="register">登录</button>
                 </div>
             </div>
         );
