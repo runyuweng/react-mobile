@@ -18,7 +18,8 @@ class Layout extends React.Component {
     render () {
 
         const {actions, show} = this.props;
-        const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise", "/login", "/register","/response","/toquestion"],
+
+        const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise", "/tologin", "/login", "/register","/response","/toquestion"],
             pathname = this.props.location.pathname;
         let animate = false;
 

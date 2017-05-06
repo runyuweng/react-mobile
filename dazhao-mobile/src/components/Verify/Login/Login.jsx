@@ -7,31 +7,47 @@ class Login extends React.Component {
     constructor (props) {
 
         super(props);
+        this.state = {
+          "account": '',
+          "pwd":''
+        };
 
     }
-    componentDidMount () {
+    componentDidMount(){
+      this.props.showBottom(false);
+    }
 
-        this.props.showBottom(false);
+    handleLogin(){
 
     }
 
     render () {
 
+        const {account, pwd} = this.state;
+
         return (
             <div className="Login">
                 <header>
                     <TopBar title="登录" border="boder" link={{
-                        "content": "注册",
+                        "content": "切换到注册",
                         "url": "/register"
                     }}
                     />
                 </header>
                 <div className="container">
-                    <object data="/src/images/logo_2.svg" type="image/svg+xml" />
-                </div>
-                <div className="button-group">
-                    <button>邮箱或手机号登录</button>
-                    <button>微信快速登录</button>
+                    <p>用户账号</p>
+                    <input value={account} type="text" placeholder="输入您注册的手机号码或邮箱号码"
+                      onChange={(e)=>{
+                        this.setState({account:e.target.value});
+                      }}/>
+
+                    <p>设置密码</p>
+                    <input value={pwd} type="text" placeholder="请输入您的密码"
+                      onChange={(e)=>{
+                        this.setState({pwd:e.target.value});
+                      }}/>
+
+                    <button className="register" onClick={()=>this.handleLogin()}>登录</button>
                 </div>
             </div>
         );

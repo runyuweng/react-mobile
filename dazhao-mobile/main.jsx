@@ -66,6 +66,7 @@ import MineFavoriteCompanys from "./src/components/Mine/FavoriteCompanys/Favorit
 import ZhaoDaQuiz from "./src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 
 // 用户验证
+import ToLogin from "./src/components/Verify/Login/ToLogin.jsx";
 import Login from "./src/components/Verify/Login/Login.jsx";
 import Register from "./src/components/Verify/Register/Register.jsx";
 
@@ -74,10 +75,10 @@ import reducer from "./src/reducers/index.js";
 
 function requireAuth (nextState, replace) {
 
-    if (false) {
+    if (true) {
 
         replace({
-            "pathname": "/login",
+            "pathname": "/tologin",
             "state": {"nextPathname": nextState.location.pathname}
         });
 
@@ -148,6 +149,7 @@ const Routes = () => <Provider store={store}>
                 <Route path="favoritejobs" component={MineFavoriteJobs} />
                 <Route path="favoritecompanys" component={MineFavoriteCompanys} />
             </Route>
+            <Route path="tologin" component={ToLogin} />
             <Route path="login" component={Login} />
             <Route path="register" component={Register} />
         </Route>

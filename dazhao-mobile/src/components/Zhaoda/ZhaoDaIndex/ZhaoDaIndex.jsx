@@ -193,7 +193,7 @@ class ZhaoDaIndex extends React.Component {
 
             }
             else if (data.code === "E01"){
-                
+
             }
         })
     }
@@ -388,7 +388,7 @@ class ZhaoDaIndex extends React.Component {
         const carouselOlList = carouselpic.map((elem,index)=>{
             return(
                 index === nowshow ?
-                <li key={index} className="active" /> : 
+                <li key={index} className="active" /> :
                 <li onClick={()=>{
                     this.setState({
                         "nowshow":index
@@ -420,7 +420,7 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic1">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/hot.png" /></b>热门话题</span>
-                            <Link to="/Zhaoda/discover">
+                            <Link to="/topic">
                                 <span className="all">全部话题<b /><img src="/src/images/seeMore.png" /></span>
                             </Link>
                         </div>
