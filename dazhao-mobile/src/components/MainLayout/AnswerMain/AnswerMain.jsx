@@ -7,6 +7,7 @@ class AnswerMain extends React.Component {
 
         super(props);
         this.state = {
+            "isTopic": this.props.isTopic || '1',
             "topic": this.props.data.topic || "",
             "theme": this.props.data.theme || "",
             "name": this.props.data.name || "",
@@ -21,20 +22,23 @@ class AnswerMain extends React.Component {
     }
     render () {
 
-        const {topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
-
+        const {isTopic, topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
 
         return (
             <div className="AnswerMain">
                 <article>
-                    <span className="topic">话题：<i>{topic}</i></span>
-                    <p className="theme">{theme}</p>
+                    {isTopic==='1' ? (<span className="topic">话题：<i>{topic}</i></span>) : ""}
+                    <Link to="/toquestion">
+                        <p className="theme">{theme}</p>
+                    </Link>
                     <div className="publisher">
                         {name}
                         <span className="vip"><img src={imgsrc} /></span>，
                         <span>{job}</span>
                     </div>
-                    <div className="comment">{comment}</div>
+                    <Link to="/response">
+                        <div className="comment">{comment}</div>
+                    </Link>
                     <div className="more">
                         <span><b><img src="/src/images/zan.png" /></b>赞同{agree}</span>
                         <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>

@@ -1,12 +1,62 @@
 import React from "react";
 import "./ZhaoDaToTopic.scss";
 import {Link} from "react-router";
+import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 
 class ZhaoDaToTopic extends React.Component {
 
     constructor (props) {
 
         super(props);
+        this.state = {
+            categoryId : 1,
+            topicId: 1,
+            topicdetail : {
+                "topicImg" : "/src/images/pople.png",
+                "topicTitle" : "职业素养",
+                "answer": 16,
+                "care": 10,
+                "isCared": false,
+                "questions":[
+                    {
+                        "id":1,
+                        "topic": "考研",
+                        "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                        "name": "Michal",
+                        "job": "骨灰级教练",
+                        "imgsrc": "/src/images/vip.png",
+                        "remark": 9,
+                        "agree": 14,
+                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                        "collect": false
+                    },
+                    {
+                        "id":2,
+                        "topic": "考研",
+                        "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                        "name": "Michal",
+                        "job": "骨灰级教练",
+                        "imgsrc": "/src/images/vip.png",
+                        "remark": 12,
+                        "agree": 14,
+                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                        "collect": false
+                    },
+                    {
+                        "id":3,
+                        "topic": "考研",
+                        "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                        "name": "Michal",
+                        "job": "骨灰级教练",
+                        "imgsrc": "/src/images/vip.png",
+                        "remark": 13,
+                        "agree": 14,
+                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                        "collect": false
+                    }
+                ]
+            }
+        }
 
     }
 
@@ -17,7 +67,9 @@ class ZhaoDaToTopic extends React.Component {
     }
 
     render () {
+        const { topicdetail } = this.state;
 
+        const questionsList = topicdetail.questions.map((value, i) => <AnswerMain isTopic='0' key={i} data={value} />);
         return (
             <div className="ZhaoDaToTopic">
                 <header>
@@ -33,11 +85,11 @@ class ZhaoDaToTopic extends React.Component {
                     </div>
                 </header>
                 <div className="topM">
-                    <span className="peopleLog"><img src="/src/images/pople.png" /></span>
-                    <span className="mTitl">#职业素养#</span>
+                    <span className="peopleLog"><img src={topicdetail.topicImg} /></span>
+                    <span className="mTitl">{topicdetail.topicTitle}</span>
                     <div className="care">
-                        <span>问答：<em>16</em></span>
-                        <span>关注：<em>101</em></span>
+                        <span>问答：<em>{topicdetail.answer}</em></span>
+                        <span>关注：<em>{topicdetail.care}</em></span>
                     </div>
                     <sapn className="attention">+关注</sapn>
                 </div>
@@ -47,66 +99,7 @@ class ZhaoDaToTopic extends React.Component {
                         <li className="active">全部</li>
                         <li>精华</li>
                     </ul>
-
-                    <article>
-                        <div className="publisher">
-              Michal
-              <span className="vip"><img src="/src/images/vip.png" /></span>，
-              <span>骨灰级教练</span>
-                        </div>
-                        <p className="theme">研究生和本科学历在求职过程中真的会有很大差别吗？</p>
-                        <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                        <div className="more">
-                            <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                            <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                            <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                        </div>
-                    </article>
-
-                    <article>
-                        <div className="publisher">
-              Michal
-              <span className="vip"><img src="/src/images/vip.png" /></span>，
-              <span>骨灰级教练</span>
-                        </div>
-                        <p className="theme">研究生和本科学历在求职过程中真的会有很大差别吗？</p>
-                        <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                        <div className="more">
-                            <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                            <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                            <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                        </div>
-                    </article>
-
-                    <article>
-                        <div className="publisher">
-              Michal
-              <span className="vip"><img src="/src/images/vip.png" /></span>，
-              <span>骨灰级教练</span>
-                        </div>
-                        <p className="theme">研究生和本科学历在求职过程中真的会有很大差别吗？</p>
-                        <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                        <div className="more">
-                            <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                            <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                            <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                        </div>
-                    </article>
-
-                    <article>
-                        <div className="publisher">
-              Michal
-              <span className="vip"><img src="/src/images/vip.png" /></span>，
-              <span>骨灰级教练</span>
-                        </div>
-                        <p className="theme">研究生和本科学历在求职过程中真的会有很大差别吗？</p>
-                        <div className="comment">这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...</div>
-                        <div className="more">
-                            <span><b><img src="/src/images/zan.png" /></b>赞同9</span>
-                            <span><b><img src="/src/images/comment.png" /></b>评论14</span>
-                            <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                        </div>
-                    </article>
+                    {questionsList}
 
                 </div>
 

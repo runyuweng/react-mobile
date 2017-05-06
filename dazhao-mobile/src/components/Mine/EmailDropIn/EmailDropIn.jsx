@@ -51,33 +51,33 @@ class EmailDropIn extends React.Component {
                                 </div>
                                 <div className="dropinwrap">
                                     <div className="dropinitem clearfix active">
-                                      <div className="progress">
-                                          <span />
-                                          <em />
-                                      </div>
-                                      <div className="dropincon">
-                                          <p>对方已查看您的简历</p>
-                                          <time>
+                                        <div className="progress">
+                                            <span />
+                                            <em />
+                                        </div>
+                                        <div className="dropincon">
+                                            <p>对方已查看您的简历</p>
+                                            <time>
                                         2016.12.30
                                         <em />
                                         10:54:10
                                     </time>
-                                      </div>
-                                  </div>
+                                        </div>
+                                    </div>
                                     <div className="dropinitem clearfix">
-                                      <div className="progress">
-                                          <span />
-                                          <em />
-                                      </div>
-                                      <div className="dropincon">
-                                          <p>企业已接收到您投递的简历</p>
-                                          <time>
+                                        <div className="progress">
+                                            <span />
+                                            <em />
+                                        </div>
+                                        <div className="dropincon">
+                                            <p>企业已接收到您投递的简历</p>
+                                            <time>
                                         2016.12.30
                                         <em />
                                         10:54:10
                                     </time>
-                                      </div>
-                                  </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <span>

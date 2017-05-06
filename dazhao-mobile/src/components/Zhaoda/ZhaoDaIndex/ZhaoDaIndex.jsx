@@ -73,28 +73,28 @@ class ZhaoDaIndex extends React.Component {
             ],
             "popularityPople": [
                 {
+                    "id":1,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 },
                 {
+                    "id":2,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 },
                 {
+                    "id":3,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 },
                 {
+                    "id":4,
                     "imgsrc": "/src/images/topicImg.png",
-                    "topic": "#考研#",
-                    "answer": 12,
-                    "care": 101
+                    "name": "Michael",
+                    "position" : "骨灰级猎头、WIT总裁"
                 } // 人气行家
             ],
             "latestZhuanlan": [
@@ -122,7 +122,26 @@ class ZhaoDaIndex extends React.Component {
                     "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
                     "colname":"#光爸说# 第一期——写简历的正确姿势"
                 }
-            ]
+            ],
+            "carouselpic":[
+                {
+                    id:1,
+                    img:"/src/images/banner1.jpg",
+                    picdescription:"图片一"
+                },
+                {
+                    id:2,
+                    img:"/src/images/banner2.png",
+                    picdescription:"图片二"
+                },
+                {
+                    id:3,
+                    img:"/src/images/banner3.png",
+                    picdescription:"图片三"
+                }
+            ],
+            "nowshow": 0
+
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
         this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
@@ -138,9 +157,34 @@ class ZhaoDaIndex extends React.Component {
             this._touchEvent(elem);
 
         });
+
+        //轮播
+        const autoCarousel = setInterval(()=>{
+            let nowshow = JSON.parse(JSON.stringify(this.state)).nowshow;
+
+            nowshow===this.state.carouselpic.length-1 ?
+            nowshow=0 :
+            nowshow++
+
+            this.setState({
+                "nowshow": nowshow
+            })
+
+        },4000);
+
+        this.setState({autoCarousel});
         
         this.fetchHotTopic();
         this.fetchLatestZhuanlan();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.autoCarousel);
+    }
+
+    //获取轮播图片
+    fetchCarouselpic(){
+
     }
 
     // 最新动态
@@ -155,11 +199,12 @@ class ZhaoDaIndex extends React.Component {
         .then((data)=>{
             if (data.code === "S01") {
                 //查询成功
+                const hotTopic = data.contents.slice(0,5);
                 this.setState({
-                    "hotTopic": data.contents
+                    "hotTopic": hotTopic
                 })
             }
-            else if (date.code === "E01"){
+            else if (data.code === "E01"){
                 //如果查询出错，启用备用数据
                 this.setState({
                     "hotTopic": this.state.hotTopic
@@ -175,11 +220,12 @@ class ZhaoDaIndex extends React.Component {
 
     // 最新专栏
     fetchLatestZhuanlan () {
-        ajax({"url" : '/zhaoda/zhuanlan/lastestzhuanlan'})
+        ajax({"url" : '/zhaoda/zhuanlan/lastestzhuanlan?page=-1'})
         .then((data)=>{
             if (data.code === "S01") {
+                const zhuanlan = data.contents.slice(0,5);
                 this.setState({
-                    "latestZhuanlan": data.contents
+                    "latestZhuanlan": zhuanlan
                 })
             }
             else if (date.code === "E01"){
@@ -280,7 +326,7 @@ class ZhaoDaIndex extends React.Component {
 
     render () {
 
-        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan} = this.state;
+        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow} = this.state;
 
 
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
@@ -305,8 +351,7 @@ class ZhaoDaIndex extends React.Component {
                 </span>
                 <span className="span2">{elem.topic}</span>
                 <span className="care">
-                    <span>回答:{elem.answer}</span>
-                    <span>关注:{elem.care}</span>
+                    {elem.position}
                 </span>
             </div>
             );
@@ -318,22 +363,32 @@ class ZhaoDaIndex extends React.Component {
             </div>
             );
 
+        const carouselpicList = carouselpic.map((elem,index)=>{
+            return(
+                index === nowshow ?
+                <div className="item active" key={index}><img src={elem.img} alt={elem.picdescription} /></div>:
+                ""
+            )
+        });
+        const carouselOlList = carouselpic.map((elem,index)=>{
+            return(
+                index === nowshow ?
+                <li key={index} className="active" /> : 
+                <li onClick={()=>{
+                    this.setState({
+                        "nowshow":index
+                    })
+                }} key={index} />
+            )
+        });
         return (
             <div className="ZhaoDaIndex">
                 <div id="show">
                     <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
-                        <ol className="carousel-indicators">
-                            <li className="active" />
-                            <li />
-                            <li />
-                        </ol>
+                        <ol className="carousel-indicators">{carouselOlList}</ol>
 
-                        <div className="carousel-inner">
-                            <div className="item active" />
-                            <div className="item" />
-                            <div className="item" />
-                        </div>
+                        <div className="carousel-inner">{carouselpicList}</div>
 
                     </div>
                 </div>
@@ -350,7 +405,9 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic1">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/hot.png" /></b>热门话题</span>
-                            <span className="all">全部话题<b /><img src="/src/images/seeMore.png" /></span>
+                            <Link to="/Zhaoda/discover">
+                                <span className="all">全部话题<b /><img src="/src/images/seeMore.png" /></span>
+                            </Link>
                         </div>
                         <div id="topic1" ref="topic1" className="content">
                             {hotTopicList}
@@ -360,7 +417,9 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic2">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/special.png" /></b>人气行家</span>
-                            <span className="all">全部行家<b><img src="/src/images/seeMore.png" /></b></span>
+                            <Link to="">
+                                <span className="all">全部行家<b><img src="/src/images/seeMore.png" /></b></span>
+                            </Link>
                         </div>
                         <div id="topic2" ref="topic2" className="content">
                             {popularityPopleList}
@@ -370,7 +429,9 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic3">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/special.png" /></b>最新专栏</span>
-                            <span className="all">全部专栏<b><img src="/src/images/seeMore.png" /></b></span>
+                            <Link to="/Zhaoda/feature">
+                                <span className="all">全部专栏<b><img src="/src/images/seeMore.png" /></b></span>
+                            </Link>
                         </div>
                         <div id="topic3" ref="topic3" className="content" >
                             {latestZhuanlanList}

@@ -95,6 +95,10 @@
                 }
 
             }
+            .clearfix{
+                overflow: hidden;
+                _zoom:1%;
+            }
             .bottom{
                 margin-top: .26rem;
                 .left{
@@ -115,6 +119,9 @@
                             width:.18rem;
                             height:.18rem;
                         }
+                    }
+                    span:nth-of-type(2){
+                        margin-right: .1rem;
                     }
                 }
                 .right{

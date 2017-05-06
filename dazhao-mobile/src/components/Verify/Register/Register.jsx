@@ -14,7 +14,8 @@ class Register extends React.Component {
           "tel":'',
           "pwd":'',
           "code":'',
-          "time":''
+          "time":'',
+          "activeTel":''
         };
 
     }
@@ -26,8 +27,18 @@ class Register extends React.Component {
 
     verifyTel(){
       if(!verifyTel(this.state.tel)){
-        this.props.showMessage('手机号有误，请重新输入！')
+        this.props.showMessage('手机号有误，请重新输入')
       }else if(!this.state.time){
+        ajax({url:"/zhaoda/verify",method:'POST',data:`tele=${this.state.tel}`})
+        .then((data)=>{
+          console.log(data);
+          if(data.code === "S01"){
+            this.props.showMessage("验证码已发送");
+            this.setState({activeTel:data.contents.tele})
+          }else{
+            this.props.showMessage(data.message);
+          }
+        })
         this.setState({time:60},()=>{
           let countDown = setInterval(()=>{
             this.setState({time:parseInt(this.state.time)-1});
@@ -48,7 +59,29 @@ class Register extends React.Component {
     }
 
     handleRegister(){
-
+      if(!this.state.activeTel){
+        this.props.showMessage("尚未发送验证码");
+      }else if(!this.state.tel||!this.state.code||!this.state.pwd){
+        this.props.showMessage("请填写完整信息后再试");
+      }else if(this.state.tel !== this.state.activeTel){
+        this.props.showMessage("当前手机号与验证码接收手机号不一致");
+      }else if(!this.state.agree){
+        this.props.showMessage("请同意再试");
+      }else{
+        ajax({
+          url:"/zhaoda/register",
+          method:'POST',
+          data:`account=${this.state.tel}&pwd=${this.state.pwd}&code=${this.state.code}`
+        })
+        .then((data)=>{
+          console.log(data);
+          if(data.code === "S01"){
+            this.props.showMessage("注册成功");
+          }else{
+            this.props.showMessage("未知错误，请重试");
+          }
+        })
+      }
 
 
     }

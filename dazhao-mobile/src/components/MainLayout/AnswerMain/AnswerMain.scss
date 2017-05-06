@@ -1,13 +1,13 @@
 .AnswerMain{
     article{
         width:100%;
-        padding:0 0.13rem;
+        padding:0.16rem 0.13rem 0.15rem;
         box-sizing:border-box;
         margin-bottom:0.14rem;
         border-top:0.01rem #d8d8d8 solid;
         border-bottom:0.01rem #d8d8d8 solid;
         background:#ffffff;
-
+    
         .topic{
             width:100%;
             display:flex;
@@ -17,7 +17,7 @@
             i{
                 font-style:normal;
             }
-            margin:0.16rem 0;
+            margin:0 0 0.16rem;
         }
         .theme{
             width:100%;
@@ -91,7 +91,7 @@
             font-size:0.14rem;
             font-family:"苹方";
             color:#ADADAD;
-            margin:0.15rem 0rem;
+            margin:0.15rem 0rem 0;
             line-height:0.2rem;
             span{
                 display:inline-flex;

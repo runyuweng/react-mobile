@@ -21,7 +21,7 @@ class Company extends React.Component {
                 "stage": "",
                 "numbers": "",
                 "Authentication": false,
-                "introduce":"",
+                "introduce": "",
                 "jobs": []
             }
         };
@@ -31,31 +31,33 @@ class Company extends React.Component {
     componentDidMount () {
 
         const id = this.props.params.id;
+
         ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
         then((data) => {
 
             console.log(data.contents[0]);
-            this.setState({data: data.contents[0]})
+            this.setState({"data": data.contents[0]});
 
         });
+
     }
 
     render () {
 
         const {current, showMore, data} = this.state;
 
-        const jobs = (data.jobs||[]).map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
+        const jobs = (data.jobs || []).map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
             <div className="position">
                 <div>
-                    <span>{value.job_name||"未知"}</span>
-                    <span><em>[{value.salary||"未知"}]</em></span>
+                    <span>{value.job_name || "未知"}</span>
+                    <span><em>[{value.salary || "未知"}]</em></span>
                 </div>
                 <div>
                     <span>
-                        <em>{value.location||"未知"}</em>
-                        <em>{value.education||"未知"}</em>
+                        <em>{value.location || "未知"}</em>
+                        <em>{value.education || "未知"}</em>
                     </span>
-                    <span>{value.time||"未知"}</span>
+                    <span>{value.time || "未知"}</span>
                 </div>
             </div>
         </Link>);
@@ -71,34 +73,34 @@ class Company extends React.Component {
                     <h2>{data.name}</h2>
                     <div>
                         <span><img src="/src/images/source58.png" /><em>上海</em></span>
-                        {data.Authentication?<span>认证</span>:''}
+                        {data.Authentication ? <span>认证</span> : ""}
                     </div>
                     <p>
-                        <span>{data.industry||"未知"}</span>
+                        <span>{data.industry || "未知"}</span>
                         <em>|</em>
-                        <span>{data.nature||"未知"}</span>
+                        <span>{data.nature || "未知"}</span>
                         <em>|</em>
-                        <span>{data.stage||"未知"}</span>
+                        <span>{data.stage || "未知"}</span>
                         <em>|</em>
-                        <span>{data.numbers||"未知"}</span>
+                        <span>{data.numbers || "未知"}</span>
                     </p>
                 </div>
 
                 <div className="companyMain">
                     <ul>
-                        <li className={current==="part1"?"active":""} onClick={() => {
+                        <li className={current === "part1" ? "active" : ""} onClick={() => {
 
                             this.setState({"current": "part1"});
 
                         }}
                         >企业介绍</li>
-                        <li className={current==="part2"?"active":""} onClick={() => {
+                        <li className={current === "part2" ? "active" : ""} onClick={() => {
 
                             this.setState({"current": "part2"});
 
                         }}
                         >招聘岗位</li>
-                        <li className={current==="part3"?"active":""} onClick={() => {
+                        <li className={current === "part3" ? "active" : ""} onClick={() => {
 
                             this.setState({"current": "part3"});
 
@@ -112,26 +114,29 @@ class Company extends React.Component {
                             <div className="careTopic">
                                 <span className="caretitle">企业介绍：</span>
                                 <div className="caremain">
-                                    <span className="carecontent" style={{maxHeight:showMore?'2rem':'none'}}>
+                                    <span className="carecontent" style={{"maxHeight": showMore ? "2rem" : "none"}}>
                                         <div className="detail" dangerouslySetInnerHTML={{"__html": data.introduce}} />
-                                        {showMore?<span className="shade" />:""}
+                                        {showMore ? <span className="shade" /> : ""}
                                     </span>
-                                    {showMore?<span className="strech" onClick={()=>{
-                                            this.setState({showMore:false})
-                                        }}>
+                                    {showMore ? <span className="strech" onClick={() => {
+
+                                        this.setState({"showMore": false});
+
+                                    }}
+                                                >
                                         展开查看全部<span><img src="/src/images/down.png" /></span>
-                                </span>:''}
+                                    </span> : ""}
                                 </div>
                             </div>
 
                             <div className="compangMsg">
                                 <h3>企业基本信息：</h3>
-                                <p>企业性质：<span>{data.nature||"未知"}</span></p>
-                                <p>发展阶段：<span>{data.stage||"未知"}</span></p>
-                                <p>企业领域：<span />{data.type||"未知"}</p>
-                                <p>企业规模：<span>{data.numbers||"未知"}</span></p>
-                                <p>企业网址：<span>{data.url||"未知"}</span></p>
-                                <p>公司地址：<span>{data.location||"未知"}</span></p>
+                                <p>企业性质：<span>{data.nature || "未知"}</span></p>
+                                <p>发展阶段：<span>{data.stage || "未知"}</span></p>
+                                <p>企业领域：<span />{data.type || "未知"}</p>
+                                <p>企业规模：<span>{data.numbers || "未知"}</span></p>
+                                <p>企业网址：<span>{data.url || "未知"}</span></p>
+                                <p>公司地址：<span>{data.location || "未知"}</span></p>
                             </div>
                         </div>
                     : ""}

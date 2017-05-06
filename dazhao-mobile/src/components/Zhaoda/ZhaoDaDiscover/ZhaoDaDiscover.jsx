@@ -2,53 +2,60 @@ import React from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaDiscover.scss";
 import {Link} from "react-router";
+import ajax from '../../../services/ajax.js';
 
 class ZhaoDaDiscover extends React.Component {
     constructor (props) {
 
         super(props);
         this.state = {
-            "latestDynamic": [
+            "hotTopics": [
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "职业素养",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"1",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 },
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "职业素养",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"2",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 },
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "职业素养",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"3",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 },
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "职业素养",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"4",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 },
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "职业素养",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"5",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 },
                 {
-                    "imgsrc": "/src/images/topicImg.png",
-                    "topic": "职业素养",
-                    "answer": 12,
-                    "care": 101
+                    "tid":"6",
+                    "img":"/src/images/topicImg.png",
+                    "tipic":"考研",
+                    "question":12,
+                    "care":3
                 }
             ],
             "goodAnswer": [
                 {
-                    "topic": "考研",
+                    "id":1,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -59,7 +66,7 @@ class ZhaoDaDiscover extends React.Component {
                     "collect": false
                 },
                 {
-                    "topic": "考研",
+                    "id":2,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -70,7 +77,7 @@ class ZhaoDaDiscover extends React.Component {
                     "collect": false
                 },
                 {
-                    "topic": "考研",
+                    "id":3,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -82,7 +89,11 @@ class ZhaoDaDiscover extends React.Component {
                 }
             ]
         };
+        this.fetchHotTopic = this.fetchHotTopic.bind(this);
+    }
 
+    componentDidMount() {
+        this.fetchHotTopic();
     }
 
     // 精品回答
@@ -90,27 +101,44 @@ class ZhaoDaDiscover extends React.Component {
 
     }
 
-    // 最新动态
-    fetchLatestDynamic () {
-
+    // 热门话题
+    fetchHotTopic () {
+        ajax({"url" : '/zhaoda/topic/hottopics'})
+        .then((data)=>{
+            if (data.code === "S01") {
+                //查询成功
+                const hotTopic = data.contents.slice(0,10);
+                console.log(hotTopic)
+                this.setState({
+                    "hotTopics": hotTopic
+                })
+            }
+            else if (data.code === "E01"){
+                //如果查询出错，启用备用数据
+                this.setState({
+                    "hotTopics": this.state.hotTopics
+                })
+            }
+        })
     }
 
     render () {
 
-        const {goodAnswer, latestDynamic} = this.state;
+        const {goodAnswer, hotTopics} = this.state;
+        // console.log(hotTopics)
 
-        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain key={i} data={value} />);
+        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic='0' key={i} data={value} />);
 
-        const LatestDynamicList = latestDynamic.map((elem, index) =>
+        const LatestDynamicList = hotTopics.map((elem, index) =>
             <div className="Citems" key={index}>
                 <Link to="/totopic">
                     <span className="img">
-                        <img src={elem.imgsrc} alt="最新动态" />
+                        <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
                     </span>
                     <div className="detail">
-                        <span className="span2">{elem.topic}</span>
+                        <span className="span2">{elem.tipic}</span>
                         <span className="care">
-                            <span>回答:{elem.answer}</span>
+                            <span>回答:{elem.question}</span>
                             <span>关注:{elem.care}</span>
                         </span>
                     </div>
@@ -122,8 +150,7 @@ class ZhaoDaDiscover extends React.Component {
         return (
             <div className="ZhaoDaDiscover">
                 <div id="dynamic">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>热门话题
-          </div>
+                    <div className="title"><span><img src="/src/images/latest.png" /></span>热门话题</div>
                     <div className="content">
                         <div className="citemswrap">
                             {LatestDynamicList}
