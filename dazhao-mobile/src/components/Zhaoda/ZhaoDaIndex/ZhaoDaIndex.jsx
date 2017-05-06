@@ -122,7 +122,26 @@ class ZhaoDaIndex extends React.Component {
                     "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
                     "colname":"#光爸说# 第一期——写简历的正确姿势"
                 }
-            ]
+            ],
+            "carouselpic":[
+                {
+                    id:1,
+                    img:"/src/images/banner1.jpg",
+                    picdescription:"图片一"
+                },
+                {
+                    id:2,
+                    img:"/src/images/banner2.png",
+                    picdescription:"图片二"
+                },
+                {
+                    id:3,
+                    img:"/src/images/banner3.png",
+                    picdescription:"图片三"
+                }
+            ],
+            "nowshow": 0
+
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
         this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
@@ -138,9 +157,34 @@ class ZhaoDaIndex extends React.Component {
             this._touchEvent(elem);
 
         });
+
+        //轮播
+        const autoCarousel = setInterval(()=>{
+            let nowshow = JSON.parse(JSON.stringify(this.state)).nowshow;
+
+            nowshow===this.state.carouselpic.length-1 ?
+            nowshow=0 :
+            nowshow++
+
+            this.setState({
+                "nowshow": nowshow
+            })
+
+        },4000);
+
+        this.setState({autoCarousel});
         
         this.fetchHotTopic();
         this.fetchLatestZhuanlan();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.autoCarousel);
+    }
+
+    //获取轮播图片
+    fetchCarouselpic(){
+
     }
 
     // 最新动态
@@ -282,7 +326,7 @@ class ZhaoDaIndex extends React.Component {
 
     render () {
 
-        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan} = this.state;
+        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow} = this.state;
 
 
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
@@ -319,22 +363,32 @@ class ZhaoDaIndex extends React.Component {
             </div>
             );
 
+        const carouselpicList = carouselpic.map((elem,index)=>{
+            return(
+                index === nowshow ?
+                <div className="item active" key={index}><img src={elem.img} alt={elem.picdescription} /></div>:
+                ""
+            )
+        });
+        const carouselOlList = carouselpic.map((elem,index)=>{
+            return(
+                index === nowshow ?
+                <li key={index} className="active" /> : 
+                <li onClick={()=>{
+                    this.setState({
+                        "nowshow":index
+                    })
+                }} key={index} />
+            )
+        });
         return (
             <div className="ZhaoDaIndex">
                 <div id="show">
                     <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
-                        <ol className="carousel-indicators">
-                            <li className="active" />
-                            <li />
-                            <li />
-                        </ol>
+                        <ol className="carousel-indicators">{carouselOlList}</ol>
 
-                        <div className="carousel-inner">
-                            <div className="item active" />
-                            <div className="item" />
-                            <div className="item" />
-                        </div>
+                        <div className="carousel-inner">{carouselpicList}</div>
 
                     </div>
                 </div>
