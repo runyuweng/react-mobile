@@ -7,21 +7,23 @@ class Login extends React.Component {
     constructor (props) {
 
         super(props);
-        this.state = {"agree": false};
+        this.state = {
+          "account": '',
+          "pwd":''
+        };
 
     }
     componentDidMount(){
       this.props.showBottom(false);
     }
 
-    handleAgree () {
-
-        this.setState({"agree": !this.state.agree});
+    handleLogin(){
 
     }
+
     render () {
 
-        const {agree} = this.state;
+        const {account, pwd} = this.state;
 
         return (
             <div className="Login">
@@ -34,12 +36,18 @@ class Login extends React.Component {
                 </header>
                 <div className="container">
                     <p>用户账号</p>
-                    <input type="text" placeholder="输入您注册的手机号码或邮箱号码" />
+                    <input value={account} type="text" placeholder="输入您注册的手机号码或邮箱号码"
+                      onChange={(e)=>{
+                        this.setState({account:e.target.value});
+                      }}/>
 
                     <p>设置密码</p>
-                    <input type="text" placeholder="请输入您的密码" />
+                    <input value={pwd} type="text" placeholder="请输入您的密码"
+                      onChange={(e)=>{
+                        this.setState({pwd:e.target.value});
+                      }}/>
 
-                    <button className="register">登录</button>
+                    <button className="register" onClick={()=>this.handleLogin()}>登录</button>
                 </div>
             </div>
         );

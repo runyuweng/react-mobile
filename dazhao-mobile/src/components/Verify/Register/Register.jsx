@@ -25,7 +25,9 @@ class Register extends React.Component {
     }
 
     verifyTel(){
-      if(!this.state.time&&verifyTel(this.state.tel)){
+      if(!verifyTel(this.state.tel)){
+        this.props.showMessage('手机号有误，请重新输入！')
+      }else if(!this.state.time){
         this.setState({time:60},()=>{
           let countDown = setInterval(()=>{
             this.setState({time:parseInt(this.state.time)-1});
@@ -44,6 +46,13 @@ class Register extends React.Component {
         this.setState({"agree": !this.state.agree});
 
     }
+
+    handleRegister(){
+
+
+
+    }
+
     render () {
 
         const {agree,tel,pwd,code,time} = this.state;
@@ -80,7 +89,7 @@ class Register extends React.Component {
                         </span>
                         我已阅读并同意
                     </p>
-                    <button className="register">注册</button>
+                    <button className="register" onClick={()=>this.handleRegister()}>注册</button>
                 </div>
             </div>
         );
