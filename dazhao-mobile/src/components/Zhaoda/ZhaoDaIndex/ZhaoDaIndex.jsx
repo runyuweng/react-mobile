@@ -3,6 +3,7 @@ import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
 import ajax from '../../../services/ajax.js';
 import {Link} from "react-router";
+import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 
 class ZhaoDaIndex extends React.Component {
     constructor (props) {
@@ -140,7 +141,9 @@ class ZhaoDaIndex extends React.Component {
                     picdescription:"图片三"
                 }
             ],
-            "nowshow": 0
+            "nowshow": 0,
+            "getmore": false,
+            "latestDynamicPage": 1
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -173,7 +176,7 @@ class ZhaoDaIndex extends React.Component {
         },4000);
 
         this.setState({autoCarousel});
-        
+
         this.fetchHotTopic();
         this.fetchLatestZhuanlan();
     }
@@ -184,7 +187,15 @@ class ZhaoDaIndex extends React.Component {
 
     //获取轮播图片
     fetchCarouselpic(){
+        ajax({"url":'/zhaoda/carouselpic'})
+        .then((data)=>{
+            if (data.code === "S01") {
 
+            }
+            else if (data.code === "E01"){
+                
+            }
+        })
     }
 
     // 最新动态
@@ -192,10 +203,14 @@ class ZhaoDaIndex extends React.Component {
 
     }
 
+    //加载更多
+    getMore(){
+
+    }
 
     // 热门话题
     fetchHotTopic () {
-        ajax({"url" : '/zhaoda/topic/hottopics'})
+        ajax({"url" : '/zhaoda/topic/hottopics?categoryid=-1'})
         .then((data)=>{
             if (data.code === "S01") {
                 //查询成功
@@ -326,7 +341,7 @@ class ZhaoDaIndex extends React.Component {
 
     render () {
 
-        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow} = this.state;
+        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore} = this.state;
 
 
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
@@ -349,7 +364,7 @@ class ZhaoDaIndex extends React.Component {
                 <span className="span1" >
                     <img src={elem.imgsrc} alt="人气行家" />
                 </span>
-                <span className="span2">{elem.topic}</span>
+                <span className="span2">{elem.name}</span>
                 <span className="care">
                     {elem.position}
                 </span>
@@ -398,7 +413,7 @@ class ZhaoDaIndex extends React.Component {
 
                     {AnswerMainList}
 
-                    <div className="Formore">展开更多</div>
+                    <div className="Formore" onClick={this.getMore}>{ !getmore ? <LoadingMore /> : "加载更多" }</div>
                 </div>
 
                 <div id="moreTopic">

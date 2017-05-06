@@ -27,12 +27,15 @@
     width: 100%;
     font-size: .16rem;
     white-space: nowrap;
+    overflow: hidden;
     ul{
-      overflow: hidden;
       white-space: nowrap;
-      width:100%;
+      width:auto;
       height: .35rem;
       box-sizing: border-box;
+      display: inline-block;
+      // background: red;
+      position: relative;
       .active{
         border-bottom: .02rem solid #000;
       }
