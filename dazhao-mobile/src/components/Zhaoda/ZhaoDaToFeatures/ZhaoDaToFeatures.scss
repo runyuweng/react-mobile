@@ -99,7 +99,6 @@
                         font-style: normal;
                     }
                     img{
-                        width:.16rem;
                         height:.12rem;
                         margin-left: .06rem;
                     }
@@ -112,13 +111,12 @@
                 color:#888888;
                 line-height: .19rem;
                 font-style: normal;
-                margin-top: .12rem;
+                margin: .12rem 0 .32rem;
             }
             .guestIntro{
                 padding:.2rem .15rem;
-                border-top: .01rem solid #ADADAD;
-                border-bottom: .01rem solid #ADADAD;
-                margin-top: .24rem;
+                border-top: .01rem solid #d8d8d8;
+                border-bottom: .01rem solid #d8d8d8;
                 position:relative;
                 h3{
                     font-family: "苹方";

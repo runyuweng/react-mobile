@@ -59,8 +59,8 @@ class ZhaoDaToFeatures extends React.Component {
                                 <div className="introR">
                                     <span><em>Michile</em><img src="/src/images/vip.png" /></span>
                                     <span>国际教练协会（ICF）认证教练<br />
-                    WIT Advisory Group总裁...
-                  </span>
+                                        WIT Advisory Group总裁...
+                                    </span>
                                 </div>
                             </div>
                             <span className="more"><em>展开</em><img src="/src/images/Back_down.png" /></span>

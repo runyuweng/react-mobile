@@ -15,6 +15,9 @@
         display: -o-flex;
         display: flex;
         align-items: center;
+        position: fixed;
+        z-index:999;
+        top:0;
         .search{
             width:81%;
             height:0.3rem;
@@ -81,6 +84,7 @@
         justify-content:space-around;
         background:#ffffff;
         border-bottom: .01rem solid #DBDBDB;
+        margin-top: .45rem;
         ul{
             width:100%;
             font-size:0.15rem;
