@@ -11,8 +11,8 @@ var config = {
 
     devServer: {
         inline: true,
-        host: '127.0.0.1',
-        // host: '192.168.74.1',
+        // host: '127.0.0.1',
+        host: '192.168.74.1',
         port: 7777
     },
 
@@ -47,8 +47,7 @@ var config = {
             ],
             network: ['*'],
             output: './cache.appcache'
-        })
-        ,
+        }),
         new webpack.optimize.UglifyJsPlugin({
             beauty: false,
             comments: false,
