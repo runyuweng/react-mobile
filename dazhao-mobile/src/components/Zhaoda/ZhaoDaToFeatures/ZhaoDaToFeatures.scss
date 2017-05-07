@@ -80,45 +80,45 @@
 
         #videoMessage{
             padding:.06rem 0rem 0rem;
-            .vTitle{
-                padding:0 .15rem;
-                display: flex;
-                justify-content: space-between;
-                h3{
-                    font-family: "苹方";
-                    font-size: .15rem;
-                    color:#333333;
-                }
-                span{
-                    display:inline-block;
-                    height:.13rem;
-                    em{
+            .zhuanlandescrip{
+                padding-bottom: .32rem;
+                .vTitle{
+                    padding:0 .15rem;
+                    display: flex;
+                    justify-content: space-between;
+                    h3{
                         font-family: "苹方";
-                        font-size: .13rem;
-                        color:#ADADAD;
-                        font-style: normal;
+                        font-size: .15rem;
+                        color:#333333;
                     }
-                    img{
-                        width:.16rem;
-                        height:.12rem;
-                        margin-left: .06rem;
+                    span{
+                        display:inline-block;
+                        em{
+                            font-family: "苹方";
+                            font-size: .13rem;
+                            color:#ADADAD;
+                            font-style: normal;
+                        }
+                        img{
+                            height:.1rem;
+                            margin-left: .06rem;
+                        }
                     }
                 }
-            }
-            p{
-                padding:0 .15rem;
-                font-family: "苹方";
-                font-size: .13rem;
-                color:#888888;
-                line-height: .19rem;
-                font-style: normal;
-                margin-top: .12rem;
+                p{
+                    padding:0 .15rem;
+                    font-family: "苹方";
+                    font-size: .13rem;
+                    color:#888888;
+                    line-height: .19rem;
+                    font-style: normal;
+                    margin: .12rem 0 0;
+                }
             }
             .guestIntro{
                 padding:.2rem .15rem;
-                border-top: .01rem solid #ADADAD;
-                border-bottom: .01rem solid #ADADAD;
-                margin-top: .24rem;
+                border-top: .01rem solid #d8d8d8;
+                border-bottom: .01rem solid #d8d8d8;
                 position:relative;
                 h3{
                     font-family: "苹方";
@@ -130,15 +130,23 @@
                     display: flex;
                     justify-content: flex-start;
                     .circle{
-                        width:.45rem;
-                        height:.45rem;
+                        width:16%;
+                        height: .45rem;
                         border-radius:50%;
-                        background:#d8d8d8;
                         display:inline-block;
-                        margin-right: .12rem;
+                        text-align: center;
+                        font-size: 0;
+                        img{
+                            width: .45rem;
+                            height: .45rem;
+                            border-radius: 50%;
+                        }
                     }
                     .introR{
+                        width: 82%;
+                        margin-left: 2%;
                         span:nth-of-type(1){
+                            line-height: .24rem;
                             display: flex;
                             align-items: center;
                             em{
@@ -158,9 +166,14 @@
                             font-family: "苹方";
                             font-size: .13rem;
                             color:#ADADAD;
-                            line-height: .18rem;
+                            line-height: .19rem;
                             margin-top: .02rem;
-                            display:inline-block;
+                            width: 74%;
+                            overflow: hidden;
+                            text-overflow:ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp:2;
+                            -webkit-box-orient:vertical;
                         }
                     }
                 }
@@ -178,7 +191,7 @@
                         font-style: normal;
                     }
                     img{
-                        height:.12rem;
+                        height:.1rem;
                         margin-left: .06rem;
                     }
                 }
@@ -187,7 +200,8 @@
     }
 
     #album{
-        padding:.3rem 0;
+        padding:.3rem .12rem;
+        padding-right: .08rem;
         background:#fff;
         margin-top: .24rem;
         border-bottom: .01rem solid #ADADAD;
@@ -200,20 +214,19 @@
         }
         .albunItems{
             margin-bottom: .15rem;
-            padding:0 .2rem 0 .15rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             span{
                 display:inline-block;
-                width:40%;
+                text-align: center;
                 img{
-                    width:100%;
+                    width:1.44rem;
+                    height: .83rem;
                 }
             }
             .itemsR{
-                width:60%;
                 box-sizing:box-sizing;
-                padding-left: 5%;
+                padding-left: 3%;
                 display: flex;
                 flex-direction:column;
                 justify-content: space-around;
@@ -229,6 +242,7 @@
                         font-family: "苹方";
                         font-size: .14rem;
                         color:#ADADAD;
+                        text-align: left;
                     em{
                         font-style: normal;
                         margin-right:.06rem;
@@ -362,8 +376,13 @@
                     line-height:0.19rem;
                     color:#888888;
                     margin:0.06rem 0rem;
+                    // height: .57rem;
+                    overflow: hidden;
+                    // text-overflow:ellipsis;
+                    // white-space: wrap;
+                    position: relative;
                     span{
-                        margin-left: .1rem;
+                        margin-right: .06rem;
                         padding:0 .02rem;
                         display:inline-block;
                         width:.58rem;
@@ -373,6 +392,9 @@
                         background:#EAEAEA;
                         line-height: .2rem;
                         border-radius:.015rem;
+                        position: absolute;
+                        right: 0;
+                        bottom:0;
                     }
                 }
                 .more{
