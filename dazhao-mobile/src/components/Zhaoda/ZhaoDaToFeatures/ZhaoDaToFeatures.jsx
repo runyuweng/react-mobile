@@ -2,6 +2,8 @@ import React from "react";
 import "./ZhaoDaToFeatures.scss";
 import "../../MainLayout/AnswerMain/AnswerMain.scss";
 import {Link} from "react-router";
+import ajax from '../../../services/ajax.js';
+import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 
 class ZhaoDaToFeatures extends React.Component {
 
@@ -9,6 +11,9 @@ class ZhaoDaToFeatures extends React.Component {
 
         super(props);
         this.state = {
+            "albumNum":5,
+            "loading":false,
+            "albumHaveShowAll":false,
             "guestIntroStretch": false,
             "shortIntroStretch" : true,
             data:{
@@ -27,22 +32,34 @@ class ZhaoDaToFeatures extends React.Component {
             },
             album:[//专辑列表
                 {
-                  id: 1,
-                  img:"/src/images/zhuanlan.png",
-                  title:"#麦力答#第二期----三年国考  成就万里挑一",
-                  playtimes:204
+                    "tid":"3",
+                    "colposter":"mailida3.png",
+                    "colposterbig":"mailida3da.png",
+                    "colid":"4",
+                    "coldescription":"你想成为面霸吗？光爸带你打开通往面霸之门。请听——麦力答",
+                    "colname":"#麦力答# 第三期——面霸是怎样炼成的",
+                    "playtimes":0,
+                    "vip":false
                 },
                 {
-                  id: 2,
-                  img:"/src/images/zhuanlan.png",
-                  title:"#麦力答#第二期----三年国考  成就万里挑一",
-                  playtimes:204
+                    "tid":"3",
+                    "colposter":"mailida3.png",
+                    "colposterbig":"mailida3da.png",
+                    "colid":"4",
+                    "coldescription":"你想成为面霸吗？光爸带你打开通往面霸之门。请听——麦力答",
+                    "colname":"#麦力答# 第三期——面霸是怎样炼成的",
+                    "playtimes":0,
+                    "vip":false
                 },
                 {
-                  id: 3,
-                  img:"/src/images/zhuanlan.png",
-                  title:"#麦力答#第二期----三年国考  成就万里挑一",
-                  playtimes:204
+                    "tid":"3",
+                    "colposter":"mailida3.png",
+                    "colposterbig":"mailida3da.png",
+                    "colid":"4",
+                    "coldescription":"你想成为面霸吗？光爸带你打开通往面霸之门。请听——麦力答",
+                    "colname":"#麦力答# 第三期——面霸是怎样炼成的",
+                    "playtimes":0,
+                    "vip":false
                 }
             ],
             answers:[
@@ -80,9 +97,11 @@ class ZhaoDaToFeatures extends React.Component {
                   time:'2016年11月30日'//提问时间
                 }
             ]
-        }
-
+        };
+        this.fetchAlbum = this.fetchAlbum.bind(this);
     }
+
+
 
     componentDidMount () {
 
@@ -107,7 +126,38 @@ class ZhaoDaToFeatures extends React.Component {
 
         });
 
+        this.fetchAlbum(this.state.albumNum)
+    }
 
+    fetchZhuanlanDe(){
+        ajax({"url":'/zhaoda/zhuanlan/zhuanlaninfo?colid=1'})
+        .then((data)=>{
+            const myData = data.contents;
+            this.setState({
+                data:myData
+            })
+        })
+    }
+
+    fetchAlbum(albumNum){
+        ajax({"url": '/zhaoda/zhuanlan/album?page=-1&uid=1'})
+        .then((data)=>{
+            if(data.code==="S21"){
+                let album = data.contents.slice(0, albumNum);
+                if (albumNum===-1) {
+                    album = data.contents;
+                }
+                this.setState({
+                    album:album,
+                    "loading": false,
+                    "albumHaveShowAll":albumNum===-1?true:false
+                })
+            }else if (data.code==="E01") {
+                this.setState({
+                    album:this.state.album
+                })
+            }
+        })
     }
 
     showallClick(index){
@@ -126,9 +176,9 @@ class ZhaoDaToFeatures extends React.Component {
         const {data, album, answers, commentWidth} = this.state;
 
         const albumList = album.map((value,i)=><div className="albunItems" key={i}>
-            <span><img src={value.img} /></span>
+            <span><img src={'/src/images/zhuanlan.png' || value.colposter} /></span>
             <div className="itemsR">
-                <h3>{value.title}</h3>
+                <h3>{value.colname}</h3>
                 <span><em>{value.playtimes}</em>次播放</span>
             </div>
         </div>)
@@ -237,7 +287,17 @@ class ZhaoDaToFeatures extends React.Component {
                     <h3>专辑列表</h3>
                     {albumList}
 
-                    <p><input type="button" value="查看全部" /></p>
+                    {
+                        !this.state.albumHaveShowAll ?
+                        <div className="Formore" onClick={()=>{
+                            this.setState({
+                                "loading": true
+                            },()=>{
+                                this.fetchAlbum(-1);
+                            })
+                        }}>{ this.state.loading ? <LoadingMore /> : "查看全部" }</div> : ""
+                    }
+                    
                 </div>
 
                 <div className="guestAnswer">
