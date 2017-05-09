@@ -9,17 +9,17 @@ class ZhaoDaToTopic extends React.Component {
 
         super(props);
         this.state = {
-            categoryId : 1,
-            topicId: 1,
-            topicdetail : {
-                "topicImg" : "/src/images/pople.png",
-                "topicTitle" : "职业素养",
+            "categoryId": 1,
+            "topicId": 1,
+            "topicdetail": {
+                "topicImg": "/src/images/pople.png",
+                "topicTitle": "职业素养",
                 "answer": 16,
                 "care": 10,
                 "isCared": false,
-                "questions":[
+                "questions": [
                     {
-                        "id":1,
+                        "id": 1,
                         "topic": "考研",
                         "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                         "name": "Michal",
@@ -31,7 +31,7 @@ class ZhaoDaToTopic extends React.Component {
                         "collect": false
                     },
                     {
-                        "id":2,
+                        "id": 2,
                         "topic": "考研",
                         "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                         "name": "Michal",
@@ -43,7 +43,7 @@ class ZhaoDaToTopic extends React.Component {
                         "collect": false
                     },
                     {
-                        "id":3,
+                        "id": 3,
                         "topic": "考研",
                         "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                         "name": "Michal",
@@ -56,7 +56,7 @@ class ZhaoDaToTopic extends React.Component {
                     }
                 ]
             }
-        }
+        };
 
     }
 
@@ -67,9 +67,12 @@ class ZhaoDaToTopic extends React.Component {
     }
 
     render () {
-        const { topicdetail } = this.state;
 
-        const questionsList = topicdetail.questions.map((value, i) => <AnswerMain isTopic='0' key={i} data={value} />);
+        const {topicdetail} = this.state;
+
+        const questionsList = topicdetail.questions.map((value, i) => <AnswerMain isTopic="0" key={i} data={value} />);
+
+
         return (
             <div className="ZhaoDaToTopic">
                 <header>

@@ -13,84 +13,84 @@ class ZhaoDaTopic extends React.Component {
             "nowX": 0, // 鼠标移动后的位置
             "delateX": 0, // 移动的距离
             "currentX": 0,
-            topicCategory : [
-                { 
-                    id:0,
-                    topicName:"全部"
+            "topicCategory": [
+                {
+                    "id": 0,
+                    "topicName": "全部"
                 },
-                { 
-                    id:1,
-                    topicName:"行业"
+                {
+                    "id": 1,
+                    "topicName": "行业"
                 },
-                { 
-                    id:2,
-                    topicName:"专栏"
-                },{ 
-                    id:3,
-                    topicName:"求职"
+                {
+                    "id": 2,
+                    "topicName": "专栏"
+                }, {
+                    "id": 3,
+                    "topicName": "求职"
                 },
-                { 
-                    id:4,
-                    topicName:"技能"
+                {
+                    "id": 4,
+                    "topicName": "技能"
                 },
-                { 
-                    id:5,
-                    topicName:"名企"
+                {
+                    "id": 5,
+                    "topicName": "名企"
                 },
-                { 
-                    id:6,
-                    topicName:"求职"
+                {
+                    "id": 6,
+                    "topicName": "求职"
                 },
-                { 
-                    id:7,
-                    topicName:"技能"
+                {
+                    "id": 7,
+                    "topicName": "技能"
                 },
-                { 
-                    id:8,
-                    topicName:"名企"
+                {
+                    "id": 8,
+                    "topicName": "名企"
                 }
             ],
-            topics : [
+            "topics": [
                 {
-                    "id":0,
+                    "id": 0,
                     "topicImg": "/src/images/topicImg.png",
                     "topicTitle": "职业素养",
                     "questionNum": 24
                 },
                 {
-                    "id":1,
+                    "id": 1,
                     "topicImg": "/src/images/topicImg.png",
                     "topicTitle": "职业素养",
                     "questionNum": 24
                 },
                 {
-                    "id":2,
+                    "id": 2,
                     "topicImg": "/src/images/topicImg.png",
                     "topicTitle": "职业素养",
                     "questionNum": 24
                 },
                 {
-                    "id":3,
+                    "id": 3,
                     "topicImg": "/src/images/topicImg.png",
                     "topicTitle": "职业素养",
                     "questionNum": 24
                 },
                 {
-                    "id":4,
+                    "id": 4,
                     "topicImg": "/src/images/topicImg.png",
                     "topicTitle": "职业素养",
                     "questionNum": 24
                 },
                 {
-                    "id":5,
+                    "id": 5,
                     "topicImg": "/src/images/topicImg.png",
                     "topicTitle": "职业素养",
                     "questionNum": 24
                 }
             ],
-            active : 0
+            "active": 0
         };
-        this.topicClick = this.topicClick.bind(this)
+        this.topicClick = this.topicClick.bind(this);
 
     }
 
@@ -100,12 +100,13 @@ class ZhaoDaTopic extends React.Component {
         this.props.showBottom(true);
 
         this._touchEvent(this.refs.navbar);
+
     }
 
-    topicClick(index){
-        this.setState({
-            active: index
-        })
+    topicClick (index) {
+
+        this.setState({"active": index});
+
     }
 
         // 滑动事件
@@ -196,21 +197,17 @@ class ZhaoDaTopic extends React.Component {
 
     render () {
 
-        const { topicCategory, topics, active } = this.state;
-        const topicCategoryList = topicCategory.map((elem,index)=>{
-            return <li onClick={this.topicClick.bind(this,index)} className={active == index ? "active" : ""} key={elem.id}>{elem.topicName}</li>
-        });
-        const topicsList = topics.map((elem,index)=>{
-            return(
-                <Link to="/totopic" key={index}>
-                    <div className="item" key={index}>
-                        <span><img src={elem.topicImg} /></span>
-                        <p>{elem.topicTitle}</p>
-                        <p>{elem.questionNum}个问题</p>
-                    </div>
-                </Link>
-            )
-        })
+        const {topicCategory, topics, active} = this.state;
+        const topicCategoryList = topicCategory.map((elem, index) => <li onClick={this.topicClick.bind(this, index)} className={active == index ? "active" : ""} key={elem.id}>{elem.topicName}</li>);
+        const topicsList = topics.map((elem, index) =>
+            <Link to="/totopic" key={index}>
+                <div className="item" key={index}>
+                    <span><img src={elem.topicImg} /></span>
+                    <p>{elem.topicTitle}</p>
+                    <p>{elem.questionNum}个问题</p>
+                </div>
+            </Link>
+            );
 
         return (
             <div className="container ZhaoDaTopic">

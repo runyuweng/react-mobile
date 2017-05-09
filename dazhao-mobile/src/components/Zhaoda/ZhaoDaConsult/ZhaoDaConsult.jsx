@@ -1,6 +1,7 @@
 import React from "react";
 import "./ZhaoDaConsult.scss";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax.js";
 
 class ZhaoDaConsult extends React.Component {
     constructor (props) {
@@ -8,27 +9,38 @@ class ZhaoDaConsult extends React.Component {
         super(props);
         this.state = {
             "question": "",
-            "answer": [
-                {
-                    "id": 1,
-                    "title": "非经融专业的学生想进投行工作需要什么？",
-                    "num": "5"
-                },
-                {
-                    "id": 2,
-                    "title": "非经融专业的学生想进投行工作需要什么？",
-                    "num": "4"
-                }
-            ]
+            "answer": []
         };
+
+    }
+
+
+    handleChange (e) {
+
+        this.setState({"question": e.target.value}, () => {
+
+            if (this.state.question) {
+
+                ajax({"url": `/zhaoda/question/similarquestion?qtitle=${this.state.question}`}).
+          then((data) => {
+
+              console.log(data);
+              this.setState({"answer": data.contents ? data.contents : []});
+
+
+          });
+
+            }
+
+        });
 
     }
 
     render () {
 
         const {question, answer} = this.state;
-        const answerList = answer.map((value) => <p key={value.id}>
-            {value.title}<span><b>{value.num}</b>个回答</span>
+        const answerList = answer.map((value, i) => <p key={i}>
+            {value.qtitle}<span><b>{value.remark}</b>个回答</span>
         </p>);
 
 
@@ -43,9 +55,18 @@ class ZhaoDaConsult extends React.Component {
                         }}
                         >取消</span>
                         <span>提问</span>
-                        <span onClick={()=>{
+                        {question ? <span onClick={() => {
+
                             sessionStorage.setItem("question", this.state.question);
-                          }}><Link to="/detail">下一步</Link></span>
+
+                        }}
+                                    ><Link to="/detail">下一步</Link></span>
+                          : <span onClick={() => {
+
+                              this.props.showMessage("请输入后再试");
+
+                          }}
+                            >下一步</span>}
                     </div>
                 </header>
                 <div className="quiztitle">
@@ -53,11 +74,7 @@ class ZhaoDaConsult extends React.Component {
                         value={question}
                         placeholder="写下你的问题标题"
                         autoFocus="autoFocus"
-                        onChange={(e) => {
-
-                            this.setState({"question": e.target.value});
-
-                        }}
+                        onChange={(e) => this.handleChange(e)}
                     />
                 </div>
                 <div className="havefind">

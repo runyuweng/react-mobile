@@ -7,7 +7,7 @@ class AnswerMain extends React.Component {
 
         super(props);
         this.state = {
-            "isTopic": this.props.isTopic || '1',
+            "isTopic": this.props.isTopic || "1",
             "topic": this.props.data.topic || "",
             "theme": this.props.data.theme || "",
             "name": this.props.data.name || "",
@@ -27,7 +27,7 @@ class AnswerMain extends React.Component {
         return (
             <div className="AnswerMain">
                 <article>
-                    {isTopic==='1' ? (<span className="topic">话题：<i>{topic}</i></span>) : ""}
+                    {isTopic === "1" ? <span className="topic">话题：<i>{topic}</i></span> : ""}
                     <Link to="/toquestion">
                         <p className="theme">{theme}</p>
                     </Link>

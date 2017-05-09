@@ -2,7 +2,7 @@ import React from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaDiscover.scss";
 import {Link} from "react-router";
-import ajax from '../../../services/ajax.js';
+import ajax from "../../../services/ajax.js";
 
 class ZhaoDaDiscover extends React.Component {
     constructor (props) {
@@ -11,51 +11,51 @@ class ZhaoDaDiscover extends React.Component {
         this.state = {
             "hotTopics": [
                 {
-                    "tid":"1",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "1",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 },
                 {
-                    "tid":"2",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "2",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 },
                 {
-                    "tid":"3",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "3",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 },
                 {
-                    "tid":"4",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "4",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 },
                 {
-                    "tid":"5",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "5",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 },
                 {
-                    "tid":"6",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "6",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 }
             ],
             "goodAnswer": [
                 {
-                    "id":1,
+                    "id": 1,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -66,7 +66,7 @@ class ZhaoDaDiscover extends React.Component {
                     "collect": false
                 },
                 {
-                    "id":2,
+                    "id": 2,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -77,7 +77,7 @@ class ZhaoDaDiscover extends React.Component {
                     "collect": false
                 },
                 {
-                    "id":3,
+                    "id": 3,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -90,10 +90,13 @@ class ZhaoDaDiscover extends React.Component {
             ]
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
+
     }
 
-    componentDidMount() {
+    componentDidMount () {
+
         this.fetchHotTopic();
+
     }
 
     // 精品回答
@@ -103,31 +106,35 @@ class ZhaoDaDiscover extends React.Component {
 
     // 热门话题
     fetchHotTopic () {
-        ajax({"url" : '/zhaoda/topic/hottopics'})
-        .then((data)=>{
+
+        ajax({"url": "/zhaoda/topic/hottopics"}).
+        then((data) => {
+
             if (data.code === "S01") {
-                //查询成功
-                const hotTopic = data.contents.slice(0,10);
-                console.log(hotTopic)
-                this.setState({
-                    "hotTopics": hotTopic
-                })
+
+                // 查询成功
+                const hotTopic = data.contents.slice(0, 10);
+
+                console.log(hotTopic);
+                this.setState({"hotTopics": hotTopic});
+
+            } else if (data.code === "E01") {
+
+                // 如果查询出错，启用备用数据
+                this.setState({"hotTopics": this.state.hotTopics});
+
             }
-            else if (data.code === "E01"){
-                //如果查询出错，启用备用数据
-                this.setState({
-                    "hotTopics": this.state.hotTopics
-                })
-            }
-        })
+
+        });
+
     }
 
     render () {
 
         const {goodAnswer, hotTopics} = this.state;
-        // console.log(hotTopics)
+        // Console.log(hotTopics)
 
-        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic='0' key={i} data={value} />);
+        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic="0" key={i} data={value} />);
 
         const LatestDynamicList = hotTopics.map((elem, index) =>
             <div className="Citems" key={index}>

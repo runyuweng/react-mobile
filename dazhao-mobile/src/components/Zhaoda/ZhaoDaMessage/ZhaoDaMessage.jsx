@@ -10,28 +10,28 @@ class ZhaoDaMessage extends React.Component {
         this.state = {
             "limit": 3,
             "informs": [
-                {   
-                    "questionId":1,
+                {
+                    "questionId": 1,
                     "answerers": ["Michael", "李刚", "Simon", "Michael", "李刚"],
                     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
                 },
                 {
-                    "questionId":2,
+                    "questionId": 2,
                     "answerers": ["Kangkang", "李刚", "Jane", "李刚"],
                     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
                 },
                 {
-                    "questionId":3,
+                    "questionId": 3,
                     "answerers": ["Simon", "Michael", "李刚", "Simon"],
                     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
                 },
                 {
-                    "questionId":4,
+                    "questionId": 4,
                     "answerers": ["Michael", "李刚", "Simon"],
                     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
                 },
                 {
-                    "questionId":5,
+                    "questionId": 5,
                     "answerers": ["Michael"],
                     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
                 }

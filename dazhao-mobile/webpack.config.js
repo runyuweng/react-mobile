@@ -48,14 +48,14 @@ var config = {
             network: ['*'],
             output: './cache.appcache'
         })
-        ,
-        new webpack.optimize.UglifyJsPlugin({
-            beauty: false,
-            comments: false,
-            compress: {
-                warnings: false
-            }
-        })
+        // ,
+        // new webpack.optimize.UglifyJsPlugin({
+        //     beauty: false,
+        //     comments: false,
+        //     compress: {
+        //         warnings: false
+        //     }
+        // })
     ]
 }
 

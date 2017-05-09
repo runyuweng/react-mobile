@@ -92,7 +92,7 @@ class ShRecruit extends React.Component {
     }
 
     handleLoad (elem) {
-        
+
         const that = this;
 
         elem.addEventListener("touchstart", (e) => {

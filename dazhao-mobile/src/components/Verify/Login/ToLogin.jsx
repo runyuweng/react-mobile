@@ -31,7 +31,7 @@ class ToLogin extends React.Component {
                 </div>
                 <div className="button-group">
                     <Link to="/login">
-                      <button>邮箱或手机号登录</button>
+                        <button>邮箱或手机号登录</button>
                     </Link>
                     <button>微信快速登录</button>
                 </div>

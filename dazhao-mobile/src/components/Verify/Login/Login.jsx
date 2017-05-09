@@ -10,20 +10,29 @@ class Login extends React.Component {
 
         super(props);
         this.state = {
-          "account": '',
-          "pwd":''
+            "account": "",
+            "pwd": ""
         };
 
     }
-    componentDidMount(){
-      this.props.showBottom(false);
+    componentDidMount () {
+
+        this.props.showBottom(false);
+
     }
 
-    handleLogin(){
-      ajax({url:"/zhaoda/login",method:'POST',data:`account=${this.state.account}&pwd=${this.state.pwd}`})
-      .then((data)=>{
-        console.log(data);
-      })
+    handleLogin () {
+
+        ajax({
+            "url": "/zhaoda/login",
+            "method": "POST",
+            "data": `account=${this.state.account}&pwd=${this.state.pwd}`
+        }).
+      then((data) => {
+
+          console.log(data);
+
+      });
 
     }
 
@@ -43,17 +52,23 @@ class Login extends React.Component {
                 <div className="container">
                     <p>用户账号</p>
                     <input value={account} type="text" placeholder="输入您注册的手机号码或邮箱号码"
-                      onChange={(e)=>{
-                        this.setState({account:e.target.value});
-                      }}/>
+                        onChange={(e) => {
+
+                            this.setState({"account": e.target.value});
+
+                        }}
+                    />
 
                     <p>输入密码</p>
                     <input value={pwd} type="text" placeholder="请输入您的密码"
-                      onChange={(e)=>{
-                        this.setState({pwd:e.target.value});
-                      }}/>
+                        onChange={(e) => {
 
-                    <button className="register" onClick={()=>this.handleLogin()}>登录</button>
+                            this.setState({"pwd": e.target.value});
+
+                        }}
+                    />
+
+                    <button className="register" onClick={() => this.handleLogin()}>登录</button>
                 </div>
             </div>
         );

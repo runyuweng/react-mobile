@@ -1,5 +1,6 @@
 import React from "react";
 import "./ChooseTopic.scss";
+import ajax from "../../../services/ajax.js";
 
 class ChooseTopic extends React.Component {
 
@@ -7,61 +8,46 @@ class ChooseTopic extends React.Component {
 
         super(props);
         this.state = {
-            "topics": [
-                {
-                    "topicName": "职业素养",
-                    "checked": false
-                },
-                {
-                    "topicName": "职业规划",
-                    "checked": false
-                },
-                {
-                    "topicName": "求职技巧",
-                    "checked": false
-                },
-                {
-                    "topicName": "求职面试",
-                    "checked": false
-                }
-            ],
+            "title": "",
+            "topics": [],
             "choosedtopic": [],
+            "choosedid": [],
             "isSubmit": false,
             "specialists": [
                 {
-                    "name": "Michael",
-                    "stage": "骨灰级猎头",
-                    "src": "/src/images/pople.png",
+                    "nickname": "Michael",
+                    "label": "骨灰级猎头",
+                    "img": "/src/images/pople.png",
                     "selected": false
                 },
                 {
-                    "name": "Michael",
-                    "stage": "骨灰级猎头",
-                    "src": "/src/images/pople.png",
+                    "nickname": "Michael",
+                    "label": "骨灰级猎头",
+                    "img": "/src/images/pople.png",
                     "selected": false
                 },
                 {
-                    "name": "Michael",
-                    "stage": "骨灰级猎头",
-                    "src": "/src/images/pople.png",
+                    "nickname": "Michael",
+                    "label": "骨灰级猎头",
+                    "img": "/src/images/pople.png",
                     "selected": true
                 },
                 {
-                    "name": "Michael",
-                    "stage": "骨灰级猎头",
-                    "src": "/src/images/pople.png",
+                    "nickname": "Michael",
+                    "label": "骨灰级猎头",
+                    "img": "/src/images/pople.png",
                     "selected": false
                 },
                 {
-                    "name": "Michael",
-                    "stage": "骨灰级猎头",
-                    "src": "/src/images/pople.png",
+                    "nickname": "Michael",
+                    "label": "骨灰级猎头",
+                    "img": "/src/images/pople.png",
                     "selected": false
                 },
                 {
-                    "name": "Michael",
-                    "stage": "骨灰级猎头",
-                    "src": "/src/images/pople.png",
+                    "nickname": "Michael",
+                    "label": "骨灰级猎头",
+                    "img": "/src/images/pople.png",
                     "selected": true
                 }
             ]
@@ -90,18 +76,21 @@ class ChooseTopic extends React.Component {
 
         const topics = JSON.parse(JSON.stringify(this.state)).topics;
         const choosedtopic = JSON.parse(JSON.stringify(this.state)).choosedtopic;
+        const choosedid = JSON.parse(JSON.stringify(this.state)).choosedid;
 
         choosedtopic.splice(num, 1);
+        choosedid.splice(num, 1);
 
         topics.map((elem, index) => {
 
-            elem.topicName === value ? elem.checked = !elem.checked : "";
+            elem.topicname === value ? elem.checked = !elem.checked : "";
 
         });
 
         this.setState({
             topics,
-            choosedtopic
+            choosedtopic,
+            choosedid
         });
 
     }
@@ -109,25 +98,56 @@ class ChooseTopic extends React.Component {
   // 提交
     submitClick () {
 
-        this.setState({"isSubmit": !this.state.isSubmit}, () => {
+        if (this.state.choosedid.length > 0) {
 
-            this.state.isSubmit ? this.refs.submitpage.addEventListener("touchmove", (e) => {
+            this.setState({"isSubmit": !this.state.isSubmit}, () => {
 
-                e.preventDefault();
+                this.state.isSubmit ? this.refs.submitpage.addEventListener("touchmove", (e) => {
 
-            }, true) : "";
+                    e.preventDefault();
 
-        });
+                }, true) : "";
+
+                if (this.state.isSubmit) {
+
+                    ajax({
+                        "url": "/zhaoda/question/askquestion",
+                        "method": "POST",
+                        "data": `qtitle=${sessionStorage.getItem("question")}&qcontent=${sessionStorage.getItem("detail")}&tid=${this.state.choosedid[0]}`
+                    }).
+                then((data) => {
+
+                    console.log(data);
+                    this.setState({"specialists": data.contents ? data.contents : []});
+
+                });
+
+                }
+
+            });
+
+        } else {
+
+            this.props.showMessage("请输入话题并选择后再试");
+
+        }
 
 
     }
 
-    handleClick (args, value) {
+    handleClick (args, value, id) {
+
+        console.log(value);
+        console.log(id);
+        console.log(this.state.choosedtopic);
+        console.log(this.state.choosedid);
 
         const choosedtopic = JSON.parse(JSON.stringify(this.state)).choosedtopic;
+        const choosedid = JSON.parse(JSON.stringify(this.state)).choosedid;
         const topics = JSON.parse(JSON.stringify(this.state)).topics;
 
         choosedtopic.indexOf(value) === -1 ? choosedtopic.push(value) : choosedtopic.splice(choosedtopic.indexOf(value), 1);
+        choosedid.indexOf(id) === -1 ? choosedid.push(id) : choosedid.splice(choosedid.indexOf(id), 1);
 
         topics.map((elem, index) => {
 
@@ -136,32 +156,68 @@ class ChooseTopic extends React.Component {
         });
         this.setState({
             topics,
-            choosedtopic
+            choosedtopic,
+            choosedid
+        });
+
+    }
+
+    handleChange (e) {
+
+        this.setState({"title": e.target.value}, () => {
+
+            if (this.state.title) {
+
+                ajax({"url": `/zhaoda/topic/similartopic?topicname=${this.state.title}`}).
+          then((data) => {
+
+              console.log(data);
+              if (data.contents) {
+
+                  const newData = JSON.parse(JSON.stringify(data.contents));
+
+                  newData.map((value, i) => {
+
+                      newData[i].checked = false;
+
+                  });
+                  this.setState({"topics": data.contents});
+
+              } else {
+
+                  this.setState({"topics": []});
+
+              }
+
+          });
+
+            }
+
         });
 
     }
 
     render () {
 
-        const {topics, choosedtopic, isSubmit, specialists} = this.state;
+        const {topics, choosedtopic, isSubmit, specialists, title} = this.state;
         const choosedtopicList = choosedtopic.map((elem, index) =>
             <div className="chooseditem" key={elem}><span>{elem}</span><span className="cancle" onClick={this.cancleChecked.bind(this, index, elem)}><img src="/src/images/icon/cancle.png" alt="取消" /></span></div>
         );
         const topicsList = topics.map((elem, index) =>
             <div className="topicitem" key={index}>
-                {elem.checked ? <span onClick={this.handleClick.bind(this, index, elem.topicName)}><img src="/src/images/icon/agree.png" alt="checked" /></span> : <span onClick={this.handleClick.bind(this, index, elem.topicName)} />}
-                <span>{elem.topicName}</span>
+                {elem.checked ? <span onClick={this.handleClick.bind(this, index, elem.topicname, elem.tid)}><img src="/src/images/icon/agree.png" alt="checked" /></span> : <span onClick={this.handleClick.bind(this, index, elem.topicname, elem.tid)} />}
+                <span>{elem.topicname}</span>
             </div>
         );
 
         const specialistsList = specialists.map((elem, index) =>
             <div className="specialist" key={index}>
                 <span className="img">
-                    <img onClick={this.selectClick.bind(this, index)} src={elem.src} alt="头像" />
+                    <img onClick={this.selectClick.bind(this, index)} src={elem.img || "/src/images/pople.png"} alt="头像" />
                     {elem.selected ? <span><img src="/src/images/选择@2x.png" alt="选择" /></span> : ""}
                 </span>
-                <span className="specialistname">{elem.name}</span>
-                <span className="specialiststage">{elem.stage}</span>
+                <span className="specialistname">{elem.nickname}</span>
+                <span className="specialiststage">{elem.label}</span>
             </div>
         );
 
@@ -190,7 +246,7 @@ class ChooseTopic extends React.Component {
                     </div>
                     <div className="topicfilter">
                         <span><img src="/src/images/搜素.png" alt="搜索" /></span>
-                        <input type="text" />
+                        <input type="text" value={title} onChange={(e) => this.handleChange(e)} />
                     </div>
                     <div className="topicfound">
                         { topicsList }

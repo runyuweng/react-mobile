@@ -1,7 +1,7 @@
 import React, {defaultProps} from "react";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
-import ajax from '../../../services/ajax.js';
+import ajax from "../../../services/ajax.js";
 import {Link} from "react-router";
 import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
 
@@ -51,94 +51,94 @@ class ZhaoDaIndex extends React.Component {
             ],
             "hotTopic": [
                 {
-                    "tid":"1",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "1",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 },
                 {
-                    "tid":"1",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "1",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 },
                 {
-                    "tid":"1",
-                    "img":"/src/images/topicImg.png",
-                    "tipic":"考研",
-                    "question":12,
-                    "care":3
+                    "tid": "1",
+                    "img": "/src/images/topicImg.png",
+                    "tipic": "考研",
+                    "question": 12,
+                    "care": 3
                 }
             ],
             "popularityPople": [
                 {
-                    "id":1,
+                    "id": 1,
                     "imgsrc": "/src/images/topicImg.png",
                     "name": "Michael",
-                    "position" : "骨灰级猎头、WIT总裁"
+                    "position": "骨灰级猎头、WIT总裁"
                 },
                 {
-                    "id":2,
+                    "id": 2,
                     "imgsrc": "/src/images/topicImg.png",
                     "name": "Michael",
-                    "position" : "骨灰级猎头、WIT总裁"
+                    "position": "骨灰级猎头、WIT总裁"
                 },
                 {
-                    "id":3,
+                    "id": 3,
                     "imgsrc": "/src/images/topicImg.png",
                     "name": "Michael",
-                    "position" : "骨灰级猎头、WIT总裁"
+                    "position": "骨灰级猎头、WIT总裁"
                 },
                 {
-                    "id":4,
+                    "id": 4,
                     "imgsrc": "/src/images/topicImg.png",
                     "name": "Michael",
-                    "position" : "骨灰级猎头、WIT总裁"
+                    "position": "骨灰级猎头、WIT总裁"
                 } // 人气行家
             ],
             "latestZhuanlan": [
                 {
-                    "tid":"2",
-                    "colposter":"/src/images/zhuanlan.png",
-                    "colposterbig":"/src/images/zhuanlan.png",
-                    "colid":"1",
-                    "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname":"#光爸说# 第一期——写简历的正确姿势"
+                    "tid": "2",
+                    "colposter": "/src/images/zhuanlan.png",
+                    "colposterbig": "/src/images/zhuanlan.png",
+                    "colid": "1",
+                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                    "colname": "#光爸说# 第一期——写简历的正确姿势"
                 },
                 {
-                    "tid":"2",
-                    "colposter":"/src/images/zhuanlan.png",
-                    "colposterbig":"/src/images/zhuanlan.png",
-                    "colid":"1",
-                    "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname":"#光爸说# 第一期——写简历的正确姿势"
+                    "tid": "2",
+                    "colposter": "/src/images/zhuanlan.png",
+                    "colposterbig": "/src/images/zhuanlan.png",
+                    "colid": "1",
+                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                    "colname": "#光爸说# 第一期——写简历的正确姿势"
                 },
                 {
-                    "tid":"2",
-                    "colposter":"/src/images/zhuanlan.png",
-                    "colposterbig":"/src/images/zhuanlan.png",
-                    "colid":"1",
-                    "coldescription":"简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname":"#光爸说# 第一期——写简历的正确姿势"
+                    "tid": "2",
+                    "colposter": "/src/images/zhuanlan.png",
+                    "colposterbig": "/src/images/zhuanlan.png",
+                    "colid": "1",
+                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                    "colname": "#光爸说# 第一期——写简历的正确姿势"
                 }
             ],
-            "carouselpic":[
+            "carouselpic": [
                 {
-                    id:1,
-                    img:"/src/images/banner1.jpg",
-                    picdescription:"图片一"
+                    "id": 1,
+                    "img": "/src/images/banner1.jpg",
+                    "picdescription": "图片一"
                 },
                 {
-                    id:2,
-                    img:"/src/images/banner2.png",
-                    picdescription:"图片二"
+                    "id": 2,
+                    "img": "/src/images/banner2.png",
+                    "picdescription": "图片二"
                 },
                 {
-                    id:3,
-                    img:"/src/images/banner3.png",
-                    picdescription:"图片三"
+                    "id": 3,
+                    "img": "/src/images/banner3.png",
+                    "picdescription": "图片三"
                 }
             ],
             "nowshow": 0,
@@ -161,41 +161,46 @@ class ZhaoDaIndex extends React.Component {
 
         });
 
-        //轮播
-        const autoCarousel = setInterval(()=>{
+        // 轮播
+        const autoCarousel = setInterval(() => {
+
             let nowshow = JSON.parse(JSON.stringify(this.state)).nowshow;
 
-            nowshow===this.state.carouselpic.length-1 ?
-            nowshow=0 :
-            nowshow++
+            nowshow === this.state.carouselpic.length - 1
+            ? nowshow = 0
+            : nowshow++;
 
-            this.setState({
-                "nowshow": nowshow
-            })
+            this.setState({nowshow});
 
-        },4000);
+        }, 4000);
 
         this.setState({autoCarousel});
 
         this.fetchHotTopic();
         this.fetchLatestZhuanlan();
+
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
+
         clearInterval(this.state.autoCarousel);
+
     }
 
-    //获取轮播图片
-    fetchCarouselpic(){
-        ajax({"url":'/zhaoda/carouselpic'})
-        .then((data)=>{
+    // 获取轮播图片
+    fetchCarouselpic () {
+
+        ajax({"url": "/zhaoda/carouselpic"}).
+        then((data) => {
+
             if (data.code === "S01") {
 
-            }
-            else if (data.code === "E01"){
+            } else if (data.code === "E01") {
 
             }
-        })
+
+        });
+
     }
 
     // 最新动态
@@ -203,29 +208,33 @@ class ZhaoDaIndex extends React.Component {
 
     }
 
-    //加载更多
-    getMore(){
+    // 加载更多
+    getMore () {
 
     }
 
     // 热门话题
     fetchHotTopic () {
-        ajax({"url" : '/zhaoda/topic/hottopics?categoryid=-1'})
-        .then((data)=>{
+
+        ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).
+        then((data) => {
+
             if (data.code === "S01") {
-                //查询成功
-                const hotTopic = data.contents.slice(0,5);
-                this.setState({
-                    "hotTopic": hotTopic
-                })
+
+                // 查询成功
+                const hotTopic = data.contents.slice(0, 5);
+
+                this.setState({hotTopic});
+
+            } else if (data.code === "E01") {
+
+                // 如果查询出错，启用备用数据
+                this.setState({"hotTopic": this.state.hotTopic});
+
             }
-            else if (data.code === "E01"){
-                //如果查询出错，启用备用数据
-                this.setState({
-                    "hotTopic": this.state.hotTopic
-                })
-            }
-        })
+
+        });
+
     }
 
     // 人气行家
@@ -235,21 +244,25 @@ class ZhaoDaIndex extends React.Component {
 
     // 最新专栏
     fetchLatestZhuanlan () {
-        ajax({"url" : '/zhaoda/zhuanlan/lastestzhuanlan?page=-1'})
-        .then((data)=>{
+
+        ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1"}).
+        then((data) => {
+
             if (data.code === "S01") {
-                const zhuanlan = data.contents.slice(0,5);
-                this.setState({
-                    "latestZhuanlan": zhuanlan
-                })
+
+                const zhuanlan = data.contents.slice(0, 5);
+
+                this.setState({"latestZhuanlan": zhuanlan});
+
+            } else if (date.code === "E01") {
+
+                // 如果查询出错，启用备用数据
+                this.setState({"latestZhuanlan": this.state.latestZhuanlan});
+
             }
-            else if (date.code === "E01"){
-                //如果查询出错，启用备用数据
-                this.setState({
-                    "latestZhuanlan": this.state.latestZhuanlan
-                })
-            }
-        })
+
+        });
+
     }
 
     // 滑动事件
@@ -373,29 +386,28 @@ class ZhaoDaIndex extends React.Component {
 
         const latestZhuanlanList = latestZhuanlan.map((elem, index) =>
             <div className="img" key={index}>
-                <img src={ "/src/images/zhuanlan.png" || elem.colposter } />
+                <img src={"/src/images/zhuanlan.png" || elem.colposter} />
                 <p>{elem.colname}</p>
             </div>
             );
 
-        const carouselpicList = carouselpic.map((elem,index)=>{
-            return(
-                index === nowshow ?
-                <div className="item active" key={index}><img src={elem.img} alt={elem.picdescription} /></div>:
-                ""
-            )
-        });
-        const carouselOlList = carouselpic.map((elem,index)=>{
-            return(
-                index === nowshow ?
-                <li key={index} className="active" /> :
-                <li onClick={()=>{
-                    this.setState({
-                        "nowshow":index
-                    })
-                }} key={index} />
-            )
-        });
+        const carouselpicList = carouselpic.map((elem, index) =>
+                index === nowshow
+                ? <div className="item active" key={index}><img src={elem.img} alt={elem.picdescription} /></div>
+                : ""
+            );
+        const carouselOlList = carouselpic.map((elem, index) =>
+                index === nowshow
+                ? <li key={index} className="active" />
+                : <li onClick={() => {
+
+                    this.setState({"nowshow": index});
+
+                }} key={index}
+                  />
+            );
+
+
         return (
             <div className="ZhaoDaIndex">
                 <div id="show">
