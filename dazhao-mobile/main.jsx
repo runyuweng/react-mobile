@@ -63,7 +63,7 @@ import MineFavoritePage from "./src/components/Mine/FavoritePage/FavoritePage.js
 import MineFavoriteJobs from "./src/components/Mine/FavoriteJobs/FavoriteJobs.jsx";
 import MineFavoriteCompanys from "./src/components/Mine/FavoriteCompanys/FavoriteCompanys.jsx";
 
-import ZhaoDaQuiz from "./src/components/Other/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
+import ZhaoDaQuiz from "./src/components/Zhaoda/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 
 // 用户验证
 import ToLogin from "./src/components/Verify/Login/ToLogin.jsx";

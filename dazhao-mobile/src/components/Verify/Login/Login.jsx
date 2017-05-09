@@ -2,6 +2,8 @@ import React from "react";
 import "./Login.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
+import {verifyTel} from "../../../services/tools";
+import ajax from "../../../services/ajax";
 
 class Login extends React.Component {
     constructor (props) {
@@ -18,7 +20,10 @@ class Login extends React.Component {
     }
 
     handleLogin(){
-
+      ajax({url:"/zhaoda/login",method:'POST',data:`account=${this.state.account}&pwd=${this.state.pwd}`})
+      .then((data)=>{
+        console.log(data);
+      })
     }
 
     render () {
