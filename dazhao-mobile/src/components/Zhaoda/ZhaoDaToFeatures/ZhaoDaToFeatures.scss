@@ -251,17 +251,18 @@
             }
         }
 
-        p{
-            padding:0 .15rem;
-            input{
-                width:100%;
-                height:.4rem;
-                font-size: .14rem;
-                border:.01rem solid #21c6cd;
-                color:#21c6cd;
-                background: #fff;
-                border-radius:.05rem;
-                margin-top: .12rem;
+        .Formore{
+            width:92%;
+            height:0.4rem;
+            border:0.01rem #21c5cd solid;
+            color:#21c5cd;
+            font-size:0.14rem;
+            text-align:center;
+            line-height:0.4rem;
+            border-radius:0.05rem;
+            margin:0.3rem auto 0;
+            a{
+                color:#21c5cd;
             }
         }
     }
