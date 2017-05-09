@@ -1,3 +1,5 @@
+import {setCookie,getCookie,delCookie} from './tools.js'
+
 function ajax(options) {
 
     let config = {
@@ -19,7 +21,16 @@ function ajax(options) {
         sendXhr:()=>{
             xmlhttp.open(config.method, config.url, config.async);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            if(getCookie("token")){
+              xmlhttp.setRequestHeader("token", getCookie("token"));
+            }
+
             xmlhttp.send(config.data);
+        },
+        setToken:()=>{
+          if(xmlhttp.getResponseHeader("token")){
+            setCookie("token",xmlhttp.getResponseHeader("token"));
+          }
         }
     }
 
@@ -29,9 +40,9 @@ function ajax(options) {
     //判断是否是异步
     if (!config.async) {
         tool.sendXhr();
-        console.log(JSON.parse(xmlhttp.responseText));
         return new Promise(
             function(resolve, reject) {
+                tool.setToken();
                 resolve(JSON.parse(xmlhttp.responseText))
             }
         );
@@ -40,6 +51,7 @@ function ajax(options) {
             function(resolve, reject) {
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        tool.setToken();
                         resolve(JSON.parse(xmlhttp.responseText));
                     }
                 }

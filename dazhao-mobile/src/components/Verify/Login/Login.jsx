@@ -24,6 +24,7 @@ class Login extends React.Component {
       .then((data)=>{
         console.log(data);
       })
+
     }
 
     render () {
@@ -46,7 +47,7 @@ class Login extends React.Component {
                         this.setState({account:e.target.value});
                       }}/>
 
-                    <p>设置密码</p>
+                    <p>输入密码</p>
                     <input value={pwd} type="text" placeholder="请输入您的密码"
                       onChange={(e)=>{
                         this.setState({pwd:e.target.value});

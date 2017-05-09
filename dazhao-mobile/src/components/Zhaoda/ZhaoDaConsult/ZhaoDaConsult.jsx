@@ -43,7 +43,9 @@ class ZhaoDaConsult extends React.Component {
                         }}
                         >取消</span>
                         <span>提问</span>
-                        <span><Link to="/detail">下一步</Link></span>
+                        <span onClick={()=>{
+                            sessionStorage.setItem("question", this.state.question);
+                          }}><Link to="/detail">下一步</Link></span>
                     </div>
                 </header>
                 <div className="quiztitle">
