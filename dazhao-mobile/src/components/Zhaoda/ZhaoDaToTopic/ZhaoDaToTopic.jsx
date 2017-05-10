@@ -83,7 +83,7 @@ class ZhaoDaToTopic extends React.Component {
         data.contents.questionlist.map((value,i)=>{
 
           newQ.questions.push({
-            uid: value.uid,
+            qid: value.qid,
             id : value.tid,
             name : value.user.nickname,
             theme : value.qtitle,

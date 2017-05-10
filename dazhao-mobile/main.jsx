@@ -107,7 +107,7 @@ const Routes = () => <Provider store={store}>
             <Route path="quiz" component={ZhaoDaQuiz} />
             <Route path="consult" component={ZhaoDaConsult} />
             <Route path="detail" component={ZhaoDaQuesDetail} />
-            <Route path="toquestion/:uid" component={ZhaoDaToQuestion} />
+            <Route path="toquestion/:qid" component={ZhaoDaToQuestion} />
             <Route path="tofeature" component={ZhaoDaToFeatures} />
             <Route path="totopic/:tid" component={ZhaoDaToTopic} />
             <Route path="user" component={ZhaoDaUser} />

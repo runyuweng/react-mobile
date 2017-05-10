@@ -50,7 +50,8 @@ class ChooseTopic extends React.Component {
                     "img": "/src/images/pople.png",
                     "selected": true
                 }
-            ]
+            ],
+            invited:[]
         };
         this.handleClick = this.handleClick.bind(this);
         this.cancleChecked = this.cancleChecked.bind(this);
@@ -63,10 +64,13 @@ class ChooseTopic extends React.Component {
 
         const specialists = JSON.parse(JSON.stringify(this.state)).specialists;
 
+        // const specialists = JSON.parse(JSON.stringify(this.state)).invited;
+
+
         specialists.map((elem, num) => {
 
             num === index ? elem.selected = !elem.selected : "";
-
+            // num === index ?
         });
         this.setState({specialists});
 
@@ -160,6 +164,16 @@ class ChooseTopic extends React.Component {
             choosedid
         });
 
+    }
+
+    handleInvite(){
+      if(true){
+        // ajax({
+        //   url:'inviteAnswer',
+        //   method:'POST',
+        //   data:`id=${}`
+        // })
+      }
     }
 
     handleChange (e) {
@@ -281,7 +295,9 @@ class ChooseTopic extends React.Component {
                 </div>
                 <div className="bottombutton">
                     <span>查看更多</span>
-                    <span>邀请回答</span>
+                    <span onClick={()=>{
+                        this.handleInvite()
+                      }}>邀请回答</span>
                 </div>
             </div>
         </div>

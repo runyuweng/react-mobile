@@ -223,6 +223,7 @@ class ZhaoDaIndex extends React.Component {
 
                 // 查询成功
                 const hotTopic = data.contents.slice(0, 5);
+                console.log(data.contents);
 
                 this.setState({hotTopic});
 

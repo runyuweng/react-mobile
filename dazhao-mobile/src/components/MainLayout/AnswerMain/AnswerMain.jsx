@@ -7,7 +7,7 @@ class AnswerMain extends React.Component {
 
         super(props);
         this.state = {
-            "uid":this.props.data.uid||'',
+            "qid":this.props.data.qid||'',
             "isTopic": this.props.isTopic || "1",
             "topic": this.props.data.topic || "",
             "theme": this.props.data.theme || "",
@@ -25,13 +25,14 @@ class AnswerMain extends React.Component {
 
     render () {
 
-        const {uid ,isTopic, topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
+        const {qid ,isTopic, topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
+        console.log('qid',qid);
 
         return (
             <div className="AnswerMain">
                 <article>
                     {isTopic === "1" ? <span className="topic">话题：<i>{topic}</i></span> : ""}
-                    <Link to={`/toquestion/${uid}`}>
+                    <Link to={`/toquestion/${qid}`}>
                         <p className="theme">{theme}</p>
                     </Link>
                     <div className="publisher">
@@ -39,7 +40,7 @@ class AnswerMain extends React.Component {
                         <span className="vip"><img src={imgsrc} /></span>，
                         <span>{job}</span>
                     </div>
-                    <Link to={`/toquestion/${uid}`}>
+                    <Link to={`/toquestion/${qid}`}>
                         <div className="comment">{comment}</div>
                     </Link>
                     <div className="more">
