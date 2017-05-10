@@ -129,19 +129,19 @@ class ZhaoDaIndex extends React.Component {
             ],
             "carouselpic": [
                 {
-                    "id": 1,
-                    "img": "/src/images/banner1.jpg",
-                    "picdescription": "图片一"
+                    "id":"3",
+                    "img":"/src/images/1487917069l108992947.png",
+                    "description":"图片一"
                 },
                 {
-                    "id": 2,
-                    "img": "/src/images/banner2.png",
-                    "picdescription": "图片二"
+                    "id":"3",
+                    "img":"/src/images/1481979697l859459990.png",
+                    "description":"图片二"
                 },
                 {
-                    "id": 3,
-                    "img": "/src/images/banner3.png",
-                    "picdescription": "图片三"
+                    "id":"3",
+                    "img":"/src/images/1481189424l698185646.png",
+                    "description":"图片三"
                 }
             ],
             "nowshow": 0,
@@ -153,6 +153,7 @@ class ZhaoDaIndex extends React.Component {
         this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
         this.fetchLatestDynamic = this.fetchLatestDynamic.bind(this);
         this.fetchPopularity = this.fetchPopularity.bind(this);
+        this.fetchCarouselpic = this.fetchCarouselpic.bind(this);
 
     }
 
@@ -181,6 +182,7 @@ class ZhaoDaIndex extends React.Component {
 
         this.fetchHotTopic();
         this.fetchLatestZhuanlan();
+        this.fetchCarouselpic();
 
     }
 
@@ -197,9 +199,14 @@ class ZhaoDaIndex extends React.Component {
         then((data) => {
 
             if (data.code === "S01") {
+                this.setState({
+                    "carouselpic":data.contents
+                })
 
             } else if (data.code === "E01") {
-
+                this.setState({
+                    "carouselpic":this.state.carouselpic
+                })
             }
 
         });
@@ -396,7 +403,7 @@ class ZhaoDaIndex extends React.Component {
 
         const carouselpicList = carouselpic.map((elem, index) =>
                 index === nowshow
-                ? <div className="item active" key={index}><img src={elem.img} alt={elem.picdescription} /></div>
+                ? <div className="item active" key={index}><img src={"/src/images/1487917069l108992947.png" || elem.img} alt={elem.description} /></div>
                 : ""
             );
         const carouselOlList = carouselpic.map((elem, index) =>
