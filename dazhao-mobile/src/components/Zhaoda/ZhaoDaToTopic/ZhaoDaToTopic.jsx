@@ -2,6 +2,7 @@ import React from "react";
 import "./ZhaoDaToTopic.scss";
 import {Link} from "react-router";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
+import ajax from "../../../services/ajax.js";
 
 class ZhaoDaToTopic extends React.Component {
 
@@ -18,42 +19,42 @@ class ZhaoDaToTopic extends React.Component {
                 "care": 10,
                 "isCared": false,
                 "questions": [
-                    {
-                        "id": 1,
-                        "topic": "考研",
-                        "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                        "name": "Michal",
-                        "job": "骨灰级教练",
-                        "imgsrc": "/src/images/vip.png",
-                        "remark": 9,
-                        "agree": 14,
-                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                        "collect": false
-                    },
-                    {
-                        "id": 2,
-                        "topic": "考研",
-                        "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                        "name": "Michal",
-                        "job": "骨灰级教练",
-                        "imgsrc": "/src/images/vip.png",
-                        "remark": 12,
-                        "agree": 14,
-                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                        "collect": false
-                    },
-                    {
-                        "id": 3,
-                        "topic": "考研",
-                        "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                        "name": "Michal",
-                        "job": "骨灰级教练",
-                        "imgsrc": "/src/images/vip.png",
-                        "remark": 13,
-                        "agree": 14,
-                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                        "collect": false
-                    }
+                    // {
+                    //     "id": 1,
+                    //     "topic": "考研",
+                    //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                    //     "name": "Michal",
+                    //     "job": "骨灰级教练",
+                    //     "imgsrc": "/src/images/vip.png",
+                    //     "remark": 9,
+                    //     "agree": 14,
+                    //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                    //     "collect": false
+                    // },
+                    // {
+                    //     "id": 2,
+                    //     "topic": "考研",
+                    //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                    //     "name": "Michal",
+                    //     "job": "骨灰级教练",
+                    //     "imgsrc": "/src/images/vip.png",
+                    //     "remark": 12,
+                    //     "agree": 14,
+                    //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                    //     "collect": false
+                    // },
+                    // {
+                    //     "id": 3,
+                    //     "topic": "考研",
+                    //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                    //     "name": "Michal",
+                    //     "job": "骨灰级教练",
+                    //     "imgsrc": "/src/images/vip.png",
+                    //     "remark": 13,
+                    //     "agree": 14,
+                    //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                    //     "collect": false
+                    // }
                 ]
             }
         };
@@ -61,16 +62,52 @@ class ZhaoDaToTopic extends React.Component {
     }
 
     componentDidMount () {
-
         this.props.showBottom();
+        this.fetchQuestion();
 
+    }
+
+    fetchQuestion(){
+      ajax({url:`/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=1`})
+      .then((data)=>{
+        console.log(data);
+
+        let newQ = {};
+        newQ.topicTitle = data.contents.topicname;
+        newQ.answer =  data.contents.questionnum;
+        newQ.care = data.contents.care;
+        // newQ.topicImg = data.contents.img;
+        newQ.topicImg = '/src/images/pople.png';
+        newQ.questions = [];
+
+        data.contents.questionlist.map((value,i)=>{
+
+          newQ.questions.push({
+            uid: value.uid,
+            id : value.tid,
+            name : value.user.nickname,
+            theme : value.qtitle,
+            comment : value.qcontent,
+            agree : value.agree,
+            remark : value.answer,
+            collect : value.collect,
+            vip : value.user.vip,
+          })
+
+        })
+
+        this.setState({topicdetail:newQ})
+      })
     }
 
     render () {
 
         const {topicdetail} = this.state;
+        console.log('questions',topicdetail.questions);
 
-        const questionsList = topicdetail.questions.map((value, i) => <AnswerMain isTopic="0" key={i} data={value} />);
+        const questionsList = topicdetail.questions.map((value, i) =>
+          <AnswerMain isTopic="0" key={i} data={value} />
+        );
 
 
         return (

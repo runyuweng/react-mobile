@@ -10,48 +10,6 @@ class ZhaoDaDiscover extends React.Component {
         super(props);
         this.state = {
             "hotTopics": [
-                {
-                    "tid": "1",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                },
-                {
-                    "tid": "2",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                },
-                {
-                    "tid": "3",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                },
-                {
-                    "tid": "4",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                },
-                {
-                    "tid": "5",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                },
-                {
-                    "tid": "6",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                }
             ],
             "goodAnswer": [
                 {
@@ -106,16 +64,18 @@ class ZhaoDaDiscover extends React.Component {
 
     // 热门话题
     fetchHotTopic () {
+        console.log('start fetch');
 
-        ajax({"url": "/zhaoda/topic/hottopics"}).
+        ajax({"url": `/zhaoda/topic/hottopics?categoryid=-1`}).
         then((data) => {
+          console.log(data);
 
             if (data.code === "S01") {
 
                 // 查询成功
                 const hotTopic = data.contents.slice(0, 10);
+                console.log('hotTopic',hotTopic);
 
-                console.log(hotTopic);
                 this.setState({"hotTopics": hotTopic});
 
             } else if (data.code === "E01") {
@@ -138,14 +98,14 @@ class ZhaoDaDiscover extends React.Component {
 
         const LatestDynamicList = hotTopics.map((elem, index) =>
             <div className="Citems" key={index}>
-                <Link to="/totopic">
+                <Link to={`/totopic/${elem.tid}`}>
                     <span className="img">
                         <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
                     </span>
                     <div className="detail">
-                        <span className="span2">{elem.tipic}</span>
+                        <span className="span2">{elem.topicname}</span>
                         <span className="care">
-                            <span>回答:{elem.question}</span>
+                            <span>回答:{elem.questionnum}</span>
                             <span>关注:{elem.care}</span>
                         </span>
                     </div>

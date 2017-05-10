@@ -113,7 +113,7 @@ class ChooseTopic extends React.Component {
                     ajax({
                         "url": "/zhaoda/question/askquestion",
                         "method": "POST",
-                        "data": `qtitle=${sessionStorage.getItem("question")}&qcontent=${sessionStorage.getItem("detail")}&tid=${this.state.choosedid[0]}`
+                        "data": `qtitle=${sessionStorage.getItem("question")}&qcontent=${sessionStorage.getItem("detail")}&tid=[${this.state.choosedid.join(',')}]`
                     }).
                 then((data) => {
 

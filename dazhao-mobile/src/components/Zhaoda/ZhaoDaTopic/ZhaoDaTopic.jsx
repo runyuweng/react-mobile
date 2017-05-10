@@ -97,6 +97,7 @@ class ZhaoDaTopic extends React.Component {
 
     componentDidMount () {
 
+
         this.props.showBottom(true);
 
         this._touchEvent(this.refs.navbar);
