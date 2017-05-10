@@ -38,6 +38,8 @@ import ZhaoDaUser from "./src/components/Zhaoda/ZhaoDaUser/ZhaoDaUser.jsx";
 import ZhaoDaTalk from "./src/components/Zhaoda/ZhaoDaTalk/ZhaoDaTalk.jsx";
 import ZhaoDaChooseTopic from "./src/components/Zhaoda/ChooseTopic/ChooseTopic.jsx";
 import ZhaoDaComents from "./src/components/Zhaoda/ZhaoDaComents/ZhaoDaComents.jsx";
+import ZhaoDaAddAnswer from "./src/components/Zhaoda/ZhaoDaAddAnswer/ZhaoDaAddAnswer.jsx";
+import ZhaoDaInvitetoAnswer from "./src/components/Zhaoda/ZhaoDaInvitetoAnswer/ZhaoDaInvitetoAnswer.jsx";
 
 // 个人中心部分
 import Mine from "./src/components/Mine/Mine/Mine.jsx";
@@ -96,6 +98,7 @@ const Routes = () => <Provider store={store}>
             <Route path="zhiGuan" component={ZhiGuanHome} />
             <Route path="home" component={Home} />
             <Route path="Zhaoda" component={Zhaoda}>
+                <IndexRoute component={ZhaoDaIndex} />
                 <Route path="main" component={ZhaoDaIndex} />
                 <Route path="discover" component={ZhaoDaDiscover} />
                 <Route path="feature" component={ZhaoDaFeature} />
@@ -116,6 +119,8 @@ const Routes = () => <Provider store={store}>
             <Route path="talk" component={ZhaoDaTalk} />
             <Route path="choosetopic" component={ZhaoDaChooseTopic} />
             <Route path="coments" component={ZhaoDaComents} />
+            <Route path="addanswer" component={ZhaoDaAddAnswer} />
+            <Route path="invitetoanswer" component={ZhaoDaInvitetoAnswer} />
 
             <Route path="jobdetail/:id" component={HomeJobDetail} />
             <Route path="company/:id" component={HomeCompany} />

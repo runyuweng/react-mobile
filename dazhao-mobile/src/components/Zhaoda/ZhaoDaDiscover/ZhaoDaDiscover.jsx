@@ -13,7 +13,7 @@ class ZhaoDaDiscover extends React.Component {
             ],
             "goodAnswer": [
                 {
-                    "id": 1,
+                    "uid": 1,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -24,7 +24,7 @@ class ZhaoDaDiscover extends React.Component {
                     "collect": false
                 },
                 {
-                    "id": 2,
+                    "uid": 2,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",
@@ -35,7 +35,7 @@ class ZhaoDaDiscover extends React.Component {
                     "collect": false
                 },
                 {
-                    "id": 3,
+                    "uid": 3,
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
                     "job": "骨灰级教练",

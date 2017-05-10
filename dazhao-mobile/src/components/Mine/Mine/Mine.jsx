@@ -31,7 +31,7 @@ class Mine extends React.Component {
                         </div>
                         <span className="edit">编辑</span>
                     </div>
-                    {this.state.login?<p><em>周新城</em><span><img src="/src/images/man.png" /></span></p>:<p>点击登录</p>}
+                    {this.state.login?<p><em>周新城</em><span><img src="/src/images/man.png" /></span></p>:<Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">
                         <div className="school">
                             <span>{this.state.login?"山东大学":"大招一百"}</span><br />
