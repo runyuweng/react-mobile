@@ -171,6 +171,11 @@ class ZhaoDaToQuestion extends React.Component {
 
                 <div className="AnswerMain">{otherAnswersList}</div>
 
+                <div className="toQuestionFooter">
+                    <span>邀请回答</span>
+                    <span>添加回答</span>
+                </div>
+
             </div>
         );
 

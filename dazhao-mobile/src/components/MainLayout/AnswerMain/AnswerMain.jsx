@@ -45,7 +45,9 @@ class AnswerMain extends React.Component {
                     </Link>
                     <div className="more">
                         <span><b><img src="/src/images/zan.png" /></b>赞同{agree}</span>
-                        <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
+                        <Link to="/coments">
+                            <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
+                        </Link>
                         <span><b><img src="/src/images/cang.png" /></b>收藏</span>
                     </div>
                 </article>

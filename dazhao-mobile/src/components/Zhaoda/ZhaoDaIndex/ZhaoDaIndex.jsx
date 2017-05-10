@@ -16,6 +16,7 @@ class ZhaoDaIndex extends React.Component {
             "currentX": 0,
             "latestDynamic": [
                 {
+                    "uid":1,
                     "topic": "考研",
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
@@ -27,6 +28,7 @@ class ZhaoDaIndex extends React.Component {
                     "collect": false
                 },
                 {
+                    "uid":2,
                     "topic": "考研",
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",
@@ -38,6 +40,7 @@ class ZhaoDaIndex extends React.Component {
                     "collect": false
                 },
                 {
+                    "uid":3,
                     "topic": "考研",
                     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
                     "name": "Michal",

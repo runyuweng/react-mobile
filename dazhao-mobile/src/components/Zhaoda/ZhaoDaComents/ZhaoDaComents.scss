@@ -1,0 +1,140 @@
+.ZhaoDaComents{
+    position: relative;
+    .comentsmain{
+        .comenttop{
+            background: #fff;
+            padding: .15rem;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .left{
+                width: 94%;
+                .publisher{
+                    width:100%;
+                    font-size:0.14rem;
+                    font-family:"苹方";
+                    font-weight:bold;
+                    color:#666666;
+                    line-height:0.2rem;
+                    display:flex;
+                    align-items:center;
+                    .vip,img{
+                        width:0.16rem;
+                        height:0.16rem;
+                    }
+                    .vip{
+                        margin-left:0.03rem;
+                        display:inline-block;
+                    }
+                    span{
+                        font-size:0.14rem;
+                        font-family:"苹方";
+                        color:#ADADAD;
+                        font-weight:normal;
+                    }
+                }
+                .specialistComment{
+                    width:100%;
+                    font-size:0.14rem;
+                    font-family:"苹方";
+                    line-height:0.25rem;
+                    color:#666666;
+                    margin:0.1rem 0rem 0;
+                    overflow : hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+            }
+            
+        }
+        .comenttop>span{
+            display: inline-block;
+            width: 6%;
+            height: .16rem;
+            font-size: 0;
+            text-align: right;
+            img{
+                height: .16rem;
+            }
+        }
+        .comments{
+            background: #fff;
+            margin-top: .18rem;
+            border-bottom: .01rem solid #d8d8d8;
+            .commentItem{
+                font-size: 0;
+                padding-left: .42rem;
+                padding-top: .18rem;
+                .name{
+                    position: relative;
+                    span:nth-of-type(1){
+                        display: inline-block;
+                        font-size: .13rem;
+                        color:#ADADAD;
+                    }
+                    .userpic{
+                        position: absolute;
+                        display: inline-block;
+                        font-size: 0;
+                        left: -.3rem;
+                        img{
+                            width: .18rem;
+                            height: .18rem;
+                        }
+                    }
+                }
+                .comment{
+                    font-size: .14rem;
+                    line-height: .25rem;
+                    color:#666666;
+                    padding: .09rem 0 .18rem;
+                    border-bottom: .01rem solid #d8d8d8;
+                }
+            }
+            .commentItem:nth-last-of-type(1){
+                .comment{
+                    border-bottom:none;
+                }
+            }
+        }
+    }
+
+    .commentbox{
+        height: .44rem;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0;
+        background: #fff;
+        position: fixed;
+        bottom:0;
+        width: 100%;
+        input{
+            width: 2.84rem;
+            height: .29rem;
+            background: #f8f8f8;
+            border:.01rem solid #E5E5E5;
+            border-radius: .14rem;
+            outline:none;
+            color:#666666;
+            font-size: .13rem;
+            text-indent: .1rem;
+        }
+        span{
+            color:#21c6cd;
+            font-size: .14rem;
+            margin-left: .08rem;
+            cursor: pointer;
+        }
+    }
+}
