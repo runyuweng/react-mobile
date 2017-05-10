@@ -176,17 +176,21 @@
         justify-content: space-around;
         align-items: center;
         box-sizing: border-box;
-        span{
+        a{
             display: inline-block;
-            width: 1.7rem;
-            height: .37rem;
-            border:.01rem solid #21c6cd;
-            border-radius: .04rem;
-            font-size: .14rem;
-            color:#21c6cd;
-            text-align: center;
-            line-height: .37rem;
-            box-sizing: border-box;
+            font-size: 0;
+            span{
+                display: inline-block;
+                width: 1.7rem;
+                height: .37rem;
+                border:.01rem solid #21c6cd;
+                border-radius: .04rem;
+                font-size: .14rem;
+                color:#21c6cd;
+                text-align: center;
+                line-height: .37rem;
+                box-sizing: border-box;
+            }
         }
     }
 

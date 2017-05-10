@@ -1,6 +1,7 @@
 import React from 'react';
 import './ZhaoDaComents.scss';
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import { Link } from "react-router";
 
 class ZhaoDaComents extends React.Component {
 
@@ -22,17 +23,19 @@ class ZhaoDaComents extends React.Component {
             </header>
             <div className="comentsmain">
                 <div className="comenttop">
-                    <div className="left">
-                        <div className="publisher">
-                            Michael
-                            <span className="vip"><img src="/src/images/vip.png" /></span>，
-                            <span>骨灰级教练</span>
+                    <Link to="/response">
+                        <div className="left">
+                            <div className="publisher">
+                                Michael
+                                <span className="vip"><img src="/src/images/vip.png" /></span>，
+                                <span>骨灰级教练</span>
+                            </div>
+                            <div className="specialistComment">
+                                这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学
+                            </div>
                         </div>
-                        <div className="specialistComment">
-                            这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学
-                        </div>
-                    </div>
-                    <span><img src="/src/images/Back_Button.png" alt="right" /></span>
+                        <span><img src="/src/images/Back_Button.png" alt="right" /></span>
+                    </Link>
                 </div>
                 <div className="comments">
                     <div className="commentItem">

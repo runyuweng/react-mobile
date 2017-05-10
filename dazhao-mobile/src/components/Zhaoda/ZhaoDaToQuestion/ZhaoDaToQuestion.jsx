@@ -119,7 +119,9 @@ class ZhaoDaToQuestion extends React.Component {
                     </Link>
                     <div className="more">
                         <span><b><img src="/src/images/zan.png" /></b>赞同{value.agree}</span>
-                        <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
+                        <Link to="/coments">
+                            <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
+                        </Link>
                         <span><b><img src="/src/images/cang.png" /></b>收藏</span>
                     </div>
                 </div>
@@ -172,8 +174,12 @@ class ZhaoDaToQuestion extends React.Component {
                 <div className="AnswerMain">{otherAnswersList}</div>
 
                 <div className="toQuestionFooter">
-                    <span>邀请回答</span>
-                    <span>添加回答</span>
+                    <Link to="/invitetoanswer">
+                        <span>邀请回答</span>
+                    </Link>
+                    <Link to="/addanswer">
+                        <span>添加回答</span>
+                    </Link>
                 </div>
 
             </div>
