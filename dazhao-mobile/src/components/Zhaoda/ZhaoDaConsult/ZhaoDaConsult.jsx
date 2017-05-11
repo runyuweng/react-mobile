@@ -28,7 +28,7 @@ class ZhaoDaConsult extends React.Component {
               this.setState({"answer": data.contents ? data.contents : []});
 
 
-            });
+          });
 
             }
 
@@ -39,7 +39,8 @@ class ZhaoDaConsult extends React.Component {
     render () {
 
         const {question, answer} = this.state;
-        console.log(answer)
+
+        console.log(answer);
         const answerList = answer.map((value, i) => <p key={i}>
             {value.qtitle}<span><b>{value.answer}</b>个回答</span>
         </p>);

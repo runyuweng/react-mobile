@@ -45,22 +45,27 @@ class ZhaoDaMessage extends React.Component {
 
         this.props.showBottom();
         this.fetchInform();
+
     }
 
     // 获取通知
     fetchInform () {
-        ajax({"url":'/zhaoda/message/information?page=1'})
-        .then((data)=>{
-            if(data.code==="E01"){
-                this.setState({
-                    "informs":[]
-                })
-            }else if(data.code==="S01"){
-                this.setState({
-                    "informs":data.contents
-                })
+
+        ajax({"url": "/zhaoda/message/information?page=1"}).
+        then((data) => {
+
+            if (data.code === "E01") {
+
+                this.setState({"informs": []});
+
+            } else if (data.code === "S01") {
+
+                this.setState({"informs": data.contents});
+
             }
-        })
+
+        });
+
     }
 
     render () {

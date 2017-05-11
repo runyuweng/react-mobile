@@ -17,6 +17,7 @@ class ZhaoDaQuesDetail extends React.Component {
 
     }
 
+
     render () {
 
         const {detail} = this.state;

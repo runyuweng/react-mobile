@@ -3,6 +3,7 @@ import "./ZhaoDaToQuestion.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax.js";
 
 class ZhaoDaToQuestion extends React.Component {
 
@@ -12,38 +13,29 @@ class ZhaoDaToQuestion extends React.Component {
         super(props);
         this.state = {
             "topic": "考研",
-            "question": {
-                "sid": 1,
-                "title": "研究生和本科学历在求职过程中真的会有很大影响吗?",
-                "authorAnswer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学历还是本科学历；对于一些管理类的岗位的话，本身不是很需要学历的岗位，只要你的综合能力强，研究生还是本科神差距就不是很大。所以总的来说，还是要看你想去什么样的企业，想从事什么样的工作，然后决定读不读研或者读什么专业的研究生。",
-                "authorName": "马军",
-                "time": "2016年11月30日",
-                "careNum": 15,
-                "isCare": false,
-                "authorpic": "/src/images/user.png",
-                "otherAnswers": [
-                    {
-                        "id": 1,
-                        "name": "Michal",
-                        "job": "骨灰级教练",
-                        "imgsrc": "/src/images/vip.png",
-                        "remark": 9,
-                        "agree": 14,
-                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                        "collect": false
-                    },
-                    {
-                        "id": 2,
-                        "name": "Michal",
-                        "job": "骨灰级教练",
-                        "imgsrc": "/src/images/vip.png",
-                        "remark": 9,
-                        "agree": 14,
-                        "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                        "collect": false
-                    }
-                ]
-            },
+            "question": {},
+            "otherAnswers": [
+                // {
+                //     "id": 1,
+                //     "name": "Michal",
+                //     "job": "骨灰级教练",
+                //     "imgsrc": "/src/images/vip.png",
+                //     "remark": 9,
+                //     "agree": 14,
+                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                //     "collect": false
+                // },
+                // {
+                //     "id": 2,
+                //     "name": "Michal",
+                //     "job": "骨灰级教练",
+                //     "imgsrc": "/src/images/vip.png",
+                //     "remark": 9,
+                //     "agree": 14,
+                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                //     "collect": false
+                // }
+            ],
             "stretch": false
         };
 
@@ -58,14 +50,59 @@ class ZhaoDaToQuestion extends React.Component {
     }
 
     componentDidMount () {
+
         this.props.showBottom();
+        this.fetchQuestion();
+
+    }
+
+    fetchQuestion () {
+
+        ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
+      then((data) => {
+
+          console.log(data);
+
+
+          const newQ = {
+              "qid": data.contents.qid,
+              "title": data.contents.qtitle,
+              "authorAnswer": data.contents.qcontent,
+              "authorName": data.contents.user.nickname,
+              "time": data.contents.date,
+              "careNum": data.contents.agree,
+              "isCare": data.contents.collect,
+              "authorpic": data.contents.user.img || "/src/images/user.png"
+          };
+          const newOtherAnswers = [];
+
+          data.contents.answers.map((value, i) => {
+
+              newOtherAnswers.push({
+                  "aid": value.aid,
+                  "name": value.user.nickname,
+            // Job:aaa
+                  "imgsrc": value.user.img,
+                  "remark": value.remark,
+                  "agree": value.agree,
+                  "collect": value.collect,
+                  "comment": value.content
+              });
+
+          });
+          this.setState({
+              "question": newQ,
+              "otherAnswers": newOtherAnswers
+          });
+
+      });
 
     }
 
     render () {
 
-        const {topic, question} = this.state;
-        const otherAnswersList = question.otherAnswers.map((value, num) =>
+        const {topic, question, otherAnswers} = this.state;
+        const otherAnswersList = otherAnswers.map((value, num) =>
             <article key={num}>
                 <div>
                     <div className="publisher" key={num}>
@@ -128,7 +165,7 @@ class ZhaoDaToQuestion extends React.Component {
                     </div>
                 </div>
 
-                <span className="answers"><em>{ question.otherAnswers.length }</em>个回答</span>
+                <span className="answers"><em>{ otherAnswers.length }</em>个回答</span>
 
                 <div className="AnswerMain">{otherAnswersList}</div>
 

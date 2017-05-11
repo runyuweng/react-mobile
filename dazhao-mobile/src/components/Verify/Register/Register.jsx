@@ -40,7 +40,6 @@ class Register extends React.Component {
             }).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 this.props.showMessage("验证码已发送");

@@ -121,7 +121,7 @@
                         height: .16rem;
                     }
                 }
-                
+
                 span:nth-of-type(2){
                     font-size: .13rem;
                     color:#666666;
@@ -145,7 +145,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index:999;
+        z-index:100;
         .submitcontent{
             width: 94%;
             background: #fff;
