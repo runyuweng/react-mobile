@@ -59,7 +59,6 @@ class ZhaoDaToQuestion extends React.Component {
     }
 
     componentDidMount () {
-
         this.props.showBottom();
         this.fetchQuestion();
 
@@ -177,7 +176,7 @@ class ZhaoDaToQuestion extends React.Component {
                     <Link to="/invitetoanswer">
                         <span>邀请回答</span>
                     </Link>
-                    <Link to="/addanswer">
+                    <Link to={`/addanswer/${this.props.params.uid}`}>
                         <span>添加回答</span>
                     </Link>
                 </div>

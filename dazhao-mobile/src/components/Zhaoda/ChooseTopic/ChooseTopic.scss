@@ -225,6 +225,9 @@
                         font-family: "苹方";
                         color:#D8D8D8;
                         line-height: .19rem;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
                     }
                 }
             }

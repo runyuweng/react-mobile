@@ -119,7 +119,7 @@ const Routes = () => <Provider store={store}>
             <Route path="talk" component={ZhaoDaTalk} />
             <Route path="choosetopic" component={ZhaoDaChooseTopic} />
             <Route path="coments" component={ZhaoDaComents} />
-            <Route path="addanswer" component={ZhaoDaAddAnswer} />
+            <Route path="addanswer/:uid" component={ZhaoDaAddAnswer} />
             <Route path="invitetoanswer" component={ZhaoDaInvitetoAnswer} />
 
             <Route path="jobdetail/:id" component={HomeJobDetail} />
