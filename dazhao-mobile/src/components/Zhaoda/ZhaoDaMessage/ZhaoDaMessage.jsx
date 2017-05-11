@@ -51,7 +51,15 @@ class ZhaoDaMessage extends React.Component {
     fetchInform () {
         ajax({"url":'/zhaoda/message/information?page=1'})
         .then((data)=>{
-            console.log(data)
+            if(data.code==="E01"){
+                this.setState({
+                    "informs":[]
+                })
+            }else if(data.code==="S01"){
+                this.setState({
+                    "informs":data.contents
+                })
+            }
         })
     }
 
