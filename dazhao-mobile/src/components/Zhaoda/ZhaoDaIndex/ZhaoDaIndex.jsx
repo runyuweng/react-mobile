@@ -15,42 +15,6 @@ class ZhaoDaIndex extends React.Component {
             "delateX": 0, // 移动的距离
             "currentX": 0,
             "latestDynamic": [
-                {
-                    "uid":1,
-                    "topic": "考研",
-                    "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "name": "Michal",
-                    "job": "骨灰级教练",
-                    "imgsrc": "/src/images/vip.png",
-                    "remark": 9,
-                    "agree": 14,
-                    "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "collect": false
-                },
-                {
-                    "uid":2,
-                    "topic": "考研",
-                    "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "name": "Michal",
-                    "job": "骨灰级教练",
-                    "imgsrc": "/src/images/vip.png",
-                    "remark": 12,
-                    "agree": 14,
-                    "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "collect": false
-                },
-                {
-                    "uid":3,
-                    "topic": "考研",
-                    "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "name": "Michal",
-                    "job": "骨灰级教练",
-                    "imgsrc": "/src/images/vip.png",
-                    "remark": 13,
-                    "agree": 14,
-                    "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "collect": false
-                }
             ],
             "hotTopic": [
                 {
@@ -181,6 +145,7 @@ class ZhaoDaIndex extends React.Component {
 
         this.fetchHotTopic();
         this.fetchLatestZhuanlan();
+        this.fetchLatestDynamic();
 
     }
 
@@ -209,10 +174,46 @@ class ZhaoDaIndex extends React.Component {
     // 最新动态
     fetchLatestDynamic () {
 
+      ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
+      then((data) => {
+        console.log(data);
+
+        if(data.contents.length>0){
+          let newQ = this.state.latestDynamic;
+          data.contents.map((value)=>{
+            newQ.push({
+              qid: value.question.qid,
+              topic: "",
+              theme: value.question.qtitle,
+              name: value.user.nickname,
+              imgsrc: value.user.img,
+              remark: value.remark,
+              agree: value.question.agree,
+              comment: value.content,
+              collect: value.collect
+            })
+            this.setState({
+              latestDynamic: newQ,
+              getmore: true
+            })
+          })
+        }else{
+          this.setState({
+            getmore: true
+          })
+        }
+      });
+
     }
 
     // 加载更多
     getMore () {
+      this.setState({
+        latestDynamicPage: parseInt(this.state.latestDynamicPage)+1,
+        getmore:false
+      },()=>{
+        this.fetchLatestDynamic();
+      })
 
     }
 
@@ -226,7 +227,6 @@ class ZhaoDaIndex extends React.Component {
 
                 // 查询成功
                 const hotTopic = data.contents.slice(0, 5);
-                console.log(data.contents);
 
                 this.setState({hotTopic});
 
@@ -429,7 +429,7 @@ class ZhaoDaIndex extends React.Component {
 
                     {AnswerMainList}
 
-                    <div className="Formore" onClick={this.getMore}>{ !getmore ? <LoadingMore /> : "加载更多" }</div>
+                    <div className="Formore" onClick={()=>{this.getMore()}}>{ !getmore ? <LoadingMore /> : "加载更多" }</div>
                 </div>
 
                 <div id="moreTopic">

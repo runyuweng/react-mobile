@@ -26,7 +26,6 @@ class AnswerMain extends React.Component {
     render () {
 
         const {qid ,isTopic, topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
-        console.log('qid',qid);
 
         return (
             <div className="AnswerMain">

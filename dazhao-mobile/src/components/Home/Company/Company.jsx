@@ -35,7 +35,6 @@ class Company extends React.Component {
         ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
         then((data) => {
 
-            console.log(data.contents[0]);
             this.setState({"data": data.contents[0]});
 
         });

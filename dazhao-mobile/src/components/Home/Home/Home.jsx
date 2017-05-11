@@ -77,7 +77,6 @@ class Home extends React.Component {
 
     searchDetail () {
 
-        console.log(this.state.search);
         // Ajax
 
     }

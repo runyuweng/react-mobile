@@ -69,7 +69,6 @@ class Enterprise extends React.Component {
 
             const enterprise = (arguments.length === 1 ? this.state.enterprise.concat(data.contents || []) : data.contents) || [];
 
-            console.log(data);
 
             this.setState({
                 enterprise,

@@ -46,7 +46,6 @@ class JobDetail extends React.Component {
         ajax({"url": `/zhaoda/jobs/jobinfo?id=${id}`}).
         then((data) => {
 
-            console.log(data);
             this.setState({"data": data.contents[0]});
 
         });
@@ -64,7 +63,6 @@ class JobDetail extends React.Component {
 
         const {data} = this.state;
 
-        console.log(data.similarJobs);
         const jobs = data.similarJobs.map((value, i) =>
             <Link to={`/jobdetail/${value.jobid}`} key={i}>
                 <div className="jobitems">

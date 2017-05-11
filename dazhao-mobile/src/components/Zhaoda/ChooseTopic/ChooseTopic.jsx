@@ -14,42 +14,42 @@ class ChooseTopic extends React.Component {
             "choosedid": [],
             "isSubmit": false,
             "specialists": [
-                {
-                    "nickname": "Michael",
-                    "label": "骨灰级猎头",
-                    "img": "/src/images/pople.png",
-                    "selected": false
-                },
-                {
-                    "nickname": "Michael",
-                    "label": "骨灰级猎头",
-                    "img": "/src/images/pople.png",
-                    "selected": false
-                },
-                {
-                    "nickname": "Michael",
-                    "label": "骨灰级猎头",
-                    "img": "/src/images/pople.png",
-                    "selected": true
-                },
-                {
-                    "nickname": "Michael",
-                    "label": "骨灰级猎头",
-                    "img": "/src/images/pople.png",
-                    "selected": false
-                },
-                {
-                    "nickname": "Michael",
-                    "label": "骨灰级猎头",
-                    "img": "/src/images/pople.png",
-                    "selected": false
-                },
-                {
-                    "nickname": "Michael",
-                    "label": "骨灰级猎头",
-                    "img": "/src/images/pople.png",
-                    "selected": true
-                }
+                // {
+                //     "nickname": "Michael",
+                //     "label": "骨灰级猎头",
+                //     "img": "/src/images/pople.png",
+                //     "selected": false
+                // },
+                // {
+                //     "nickname": "Michael",
+                //     "label": "骨灰级猎头",
+                //     "img": "/src/images/pople.png",
+                //     "selected": false
+                // },
+                // {
+                //     "nickname": "Michael",
+                //     "label": "骨灰级猎头",
+                //     "img": "/src/images/pople.png",
+                //     "selected": false
+                // },
+                // {
+                //     "nickname": "Michael",
+                //     "label": "骨灰级猎头",
+                //     "img": "/src/images/pople.png",
+                //     "selected": false
+                // },
+                // {
+                //     "nickname": "Michael",
+                //     "label": "骨灰级猎头",
+                //     "img": "/src/images/pople.png",
+                //     "selected": false
+                // },
+                // {
+                //     "nickname": "Michael",
+                //     "label": "骨灰级猎头",
+                //     "img": "/src/images/pople.png",
+                //     "selected": false
+                // }
             ],
             invited:[]
         };
@@ -60,19 +60,35 @@ class ChooseTopic extends React.Component {
 
     }
 
-    selectClick (index) {
+    selectClick (index,uid) {
+
+        console.log(uid);
 
         const specialists = JSON.parse(JSON.stringify(this.state)).specialists;
 
-        // const specialists = JSON.parse(JSON.stringify(this.state)).invited;
+        let selected = JSON.parse(JSON.stringify(this.state)).invited;
+
+
+
 
 
         specialists.map((elem, num) => {
 
             num === index ? elem.selected = !elem.selected : "";
-            // num === index ?
+            if(num === index && elem.selected){
+              selected.push(uid) ;
+            }else if(num === index && !elem.selected){
+              selected = selected.filter((value,i)=>{
+                return (value !== uid)
+              })
+            }
         });
-        this.setState({specialists});
+        this.setState({
+          specialists,
+          invited:selected
+        },()=>{
+          console.log('ssss',this.state.invited);
+        });
 
     }
 
@@ -122,7 +138,12 @@ class ChooseTopic extends React.Component {
                 then((data) => {
 
                     console.log(data);
-                    this.setState({"specialists": data.contents ? data.contents : []});
+                    let newData = [];
+                    data.contents.map((value,i)=>{
+                      newData.push(value);
+                      newData[i].selected = false;
+                    })
+                    this.setState({"specialists": data.contents ? newData : []});
 
                 });
 
@@ -167,12 +188,18 @@ class ChooseTopic extends React.Component {
     }
 
     handleInvite(){
-      if(true){
-        // ajax({
-        //   url:'inviteAnswer',
-        //   method:'POST',
-        //   data:`id=${}`
-        // })
+      console.log(this.props);
+      if(this.state.invited.length>0){
+        ajax({
+          url:'/inviteAnswer',
+          method:'POST',
+          data:`id=[${this.state.invited.join(',')}]`
+        })
+        .then((data)=>{
+          console.log(data);
+        })
+      }else{
+        this.props.showMessage("请选择后邀请")
       }
     }
 
@@ -227,7 +254,7 @@ class ChooseTopic extends React.Component {
         const specialistsList = specialists.map((elem, index) =>
             <div className="specialist" key={index}>
                 <span className="img">
-                    <img onClick={this.selectClick.bind(this, index)} src={elem.img || "/src/images/pople.png"} alt="头像" />
+                    <img onClick={this.selectClick.bind(this, index, elem.uid)} src={elem.img || "/src/images/pople.png"} alt="头像" />
                     {elem.selected ? <span><img src="/src/images/选择@2x.png" alt="选择" /></span> : ""}
                 </span>
                 <span className="specialistname">{elem.nickname}</span>
