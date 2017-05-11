@@ -30,11 +30,14 @@ class Login extends React.Component {
         }).
       then((data) => {
 
-          if(data.code==="S01"){
-            this.props.showMessage('登录成功');
-          }else{
+          if (data.code === "S01") {
 
-            this.props.showMessage(data.message);
+              this.props.showMessage("登录成功");
+
+          } else {
+
+              this.props.showMessage(data.message);
+
           }
 
       });

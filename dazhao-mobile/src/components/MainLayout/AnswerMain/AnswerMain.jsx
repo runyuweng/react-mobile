@@ -7,7 +7,7 @@ class AnswerMain extends React.Component {
 
         super(props);
         this.state = {
-            "qid":this.props.data.qid||'',
+            "qid": this.props.data.qid || "",
             "isTopic": this.props.isTopic || "1",
             "topic": this.props.data.topic || "",
             "theme": this.props.data.theme || "",
@@ -25,7 +25,7 @@ class AnswerMain extends React.Component {
 
     render () {
 
-        const {qid ,isTopic, topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
+        const {qid, isTopic, topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
 
         return (
             <div className="AnswerMain">

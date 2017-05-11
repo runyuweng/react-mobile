@@ -30,26 +30,32 @@ class ZhaoDaTopic extends React.Component {
 
         this._touchEvent(this.refs.navbar);
 
-        ajax({url:'/zhaoda/topic/topiccategory'})
-        .then((data)=>{
-          console.log(data);
+        ajax({"url": "/zhaoda/topic/topiccategory"}).
+        then((data) => {
 
-          this.setState({topicCategory:data.contents})
-        })
+            console.log(data);
+
+            this.setState({"topicCategory": data.contents});
+
+        });
 
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1 "}).
         then((data) => {
-              this.setState({"topics": data.contents});
+
+            this.setState({"topics": data.contents});
+
         });
 
     }
 
-    topicClick (index ,id) {
+    topicClick (index, id) {
 
         this.setState({"active": index});
         ajax({"url": `/zhaoda/topic/hottopics?categoryid=${id}`}).
         then((data) => {
-              this.setState({"topics": data.contents});
+
+            this.setState({"topics": data.contents});
+
         });
 
     }
@@ -143,8 +149,9 @@ class ZhaoDaTopic extends React.Component {
     render () {
 
         const {topicCategory, topics, active} = this.state;
+
         console.log(topics);
-        const topicCategoryList = topicCategory.map((elem, index) => <li onClick={this.topicClick.bind(this, index ,elem.id)} className={active == index ? "active" : ""} key={index}>{elem.topictypename}</li>);
+        const topicCategoryList = topicCategory.map((elem, index) => <li onClick={this.topicClick.bind(this, index, elem.id)} className={active == index ? "active" : ""} key={index}>{elem.topictypename}</li>);
         const topicsList = topics.map((elem, index) =>
             <Link to={`/totopic/${elem.tid}`} key={index}>
                 <div className="item" key={index}>

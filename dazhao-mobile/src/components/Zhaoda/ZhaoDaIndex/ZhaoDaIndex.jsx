@@ -93,19 +93,19 @@ class ZhaoDaIndex extends React.Component {
             ],
             "carouselpic": [
                 {
-                    "id":"3",
-                    "img":"/src/images/1487917069l108992947.png",
-                    "description":"图片一"
+                    "id": "3",
+                    "img": "/src/images/1487917069l108992947.png",
+                    "description": "图片一"
                 },
                 {
-                    "id":"3",
-                    "img":"/src/images/1481979697l859459990.png",
-                    "description":"图片二"
+                    "id": "3",
+                    "img": "/src/images/1481979697l859459990.png",
+                    "description": "图片二"
                 },
                 {
-                    "id":"3",
-                    "img":"/src/images/1481189424l698185646.png",
-                    "description":"图片三"
+                    "id": "3",
+                    "img": "/src/images/1481189424l698185646.png",
+                    "description": "图片三"
                 }
             ],
             "nowshow": 0,
@@ -148,6 +148,7 @@ class ZhaoDaIndex extends React.Component {
         this.fetchLatestZhuanlan();
         this.fetchLatestDynamic();
         this.fetchCarouselpic();
+
     }
 
     componentWillUnmount () {
@@ -163,14 +164,13 @@ class ZhaoDaIndex extends React.Component {
         then((data) => {
 
             if (data.code === "S01") {
-                this.setState({
-                    "carouselpic":data.contents
-                })
+
+                this.setState({"carouselpic": data.contents});
 
             } else if (data.code === "E01") {
-                this.setState({
-                    "carouselpic":this.state.carouselpic
-                })
+
+                this.setState({"carouselpic": this.state.carouselpic});
+
             }
 
         });
@@ -180,46 +180,56 @@ class ZhaoDaIndex extends React.Component {
     // 最新动态
     fetchLatestDynamic () {
 
-      ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
+        ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
       then((data) => {
-        console.log(data);
 
-        if(data.contents.length>0){
-          let newQ = this.state.latestDynamic;
-          data.contents.map((value)=>{
-            newQ.push({
-              qid: value.question.qid,
-              topic: "",
-              theme: value.question.qtitle,
-              name: value.user.nickname,
-              imgsrc: value.user.img,
-              remark: value.remark,
-              agree: value.question.agree,
-              comment: value.content,
-              collect: value.collect
-            })
-            this.setState({
-              latestDynamic: newQ,
-              getmore: true
-            })
-          })
-        }else{
-          this.setState({
-            getmore: true
-          })
-        }
+          console.log(data);
+
+          if (data.contents.length > 0) {
+
+              const newQ = this.state.latestDynamic;
+
+              data.contents.map((value) => {
+
+                  newQ.push({
+                      "qid": value.question.qid,
+                      "topic": "",
+                      "theme": value.question.qtitle,
+                      "name": value.user.nickname,
+                      "imgsrc": value.user.img,
+                      "remark": value.remark,
+                      "agree": value.question.agree,
+                      "comment": value.content,
+                      "collect": value.collect
+                  });
+                  this.setState({
+                      "latestDynamic": newQ,
+                      "getmore": true
+                  });
+
+              });
+
+          } else {
+
+              this.setState({"getmore": true});
+
+          }
+
       });
 
     }
 
     // 加载更多
     getMore () {
-      this.setState({
-        latestDynamicPage: parseInt(this.state.latestDynamicPage)+1,
-        getmore:false
-      },()=>{
-        this.fetchLatestDynamic();
-      })
+
+        this.setState({
+            "latestDynamicPage": parseInt(this.state.latestDynamicPage) + 1,
+            "getmore": false
+        }, () => {
+
+            this.fetchLatestDynamic();
+
+        });
 
     }
 
@@ -435,7 +445,12 @@ class ZhaoDaIndex extends React.Component {
 
                     {AnswerMainList}
 
-                    <div className="Formore" onClick={()=>{this.getMore()}}>{ !getmore ? <LoadingMore /> : "加载更多" }</div>
+                    <div className="Formore" onClick={() => {
+
+                        this.getMore();
+
+                    }}
+                    >{ !getmore ? <LoadingMore /> : "加载更多" }</div>
                 </div>
 
                 <div id="moreTopic">

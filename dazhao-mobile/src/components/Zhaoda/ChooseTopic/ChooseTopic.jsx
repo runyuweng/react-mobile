@@ -51,7 +51,7 @@ class ChooseTopic extends React.Component {
                 //     "selected": false
                 // }
             ],
-            invited:[]
+            "invited": []
         };
         this.handleClick = this.handleClick.bind(this);
         this.cancleChecked = this.cancleChecked.bind(this);
@@ -60,7 +60,7 @@ class ChooseTopic extends React.Component {
 
     }
 
-    selectClick (index,uid) {
+    selectClick (index, uid) {
 
         console.log(uid);
 
@@ -69,25 +69,27 @@ class ChooseTopic extends React.Component {
         let selected = JSON.parse(JSON.stringify(this.state)).invited;
 
 
-
-
-
         specialists.map((elem, num) => {
 
             num === index ? elem.selected = !elem.selected : "";
-            if(num === index && elem.selected){
-              selected.push(uid) ;
-            }else if(num === index && !elem.selected){
-              selected = selected.filter((value,i)=>{
-                return (value !== uid)
-              })
+            if (num === index && elem.selected) {
+
+                selected.push(uid);
+
+            } else if (num === index && !elem.selected) {
+
+                selected = selected.filter((value, i) => value !== uid);
+
             }
+
         });
         this.setState({
-          specialists,
-          invited:selected
-        },()=>{
-          console.log('ssss',this.state.invited);
+            specialists,
+            "invited": selected
+        }, () => {
+
+            console.log("ssss", this.state.invited);
+
         });
 
     }
@@ -133,16 +135,19 @@ class ChooseTopic extends React.Component {
                     ajax({
                         "url": "/zhaoda/question/askquestion",
                         "method": "POST",
-                        "data": `qtitle=${sessionStorage.getItem("question")}&qcontent=${sessionStorage.getItem("detail")}&tid=[${this.state.choosedid.join(',')}]`
+                        "data": `qtitle=${sessionStorage.getItem("question")}&qcontent=${sessionStorage.getItem("detail")}&tid=[${this.state.choosedid.join(",")}]`
                     }).
                 then((data) => {
 
                     console.log(data);
-                    let newData = [];
-                    data.contents.map((value,i)=>{
-                      newData.push(value);
-                      newData[i].selected = false;
-                    })
+                    const newData = [];
+
+                    data.contents.map((value, i) => {
+
+                        newData.push(value);
+                        newData[i].selected = false;
+
+                    });
                     this.setState({"specialists": data.contents ? newData : []});
 
                 });
@@ -187,20 +192,28 @@ class ChooseTopic extends React.Component {
 
     }
 
-    handleInvite(){
-      console.log(this.props);
-      if(this.state.invited.length>0){
-        ajax({
-          url:'/inviteAnswer',
-          method:'POST',
-          data:`id=[${this.state.invited.join(',')}]`
-        })
-        .then((data)=>{
-          console.log(data);
-        })
-      }else{
-        this.props.showMessage("请选择后邀请")
-      }
+    handleInvite () {
+
+        console.log(this.props);
+        if (this.state.invited.length > 0) {
+
+            ajax({
+                "url": "/inviteAnswer",
+                "method": "POST",
+                "data": `id=[${this.state.invited.join(",")}]`
+            }).
+        then((data) => {
+
+            console.log(data);
+
+        });
+
+        } else {
+
+            this.props.showMessage("请选择后邀请");
+
+        }
+
     }
 
     handleChange (e) {
@@ -322,9 +335,12 @@ class ChooseTopic extends React.Component {
                 </div>
                 <div className="bottombutton">
                     <span>查看更多</span>
-                    <span onClick={()=>{
-                        this.handleInvite()
-                      }}>邀请回答</span>
+                    <span onClick={() => {
+
+                        this.handleInvite();
+
+                    }}
+                    >邀请回答</span>
                 </div>
             </div>
         </div>

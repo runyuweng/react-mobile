@@ -62,51 +62,58 @@ class ZhaoDaToTopic extends React.Component {
     }
 
     componentDidMount () {
+
         this.props.showBottom();
         this.fetchQuestion();
 
     }
 
-    fetchQuestion(){
-      ajax({url:`/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=1`})
-      .then((data)=>{
-        console.log(data);
+    fetchQuestion () {
 
-        let newQ = {};
-        newQ.topicTitle = data.contents.topicname;
-        newQ.answer =  data.contents.questionnum;
-        newQ.care = data.contents.care;
-        // newQ.topicImg = data.contents.img;
-        newQ.topicImg = '/src/images/pople.png';
-        newQ.questions = [];
+        ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=1`}).
+      then((data) => {
 
-        data.contents.questionlist.map((value,i)=>{
+          console.log(data);
 
-          newQ.questions.push({
-            qid: value.qid,
-            id : value.tid,
-            name : value.user.nickname,
-            theme : value.qtitle,
-            comment : value.qcontent,
-            agree : value.agree,
-            remark : value.answer,
-            collect : value.collect,
-            vip : value.user.vip,
-          })
+          const newQ = {};
 
-        })
+          newQ.topicTitle = data.contents.topicname;
+          newQ.answer = data.contents.questionnum;
+          newQ.care = data.contents.care;
+        // NewQ.topicImg = data.contents.img;
+          newQ.topicImg = "/src/images/pople.png";
+          newQ.questions = [];
 
-        this.setState({topicdetail:newQ})
-      })
+          data.contents.questionlist.map((value, i) => {
+
+              newQ.questions.push({
+                  "qid": value.qid,
+                  "id": value.tid,
+                  "name": value.user.nickname,
+                  "theme": value.qtitle,
+                  "comment": value.qcontent,
+                  "agree": value.agree,
+                  "remark": value.answer,
+                  "collect": value.collect,
+                  "vip": value.user.vip
+              });
+
+          });
+
+          this.setState({"topicdetail": newQ});
+
+      });
+
     }
 
     render () {
 
         const {topicdetail} = this.state;
-        console.log('questions',topicdetail.questions);
+
+        console.log("questions", topicdetail.questions);
 
         const questionsList = topicdetail.questions.map((value, i) =>
-          <AnswerMain isTopic="0" key={i} data={value} />
+            <AnswerMain isTopic="0" key={i} data={value} />
         );
 
 
