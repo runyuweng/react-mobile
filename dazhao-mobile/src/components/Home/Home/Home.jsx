@@ -158,6 +158,7 @@ class Home extends React.Component {
 
 
         const {search, jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
+        console.log(jobs)
         const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
 
             <div className="jobitems" key={i}>
@@ -167,7 +168,7 @@ class Home extends React.Component {
                     <h3>{value.company.name}</h3>
                     <span>
                         <em>{value.company.city}</em>
-                        <em>学历</em>
+                        <em>{value.education}</em>
                     </span>
                     <span>
                         <em>{value.company.type}</em>
@@ -176,7 +177,7 @@ class Home extends React.Component {
                         <b>|</b>
                         <em>{value.company.stage}</em>
                         <b>|</b>
-                        <em>100人以上</em>
+                        <em>{value.company.numbers}</em>
                     </span>
                 </div>
             </div>

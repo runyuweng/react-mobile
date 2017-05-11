@@ -83,30 +83,23 @@
                 font-size: .15rem;
                 line-height: .24rem;
             }
-            p:nth-of-type(3){
-                color:#333333;
-                font-size: .15rem;
-                display: -webkit-flex;
-                display: -moz-flex;
-                display: -ms-flex;
-                display: -o-flex;
-                display: flex;
-                justify-content: space-between;
-                line-height: .24rem;
-                span{
-                    display: -webkit-flex;
-                    display: -moz-flex;
-                    display: -ms-flex;
-                    display: -o-flex;
-                    display: flex;
-                    align-items: center;
-                    img{
-                        width: .2rem;
-                        height: .1rem;
-                    }
+            .dropincontent>span{
+                display: inline-block;
+                float: right;
+                width: .2rem;
+                height: .1rem;
+                margin-top: .06rem;
+                font-size: 0;
+                img{
+                    width: .2rem;
+                    height: .1rem;
                 }
             }
-            div{
+            .clearfix{
+                overflow: hidden;
+                _zoom:1%;
+            }
+            .dropincontent{
                 color:#333333;
                 font-size: .15rem;
                 line-height: .24rem;
@@ -127,17 +120,21 @@
                         span{
                             font-size: .14rem;
                             color:#ADADAD;
-                        }
-                        em{
-                            width: .2rem;
-                            height: .01rem;
-                            border-top: .01rem solid #ADADAD;
-                            box-sizing: border-box;
-                            margin: .05rem;
+                            em{
+                                width: .2rem;
+                                height: .01rem;
+                                border-top: .01rem solid #ADADAD;
+                                box-sizing: border-box;
+                                margin: .05rem;
+                                display: inline-block;
+                            }
                         }
                         .active{
                             border-color:#21c6cd;
                             color:#21c6cd;
+                            em{
+                                border-color:#21c6cd;
+                            }
                         }
                     }
                     .clearfix{
@@ -218,18 +215,6 @@
                         em{
                             border-top: .01rem solid #21c6cd;
                         }
-                    }
-                }
-                span{
-                    display: -webkit-flex;
-                    display: -moz-flex;
-                    display: -ms-flex;
-                    display: -o-flex;
-                    display: flex;
-                    justify-content: flex-end;
-                    img{
-                        width: .2rem;
-                        height: .1rem;
                     }
                 }
             }

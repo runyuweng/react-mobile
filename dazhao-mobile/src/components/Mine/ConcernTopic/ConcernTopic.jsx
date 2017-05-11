@@ -1,83 +1,87 @@
 import React from "react";
 import "./ConcernTopic.scss";
+import ajax from "../../../services/ajax.js";
 
 class ConcernTopic extends React.Component {
 
     constructor (props) {
 
         super(props);
+        this.state = {
+            topics:[
+                {
+                    id:1,
+                    topicimg:"/src/images/pople.png",
+                    topicname:"研究生",
+                    questionnum:16,
+                    care:10
+                },{
+                    id:2,
+                    topicimg:"/src/images/pople.png",
+                    topicname:"研究生",
+                    questionnum:16,
+                    care:10
+                },{
+                    id:3,
+                    topicimg:"/src/images/pople.png",
+                    topicname:"研究生",
+                    questionnum:16,
+                    care:10
+                }
+            ],
+            topicPage:1
+        };
+        this.fetchConcernTopic = this.fetchConcernTopic.bind(this);
+    }
 
+    componentDidMount() {
+        this.fetchConcernTopic(this.state.topicPage)
+    }
+
+    fetchConcernTopic(page){
+        ajax({"url":`/mycaretopic?page=${page}`}).
+        then((data)=>{
+            if(data.code==="S01"){
+                const topics = data.contents;
+                this.setState({
+                    topics:this.state.topics.push(topics)
+                })
+            }else if (data.code==="S02") {
+                
+            }else{
+                this.setState({
+                    topics:this.state.topics
+                })
+            }
+        })
     }
 
     render () {
 
+        const { topics } = this.state;
+        const topicsList = topics.map((elem,index)=>{
+            return(
+                <div key={index} className="item">
+                    <div className="left">
+                        <span className="circle">
+                            <img src={elem.topicimg} alt={elem.topicname} />
+                        </span>
+                        <p>
+                            <span>{elem.topicname}</span><br />
+                            <span>
+                                <em>问题：<b>{elem.questionnum}</b></em>
+                                <em>关注：<b>{elem.care}</b></em>
+                            </span>
+                        </p>
+                    </div>
+                    <span className="right">+取消关注</span>
+                </div>
+            )
+        })
+
         return (
             <div id="concernTopic">
-                <div className="item">
-                    <div className="left">
-                        <span className="circle" />
-                        <p>
-                            <span>研究生</span><br />
-                            <span>
-                                <em>问题：<b>16</b></em>
-                                <em>关注：<b>101</b></em>
-                            </span>
-                        </p>
-                    </div>
-                    <span className="right">+取消关注</span>
-                </div>
-                <div className="item">
-                    <div className="left">
-                        <span className="circle" />
-                        <p>
-                            <span>研究生就业</span><br />
-                            <span>
-                                <em>问题：<b>16</b></em>
-                                <em>关注：<b>101</b></em>
-                            </span>
-                        </p>
-                    </div>
-                    <span className="right">+取消关注</span>
-                </div>
-                <div className="item">
-                    <div className="left">
-                        <span className="circle" />
-                        <p>
-                            <span>考研究生</span><br />
-                            <span>
-                                <em>问题：<b>16</b></em>
-                                <em>关注：<b>101</b></em>
-                            </span>
-                        </p>
-                    </div>
-                    <span className="right">+取消关注</span>
-                </div>
-                <div className="item">
-                    <div className="left">
-                        <span className="circle" />
-                        <p>
-                            <span>在职研究生</span><br />
-                            <span>
-                                <em>问题：<b>16</b></em>
-                                <em>关注：<b>101</b></em>
-                            </span>
-                        </p>
-                    </div>
-                    <span className="right">+取消关注</span>
-                </div>
-                <div className="item">
-                    <div className="left">
-                        <span className="circle" />
-                        <p>
-                            <span>医学研究生</span><br />
-                            <span>
-                                <em>问题：<b>16</b></em>
-                                <em>关注：<b>101</b></em>
-                            </span>
-                        </p>
-                    </div>
-                    <span className="right">+取消关注</span>
-                </div>
+                {topicsList}
             </div>
         );
 

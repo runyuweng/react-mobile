@@ -17,34 +17,9 @@
                 font-size: .15rem;
                 line-height: .24rem;
             }
-            p:nth-of-type(3){
-                color:#333333;
-                font-size: .15rem;
-                display: -webkit-flex;
-                display: -moz-flex;
-                display: -ms-flex;
-                display: -o-flex;
-                display: flex;
-                justify-content: space-between;
-                line-height: .24rem;
-                time{
-                    em{
-                        display: inline-block;
-                        margin: 0 .1rem;
-                    }
-                }
-                span{
-                    display: -webkit-flex;
-                    display: -moz-flex;
-                    display: -ms-flex;
-                    display: -o-flex;
-                    display: flex;
-                    align-items: center;
-                    img{
-                        width: .2rem;
-                        height: .1rem;
-                    }
-                }
+            .clearfix{
+                overflow: hidden;
+                _zoom:1%;
             }
             div{
                 color:#333333;
@@ -53,19 +28,19 @@
                 .dropinmain{
                     margin-top: .16rem;
                     border-top: .01rem solid #ADADAD;
+                    padding: .16rem 0 0;
                     p{
                         font-size: .14rem;
                         color:#21c6cd;
-                        padding: .16rem 0;
                     }
                 }
                 span{
-                    display: -webkit-flex;
-                    display: -moz-flex;
-                    display: -ms-flex;
-                    display: -o-flex;
-                    display: flex;
-                    justify-content: flex-end;
+                    float: right;
+                    display: inline-block;
+                    font-size: 0;
+                    margin-top: .06rem;
+                    width: .2rem;
+                    height: .12rem;
                     img{
                         width: .2rem;
                         height: .1rem;
