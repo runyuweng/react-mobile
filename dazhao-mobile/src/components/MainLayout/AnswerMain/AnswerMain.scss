@@ -59,6 +59,11 @@
             line-height:0.25rem;
             color:#666666;
             margin:0.15rem 0rem;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
             span{
                 position:relative;
                 display:block;

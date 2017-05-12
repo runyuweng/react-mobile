@@ -1,5 +1,6 @@
 import React from "react";
 import "./FavoriteJobs.scss";
+import ajax from "../../../services/ajax.js";
 
 class FavoriteJobs extends React.Component {
 
@@ -7,80 +8,59 @@ class FavoriteJobs extends React.Component {
 
         super(props);
         this.state = {
+            page:1,
             "jobs": [
                 {
-                    "company": {
-                        "img": "/src/images/ali.png",
-                        "name": "社会科学文献出版社",
-                        "city": "北京市",
-                        "type": "广告/公关/会展",
-                        "stage": "成熟"
-                    },
-                    "job_name": "市场部社会学实习生"
+                  "job_id":"0",
+                  "job_name":"JAVA研发工程师",
+                  "education":"本科",
+                  "company":{
+                    "name":"阿里巴巴网络技术有限公司",
+                    "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
+                    "city":"上海",
+                    "type":"互联网",
+                    "stage":"上市",
+                    "numbers":"100人以上"
+                  }   
                 },
                 {
-                    "company": {
-                        "img": "/src/images/ali.png",
-                        "name": "社会科学文献出版社",
-                        "city": "北京市",
-                        "type": "广告/公关/会展",
-                        "stage": "成熟"
-                    },
-                    "job_name": "市场部社会学实习生"
-                },
-                {
-                    "company": {
-                        "img": "/src/images/ali.png",
-                        "name": "社会科学文献出版社",
-                        "city": "北京市",
-                        "type": "广告/公关/会展",
-                        "stage": "成熟"
-                    },
-                    "job_name": "市场部社会学实习生"
-                },
-                {
-                    "company": {
-                        "img": "/src/images/ali.png",
-                        "name": "社会科学文献出版社",
-                        "city": "北京市",
-                        "type": "广告/公关/会展",
-                        "stage": "成熟"
-                    },
-                    "job_name": "市场部社会学实习生"
-                },
-                {
-                    "company": {
-                        "img": "/src/images/ali.png",
-                        "name": "社会科学文献出版社",
-                        "city": "北京市",
-                        "type": "广告/公关/会展",
-                        "stage": "成熟"
-                    },
-                    "job_name": "市场部社会学实习生"
-                },
-                {
-                    "company": {
-                        "img": "/src/images/ali.png",
-                        "name": "社会科学文献出版社",
-                        "city": "北京市",
-                        "type": "广告/公关/会展",
-                        "stage": "成熟"
-                    },
-                    "job_name": "市场部社会学实习生"
-                },
-                {
-                    "company": {
-                        "img": "/src/images/ali.png",
-                        "name": "社会科学文献出版社",
-                        "city": "北京市",
-                        "type": "广告/公关/会展",
-                        "stage": "成熟"
-                    },
-                    "job_name": "市场部社会学实习生"
+                  "job_id":"1",
+                  "job_name":"JAVA研发工程师",
+                  "education":"本科",
+                  "company":{
+                    "name":"阿里巴巴网络技术有限公司",
+                    "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
+                    "city":"上海",
+                    "type":"互联网",
+                    "stage":"上市",
+                    "numbers":"100人以上"
+                  }     
                 }
             ]
         };
+        this.fetchCollectionJobs = this.fetchCollectionJobs.bind(this);
+    }
 
+    componentDidMount() {
+        this.fetchCollectionJobs(this.state.page);
+    }
+
+    fetchCollectionJobs(page){
+        ajax({"url":`/zhaoda/collectionposts?page=${page}`}).
+        then((data)=>{
+            if(data.code==="S01"){
+                const jobs = data.contents;
+                this.setState({
+                    jobs:this.state.jobs.push(jobs)
+                })
+            }else if (data.code==="S02") {
+                
+            }else{
+                this.setState({
+                    jobs:this.state.jobs
+                })
+            }
+        })
     }
 
     render () {
@@ -93,7 +73,7 @@ class FavoriteJobs extends React.Component {
                 <h3>{value.company.name}</h3>
                 <span>
                     <em>{value.company.city}</em>
-                    <em>学历</em>
+                    <em>{value.education}</em>
                 </span>
                 <span>
                     <em>{value.company.type}</em>
@@ -102,7 +82,7 @@ class FavoriteJobs extends React.Component {
                     <b>|</b>
                     <em>{value.company.stage}</em>
                     <b>|</b>
-                    <em>100人以上</em>
+                    <em>{value.company.numbers}</em>
                 </span>
             </div>
         </div>);

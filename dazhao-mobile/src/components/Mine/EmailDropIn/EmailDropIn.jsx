@@ -1,90 +1,222 @@
 import React from "react";
 import "./EmailDropIn.scss";
+import ajax from "../../../services/ajax.js";
 
 class EmailDropIn extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            emailDropIns:[
+                {
+                    "id":1,
+                    "email":"Hiven@dazhao100.com",
+                    "latestStatusId":2,
+                    "latestStatus":"被查看",
+                    "resumeName": "互联网产品岗",
+                    "date":"2016.12.30",
+                    "detailStatus":[
+                        {
+                            "statusid":1,
+                            "statusmessage":"投递简历",
+                            "date":"2016.12.30",
+                            "time":"10:53:02",
+                            "done":true
+                        },
+                        {
+                            "statusid":2,
+                            "statusmessage":"被查看",
+                            "date":"2016.12.30",
+                            "time":"10:53:02",
+                            "done":true
+                        }
+                    ]
+                },
+                {
+                    "id":2,
+                    "email":"Hiven@dazhao100.com",
+                    "latestStatusId":3,
+                    "latestStatus":"通过筛选",
+                    "resumeName": "互联网产品岗",
+                    "date":"2016.12.30",
+                    "detailStatus":[
+                        {
+                            "statusid":1,
+                            "statusmessage":"投递简历",
+                            "date":"2016.12.30",
+                            "time":"10:54:01",
+                            "done":true
+                        },
+                        {
+                            "statusid":2,
+                            "statusmessage":"被查看",
+                            "date":"2016.12.30",
+                            "time":"10:54:01",
+                            "done":true
+                        },
+                        {
+                            "statusid":3,
+                            "statusmessage":"通过筛选",
+                            "date":"2016.12.30",
+                            "time":"10:54:01",
+                            "done":true
+                        }
+                    ]
+                },
+                {
+                    "id":3,
+                    "email":"Hiven@dazhao100.com",
+                    "latestStatusId":5,
+                    "latestStatus":"面试通过",
+                    "resumeName": "互联网产品岗",
+                    "date":"2016.12.30",
+                    "detailStatus":[
+                        {
+                            "statusid":1,
+                            "statusmessage":"投递简历",
+                            "date":"2016.12.30",
+                            "time":"10:54:01",
+                            "done":true
+                        },
+                        {
+                            "statusid":2,
+                            "statusmessage":"被查看",
+                            "date":"2016.12.30",
+                            "time":"10:54:01",
+                            "done":true
+                        },
+                        {
+                            "statusid":3,
+                            "statusmessage":"通过筛选",
+                            "date":"2016.12.30",
+                            "time":"10:54:01",
+                            "done":true
+                        },
+                        {
+                            "statusid":4,
+                            "statusmessage":"面试邀请",
+                            "date":"2016.12.30",
+                            "time":"10:54:01",
+                            "done":true
+                        },
+                        {
+                            "statusid":5,
+                            "statusmessage":"面试结果",
+                            "date":"2016.12.30",
+                            "time":"10:54:08",
+                            "done":true
+                        }
+                    ]
+                }
+            ]
+        };
+        this.fetchEmailDropIn = this.fetchEmailDropIn.bind(this);
+    }
+
+    componentDidMount() {
+
+        // console.log([{'id':1,"name":"asd"},{'id':2,"name":"argr"},{'id':3,"name":"dbhmt"}].reverse())
+
+        const emailDropIns = JSON.parse(JSON.stringify(this.state)).emailDropIns;
+        
+        emailDropIns.map((elem,index)=>{
+            Object.assign(elem,{"isShowall":false});
+        })
+
+
+        this.setState({emailDropIns:emailDropIns})
+
+        this.fetchEmailDropIn();
+    }
+
+    changeShowAll(index){
+        const emailDropIns = JSON.parse(JSON.stringify(this.state)).emailDropIns;;
+
+        emailDropIns[index].isShowall = !emailDropIns[index].isShowall;
+
+        this.setState({
+            emailDropIns:emailDropIns
+        })
+    }
+
+    fetchEmailDropIn(){
+        ajax({"url":'/zhaoda/emaildropin'}).
+        then((data)=>{
+            if(data.code==="S01"){
+                const emailDropIns = data.contents;
+                this.setState({
+                    emailDropIns:this.state.emailDropIns.push(emailDropIns)
+                })
+            }else if (data.code==="S02") {
+                
+            }else{
+                this.setState({
+                    emailDropIns:this.state.emailDropIns
+                })
+            }
+        })
+    }
 
     render () {
 
-        return (
-            <div>
-
-                <div className="alldropin">
-                    <div className="dropindetail">
-                        <p>
-                            <span>Hiven@dazhao100.com</span>
-                            <span>被查看</span>
-                        </p>
-                        <p>使用简历：互联网产品岗</p>
-                        <p>
-                            <time>2016.12.30</time>
-                            <span>
-                                <img src="/src/images/Back_down.png" alt="down" />
-                            </span>
-                        </p>
-                    </div>
-                    <div className="dropindetail">
-                        <p>
-                            <span>campus@baidi.com</span>
-                            <span>投递成功</span>
-                        </p>
-                        <p>使用简历：互联网产品岗</p>
-                        <p>
-                            <time>2016.12.30</time>
-                            <span>
-                                <img src="/src/images/Back_down.png" alt="down" />
-                            </span>
-                        </p>
-                    </div>
-                    <div className="dropindetail">
-                        <p>
-                            <span>campus@baidi.com</span>
-                            <span>被查看</span>
-                        </p>
-                        <p>使用简历：互联网产品岗</p>
-                        <div>
-                            <time>2016.12.30</time>
-                            <div className="dropinmain">
-                                <div className="dropinhead active">
-                                    <span>投递简历</span>
-                                    <em />
-                                    <span>被查看</span>
-                                </div>
-                                <div className="dropinwrap">
-                                    <div className="dropinitem clearfix active">
-                                        <div className="progress">
-                                            <span />
-                                            <em />
-                                        </div>
-                                        <div className="dropincon">
-                                            <p>对方已查看您的简历</p>
-                                            <time>
-                                        2016.12.30
-                                        <em />
-                                        10:54:10
-                                    </time>
-                                        </div>
-                                    </div>
-                                    <div className="dropinitem clearfix">
-                                        <div className="progress">
-                                            <span />
-                                            <em />
-                                        </div>
-                                        <div className="dropincon">
-                                            <p>企业已接收到您投递的简历</p>
-                                            <time>
-                                        2016.12.30
-                                        <em />
-                                        10:54:10
-                                    </time>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <span>
-                                <img src="/src/images/Back_top.png" alt="down" />
-                            </span>
+        const { emailDropIns } = this.state;
+        const emailDropInsList = emailDropIns.map((elem,index)=>{
+            const stageList = elem.detailStatus.map((value,i)=>{
+                return(
+                    i===elem.detailStatus.length-1?
+                    <span key={i}>{value.statusmessage}</span>:
+                    <span key={i} className="active">{value.statusmessage}<em /></span>
+                )
+            });
+            const detailStageList = elem.detailStatus.map((value,i)=>{
+                const classes = i===0?"dropinitem clearfix active":"dropinitem clearfix";
+                const num = elem.detailStatus.length-1-i;
+                return(
+                    <div key={i} className={classes}>
+                        <div className="progress">
+                            <span />
+                            <em />
+                        </div>
+                        <div className="dropincon">
+                            <p>{num===0?"企业已接收到您投递的简历":num===1?"对方已查看您的简历":num===2?"您已通过初步筛选":num===3?"已发送面试邀请":num===4?"您已通过面试，注意接收下一步通知":""}</p>
+                            <time>{value.date}<em />{value.time}</time>
                         </div>
                     </div>
+                )
+            });
+            return(
+                <div key={index} className="dropindetail">
+                    <p>
+                        <span>{elem.email}</span>
+                        <span>{elem.latestStatus}</span>
+                    </p>
+                    <p>使用简历：{elem.resumeName}</p>
+                    <div className="dropincontent clearfix">
+                        <time>{elem.date}</time>
+                        {
+                            elem.isShowall?
+                            <div className="dropinmain">
+                                <div className="dropinhead active">
+                                    {stageList}
+                                </div>
+                                <div className="dropinwrap">
+                                    {detailStageList}
+                                </div>
+                            </div>:""
+                        }
+                        
+                        <span>
+                            <img onClick={this.changeShowAll.bind(this,index)} src={elem.isShowall?"/src/images/Back_top.png":"/src/images/Back_down.png"} alt="updown" />
+                        </span>
+                    </div>
+                </div>
+            )
+        })
+
+        return (
+            <div id="emailDropIn">
+
+                <div className="alldropin">
+                    {emailDropInsList}
                 </div>
             </div>
         );
