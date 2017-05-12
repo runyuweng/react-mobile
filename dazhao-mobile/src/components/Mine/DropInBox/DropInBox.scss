@@ -108,26 +108,32 @@
                     padding-top: .16rem;
                     border-top: .01rem solid #ADADAD;
                     .dropinhead{
-                        display: -webkit-flex;
-                        display: -moz-flex;
-                        display: -ms-flex;
-                        display: -o-flex;
-                        display: flex;
-                        align-items: center;
                         height: .4rem;
-                        flex-wrap:wrap;
                         line-height: .24rem;
                         span{
-                            font-size: .14rem;
+                            font-size: .13rem;
                             color:#ADADAD;
+                            display: flex;
+                            align-items: center;
+                            // width: .52rem;
                             em{
-                                width: .2rem;
+                                max-width: .2rem;
+                                min-width:.17rem;
                                 height: .01rem;
                                 border-top: .01rem solid #ADADAD;
                                 box-sizing: border-box;
-                                margin: .05rem;
+                                margin: 0 .04rem;
                                 display: inline-block;
                             }
+                        }
+                        em{
+                            max-width: .2rem;
+                            min-width:.17rem;
+                            height: .01rem;
+                            border-top: .01rem solid #ADADAD;
+                            box-sizing: border-box;
+                            margin: 0 .04rem;
+                            display: inline-block;
                         }
                         .active{
                             border-color:#21c6cd;
@@ -208,14 +214,7 @@
                             }
                         }
                     }
-                    .active{
-                        span{
-                            color:#21c6cd;
-                        }
-                        em{
-                            border-top: .01rem solid #21c6cd;
-                        }
-                    }
+                    
                 }
             }
         }

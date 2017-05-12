@@ -49,7 +49,7 @@ class FavoriteCompanys extends React.Component {
     }
 
     fetchCollectionEnterprise(page){
-        ajax({"url":`/zhaoda/collectionenterprise?page=${page}`}).
+        ajax({"url":`/collectionenterprise?page=${page}`}).
         then((data)=>{
             if(data.code==="S01"){
                 const enterprise = data.contents;

@@ -46,7 +46,7 @@ class FavoriteJobs extends React.Component {
     }
 
     fetchCollectionJobs(page){
-        ajax({"url":`/zhaoda/collectionposts?page=${page}`}).
+        ajax({"url":`/collectionposts?page=${page}`}).
         then((data)=>{
             if(data.code==="S01"){
                 const jobs = data.contents;

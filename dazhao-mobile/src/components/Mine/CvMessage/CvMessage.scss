@@ -45,36 +45,58 @@
                         color:#999999;
                         line-height: .22rem;
                     }
-                    em:nth-of-type(2){          font-style: normal;
+                    em:nth-of-type(2){          
+                        font-style: normal;
                         font-family: "苹方";
                         font-size: .13rem;
                         color:#999999;
                         line-height: .22rem;
+                    }
+                    span{
+                        font-style: normal;
+                        font-family: "苹方";
+                        font-size: .13rem;
+                        color:#999999;
+                        line-height: .22rem;
+                        display: block;
+                        em{
+                            display: block;
+                        }
                     }
                 }
 
                 .personal{
                     width:.64rem;
                     height:.64rem;
-                    display:block;
+                    display: block;
                     margin: 0 auto .24rem;
                     background:#f8f8f8;
                     border-radius:.05rem;
+                    img{
+                        width:.64rem;
+                        height:.64rem;
+                    }
                 }
             }
         }
 
         .cvitems{
             .cvbody{
+                .clearfix{
+                    overflow: hidden;
+                    _zoom:1%;
+                }
                 span:nth-last-of-type(1){
                     display: flex;
 
                     .lastpre{
                         display:inline-block;
-                        height:1rem;
+                        float: left;
                     }
                     .lastEm{
+                        display: block;
                         height:1rem;
+                        float: left;
                     }
 
                 }
@@ -160,7 +182,8 @@
                             height:.24rem;
                         }
                     }
-                    em{                    font-family: "苹方";
+                    em{                    
+                        font-family: "苹方";
                         font-size: .24rem;
                         font-style: normal;
                         color:#999999;

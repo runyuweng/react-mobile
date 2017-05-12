@@ -61,7 +61,7 @@ class Invitation extends React.Component {
     }
 
     fetchInvitation(page){
-        ajax({"url":`/zhaoda/invitation?page=${page}`}).
+        ajax({"url":`/invitation?page=${page}`}).
         then((data)=>{
             if(data.code==="S01"){
                 const invitation = data.contents;
