@@ -43,7 +43,9 @@
         -webkit-user-select:text;
         border:none;
         border-top: .01rem solid #DBDBDB;
-
+        img{
+          max-width: 3rem;
+        }
     }
     footer{
       display: flex;

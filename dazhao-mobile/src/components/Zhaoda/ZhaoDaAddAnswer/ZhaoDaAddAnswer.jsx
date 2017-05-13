@@ -49,7 +49,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     setFocus (obj) {
 
-        console.log(this.state.html);
+        // console.log(this.state.html);
         if (window.getSelection) { // Ie11 10 9 ff safari
 
             obj.focus(); // 解决ff不获取焦点无法定位问题
@@ -93,17 +93,6 @@ class ZhaoDaAddAnswer extends React.PureComponent {
                     contentEditable
                     className="answercontent"
                     ref="input"
-                    onInput={(e) => {
-
-                        console.log(this.refs.input.innerHTML);
-                    // Console.log(e.target.value);
-                        this.setState({"html": this.refs.input.innerHTML}, () => {
-
-                            this.setFocus(this.refs.input);
-
-                        });
-
-                    }}
                     dangerouslySetInnerHTML={{"__html": this.state.html}}
                 />
                 <footer>
