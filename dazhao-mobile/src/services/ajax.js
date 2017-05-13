@@ -1,13 +1,16 @@
 import {setCookie,getCookie,delCookie} from './tools.js'
 
-function ajax(options) {
+export default function ajax(options) {
 
     let config = {
         url: 'http://115.159.159.79' + options.url,
         method: options.method || "GET",
         async: options.async || true,
         data: options.data || '',
-        header: options.header || {}
+        header: options.header || {},
+        file: options.file || '',
+        fileUrl: options.fileUrl || ''
+
     }
 
     const tool = {
@@ -19,23 +22,39 @@ function ajax(options) {
             }
         },
         sendXhr:()=>{
-            xmlhttp.open(config.method, config.url, config.async);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          if(!config.file){
+            xhr.open(config.method, config.url, config.async);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             if(getCookie("token")){
-              xmlhttp.setRequestHeader("token", getCookie("token"));
+              xhr.setRequestHeader("token", getCookie("token"));
             }
 
-            xmlhttp.send(config.data);
+            xhr.send(config.data);
+          }else{
+
+            xhr.open("POST", config.fileUrl, config.async);
+            xhr.setRequestHeader("Content-type", "multipart/form-data");
+            let form = new FormData(); // FormData 对象
+            form.append("file", config.file.files[0]); // 文件对象
+            form.append("key", "");
+            form.append("x:<custom_name>", "");
+            form.append("token", "");
+            form.append("crc32", "");
+            form.append("accept", "");
+            xhr.send(form);
+
+          }
+
         },
         setToken:()=>{
-          if(xmlhttp.getResponseHeader("token")){
-            setCookie("token",xmlhttp.getResponseHeader("token"));
+          if(xhr.getResponseHeader("token")){
+            setCookie("token",xhr.getResponseHeader("token"));
           }
         }
     }
 
 
-    let xmlhttp = tool.createXhr();
+    let xhr = tool.createXhr();
 
     //判断是否是异步
     if (!config.async) {
@@ -43,16 +62,16 @@ function ajax(options) {
         return new Promise(
             function(resolve, reject) {
                 tool.setToken();
-                resolve(JSON.parse(xmlhttp.responseText))
+                resolve(JSON.parse(xhr.responseText))
             }
         );
     } else {
         return new Promise(
             function(resolve, reject) {
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
                         tool.setToken();
-                        resolve(JSON.parse(xmlhttp.responseText));
+                        resolve(JSON.parse(xhr.responseText));
                     }
                 }
                 tool.sendXhr();
@@ -61,6 +80,3 @@ function ajax(options) {
         );
     }
 }
-
-
-export default ajax;

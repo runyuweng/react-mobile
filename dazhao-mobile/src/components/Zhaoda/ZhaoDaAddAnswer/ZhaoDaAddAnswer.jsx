@@ -2,7 +2,7 @@ import React from "react";
 import "./ZhaoDaAddAnswer.scss";
 import ajax from "../../../services/ajax.js";
 
-class ZhaoDaAddAnswer extends React.Component {
+class ZhaoDaAddAnswer extends React.PureComponent {
 
     constructor (props) {
 
@@ -18,21 +18,27 @@ class ZhaoDaAddAnswer extends React.Component {
     componentDidMount () {
 
         this.props.showBottom(false);
-        // This.refs.input.contenteditable = true;
 
     }
 
     addPicture () {
 
-        const html = `${String(this.state.html)}<img src = "/src/images/add.png"/>`;
-
-      // Console.log('file',this.refs.file.value);
         this.refs.file.click();
 
+    }
 
-      // This.setState({html:html},()=>{
-      //   This.setFocus(this.refs.input);
+    handleFile(){
+      // console.log(this.refs.file.files.item(0));
+      // console.log(this.state.html);
+      // console.log(window.URL.createObjectURL(this.refs.file.files.item(0)));
+      this.setState({
+          html:`${this.refs.input.innerHTML}<img src="${window.URL.createObjectURL(this.refs.file.files[0])}"/>`
+      })
+      this.refs.file.value = "";
+      // ajax({file:this.refs.file,fileUrl:'http://upload.qiniu.com/'}).then((data)=>{
+      //   console.log(data);
       // })
+
 
     }
 
@@ -81,16 +87,7 @@ class ZhaoDaAddAnswer extends React.Component {
                         <span onClick={this.submitClick}>提交</span>
                     </div>
                 </header>
-                <input type="file" ref="file" name="file" style={{"display": "none"}} onChange={() => {
-
-                    console.log("file", this.refs.file.value);
-
-                    if (this.refs.file.value) {
-                      // Ajax获取图床地址
-                    }
-
-                }}
-                />
+                <input name="file" type="file" ref="file" style={{"display": "none"}} onChange={() => this.handleFile()}/>
 
                 <div
                     contentEditable
