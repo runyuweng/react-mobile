@@ -1,4 +1,5 @@
 .CvMessage{
+    margin-bottom: .72rem;
     a{
         color:#21C6CD;
     }
@@ -35,6 +36,27 @@
             .cvbody{
                 background:#fff;
                 padding:.16rem;
+                .none{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height:.64rem;
+                    span{
+                        width:.24rem;
+                        height:.24rem;
+                        margin-right: .06rem;
+                        img{
+                            width:.24rem;
+                            height:.24rem;
+                        }
+                    }
+                    em{                    
+                        font-family: "苹方";
+                        font-size: .24rem;
+                        font-style: normal;
+                        color:#999999;
+                    }
+                }
                 span{
                     display: block;
                     em:nth-of-type(1)
@@ -166,30 +188,5 @@
             }
         }
 
-        .cvsch{
-            .cvbody{
-                p{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height:1rem;
-                    span{
-                        width:.24rem;
-                        height:.24rem;
-                        margin-right: .06rem;
-                        img{
-                            width:.24rem;
-                            height:.24rem;
-                        }
-                    }
-                    em{                    
-                        font-family: "苹方";
-                        font-size: .24rem;
-                        font-style: normal;
-                        color:#999999;
-                    }
-                }
-            }
-        }
     }
 }

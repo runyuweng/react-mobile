@@ -14,29 +14,9 @@ class ZhaoDaToQuestion extends React.Component {
         this.state = {
             "topic": "考研",
             "question": {},
-            "otherAnswers": [
-                // {
-                //     "id": 1,
-                //     "name": "Michal",
-                //     "job": "骨灰级教练",
-                //     "imgsrc": "/src/images/vip.png",
-                //     "remark": 9,
-                //     "agree": 14,
-                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                //     "collect": false
-                // },
-                // {
-                //     "id": 2,
-                //     "name": "Michal",
-                //     "job": "骨灰级教练",
-                //     "imgsrc": "/src/images/vip.png",
-                //     "remark": 9,
-                //     "agree": 14,
-                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                //     "collect": false
-                // }
-            ],
-            "stretch": false
+            "otherAnswers": [],
+            "stretch": false,
+            "showshadow":true
         };
 
         this.stretchClick = this.stretchClick.bind(this);
@@ -93,6 +73,11 @@ class ZhaoDaToQuestion extends React.Component {
           this.setState({
               "question": newQ,
               "otherAnswers": newOtherAnswers
+          },()=>{
+              const showshadow = (newQ.authorAnswer.length < this.refs.carecontent.clientWidth/14*2) ? false : true;
+              this.setState({
+                "showshadow":showshadow
+              })
           });
 
       });
@@ -143,13 +128,14 @@ class ZhaoDaToQuestion extends React.Component {
                 <div className="careTopic">
                     <span className="caretitle">{question.title}</span>
                     <div className="caremain">
-                        <span className="carecontent" style={{"height": !this.state.stretch ? ".8rem" : "auto"}}>
+                        <span ref="carecontent" className="carecontent" style={{"height": this.state.showshadow ? (this.state.stretch ? "auto" : ".8rem"):"auto"}}>
                             {question.authorAnswer}
-                            {!this.state.stretch ? <span className="shade" /> : ""}
+                            {this.state.showshadow?(!this.state.stretch ? <span className="shade" /> : ""):""}
                         </span>
                         {
-                            !this.state.stretch
-                                ? <span className="strech" onClick={this.stretchClick}>展开查看全部<span><img src="/src/images/down.png" /></span></span> : ""
+                            this.state.showshadow?
+                            (!this.state.stretch
+                                ? <span className="strech" onClick={this.stretchClick}>展开查看全部<span><img src="/src/images/down.png" /></span></span> : ""):""
                         }
                         <div className="bottom clearfix">
                             <div className="left">

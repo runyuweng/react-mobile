@@ -156,8 +156,10 @@ class ZhaoDaTopic extends React.Component {
             <Link to={`/totopic/${elem.tid}`} key={index}>
                 <div className="item" key={index}>
                     <span><img src="/src/images/topicImg.png" /></span>
-                    <p>{elem.topicname}</p>
-                    <p>{elem.questionnum}个问题</p>
+                    <span>
+                        <p>{elem.topicname}</p>
+                        <p>{elem.questionnum}个问题</p>
+                    </span>
                 </div>
             </Link>
             );

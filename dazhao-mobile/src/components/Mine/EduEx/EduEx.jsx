@@ -15,7 +15,8 @@ class EduEx extends React.Component {
               "more":["成绩排名优异、GPA优秀可以展示","主要课程：在其他经理比较少的情况下可以选择展示3-4门课程"]
             }
         };
-        this.fetchEduexperience = this.fetchEduexperience.bind(this)
+        this.fetchEduexperience = this.fetchEduexperience.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +36,19 @@ class EduEx extends React.Component {
                     eduexperience:{}
                 })
             }
+        })
+    }
+
+    handleChange(e){
+        console.log(e.target.name)
+        let eduexperience = JSON.parse(JSON.stringify(this.state)).eduexperience;
+        if(e.target.name==="school_name"){
+            Object.assign(eduexperience,{"school_name":e.target.value});
+        }else if (e.target.name==="major") {
+            Object.assign(eduexperience,{"major":e.target.value});
+        }
+        this.setState({
+            eduexperience:eduexperience
         })
     }
 
@@ -67,14 +81,17 @@ class EduEx extends React.Component {
                     <div>
                         <em>学校名称</em>
                         <p>
-                            <span>{eduexperience.school_name}</span>
+                            {/*<span>{eduexperience.school_name}</span>*/}
+                            <input type="text" value={this.state.eduexperience.school_name} name="school_name" onChange={this.handleChange}/>
+
                         </p>
                     </div>
 
                     <div>
                         <em>所学专业</em>
                         <p>
-                            <span>{eduexperience.major}</span>
+                            {/*<span>{eduexperience.major}</span>*/}
+                            <input type="text" value={this.state.eduexperience.major} name="major" onChange={this.handleChange}/>
                         </p>
                     </div>
 

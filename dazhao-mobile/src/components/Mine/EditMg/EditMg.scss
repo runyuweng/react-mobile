@@ -55,34 +55,35 @@
                 span{
                     font-family: "苹方";
                     font-size: .13rem;
-                    color:#adadad;
+                    color:#3f3f3f;
                     display: inline-block;
                     width: 100%;
-                    input{
-                        height: .3rem;
-                        outline: none;
-                        box-sizing: border-box;
-                        color:#3f3f3f;
-                        font-size: .13rem;
-                        width: 80%;
-                    }
-                    ::-webkit-input-placeholder { /* WebKit browsers */ 
-                        color: #3f3f3f; 
-                        font-size: .13rem;
-                    } 
-                    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
-                        color: #3f3f3f; 
-                        font-size: .13rem;
-                    } 
-                    ::-moz-placeholder { /* Mozilla Firefox 19+ */ 
-                        color: #3f3f3f; 
-                        font-size: .13rem;
-                    } 
-                    :-ms-input-placeholder { /* Internet Explorer 10+ */ 
-                        color: #3f3f3f; 
-                        font-size: .13rem;
-                    } 
                 }
+                input{
+                    height: .17rem;
+                    outline: none;
+                    box-sizing: border-box;
+                    color:#3f3f3f;
+                    font-size: .13rem;
+                    width: 80%;
+                    border:none;
+                }
+                ::-webkit-input-placeholder { /* WebKit browsers */ 
+                    color: #3f3f3f; 
+                    font-size: .13rem;
+                } 
+                :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+                    color: #3f3f3f; 
+                    font-size: .13rem;
+                } 
+                ::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+                    color: #3f3f3f; 
+                    font-size: .13rem;
+                } 
+                :-ms-input-placeholder { /* Internet Explorer 10+ */ 
+                    color: #3f3f3f; 
+                    font-size: .13rem;
+                } 
             }
         }
 
@@ -117,18 +118,6 @@
             }
         }
 
-        div:nth-of-type(2),div:nth-of-type(3),div:nth-of-type(4){
-            p{
-
-                span{
-                    font-family: "苹方";
-                    font-size: .14rem;
-                    color:#3f3f3f;
-                }
-
-            }
-        }
-
 
         div:nth-last-of-type(1){
             p{
@@ -138,6 +127,148 @@
         }
 
 
+    }
+
+    .topDiv{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0;
+        .centermain{
+            background: #fff;
+            padding: .12rem;
+            width: 85%;
+            .mainhead{
+                font-size: .14rem;
+                color:#21c6cd;
+                margin-bottom: .1rem;
+            }
+            .mainbody{
+                input[type=button]{
+                    width: 100%;
+                    border:none;
+                    background: #fff;
+                    font-size: .13rem;
+                    color:#3f3f3f;
+                    height: .3rem;
+                }
+                input[type=button]:hover{
+                    background: #e8e8e8;
+                }
+            }
+            .mainfooter{
+                margin-top: .1rem;
+                padding-top: .08rem;
+                border-top: .01rem solid #f8f8f8;
+                text-align: right;
+                span{
+                    font-size: .14rem;
+                    color:#ADADAD;
+                    margin-right: .1rem;
+                }
+            }
+        }
+    }
+
+    .dateCom{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0;
+        .datemain{
+            background: #fff;
+            width: 80%;
+            box-sizing: border-box;
+            .dateheader{
+                font-size: .18rem;
+                color:#21c6cd;
+                text-align: center;
+                padding: .12rem 0;
+                border-bottom: .02rem solid #21c6cd;
+            }
+            .datewrap{
+                padding: .12rem;
+                width: 100%;
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                justify-content: space-around;
+                box-sizing: border-box;
+                .year,.month,.day{
+                    width: 30%;
+                    height: 1.56rem;
+                    overflow: hidden;
+                    position: relative;
+                    .selected{
+                        position: absolute;
+                        height: .52rem;
+                        width: 60%;
+                        left: 20%;
+                        top:.52rem;
+                        z-index:1;
+                        border-top: .01rem solid #21c6cd;
+                        border-bottom: .01rem solid #21c6cd;
+                        box-sizing: border-box;
+                    }
+                    ul{
+                        font-size: .16rem;
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        z-index:2;
+                        position: relative;
+                        li{
+                            text-align: center;
+                            list-style: none;
+                            height: .52rem;
+                            box-sizing: border-box;
+                            line-height: .52rem;
+                        }
+                    }
+                }
+            }
+            .datefooter{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                align-items: center;
+                span{
+                    font-size: .16rem;
+                    width: 50%;
+                    box-sizing: border-box;
+                    border-top: .01rem solid #d8d8d8;
+                    line-height: .5rem;
+                    text-align: center;
+                }
+                span:nth-of-type(1){
+                    border-right: .01rem solid #d8d8d8;
+                }
+            }
+        }
     }
 
 }

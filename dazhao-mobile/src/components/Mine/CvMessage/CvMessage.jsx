@@ -14,7 +14,7 @@ class CvMessage extends React.Component {
                 "id":1,
                 "title":"基本信息",
                 "experience":{
-                  "img":"/src/images/pople.png",
+                    "img":"/src/images/pople.png",
                     "resumeName":"互联网产品岗",
                     "name":"周新城",
                     "sex":"男",
@@ -80,7 +80,13 @@ class CvMessage extends React.Component {
                        "more":["带领团队完成历史一个月的比赛，期间主要负责统筹协调，合理分工，组织队员沟通讨论，协作共同完成。","自行学习营销知识，并在比赛中取得第二名的好成绩。"]
                     }
                 ]
-              }
+            },
+            schoolExpre:{
+                "id":5,
+                "title":"项目经历",
+                "experience":[]
+            }
+
         };
         this.fetchResume = this.fetchResume.bind(this);
     }
@@ -120,14 +126,16 @@ class CvMessage extends React.Component {
 
 
     render () {
-        const { basicMessage, eduexperience, practiceExpre, projectExpre } = this.state;
+        const { basicMessage, eduexperience, practiceExpre, projectExpre, schoolExpre } = this.state;
 
-        const eduMoreList = eduexperience.experience.more.map((value,i)=>{
+
+
+        const eduMore = eduexperience.experience.more?eduexperience.experience.more:[]
+        const eduMoreList = eduMore.map((value,i)=>{
             return(
                 <em key={i}>{(i+1) + "." + value}</em>
             )
         })
-
 
         const practiceList = practiceExpre.experience.map((elem,index)=>{
             const practiceDetailList = elem.practiceDetail.map((value,i)=>{
@@ -186,47 +194,56 @@ class CvMessage extends React.Component {
                             <span>基本信息</span>
                             <span><Link to={{pathname:"/edmessage",query:{resumeid:this.props.params.uid,articleid:basicMessage.id}}}>编辑</Link></span>
                         </div>
-                        <div className="cvbody">
-                            <span className="personal">
-                                <img src={basicMessage.experience.img} alt="pic" />
-                            </span>
-                            <span>
-                                <em>简历名称：</em>
-                                <em>{basicMessage.experience.resumeName}</em>
-                            </span>
-                            <span>
-                                <em>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</em>
-                                <em>{basicMessage.experience.name}</em>
-                            </span>
-                            <span>
-                                <em>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</em>
-                                <em>{basicMessage.experience.sex}</em>
-                            </span>
-                            <span>
-                                <em>最高学历：</em>
-                                <em>{basicMessage.experience.bestEducation}</em>
-                            </span>
-                            <span>
-                                <em>出生日期：</em>
-                                <em>{basicMessage.experience.birthday}</em>
-                            </span>
-                            <span>
-                                <em>联系电话：</em>
-                                <em>{basicMessage.experience.phone}</em>
-                            </span>
-                            <span>
-                                <em>联系邮箱：</em>
-                                <em>{basicMessage.experience.email}</em>
-                            </span>
-                            <span>
-                                <em>期望岗位：</em>
-                                <em>{basicMessage.experience.hopeJob}</em>
-                            </span>
-                            <span>
-                                <em>期望城市：</em>
-                                <em>{basicMessage.experience.hopeCity}</em>
-                            </span>
-                        </div>
+                        {
+                            JSON.stringify(basicMessage.experience)==='{}'?
+                            <div className="cvbody">
+                                <p className="none">
+                                    <span><img src="/src/images/add.png" /></span>
+                                    <em>添加</em>
+                                </p>
+                            </div>:
+                            <div className="cvbody">
+                                <span className="personal">
+                                    <img src={basicMessage.experience.img} alt="pic" />
+                                </span>
+                                <span>
+                                    <em>简历名称：</em>
+                                    <em>{basicMessage.experience.resumeName}</em>
+                                </span>
+                                <span>
+                                    <em>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</em>
+                                    <em>{basicMessage.experience.name}</em>
+                                </span>
+                                <span>
+                                    <em>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</em>
+                                    <em>{basicMessage.experience.sex}</em>
+                                </span>
+                                <span>
+                                    <em>最高学历：</em>
+                                    <em>{basicMessage.experience.bestEducation}</em>
+                                </span>
+                                <span>
+                                    <em>出生日期：</em>
+                                    <em>{basicMessage.experience.birthday}</em>
+                                </span>
+                                <span>
+                                    <em>联系电话：</em>
+                                    <em>{basicMessage.experience.phone}</em>
+                                </span>
+                                <span>
+                                    <em>联系邮箱：</em>
+                                    <em>{basicMessage.experience.email}</em>
+                                </span>
+                                <span>
+                                    <em>期望岗位：</em>
+                                    <em>{basicMessage.experience.hopeJob}</em>
+                                </span>
+                                <span>
+                                    <em>期望城市：</em>
+                                    <em>{basicMessage.experience.hopeCity}</em>
+                                </span>
+                            </div>
+                        }
                     </div>
 
                     <div className="cvitems">
@@ -234,29 +251,39 @@ class CvMessage extends React.Component {
                             <span>教育经历</span>
                             <span><Link to={{pathname:"/edupexp",query:{resumeid:this.props.params.uid,articleid:eduexperience.id}}}>编辑</Link></span>
                         </div>
-                        <div className="cvbody">
-                            <span>
-                                <em>学校名称：</em>
-                                <em>{eduexperience.experience.school_name}</em>
-                            </span>
-                            <span>
-                                <em>所在专业：</em>
-                                <em>{eduexperience.experience.major}</em>
-                            </span>
-                            <span>
-                                <em>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</em>
-                                <em>{eduexperience.experience.educatestage}</em>
-                            </span>
-                            <span>
-                                <em>在校时间：</em>
-                                <em>{eduexperience.experience.time}</em>
-                            </span>
-                            <span className="clearfix">
-                                <em className="lastpre">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</em>
-                                <span className="lastEm">{eduMoreList}</span>
-                            </span>
+                        
 
-                        </div>
+                        {
+                            JSON.stringify(eduexperience.experience)==='{}'?
+                            <div className="cvbody">
+                                <p className="none">
+                                    <span><img src="/src/images/add.png" /></span>
+                                    <em>添加</em>
+                                </p>
+                            </div>:
+                            <div className="cvbody">
+                                <span>
+                                    <em>学校名称：</em>
+                                    <em>{eduexperience.experience.school_name}</em>
+                                </span>
+                                <span>
+                                    <em>所在专业：</em>
+                                    <em>{eduexperience.experience.major}</em>
+                                </span>
+                                <span>
+                                    <em>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</em>
+                                    <em>{eduexperience.experience.educatestage}</em>
+                                </span>
+                                <span>
+                                    <em>在校时间：</em>
+                                    <em>{eduexperience.experience.time}</em>
+                                </span>
+                                <span className="clearfix">
+                                    <em className="lastpre">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</em>
+                                    <span className="lastEm">{eduMoreList}</span>
+                                </span>
+                            </div>
+                        }
                     </div>
 
                     <div className="cvedu cvitems">
@@ -265,7 +292,15 @@ class CvMessage extends React.Component {
                             <span><Link to={{pathname:"/practice",query:{resumeid:this.props.params.uid,articleid:practiceExpre.id}}}>编辑</Link></span>
                         </div>
 
-                        {practiceList}
+                        {
+                            practiceExpre.experience.length===0?
+                            <div className="cvbody">
+                                <p className="none">
+                                    <span><img src="/src/images/add.png" /></span>
+                                    <em>添加</em>
+                                </p>
+                            </div>:practiceList
+                        }
 
                     </div>
 
@@ -274,8 +309,15 @@ class CvMessage extends React.Component {
                             <span>项目经历</span>
                             <span>编辑</span>
                         </div>
-
-                        {projectList}
+                        {
+                            projectExpre.experience.length===0?
+                            <div className="cvbody">
+                                <p className="none">
+                                    <span><img src="/src/images/add.png" /></span>
+                                    <em>添加</em>
+                                </p>
+                            </div>:projectList
+                        }
                     </div>
 
                     <div className="cvitems cvsch">
@@ -284,12 +326,16 @@ class CvMessage extends React.Component {
                             <span>编辑</span>
                         </div>
 
-                        <div className="cvbody">
-                            <p>
-                                <span><img src="/src/images/add.png" /></span>
-                                <em>添加</em>
-                            </p>
-                        </div>
+
+                        {
+                            schoolExpre.experience.length===0?
+                            <div className="cvbody">
+                                    <p className="none">
+                                        <span><img src="/src/images/add.png" /></span>
+                                        <em>添加</em>
+                                    </p>
+                            </div>:"项目内容"
+                        }
                     </div>
 
                 </div>
