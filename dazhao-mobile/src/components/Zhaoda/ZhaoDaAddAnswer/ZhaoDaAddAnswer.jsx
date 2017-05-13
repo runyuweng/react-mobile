@@ -7,7 +7,10 @@ class ZhaoDaAddAnswer extends React.Component {
     constructor (props) {
 
         super(props);
-        this.state = {"answerContent": ""};
+        this.state = {
+            "answerContent": "",
+            "html": ""
+        };
         this.submitClick = this.submitClick.bind(this);
 
     }
@@ -15,48 +18,48 @@ class ZhaoDaAddAnswer extends React.Component {
     componentDidMount () {
 
         this.props.showBottom(false);
+        // This.refs.input.contenteditable = true;
+
+    }
+
+    addPicture () {
+
+        const html = `${String(this.state.html)}<img src = "/src/images/add.png"/>`;
+
+      // Console.log('file',this.refs.file.value);
+        this.refs.file.click();
+
+
+      // This.setState({html:html},()=>{
+      //   This.setFocus(this.refs.input);
+      // })
 
     }
 
 
     submitClick () {
 
-        if (this.refs.answer.value !== "") {
+    }
 
-            this.setState({"answerContent": this.refs.answer.value}, () => {
+    setFocus (obj) {
 
-                ajax({
-                    "url": "/zhaoda/addanswer",
-                    "method": "POST",
-                    "data": `questionId=${this.props.params.uid}&answer=${this.state.answerContent}`
-                }).then((data) => {
+        console.log(this.state.html);
+        if (window.getSelection) { // Ie11 10 9 ff safari
 
-                    console.log(data);
-                    if (data.code === "S01") {
+            obj.focus(); // 解决ff不获取焦点无法定位问题
+            var range = window.getSelection();// 创建range
 
-                        this.props.showMessage(data.message);
+            range.selectAllChildren(obj);// Range 选择obj下所有子内容
+            range.collapseToEnd();// 光标移至最后
 
-                    // 添加成功，2s后页面自动跳转
-                        setTimeout(() => {
+        } else if (document.selection) { // Ie10 9 8 7 6 5
 
-                            window.location = `/#/toquestion/${this.props.params.uid}`;
+            var range = document.selection.createRange();// 创建选择对象
+                // Var range = document.body.createTextRange();
 
-                        }, 2000);
-
-
-                    } else {
-
-                        this.props.showMessage(data.message);
-
-                    }
-
-                });
-
-            });
-
-        } else {
-
-            this.props.showMessage("请输入内容后提交");
+            range.moveToElementText(obj);// Range定位到obj
+            range.collapse(false);// 光标移至最后
+            range.select();
 
         }
 
@@ -78,9 +81,37 @@ class ZhaoDaAddAnswer extends React.Component {
                         <span onClick={this.submitClick}>提交</span>
                     </div>
                 </header>
-                <div className="answercontent">
-                    <input ref="answer" type="text" placeholder="填写回答内容" />
-                </div>
+                <input type="file" ref="file" name="file" style={{"display": "none"}} onChange={() => {
+
+                    console.log("file", this.refs.file.value);
+
+                    if (this.refs.file.value) {
+                      // Ajax获取图床地址
+                    }
+
+                }}
+                />
+
+                <div
+                    contentEditable
+                    className="answercontent"
+                    ref="input"
+                    onInput={(e) => {
+
+                        console.log(this.refs.input.innerHTML);
+                    // Console.log(e.target.value);
+                        this.setState({"html": this.refs.input.innerHTML}, () => {
+
+                            this.setFocus(this.refs.input);
+
+                        });
+
+                    }}
+                    dangerouslySetInnerHTML={{"__html": this.state.html}}
+                />
+                <footer>
+                    <img src="/src/images/icon/pic.png" onClick={() => this.addPicture()} />
+                </footer>
             </div>
         );
 

@@ -12,39 +12,39 @@ class ZhaoDaDiscover extends React.Component {
             "hotTopics": [
             ],
             "goodAnswer": [
-                {
-                    "uid": 1,
-                    "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "name": "Michal",
-                    "job": "骨灰级教练",
-                    "imgsrc": "/src/images/vip.png",
-                    "remark": 9,
-                    "agree": 14,
-                    "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "collect": false
-                },
-                {
-                    "uid": 2,
-                    "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "name": "Michal",
-                    "job": "骨灰级教练",
-                    "imgsrc": "/src/images/vip.png",
-                    "remark": 12,
-                    "agree": 14,
-                    "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "collect": false
-                },
-                {
-                    "uid": 3,
-                    "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "name": "Michal",
-                    "job": "骨灰级教练",
-                    "imgsrc": "/src/images/vip.png",
-                    "remark": 13,
-                    "agree": 14,
-                    "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "collect": false
-                }
+                // {
+                //     "uid": 1,
+                //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                //     "name": "Michal",
+                //     "job": "骨灰级教练",
+                //     "imgsrc": "/src/images/vip.png",
+                //     "remark": 9,
+                //     "agree": 14,
+                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                //     "collect": false
+                // },
+                // {
+                //     "uid": 2,
+                //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                //     "name": "Michal",
+                //     "job": "骨灰级教练",
+                //     "imgsrc": "/src/images/vip.png",
+                //     "remark": 12,
+                //     "agree": 14,
+                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                //     "collect": false
+                // },
+                // {
+                //     "uid": 3,
+                //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
+                //     "name": "Michal",
+                //     "job": "骨灰级教练",
+                //     "imgsrc": "/src/images/vip.png",
+                //     "remark": 13,
+                //     "agree": 14,
+                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
+                //     "collect": false
+                // }
             ]
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);

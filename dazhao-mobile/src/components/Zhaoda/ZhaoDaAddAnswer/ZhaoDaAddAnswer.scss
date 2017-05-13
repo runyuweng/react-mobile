@@ -31,20 +31,30 @@
         }
     }
     .answercontent{
+        border:none;
+        color:#ADADAD;
         width: 100%;
         background: #fff;
-        font-size: 0;
-        text-align: center;
-        padding: .12rem 0;
+        font-size: .13rem;
+        text-align: left;
+        padding: .12rem .2rem;
+        min-height: 5rem;
+        outline:none;
+        -webkit-user-select:text;
+        border:none;
         border-top: .01rem solid #DBDBDB;
-        input{
-            height: .32rem;
-            outline:none;
-            font-size: .13rem;
-            color:#ADADAD;
-            width: 90%;
-            text-indent: .1rem;
-            border:none;
-        }
+
+    }
+    footer{
+      display: flex;
+      flex-direction: row-reverse;
+      height: .4rem;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      border-top: .01rem solid #dbdbdb;
+      img{
+        margin-right: .1rem;
+      }
     }
 }

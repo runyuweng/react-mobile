@@ -173,7 +173,7 @@ class ZhaoDaToQuestion extends React.Component {
                     <Link to="/invitetoanswer">
                         <span>邀请回答</span>
                     </Link>
-                    <Link to={`/addanswer/${this.props.params.uid}`}>
+                    <Link to={`/addanswer/${this.props.params.qid}`}>
                         <span>添加回答</span>
                     </Link>
                 </div>
