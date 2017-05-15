@@ -17,7 +17,8 @@ class TopBar extends React.Component {
 
 
         return (
-            <div className="TopBar" style={border == "noboder" ? {"borderBottom": "none"} : {"borderBottom": "1px solid #DBDBDB"}}>
+            <div className="TopBar">
+              <div className="content"  style={border == "noboder" ? {"borderBottom": "none"} : {"borderBottom": "1px solid #DBDBDB"}}>
                 <span onClick={(e) => {
 
                     history.back();
@@ -33,6 +34,7 @@ class TopBar extends React.Component {
 
                 {img ? <span><img src={img} /></span> : ""}
             </div>
+          </div>
         );
 
     }

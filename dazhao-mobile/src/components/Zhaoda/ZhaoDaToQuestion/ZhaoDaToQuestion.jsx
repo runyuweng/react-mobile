@@ -112,7 +112,7 @@ class ZhaoDaToQuestion extends React.Component {
         return (
             <div className="ZhaoDaToQuestion">
                 <header>
-                    <TopBar title="问题" border="boder" />
+                    <TopBar title="问题" border="border" />
                 </header>
 
                 <div className="question" onClick={() => {
