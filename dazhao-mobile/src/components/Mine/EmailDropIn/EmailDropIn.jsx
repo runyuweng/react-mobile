@@ -10,7 +10,6 @@ class EmailDropIn extends React.Component {
                 {
                     "id":1,
                     "email":"Hiven@dazhao100.com",
-                    "latestStatusId":2,
                     "latestStatus":"被查看",
                     "resumeName": "互联网产品岗",
                     "date":"2016.12.30",
@@ -34,8 +33,7 @@ class EmailDropIn extends React.Component {
                 {
                     "id":2,
                     "email":"Hiven@dazhao100.com",
-                    "latestStatusId":3,
-                    "latestStatus":"通过筛选",
+                    "latestStatus":"不合格",
                     "resumeName": "互联网产品岗",
                     "date":"2016.12.30",
                     "detailStatus":[
@@ -55,18 +53,17 @@ class EmailDropIn extends React.Component {
                         },
                         {
                             "statusid":3,
-                            "statusmessage":"通过筛选",
+                            "statusmessage":"初步筛选未通过",
                             "date":"2016.12.30",
                             "time":"10:54:01",
-                            "done":true
+                            "done":false
                         }
                     ]
                 },
                 {
                     "id":3,
                     "email":"Hiven@dazhao100.com",
-                    "latestStatusId":5,
-                    "latestStatus":"面试通过",
+                    "latestStatus":"不合格",
                     "resumeName": "互联网产品岗",
                     "date":"2016.12.30",
                     "detailStatus":[
@@ -100,10 +97,10 @@ class EmailDropIn extends React.Component {
                         },
                         {
                             "statusid":5,
-                            "statusmessage":"面试结果",
+                            "statusmessage":"面试通过",
                             "date":"2016.12.30",
                             "time":"10:54:08",
-                            "done":true
+                            "done":false
                         }
                     ]
                 }
@@ -139,7 +136,7 @@ class EmailDropIn extends React.Component {
     }
 
     fetchEmailDropIn(){
-        ajax({"url":'/zhaoda/emaildropin'}).
+        ajax({"url":'/emaildropin'}).
         then((data)=>{
             if(data.code==="S01"){
                 const emailDropIns = data.contents;
@@ -162,9 +159,10 @@ class EmailDropIn extends React.Component {
         const emailDropInsList = emailDropIns.map((elem,index)=>{
             const stageList = elem.detailStatus.map((value,i)=>{
                 return(
-                    i===elem.detailStatus.length-1?
-                    <span key={i}>{value.statusmessage}</span>:
-                    <span key={i} className="active">{value.statusmessage}<em /></span>
+                    value.done?
+                    (i===0?
+                    <span key={i} className="active">{value.statusmessage}</span>:
+                    <span key={i} className="active"><em />{value.statusmessage}</span>):""
                 )
             });
             const detailStageList = elem.detailStatus.map((value,i)=>{
@@ -177,7 +175,7 @@ class EmailDropIn extends React.Component {
                             <em />
                         </div>
                         <div className="dropincon">
-                            <p>{num===0?"企业已接收到您投递的简历":num===1?"对方已查看您的简历":num===2?"您已通过初步筛选":num===3?"已发送面试邀请":num===4?"您已通过面试，注意接收下一步通知":""}</p>
+                            <p>{num===0?"企业已接收到您投递的简历":num===1?"对方已查看您的简历":num===2?(!value.done?"您已通过初步筛选":"您的初选未通过"):num===3?"已发送面试邀请":num===4?(!value.done?"您已通过面试，注意接收下一步通知":"面试不合格"):""}</p>
                             <time>{value.date}<em />{value.time}</time>
                         </div>
                     </div>
@@ -195,7 +193,7 @@ class EmailDropIn extends React.Component {
                         {
                             elem.isShowall?
                             <div className="dropinmain">
-                                <div className="dropinhead active">
+                                <div className="dropinhead">
                                     {stageList}
                                 </div>
                                 <div className="dropinwrap">

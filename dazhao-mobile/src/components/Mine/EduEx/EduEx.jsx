@@ -1,11 +1,65 @@
 import React from "react";
 import "./EduEx.scss";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax.js";
 
 class EduEx extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            eduexperience:{
+              "school_name":"山东大学",
+              "major":"机械设计制造及自动化",
+              "educatestage":"本科",
+              "time":"2013-09至2017-06",
+              "more":["成绩排名优异、GPA优秀可以展示","主要课程：在其他经理比较少的情况下可以选择展示3-4门课程"]
+            }
+        };
+        this.fetchEduexperience = this.fetchEduexperience.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
 
+    componentDidMount() {
+        this.fetchEduexperience();
+    }
+
+    fetchEduexperience(){
+        ajax({"url":`/eduexperience?resumeid=${this.props.location.query.resumeid}&articleid=${this.props.location.query.articleid}`}).
+        then((data)=>{
+            if (data.code==='S01') {
+                const eduexperience = data.contents;
+                this.setState({
+                    eduexperience:eduexperience
+                })
+            }else if (data.code==='E01') {
+                this.setState({
+                    eduexperience:{}
+                })
+            }
+        })
+    }
+
+    handleChange(e){
+        console.log(e.target.name)
+        let eduexperience = JSON.parse(JSON.stringify(this.state)).eduexperience;
+        if(e.target.name==="school_name"){
+            Object.assign(eduexperience,{"school_name":e.target.value});
+        }else if (e.target.name==="major") {
+            Object.assign(eduexperience,{"major":e.target.value});
+        }
+        this.setState({
+            eduexperience:eduexperience
+        })
+    }
 
     render () {
+        const { eduexperience } = this.state;
+
+        const moreList = eduexperience.more.map((value,i)=>{
+            return(
+                <em key={i}>{(i+1) + ". " + value}</em>
+            )
+        })
 
         return (
             <div className="EduEx">
@@ -27,37 +81,39 @@ class EduEx extends React.Component {
                     <div>
                         <em>学校名称</em>
                         <p>
-                            <span>互联网产品岗</span>
+                            {/*<span>{eduexperience.school_name}</span>*/}
+                            <input type="text" value={this.state.eduexperience.school_name} name="school_name" onChange={this.handleChange}/>
+
                         </p>
                     </div>
 
                     <div>
-                        <em>姓名</em>
+                        <em>所学专业</em>
                         <p>
-                            <span>周新城</span>
+                            {/*<span>{eduexperience.major}</span>*/}
+                            <input type="text" value={this.state.eduexperience.major} name="major" onChange={this.handleChange}/>
                         </p>
                     </div>
 
                     <div>
-                        <em>性别</em>
+                        <em>学历</em>
                         <p>
-                            <span>男</span>
+                            <span>{eduexperience.educatestage}</span>
                         </p>
                     </div>
 
                     <div>
                         <em>在校时间</em>
                         <p>
-                            <span>最高学历</span>
+                            <span>{eduexperience.time}</span>
                         </p>
                     </div>
 
                     <div>
                         <em>备注</em>
                         <p>
-                            <span>示例：</span><br />
-                            <span>                  1.成绩排名优异、GPA优秀可以展示<br />
-                  2.主要课程：在其他经理比较少的情况下可以选择展示3-4门课程</span>
+                            <span>示例：</span>
+                            <span>{moreList}</span>
                         </p>
                     </div>
 

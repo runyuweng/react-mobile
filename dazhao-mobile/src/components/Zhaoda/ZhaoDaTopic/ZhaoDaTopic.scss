@@ -1,4 +1,5 @@
 .ZhaoDaTopic{
+  margin-bottom: .72rem;
   .top{
     background: #fff;
     position: relative;
@@ -56,11 +57,14 @@
         display: -o-flex;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items:center;
         a{
           display: inline-block;
           width:33%;
+        }
+        a:nth-of-type(3n-1){
+          margin: 0 0.5%;
         }
         .item{
           font-size:0rem;
@@ -90,6 +94,14 @@
             position:absolute;
             bottom:10%;
             left: 0;
+          }
+          span:nth-last-of-type(1){
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
           }
         }
     }

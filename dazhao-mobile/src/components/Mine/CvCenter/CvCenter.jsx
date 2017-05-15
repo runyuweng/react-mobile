@@ -2,6 +2,7 @@ import React from "react";
 import "./CvCenter.scss";
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax.js";
 
 
 class CvCenter extends React.Component {
@@ -13,14 +14,16 @@ class CvCenter extends React.Component {
             "showdialog": false,
             "onlineResume": [
                 {
-                    "jobposition": "互联网产品岗",
-                    "prodeuctcategory": "互联网产品",
-                    "add": "上海市"
+                    "id":1,
+                    "resume_name": "互联网产品岗",
+                    "jobcategory": "互联网产品",
+                    "city": "上海市"
                 },
                 {
-                    "jobposition": "互联网产品岗",
-                    "prodeuctcategory": "互联网产品",
-                    "add": "上海市"
+                    "id":2,
+                    "resume_name": "互联网产品岗",
+                    "jobcategory": "互联网产品",
+                    "city": "上海市"
                 }
             ],
             "deleteIndex": null
@@ -28,6 +31,7 @@ class CvCenter extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.cancleClick = this.cancleClick.bind(this);
         this.deleteClick = this.deleteClick.bind(this);
+        this.fetchOnlineResume = this.fetchOnlineResume.bind(this);
 
     }
 
@@ -68,7 +72,25 @@ class CvCenter extends React.Component {
     componentDidMount () {
 
         this.props.showBottom();
+        this.fetchOnlineResume();
+    }
 
+    fetchOnlineResume(){
+        ajax({"url":'/onlineresume'}).
+        then((data)=>{
+            if(data.code==="S01"){
+                const onlineResume = data.contents;
+                this.setState({
+                    onlineResume:onlineResume
+                })
+            }else if (data.code==="S02") {
+                
+            }else{
+                this.setState({
+                    onlineResume:this.state.onlineResume
+                })
+            }
+        })
     }
 
     render () {
@@ -77,11 +99,11 @@ class CvCenter extends React.Component {
         const onlineResumeList = onlineResume.map((elem, index) =>
             <div className="cvitems" key={index}>
                 <div className="cvleft">
-                    <span>{elem.jobposition}</span>
-                    <span>{elem.prodeuctcategory}<em>{elem.add}</em></span>
+                    <span>{elem.resume_name}</span>
+                    <span>{elem.jobcategory}<em>{elem.city}</em></span>
                 </div>
                 <span className="cvright">
-                    <Link to="/cvmessage"><em>编辑</em></Link>
+                    <Link to={`/cvmessage/${elem.id}`}><em>编辑</em></Link>
                     <em onClick={this.handleClick.bind(this, `${index}`)}>删除</em>
                 </span>
             </div>

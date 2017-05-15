@@ -110,7 +110,8 @@ class ZhaoDaIndex extends React.Component {
             ],
             "nowshow": 0,
             "getmore": false,
-            "latestDynamicPage": 1
+            "latestDynamicPage": 1,
+            "nomore":false
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -211,7 +212,10 @@ class ZhaoDaIndex extends React.Component {
 
           } else {
 
-              this.setState({"getmore": true});
+            this.setState({
+                "getmore": true,
+                "nomore":true
+            });
 
           }
 
@@ -374,7 +378,7 @@ class ZhaoDaIndex extends React.Component {
 
     render () {
 
-        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore} = this.state;
+        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore} = this.state;
 
 
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
@@ -440,17 +444,20 @@ class ZhaoDaIndex extends React.Component {
                     </div>
                 </div>
                 <div id="latest">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>最新动态
-                </div>
+                    <div className="title"><span><img src="/src/images/latest.png" /></span>最新动态</div>
 
                     {AnswerMainList}
 
-                    <div className="Formore" onClick={() => {
+                    {
+                        nomore ? "" :
+                        <div className="Formore" onClick={() => {
 
-                        this.getMore();
+                            this.getMore();
 
-                    }}
-                    >{ !getmore ? <LoadingMore /> : "加载更多" }</div>
+                        }}
+                        >{ !getmore ? <LoadingMore /> : "加载更多" }</div>
+                    }
+                    {nomore ? <p className="nomore">没有更多了...</p> : ""}
                 </div>
 
                 <div id="moreTopic">

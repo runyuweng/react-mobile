@@ -1,4 +1,5 @@
 .Practice{
+    margin-bottom: .72rem;
     .TopBar{
       background: #fff;
       position: relative;
@@ -23,7 +24,7 @@
         position: absolute;
         right: .2rem;
         font-size: .16rem;
-        color:#FFD112;
+        color:#21c6cd;
         line-height: .45rem;
       }
     }
@@ -84,6 +85,12 @@
                 padding-right: .16rem;
                 span{
                     line-height: .24rem;
+                    display: block;
+                    em{
+                        display: block;
+                        width: 100%;
+                        padding: 0;
+                    }
                 }
 
             }
