@@ -27,16 +27,15 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     }
 
-    handleFile(){
-      // console.log(this.refs.file.files.item(0));
-      // console.log(this.state.html);
-      // console.log(window.URL.createObjectURL(this.refs.file.files.item(0)));
-      this.setState({
-          html:`${this.refs.input.innerHTML}<img src="${window.URL.createObjectURL(this.refs.file.files[0])}"/>`
-      })
-      this.refs.file.value = "";
-      // ajax({file:this.refs.file,fileUrl:'http://upload.qiniu.com/'}).then((data)=>{
-      //   console.log(data);
+    handleFile () {
+
+      // Console.log(this.refs.file.files.item(0));
+      // Console.log(this.state.html);
+      // Console.log(window.URL.createObjectURL(this.refs.file.files.item(0)));
+        this.setState({"html": `${this.refs.input.innerHTML}<img src="${window.URL.createObjectURL(this.refs.file.files[0])}"/>`});
+        this.refs.file.value = "";
+      // Ajax({file:this.refs.file,fileUrl:'http://upload.qiniu.com/'}).then((data)=>{
+      //   Console.log(data);
       // })
 
 
@@ -49,7 +48,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     setFocus (obj) {
 
-        // console.log(this.state.html);
+        // Console.log(this.state.html);
         if (window.getSelection) { // Ie11 10 9 ff safari
 
             obj.focus(); // 解决ff不获取焦点无法定位问题
@@ -87,7 +86,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
                         <span onClick={this.submitClick}>提交</span>
                     </div>
                 </header>
-                <input name="file" type="file" ref="file" style={{"display": "none"}} onChange={() => this.handleFile()}/>
+                <input name="file" type="file" ref="file" style={{"display": "none"}} onChange={() => this.handleFile()} />
 
                 <div
                     contentEditable

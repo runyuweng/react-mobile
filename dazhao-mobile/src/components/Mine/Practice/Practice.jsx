@@ -4,64 +4,74 @@ import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 
 class Practice extends React.Component {
-    constructor(props){
+    constructor (props) {
+
         super(props);
         this.state = {
-            practiceExpre:[
-              {
-                  "uid":1,
-                  "entrydate":"2014.07",
-                  "leavedate":"2014-09",
-                  "company_name":"德勤华永会计师事务所",
-                  "job":"企业风险服务部实习生",
-                  "city":"上海",
-                  "practiceDetail":["简明扼要，尽可能用专业化的词语写出工作职责，但不要将其夸大","要用点句，以形动词开始，三到五句为佳，避免大段文字","突出重点，工作成就宜精确化、数字化，切勿写在公司感受","根据目标职位需要的能力，有针对性的挑选内容"]
-              },
-              {
-                  "uid":2,
-                  "entrydate":"2014.07",
-                  "leavedate":"2014-09",
-                  "company_name":"科尔尼(上海)企业咨询有限公司",
-                  "job":"咨询师助理",
-                  "city":"上海",
-                  "practiceDetail":["简明扼要，尽可能用专业化的词语写出工作职责，但不要将其夸大","要用点句，以形动词开始，三到五句为佳，避免大段文字","突出重点，工作成就宜精确化、数字化，切勿写在公司感受","根据目标职位需要的能力，有针对性的挑选内容"]
-              }
-          ]
+            "practiceExpre": [
+                {
+                    "uid": 1,
+                    "entrydate": "2014.07",
+                    "leavedate": "2014-09",
+                    "company_name": "德勤华永会计师事务所",
+                    "job": "企业风险服务部实习生",
+                    "city": "上海",
+                    "practiceDetail": ["简明扼要，尽可能用专业化的词语写出工作职责，但不要将其夸大", "要用点句，以形动词开始，三到五句为佳，避免大段文字", "突出重点，工作成就宜精确化、数字化，切勿写在公司感受", "根据目标职位需要的能力，有针对性的挑选内容"]
+                },
+                {
+                    "uid": 2,
+                    "entrydate": "2014.07",
+                    "leavedate": "2014-09",
+                    "company_name": "科尔尼(上海)企业咨询有限公司",
+                    "job": "咨询师助理",
+                    "city": "上海",
+                    "practiceDetail": ["简明扼要，尽可能用专业化的词语写出工作职责，但不要将其夸大", "要用点句，以形动词开始，三到五句为佳，避免大段文字", "突出重点，工作成就宜精确化、数字化，切勿写在公司感受", "根据目标职位需要的能力，有针对性的挑选内容"]
+                }
+            ]
         };
-        this.fetchPracticeExpre = this.fetchPracticeExpre.bind(this)
+        this.fetchPracticeExpre = this.fetchPracticeExpre.bind(this);
+
     }
 
-    componentDidMount() {
+    componentDidMount () {
+
         this.fetchPracticeExpre();
-        console.log(this.props.location.query)
+
     }
 
-    fetchPracticeExpre(){
-        ajax({"url":`/basicmessage?resumeid=${this.props.location.query.resumeid}&articleid=${this.props.location.query.articleid}`}).
-        then((data)=>{
-            if (data.code==='S01') {
+    fetchPracticeExpre () {
+
+        ajax({"url": `/basicmessage?resumeid=${this.props.location.query.resumeid}&articleid=${this.props.location.query.articleid}`}).
+        then((data) => {
+
+            if (data.code === "S01") {
+
                 const practiceExpre = data.contents;
-                this.setState({
-                    practiceExpre:practiceExpre
-                })
-            }else if (data.code==='E01') {
-                this.setState({
-                    practiceExpre:[]
-                })
+
+                this.setState({practiceExpre});
+
+            } else if (data.code === "E01") {
+
+                this.setState({"practiceExpre": []});
+
             }
-        })
+
+        });
+
     }
 
     render () {
-        const { practiceExpre } = this.state;
 
-        const practiceExpreList = practiceExpre.map((value,i)=>{
-            const practiceDetailList = value.practiceDetail.map((elem,index)=>{
-                return(
-                    <em key={index}>{(index+1)+"、"+elem}</em>
-                )
-            })
-            return(
+        const {practiceExpre} = this.state;
+
+        const practiceExpreList = practiceExpre.map((value, i) => {
+
+            const practiceDetailList = value.practiceDetail.map((elem, index) =>
+                <em key={index}>{`${index + 1}、${elem}`}</em>
+                );
+
+
+            return (
                 <div key={i} className="edititems">
 
                     <div>
@@ -108,8 +118,9 @@ class Practice extends React.Component {
                     </div>
 
                 </div>
-            )
-        })
+            );
+
+        });
 
         return (
             <div className="Practice">

@@ -8,59 +8,67 @@ class FavoriteJobs extends React.Component {
 
         super(props);
         this.state = {
-            page:1,
+            "page": 1,
             "jobs": [
                 {
-                  "job_id":"0",
-                  "job_name":"JAVA研发工程师",
-                  "education":"本科",
-                  "company":{
-                    "name":"阿里巴巴网络技术有限公司",
-                    "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
-                    "city":"上海",
-                    "type":"互联网",
-                    "stage":"上市",
-                    "numbers":"100人以上"
-                  }   
+                    "job_id": "0",
+                    "job_name": "JAVA研发工程师",
+                    "education": "本科",
+                    "company": {
+                        "name": "阿里巴巴网络技术有限公司",
+                        "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
+                        "city": "上海",
+                        "type": "互联网",
+                        "stage": "上市",
+                        "numbers": "100人以上"
+                    }
                 },
                 {
-                  "job_id":"1",
-                  "job_name":"JAVA研发工程师",
-                  "education":"本科",
-                  "company":{
-                    "name":"阿里巴巴网络技术有限公司",
-                    "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
-                    "city":"上海",
-                    "type":"互联网",
-                    "stage":"上市",
-                    "numbers":"100人以上"
-                  }     
+                    "job_id": "1",
+                    "job_name": "JAVA研发工程师",
+                    "education": "本科",
+                    "company": {
+                        "name": "阿里巴巴网络技术有限公司",
+                        "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
+                        "city": "上海",
+                        "type": "互联网",
+                        "stage": "上市",
+                        "numbers": "100人以上"
+                    }
                 }
             ]
         };
         this.fetchCollectionJobs = this.fetchCollectionJobs.bind(this);
+
     }
 
-    componentDidMount() {
+    componentDidMount () {
+
         this.fetchCollectionJobs(this.state.page);
+
     }
 
-    fetchCollectionJobs(page){
-        ajax({"url":`/collectionposts?page=${page}`}).
-        then((data)=>{
-            if(data.code==="S01"){
+    fetchCollectionJobs (page) {
+
+        ajax({"url": `/collectionposts?page=${page}`}).
+        then((data) => {
+
+            if (data.code === "S01") {
+
                 const jobs = data.contents;
-                this.setState({
-                    jobs:this.state.jobs.push(jobs)
-                })
-            }else if (data.code==="S02") {
-                
-            }else{
-                this.setState({
-                    jobs:this.state.jobs
-                })
+
+                this.setState({"jobs": this.state.jobs.push(jobs)});
+
+            } else if (data.code === "S02") {
+
+            } else {
+
+                this.setState({"jobs": this.state.jobs});
+
             }
-        })
+
+        });
+
     }
 
     render () {

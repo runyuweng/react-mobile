@@ -63,7 +63,6 @@ class JobDetail extends React.Component {
 
         const {data} = this.state;
 
-        console.log(data)
 
         const jobs = data.similarJobs.map((value, i) =>
             <Link to={`/jobdetail/${value.jobid}`} key={i}>

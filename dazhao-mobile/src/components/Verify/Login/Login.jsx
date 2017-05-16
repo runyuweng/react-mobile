@@ -4,6 +4,7 @@ import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 import {verifyTel} from "../../../services/tools";
 import ajax from "../../../services/ajax";
+import {hashHistory} from "react-router";
 
 class Login extends React.Component {
     constructor (props) {
@@ -33,6 +34,10 @@ class Login extends React.Component {
           if (data.code === "S01") {
 
               this.props.showMessage("登录成功");
+              hashHistory.push({
+                  "pathname": "mine",
+                  "query": {}
+              });
 
           } else {
 

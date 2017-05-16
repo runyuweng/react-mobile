@@ -158,7 +158,7 @@ class Home extends React.Component {
 
 
         const {search, jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
-        console.log(jobs)
+
         const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
 
             <div className="jobitems" key={i}>

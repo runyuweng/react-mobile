@@ -65,19 +65,16 @@ class ZhaoDaDiscover extends React.Component {
     // 热门话题
     fetchHotTopic () {
 
-        console.log("start fetch");
 
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).
         then((data) => {
 
-            console.log(data);
 
             if (data.code === "S01") {
 
                 // 查询成功
                 const hotTopic = data.contents.slice(0, 10);
 
-                console.log("hotTopic", hotTopic);
 
                 this.setState({"hotTopics": hotTopic});
 

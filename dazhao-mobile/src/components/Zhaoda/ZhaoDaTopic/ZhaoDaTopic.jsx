@@ -33,8 +33,6 @@ class ZhaoDaTopic extends React.Component {
         ajax({"url": "/zhaoda/topic/topiccategory"}).
         then((data) => {
 
-            console.log(data);
-
             this.setState({"topicCategory": data.contents});
 
         });
@@ -150,7 +148,6 @@ class ZhaoDaTopic extends React.Component {
 
         const {topicCategory, topics, active} = this.state;
 
-        console.log(topics);
         const topicCategoryList = topicCategory.map((elem, index) => <li onClick={this.topicClick.bind(this, index, elem.id)} className={active == index ? "active" : ""} key={index}>{elem.topictypename}</li>);
         const topicsList = topics.map((elem, index) =>
             <Link to={`/totopic/${elem.tid}`} key={index}>

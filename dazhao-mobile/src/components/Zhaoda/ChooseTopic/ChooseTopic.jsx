@@ -1,6 +1,8 @@
 import React from "react";
 import "./ChooseTopic.scss";
 import ajax from "../../../services/ajax.js";
+import {hashHistory} from "react-router";
+
 
 class ChooseTopic extends React.Component {
 
@@ -62,8 +64,6 @@ class ChooseTopic extends React.Component {
 
     selectClick (index, uid) {
 
-        console.log(uid);
-
         const specialists = JSON.parse(JSON.stringify(this.state)).specialists;
 
         let selected = JSON.parse(JSON.stringify(this.state)).invited;
@@ -86,10 +86,6 @@ class ChooseTopic extends React.Component {
         this.setState({
             specialists,
             "invited": selected
-        }, () => {
-
-            console.log("ssss", this.state.invited);
-
         });
 
     }
@@ -139,7 +135,6 @@ class ChooseTopic extends React.Component {
                     }).
                 then((data) => {
 
-                    console.log(data);
                     const newData = [];
 
                     data.contents.map((value, i) => {
@@ -167,11 +162,6 @@ class ChooseTopic extends React.Component {
 
     handleClick (args, value, id) {
 
-        console.log(value);
-        console.log(id);
-        console.log(this.state.choosedtopic);
-        console.log(this.state.choosedid);
-
         const choosedtopic = JSON.parse(JSON.stringify(this.state)).choosedtopic;
         const choosedid = JSON.parse(JSON.stringify(this.state)).choosedid;
         const topics = JSON.parse(JSON.stringify(this.state)).topics;
@@ -194,17 +184,25 @@ class ChooseTopic extends React.Component {
 
     handleInvite () {
 
-        console.log(this.props);
         if (this.state.invited.length > 0) {
 
             ajax({
-                "url": "/inviteAnswer",
+                "url": "/zhaoda/question/inviteanswer",
                 "method": "POST",
-                "data": `id=[${this.state.invited.join(",")}]`
+                "data": `id=${this.state.invited.join(",")}`
             }).
         then((data) => {
 
-            console.log(data);
+            if (data.code === "S01") {
+
+                this.props.showMessage("邀请成功");
+                hashHistory.push({
+                    "pathname": "Zhaoda",
+                    "query": {}
+                });
+
+            }
+
 
         });
 
@@ -225,7 +223,6 @@ class ChooseTopic extends React.Component {
                 ajax({"url": `/zhaoda/topic/similartopic?topicname=${this.state.title}`}).
           then((data) => {
 
-              console.log(data);
               if (data.contents) {
 
                   const newData = JSON.parse(JSON.stringify(data.contents));

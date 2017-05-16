@@ -14,13 +14,13 @@ class CvCenter extends React.Component {
             "showdialog": false,
             "onlineResume": [
                 {
-                    "id":1,
+                    "id": 1,
                     "resume_name": "互联网产品岗",
                     "jobcategory": "互联网产品",
                     "city": "上海市"
                 },
                 {
-                    "id":2,
+                    "id": 2,
                     "resume_name": "互联网产品岗",
                     "jobcategory": "互联网产品",
                     "city": "上海市"
@@ -42,7 +42,6 @@ class CvCenter extends React.Component {
             "deleteIndex": args
         }, () => {
 
-            console.log(this.state.showdialog);
             this.state.showdialog ? this.refs.deleteModal.addEventListener("touchmove", (e) => {
 
                 e.preventDefault();
@@ -73,24 +72,30 @@ class CvCenter extends React.Component {
 
         this.props.showBottom();
         this.fetchOnlineResume();
+
     }
 
-    fetchOnlineResume(){
-        ajax({"url":'/onlineresume'}).
-        then((data)=>{
-            if(data.code==="S01"){
+    fetchOnlineResume () {
+
+        ajax({"url": "/onlineresume"}).
+        then((data) => {
+
+            if (data.code === "S01") {
+
                 const onlineResume = data.contents;
-                this.setState({
-                    onlineResume:onlineResume
-                })
-            }else if (data.code==="S02") {
-                
-            }else{
-                this.setState({
-                    onlineResume:this.state.onlineResume
-                })
+
+                this.setState({onlineResume});
+
+            } else if (data.code === "S02") {
+
+            } else {
+
+                this.setState({"onlineResume": this.state.onlineResume});
+
             }
-        })
+
+        });
+
     }
 
     render () {

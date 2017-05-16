@@ -16,7 +16,7 @@ class ZhaoDaToQuestion extends React.Component {
             "question": {},
             "otherAnswers": [],
             "stretch": false,
-            "showshadow":true
+            "showshadow": true
         };
 
         this.stretchClick = this.stretchClick.bind(this);
@@ -40,9 +40,6 @@ class ZhaoDaToQuestion extends React.Component {
 
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
-
-          console.log(data);
-
 
           const newQ = {
               "qid": data.contents.qid,
@@ -73,11 +70,12 @@ class ZhaoDaToQuestion extends React.Component {
           this.setState({
               "question": newQ,
               "otherAnswers": newOtherAnswers
-          },()=>{
-              const showshadow = (newQ.authorAnswer.length < this.refs.carecontent.clientWidth/14*2) ? false : true;
-              this.setState({
-                "showshadow":showshadow
-              })
+          }, () => {
+
+              const showshadow = !(newQ.authorAnswer.length < this.refs.carecontent.clientWidth / 14 * 2);
+
+              this.setState({showshadow});
+
           });
 
       });
@@ -128,14 +126,14 @@ class ZhaoDaToQuestion extends React.Component {
                 <div className="careTopic">
                     <span className="caretitle">{question.title}</span>
                     <div className="caremain">
-                        <span ref="carecontent" className="carecontent" style={{"height": this.state.showshadow ? (this.state.stretch ? "auto" : ".8rem"):"auto"}}>
+                        <span ref="carecontent" className="carecontent" style={{"height": this.state.showshadow ? this.state.stretch ? "auto" : ".8rem" : "auto"}}>
                             {question.authorAnswer}
-                            {this.state.showshadow?(!this.state.stretch ? <span className="shade" /> : ""):""}
+                            {this.state.showshadow ? !this.state.stretch ? <span className="shade" /> : "" : ""}
                         </span>
                         {
-                            this.state.showshadow?
-                            (!this.state.stretch
-                                ? <span className="strech" onClick={this.stretchClick}>展开查看全部<span><img src="/src/images/down.png" /></span></span> : ""):""
+                            this.state.showshadow
+                            ? !this.state.stretch
+                                ? <span className="strech" onClick={this.stretchClick}>展开查看全部<span><img src="/src/images/down.png" /></span></span> : "" : ""
                         }
                         <div className="bottom clearfix">
                             <div className="left">

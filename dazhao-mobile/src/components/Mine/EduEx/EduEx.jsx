@@ -4,62 +4,74 @@ import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 
 class EduEx extends React.Component {
-    constructor(props){
+    constructor (props) {
+
         super(props);
         this.state = {
-            eduexperience:{
-              "school_name":"山东大学",
-              "major":"机械设计制造及自动化",
-              "educatestage":"本科",
-              "time":"2013-09至2017-06",
-              "more":["成绩排名优异、GPA优秀可以展示","主要课程：在其他经理比较少的情况下可以选择展示3-4门课程"]
+            "eduexperience": {
+                "school_name": "山东大学",
+                "major": "机械设计制造及自动化",
+                "educatestage": "本科",
+                "time": "2013-09至2017-06",
+                "more": ["成绩排名优异、GPA优秀可以展示", "主要课程：在其他经理比较少的情况下可以选择展示3-4门课程"]
             }
         };
         this.fetchEduexperience = this.fetchEduexperience.bind(this);
         this.handleChange = this.handleChange.bind(this);
+
     }
 
-    componentDidMount() {
+    componentDidMount () {
+
         this.fetchEduexperience();
+
     }
 
-    fetchEduexperience(){
-        ajax({"url":`/eduexperience?resumeid=${this.props.location.query.resumeid}&articleid=${this.props.location.query.articleid}`}).
-        then((data)=>{
-            if (data.code==='S01') {
+    fetchEduexperience () {
+
+        ajax({"url": `/eduexperience?resumeid=${this.props.location.query.resumeid}&articleid=${this.props.location.query.articleid}`}).
+        then((data) => {
+
+            if (data.code === "S01") {
+
                 const eduexperience = data.contents;
-                this.setState({
-                    eduexperience:eduexperience
-                })
-            }else if (data.code==='E01') {
-                this.setState({
-                    eduexperience:{}
-                })
+
+                this.setState({eduexperience});
+
+            } else if (data.code === "E01") {
+
+                this.setState({"eduexperience": {}});
+
             }
-        })
+
+        });
+
     }
 
-    handleChange(e){
-        console.log(e.target.name)
-        let eduexperience = JSON.parse(JSON.stringify(this.state)).eduexperience;
-        if(e.target.name==="school_name"){
-            Object.assign(eduexperience,{"school_name":e.target.value});
-        }else if (e.target.name==="major") {
-            Object.assign(eduexperience,{"major":e.target.value});
+    handleChange (e) {
+
+        const eduexperience = JSON.parse(JSON.stringify(this.state)).eduexperience;
+
+        if (e.target.name === "school_name") {
+
+            Object.assign(eduexperience, {"school_name": e.target.value});
+
+        } else if (e.target.name === "major") {
+
+            Object.assign(eduexperience, {"major": e.target.value});
+
         }
-        this.setState({
-            eduexperience:eduexperience
-        })
+        this.setState({eduexperience});
+
     }
 
     render () {
-        const { eduexperience } = this.state;
 
-        const moreList = eduexperience.more.map((value,i)=>{
-            return(
-                <em key={i}>{(i+1) + ". " + value}</em>
-            )
-        })
+        const {eduexperience} = this.state;
+
+        const moreList = eduexperience.more.map((value, i) =>
+            <em key={i}>{`${i + 1}. ${value}`}</em>
+            );
 
         return (
             <div className="EduEx">
@@ -81,8 +93,8 @@ class EduEx extends React.Component {
                     <div>
                         <em>学校名称</em>
                         <p>
-                            {/*<span>{eduexperience.school_name}</span>*/}
-                            <input type="text" value={this.state.eduexperience.school_name} name="school_name" onChange={this.handleChange}/>
+                            {/* <span>{eduexperience.school_name}</span>*/}
+                            <input type="text" value={this.state.eduexperience.school_name} name="school_name" onChange={this.handleChange} />
 
                         </p>
                     </div>
@@ -90,8 +102,8 @@ class EduEx extends React.Component {
                     <div>
                         <em>所学专业</em>
                         <p>
-                            {/*<span>{eduexperience.major}</span>*/}
-                            <input type="text" value={this.state.eduexperience.major} name="major" onChange={this.handleChange}/>
+                            {/* <span>{eduexperience.major}</span>*/}
+                            <input type="text" value={this.state.eduexperience.major} name="major" onChange={this.handleChange} />
                         </p>
                     </div>
 

@@ -1,4 +1,5 @@
 import {setCookie,getCookie,delCookie} from './tools.js'
+import { hashHistory} from "react-router";
 
 export default function ajax(options) {
 
@@ -50,6 +51,17 @@ export default function ajax(options) {
           if(xhr.getResponseHeader("token")){
             setCookie("token",xhr.getResponseHeader("token"));
           }
+        },
+        verify:()=>{
+          const data = JSON.parse(xhr.responseText);
+          if(data.code === "E03"){
+            hashHistory.push({
+                pathname: 'tologin',
+                query: {}
+            })
+          }else{
+            return JSON.parse(xhr.responseText)
+          }
         }
     }
 
@@ -62,7 +74,7 @@ export default function ajax(options) {
         return new Promise(
             function(resolve, reject) {
                 tool.setToken();
-                resolve(JSON.parse(xhr.responseText))
+                resolve(tool.verify())
             }
         );
     } else {
@@ -71,7 +83,7 @@ export default function ajax(options) {
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         tool.setToken();
-                        resolve(JSON.parse(xhr.responseText));
+                        resolve(tool.verify());
                     }
                 }
                 tool.sendXhr();

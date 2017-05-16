@@ -111,7 +111,7 @@ class ZhaoDaIndex extends React.Component {
             "nowshow": 0,
             "getmore": false,
             "latestDynamicPage": 1,
-            "nomore":false
+            "nomore": false
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -184,7 +184,6 @@ class ZhaoDaIndex extends React.Component {
         ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
       then((data) => {
 
-          console.log(data);
 
           if (data.contents.length > 0) {
 
@@ -212,10 +211,10 @@ class ZhaoDaIndex extends React.Component {
 
           } else {
 
-            this.setState({
-                "getmore": true,
-                "nomore":true
-            });
+              this.setState({
+                  "getmore": true,
+                  "nomore": true
+              });
 
           }
 
@@ -449,13 +448,13 @@ class ZhaoDaIndex extends React.Component {
                     {AnswerMainList}
 
                     {
-                        nomore ? "" :
-                        <div className="Formore" onClick={() => {
+                        nomore ? ""
+                        : <div className="Formore" onClick={() => {
 
                             this.getMore();
 
                         }}
-                        >{ !getmore ? <LoadingMore /> : "加载更多" }</div>
+                          >{ !getmore ? <LoadingMore /> : "加载更多" }</div>
                     }
                     {nomore ? <p className="nomore">没有更多了...</p> : ""}
                 </div>

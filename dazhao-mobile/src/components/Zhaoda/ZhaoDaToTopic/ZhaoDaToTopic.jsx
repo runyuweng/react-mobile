@@ -73,8 +73,6 @@ class ZhaoDaToTopic extends React.Component {
         ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=1`}).
       then((data) => {
 
-          console.log(data);
-
           const newQ = {};
 
           newQ.topicTitle = data.contents.topicname;
@@ -109,8 +107,6 @@ class ZhaoDaToTopic extends React.Component {
     render () {
 
         const {topicdetail} = this.state;
-
-        console.log("questions", topicdetail.questions);
 
         const questionsList = topicdetail.questions.map((value, i) =>
             <AnswerMain isTopic="0" key={i} data={value} />
