@@ -10,7 +10,9 @@ export default function ajax(options) {
         data: options.data || '',
         header: options.header || {},
         file: options.file || '',
-        fileUrl: options.fileUrl || ''
+        fileUrl: options.fileUrl || '',
+        noParse: options.noParse || '',
+        qiniuToken: options.token || ''
 
     }
 
@@ -37,11 +39,11 @@ export default function ajax(options) {
             xhr.setRequestHeader("Content-type", "multipart/form-data");
             let form = new FormData(); // FormData 对象
             form.append("file", config.file.files[0]); // 文件对象
-            form.append("key", "");
-            form.append("x:<custom_name>", "");
-            form.append("token", "");
-            form.append("crc32", "");
-            form.append("accept", "");
+            form.append("key", "sss");
+            form.append("x:<custom_name>", "x:wry");
+            form.append("token", config.qiniuToken);
+            // form.append("crc32", "");
+            // form.append("accept", "");
             xhr.send(form);
 
           }
@@ -53,14 +55,14 @@ export default function ajax(options) {
           }
         },
         verify:()=>{
-          const data = JSON.parse(xhr.responseText);
+          const data = !config.noParse?JSON.parse(xhr.responseText):xhr.responseText;
           if(data.code === "E03"){
             hashHistory.push({
                 pathname: 'tologin',
                 query: {}
             })
           }else{
-            return JSON.parse(xhr.responseText)
+            return !config.noParse?JSON.parse(xhr.responseText):xhr.responseText;
           }
         }
     }

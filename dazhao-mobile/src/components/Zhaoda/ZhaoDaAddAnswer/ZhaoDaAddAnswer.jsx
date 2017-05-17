@@ -44,6 +44,17 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     submitClick () {
 
+      ajax({url:'/zhaoda/getqiniutoken',noParse:true})
+      .then((data)=>{
+        console.log(data);
+        ajax({fileUrl:'http://upload.qiniu.com/',file:this.refs.file,token:data})
+        .then((data)=>{
+          console.log(data);
+        })
+      })
+
+
+
     }
 
     setFocus (obj) {
