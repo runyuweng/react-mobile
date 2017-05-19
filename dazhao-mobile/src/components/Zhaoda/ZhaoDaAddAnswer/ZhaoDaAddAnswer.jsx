@@ -33,7 +33,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
       // Console.log(this.state.html);
       // Console.log(window.URL.createObjectURL(this.refs.file.files.item(0)));
         this.setState({"html": `${this.refs.input.innerHTML}<img src="${window.URL.createObjectURL(this.refs.file.files[0])}"/>`});
-        this.refs.file.value = "";
+        // this.refs.file.value = "";
       // Ajax({file:this.refs.file,fileUrl:'http://upload.qiniu.com/'}).then((data)=>{
       //   Console.log(data);
       // })

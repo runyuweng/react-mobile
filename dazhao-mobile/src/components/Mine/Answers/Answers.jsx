@@ -48,7 +48,7 @@ class Answers extends React.Component {
 
     fetchAnswer (page) {
 
-        ajax({"url": `/zhaoda/answer/myanswers?page=${page}`}).
+        ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
         then((data) => {
 
             if (data.code === "S01") {

@@ -34,6 +34,7 @@ export default function ajax(options) {
 
             xhr.send(config.data);
           }else{
+            console.log('file',config.file.files[0]);
 
             xhr.open("POST", config.fileUrl, config.async);
             xhr.setRequestHeader("Content-type", "multipart/form-data");

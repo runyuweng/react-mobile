@@ -39,7 +39,7 @@ class Quiz extends React.Component {
 
     fetchQuestions (page) {
 
-        ajax({"url": `/zhaoda/question/userquestion?page=${page}`}).
+        ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
         then((data) => {
 
             if (data.code === "S01") {

@@ -39,7 +39,7 @@ class ConcernQuestion extends React.Component {
 
     fetchQuestions (page) {
 
-        ajax({"url": `/mycarequestion?page=${page}`}).
+        ajax({"url": `/zhaoda/user/mycarequestion?page=${page}`}).
         then((data) => {
 
             if (data.code === "S01") {
