@@ -31,6 +31,7 @@ class ShRecruit extends React.Component {
             "tips": "加载更多"
         };
 
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount () {
@@ -44,11 +45,29 @@ class ShRecruit extends React.Component {
 
         });
 
-        this.loadData(() => {
+        this.loadData();
 
-            this.handleLoad(document);
+        window.addEventListener('scroll',this.handleScroll);
+    }
 
-        });
+    componentWillUnmount() {
+      window.removeEventListener('scroll',this.handleScroll);
+    }
+
+
+    handleScroll(e){
+        // console.log("滚动高度：" + document.body.scrollTop);
+        
+        let scrollTop = document.body.scrollTop;
+        let innerHeight = window.innerHeight;
+        let docHeight = document.body.scrollHeight;
+
+        scrollTop === docHeight-innerHeight ?
+        (()=>{
+
+            this.loadData("loadMore");
+          
+        })():""
 
     }
 
@@ -91,47 +110,6 @@ class ShRecruit extends React.Component {
 
     }
 
-    handleLoad (elem) {
-
-        const that = this;
-
-        elem.addEventListener("touchstart", (e) => {
-
-            const height = document.body.scrollHeight;
-            const event = e || window.event;
-            const startPoint = event.touches[0].pageY;
-
-            elem.addEventListener("touchmove", (e) => {
-
-                const event = e || window.event;
-                const currentY = event.touches[0].pageY;
-                const changeY = currentY - startPoint;
-
-                if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
-
-                    document.body.style.height = `${document.body.offsetHeight + 1}px`;
-
-                }
-
-            });
-            elem.addEventListener("touchend", (e) => {
-
-                if (height < document.body.offsetHeight && this.state.tips === "加载更多") {
-
-                    document.body.style.height = "auto";
-                    const data = JSON.parse(JSON.stringify(this.state.data));
-
-                    data.page = parseInt(data.page) + 1;
-                    this.setState({data});
-                    that.loadData("loadMore");
-
-                }
-
-            });
-
-        });
-
-    }
 
     changeCategory (id) {
 
@@ -209,10 +187,9 @@ class ShRecruit extends React.Component {
                     {showLoading ? <Loading /> : ""}
                     <div id="homeMain">
                         <div>{jobList}</div>
-
-                        <p>{tips}</p>
                     </div>
                 </div>
+                <p className="fetchmore">{this.state.tips}</p>
             </div>
         );
 

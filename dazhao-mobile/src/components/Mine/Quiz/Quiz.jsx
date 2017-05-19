@@ -8,48 +8,83 @@ class Quiz extends React.Component {
 
         super(props);
         this.state = {
-            questions:[
-                {
-                    "id":1,
-                    "qtitle":"研究生和本科生在求职过程中真的会有很大影响吗？",
-                    "answernum":12
-                },
-                {
-                    "id":2,
-                    "qtitle":"研究生和本科生在求职过程中真的会有很大影响吗？",
-                    "answernum":12
-                },
-                {
-                    "id":3,
-                    "qtitle":"研究生和本科生在求职过程中真的会有很大影响吗？",
-                    "answernum":12
-                }
-            ],
-            questionPage:1
+            questions:[],
+            page:1,
+            nomore:false,
+            moreMessage:""
         }
         this.fetchQuestions = this.fetchQuestions.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
-        this.fetchQuestions(this.state.questionPage)
+        this.fetchQuestions(this.state.page);
+        window.addEventListener('scroll',this.handleScroll);
     }
 
+    componentWillUnmount() {
+      window.removeEventListener('scroll',this.handleScroll);
+    }
+
+
+    handleScroll(e){
+        // console.log("滚动高度：" + document.body.scrollTop);
+        
+        let scrollTop = document.body.scrollTop;
+        let innerHeight = window.innerHeight;
+        let docHeight = document.body.scrollHeight;
+
+        scrollTop === docHeight-innerHeight ?
+        (()=>{
+          this.setState({
+            moreMessage:this.state.nomore?"没有更多提问":"正在加载中"
+          },()=>{
+            this.fetchQuestions(this.state.page);
+          })
+        })():""
+
+    }
+
+
     fetchQuestions(page){
-        ajax({"url":`/myquestion?page=${page}`}).
+        !this.state.nomore?
+
+        ajax({"url":`/zhaoda/user/userquestion?page=${page}`}).
         then((data)=>{
+            console.log(data)
             if(data.code==="S01"){
                 const questions = data.contents;
                 this.setState({
-                    questions:this.state.questions.push(questions)
+                    questions:this.state.questions.concat(questions),
+                    page:this.state.page+1,
+                    moreMessage:""
                 })
             }else if (data.code==="S02") {
                 
-            }else{
+                const questions = data.contents;
                 this.setState({
-                    questions:this.state.questions
+                    questions:this.state.questions.concat(questions),
+                    nomore:true,
+                    moreMessage:"没有更多提问"
                 })
+
+            }else if (data.code==="S03") {
+                //SO3表示没有任何提问
+                this.setState({
+                    questions:[],
+                    nocareQuestion:true,
+                    nomore:true
+                })
+
+            }else if (data.code==="E01"){
+                this.setState({
+                    questions:[]
+                })
+            }else if (data.code === "E03") {
+               //未登录
+               
             }
-        })
+        }) : ""
     }
 
     render () {
@@ -58,13 +93,14 @@ class Quiz extends React.Component {
             return(
                 <div key={index} className="question">
                     <h3>{elem.qtitle}</h3>
-                    <span><em>{elem.answernum}</em>个回答</span>
+                    <span><em>{elem.answer}</em>个回答</span>
                 </div>
             )
         })
         return (
             <div id="quiz">
                 {questionsList}
+                <p className="fetchmore">{this.state.moreMessage}</p>
             </div>
         );
 

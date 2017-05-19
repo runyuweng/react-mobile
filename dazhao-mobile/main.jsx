@@ -130,7 +130,7 @@ const Routes = () => <Provider store={store}>
 
             <Route path="mine" component={Mine} />
             <Route path="cvcenter" component={MineCvCenter} />
-            <Route path="growrecord" component={MineGrowRecord} onEnter={requireAuth} />
+            <Route path="growrecord" component={MineGrowRecord} />
             <Route path="notify" component={MineNotify} />
             <Route path="cvmessage/:uid" component={MineCvMessage} />
             <Route path="edmessage" component={MineEditMg} />

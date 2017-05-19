@@ -192,7 +192,7 @@ class CvMessage extends React.Component {
                     <div className="cvitems">
                         <div className="cvhead">
                             <span>基本信息</span>
-                            <span><Link to={{pathname:"/edmessage",query:{resumeid:this.props.params.uid,articleid:basicMessage.id}}}>编辑</Link></span>
+                            <span><Link to={{pathname:"/edmessage",query:{resumeid:this.props.params.uid}}}>编辑</Link></span>
                         </div>
                         {
                             JSON.stringify(basicMessage.experience)==='{}'?
@@ -249,7 +249,7 @@ class CvMessage extends React.Component {
                     <div className="cvitems">
                         <div className="cvhead">
                             <span>教育经历</span>
-                            <span><Link to={{pathname:"/edupexp",query:{resumeid:this.props.params.uid,articleid:eduexperience.id}}}>编辑</Link></span>
+                            <span><Link to={{pathname:"/edupexp",query:{resumeid:this.props.params.uid}}}>编辑</Link></span>
                         </div>
                         
 
@@ -289,7 +289,7 @@ class CvMessage extends React.Component {
                     <div className="cvedu cvitems">
                         <div className="cvhead">
                             <span>实习经历</span>
-                            <span><Link to={{pathname:"/practice",query:{resumeid:this.props.params.uid,articleid:practiceExpre.id}}}>编辑</Link></span>
+                            <span><Link to={{pathname:"/practice",query:{resumeid:this.props.params.uid}}}>编辑</Link></span>
                         </div>
 
                         {

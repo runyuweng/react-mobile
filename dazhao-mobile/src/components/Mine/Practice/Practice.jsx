@@ -37,7 +37,7 @@ class Practice extends React.Component {
     }
 
     fetchPracticeExpre(){
-        ajax({"url":`/basicmessage?resumeid=${this.props.location.query.resumeid}&articleid=${this.props.location.query.articleid}`}).
+        ajax({"url":`/basicmessage?resumeid=${this.props.location.query.resumeid}`}).
         then((data)=>{
             if (data.code==='S01') {
                 const practiceExpre = data.contents;

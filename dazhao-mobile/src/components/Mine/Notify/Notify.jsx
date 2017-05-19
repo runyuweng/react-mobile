@@ -8,6 +8,34 @@ class Notify extends React.Component {
     constructor (props) {
 
         super(props);
+        this.state = {
+            noyifymessage:[
+                {
+                    "id":1,
+                    "img":"/src/images/file.png",
+                    "messagetitle":"投递状态更新",
+                    "time":'14:30',
+                    "message":"企业已接收到您投递的简历。",
+                    "job":"企业服务部实习生"
+                },
+                {
+                    "id":3,
+                    "img":"/src/images/file.png",
+                    "messagetitle":"投递状态更新",
+                    "time":'14:30',
+                    "message":"企业已接收到您投递的简历。",
+                    "job":"企业服务部实习生"
+                },
+                {
+                    "id":2,
+                    "img":"/src/images/file.png",
+                    "messagetitle":"投递状态更新",
+                    "time":'14:30',
+                    "message":"企业已接收到您投递的简历。",
+                    "job":"企业服务部实习生"
+                }
+            ]
+        }
 
     }
 
@@ -18,6 +46,24 @@ class Notify extends React.Component {
     }
 
     render () {
+        const { noyifymessage } = this.state;
+        const noyifymessageList = noyifymessage.map((elem,i)=>{
+            return(
+                <div key={i} className="notifyItem">
+                    <div>
+                        <span><img src={elem.img} alt="文件" /></span>
+                    </div>
+                    <div>
+                        <p>
+                            <span>{elem.messagetitle}</span>
+                            <time>{elem.time}</time>
+                        </p>
+                        <p>{elem.message}</p>
+                        <p><span>岗位：</span><span>{elem.job}</span></p>
+                    </div>
+                </div>
+            )
+        })
 
         return (
             <div className="Notify">
@@ -43,58 +89,7 @@ class Notify extends React.Component {
                 </div>
 
                 <div className="notifyContent">
-                    <div className="notifyItem">
-                        <div>
-                            <span><img src="/src/images/file.png" alt="文件" /></span>
-                        </div>
-                        <div>
-                            <p>
-                                <span>投递进度更新</span>
-                                <time>14:30</time>
-                            </p>
-                            <p>企业已接收到您投递的简历。</p>
-                            <p><span>岗位：</span><span>企业服务部实习生</span></p>
-                        </div>
-                    </div>
-                    <div className="notifyItem">
-                        <div>
-                            <span><img src="/src/images/zlbh.png" alt="文件" /></span>
-                        </div>
-                        <div>
-                            <p>
-                                <span>投递进度更新</span>
-                                <time>14:30</time>
-                            </p>
-                            <p>企业已接收到您投递的简历。</p>
-                            <p><span>岗位：</span><span>企业服务部实习生</span></p>
-                        </div>
-                    </div>
-                    <div className="notifyItem">
-                        <div>
-                            <span><img src="/src/images/file.png" alt="文件" /></span>
-                        </div>
-                        <div>
-                            <p>
-                                <span>投递进度更新</span>
-                                <time>14:30</time>
-                            </p>
-                            <p>企业已接收到您投递的简历。</p>
-                            <p><span>岗位：</span><span>企业服务部实习生</span></p>
-                        </div>
-                    </div>
-                    <div className="notifyItem">
-                        <div>
-                            <span><img src="/src/images/file.png" alt="文件" /></span>
-                        </div>
-                        <div>
-                            <p>
-                                <span>投递进度更新</span>
-                                <time>14:30</time>
-                            </p>
-                            <p>企业已接收到您投递的简历。</p>
-                            <p><span>岗位：</span><span>企业服务部实习生</span></p>
-                        </div>
-                    </div>
+                    {noyifymessageList}
                 </div>
             </div>
         );

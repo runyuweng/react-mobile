@@ -8,48 +8,88 @@ class ConcernQuestion extends React.Component {
 
         super(props);
         this.state = {
-            questions:[
-                {
-                    "id":1,
-                    "qtitle":"研究生和本科生在求职过程中真的会有很大影响吗？",
-                    "answernum":12
-                },
-                {
-                    "id":2,
-                    "qtitle":"研究生和本科生在求职过程中真的会有很大影响吗？",
-                    "answernum":12
-                },
-                {
-                    "id":3,
-                    "qtitle":"研究生和本科生在求职过程中真的会有很大影响吗？",
-                    "answernum":12
-                }
-            ],
-            questionPage:1
+            questions:[],
+            page:1,
+            nocareQuestion:false,
+            nomore:false,
+            moreMessage:""
         }
         this.fetchQuestions = this.fetchQuestions.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
-        this.fetchQuestions(this.state.questionPage)
+        window.addEventListener('scroll',this.handleScroll);
+        this.fetchQuestions(this.state.page);
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener('scroll',this.handleScroll);
+    }
+
+
+    handleScroll(e){
+        // console.log("滚动高度：" + document.body.scrollTop);
+        
+        let scrollTop = document.body.scrollTop;
+        let innerHeight = window.innerHeight;
+        let docHeight = document.body.scrollHeight;
+
+        scrollTop === docHeight-innerHeight ?
+        (()=>{
+          this.setState({
+            moreMessage:this.state.nomore?"没有更多关注":"正在加载中"
+          },()=>{
+            this.fetchQuestions(this.state.page);
+          })
+        })():""
+
     }
 
     fetchQuestions(page){
-        ajax({"url":`/mycarequestion?page=${page}`}).
+        !this.state.nomore?
+        ajax({"url":`/zhaoda/question/mycarequestion?page=${page}`}).
         then((data)=>{
+            console.log(data)
             if(data.code==="S01"){
+
                 const questions = data.contents;
                 this.setState({
-                    questions:this.state.questions.push(questions)
+                    questions:this.state.questions.concat(questions),
+                    page:this.state.page+1,
+                    moreMessage:""
                 })
+
             }else if (data.code==="S02") {
+                //已到最后一页
+                const questions = data.contents;
                 
-            }else{
                 this.setState({
-                    questions:this.state.questions
+                  questions:this.state.questions.concat(questions),
+                  nomore:true,
+                  moreMessage:"没有更多关注"
                 })
+
+            }else if (data.code==="S03") {
+                //SO3表示没有关注的话题
+                this.setState({
+                    questions:[],
+                    nocareQuestion:true,
+                    nomore:true
+                })
+
+            }else if (data.code==="E01"){
+
+                this.setState({
+                    questions:[]
+                })
+
+            }else if (data.code === "E03") {
+               //未登录
+               
             }
-        })
+
+        }):""
     }
 
     render () {
@@ -67,6 +107,18 @@ class ConcernQuestion extends React.Component {
         return (
             <div id="ConcernQuestion">
                 {questionsList}
+                {
+                    this.state.nocareQuestion?
+                    <div className="nocareQuestion">
+                        <span></span>
+                        <span>您还没有关注任何问题</span>
+                    </div>:""
+                }
+                {
+                    this.state.nocareQuestion ?
+                    "" :
+                    <p className="fetchmore">{this.state.moreMessage}</p>
+                }
             </div>
         );
 

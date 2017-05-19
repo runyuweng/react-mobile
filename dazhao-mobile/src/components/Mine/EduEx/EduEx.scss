@@ -34,7 +34,7 @@
         margin-top: .2rem;
         border-top: .01rem solid #EAEAEA;
         border-bottom: .01rem solid #EAEAEA;
-        padding-bottom: 1rem;
+        padding-bottom: .5rem;
         div{
             padding: 0 0 0 .12rem;
             display: flex;
@@ -53,6 +53,14 @@
                 width:80%;
                 padding:.12rem .12rem;
                 border-bottom: .01rem solid #EAEAEA;
+                textarea{
+                    width: 100%;
+                    max-width: 100%;
+                    height:1.6rem;
+                    resize:none;
+                    border:.01rem solid #f8f8f8;
+                    line-height: .24rem;
+                }
                 span{
                     font-family: "苹方";
                     font-size: .13rem;
@@ -68,19 +76,19 @@
                     border:none;
                 }
                 ::-webkit-input-placeholder { /* WebKit browsers */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
                 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
                 ::-moz-placeholder { /* Mozilla Firefox 19+ */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
                 :-ms-input-placeholder { /* Internet Explorer 10+ */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
             }
@@ -108,6 +116,7 @@
             p{
                 border-bottom: none;
                 padding-right: .16rem;
+                padding-left: 0;
                 span{
                     line-height: .24rem;
                     display: block;
@@ -123,5 +132,54 @@
 
 
     }
-
+    .topDiv{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0;
+        .centermain{
+            background: #fff;
+            padding: .12rem;
+            width: 85%;
+            .mainhead{
+                font-size: .14rem;
+                color:#21c6cd;
+                margin-bottom: .1rem;
+            }
+            .mainbody{
+                input[type=button]{
+                    width: 100%;
+                    border:none;
+                    background: #fff;
+                    font-size: .13rem;
+                    color:#3f3f3f;
+                    height: .3rem;
+                }
+                input[type=button]:hover{
+                    background: #e8e8e8;
+                }
+            }
+            .mainfooter{
+                margin-top: .1rem;
+                padding-top: .08rem;
+                border-top: .01rem solid #f8f8f8;
+                text-align: right;
+                span{
+                    font-size: .14rem;
+                    color:#ADADAD;
+                    margin-right: .1rem;
+                }
+            }
+        }
+    }
 }

@@ -26,12 +26,12 @@ class CvCenter extends React.Component {
                     "city": "上海市"
                 }
             ],
-            "deleteIndex": null
+            "deleteid": null
         };
         this.handleClick = this.handleClick.bind(this);
         this.cancleClick = this.cancleClick.bind(this);
-        this.deleteClick = this.deleteClick.bind(this);
         this.fetchOnlineResume = this.fetchOnlineResume.bind(this);
+        this.deleteOnlineResume = this.deleteOnlineResume.bind(this);
 
     }
 
@@ -39,7 +39,7 @@ class CvCenter extends React.Component {
 
         this.setState({
             "showdialog": !this.state.showdialog,
-            "deleteIndex": args
+            "deleteid": args
         }, () => {
 
             console.log(this.state.showdialog);
@@ -56,16 +56,6 @@ class CvCenter extends React.Component {
     cancleClick () {
 
         this.setState({"showdialog": !this.state.showdialog});
-
-    }
-
-    deleteClick () {
-
-        this.state.onlineResume.splice(this.state.deleteIndex, 1);
-        this.setState({
-            "showdialog": !this.state.showdialog,
-            "onlineResume": this.state.onlineResume
-        });
 
     }
 
@@ -93,6 +83,18 @@ class CvCenter extends React.Component {
         })
     }
 
+    deleteOnlineResume(id){
+        ajax({"url":`/deleteOnlineresume?resumeid=${id}`}).
+        then((data)=>{
+            if(data.code==="S01"){
+                this.fetchOnlineResume();
+                this.setState({"showdialog": !this.state.showdialog});
+            }else{
+                this.props.showMessage(data.message);
+            }
+        })
+    }
+
     render () {
 
         const {onlineResume} = this.state;
@@ -104,7 +106,7 @@ class CvCenter extends React.Component {
                 </div>
                 <span className="cvright">
                     <Link to={`/cvmessage/${elem.id}`}><em>编辑</em></Link>
-                    <em onClick={this.handleClick.bind(this, `${index}`)}>删除</em>
+                    <em onClick={this.handleClick.bind(this, `${elem.id}`)}>删除</em>
                 </span>
             </div>
             );
@@ -166,7 +168,7 @@ class CvCenter extends React.Component {
                                 </div>
                                 <div className="deletefooter">
                                     <span onClick={this.cancleClick}>取消</span>
-                                    <span onClick={this.deleteClick}>删除简历</span>
+                                    <span onClick={this.deleteOnlineResume.bind(this,this.state.deleteid)}>删除简历</span>
                                 </div>
                             </div>
                         </div>
