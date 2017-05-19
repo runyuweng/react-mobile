@@ -34,9 +34,13 @@ class Answers extends React.Component {
                     "collect": false
                 }
             ],
-            "page": 1
+
+            "page": 1,
+            "nomore": false,
+            "moreMessage": ""
         };
         this.fetchAnswer = this.fetchAnswer.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
 
     }
 
@@ -44,28 +48,92 @@ class Answers extends React.Component {
 
         this.fetchAnswer(this.state.page);
 
+        console.log(`可视高度：${window.innerHeight}`);
+        console.log(`页面高度：${document.body.scrollHeight}`);
+        console.log(`滚动高度：${document.body.scrollTop}`);
+        // Console.log(_this)
+        window.addEventListener("scroll", this.handleScroll);
+
     }
+
+    componentWillUnmount () {
+
+        window.removeEventListener("scroll", this.handleScroll);
+
+    }
+
+
+    handleScroll (e) {
+
+        // Console.log("滚动高度：" + document.body.scrollTop);
+
+        const scrollTop = document.body.scrollTop;
+        const innerHeight = window.innerHeight;
+        const docHeight = document.body.scrollHeight;
+
+        scrollTop === docHeight - innerHeight
+        ? (() => {
+
+            this.setState({"moreMessage": this.state.nomore ? "没有更多回答" : "正在加载中"}, () => {
+
+                this.fetchAnswer(this.state.page);
+
+            });
+
+        })() : "";
+
+    }
+
 
     fetchAnswer (page) {
 
-        ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
+        !this.state.nomore
+
+        ? ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
         then((data) => {
 
+            console.log(data);
             if (data.code === "S01") {
 
                 const answers = data.contents;
 
-                this.setState({"answers": this.state.questions.push(answers)});
+                this.setState({
+                    "answers": this.state.answers.concat(answers),
+                    "page": this.state.page + 1,
+                    "moreMessage": ""
+                });
 
             } else if (data.code === "S02") {
 
-            } else {
+                // 没有更多
+                const answers = data.contents;
 
-                this.setState({"answers": this.state.answers});
+                this.setState({
+                    "answers": this.state.answers.concat(answers),
+                    "nomore": true,
+                    "moreMessage": "没有更多提问"
+                });
+
+            } else if (data.code === "S03") {
+
+                // SO3表示没有任何提问
+                this.setState({
+                    "questions": [],
+                    "nocareQuestion": true,
+                    "nomore": true
+                });
+
+            } else if (data.code === "EO1") {
+
+                // 出错
+                this.setState({"answers": []});
+
+            } else if (data.code === "E03") {
+               // 未登录
 
             }
 
-        });
+        }) : "";
 
     }
 
@@ -87,6 +155,7 @@ class Answers extends React.Component {
         return (
             <div id="answers">
                 {answersList}
+                <p className="fetchmore">{this.state.moreMessage}</p>
             </div>
         );
 

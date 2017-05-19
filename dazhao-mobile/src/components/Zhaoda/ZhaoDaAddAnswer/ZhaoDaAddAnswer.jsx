@@ -33,7 +33,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
       // Console.log(this.state.html);
       // Console.log(window.URL.createObjectURL(this.refs.file.files.item(0)));
         this.setState({"html": `${this.refs.input.innerHTML}<img src="${window.URL.createObjectURL(this.refs.file.files[0])}"/>`});
-        // this.refs.file.value = "";
+        // This.refs.file.value = "";
       // Ajax({file:this.refs.file,fileUrl:'http://upload.qiniu.com/'}).then((data)=>{
       //   Console.log(data);
       // })
@@ -44,15 +44,25 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     submitClick () {
 
-      ajax({url:'/zhaoda/getqiniutoken',noParse:true})
-      .then((data)=>{
-        console.log(data);
-        ajax({fileUrl:'http://upload.qiniu.com/',file:this.refs.file,token:data})
-        .then((data)=>{
-          console.log(data);
-        })
-      })
+        ajax({
+            "url": "/zhaoda/getqiniutoken",
+            "noParse": true
+        }).
+      then((data) => {
 
+          console.log(data);
+          ajax({
+              "fileUrl": "http://upload.qiniu.com/",
+              "file": this.refs.file,
+              "token": data
+          }).
+        then((data) => {
+
+            console.log(data);
+
+        });
+
+      });
 
 
     }

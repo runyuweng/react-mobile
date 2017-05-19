@@ -1,5 +1,5 @@
 #concernUser{
-    border-top: .01rem solid #d8d8d8;
+    
     .item{
         border-bottom: .01rem solid #DBDBDB;
         padding:.16rem .12rem;
@@ -59,5 +59,25 @@
             line-height: .25rem;
             padding: 0 .05rem;
         }
+    }
+    .item:nth-of-type(1){
+        border-top: .01rem solid #d8d8d8;
+    }
+    .nocareQuestion{
+        font-size: 0;
+        span{
+            font-size: .14rem;
+            color:#ADADAD;
+            display: block;
+            text-align: center;
+        }
+    }    
+    .fetchmore{
+        font-size: .15rem;
+        color:#ADADAD;
+        text-align: center;
+        margin-top: .12rem;
+        line-height: .32rem;
+        padding: 0 0 .12rem;
     }
 }

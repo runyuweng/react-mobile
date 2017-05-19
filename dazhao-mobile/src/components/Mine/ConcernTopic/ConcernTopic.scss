@@ -1,5 +1,5 @@
 #concernTopic{
-    border-top: .01rem solid #d8d8d8;
+    
     .item{
         border-bottom: .01rem solid #DBDBDB;
         padding:.16rem .12rem;
@@ -10,32 +10,37 @@
         box-sizing: border-box;
         background: #fff;
         .left{
+            width: 70%;
             display: flex;
             justify-content: space-around;
             align-items: center;
             font-size: 0;
             .circle{
+                max-width: 35%;
                 display:inline-block;
                 width:.6rem;
                 height:.6rem;
                 background:#d8d8d8;
                 margin-right: .1rem;
-                font-size: 0;
+                border-radius: 50%;
                 img{
                     width:.6rem;
                     height:.6rem;
                 }
             }
             p{
+                width: 65%;
                 span:nth-of-type(1){
                     font-weight: bold;
                     font-size: .14rem;
                     line-height: .25rem;
                 }
                 span:nth-of-type(2){
+                    width: 100%;
                     display:inline-block;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                    white-space: nowrap;
                     font-size: .13rem;
                     color:#ADADAD;
                     line-height: .25rem;
@@ -47,6 +52,7 @@
             }
         }
         .right{
+            max-width: 30%;
             display:inline-block;
             color:#21c6cd;
             height:.25rem;
@@ -57,5 +63,25 @@
             line-height: .25rem;
             padding: 0 .05rem;
         }
+    }
+    .item:nth-of-type(1){
+        border-top: .01rem solid #d8d8d8;
+    }
+    .nocareQuestion{
+        font-size: 0;
+        span{
+            font-size: .14rem;
+            color:#ADADAD;
+            display: block;
+            text-align: center;
+        }
+    }
+    .fetchmore{
+        font-size: .15rem;
+        color:#ADADAD;
+        text-align: center;
+        margin-top: .12rem;
+        line-height: .32rem;
+        padding: 0 0 .12rem;
     }
 }

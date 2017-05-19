@@ -34,6 +34,7 @@
         margin-top: .2rem;
         border-top: .01rem solid #EAEAEA;
         border-bottom: .01rem solid #EAEAEA;
+
         div{
             padding: 0 0 0 .12rem;
             display: flex;
@@ -69,19 +70,19 @@
                     border:none;
                 }
                 ::-webkit-input-placeholder { /* WebKit browsers */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
                 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
                 ::-moz-placeholder { /* Mozilla Firefox 19+ */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
                 :-ms-input-placeholder { /* Internet Explorer 10+ */ 
-                    color: #3f3f3f; 
+                    color: #ADADAD; 
                     font-size: .13rem;
                 } 
             }
@@ -270,5 +271,7 @@
             }
         }
     }
+
+
 
 }

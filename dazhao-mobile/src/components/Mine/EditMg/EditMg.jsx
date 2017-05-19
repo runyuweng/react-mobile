@@ -8,10 +8,7 @@ class EditMg extends React.Component {
 
         super(props);
         this.state = {
-            "pressDownY": 0, // 鼠标按下的位置
-            "nowY": 0, // 鼠标移动后的位置
-            "delateY": 0, // 移动的距离
-            "currentY": 0,
+
             "basicMessage": {
                 "img": "/src/images/pople.png",
                 "resumeName": "互联网产品岗",
@@ -25,8 +22,7 @@ class EditMg extends React.Component {
                 "hopeCity": "上海市"
             },
             "showtopDiv": false,
-            "showWhich": -1,
-            "showdate": false
+            "showWhich": -1
         };
         this.fetchBasicMessage = this.fetchBasicMessage.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -45,339 +41,10 @@ class EditMg extends React.Component {
         // [this.refs.year,this.refs.month,this.refs.day].map((elem,i)=>{
         //     This._touchEvent(elem);
         // })
-        //
-        this._touchEvent(this.refs.year);
+
 
     }
 
-        // 滑动事件
-    // _touchEvent (elem) {
-    //     Const yearNode = this.refs.year;
-    //     Const monthNode = this.refs.month;
-    //     Const dayNode = this.refs.day;
-    //     Const innerThis = this;
-    //         // 触屏开始
-    //     Elem.addEventListener("touchstart", (e) => {
-    //         Let lastY = 0;
-    //         Let iSpeedY = 0;
-    //         Const perObjHeight = 52;
-
-    //         E.preventDefault();
-    //         Const _this = elem;
-    //         Let isStart = true;
-    //         Const event = e || window.event;
-    //         Const pressDownY = event.touches[0].pageY;
-    //         Const top = parseInt(_this.style.top || _this.offsetTop);
-
-    //         This.setState({
-    //             PressDownY,
-    //             "currentY": top
-    //         });
-
-    //             // 触屏移动
-    //         _this.addEventListener("touchmove", (e) => {
-    //             E.preventDefault();
-    //             If (isStart) {
-
-    //                 Let top = this.state.currentY;
-    //                 Const element = _this;
-    //                 Const height = element.clientHeight;
-    //                 Const event = e || window.event;
-
-    //                 This.setState({
-    //                     "nowY": event.touches[0].pageY,
-    //                     "delateY": event.touches[0].pageY - this.state.pressDownY
-    //                 });
-
-    //                 ISpeedY = this.state.delateY - lastY;
-    //                 LastY = this.state.delateY;
-    //                 Top += this.state.delateY;
-
-    //                 If (top>perObjHeight) {
-    //                     Top = perObjHeight
-    //                     // monthNode.style.top = (1-(new Date().getMonth()))*perObjHeight + 'px';
-    //                     // dayNode.style.top = (2-(new Date().getDate()))*perObjHeight + 'px';
-    //                 }
-
-    //                 If (top<(2-element.clientHeight/perObjHeight)*perObjHeight){
-    //                     Top = (2-element.clientHeight/perObjHeight)*perObjHeight;
-    //                 }
-
-    //                 Element.style.top = `${top}px`;
-
-    //             }
-
-    //         });
-
-    //             // 触屏结束
-    //         _this.addEventListener("touchend", () => {
-
-    //             E.preventDefault();
-    //             If (isStart) {
-
-    //                 Const element = _this;
-    //                 Const currentY = parseInt(element.style.top);
-
-    //                 This.startMove(iSpeedY,elem,yearNode,monthNode,dayNode,innerThis);
-    //                 // console.log(iSpeedY)
-
-    //                 This.setState({
-    //                     "pressDownY": 0,
-    //                     "nowY": 0,
-    //                     CurrentY,
-    //                     "delateY": 0
-    //                 });
-
-    //             }
-    //             IsStart = false;
-
-    //         });
-
-    //     });
-
-    // }
-
-    // StartMove(iSpeedY,obj,yearNode,monthNode,dayNode,innerThis) {
-    //     Const perObjHeight = 52;
-    //     Let timer = null;
-    //     ClearInterval(timer);
-    //     Timer=setInterval(function () {
-    //         ISpeedY*=0.95;
-
-    //         Var top=obj.offsetTop+iSpeedY;
-
-    //         If (top>perObjHeight) {
-    //             Top=perObjHeight;
-    //             // monthNode.style.top = (1-(new Date().getMonth()))*perObjHeight + 'px';
-    //             // dayNode.style.top = (2-(new Date().getDate()))*perObjHeight + 'px';
-    //             ISpeedY = 0;
-    //         }else if (top<(2-obj.clientHeight/perObjHeight)*perObjHeight) {
-    //             Top = (2-obj.clientHeight/perObjHeight)*perObjHeight;
-    //             ISpeedY = 0;
-    //         }
-
-    //         If (Math.abs(iSpeedY)<1){
-    //             ISpeedY=0;
-    //         }
-
-    //         If (iSpeedY===0) {
-
-    //             Const absY = Math.abs(obj.offsetTop%52);
-    //             Const basicMessage = JSON.parse(JSON.stringify(innerThis.state)).basicMessage;
-
-    //             Let year;
-    //             Let month;
-    //             Let day;
-
-    //             If (absY >= perObjHeight/2) {
-    //                 Top = obj.offsetTop<0?perObjHeight*Math.floor(obj.offsetTop/perObjHeight):perObjHeight*Math.ceil(obj.offsetTop/perObjHeight);
-
-    //                 If(obj===yearNode){
-    //                     Year = 2016-Math.abs(top)/perObjHeight;
-    //                     Month = Math.abs(monthNode.offsetTop)/perObjHeight + 2;
-    //                     Day = Math.abs(dayNode.offsetTop)/perObjHeight + 2;
-    //                 }else if (obj===monthNode) {
-    //                     Year = 2016-Math.abs(yearNode.offsetTop)/perObjHeight;
-    //                     Month = Math.abs(top)/perObjHeight + 2;
-    //                     Day = Math.abs(dayNode.offsetTop)/perObjHeight +2;
-    //                 }else if (obj===dayNode) {
-    //                     Year = 2016-Math.abs(yearNode.offsetTop)/perObjHeight;
-    //                     Month = Math.abs(monthNode.offsetTop)/perObjHeight + 2;
-    //                     Day = Math.abs(top)/perObjHeight + 2;
-    //                 }
-
-    //                 Month = month<10 ? '0' + month : month;
-    //                 Day = day<10 ? '0' + day : day;
-
-    //                 Object.assign(basicMessage,{"birthday":year+'-'+month+'-'+day});
-    //                 InnerThis.setState({
-    //                     BasicMessage:basicMessage
-    //                 })
-
-    //                 Console.log(year,month,day)
-
-    //             }else {
-    //                 Top = obj.offsetTop<0 ? perObjHeight*Math.ceil(obj.offsetTop/perObjHeight) : perObjHeight*Math.floor(obj.offsetTop/perObjHeight);
-
-    //                 If(obj===yearNode){
-    //                     Year = 2016-Math.abs(top)/perObjHeight;
-    //                     Month = Math.abs(monthNode.offsetTop)/perObjHeight + 2;
-    //                     Day = Math.abs(dayNode.offsetTop)/perObjHeight + 2;
-    //                 }else if (obj===monthNode) {
-    //                     Year = 2016-Math.abs(yearNode.offsetTop)/perObjHeight;
-    //                     Month = Math.abs(top)/perObjHeight + 2;
-    //                     Day = Math.abs(dayNode.offsetTop)/perObjHeight +2;
-    //                 }else if (obj===dayNode) {
-    //                     Year = 2016-Math.abs(yearNode.offsetTop)/perObjHeight;
-    //                     Month = Math.abs(monthNode.offsetTop)/perObjHeight + 2;
-    //                     Day = Math.abs(top)/perObjHeight + 2;
-    //                 }
-
-    //                 Month = month<10 ? '0' + month : month;
-    //                 Day = day<10 ? '0' + day : day;
-
-    //                 Object.assign(basicMessage,{"birthday":year+'-'+month+'-'+day});
-    //                 InnerThis.setState({
-    //                     BasicMessage:basicMessage
-    //                 })
-
-    //                 Console.log(year,month,day)
-
-    //             }
-    //             ClearInterval(timer);
-
-    //             // Object.assign(basicMessage,{"birthday":})
-    //         }
-
-    //         Obj.style.top= top+'px';
-
-    //     },30)
-    // }
-    //
-        // 滑动事件
-    _touchEvent (elem) {
-
-            // 触屏开始
-        elem.addEventListener("touchstart", (e) => {
-
-            let lastY = 0;
-            let iSpeedY = 0;
-            const perObjHeight = 52;
-
-            e.preventDefault();
-            const _this = elem;
-            let isStart = true;
-            const event = e || window.event;
-            const pressDownY = event.touches[0].pageY;
-            const top = parseInt(_this.style.top || _this.offsetTop);
-
-            this.setState({
-                pressDownY,
-                "currentY": top
-            });
-
-                // 触屏移动
-            _this.addEventListener("touchmove", (e) => {
-
-                e.preventDefault();
-                if (isStart) {
-
-                    let top = this.state.currentY;
-                    const element = _this;
-                    const height = element.clientHeight;
-                    const event = e || window.event;
-
-                    this.setState({
-                        "nowY": event.touches[0].pageY,
-                        "delateY": event.touches[0].pageY - this.state.pressDownY
-                    });
-
-                    iSpeedY = this.state.delateY - lastY;
-                    lastY = this.state.delateY;
-                    top += this.state.delateY;
-
-                    if (top > perObjHeight) {
-
-                        top = perObjHeight;
-                        // MonthNode.style.top = (1-(new Date().getMonth()))*perObjHeight + 'px';
-                        // DayNode.style.top = (2-(new Date().getDate()))*perObjHeight + 'px';
-
-                    }
-
-                    if (top < (2 - element.clientHeight / perObjHeight) * perObjHeight) {
-
-                        top = (2 - element.clientHeight / perObjHeight) * perObjHeight;
-
-                    }
-
-                    element.style.top = `${top}px`;
-
-                }
-
-            });
-
-                // 触屏结束
-            _this.addEventListener("touchend", () => {
-
-                e.preventDefault();
-                if (isStart) {
-
-                    const element = _this;
-                    const currentY = parseInt(element.style.top);
-
-                    this.startMove(iSpeedY, elem);
-                    // Console.log(iSpeedY)
-
-                    this.setState({
-                        "pressDownY": 0,
-                        "nowY": 0,
-                        currentY,
-                        "delateY": 0
-                    });
-
-                }
-                isStart = false;
-
-            });
-
-        });
-
-    }
-
-    startMove (iSpeedY, obj) {
-
-        const perObjHeight = 52;
-        let timer = null;
-
-        clearInterval(timer);
-        timer = setInterval(() => {
-
-            iSpeedY *= 0.95;
-
-            let top = obj.offsetTop + iSpeedY;
-
-            if (top > perObjHeight) {
-
-                top = perObjHeight;
-                // MonthNode.style.top = (1-(new Date().getMonth()))*perObjHeight + 'px';
-                // DayNode.style.top = (2-(new Date().getDate()))*perObjHeight + 'px';
-                iSpeedY = 0;
-
-            } else if (top < (2 - obj.clientHeight / perObjHeight) * perObjHeight) {
-
-                top = (2 - obj.clientHeight / perObjHeight) * perObjHeight;
-                iSpeedY = 0;
-
-            }
-
-            if (Math.abs(iSpeedY) < 1) {
-
-                iSpeedY = 0;
-
-            }
-
-            if (iSpeedY === 0) {
-
-                const absY = Math.abs(obj.offsetTop % 52);
-
-                if (absY >= perObjHeight / 2) {
-
-                    top = obj.offsetTop < 0 ? perObjHeight * Math.floor(obj.offsetTop / perObjHeight) : perObjHeight * Math.ceil(obj.offsetTop / perObjHeight);
-
-                } else {
-
-                    top = obj.offsetTop < 0 ? perObjHeight * Math.ceil(obj.offsetTop / perObjHeight) : perObjHeight * Math.floor(obj.offsetTop / perObjHeight);
-
-                }
-                clearInterval(timer);
-
-            }
-
-            obj.style.top = `${top}px`;
-
-        }, 30);
-
-    }
 
     handleChange (e) {
 
@@ -404,11 +71,16 @@ class EditMg extends React.Component {
 
             Object.assign(basicMessage, {"hopeJob": e.target.value});
 
+        } else if (e.target.name === "hopeCity") {
+
+            Object.assign(basicMessage, {"hopeCity": e.target.value});
+
+        } else if (e.target.name === "birthday") {
+
+            Object.assign(basicMessage, {"birthday": e.target.value});
+
         }
-        this.setState({
-            "showtopDiv": !this.state.showtopDiv,
-            basicMessage
-        });
+        this.setState({basicMessage});
 
     }
 
@@ -432,9 +104,10 @@ class EditMg extends React.Component {
 
     }
 
+
     fetchBasicMessage () {
 
-        ajax({"url": `/basicmessage?resumeid=${this.props.location.query.resumeid}&articleid=${this.props.location.query.articleid}`}).
+        ajax({"url": `/basicmessage?resumeid=${this.props.location.query.resumeid}`}).
         then((data) => {
 
             if (data.code === "S01") {
@@ -550,12 +223,14 @@ class EditMg extends React.Component {
                     <div>
                         <em>出生日期</em>
                         <p>
-                            <span onClick={() => {
 
-                                this.setState({"showdate": true});
-
-                            }}
-                            >{basicMessage.birthday}</span>
+                            {/*
+                            <span onClick={()=>{
+                                    this.setState({
+                                        showdate:true
+                                    })
+                                }}>{basicMessage.birthday}</span>*/}
+                            <input type="text" value={this.state.basicMessage.birthday} placeholder="格式：1999-12-21" name="birthday" onChange={this.handleChange} />
                         </p>
                     </div>
 
@@ -586,7 +261,8 @@ class EditMg extends React.Component {
                     <div>
                         <em>期望城市</em>
                         <p>
-                            <span>{basicMessage.hopeCity}</span>
+                            {/* <span>{basicMessage.hopeCity}</span>*/}
+                            <input type="text" value={this.state.basicMessage.hopeCity} name="hopeCity" onChange={this.handleChange} />
                         </p>
                     </div>
                 </div>
@@ -610,47 +286,7 @@ class EditMg extends React.Component {
                         </div> : ""
                 }
 
-                <div className="dateCom">
-                    <div className="datemain">
-                        <div className="dateheader">
-                            <span>{this.state.basicMessage.birthday.split("-")[0]}</span>
-                            年
-                            <span>{this.state.basicMessage.birthday.split("-")[1]}</span>
-                            月
-                            <span>{this.state.basicMessage.birthday.split("-")[2]}</span>
-                            日
-                        </div>
-                        <div className="datewrap">
-                            <div className="year">
-                                <ul ref="year">
-                                    {yearList}
-                                </ul>
-                                <div className="selected" />
-                            </div>
-                            <div className="month">
-                                <ul ref="month">
-                                    {monthList}
-                                </ul>
-                                <div className="selected" />
-                            </div>
-                            <div className="day">
-                                <ul ref="day">
-                                    {dayList}
-                                </ul>
-                                <div className="selected" />
-                            </div>
-                        </div>
-                        <div className="datefooter">
-                            <span>确定</span>
-                            <span onClick={() => {
 
-                                this.setState({"showdate": false});
-
-                            }}
-                            >取消</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         );
 
