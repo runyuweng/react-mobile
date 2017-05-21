@@ -22,6 +22,8 @@ class ConcernQuestion extends React.Component {
 
     componentDidMount () {
 
+        // this.props.showBottom(false);
+
         window.addEventListener("scroll", this.handleScroll);
         this.fetchQuestions(this.state.page);
 

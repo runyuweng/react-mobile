@@ -44,7 +44,7 @@ class Activity extends React.Component {
 
     fetchActivity () {
 
-        ajax({"url": "/dazhaoactivity"}).
+        ajax({"url": "/zhaoda/activity"}).
         then((data) => {
 
             if (data.code === "S01") {
