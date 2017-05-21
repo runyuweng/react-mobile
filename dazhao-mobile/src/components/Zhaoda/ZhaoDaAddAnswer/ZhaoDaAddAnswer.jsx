@@ -9,9 +9,11 @@ class ZhaoDaAddAnswer extends React.PureComponent {
         super(props);
         this.state = {
             "answerContent": "",
-            "html": ""
+            "html": "",
+            fileStore:{}
         };
         this.submitClick = this.submitClick.bind(this);
+        // http://oq0303egt.bkt.clouddn.com/
 
     }
 
@@ -28,11 +30,20 @@ class ZhaoDaAddAnswer extends React.PureComponent {
     }
 
     handleFile () {
+      console.log(this.state.fileStore);
+      let fileStore = this.state.fileStore;
+      fileStore[window.URL.createObjectURL(this.refs.file.files[0])] = this.refs.file.files[0];
+      // console.log(fileStore);
+
+
 
       // Console.log(this.refs.file.files.item(0));
       // Console.log(this.state.html);
       // Console.log(window.URL.createObjectURL(this.refs.file.files.item(0)));
-        this.setState({"html": `${this.refs.input.innerHTML}<img src="${window.URL.createObjectURL(this.refs.file.files[0])}"/>`});
+        this.setState({
+          "html": `${this.refs.input.innerHTML}<img location="${this.refs.file.files[0].name}" src="${window.URL.createObjectURL(this.refs.file.files[0])}"/>`,
+          fileStore: fileStore
+        });
         // This.refs.file.value = "";
       // Ajax({file:this.refs.file,fileUrl:'http://upload.qiniu.com/'}).then((data)=>{
       //   Console.log(data);
@@ -43,26 +54,32 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
 
     submitClick () {
+      const test = 'img src="sad" hkash type="sa" src="sasad"'
 
-        ajax({
-            "url": "/zhaoda/getqiniutoken",
-            "noParse": true
-        }).
-      then((data) => {
+      console.log(test);
+      console.log(test.match(/(?=src\=\")[^\"]*(?=\")/g));
 
-          console.log(data);
-          ajax({
-              "fileUrl": "http://upload.qiniu.com/",
-              "file": this.refs.file,
-              "token": data
-          }).
-        then((data) => {
 
-            console.log(data);
 
-        });
+        // ajax({
+        //     "url": "/zhaoda/getqiniutoken",
+        //     "noParse": true
+        // }).
+        // then((data) => {
+        //
+        //   console.log(data);
+        //   ajax({
+        //       "fileUrl": "http://upload.qiniu.com/",
+        //       "file": this.refs.file,
+        //       "token": data
+        //   }).
+        // then((data) => {
+        //
+        //     console.log(data);
+        //
+        // });
 
-      });
+      // });
 
 
     }

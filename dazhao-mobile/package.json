@@ -30,6 +30,7 @@
     "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.10.0",
     "node-sass": "^4.5.0",
+    "qiniu-js": "^1.0.19",
     "rc-queue-anim": "^1.0.1",
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-transition-group": "^15.5.2",
