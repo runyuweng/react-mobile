@@ -11,6 +11,12 @@ class MineZhaoDa extends React.Component {
 
     }
 
+    componentDidMount () {
+
+        this.props.showBottom(false);
+
+    }
+
     render () {
 
         return (

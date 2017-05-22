@@ -5,7 +5,7 @@
         overflow: hidden;
         position: relative;
         font-size: 0rem;
-        margin: .2rem .12rem;
+        margin: .2rem .12rem .12rem;
         background:#fff;
         background:url('/src/images/Bar.png') no-repeat;
         background-position:.08rem .26rem;
@@ -88,7 +88,7 @@
     }
 
 
-    .rmain:nth-of-type(2){
+    .watchcourse{
         .rtitle{
             display: flex;
             align-items: center;
@@ -136,7 +136,7 @@
         }
     }
 
-    .rmain:nth-of-type(3){
+    .newquestion{
         .rtitle{
             display: flex;
             align-items: center;
@@ -155,7 +155,7 @@
 
     }
 
-    .rmain:nth-of-type(4){
+    .newresume{
         .rtitle{
             display: flex;
             align-items: center;

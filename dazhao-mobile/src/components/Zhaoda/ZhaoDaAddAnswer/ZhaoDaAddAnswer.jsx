@@ -1,6 +1,7 @@
 import React from "react";
 import "./ZhaoDaAddAnswer.scss";
 import ajax from "../../../services/ajax.js";
+import {hashHistory} from "react-router";
 
 class ZhaoDaAddAnswer extends React.PureComponent {
 
@@ -81,62 +82,93 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
         const that = this;
 
-        this.setState({"html": this.refs.input.innerHTML}, () => {
+        if (this.refs.input.innerHTML.length <= 5) {
 
-            const imageUrl = this.state.html.match(/location\=\"[^\"]*(?=\")/g);
+            this.props.showMessage("最少输入五个字");
 
-            if (imageUrl) {
+        } else {
 
-                const files = imageUrl.map((value) => {
+            this.setState({"html": this.refs.input.innerHTML}, () => {
 
-                    const key = value.slice(10, value.length);
+                const imageUrl = this.state.html.match(/location\=\"[^\"]*(?=\")/g);
+
+                if (imageUrl) {
+
+                    const files = imageUrl.map((value) => {
+
+                        const key = value.slice(10, value.length);
 
 
-                    return this.state.fileStore[key];
+                        return this.state.fileStore[key];
+
+                    });
+
+                    console.log(files);
+                    ajax({
+                        "url": "/zhaoda/getqiniutoken",
+                        "noParse": true
+                    }).
+            then((token) => {
+
+                files.map((value, i) => {
+
+                    ajax({
+                        "fileUrl": "http://upload.qiniu.com/",
+                        "file": value,
+                        token
+                    }).
+                then((data) => {
+
+                    that.handleCallback(data, i);
 
                 });
 
-                console.log(files);
+                });
+
+            }).
+            then(() => {
+
                 ajax({
-                    "url": "/zhaoda/getqiniutoken",
-                    "noParse": true
+                    "url": "/zhaoda/question/addanswer",
+                    "method": "POST",
+                    "data": `answer=${this.state.html}&qid=${this.state.qid}`
                 }).
-          then((token) => {
-
-              files.map((value, i) => {
-
-                  ajax({
-                      "fileUrl": "http://upload.qiniu.com/",
-                      "file": value,
-                      token
-                  }).
               then((data) => {
 
-                  that.handleCallback(data, i);
+                  hashHistory.push({
+                      "pathname": `toquestion/${this.state.qid}`,
+                      "query": {}
+                  });
+                  that.props.showMessage("回答成功");
+
 
               });
-
-              });
-
-          }).
-          then(() => {
-
-              ajax({
-                  "url": "/zhaoda/question/addanswer",
-                  "method": "POST",
-                  "data": `answer=${this.state.html}&qid=${this.state.qid}`
-              }).
-            then((data) => {
-
-                console.log(data);
 
             });
 
+                } else {
+
+                    ajax({
+                        "url": "/zhaoda/question/addanswer",
+                        "method": "POST",
+                        "data": `answer=${this.state.html}&qid=${this.state.qid}`
+                    }).
+          then((data) => {
+
+              hashHistory.push({
+                  "pathname": `toquestion/${this.state.qid}`,
+                  "query": {}
+              });
+              that.props.showMessage("回答成功");
+
           });
 
-            }
+                }
 
-        });
+            });
+
+
+        }
 
 
     }

@@ -19,88 +19,133 @@ class ZhaoDaToTopic extends React.Component {
                 "care": 10,
                 "isCared": false,
                 "questions": [
-                    // {
-                    //     "id": 1,
-                    //     "topic": "考研",
-                    //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    //     "name": "Michal",
-                    //     "job": "骨灰级教练",
-                    //     "imgsrc": "/src/images/vip.png",
-                    //     "remark": 9,
-                    //     "agree": 14,
-                    //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    //     "collect": false
-                    // },
-                    // {
-                    //     "id": 2,
-                    //     "topic": "考研",
-                    //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    //     "name": "Michal",
-                    //     "job": "骨灰级教练",
-                    //     "imgsrc": "/src/images/vip.png",
-                    //     "remark": 12,
-                    //     "agree": 14,
-                    //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    //     "collect": false
-                    // },
-                    // {
-                    //     "id": 3,
-                    //     "topic": "考研",
-                    //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    //     "name": "Michal",
-                    //     "job": "骨灰级教练",
-                    //     "imgsrc": "/src/images/vip.png",
-                    //     "remark": 13,
-                    //     "agree": 14,
-                    //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    //     "collect": false
-                    // }
                 ]
-            }
+            },
+            "page": 1,
+            "nomore": false,
+            "moreMessage": ""
         };
+        this.fetchQuestion = this.fetchQuestion.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
 
     }
 
     componentDidMount () {
 
         this.props.showBottom();
-        this.fetchQuestion();
+        window.addEventListener("scroll", this.handleScroll);
+        this.fetchQuestion(this.state.page);
 
     }
 
-    fetchQuestion () {
+    componentWillUnmount () {
 
-        ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=1`}).
-      then((data) => {
+        window.removeEventListener("scroll", this.handleScroll);
 
-          const newQ = {};
+    }
 
-          newQ.topicTitle = data.contents.topicname;
-          newQ.answer = data.contents.questionnum;
-          newQ.care = data.contents.care;
-        // NewQ.topicImg = data.contents.img;
-          newQ.topicImg = "/src/images/pople.png";
-          newQ.questions = [];
 
-          data.contents.questionlist.map((value, i) => {
+    handleScroll (e) {
 
-              newQ.questions.push({
-                  "qid": value.qid,
-                  "id": value.tid,
-                  "name": value.user.nickname,
-                  "theme": value.qtitle,
-                  "comment": value.qcontent,
-                  "agree": value.agree,
-                  "remark": value.answer,
-                  "collect": value.collect,
-                  "vip": value.user.vip
-              });
+        // Console.log("滚动高度：" + document.body.scrollTop);
 
-          });
+        const scrollTop = document.body.scrollTop;
+        const innerHeight = window.innerHeight;
+        const docHeight = document.body.scrollHeight;
 
-          this.setState({"topicdetail": newQ});
+        scrollTop === docHeight - innerHeight
+        ? (() => {
 
-      });
+            this.setState({"moreMessage": this.state.nomore ? "没有更多回答" : "正在加载中"}, () => {
+
+                this.fetchQuestion(this.state.page);
+
+            });
+
+        })() : "";
+
+    }
+
+    fetchQuestion (page) {
+
+        !this.state.nomore
+
+        ? ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=${page}`}).
+          then((data) => {
+
+              console.log(data.contents);
+              if (data.code === "S01") {
+
+                  const questions = this.state.topicdetail.questions;
+                  const newQ = {};
+
+
+                  newQ.topicTitle = data.contents.topicname;
+                  newQ.answer = data.contents.questionnum;
+                  newQ.care = data.contents.care;
+                // NewQ.topicImg = data.contents.img;
+                  newQ.topicImg = "/src/images/pople.png";
+                  newQ.questions = [];
+
+                  newQ.questions.concat(questions);
+
+                  data.contents.questionlist.map((value, i) => {
+
+                      newQ.questions.push({
+                          "qid": value.qid,
+                          "id": value.tid,
+                          "name": value.user.nickname,
+                          "theme": value.qtitle,
+                          "comment": value.qcontent,
+                          "agree": value.agree,
+                          "remark": value.answer,
+                          "collect": value.collect,
+                          "vip": value.user.vip
+                      });
+
+                  });
+
+                  this.setState({
+                      "topicdetail": newQ,
+                      "page": this.state.page + 1,
+                      "moreMessage": ""
+                  });
+
+              } else if (data.code === "S02") {
+
+                // 没有更多
+                  const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
+
+                  data.contents.questionlist.map((value, i) => {
+
+                      topicdetail.questions.push({
+                          "qid": value.qid,
+                          "id": value.tid,
+                          "name": value.user.nickname,
+                          "theme": value.qtitle,
+                          "comment": value.qcontent,
+                          "agree": value.agree,
+                          "remark": value.answer,
+                          "collect": value.collect,
+                          "vip": value.user.vip
+                      });
+
+                  });
+
+
+                  this.setState({
+                      topicdetail,
+                      "nomore": true,
+                      "moreMessage": "没有更多问题"
+                  });
+
+              } else if (data.code === "E01") {
+
+                  this.setState({"topicdetail": {}});
+
+              }
+
+          }) : "";
 
     }
 
@@ -145,7 +190,7 @@ class ZhaoDaToTopic extends React.Component {
                     {questionsList}
 
                 </div>
-
+                <p className="fetchmore">{this.state.moreMessage}</p>
             </div>
         );
 

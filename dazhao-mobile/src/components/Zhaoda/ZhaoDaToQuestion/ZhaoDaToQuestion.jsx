@@ -94,7 +94,12 @@ class ZhaoDaToQuestion extends React.Component {
                           <span>{value.job}</span>
                     </div>
                     <Link to="/response">
-                        <div className="comment">{value.comment}</div>
+                        <div
+                            contentEditable
+                            className="comment"
+                            ref="input"
+                            dangerouslySetInnerHTML={{"__html": value.comment}}
+                        />
                     </Link>
                     <div className="more">
                         <span><b><img src="/src/images/zan.png" /></b>赞同{value.agree}</span>

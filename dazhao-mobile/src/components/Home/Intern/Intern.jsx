@@ -64,7 +64,7 @@ class Intern extends React.Component {
         const innerHeight = window.innerHeight;
         const docHeight = document.body.scrollHeight;
 
-        scrollTop === docHeight - innerHeight
+        scrollTop > Math.floor(2 * (docHeight - innerHeight) / 3)
         ? (() => {
 
             this.loadData("loadMore");
@@ -109,6 +109,8 @@ class Intern extends React.Component {
             });
 
         });
+
+        Object.assign(data, {"page": data.page + 1});
         this.setState({data});
 
     }
