@@ -40,7 +40,7 @@ class ZhaoDaToQuestion extends React.Component {
 
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
-
+          console.log(data)
           const newQ = {
               "qid": data.contents.qid,
               "title": data.contents.qtitle,
@@ -58,8 +58,8 @@ class ZhaoDaToQuestion extends React.Component {
               newOtherAnswers.push({
                   "aid": value.aid,
                   "name": value.user.nickname,
-            // Job:aaa
-                  "imgsrc": value.user.img,
+                  "position":value.user.position,
+                  "vip": value.user.vip,
                   "remark": value.remark,
                   "agree": value.agree,
                   "collect": value.collect,
@@ -90,10 +90,16 @@ class ZhaoDaToQuestion extends React.Component {
                 <div>
                     <div className="publisher" key={num}>
                         {value.name}
-                        <span className="vip"><img src={value.imgsrc} /></span>，
-                          <span>{value.job}</span>
+                        {
+                            value.vip?
+                            <span className="vip"><img src="/src/images/vip.png" /></span>:""
+                        }
+                        {
+                            value.position ?
+                            <em>，{value.position}</em>:""
+                        }
                     </div>
-                    <Link to="/response">
+                    <Link to={{"pathname":"/response","query":{"aid":value.aid,"qtitle":this.state.question.title}}}>
                         <div className="comment">{value.comment}</div>
                     </Link>
                     <div className="more">

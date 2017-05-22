@@ -17,27 +17,7 @@ class ZhaoDaIndex extends React.Component {
             "latestDynamic": [
             ],
             "hotTopic": [
-                {
-                    "tid": "1",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                },
-                {
-                    "tid": "1",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                },
-                {
-                    "tid": "1",
-                    "img": "/src/images/topicImg.png",
-                    "tipic": "考研",
-                    "question": 12,
-                    "care": 3
-                }
+    
             ],
             "popularityPople": [
                 {
@@ -184,6 +164,7 @@ class ZhaoDaIndex extends React.Component {
         ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
       then((data) => {
 
+          console.log(data)
 
           if (data.contents.length > 0) {
 
@@ -193,14 +174,15 @@ class ZhaoDaIndex extends React.Component {
 
                   newQ.push({
                       "qid": value.question.qid,
-                      "topic": "",
+                      "topic": value.question.topics,
                       "theme": value.question.qtitle,
                       "name": value.user.nickname,
-                      "imgsrc": value.user.img,
+                      "vip": value.user.vip,
                       "remark": value.remark,
                       "agree": value.question.agree,
                       "comment": value.content,
-                      "collect": value.collect
+                      "collect": value.collect,
+                      "job":value.user.position
                   });
                   this.setState({
                       "latestDynamic": newQ,
@@ -241,7 +223,7 @@ class ZhaoDaIndex extends React.Component {
 
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "S01") {
 
                 // 查询成功
@@ -387,7 +369,7 @@ class ZhaoDaIndex extends React.Component {
                 <span className="span1">
                     <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
                 </span>
-                <span className="span2">{elem.tipic}</span>
+                <span className="span2">{elem.topicname}</span>
                 <span className="care">
                     <span>回答:{elem.question}</span>
                     <span>关注:{elem.care}</span>
