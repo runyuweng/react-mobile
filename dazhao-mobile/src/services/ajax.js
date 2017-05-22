@@ -34,11 +34,10 @@ export default function ajax(options) {
 
             xhr.send(config.data);
           }else{
-            console.log('file',config.file.files[0]);
             xhr.open("POST", config.fileUrl, false);
             let form = new FormData(); // FormData 对象
             form.append("token", config.qiniuToken);
-            form.append("file", config.file.files[0]); // 文件对象
+            form.append("file", config.file); // 文件对象
             xhr.send(form);
 
           }
