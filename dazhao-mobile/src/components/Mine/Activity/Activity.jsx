@@ -9,28 +9,7 @@ class Activity extends React.Component {
 
         super(props);
         this.state = {
-            "activities": [
-                {
-                    "id": 1,
-                    "publishdate": "2月28日",
-                    "publishtime": "09:00",
-                    "activitytitle": "花开不待春·招邀青云客",
-                    "activitydatetime": "14:30",
-                    "activityimg": "/src/images/zlbhlog.png",
-                    "activityintro": "珠联璧合|海量招聘信息，春招无限可能。",
-                    "activityurl": "www.baidu.com"
-                },
-                {
-                    "id": 1,
-                    "publishdate": "2月28日",
-                    "publishtime": "09:00",
-                    "activitytitle": "花开不待春·招邀青云客",
-                    "activitydatetime": "14:30",
-                    "activityimg": "/src/images/zlbhlog.png",
-                    "activityintro": "珠联璧合|海量招聘信息，春招无限可能。",
-                    "activityurl": "www.baidu.com"
-                }
-            ]
+            "activities": []
         };
         this.fetchActivity = this.fetchActivity.bind(this);
 
@@ -46,7 +25,7 @@ class Activity extends React.Component {
 
         ajax({"url": "/zhaoda/activity"}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "S01") {
 
                 this.setState({"activities": data.contents});
@@ -76,7 +55,7 @@ class Activity extends React.Component {
                         <img src={value.activityimg} alt="珠联璧合" />
                     </span>
                     <p>{value.activityintro}</p>
-                    <span>点击进入招聘会主场→</span>
+                    <a href={"http://" + value.activityurl}><span>点击进入招聘会主场→</span></a>
                 </div>
             </div>
             );

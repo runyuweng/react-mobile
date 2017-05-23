@@ -13,7 +13,7 @@ class AnswerMain extends React.Component {
             "theme": this.props.data.theme || "",
             "name": this.props.data.name || "",
             "job": this.props.data.job || "",
-            "imgsrc": this.props.data.imagesrc || "/src/images/vip.png",
+            "vip": this.props.data.vip || false,
             "comment": this.props.data.comment || "",
             "agree": this.props.data.agree || "0",
             "remark": this.props.data.remark || "0",
@@ -25,19 +25,31 @@ class AnswerMain extends React.Component {
 
     render () {
 
-        const {qid, isTopic, topic, theme, name, job, imgsrc, comment, agree, remark, collect} = this.state;
+        const {qid, isTopic, topic, theme, name, job, vip, comment, agree, remark, collect} = this.state;
+
+        const topicsList = topic.map((value,i)=>{
+            return(
+                i===0 ? value.topicname : `，${value.topicname}`
+            )
+        })
 
         return (
             <div className="AnswerMain">
                 <article>
-                    {isTopic === "1" ? <span className="topic">话题：<i>{topic}</i></span> : ""}
+                    {isTopic === "1" ? <span className="topic">话题：<i>{topicsList}</i></span> : ""}
                     <Link to={`/toquestion/${qid}`}>
                         <p className="theme">{theme}</p>
                     </Link>
                     <div className="publisher">
                         {name}
-                        <span className="vip"><img src={imgsrc} /></span>，
-                        <span>{job}</span>
+                        {
+                            vip?
+                            <span className="vip"><img src="/src/images/vip.png" /></span>:""
+                        }
+                        {
+                            job ?
+                            <em>，{job}</em>:""
+                        }
                     </div>
                     <Link to={`/toquestion/${qid}`}>
                         <div className="comment">{comment}</div>
