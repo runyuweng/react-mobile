@@ -23,6 +23,7 @@ class ZhaoDaResponse extends React.Component {
             }
         };
         this.fetchAnswer = this.fetchAnswer.bind(this);
+
     }
 
     componentDidMount () {
@@ -30,22 +31,26 @@ class ZhaoDaResponse extends React.Component {
         this.props.showBottom();
 
         this.setState({
-            "title":this.props.location.query.qtitle,
-            "answerId":this.props.location.query.aid
-        },()=>{
+            "title": this.props.location.query.qtitle,
+            "answerId": this.props.location.query.aid
+        }, () => {
 
             this.fetchAnswer(this.state.answerId);
 
-        })
+        });
 
     }
 
-    fetchAnswer(aid){
-        ajax({"url":`/zhaoda/question/answerinfo?aid=${aid}`})
-        .then((data)=>{
-            console.log(data)
-            if (data.code==="S01") {
-                let answerdetail = {};
+    fetchAnswer (aid) {
+
+        ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
+        then((data) => {
+
+            console.log(data);
+            if (data.code === "S01") {
+
+                const answerdetail = {};
+
                 answerdetail.answer = data.contents.content;
                 answerdetail.imgsrc = data.contents.user.img;
                 answerdetail.vip = data.contents.user.vip;
@@ -53,16 +58,16 @@ class ZhaoDaResponse extends React.Component {
                 answerdetail.position = data.contents.user.position;
                 answerdetail.time = data.contents.date;
 
-                this.setState({
-                    "answerdetail":answerdetail
-                })
+                this.setState({answerdetail});
 
-            }else if (data.code==="E01") {
-                this.setState({
-                    "answerdetail":{}
-                })
+            } else if (data.code === "E01") {
+
+                this.setState({"answerdetail": {}});
+
             }
-        })
+
+        });
+
     }
 
     render () {
@@ -88,14 +93,14 @@ class ZhaoDaResponse extends React.Component {
                         <span><img src={answerdetail.imgsrc} /></span>
                         <em>{answerdetail.name}</em>
                         {
-                            answerdetail.vip?
-                            <span><img src="/src/images/vip.png" /></span>:""
+                            answerdetail.vip
+                                ? <span><img src="/src/images/vip.png" /></span> : ""
                         }
                         {
-                            answerdetail.position ?
-                            <em>，{answerdetail.position}</em>:""
+                            answerdetail.position
+                            ? <em>，{answerdetail.position}</em> : ""
                         }
-                        
+
                     </div>
                     <p>{answerdetail.answer}</p>
                     <time>{answerdetail.time}</time>

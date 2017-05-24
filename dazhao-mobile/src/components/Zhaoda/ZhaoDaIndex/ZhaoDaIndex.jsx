@@ -17,7 +17,7 @@ class ZhaoDaIndex extends React.Component {
             "latestDynamic": [
             ],
             "hotTopic": [
-    
+
             ],
             "popularityPople": [
                 {
@@ -164,7 +164,7 @@ class ZhaoDaIndex extends React.Component {
         ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
       then((data) => {
 
-          console.log(data)
+          console.log(data);
 
           if (data.contents.length > 0) {
 
@@ -182,7 +182,7 @@ class ZhaoDaIndex extends React.Component {
                       "agree": value.question.agree,
                       "comment": value.content,
                       "collect": value.collect,
-                      "job":value.user.position
+                      "job": value.user.position
                   });
                   this.setState({
                       "latestDynamic": newQ,
@@ -223,7 +223,8 @@ class ZhaoDaIndex extends React.Component {
 
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 // 查询成功

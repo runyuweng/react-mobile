@@ -13,20 +13,24 @@ class TopBar extends React.Component {
 
     render () {
 
-        const {title, border, link, img} = this.props;
+        const {title, border, link, img, backTo} = this.props;
 
 
         return (
             <div className="TopBar">
                 <div className="content" style={border == "noboder" ? {"borderBottom": "none"} : {"borderBottom": "1px solid #DBDBDB"}}>
-                    <span onClick={(e) => {
+                    {backTo ? <Link to={backTo}>
+                        <span>
+                            <img src="/src/images/arrow-left.png" />
+                        </span>
+                    </Link> : <span onClick={(e) => {
 
                         history.back();
 
                     }}
-                    >
+                              >
                         <img src="/src/images/arrow-left.png" />
-                    </span>
+                    </span>}
                     <span>{title}</span>
                     {link ? <span>
                         <Link to={link.url}>{link.content}</Link>

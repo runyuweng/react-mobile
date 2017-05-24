@@ -153,17 +153,17 @@ class GrowRecord extends React.Component {
                                 <h3>简历名称：{value.resume_name}</h3>
                                 <p>
                                     <span>
-                            <em>期望工作：</em>
-                            <em>{value.resume_content.expected_work}</em>
-                        </span>
+                                        <em>期望工作：</em>
+                                        <em>{value.resume_content.expected_work}</em>
+                                    </span>
                                     <span>
-                            <em>工作地点：</em>
-                            <em>{value.resume_content.expected_add}</em>
-                        </span>
+                                        <em>工作地点：</em>
+                                        <em>{value.resume_content.expected_add}</em>
+                                    </span>
                                     <span>
-                            <em>简历类型：</em>
-                            <em>{value.resume_content.resume_type === "zh" ? "中文简历" : "英文简历"}</em>
-                        </span>
+                                        <em>简历类型：</em>
+                                        <em>{value.resume_content.resume_type === "zh" ? "中文简历" : "英文简历"}</em>
+                                    </span>
                                 </p>
                             </div>
                         </div>

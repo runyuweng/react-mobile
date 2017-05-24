@@ -40,7 +40,8 @@ class ZhaoDaToQuestion extends React.Component {
 
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
-          console.log(data)
+
+          console.log(data);
           const newQ = {
               "qid": data.contents.qid,
               "title": data.contents.qtitle,
@@ -58,7 +59,7 @@ class ZhaoDaToQuestion extends React.Component {
               newOtherAnswers.push({
                   "aid": value.aid,
                   "name": value.user.nickname,
-                  "position":value.user.position,
+                  "position": value.user.position,
                   "vip": value.user.vip,
                   "remark": value.remark,
                   "agree": value.agree,
@@ -91,12 +92,12 @@ class ZhaoDaToQuestion extends React.Component {
                     <div className="publisher" key={num}>
                         {value.name}
                         {
-                            value.vip?
-                            <span className="vip"><img src="/src/images/vip.png" /></span>:""
+                            value.vip
+                                ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
                         }
                         {
-                            value.position ?
-                            <em>，{value.position}</em>:""
+                            value.position
+                            ? <em>，{value.position}</em> : ""
                         }
                     </div>
                     <Link to="/response">

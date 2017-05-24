@@ -27,11 +27,9 @@ class AnswerMain extends React.Component {
 
         const {qid, isTopic, topic, theme, name, job, vip, comment, agree, remark, collect} = this.state;
 
-        const topicsList = topic.map((value,i)=>{
-            return(
-                i===0 ? value.topicname : `，${value.topicname}`
-            )
-        })
+        const topicsList = topic.map((value, i) =>
+                i === 0 ? value.topicname : `，${value.topicname}`
+            );
 
         return (
             <div className="AnswerMain">
@@ -43,12 +41,12 @@ class AnswerMain extends React.Component {
                     <div className="publisher">
                         {name}
                         {
-                            vip?
-                            <span className="vip"><img src="/src/images/vip.png" /></span>:""
+                            vip
+                                ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
                         }
                         {
-                            job ?
-                            <em>，{job}</em>:""
+                            job
+                            ? <em>，{job}</em> : ""
                         }
                     </div>
                     <Link to={`/toquestion/${qid}`}>
