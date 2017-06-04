@@ -11,15 +11,16 @@ class EditMg extends React.Component {
 
             "basicMessage": {
                 "img": "/src/images/pople.png",
-                "resumeName": "互联网产品岗",
                 "name": "周新城",
                 "sex": "男",
-                "bestEducation": "本科",
-                "birthday": "1995-10-25",
-                "phone": "13245679842",
-                "email": "joy_joy01@163.com",
-                "hopeJob": "互联网产品经理",
-                "hopeCity": "上海市"
+                "bestEducation": "",
+                "phone": "",
+                "email": "",
+                "political_status": "",
+                "current_add":{
+                    "province":"",
+                    "city":""
+                }
             },
             "showtopDiv": false,
             "showWhich": -1
@@ -51,11 +52,7 @@ class EditMg extends React.Component {
         console.log(e.target.name);
         const basicMessage = JSON.parse(JSON.stringify(this.state)).basicMessage;
 
-        if (e.target.name === "resumeName") {
-
-            Object.assign(basicMessage, {"resumeName": e.target.value});
-
-        } else if (e.target.name === "name") {
+        if (e.target.name === "name") {
 
             Object.assign(basicMessage, {"name": e.target.value});
 
@@ -67,17 +64,9 @@ class EditMg extends React.Component {
 
             Object.assign(basicMessage, {"email": e.target.value});
 
-        } else if (e.target.name === "hopeJob") {
+        } else if (e.target.name === "political_status") {
 
-            Object.assign(basicMessage, {"hopeJob": e.target.value});
-
-        } else if (e.target.name === "hopeCity") {
-
-            Object.assign(basicMessage, {"hopeCity": e.target.value});
-
-        } else if (e.target.name === "birthday") {
-
-            Object.assign(basicMessage, {"birthday": e.target.value});
+            Object.assign(basicMessage, {"political_status": e.target.value});
 
         }
         this.setState({basicMessage});
@@ -174,15 +163,7 @@ class EditMg extends React.Component {
                         </p>
                     </div>
 
-                    <div>
-                        <em>简历名称</em>
-                        <p>
-                            {/* <span>{basicMessage.resumeName}</span>*/}
-                            <input type="text" value={this.state.basicMessage.resumeName} name="resumeName" onChange={this.handleChange} />
-                        </p>
-                    </div>
-
-                    <div>
+                    <div className="name">
                         <em>姓名</em>
                         <p>
                             {/* <span>{basicMessage.name}</span>*/}
@@ -190,7 +171,7 @@ class EditMg extends React.Component {
                         </p>
                     </div>
 
-                    <div>
+                    <div className="setSex">
                         <em>性别</em>
                         <p>
                             <span onClick={() => {
@@ -206,63 +187,52 @@ class EditMg extends React.Component {
                     </div>
 
                     <div>
-                        <em>最高学历</em>
+                        <em>手机号</em>
                         <p>
-                            <span onClick={() => {
+                            {/* <span>{basicMessage.phone}</span>*/}
+                            <input type="text" value={this.state.basicMessage.phone} placeholder="输入手机号" name="phone" onChange={this.handleChange} />
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <em>邮箱号</em>
+                        <p>
+                            {/* <span>{basicMessage.email}</span>*/}
+                            <input type="text" value={this.state.basicMessage.email} placeholder="输入邮箱地址" name="email" onChange={this.handleChange} />
+                        </p>
+                    </div>
+
+                    <div>
+                        <em>最高学历</em>
+                        <p onClick={() => {
 
                                 this.setState({
                                     "showWhich": 2,
                                     "showtopDiv": true
                                 });
 
-                            }}
-                            >{basicMessage.bestEducation}</span>
+                            }}>
+                            <span>{this.state.basicMessage.bestEducation==="" ? "选择最高学历" : this.state.basicMessage.bestEducation}</span>
+                            <span> <img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
 
+
                     <div>
-                        <em>出生日期</em>
+                        <em>现居地</em>
                         <p>
-
-                            {/*
-                            <span onClick={()=>{
-                                    this.setState({
-                                        showdate:true
-                                    })
-                                }}>{basicMessage.birthday}</span>*/}
-                            <input type="text" value={this.state.basicMessage.birthday} placeholder="格式：1999-12-21" name="birthday" onChange={this.handleChange} />
+                            <span><em>省份</em><img src="/src/images/Back_Button.png" /></span>
+                            <span><em>城市</em><img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
 
                     <div>
-                        <em>联系电话</em>
-                        <p>
-                            {/* <span>{basicMessage.phone}</span>*/}
-                            <input type="text" value={this.state.basicMessage.phone} name="phone" onChange={this.handleChange} />
-                        </p>
-                    </div>
-
-                    <div>
-                        <em>联系邮箱</em>
-                        <p>
-                            {/* <span>{basicMessage.email}</span>*/}
-                            <input type="text" value={this.state.basicMessage.email} name="email" onChange={this.handleChange} />
-                        </p>
-                    </div>
-
-                    <div>
-                        <em>期望岗位</em>
-                        <p>
-                            {/* <span>{basicMessage.hopeJob}</span>*/}
-                            <input type="text" value={this.state.basicMessage.hopeJob} name="hopeJob" onChange={this.handleChange} />
-                        </p>
-                    </div>
-
-                    <div>
-                        <em>期望城市</em>
+                        <em>政治面貌</em>
                         <p>
                             {/* <span>{basicMessage.hopeCity}</span>*/}
-                            <input type="text" value={this.state.basicMessage.hopeCity} name="hopeCity" onChange={this.handleChange} />
+                            <span>选择政治面貌</span>
+                            <span> <img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
                 </div>

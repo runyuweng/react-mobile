@@ -239,7 +239,7 @@
             }
 
         }
-        .jobitems:nth-last-of-type(1){
+        a:nth-last-of-type(1)>.jobitems{
             border-bottom:.01rem solid #EAEAEA;
             .jobintro{
                 border-bottom:none;
@@ -392,7 +392,7 @@
             }
         }
 
-        .jobitems:nth-last-of-type(1){
+        a:nth-last-of-type(1)>.jobitems{
             border-bottom:.01rem solid #EAEAEA;
             .jobintro{
                 border-bottom:none;
