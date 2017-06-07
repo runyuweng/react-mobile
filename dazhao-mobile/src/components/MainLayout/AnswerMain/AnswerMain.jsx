@@ -9,7 +9,7 @@ class AnswerMain extends React.Component {
         this.state = {
             "qid": this.props.data.qid || "",
             "isTopic": this.props.isTopic || "1",
-            "topic": this.props.data.topic || "",
+            "topic": this.props.data.topic || [],
             "theme": this.props.data.theme || "",
             "name": this.props.data.name || "",
             "job": this.props.data.job || "",

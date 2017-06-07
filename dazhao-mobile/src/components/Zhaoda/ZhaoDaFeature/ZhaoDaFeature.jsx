@@ -13,7 +13,7 @@ class ZhaoDaFeature extends React.Component {
                     "imgsrc": "/src/images/zhuanlan.png",
                     "topic": "#麦力达#第一期--考研那些事儿..",
                     "name": "Michal",
-                    "vipImgsrc": "/src/images/vip.png",
+                    "vip": true,
                     "theme": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
 
                 },
@@ -21,7 +21,7 @@ class ZhaoDaFeature extends React.Component {
                     "imgsrc": "/src/images/zhuanlan.png",
                     "topic": "#麦力达#第一期--考研那些事儿..",
                     "name": "Michal",
-                    "vipImgsrc": "/src/images/vip.png",
+                    "vip": true,
                     "theme": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
 
                 },
@@ -29,7 +29,7 @@ class ZhaoDaFeature extends React.Component {
                     "imgsrc": "/src/images/zhuanlan.png",
                     "topic": "#麦力达#第一期--考研那些事儿..",
                     "name": "Michal",
-                    "vipImgsrc": "/src/images/vip.png",
+                    "vip": true,
                     "theme": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
 
                 }
@@ -58,7 +58,11 @@ class ZhaoDaFeature extends React.Component {
                 <div className="publisher">
                     <span className="cicle" />
                     {elem.name}
-                    <span className="vip"><img src={elem.vipImgsrc} /></span>
+                    {
+                        elem.vip?
+                        <span className="vip"><img src="/src/images/vip.png" /></span>
+                        :""
+                    }
                 </div>
                 <p>{elem.theme}</p>
             </div>

@@ -2,13 +2,14 @@ import React from "react";
 import "./ZhaoDaSearch.scss";
 import ZhaoDaSearchTop from "../ZhaoDaSearchTop/ZhaoDaSearchTop.jsx";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax.js";
 
 class ZhaoDaSearch extends React.Component {
     constructor (props) {
 
         super(props);
         this.state = {
-            "Keyword": "",
+            "keyword": this.props.location.query.keyword,
             "response": [
                 {
                     "id": 1,
@@ -27,7 +28,28 @@ class ZhaoDaSearch extends React.Component {
                 }
             ]
         };
+        this.fetchQuestions = this.fetchQuestions.bind(this);
+    }
 
+    componentDidMount() {
+        console.log(this.props.location.query.keyword)
+    }
+
+    fetchQuestions(keyword){
+        ajax({"url": `/zhaoda/questions?keyword=${keyword}`}).
+        then((data) => {
+
+            if (data.code === "S01") {
+
+                this.setState({"response": data.contents});
+
+            } else if (data.code === "E01") {
+
+                this.setState({"response": []});
+
+            }
+
+        });
     }
 
     render () {
@@ -43,7 +65,7 @@ class ZhaoDaSearch extends React.Component {
 
         return (
             <div className="ZhaoDaSearch">
-                <ZhaoDaSearchTop />
+                <ZhaoDaSearchTop keyword={this.state.keyword} />
                 <div className="getting">
                     {/*
           <div className="items">
