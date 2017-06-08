@@ -8,7 +8,8 @@ class ZhaoDaSearchTop extends React.Component {
         super(props);
 
         this.state = {
-            "keyword":this.props.keyword
+            "keyword":this.props.keyword,
+            "username":this.props.username
         }
 
     }
@@ -52,7 +53,7 @@ class ZhaoDaSearchTop extends React.Component {
                         </Link>
                         <Link activeClassName="active" to={{
                             "pathname":"/user",
-                            "query":{"keyword":this.state.keyword}
+                            "query":{"user":this.state.username}
                         }}>
                             <li>用户</li>
                         </Link>

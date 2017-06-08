@@ -85,6 +85,7 @@ class ZhaoDaToQuestion extends React.Component {
     render () {
 
         const {topic, question, otherAnswers} = this.state;
+        console.log(otherAnswers)
         const otherAnswersList = otherAnswers.map((value, num) =>
             <article key={num}>
                 <div>

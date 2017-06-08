@@ -36,23 +36,25 @@ class ZhaoDaMessage extends React.Component {
                     "answerers": ["Michael"],
                     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
                 }
-            ]
+            ],
+            "page":1,
         };
-
+        this.fetchInform = this.fetchInform.bind(this);
     }
 
     componentDidMount () {
 
         this.props.showBottom();
-        this.fetchInform();
+        this.fetchInform(this.state.page);
 
     }
 
     // 获取通知
-    fetchInform () {
+    fetchInform (page) {
 
-        ajax({"url": "/zhaoda/message/information?page=1"}).
+        ajax({"url": `/zhaoda/message/information?page=${page}`}).
         then((data) => {
+            console.log(data)
 
             if (data.code === "E01") {
 
