@@ -100,6 +100,11 @@
             line-height:0.2rem;
             a{
                 color:#ADADAD;
+                margin-right:0.2rem;   
+            }
+            a>span{
+
+                margin-right:0;
             }
             span{
                 display:inline-flex;

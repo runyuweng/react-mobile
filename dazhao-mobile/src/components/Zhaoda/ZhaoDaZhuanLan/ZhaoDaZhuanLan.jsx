@@ -62,15 +62,17 @@ class ZhaoDaZhuanLan extends React.Component {
         const zhuanlanList = zhuanlan.map((value,index)=>{
             return(
                 <div key={index} className="item">
-                    <div className="left">
-                        <span className="circle1">
-                            <img src={value.img} alt="专栏" />
-                        </span>
-                        <p>
-                            <span>{value.zhuanlan_title}</span><br />
-                            <span>{value.zhuanlan_intro}</span>
-                        </p>
-                    </div>
+                    <Link to={`/tofeature?colid=${value.id}`}>
+                        <div className="left">
+                            <span className="circle1">
+                                <img src={value.img} alt="专栏" />
+                            </span>
+                            <p>
+                                <span>{value.zhuanlan_title}</span><br />
+                                <span>{value.zhuanlan_intro}</span>
+                            </p>
+                        </div>
+                    </Link>
                 </div>
             )
         })

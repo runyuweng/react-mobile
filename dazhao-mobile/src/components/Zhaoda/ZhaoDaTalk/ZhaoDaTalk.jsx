@@ -92,10 +92,11 @@ class ZhaoDaTalk extends React.Component {
             return(
                 <div key={index} className="item">
                     <div className="left">
-                        <span className="circle">
-                            <img src={value.img} alt="话题" />
-                        </span>
-
+                        <Link to={`/totopic/${value.id}`}>
+                            <span className="circle">
+                                <img src={value.img} alt="话题" />
+                            </span>
+                        </Link>
                         <p>
                             <span>{value.topic_title}</span><br />
                             <span>

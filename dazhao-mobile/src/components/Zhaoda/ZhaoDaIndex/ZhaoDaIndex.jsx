@@ -104,6 +104,7 @@ class ZhaoDaIndex extends React.Component {
 
     componentDidMount () {
 
+
         [this.refs.topic1, this.refs.topic2, this.refs.topic3].map((elem) => {
 
             this._touchEvent(elem);
@@ -174,6 +175,7 @@ class ZhaoDaIndex extends React.Component {
 
                   newQ.push({
                       "qid": value.question.qid,
+                      "aid": value.aid,
                       "topic": value.question.topics,
                       "theme": value.question.qtitle,
                       "name": value.user.nickname,

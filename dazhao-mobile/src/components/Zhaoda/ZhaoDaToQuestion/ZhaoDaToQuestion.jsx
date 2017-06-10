@@ -20,7 +20,9 @@ class ZhaoDaToQuestion extends React.Component {
         };
 
         this.stretchClick = this.stretchClick.bind(this);
-
+        this.setCare = this.setCare.bind(this);
+        this.setAgree = this.setAgree.bind(this);
+        this.setSelected = this.setSelected.bind(this);
     }
 
     stretchClick () {
@@ -82,6 +84,61 @@ class ZhaoDaToQuestion extends React.Component {
 
     }
 
+    setCare(qid){
+      ajax({"url": `/zhaoda/carequestion?qid=${qid}`}).
+      then((data) => {
+          if (data.code==="S01") {
+            //关注状态改变
+            var question = JSON.parse(JSON.stringify(this.state)).question;
+            question.isCare = !this.state.question.isCare;
+            this.setState({
+              "question":question
+            })
+
+
+          }else if (data.code==="E01") {
+            //出错
+          }
+      })
+    }
+
+    setAgree(qid,aid,index){
+      ajax({"url": `/zhaoda/setLike?qid=${qid}&aid=${aid}`}).
+      then((data) => {
+          if (data.code==="S01") {
+            //关注状态改变
+            var otherAnswers = JSON.parse(JSON.stringify(this.state)).otherAnswers;
+            otherAnswers[index].agree = this.state.otherAnswers[index].agree+1;
+            this.setState({
+              "otherAnswers":otherAnswers
+            })
+
+
+          }else if (data.code==="E01") {
+            //出错
+          }
+      })
+    }
+
+    setSelected(qid,aid,index){
+        
+      ajax({"url": `/zhaoda/selecteanswer?qid=${qid}&aid=${aid}`}).
+      then((data) => {
+          if (data.code==="S01") {
+            //收藏状态改变
+            var otherAnswers = JSON.parse(JSON.stringify(this.state)).otherAnswers;
+            otherAnswers[index].collect = !this.state.otherAnswers[index].collect;
+            this.setState({
+              "otherAnswers":otherAnswers
+            })
+
+          }else if (data.code==="E01") {
+            //出错
+            return;
+          }
+      })
+    }
+
     render () {
 
         const {topic, question, otherAnswers} = this.state;
@@ -104,11 +161,16 @@ class ZhaoDaToQuestion extends React.Component {
                         <div className="comment">{value.comment}</div>
                     </Link>
                     <div className="more">
-                        <span><b><img src="/src/images/zan.png" /></b>赞同{value.agree}</span>
-                        <Link to="/coments">
+                        <span><b><img onClick={this.setAgree.bind(this,question.qid,value.aid,num)} src="/src/images/zan.png" /></b>赞同{value.agree}</span>
+                        <Link to={{
+                          "pathname":"/coments",
+                          "query":{
+                            "aid":value.aid
+                          }
+                        }}>
                             <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
                         </Link>
-                        <span><b><img src="/src/images/cang.png" /></b>收藏</span>
+                        <span onClick={this.setSelected.bind(this,question.qid,value.aid, num)}><b><img src="/src/images/cang.png" /></b>收藏</span>
                     </div>
                 </div>
             </article>
@@ -150,7 +212,7 @@ class ZhaoDaToQuestion extends React.Component {
                             </div>
                             <div className="right">
                                 <span><em>{question.careNum}</em>人关注</span>
-                                <span>+关注</span>
+                                <span onClick={this.setCare.bind(this,question.qid)}>+关注</span>
                             </div>
                         </div>
                     </div>
@@ -161,7 +223,10 @@ class ZhaoDaToQuestion extends React.Component {
                 <div className="AnswerMain">{otherAnswersList}</div>
 
                 <div className="toQuestionFooter">
-                    <Link to="/invitetoanswer">
+                    <Link to={{
+                      "pathname":"/invitetoanswer",
+                      "query":{"topic":topic}
+                    }}>
                         <span>邀请回答</span>
                     </Link>
                     <Link to={`/addanswer/${this.props.params.qid}`}>

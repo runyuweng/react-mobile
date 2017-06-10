@@ -20,8 +20,8 @@ class ZhaoDaToFeatures extends React.Component {
                 "video": "http://html5videoformatconverter.com/data/images/happyfit2.ogv",
                 "playtimes": 204, // 播放次数
                 "concern": true, // 是否关注
-                "title": "#麦力答#第一期----考研那些事儿",
-                "intro": " 读研？工作？跨专业？选热门？如何让选择变成现在最适合的？如何让选择变成未来组以正确的？请听--麦力答",
+                "colname": "#麦力答#第一期----考研那些事儿",
+                "coldescription": " 读研？工作？跨专业？选热门？如何让选择变成现在最适合的？如何让选择变成未来组以正确的？请听--麦力答",
                 "guest": {// 嘉宾信息
                     "img": "/src/images/pople.png",
                     "nickname": "",
@@ -70,6 +70,7 @@ class ZhaoDaToFeatures extends React.Component {
         };
         this.fetchAlbum = this.fetchAlbum.bind(this);
         this.fetchZhuanlanDe = this.fetchZhuanlanDe.bind(this);
+        this.setSelect = this.setSelect.bind(this);
     }
 
 
@@ -158,10 +159,26 @@ class ZhaoDaToFeatures extends React.Component {
 
     }
 
+    setSelect(colid){
+        ajax({"url": `/zhaoda/carezhuanlan?zhuanlanid=${colid}`}).
+        then((data) => {
+            if (data.code==="S01") {
+
+                var data = JSON.parse(JSON.stringify(this.state)).data;
+                data.collect = !this.state.data.collect;
+                this.setState({
+                    "data":data
+                })
+
+            }else if(data.code==="E01"){
+                return;
+            }
+        })
+    }
+
     render () {
 
         const {data, album, answers, commentWidth} = this.state;
-
         console.log(data)
 
         const albumList = album.map((value, i) => <div className="albunItems" key={i}>
@@ -234,7 +251,7 @@ class ZhaoDaToFeatures extends React.Component {
                             <em><b>{data.playtimes}</b>次播放</em>
                         </div>
                         <div className="videoR">
-                            <span><img src="/src/images/love.png" /></span>
+                            <span><img onClick={this.setSelect.bind(this,data.colid)} src="/src/images/love.png" /></span>
                             <span><img src="/src/images/top.png" /></span>
                         </div>
                     </div>

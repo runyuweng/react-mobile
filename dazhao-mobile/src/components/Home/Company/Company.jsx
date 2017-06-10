@@ -35,7 +35,17 @@ class Company extends React.Component {
         ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
         then((data) => {
 
-            this.setState({"data": data.contents[0]});
+            console.log(data)
+
+            //console.log(this.refs.companyintro.clientWidth)
+
+            const tooLong = data.contents[0].introduce.length > (this.refs.companyintro.clientWidth/14)*8;
+            
+
+            this.setState({
+                "data": data.contents[0],
+                "tooLong":tooLong
+            });
 
         });
 
@@ -113,18 +123,22 @@ class Company extends React.Component {
                             <div className="careTopic">
                                 <span className="caretitle">企业介绍：</span>
                                 <div className="caremain">
-                                    <span className="carecontent" style={{"maxHeight": showMore ? "2rem" : "none"}}>
+                                    <span className="carecontent" ref="companyintro" style={{"maxHeight": showMore ? "2rem" : "none"}}>
                                         <div className="detail" dangerouslySetInnerHTML={{"__html": data.introduce}} />
-                                        {showMore ? <span className="shade" /> : ""}
+                                        {this.state.tooLong?showMore ? <span className="shade" /> : "" : ""}
                                     </span>
-                                    {showMore ? <span className="strech" onClick={() => {
+                                    {
+                                        this.state.tooLong?
+                                        showMore ? <span className="strech" onClick={() => {
 
-                                        this.setState({"showMore": false});
+                                            this.setState({"showMore": false});
 
-                                    }}
+                                        }}
                                                 >
-                                        展开查看全部<span><img src="/src/images/down.png" /></span>
-                                    </span> : ""}
+                                            展开查看全部<span><img src="/src/images/down.png" /></span>
+                                        </span> : ""
+                                        :""
+                                    }
                                 </div>
                             </div>
 
