@@ -23,7 +23,8 @@ class ZhaoDaToTopic extends React.Component {
             },
             "page": 1,
             "nomore": false,
-            "moreMessage": ""
+            "moreMessage": "",
+            "first":true
         };
         this.fetchQuestion = this.fetchQuestion.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
@@ -72,19 +73,19 @@ class ZhaoDaToTopic extends React.Component {
 
         ? ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=${page}`}).
           then((data) => {
-
-              console.log(data.contents);
-              if (data.code === "S01") {
+              console.log(data)
+              if (data.code==="S01") {
+                if(this.state.first){
 
                   const questions = this.state.topicdetail.questions;
-                  const newQ = {};
+                  var newQ = {};
 
 
                   newQ.topicTitle = data.contents.topicname;
                   newQ.answer = data.contents.questionnum;
                   newQ.care = data.contents.care;
-                // NewQ.topicImg = data.contents.img;
-                  newQ.topicImg = "/src/images/pople.png";
+                  newQ.topicImg = data.contents.img;
+                  //newQ.topicImg = "/src/images/pople.png";
                   newQ.questions = [];
 
                   newQ.questions.concat(questions);
@@ -106,10 +107,42 @@ class ZhaoDaToTopic extends React.Component {
                   });
 
                   this.setState({
-                      "topicdetail": newQ,
-                      "page": this.state.page + 1,
-                      "moreMessage": ""
+                    "topicdetail": newQ,
+                    "page": this.state.page + 1,
+                    "moreMessage": "",
+                    "first":false
+                  },()=>{
+                    console.log(this.state.topicdetail)
                   });
+
+                }else{
+
+                    const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
+
+                    data.contents.questionlist.map((value, i) => {
+
+                        topicdetail.questions.push({
+                            "qid": value.qid,
+                            "id": value.tid,
+                            "name": value.user.nickname,
+                            "theme": value.qtitle,
+                            "comment": value.qcontent,
+                            "agree": value.agree,
+                            "remark": value.answer,
+                            "collect": value.collect,
+                            "vip": value.user.vip
+                        });
+
+                    });
+
+
+                    this.setState({
+                        "topicdetail": topicdetail,
+                        "page": this.state.page + 1,
+                        "nomore": false,
+                        "moreMessage": ""
+                    });
+                }
 
               } else if (data.code === "S02") {
 
@@ -151,7 +184,7 @@ class ZhaoDaToTopic extends React.Component {
 
     render () {
 
-        const {topicdetail} = this.state;
+        const { topicdetail } = this.state;
 
         const questionsList = topicdetail.questions.map((value, i) =>
             <AnswerMain isTopic="0" key={i} data={value} />

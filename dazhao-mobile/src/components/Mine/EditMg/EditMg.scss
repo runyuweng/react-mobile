@@ -45,6 +45,7 @@
                 font-family: "苹方";
                 color:#adadad;
                 width:20%;
+                min-width:.73rem;
                 font-style: normal;
                 display:inline-block;
                 padding:.12rem 0;
@@ -52,13 +53,19 @@
             p{
                 width:80%;
                 padding:.08rem .12rem;
+                padding-left: 0;
                 border-bottom: .01rem solid #EAEAEA;
+                display: inline-flex;
+                justify-content: space-between;
+                align-items: center;
                 span{
                     font-family: "苹方";
                     font-size: .13rem;
-                    color:#3f3f3f;
+                    color:#ADADAD;
                     display: inline-block;
-                    width: 100%;
+                    img{
+                        width: .1rem;
+                    }
                 }
                 input{
                     height: .17rem;
@@ -87,7 +94,13 @@
                 } 
             }
         }
-
+        .setSex{
+            p{
+                span{
+                    color:#3f3f3f
+                }
+            }
+        }
         div:nth-of-type(1){
             p{
                 width:80%;
@@ -113,8 +126,22 @@
                         height:.2rem;
                     img{
                         width:.1rem;
-                        height:.16rem;
                     }
+                }
+            }
+        }
+
+        div:nth-last-of-type(2){
+            p{
+                span{
+                    width: 42%;
+                    display: -webkit-flex;
+                    display: -moz-flex;
+                    display: -ms-flex;
+                    display: -o-flex;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                 }
             }
         }

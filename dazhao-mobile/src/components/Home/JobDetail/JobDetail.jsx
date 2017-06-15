@@ -33,7 +33,8 @@ class JobDetail extends React.Component {
                 "description": "",
                 "require": "",
                 "similarJobs": []
-            }
+            },
+            "isSealed":false
 
         };
 
@@ -45,8 +46,14 @@ class JobDetail extends React.Component {
 
         ajax({"url": `/zhaoda/jobs/jobinfo?id=${id}`}).
         then((data) => {
-
-            this.setState({"data": data.contents[0]});
+            //console.log(data)
+            if (data.code==="S01") {
+                this.setState({"data": data.contents[0]});
+            }else if(data.code==="E01"){
+                this.setState({
+                    "data": {}
+                });
+            }
 
         });
 
@@ -59,10 +66,25 @@ class JobDetail extends React.Component {
 
     }
 
+    careJob(companyid,jobid){
+        
+        ajax({"url": `/careJob?companyid=${companyid}&jobid=${jobid}`}).
+        then((data) => {
+            if (data.code==="S01") {
+                this.setState({
+                    "isSealed":!this.state.isSealed
+                })
+            }else{
+                //出错
+                return;
+            }
+
+        });
+    }
+
     render () {
 
         const {data} = this.state;
-
 
         const jobs = data.similarJobs.map((value, i) =>
             <Link to={`/jobdetail/${value.jobid}`} key={i}>
@@ -169,7 +191,7 @@ class JobDetail extends React.Component {
 
                 <div className="bottom">
                     <span>发送简历</span>
-                    <span>收藏</span>
+                    <span onClick={this.careJob.bind(this,data.company.companyid,data.jobid)}>收藏</span>
                 </div>
             </div>
         );

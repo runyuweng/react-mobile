@@ -20,47 +20,17 @@ class ZhaoDaToFeatures extends React.Component {
                 "video": "http://html5videoformatconverter.com/data/images/happyfit2.ogv",
                 "playtimes": 204, // 播放次数
                 "concern": true, // 是否关注
-                "title": "#麦力答#第一期----考研那些事儿",
-                "intro": " 读研？工作？跨专业？选热门？如何让选择变成现在最适合的？如何让选择变成未来组以正确的？请听--麦力答",
+                "colname": "#麦力答#第一期----考研那些事儿",
+                "coldescription": " 读研？工作？跨专业？选热门？如何让选择变成现在最适合的？如何让选择变成未来组以正确的？请听--麦力答",
                 "guest": {// 嘉宾信息
-                    "img": "/src/images/vip.png",
-                    "guestImg": "/src/images/pople.png",
-                    "name": "Michiael",
+                    "img": "/src/images/pople.png",
+                    "nickname": "",
                     "vip": true, // 是否是VIP
-                    "intro": "国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练"
-                }
+                    "position": "国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练"
+                },
+                "uid":""
             },
             "album": [// 专辑列表
-                {
-                    "tid": "3",
-                    "colposter": "mailida3.png",
-                    "colposterbig": "mailida3da.png",
-                    "colid": "4",
-                    "coldescription": "你想成为面霸吗？光爸带你打开通往面霸之门。请听——麦力答",
-                    "colname": "#麦力答# 第三期——面霸是怎样炼成的",
-                    "playtimes": 0,
-                    "vip": false
-                },
-                {
-                    "tid": "3",
-                    "colposter": "mailida3.png",
-                    "colposterbig": "mailida3da.png",
-                    "colid": "4",
-                    "coldescription": "你想成为面霸吗？光爸带你打开通往面霸之门。请听——麦力答",
-                    "colname": "#麦力答# 第三期——面霸是怎样炼成的",
-                    "playtimes": 0,
-                    "vip": false
-                },
-                {
-                    "tid": "3",
-                    "colposter": "mailida3.png",
-                    "colposterbig": "mailida3da.png",
-                    "colid": "4",
-                    "coldescription": "你想成为面霸吗？光爸带你打开通往面霸之门。请听——麦力答",
-                    "colname": "#麦力答# 第三期——面霸是怎样炼成的",
-                    "playtimes": 0,
-                    "vip": false
-                }
             ],
             "answers": [
                 {
@@ -99,7 +69,8 @@ class ZhaoDaToFeatures extends React.Component {
             ]
         };
         this.fetchAlbum = this.fetchAlbum.bind(this);
-
+        this.fetchZhuanlanDe = this.fetchZhuanlanDe.bind(this);
+        this.setSelect = this.setSelect.bind(this);
     }
 
 
@@ -125,18 +96,22 @@ class ZhaoDaToFeatures extends React.Component {
 
         });
 
-        this.fetchAlbum(this.state.albumNum);
+        this.fetchZhuanlanDe();
 
     }
 
     fetchZhuanlanDe () {
 
-        ajax({"url": "/zhaoda/zhuanlan/zhuanlaninfo?colid=1"}).
+        ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
         then((data) => {
-
+            console.log(data)
             const myData = data.contents;
 
-            this.setState({"data": myData});
+            this.setState({
+                "data": myData
+            },()=>{
+                this.fetchAlbum(this.state.albumNum);
+            });
 
         });
 
@@ -144,7 +119,9 @@ class ZhaoDaToFeatures extends React.Component {
 
     fetchAlbum (albumNum) {
 
-        ajax({"url": "/zhaoda/zhuanlan/album?page=-1&uid=1"}).
+        console.log(albumNum)
+
+        ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).
         then((data) => {
 
             if (data.code === "S21") {
@@ -182,9 +159,27 @@ class ZhaoDaToFeatures extends React.Component {
 
     }
 
+    setSelect(colid){
+        ajax({"url": `/zhaoda/carezhuanlan?zhuanlanid=${colid}`}).
+        then((data) => {
+            if (data.code==="S01") {
+
+                var data = JSON.parse(JSON.stringify(this.state)).data;
+                data.collect = !this.state.data.collect;
+                this.setState({
+                    "data":data
+                })
+
+            }else if(data.code==="E01"){
+                return;
+            }
+        })
+    }
+
     render () {
 
         const {data, album, answers, commentWidth} = this.state;
+        console.log(data)
 
         const albumList = album.map((value, i) => <div className="albunItems" key={i}>
             <span><img src={"/src/images/zhuanlan.png" || value.colposter} /></span>
@@ -256,14 +251,14 @@ class ZhaoDaToFeatures extends React.Component {
                             <em><b>{data.playtimes}</b>次播放</em>
                         </div>
                         <div className="videoR">
-                            <span><img src="/src/images/love.png" /></span>
+                            <span><img onClick={this.setSelect.bind(this,data.colid)} src="/src/images/love.png" /></span>
                             <span><img src="/src/images/top.png" /></span>
                         </div>
                     </div>
                     <div id="videoMessage">
                         <div className="zhuanlandescrip">
                             <div className="vTitle">
-                                <h3>{data.title}</h3>
+                                <h3>{data.colname}</h3>
                                 <span><em>简介</em><img onClick={() => {
 
                                     this.setState({"shortIntroStretch": !this.state.shortIntroStretch});
@@ -271,34 +266,42 @@ class ZhaoDaToFeatures extends React.Component {
                                 }} src={this.state.shortIntroStretch ? "/src/images/Back_top.png" : "/src/images/Back_down.png"}
                                                  /></span>
                             </div>
-                            {this.state.shortIntroStretch ? <p>{data.intro}</p> : ""}
+                            {this.state.shortIntroStretch ? <p>{data.coldescription}</p> : ""}
                         </div>
                         <div className="guestIntro">
                             <h3>嘉宾介绍</h3>
                             <div className="intro">
                                 <span className="circle">
-                                    <img src={data.guest.guestImg} alt="嘉宾" />
+                                    <img src={"/src/images/pople.png" || data.guest.img} alt="嘉宾" />
                                 </span>
                                 <div className="introR">
 
-                                    <span><em>Michile</em><img src={data.guest.img} /></span>
-                                    <span style={{"display": !this.state.guestIntroStretch ? "WebKitBox" : "inline"}}>{data.guest.intro}</span>
+                                    <span><em>{data.guest.nickname}</em>{data.guest.vip?<img src="/src/images/vip.png" />:""}</span>
+                                    <span style={{"display": !this.state.guestIntroStretch ? "WebKitBox" : "inline"}}>{data.guest.position}</span>
 
                                 </div>
                             </div>
                             {
-                                !this.state.guestIntroStretch
-                                ? <span onClick={() => {
+                                !this.state.guestIntroStretch ? 
+                                
+                                    data.guest.position.length > 20 ?
+                                    <span 
+                                        onClick={() => {
+                                            this.setState({"guestIntroStretch": true});
+                                        }} 
+                                        className="more"
+                                    >
+                                        <em>展开</em>
+                                        <img src="/src/images/Back_down.png" />
+                                    </span> : ""
+                                
 
-                                    this.setState({"guestIntroStretch": true});
-
-                                }} className="more"
-                                  ><em>展开</em><img src="/src/images/Back_down.png" />
-                                </span> : ""
+                                 : ""
                             }
                         </div>
                     </div>
                 </header>
+
 
                 <div id="album">
                     <h3>专辑列表</h3>

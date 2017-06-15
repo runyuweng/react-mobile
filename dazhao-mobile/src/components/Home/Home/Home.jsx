@@ -78,6 +78,11 @@ class Home extends React.Component {
     searchDetail () {
 
         // Ajax
+        if (this.state.search === "") {
+            this.props.showMessage("搜索不能为空")
+        }else{
+            console.log('搜索')
+        }
 
     }
 
