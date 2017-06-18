@@ -44,7 +44,7 @@ class ZhaoDaMessage extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        //this.props.showBottom();
         this.fetchInform(this.state.page);
 
     }

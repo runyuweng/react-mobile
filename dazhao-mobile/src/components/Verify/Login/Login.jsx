@@ -18,7 +18,7 @@ class Login extends React.Component {
     }
     componentDidMount () {
 
-        this.props.showBottom(false);
+        // this.props.showBottom(false);
 
     }
 
@@ -33,7 +33,7 @@ class Login extends React.Component {
 
           if (data.code === "S01") {
 
-              this.props.showMessage("登录成功");
+              // this.props.showMessage("登录成功");
               hashHistory.push({
                   "pathname": "mine",
                   "query": {}
@@ -41,7 +41,7 @@ class Login extends React.Component {
 
           } else {
 
-              this.props.showMessage(data.message);
+              // this.props.showMessage(data.message);
 
           }
 

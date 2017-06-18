@@ -33,7 +33,7 @@ class ZhaoDaToQuestion extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        // this.props.showBottom();
         this.fetchQuestion();
 
     }
@@ -122,7 +122,7 @@ class ZhaoDaToQuestion extends React.Component {
     }
 
     setSelected(qid,aid,index){
-        
+
       ajax({"url": `/zhaoda/selecteanswer?qid=${qid}&aid=${aid}`}).
       then((data) => {
           if (data.code==="S01") {

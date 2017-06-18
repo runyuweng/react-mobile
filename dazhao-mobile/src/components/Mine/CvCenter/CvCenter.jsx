@@ -100,7 +100,7 @@ class CvCenter extends React.Component {
 
             } else {
 
-                this.props.showMessage(data.message);
+                // this.props.showMessage(data.message);
 
             }
 

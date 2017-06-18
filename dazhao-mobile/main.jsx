@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {applyMiddleware, createStore} from "redux";
-import logger from "redux-logger";
 import {IndexRoute, Route, Router, hashHistory} from "react-router";
 // 公共部分
 import MainLayout from "./src/components/MainLayout/MainLayout.jsx";
@@ -73,9 +71,6 @@ import ToLogin from "./src/components/Verify/Login/ToLogin.jsx";
 import Login from "./src/components/Verify/Login/Login.jsx";
 import Register from "./src/components/Verify/Register/Register.jsx";
 
-import {Provider} from "react-redux";
-import reducer from "./src/reducers/index.js";
-
 function requireAuth (nextState, replace) {
 
     if (true) {
@@ -90,9 +85,7 @@ function requireAuth (nextState, replace) {
 }
 
 
-const store = createStore(reducer);
-const Routes = () => <Provider store={store}>
-    <Router history={hashHistory}>
+const Routes = () => <Router history={hashHistory}>
         <Route path="/" component={MainLayout}>
             <IndexRoute component={Home} />
             <Route path="zhiGuan" component={ZhiGuanHome} />
@@ -160,8 +153,7 @@ const Routes = () => <Provider store={store}>
             <Route path="login" component={Login} />
             <Route path="register" component={Register} />
         </Route>
-    </Router>
-</Provider>;
+    </Router>;
 
 ReactDOM.render(
     <Routes />, document.getElementById("app"));

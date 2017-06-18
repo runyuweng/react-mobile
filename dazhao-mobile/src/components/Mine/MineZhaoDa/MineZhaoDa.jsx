@@ -13,7 +13,7 @@ class MineZhaoDa extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom(false);
+        // this.props.showBottom(false);
 
     }
 

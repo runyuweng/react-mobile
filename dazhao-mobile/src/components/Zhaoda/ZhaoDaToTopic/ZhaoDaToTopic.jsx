@@ -33,7 +33,7 @@ class ZhaoDaToTopic extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        // this.props.showBottom();
         window.addEventListener("scroll", this.handleScroll);
         this.fetchQuestion(this.state.page);
 

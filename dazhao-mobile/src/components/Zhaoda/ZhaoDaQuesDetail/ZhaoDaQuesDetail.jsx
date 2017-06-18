@@ -42,7 +42,7 @@ class ZhaoDaQuesDetail extends React.Component {
                             >下一步</span>
                         </Link> : <span onClick={() => {
 
-                            this.props.showMessage("请输入后再试");
+                            // this.props.showMessage("请输入后再试");
 
                         }}
                                   >下一步</span>

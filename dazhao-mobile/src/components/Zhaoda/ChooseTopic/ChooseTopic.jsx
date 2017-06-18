@@ -153,7 +153,7 @@ class ChooseTopic extends React.Component {
 
         } else {
 
-            this.props.showMessage("请输入话题并选择后再试");
+            // this.props.showMessage("请输入话题并选择后再试");
 
         }
 
@@ -195,7 +195,7 @@ class ChooseTopic extends React.Component {
 
             if (data.code === "S01") {
 
-                this.props.showMessage("邀请成功");
+                // this.props.showMessage("邀请成功");
                 hashHistory.push({
                     "pathname": "Zhaoda",
                     "query": {}
@@ -208,7 +208,7 @@ class ChooseTopic extends React.Component {
 
         } else {
 
-            this.props.showMessage("请选择后邀请");
+            // this.props.showMessage("请选择后邀请");
 
         }
 

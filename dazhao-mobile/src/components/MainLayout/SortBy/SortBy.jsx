@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./SortBy.scss";
-import {applyMiddleware, createStore} from "redux";
-import logger from "redux-logger";
 import {Link} from "react-router";
 import constants from "../../../constants/constants";
 

@@ -76,7 +76,7 @@ class ZhaoDaToFeatures extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        // this.props.showBottom();
 
 
         this.setState({"commentWidth": this.refs.comment.clientWidth},
@@ -282,19 +282,19 @@ class ZhaoDaToFeatures extends React.Component {
                                 </div>
                             </div>
                             {
-                                !this.state.guestIntroStretch ? 
-                                
+                                !this.state.guestIntroStretch ?
+
                                     data.guest.position.length > 20 ?
-                                    <span 
+                                    <span
                                         onClick={() => {
                                             this.setState({"guestIntroStretch": true});
-                                        }} 
+                                        }}
                                         className="more"
                                     >
                                         <em>展开</em>
                                         <img src="/src/images/Back_down.png" />
                                     </span> : ""
-                                
+
 
                                  : ""
                             }

@@ -62,12 +62,12 @@ class JobDetail extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        // this.props.showBottom();
 
     }
 
     careJob(companyid,jobid){
-        
+
         ajax({"url": `/careJob?companyid=${companyid}&jobid=${jobid}`}).
         then((data) => {
             if (data.code==="S01") {
