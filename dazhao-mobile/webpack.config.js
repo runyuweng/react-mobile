@@ -22,14 +22,16 @@ var config = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                presets: ['es2015', 'react']
+                presets: ['es2015', 'react', "stage-1"],
+                plugins: ["transform-decorators-legacy"]
             }
         }, {
             test: /\.js?$/,
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                presets: ['es2015']
+                presets: ['es2015', "stage-1"],
+                plugins: ["transform-decorators-legacy"]
             }
         }, {
             test: /\.scss$/,

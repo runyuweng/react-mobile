@@ -7,6 +7,9 @@ import {IndexLink, Link} from "react-router";
 // import * as actionCreators from "../../actions/show.js";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
+import Store from '../../store/store';
+const store = new Store();
+
 class MainLayout extends React.Component {
 
     constructor (props) {
@@ -33,27 +36,12 @@ class MainLayout extends React.Component {
 
         });
 
-    //     const childrenWithProps = React.Children.map(this.props.children,
-    //  (child) => React.cloneElement(child, {
-    //      "showTop": (text) => {
-    //
-    //          actions.showTop(text);
-    //
-    //      },
-    //      "showBottom": (text) => {
-    //
-    //          actions.showBottom(text);
-    //
-    //      },
-    //      "showMessage": (text) => {
-    //
-    //          actions.showMessage(text);
-    //
-    //      },
-    //      "key": this.props.location.pathname,
-    //      show
-    //  })
-    // );
+        const childrenWithProps = React.Children.map(this.props.children,
+         (child) => React.cloneElement(child, {
+             "showBottom": store.showBottom,
+             "key": this.props.location.pathname
+         })
+        );
 
         return (
             <div>
@@ -68,8 +56,8 @@ class MainLayout extends React.Component {
                     transitionEnterTimeout={300}
                     transitionLeaveTimeout={1}
                            >
-                    {this.props.children}
-                </ReactCSSTransitionGroup> : this.props.children}
+                    {childrenWithProps}
+                </ReactCSSTransitionGroup> : childrenWithProps}
 
                 {true
               ? <footer>

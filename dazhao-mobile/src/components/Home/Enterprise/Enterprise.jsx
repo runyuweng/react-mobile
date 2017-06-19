@@ -1,5 +1,6 @@
 import React from "react";
 import "./Enterprise.scss";
+import { observer } from 'mobx-react';
 import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
 import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
 import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
@@ -8,6 +9,7 @@ import ajax from "../../../services/ajax";
 import {Link} from "react-router";
 import QueueAnim from "rc-queue-anim";
 
+@observer
 class Enterprise extends React.Component {
 
     constructor (props) {
@@ -29,6 +31,8 @@ class Enterprise extends React.Component {
             "reset": false,
             "tips": "加载更多"
         };
+
+        console.log('showBottom', this.props);
 
     }
 
