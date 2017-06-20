@@ -58,7 +58,7 @@ class GrowRecord extends React.Component {
 
     componentDidMount () {
 
-        // this.props.showBottom();
+        // This.props.showBottom();
 
     }
 

@@ -41,7 +41,7 @@ class Notify extends React.Component {
 
     componentDidMount () {
 
-        //this.props.showBottom();
+        // This.props.showBottom();
 
     }
 

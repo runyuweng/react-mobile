@@ -86,74 +86,74 @@ function requireAuth (nextState, replace) {
 
 
 const Routes = () => <Router history={hashHistory}>
-        <Route path="/" component={MainLayout}>
-            <IndexRoute component={Home} />
-            <Route path="zhiGuan" component={ZhiGuanHome} />
-            <Route path="home" component={Home} />
-            <Route path="Zhaoda" component={Zhaoda}>
-                <IndexRoute component={ZhaoDaIndex} />
-                <Route path="main" component={ZhaoDaIndex} />
-                <Route path="discover" component={ZhaoDaDiscover} />
-                <Route path="feature" component={ZhaoDaFeature} />
-            </Route>
-            <Route path="topic" component={ZhaoDaTopic} />
-            <Route path="message" component={ZhaoDaMessage} />
-            <Route path="search" component={ZhaoDaSearch} />
-            <Route path="response" component={ZhaoDaResponse} />
+    <Route path="/" component={MainLayout}>
+        <IndexRoute component={Home} />
+        <Route path="zhiGuan" component={ZhiGuanHome} />
+        <Route path="home" component={Home} />
+        <Route path="Zhaoda" component={Zhaoda}>
+            <IndexRoute component={ZhaoDaIndex} />
+            <Route path="main" component={ZhaoDaIndex} />
+            <Route path="discover" component={ZhaoDaDiscover} />
+            <Route path="feature" component={ZhaoDaFeature} />
+        </Route>
+        <Route path="topic" component={ZhaoDaTopic} />
+        <Route path="message" component={ZhaoDaMessage} />
+        <Route path="search" component={ZhaoDaSearch} />
+        <Route path="response" component={ZhaoDaResponse} />
             //
             <Route path="quiz" component={ZhaoDaQuiz} />
-            <Route path="consult" component={ZhaoDaConsult} />
-            <Route path="detail" component={ZhaoDaQuesDetail} />
-            <Route path="toquestion/:qid" component={ZhaoDaToQuestion} />
-            <Route path="tofeature" component={ZhaoDaToFeatures} />
-            <Route path="totopic/:tid" component={ZhaoDaToTopic} />
-            <Route path="user" component={ZhaoDaUser} />
-            <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
-            <Route path="talk" component={ZhaoDaTalk} />
-            <Route path="choosetopic" component={ZhaoDaChooseTopic} />
-            <Route path="coments" component={ZhaoDaComents} />
-            <Route path="addanswer/:qid" component={ZhaoDaAddAnswer} />
-            <Route path="invitetoanswer" component={ZhaoDaInvitetoAnswer} />
+        <Route path="consult" component={ZhaoDaConsult} />
+        <Route path="detail" component={ZhaoDaQuesDetail} />
+        <Route path="toquestion/:qid" component={ZhaoDaToQuestion} />
+        <Route path="tofeature" component={ZhaoDaToFeatures} />
+        <Route path="totopic/:tid" component={ZhaoDaToTopic} />
+        <Route path="user" component={ZhaoDaUser} />
+        <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
+        <Route path="talk" component={ZhaoDaTalk} />
+        <Route path="choosetopic" component={ZhaoDaChooseTopic} />
+        <Route path="coments" component={ZhaoDaComents} />
+        <Route path="addanswer/:qid" component={ZhaoDaAddAnswer} />
+        <Route path="invitetoanswer" component={ZhaoDaInvitetoAnswer} />
 
-            <Route path="jobdetail/:id" component={HomeJobDetail} />
-            <Route path="company/:id" component={HomeCompany} />
-            <Route path="schoolRecruit" component={HomeShRecruit} />
-            <Route path="enterprise" component={HomeEnterprise} />
-            <Route path="intern" component={HomeIntern} />
+        <Route path="jobdetail/:id" component={HomeJobDetail} />
+        <Route path="company/:id" component={HomeCompany} />
+        <Route path="schoolRecruit" component={HomeShRecruit} />
+        <Route path="enterprise" component={HomeEnterprise} />
+        <Route path="intern" component={HomeIntern} />
 
-            <Route path="mine" component={Mine} />
-            <Route path="cvcenter" component={MineCvCenter} />
-            <Route path="growrecord" component={MineGrowRecord} />
-            <Route path="notify" component={MineNotify} />
-            <Route path="cvmessage/:uid" component={MineCvMessage} />
-            <Route path="edmessage" component={MineEditMg} />
-            <Route path="edupexp" component={MineEduEx} />
-            <Route path="practice" component={MinePractice} />
-            <Route path="dropinbox" component={MineDropInBox}>
-                <Route path="platformdropin" component={MinePlatformDropIn} />
-                <Route path="emaildropin" component={MineEmailDropIn} />
-            </Route>
-            <Route path="invitation" component={MineInvitation} />
-            <Route path="activity" component={MineActivity} />
-            <Route path="minezhaoda" component={MineZhaoDa}>
-                <Route path="concern" component={MineConcern}>
-                    <IndexRoute component={MineConcernQuestion} />
-                    <Route path="concernquestion" component={MineConcernQuestion} />
-                    <Route path="concerntopic" component={MineConcernTopic} />
-                    <Route path="concernuser" component={MineConcernUser} />
-                </Route>
-                <Route path="quiz" component={MineQuiz} />
-                <Route path="answer" component={MineAnswers} />
-            </Route>
-            <Route path="favoritepage" component={MineFavoritePage}>
-                <Route path="favoritejobs" component={MineFavoriteJobs} />
-                <Route path="favoritecompanys" component={MineFavoriteCompanys} />
-            </Route>
-            <Route path="tologin" component={ToLogin} />
-            <Route path="login" component={Login} />
-            <Route path="register" component={Register} />
+        <Route path="mine" component={Mine} />
+        <Route path="cvcenter" component={MineCvCenter} />
+        <Route path="growrecord" component={MineGrowRecord} />
+        <Route path="notify" component={MineNotify} />
+        <Route path="cvmessage/:uid" component={MineCvMessage} />
+        <Route path="edmessage" component={MineEditMg} />
+        <Route path="edupexp" component={MineEduEx} />
+        <Route path="practice" component={MinePractice} />
+        <Route path="dropinbox" component={MineDropInBox}>
+            <Route path="platformdropin" component={MinePlatformDropIn} />
+            <Route path="emaildropin" component={MineEmailDropIn} />
         </Route>
-    </Router>;
+        <Route path="invitation" component={MineInvitation} />
+        <Route path="activity" component={MineActivity} />
+        <Route path="minezhaoda" component={MineZhaoDa}>
+            <Route path="concern" component={MineConcern}>
+                <IndexRoute component={MineConcernQuestion} />
+                <Route path="concernquestion" component={MineConcernQuestion} />
+                <Route path="concerntopic" component={MineConcernTopic} />
+                <Route path="concernuser" component={MineConcernUser} />
+            </Route>
+            <Route path="quiz" component={MineQuiz} />
+            <Route path="answer" component={MineAnswers} />
+        </Route>
+        <Route path="favoritepage" component={MineFavoritePage}>
+            <Route path="favoritejobs" component={MineFavoriteJobs} />
+            <Route path="favoritecompanys" component={MineFavoriteCompanys} />
+        </Route>
+        <Route path="tologin" component={ToLogin} />
+        <Route path="login" component={Login} />
+        <Route path="register" component={Register} />
+    </Route>
+</Router>;
 
 ReactDOM.render(
     <Routes />, document.getElementById("app"));

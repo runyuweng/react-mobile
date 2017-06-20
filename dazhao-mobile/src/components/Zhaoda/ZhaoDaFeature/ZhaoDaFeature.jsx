@@ -37,10 +37,13 @@ class ZhaoDaFeature extends React.Component {
             ]
         };
         this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
+
     }
 
-    componentDidMount() {
+    componentDidMount () {
+
         this.fetchLatestZhuanlan();
+
     }
 
     // 专栏信息
@@ -48,12 +51,13 @@ class ZhaoDaFeature extends React.Component {
 
         ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1"}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 const zhuanlan = data.contents;
 
-                this.setState({"zhuanlan": zhuanlan});
+                this.setState({zhuanlan});
 
             } else if (date.code === "E01") {
 
@@ -70,11 +74,15 @@ class ZhaoDaFeature extends React.Component {
 
         const {zhuanlan} = this.state;
 
-        console.log(zhuanlan)
+        console.log(zhuanlan);
 
         const ZhuanLanList = zhuanlan.map((elem, index) =>
             <div className="feature" key={index}>
-                <Link to={{"pathname":"tofeature","query":{"colid":elem.colid}}}>
+                <Link to={{
+                    "pathname": "tofeature",
+                    "query": {"colid": elem.colid}
+                }}
+                >
                     <div className="featureImg">
                         <img src={"/src/images/zhuanlan.png" || elem.colposterbig} />
                     </div>
@@ -84,9 +92,9 @@ class ZhaoDaFeature extends React.Component {
                     <span className="cicle" />
                     {"Michael" || elem.name}
                     {
-                        elem.vip?
-                        <span className="vip"><img src="/src/images/vip.png" /></span>
-                        :""
+                        elem.vip
+                            ? <span className="vip"><img src="/src/images/vip.png" /></span>
+                        : ""
                     }
                 </div>
                 <p>{elem.coldescription}</p>

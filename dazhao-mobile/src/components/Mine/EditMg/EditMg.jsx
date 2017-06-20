@@ -17,9 +17,9 @@ class EditMg extends React.Component {
                 "phone": "",
                 "email": "",
                 "political_status": "",
-                "current_add":{
-                    "province":"",
-                    "city":""
+                "current_add": {
+                    "province": "",
+                    "city": ""
                 }
             },
             "showtopDiv": false,
@@ -33,7 +33,7 @@ class EditMg extends React.Component {
 
     componentDidMount () {
 
-        // this.props.showBottom(false);
+        // This.props.showBottom(false);
         this.fetchBasicMessage();
         // Console.log(this.props.location.query);
         // Console.log("top:" + this.refs.year.offsetTop);
@@ -207,13 +207,14 @@ class EditMg extends React.Component {
                         <em>最高学历</em>
                         <p onClick={() => {
 
-                                this.setState({
-                                    "showWhich": 2,
-                                    "showtopDiv": true
-                                });
+                            this.setState({
+                                "showWhich": 2,
+                                "showtopDiv": true
+                            });
 
-                            }}>
-                            <span>{this.state.basicMessage.bestEducation==="" ? "选择最高学历" : this.state.basicMessage.bestEducation}</span>
+                        }}
+                        >
+                            <span>{this.state.basicMessage.bestEducation === "" ? "选择最高学历" : this.state.basicMessage.bestEducation}</span>
                             <span> <img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>

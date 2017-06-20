@@ -29,7 +29,7 @@ class Home extends React.Component {
             "jobsLoading": true,
             "enterpriseLoading": true
         });
-        // this.props.showBottom(true);
+        // This.props.showBottom(true);
 
         ajax({"url": "/zhaoda/getjobs?page=1"}).
         then((data) => {
@@ -79,9 +79,11 @@ class Home extends React.Component {
 
         // Ajax
         if (this.state.search === "") {
-            // this.props.showMessage("搜索不能为空")
-        }else{
-            console.log('搜索')
+            // This.props.showMessage("搜索不能为空")
+        } else {
+
+            console.log("搜索");
+
         }
 
     }
@@ -136,7 +138,7 @@ class Home extends React.Component {
 
                 newState[`${type}Loading`] = false;
 
-                // this.props.showMessage("已加载完全部");
+                // This.props.showMessage("已加载完全部");
 
                 this.setState(newState);
                 newState = {};
@@ -147,7 +149,7 @@ class Home extends React.Component {
 
                 newState[`${type}Loading`] = false;
 
-                // this.props.showMessage("请求错误，请稍后重试");
+                // This.props.showMessage("请求错误，请稍后重试");
 
                 this.setState(newState);
                 newState = {};

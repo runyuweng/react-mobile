@@ -35,16 +35,16 @@ class Company extends React.Component {
         ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
         then((data) => {
 
-            console.log(data)
+            console.log(data);
 
-            //console.log(this.refs.companyintro.clientWidth)
+            // Console.log(this.refs.companyintro.clientWidth)
 
-            const tooLong = data.contents[0].introduce.length > (this.refs.companyintro.clientWidth/14)*8;
-            
+            const tooLong = data.contents[0].introduce.length > this.refs.companyintro.clientWidth / 14 * 8;
+
 
             this.setState({
                 "data": data.contents[0],
-                "tooLong":tooLong
+                tooLong
             });
 
         });
@@ -125,19 +125,19 @@ class Company extends React.Component {
                                 <div className="caremain">
                                     <span className="carecontent" ref="companyintro" style={{"maxHeight": showMore ? "2rem" : "none"}}>
                                         <div className="detail" dangerouslySetInnerHTML={{"__html": data.introduce}} />
-                                        {this.state.tooLong?showMore ? <span className="shade" /> : "" : ""}
+                                        {this.state.tooLong ? showMore ? <span className="shade" /> : "" : ""}
                                     </span>
                                     {
-                                        this.state.tooLong?
-                                        showMore ? <span className="strech" onClick={() => {
+                                        this.state.tooLong
+                                        ? showMore ? <span className="strech" onClick={() => {
 
                                             this.setState({"showMore": false});
 
                                         }}
-                                                >
+                                                     >
                                             展开查看全部<span><img src="/src/images/down.png" /></span>
                                         </span> : ""
-                                        :""
+                                        : ""
                                     }
                                 </div>
                             </div>

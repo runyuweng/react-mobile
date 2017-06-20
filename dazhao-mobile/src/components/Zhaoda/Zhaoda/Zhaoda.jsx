@@ -7,15 +7,13 @@ class Zhaoda extends React.Component {
     constructor (props) {
 
         super(props);
-        this.state = {
-            keyword:""
-        }
+        this.state = {"keyword": ""};
 
     }
 
     componentDidMount () {
 
-        //this.props.showBottom(true);
+        // This.props.showBottom(true);
 
     }
 
@@ -26,15 +24,17 @@ class Zhaoda extends React.Component {
                 <header>
                     <div className="search">
                         <div className="input">
-                            <input onChange={(e)=>{
-                                this.setState({
-                                    keyword:e.target.value
-                                })
-                            }} type="text" placeholder="搜索话题、问题、行家..." />
+                            <input onChange={(e) => {
+
+                                this.setState({"keyword": e.target.value});
+
+                            }} type="text" placeholder="搜索话题、问题、行家..."
+                            />
                             <Link to={{
-                                "pathname":"/search",
-                                "query":{"keyword":this.state.keyword}
-                            }}><span><img src="/src/images/搜素.png" /></span></Link>
+                                "pathname": "/search",
+                                "query": {"keyword": this.state.keyword}
+                            }}
+                            ><span><img src="/src/images/搜素.png" /></span></Link>
                         </div>
                         <Link to="/consult"><span className="query">提问</span></Link>
                     </div>

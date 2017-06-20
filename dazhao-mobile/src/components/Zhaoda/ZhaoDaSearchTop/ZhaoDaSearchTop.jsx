@@ -4,13 +4,14 @@ import {Link} from "react-router";
 
 class ZhaoDaSearchTop extends React.Component {
 
-    constructor(props){
+    constructor (props) {
+
         super(props);
 
         this.state = {
-            "keyword":this.props.keyword,
-            "username":this.props.username
-        }
+            "keyword": this.props.keyword,
+            "username": this.props.username
+        };
 
     }
 
@@ -23,38 +24,43 @@ class ZhaoDaSearchTop extends React.Component {
                         <Link to="/Zhaoda/main">
                             <span >取消</span>
                         </Link>
-                        <input type="text" onChange={(e)=>{
-                            this.setState({
-                                "keyword":e.target.value
-                            })
-                        }} placeholder="Michael" value={this.state.keyword}/>
+                        <input type="text" onChange={(e) => {
+
+                            this.setState({"keyword": e.target.value});
+
+                        }} placeholder="Michael" value={this.state.keyword}
+                        />
                         <span>搜索</span>
                     </div>
                 </header>
                 <nav>
                     <ul>
                         <Link activeClassName="active" to={{
-                            "pathname":"/search",
-                            "query":{"keyword":this.state.keyword}  
-                        }}>
+                            "pathname": "/search",
+                            "query": {"keyword": this.state.keyword}
+                        }}
+                        >
                             <li>问答</li>
                         </Link>
                         <Link activeClassName="active" to={{
-                            "pathname":"/talk",
-                            "query":{"keyword":this.state.keyword} 
-                        }}>
+                            "pathname": "/talk",
+                            "query": {"keyword": this.state.keyword}
+                        }}
+                        >
                             <li>话题</li>
                         </Link>
                         <Link activeClassName="active" to={{
-                            "pathname":"/zhuanlan",
-                            "query":{"keyword":this.state.keyword} 
-                        }}>
+                            "pathname": "/zhuanlan",
+                            "query": {"keyword": this.state.keyword}
+                        }}
+                        >
                             <li>专栏</li>
                         </Link>
                         <Link activeClassName="active" to={{
-                            "pathname":"/user",
-                            "query":{"user":this.state.username}
-                        }}>
+                            "pathname": "/user",
+                            "query": {"user": this.state.username}
+                        }}
+                        >
                             <li>用户</li>
                         </Link>
                     </ul>

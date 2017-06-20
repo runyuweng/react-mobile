@@ -28,7 +28,7 @@ class ZhaoDaResponse extends React.Component {
 
     componentDidMount () {
 
-        //this.props.showBottom();
+        // This.props.showBottom();
 
         this.setState({
             "title": this.props.location.query.qtitle,

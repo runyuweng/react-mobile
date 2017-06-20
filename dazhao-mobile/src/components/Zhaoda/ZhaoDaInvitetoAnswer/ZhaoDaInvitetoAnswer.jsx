@@ -9,105 +9,113 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
         super(props);
         this.state = {
-            user:[
+            "user": [
                 {
-                    "sid":1,
-                    "name":"Michael",
-                    "img":"/src/images/pople.png",
-                    "job":"国际教练协会（ICF）认证教练",
-                    "isInvited":false
+                    "sid": 1,
+                    "name": "Michael",
+                    "img": "/src/images/pople.png",
+                    "job": "国际教练协会（ICF）认证教练",
+                    "isInvited": false
                 },
                 {
-                    "sid":2,
-                    "name":"Michael",
-                    "img":"/src/images/pople.png",
-                    "job":"国际教练协会（ICF）认证教练",
-                    "isInvited":false
+                    "sid": 2,
+                    "name": "Michael",
+                    "img": "/src/images/pople.png",
+                    "job": "国际教练协会（ICF）认证教练",
+                    "isInvited": false
                 },
                 {
-                    "sid":3,
-                    "name":"Michael",
-                    "img":"/src/images/pople.png",
-                    "job":"国际教练协会（ICF）认证教练",
-                    "isInvited":true
+                    "sid": 3,
+                    "name": "Michael",
+                    "img": "/src/images/pople.png",
+                    "job": "国际教练协会（ICF）认证教练",
+                    "isInvited": true
                 }
             ]
         };
         this.fetchUser = this.fetchUser.bind(this);
         this.invitetoanswer = this.invitetoanswer.bind(this);
+
     }
 
     componentDidMount () {
 
-        // this.props.showBottom(false);
-        this.setState({
-            "topic":this.props.location.query.topic
-        },()=>{
+        // This.props.showBottom(false);
+        this.setState({"topic": this.props.location.query.topic}, () => {
+
             this.fetchUser(this.state.topic);
-        })
+
+        });
 
     }
 
-    fetchUser(topic){
+    fetchUser (topic) {
+
         ajax({"url": `/zhaoda/fetchuser?topic=${topic}`}).
       then((data) => {
-        if (data.code==="S01") {
-            const user = data.contents;
-            this.setState({
-                user:user
-            })
-        }else if (data.code==="E01") {
-            this.setState({
-                user:[]
-            })
-        }
-      })
+
+          if (data.code === "S01") {
+
+              const user = data.contents;
+
+              this.setState({user});
+
+          } else if (data.code === "E01") {
+
+              this.setState({"user": []});
+
+          }
+
+      });
+
     }
 
-    invitetoanswer(userid,index){
+    invitetoanswer (userid, index) {
 
         if (this.state.user[index].isInvited) {
-            // this.props.showMessage("已经邀请过了");
-        }else{
+            // This.props.showMessage("已经邀请过了");
+        } else {
+
             ajax({"url": `/zhaoda/invitetoanswer?userid=${userid}`}).
             then((data) => {
-                if (data.code==="S01") {
+
+                if (data.code === "S01") {
+
                     const user = JSON.parse(JSON.stringify(this.state)).user;
+
                     user[index].isInvited = !this.state.user[index].isInvited;
 
-                    this.setState({
-                        user:user
-                    })
+                    this.setState({user});
 
-                }else if (data.code==="E01") {
-                    this.setState({
-                        user:[]
-                    })
+                } else if (data.code === "E01") {
+
+                    this.setState({"user": []});
+
                 }
-            })
+
+            });
+
         }
 
     }
 
     render () {
 
-        const { user } = this.state;
-        const userList = user.map((value,index)=>{
-            return(
-                <div key={index} className="item">
-                    <div className="left">
-                        <span className="circle">
-                            <img src={value.img} alt="用户头像" />
-                        </span>
-                        <p>
-                            <span>{value.name}</span><br />
-                            <span>{value.job}</span>
-                        </p>
-                    </div>
-                    <span className="right" onClick={this.invitetoanswer.bind(this,value.sid,index)}>{value.isInvited?"已邀请":"邀请回答"}</span>
+        const {user} = this.state;
+        const userList = user.map((value, index) =>
+            <div key={index} className="item">
+                <div className="left">
+                    <span className="circle">
+                        <img src={value.img} alt="用户头像" />
+                    </span>
+                    <p>
+                        <span>{value.name}</span><br />
+                        <span>{value.job}</span>
+                    </p>
                 </div>
-            )
-        })
+                <span className="right" onClick={this.invitetoanswer.bind(this, value.sid, index)}>{value.isInvited ? "已邀请" : "邀请回答"}</span>
+            </div>
+            );
 
         return (
             <div className="zhaoDaInvitetoAnswer">

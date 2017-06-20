@@ -20,7 +20,7 @@ class Message extends React.Component {
 
                 setTimeout(() => {
 
-                    // this.props.showMessage("");
+                    // This.props.showMessage("");
 
                 }, 1000);
 

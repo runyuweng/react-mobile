@@ -23,22 +23,26 @@ class AnswerMain extends React.Component {
         };
 
         this.setLike = this.setLike.bind(this);
+
     }
 
-    setLike(qid,aid){
-        
+    setLike (qid, aid) {
+
         ajax({"url": `/zhaoda/setLike?qid=${qid}&aid=${aid}`}).
       then((data) => {
-            if (data.code==="S01") {
-                this.setState({
-                    "agree":this.state.agree+1
-                })
-            }else if (data.code==="S04") {
-                //点过赞了
-            }else if (data.code==="E01") {
-                //出错
-            }
-      })
+
+          if (data.code === "S01") {
+
+              this.setState({"agree": this.state.agree + 1});
+
+          } else if (data.code === "S04") {
+                // 点过赞了
+          } else if (data.code === "E01") {
+                // 出错
+          }
+
+      });
+
     }
 
     render () {
@@ -71,7 +75,7 @@ class AnswerMain extends React.Component {
                         <div className="comment">{comment}</div>
                     </Link>
                     <div className="more">
-                        <span><b><img onClick={this.setLike.bind(this,qid,aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
+                        <span><b><img onClick={this.setLike.bind(this, qid, aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
                         <Link to="/coments">
                             <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
                         </Link>

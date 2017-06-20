@@ -34,7 +34,7 @@ class Intern extends React.Component {
 
     componentDidMount () {
 
-        // this.props.showBottom(false);
+        // This.props.showBottom(false);
 
         ajax({"url": "/zhaoda/industry/category"}).
         then((data) => {

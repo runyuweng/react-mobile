@@ -1,13 +1,13 @@
 import React from "react";
-// import {connect} from "react-redux";
-// import {bindActionCreators} from "redux";
+// Import {connect} from "react-redux";
+// Import {bindActionCreators} from "redux";
 import "./MainLayout.scss";
 import Message from "./Message/Message.jsx";
 import {IndexLink, Link} from "react-router";
-// import * as actionCreators from "../../actions/show.js";
+// Import * as actionCreators from "../../actions/show.js";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
-import Store from '../../store/store';
+import Store from "../../store/store";
 const store = new Store();
 
 class MainLayout extends React.Component {
@@ -20,7 +20,7 @@ class MainLayout extends React.Component {
 
     render () {
 
-        // const {actions, show} = this.props;
+        // Const {actions, show} = this.props;
 
         const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise", "/tologin", "/login", "/register", "/response", "/toquestion"],
             pathname = this.props.location.pathname;
@@ -45,7 +45,7 @@ class MainLayout extends React.Component {
 
         return (
             <div>
-                {/*show.show_message ? <Message content={show.show_message} showMessage={(text) => {
+                {/* Show.show_message ? <Message content={show.show_message} showMessage={(text) => {
 
                     actions.showMessage(text);
 
@@ -97,14 +97,14 @@ class MainLayout extends React.Component {
 }
 
 
-// const mapStateToProps = (state) => ({"show": state.show});
+// Const mapStateToProps = (state) => ({"show": state.show});
 //
-// const mapDispatchToProps = (dispatch) => ({"actions": bindActionCreators(actionCreators, dispatch)});
+// Const mapDispatchToProps = (dispatch) => ({"actions": bindActionCreators(actionCreators, dispatch)});
 //
 //
-// const MainLayout = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
+// Const MainLayout = connect(
+//   MapStateToProps,
+//   MapDispatchToProps
 // )(Layout);
 
 

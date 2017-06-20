@@ -20,7 +20,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     componentDidMount () {
 
-        // this.props.showBottom(false);
+        // This.props.showBottom(false);
 
     }
 
@@ -84,7 +84,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
         if (this.refs.input.innerHTML.length <= 5) {
 
-            // this.props.showMessage("最少输入五个字");
+            // This.props.showMessage("最少输入五个字");
 
         } else {
 
@@ -139,7 +139,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
                       "pathname": `toquestion/${this.state.qid}`,
                       "query": {}
                   });
-                  // that.props.showMessage("回答成功");
+                  // That.props.showMessage("回答成功");
 
 
               });
@@ -159,7 +159,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
                   "pathname": `toquestion/${this.state.qid}`,
                   "query": {}
               });
-              // that.props.showMessage("回答成功");
+              // That.props.showMessage("回答成功");
 
           });
 

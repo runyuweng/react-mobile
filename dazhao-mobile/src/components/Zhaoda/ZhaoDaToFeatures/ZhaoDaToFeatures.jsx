@@ -28,7 +28,7 @@ class ZhaoDaToFeatures extends React.Component {
                     "vip": true, // 是否是VIP
                     "position": "国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练"
                 },
-                "uid":""
+                "uid": ""
             },
             "album": [// 专辑列表
             ],
@@ -71,12 +71,13 @@ class ZhaoDaToFeatures extends React.Component {
         this.fetchAlbum = this.fetchAlbum.bind(this);
         this.fetchZhuanlanDe = this.fetchZhuanlanDe.bind(this);
         this.setSelect = this.setSelect.bind(this);
+
     }
 
 
     componentDidMount () {
 
-        // this.props.showBottom();
+        // This.props.showBottom();
 
 
         this.setState({"commentWidth": this.refs.comment.clientWidth},
@@ -104,13 +105,14 @@ class ZhaoDaToFeatures extends React.Component {
 
         ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             const myData = data.contents;
 
-            this.setState({
-                "data": myData
-            },()=>{
+            this.setState({"data": myData}, () => {
+
                 this.fetchAlbum(this.state.albumNum);
+
             });
 
         });
@@ -119,7 +121,7 @@ class ZhaoDaToFeatures extends React.Component {
 
     fetchAlbum (albumNum) {
 
-        console.log(albumNum)
+        console.log(albumNum);
 
         ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).
         then((data) => {
@@ -159,27 +161,31 @@ class ZhaoDaToFeatures extends React.Component {
 
     }
 
-    setSelect(colid){
+    setSelect (colid) {
+
         ajax({"url": `/zhaoda/carezhuanlan?zhuanlanid=${colid}`}).
         then((data) => {
-            if (data.code==="S01") {
+
+            if (data.code === "S01") {
 
                 var data = JSON.parse(JSON.stringify(this.state)).data;
-                data.collect = !this.state.data.collect;
-                this.setState({
-                    "data":data
-                })
 
-            }else if(data.code==="E01"){
-                return;
+                data.collect = !this.state.data.collect;
+                this.setState({data});
+
+            } else if (data.code === "E01") {
+
             }
-        })
+
+        });
+
     }
 
     render () {
 
         const {data, album, answers, commentWidth} = this.state;
-        console.log(data)
+
+        console.log(data);
 
         const albumList = album.map((value, i) => <div className="albunItems" key={i}>
             <span><img src={"/src/images/zhuanlan.png" || value.colposter} /></span>
@@ -251,7 +257,7 @@ class ZhaoDaToFeatures extends React.Component {
                             <em><b>{data.playtimes}</b>次播放</em>
                         </div>
                         <div className="videoR">
-                            <span><img onClick={this.setSelect.bind(this,data.colid)} src="/src/images/love.png" /></span>
+                            <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
                             <span><img src="/src/images/top.png" /></span>
                         </div>
                     </div>
@@ -276,21 +282,23 @@ class ZhaoDaToFeatures extends React.Component {
                                 </span>
                                 <div className="introR">
 
-                                    <span><em>{data.guest.nickname}</em>{data.guest.vip?<img src="/src/images/vip.png" />:""}</span>
+                                    <span><em>{data.guest.nickname}</em>{data.guest.vip ? <img src="/src/images/vip.png" /> : ""}</span>
                                     <span style={{"display": !this.state.guestIntroStretch ? "WebKitBox" : "inline"}}>{data.guest.position}</span>
 
                                 </div>
                             </div>
                             {
-                                !this.state.guestIntroStretch ?
+                                !this.state.guestIntroStretch
 
-                                    data.guest.position.length > 20 ?
-                                    <span
+                                    ? data.guest.position.length > 20
+                                    ? <span
                                         onClick={() => {
+
                                             this.setState({"guestIntroStretch": true});
+
                                         }}
                                         className="more"
-                                    >
+                                      >
                                         <em>展开</em>
                                         <img src="/src/images/Back_down.png" />
                                     </span> : ""
