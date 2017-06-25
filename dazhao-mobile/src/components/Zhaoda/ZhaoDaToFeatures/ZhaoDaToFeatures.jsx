@@ -77,7 +77,7 @@ class ZhaoDaToFeatures extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom();
+        this.props.changeBottomState(false);
 
 
         this.setState({"commentWidth": this.refs.comment.clientWidth},
@@ -106,7 +106,6 @@ class ZhaoDaToFeatures extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
         then((data) => {
 
-            console.log(data);
             const myData = data.contents;
 
             this.setState({"data": myData}, () => {
@@ -120,8 +119,6 @@ class ZhaoDaToFeatures extends React.Component {
     }
 
     fetchAlbum (albumNum) {
-
-        console.log(albumNum);
 
         ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).
         then((data) => {
@@ -184,8 +181,6 @@ class ZhaoDaToFeatures extends React.Component {
     render () {
 
         const {data, album, answers, commentWidth} = this.state;
-
-        console.log(data);
 
         const albumList = album.map((value, i) => <div className="albunItems" key={i}>
             <span><img src={"/src/images/zhuanlan.png" || value.colposter} /></span>

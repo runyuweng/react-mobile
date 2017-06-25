@@ -26,7 +26,8 @@ class ZhaoDaTopic extends React.Component {
     componentDidMount () {
 
 
-        // This.props.showBottom(true);
+        this.props.changeBottomState(true);
+
 
         this._touchEvent(this.refs.navbar);
 

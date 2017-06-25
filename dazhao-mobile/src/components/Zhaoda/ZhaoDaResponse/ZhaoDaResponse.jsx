@@ -28,7 +28,8 @@ class ZhaoDaResponse extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom();
+        this.props.changeBottomState(false);
+
 
         this.setState({
             "title": this.props.location.query.qtitle,
@@ -46,7 +47,6 @@ class ZhaoDaResponse extends React.Component {
         ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 const answerdetail = {};

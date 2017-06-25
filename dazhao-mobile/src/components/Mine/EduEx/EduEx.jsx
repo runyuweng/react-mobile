@@ -67,7 +67,6 @@ class EduEx extends React.Component {
 
     handleChange (e) {
 
-        console.log(e.target.name);
         const eduexperience = JSON.parse(JSON.stringify(this.state)).eduexperience;
 
         if (e.target.name === "school_name") {

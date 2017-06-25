@@ -35,10 +35,6 @@ class Company extends React.Component {
         ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
         then((data) => {
 
-            console.log(data);
-
-            // Console.log(this.refs.companyintro.clientWidth)
-
             const tooLong = data.contents[0].introduce.length > this.refs.companyintro.clientWidth / 14 * 8;
 
 

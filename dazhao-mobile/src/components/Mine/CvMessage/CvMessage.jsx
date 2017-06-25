@@ -94,7 +94,7 @@ class CvMessage extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        this.props.changeBottomState(false);
         this.fetchResume();
 
     }

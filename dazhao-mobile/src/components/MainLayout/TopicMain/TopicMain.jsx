@@ -11,7 +11,7 @@ class TopicMain extends React.Component {
     }
     componentDidMount () {
 
-        // This.props.showBottom();
+        this.props.changeBottomState(false);
 
     }
 

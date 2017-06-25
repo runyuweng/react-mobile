@@ -33,23 +33,14 @@ class EditMg extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom(false);
+        this.props.changeBottomState(false);
         this.fetchBasicMessage();
-        // Console.log(this.props.location.query);
-        // Console.log("top:" + this.refs.year.offsetTop);
-        // Console.log("left:" + this.refs.year.offsetLeft);
-
-        // [this.refs.year,this.refs.month,this.refs.day].map((elem,i)=>{
-        //     This._touchEvent(elem);
-        // })
-
 
     }
 
 
     handleChange (e) {
 
-        console.log(e.target.name);
         const basicMessage = JSON.parse(JSON.stringify(this.state)).basicMessage;
 
         if (e.target.name === "name") {

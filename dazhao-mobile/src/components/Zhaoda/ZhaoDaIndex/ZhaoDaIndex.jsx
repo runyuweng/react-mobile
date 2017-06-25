@@ -165,8 +165,6 @@ class ZhaoDaIndex extends React.Component {
         ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
       then((data) => {
 
-          console.log(data);
-
           if (data.contents.length > 0) {
 
               const newQ = this.state.latestDynamic;
@@ -226,7 +224,6 @@ class ZhaoDaIndex extends React.Component {
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 // 查询成功

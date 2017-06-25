@@ -92,7 +92,6 @@ class ZhaoDaDiscover extends React.Component {
     render () {
 
         const {goodAnswer, hotTopics} = this.state;
-        // Console.log(hotTopics)
 
         const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic="0" key={i} data={value} />);
 

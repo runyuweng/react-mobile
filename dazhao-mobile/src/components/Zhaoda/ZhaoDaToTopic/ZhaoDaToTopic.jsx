@@ -33,7 +33,8 @@ class ZhaoDaToTopic extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom();
+        this.props.changeBottomState(false);
+
         window.addEventListener("scroll", this.handleScroll);
         this.fetchQuestion(this.state.page);
 
@@ -47,8 +48,6 @@ class ZhaoDaToTopic extends React.Component {
 
 
     handleScroll (e) {
-
-        // Console.log("滚动高度：" + document.body.scrollTop);
 
         const scrollTop = document.body.scrollTop;
         const innerHeight = window.innerHeight;
@@ -74,7 +73,6 @@ class ZhaoDaToTopic extends React.Component {
         ? ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=${page}`}).
           then((data) => {
 
-              console.log(data);
               if (data.code === "S01") {
 
                   if (this.state.first) {

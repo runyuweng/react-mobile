@@ -24,7 +24,6 @@ class Activity extends React.Component {
         ajax({"url": "/zhaoda/activity"}).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 this.setState({"activities": data.contents});

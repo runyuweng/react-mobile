@@ -42,7 +42,6 @@ class ZhaoDaUser extends React.Component {
 
     componentDidMount () {
 
-        console.log(this.props.location.query.username);
         this.fetchUsers(this.state.username);
 
     }
@@ -68,7 +67,6 @@ class ZhaoDaUser extends React.Component {
 
     setCare (userId, index) {
 
-        // Console.log(userId,index)
         ajax({"url": `/zhaoda/careUsers?userId=${userId}`}).
         then((data) => {
 

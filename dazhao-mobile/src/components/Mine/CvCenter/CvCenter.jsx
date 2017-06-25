@@ -60,7 +60,7 @@ class CvCenter extends React.Component {
 
     componentDidMount () {
 
-        this.props.showBottom();
+        this.props.changeBottomState(false);
         this.fetchOnlineResume();
 
     }
@@ -100,7 +100,7 @@ class CvCenter extends React.Component {
 
             } else {
 
-                // This.props.showMessage(data.message);
+                this.props.changeMessageContent(data.message);
 
             }
 

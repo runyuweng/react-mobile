@@ -34,7 +34,7 @@ class Intern extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom(false);
+        this.props.changeBottomState(false);
 
         ajax({"url": "/zhaoda/industry/category"}).
         then((data) => {
@@ -57,8 +57,6 @@ class Intern extends React.Component {
 
 
     handleScroll (e) {
-
-        // Console.log("滚动高度：" + document.body.scrollTop);
 
         const scrollTop = document.body.scrollTop;
         const innerHeight = window.innerHeight;

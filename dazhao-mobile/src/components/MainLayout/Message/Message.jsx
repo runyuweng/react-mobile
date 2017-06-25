@@ -20,7 +20,7 @@ class Message extends React.Component {
 
                 setTimeout(() => {
 
-                    // This.props.showMessage("");
+                    this.props.changeMessageContent("");
 
                 }, 1000);
 
@@ -33,14 +33,11 @@ class Message extends React.Component {
 
     render () {
 
-        const {content} = this.props;
-        const {hide} = this.state;
-
         return (
             <div className="publicMessage">
-                <div className={hide ? "hide" : ""}>
+                <div className={this.state.hide ? "hide" : ""}>
                     <img src="/src/images/icon/info.png" />
-                    <p>{content}</p>
+                    <p>{this.props.content}</p>
                 </div>
             </div>
         );

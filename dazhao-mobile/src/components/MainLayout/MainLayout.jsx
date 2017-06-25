@@ -1,15 +1,13 @@
 import React from "react";
-// Import {connect} from "react-redux";
-// Import {bindActionCreators} from "redux";
 import "./MainLayout.scss";
 import Message from "./Message/Message.jsx";
 import {IndexLink, Link} from "react-router";
-// Import * as actionCreators from "../../actions/show.js";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import {observer} from "mobx-react";
+import AppState from "../../store/AppState";
+const appState = new AppState();
 
-import Store from "../../store/store";
-const store = new Store();
-
+@observer
 class MainLayout extends React.Component {
 
     constructor (props) {
@@ -19,8 +17,6 @@ class MainLayout extends React.Component {
     }
 
     render () {
-
-        // Const {actions, show} = this.props;
 
         const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise", "/tologin", "/login", "/register", "/response", "/toquestion"],
             pathname = this.props.location.pathname;
@@ -38,19 +34,20 @@ class MainLayout extends React.Component {
 
         const childrenWithProps = React.Children.map(this.props.children,
          (child) => React.cloneElement(child, {
-             "showBottom": store.showBottom,
-             "key": this.props.location.pathname
+             "key": this.props.location.pathname,
+             "changeBottomState": appState.changeBottomState,
+             "changeMessageContent": appState.changeMessageContent
          })
         );
 
         return (
             <div>
-                {/* Show.show_message ? <Message content={show.show_message} showMessage={(text) => {
+                { appState.messageContent ? <Message content={appState.messageContent} changeMessageContent={(text) => {
 
-                    actions.showMessage(text);
+                    appState.changeMessageContent(text);
 
                 }}
-                                     /> : ""*/}
+                                            /> : ""}
                 {animate ? <ReactCSSTransitionGroup
                     transitionName="enter"
                     transitionEnterTimeout={300}
@@ -59,7 +56,7 @@ class MainLayout extends React.Component {
                     {childrenWithProps}
                 </ReactCSSTransitionGroup> : childrenWithProps}
 
-                {true
+                {appState.bottomState
               ? <footer>
                   <div>
                       <IndexLink to="/" className="bg home" activeClassName="home2">
@@ -95,17 +92,5 @@ class MainLayout extends React.Component {
 
     }
 }
-
-
-// Const mapStateToProps = (state) => ({"show": state.show});
-//
-// Const mapDispatchToProps = (dispatch) => ({"actions": bindActionCreators(actionCreators, dispatch)});
-//
-//
-// Const MainLayout = connect(
-//   MapStateToProps,
-//   MapDispatchToProps
-// )(Layout);
-
 
 export default MainLayout;

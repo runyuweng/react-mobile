@@ -11,7 +11,7 @@ class ToLogin extends React.Component {
     }
     componentDidMount () {
 
-        // This.props.showBottom(false);
+        this.props.changeBottomState(false);
 
     }
 

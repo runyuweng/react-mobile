@@ -46,7 +46,8 @@ class ZhaoDaComents extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom(false);
+        this.props.changeBottomState(false);
+
         this.setState({"aid": this.props.location.query.aid}, () => {
 
             this.fetchCommnets(this.state.aid);
@@ -80,7 +81,9 @@ class ZhaoDaComents extends React.Component {
 
         // Post请求
         if (this.state.comment_input === "") {
-            // This.props.showMessage("不能发表空评论");
+
+            this.props.changeMessageContent("不能发表空评论");
+
         } else {
 
             ajax({

@@ -34,7 +34,8 @@ class ZhaoDaToQuestion extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom();
+        this.props.changeBottomState(false);
+
         this.fetchQuestion();
 
     }
@@ -44,7 +45,6 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
 
-          console.log(data);
           const newQ = {
               "qid": data.contents.qid,
               "title": data.contents.qtitle,
@@ -156,7 +156,6 @@ class ZhaoDaToQuestion extends React.Component {
 
         const {topic, question, otherAnswers} = this.state;
 
-        console.log(otherAnswers);
         const otherAnswersList = otherAnswers.map((value, num) =>
             <article key={num}>
                 <div>

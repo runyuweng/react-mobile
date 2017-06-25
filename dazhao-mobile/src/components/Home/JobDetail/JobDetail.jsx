@@ -47,7 +47,6 @@ class JobDetail extends React.Component {
         ajax({"url": `/zhaoda/jobs/jobinfo?id=${id}`}).
         then((data) => {
 
-            // Console.log(data)
             if (data.code === "S01") {
 
                 this.setState({"data": data.contents[0]});
@@ -65,7 +64,7 @@ class JobDetail extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom();
+        this.props.changeBottomState(false);
 
     }
 

@@ -21,7 +21,7 @@ class Register extends React.Component {
     }
     componentDidMount () {
 
-        // This.props.showBottom(false);
+        this.props.changeBottomState(false);
 
     }
 
@@ -29,7 +29,7 @@ class Register extends React.Component {
 
         if (!verifyTel(this.state.tel)) {
 
-            // This.props.showMessage("手机号有误，请重新输入");
+            this.props.changeMessageContent("手机号有误，请重新输入");
 
         } else if (!this.state.time) {
 
@@ -42,12 +42,12 @@ class Register extends React.Component {
 
             if (data.code === "S01") {
 
-                // This.props.showMessage("验证码已发送");
+                this.props.changeMessageContent("验证码已发送");
                 this.setState({"activeTel": data.contents.tele});
 
             } else {
 
-                // This.props.showMessage(data.message);
+                this.props.changeMessageContent(data.message);
 
             }
 
@@ -82,19 +82,19 @@ class Register extends React.Component {
 
         if (!this.state.activeTel) {
 
-            // This.props.showMessage("尚未发送验证码");
+            this.props.changeMessageContent("尚未发送验证码");
 
         } else if (!this.state.tel || !this.state.code || !this.state.pwd) {
 
-            // This.props.showMessage("请填写完整信息后再试");
+            this.props.changeMessageContent("请填写完整信息后再试");
 
         } else if (this.state.tel !== this.state.activeTel) {
 
-            // This.props.showMessage("当前手机号与验证码接收手机号不一致");
+            this.props.changeMessageContent("当前手机号与验证码接收手机号不一致");
 
         } else if (!this.state.agree) {
 
-            // This.props.showMessage("请同意再试");
+            this.props.changeMessageContent("请同意再试");
 
         } else {
 
@@ -107,11 +107,11 @@ class Register extends React.Component {
 
             if (data.code === "S01") {
 
-                // This.props.showMessage("注册成功");
+                this.props.changeMessageContent("注册成功");
 
             } else {
 
-                // This.props.showMessage("未知错误，请重试");
+                this.props.changeMessageContent("未知错误，请重试");
 
             }
 

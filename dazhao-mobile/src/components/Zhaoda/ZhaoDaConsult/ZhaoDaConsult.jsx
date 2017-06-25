@@ -63,7 +63,7 @@ class ZhaoDaConsult extends React.Component {
                                     ><Link to="/detail">下一步</Link></span>
                           : <span onClick={() => {
 
-                              // This.props.showMessage("请输入后再试");
+                              this.props.changeMessageContent("请输入后再试");
 
                           }}
                             >下一步</span>}

@@ -28,7 +28,7 @@
 ```
 
 ## 四、技术栈：
- react + redux + webpack
+ react + mobx + webpack
 
 原本以为使用react就足以解决问题，  
 但是代码编写之后发现单页应用的mainlayout需要判断在那些页面隐藏在那些页面显示，  
@@ -39,3 +39,4 @@
 - redux换成mobx
 - 图片压缩(可以部署时交给后端来做)
 - 分块打包
+- 有时间有精力的话可以做node中间层

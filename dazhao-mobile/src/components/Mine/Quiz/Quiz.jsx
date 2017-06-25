@@ -35,8 +35,6 @@ class Quiz extends React.Component {
 
     handleScroll (e) {
 
-        // Console.log("滚动高度：" + document.body.scrollTop);
-
         const scrollTop = document.body.scrollTop;
         const innerHeight = window.innerHeight;
         const docHeight = document.body.scrollHeight;
@@ -62,7 +60,6 @@ class Quiz extends React.Component {
         ? ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 const questions = data.contents;

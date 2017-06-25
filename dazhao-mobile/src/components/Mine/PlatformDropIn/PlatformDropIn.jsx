@@ -115,8 +115,6 @@ class PlatformDropIn extends React.Component {
 
     componentDidMount () {
 
-        // Console.log([{'id':1,"name":"asd"},{'id':2,"name":"argr"},{'id':3,"name":"dbhmt"}].reverse())
-
         const platformDropIns = JSON.parse(JSON.stringify(this.state)).platformDropIns;
 
         platformDropIns.map((elem, index) => {

@@ -40,7 +40,8 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom(false);
+        this.props.changeBottomState(false);
+
         this.setState({"topic": this.props.location.query.topic}, () => {
 
             this.fetchUser(this.state.topic);
@@ -73,7 +74,9 @@ class ZhaoDaInvitetoAnswer extends React.Component {
     invitetoanswer (userid, index) {
 
         if (this.state.user[index].isInvited) {
-            // This.props.showMessage("已经邀请过了");
+
+            this.props.changeMessageContent("已经邀请过了");
+
         } else {
 
             ajax({"url": `/zhaoda/invitetoanswer?userid=${userid}`}).

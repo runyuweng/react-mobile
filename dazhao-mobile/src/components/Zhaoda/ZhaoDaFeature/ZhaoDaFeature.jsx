@@ -52,7 +52,6 @@ class ZhaoDaFeature extends React.Component {
         ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1"}).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 const zhuanlan = data.contents;
@@ -73,8 +72,6 @@ class ZhaoDaFeature extends React.Component {
     render () {
 
         const {zhuanlan} = this.state;
-
-        console.log(zhuanlan);
 
         const ZhuanLanList = zhuanlan.map((elem, index) =>
             <div className="feature" key={index}>

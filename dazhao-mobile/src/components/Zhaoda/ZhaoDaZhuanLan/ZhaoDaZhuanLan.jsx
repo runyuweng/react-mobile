@@ -38,7 +38,6 @@ class ZhaoDaZhuanLan extends React.Component {
 
     componentDidMount () {
 
-        console.log(this.props.location.query.keyword);
         this.fetchZhuanlan(this.state.keyword);
 
     }

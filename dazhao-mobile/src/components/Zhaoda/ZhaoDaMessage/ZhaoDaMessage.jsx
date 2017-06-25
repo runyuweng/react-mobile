@@ -45,7 +45,8 @@ class ZhaoDaMessage extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom();
+        this.props.changeBottomState(false);
+
         this.fetchInform(this.state.page);
 
     }
@@ -55,8 +56,6 @@ class ZhaoDaMessage extends React.Component {
 
         ajax({"url": `/zhaoda/message/information?page=${page}`}).
         then((data) => {
-
-            console.log(data);
 
             if (data.code === "E01") {
 

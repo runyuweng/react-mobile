@@ -12,9 +12,7 @@ class Mine extends React.Component {
     }
     componentDidMount () {
 
-        // Console.log(this.props.showBottom);
-
-        this.props.showBottom(true);
+        this.props.changeBottomState(true);
         // Ajax get personal data
 
     }

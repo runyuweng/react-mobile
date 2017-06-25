@@ -22,7 +22,7 @@ class ConcernQuestion extends React.Component {
 
     componentDidMount () {
 
-        // // this.props.showBottom(false);
+        this.props.changeBottomState(false);
 
         window.addEventListener("scroll", this.handleScroll);
         this.fetchQuestions(this.state.page);
@@ -37,8 +37,6 @@ class ConcernQuestion extends React.Component {
 
 
     handleScroll (e) {
-
-        // Console.log("滚动高度：" + document.body.scrollTop);
 
         const scrollTop = document.body.scrollTop;
         const innerHeight = window.innerHeight;
@@ -63,7 +61,6 @@ class ConcernQuestion extends React.Component {
         ? ajax({"url": `/zhaoda/question/mycarequestion?page=${page}`}).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 const questions = data.contents;

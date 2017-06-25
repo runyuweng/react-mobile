@@ -20,7 +20,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     componentDidMount () {
 
-        // This.props.showBottom(false);
+        this.props.changeBottomState(true);
 
     }
 
@@ -84,7 +84,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
         if (this.refs.input.innerHTML.length <= 5) {
 
-            // This.props.showMessage("最少输入五个字");
+            this.props.changeMessageContent("最少输入五个字");
 
         } else {
 
@@ -103,7 +103,6 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
                     });
 
-                    console.log(files);
                     ajax({
                         "url": "/zhaoda/getqiniutoken",
                         "noParse": true
@@ -159,7 +158,6 @@ class ZhaoDaAddAnswer extends React.PureComponent {
                   "pathname": `toquestion/${this.state.qid}`,
                   "query": {}
               });
-              // That.props.showMessage("回答成功");
 
           });
 
@@ -175,7 +173,6 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     setFocus (obj) {
 
-        // Console.log(this.state.html);
         if (window.getSelection) { // Ie11 10 9 ff safari
 
             obj.focus(); // 解决ff不获取焦点无法定位问题

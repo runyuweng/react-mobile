@@ -13,7 +13,7 @@ class Zhaoda extends React.Component {
 
     componentDidMount () {
 
-        // This.props.showBottom(true);
+        this.props.changeBottomState(true);
 
     }
 

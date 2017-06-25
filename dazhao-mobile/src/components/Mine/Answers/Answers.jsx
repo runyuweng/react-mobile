@@ -48,10 +48,6 @@ class Answers extends React.Component {
 
         this.fetchAnswer(this.state.page);
 
-        console.log(`可视高度：${window.innerHeight}`);
-        console.log(`页面高度：${document.body.scrollHeight}`);
-        console.log(`滚动高度：${document.body.scrollTop}`);
-        // Console.log(_this)
         window.addEventListener("scroll", this.handleScroll);
 
     }
@@ -64,8 +60,6 @@ class Answers extends React.Component {
 
 
     handleScroll (e) {
-
-        // Console.log("滚动高度：" + document.body.scrollTop);
 
         const scrollTop = document.body.scrollTop;
         const innerHeight = window.innerHeight;
@@ -92,7 +86,6 @@ class Answers extends React.Component {
         ? ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
         then((data) => {
 
-            console.log(data);
             if (data.code === "S01") {
 
                 const answers = data.contents;

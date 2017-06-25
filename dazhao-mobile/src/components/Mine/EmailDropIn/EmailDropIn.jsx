@@ -113,8 +113,6 @@ class EmailDropIn extends React.Component {
 
     componentDidMount () {
 
-        // Console.log([{'id':1,"name":"asd"},{'id':2,"name":"argr"},{'id':3,"name":"dbhmt"}].reverse())
-
         const emailDropIns = JSON.parse(JSON.stringify(this.state)).emailDropIns;
 
         emailDropIns.map((elem, index) => {

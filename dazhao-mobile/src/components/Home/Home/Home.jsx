@@ -25,11 +25,13 @@ class Home extends React.Component {
 
     componentDidMount () {
 
+        this.props.changeBottomState(true);
+        this.props.changeMessageContent("哈哈哈哈");
+
         this.setState({
             "jobsLoading": true,
             "enterpriseLoading": true
         });
-        // This.props.showBottom(true);
 
         ajax({"url": "/zhaoda/getjobs?page=1"}).
         then((data) => {
@@ -79,7 +81,9 @@ class Home extends React.Component {
 
         // Ajax
         if (this.state.search === "") {
-            // This.props.showMessage("搜索不能为空")
+
+            this.props.changeMessageContent("搜索不能为空");
+
         } else {
 
             console.log("搜索");
@@ -138,7 +142,7 @@ class Home extends React.Component {
 
                 newState[`${type}Loading`] = false;
 
-                // This.props.showMessage("已加载完全部");
+                this.props.changeMessageContent("已加载完全部");
 
                 this.setState(newState);
                 newState = {};
@@ -149,7 +153,7 @@ class Home extends React.Component {
 
                 newState[`${type}Loading`] = false;
 
-                // This.props.showMessage("请求错误，请稍后重试");
+                this.props.changeMessageContent("请求错误，请稍后重试");
 
                 this.setState(newState);
                 newState = {};
