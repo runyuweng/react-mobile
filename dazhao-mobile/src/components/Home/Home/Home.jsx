@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.scss";
 import ajax from "../../../services/ajax";
-import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
+import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
 import {Link} from "react-router";
 
 
@@ -32,7 +32,7 @@ class Home extends React.Component {
             "enterpriseLoading": true
         });
 
-        ajax({"url": "/zhaoda/getjobs?page=1"}).
+        ajax({"url": "/zhaoda/getjobs?page=1", obj: this}).
         then((data) => {
 
             if (!this.state.lock) {
@@ -50,7 +50,7 @@ class Home extends React.Component {
 
         });
 
-        ajax({"url": "/zhaoda/jobs/enterprise?industryid=-1&page=1"}).
+        ajax({"url": "/zhaoda/jobs/enterprise?industryid=-1&page=1", obj: this}).
         then((data) => {
 
             if (!this.state.lock) {
@@ -99,8 +99,10 @@ class Home extends React.Component {
         this.setState(newState);
         newState = {};
 
-        ajax({"url": type === "jobs" ? `/zhaoda/getjobs?page=${this.state.jobsPage}` : `/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`}).
+        ajax({"url": type === "jobs" ? `/zhaoda/getjobs?page=${this.state.jobsPage}` : `/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`, obj: this}).
         then((data) => {
+
+          if (!this.state.lock) {
 
             if (data.code === "S01") {
 
@@ -158,6 +160,7 @@ class Home extends React.Component {
                 newState = {};
 
             }
+          }
 
         });
 

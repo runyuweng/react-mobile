@@ -12,8 +12,8 @@ export default function ajax(options) {
         file: options.file || '',
         fileUrl: options.fileUrl || '',
         noParse: options.noParse || '',
-        qiniuToken: options.token || ''
-
+        qiniuToken: options.token || '',
+        listener: options.obj
     }
 
     const tool = {
@@ -58,11 +58,27 @@ export default function ajax(options) {
           }else{
             return !config.noParse?JSON.parse(xhr.responseText):xhr.responseText;
           }
+        },
+        addListener:()=>{
+          //监听组件，一旦进入componentWillUnmount生命周期就执行abort方法
+          if(xhr && config.listener){
+            Object.defineProperty(config.listener,'_calledComponentWillUnmount',{
+              configurable: true,
+              set: function(value){
+                if(value === true) xhr.abort();
+                Object.defineProperty(config.listener,'_calledComponentWillUnmount',{
+                  value: value
+                })
+              }
+            })
+          }
         }
     }
 
 
     let xhr = tool.createXhr();
+
+    tool.addListener();
 
     //判断是否是异步
     if (!config.async) {

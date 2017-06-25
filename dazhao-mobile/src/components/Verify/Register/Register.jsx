@@ -1,6 +1,6 @@
 import React from "react";
 import "./Register.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 import {verifyTel} from "../../../services/tools";
 import ajax from "../../../services/ajax";

@@ -1,9 +1,9 @@
 import React, {defaultProps} from "react";
-import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
+import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaIndex.scss";
 import ajax from "../../../services/ajax.js";
 import {Link} from "react-router";
-import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
+import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
 
 class ZhaoDaIndex extends React.Component {
     constructor (props) {
@@ -91,7 +91,8 @@ class ZhaoDaIndex extends React.Component {
             "nowshow": 0,
             "getmore": false,
             "latestDynamicPage": 1,
-            "nomore": false
+            "nomore": false,
+            lock: false
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -135,6 +136,8 @@ class ZhaoDaIndex extends React.Component {
 
     componentWillUnmount () {
 
+        this.setState({lock: true})
+
         clearInterval(this.state.autoCarousel);
 
     }
@@ -142,8 +145,9 @@ class ZhaoDaIndex extends React.Component {
     // 获取轮播图片
     fetchCarouselpic () {
 
-        ajax({"url": "/zhaoda/carouselpic"}).
+        ajax({"url": "/zhaoda/carouselpic", obj: this}).
         then((data) => {
+          if (!this.state.lock) {
 
             if (data.code === "S01") {
 
@@ -154,6 +158,7 @@ class ZhaoDaIndex extends React.Component {
                 this.setState({"carouselpic": this.state.carouselpic});
 
             }
+          }
 
         });
 
@@ -162,8 +167,9 @@ class ZhaoDaIndex extends React.Component {
     // 最新动态
     fetchLatestDynamic () {
 
-        ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`}).
+        ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`, obj: this}).
       then((data) => {
+        if (!this.state.lock) {
 
           if (data.contents.length > 0) {
 
@@ -199,6 +205,7 @@ class ZhaoDaIndex extends React.Component {
               });
 
           }
+        }
 
       });
 
@@ -221,8 +228,9 @@ class ZhaoDaIndex extends React.Component {
     // 热门话题
     fetchHotTopic () {
 
-        ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).
+        ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1", obj: this}).
         then((data) => {
+          if (!this.state.lock) {
 
             if (data.code === "S01") {
 
@@ -237,6 +245,7 @@ class ZhaoDaIndex extends React.Component {
                 this.setState({"hotTopic": this.state.hotTopic});
 
             }
+          }
 
         });
 
@@ -250,8 +259,9 @@ class ZhaoDaIndex extends React.Component {
     // 最新专栏
     fetchLatestZhuanlan () {
 
-        ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1"}).
+        ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1", obj: this}).
         then((data) => {
+          if (!this.state.lock) {
 
             if (data.code === "S01") {
 
@@ -265,6 +275,7 @@ class ZhaoDaIndex extends React.Component {
                 this.setState({"latestZhuanlan": this.state.latestZhuanlan});
 
             }
+          }
 
         });
 

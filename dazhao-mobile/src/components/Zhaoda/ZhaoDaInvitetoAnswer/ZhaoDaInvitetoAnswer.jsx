@@ -1,6 +1,6 @@
 import React from "react";
 import "./ZhaoDaInvitetoAnswer.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import ajax from "../../../services/ajax.js";
 
 class ZhaoDaInvitetoAnswer extends React.Component {

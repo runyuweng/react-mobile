@@ -2,7 +2,7 @@ import React from "react";
 import "./Company.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 
 class Company extends React.Component {
     constructor (props) {

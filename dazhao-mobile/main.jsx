@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import {IndexRoute, Route, Router, hashHistory} from "react-router";
 // 公共部分
-import MainLayout from "./src/components/MainLayout/MainLayout.jsx";
+import MainLayout from "./src/components/Public/MainLayout.jsx";
 
 // 首页部分
 import Home from "./src/components/Home/Home/Home.jsx";

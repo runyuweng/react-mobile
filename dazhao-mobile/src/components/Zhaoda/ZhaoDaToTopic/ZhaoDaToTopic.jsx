@@ -1,7 +1,7 @@
 import React from "react";
 import "./ZhaoDaToTopic.scss";
 import {Link} from "react-router";
-import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
+import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import ajax from "../../../services/ajax.js";
 
 class ZhaoDaToTopic extends React.Component {

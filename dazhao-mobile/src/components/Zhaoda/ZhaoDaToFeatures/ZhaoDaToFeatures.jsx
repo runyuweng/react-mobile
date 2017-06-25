@@ -1,9 +1,9 @@
 import React from "react";
 import "./ZhaoDaToFeatures.scss";
-import "../../MainLayout/AnswerMain/AnswerMain.scss";
+import "../../Public/AnswerMain/AnswerMain.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
-import LoadingMore from "../../MainLayout/Loading/LoadingMore.jsx";
+import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
 
 class ZhaoDaToFeatures extends React.Component {
 

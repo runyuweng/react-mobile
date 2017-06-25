@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
-import SlideBar from "../../MainLayout/SlideBar/SlideBar.jsx";
-import SortBy from "../../MainLayout/SortBy/SortBy.jsx";
-import Loading from "../../MainLayout/Loading/Loading.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
+import SlideBar from "../../Public/SlideBar/SlideBar.jsx";
+import SortBy from "../../Public/SortBy/SortBy.jsx";
+import Loading from "../../Public/Loading/Loading.jsx";
 import ajax from "../../../services/ajax";
 import {Link} from "react-router";
 

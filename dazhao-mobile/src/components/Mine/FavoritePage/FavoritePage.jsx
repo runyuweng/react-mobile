@@ -1,7 +1,7 @@
 import React from "react";
 import "./FavoritePage.scss";
 import {Link} from "react-router";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 
 class FavoritePage extends React.Component {
 

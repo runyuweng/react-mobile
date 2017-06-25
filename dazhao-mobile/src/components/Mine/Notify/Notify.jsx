@@ -1,6 +1,6 @@
 import React from "react";
 import "./Notify.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
 class Notify extends React.Component {

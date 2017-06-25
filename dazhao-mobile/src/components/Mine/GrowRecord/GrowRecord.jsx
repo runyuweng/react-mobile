@@ -1,6 +1,6 @@
 import React from "react";
 import "./GrowRecord.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
 class GrowRecord extends React.Component {

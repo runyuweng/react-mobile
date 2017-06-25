@@ -1,6 +1,6 @@
 import React from "react";
 import "./Invitation.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import ajax from "../../../services/ajax.js";
 
 class Invitation extends React.Component {

@@ -1,7 +1,7 @@
 import React from "react";
 import "./ZhaoDaToQuestion.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
-import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
+import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 

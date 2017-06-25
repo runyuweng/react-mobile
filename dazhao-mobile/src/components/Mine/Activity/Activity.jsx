@@ -1,6 +1,6 @@
 import React from "react";
 import "./Activity.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import ajax from "../../../services/ajax.js";
 
 class Activity extends React.Component {

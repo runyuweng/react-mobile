@@ -1,6 +1,6 @@
 import React from "react";
 import "./CvMessage.scss";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 

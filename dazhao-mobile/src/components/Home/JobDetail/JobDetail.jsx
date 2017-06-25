@@ -1,7 +1,7 @@
 import React from "react";
 import "./JobDetail.scss";
 import ajax from "../../../services/ajax";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 
 class JobDetail extends React.Component {

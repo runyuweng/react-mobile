@@ -1,5 +1,5 @@
 import React from "react";
-import AnswerMain from "../../MainLayout/AnswerMain/AnswerMain.jsx";
+import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaDiscover.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";

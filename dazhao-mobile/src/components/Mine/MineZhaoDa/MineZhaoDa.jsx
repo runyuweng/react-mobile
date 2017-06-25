@@ -1,7 +1,7 @@
 import React from "react";
 import "./MineZhaoDa.scss";
 import {Link} from "react-router";
-import TopBar from "../../MainLayout/TopBar/TopBar.jsx";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 
 class MineZhaoDa extends React.Component {
 
