@@ -26,7 +26,6 @@ class Home extends React.Component {
     componentDidMount () {
 
         this.props.changeBottomState(true);
-        this.props.changeMessageContent("哈哈哈哈");
 
         this.setState({
             "jobsLoading": true,
