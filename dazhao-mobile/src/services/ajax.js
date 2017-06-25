@@ -1,5 +1,5 @@
-import {setCookie,getCookie,delCookie} from './tools.js'
-import { hashHistory} from "react-router";
+import { setCookie, getCookie, delCookie } from './tools.js'
+import { hashHistory } from "react-router";
 
 export default function ajax(options) {
 
