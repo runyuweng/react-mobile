@@ -3,6 +3,7 @@ import "./ZhaoDaToTopic.scss";
 import {Link} from "react-router";
 import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import ajax from "../../../services/ajax.js";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class ZhaoDaToTopic extends React.Component {
 
@@ -24,7 +25,8 @@ class ZhaoDaToTopic extends React.Component {
             "page": 1,
             "nomore": false,
             "moreMessage": "",
-            "first": true
+            "first": true,
+            showLoading:true
         };
         this.fetchQuestion = this.fetchQuestion.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
@@ -110,11 +112,8 @@ class ZhaoDaToTopic extends React.Component {
                           "topicdetail": newQ,
                           "page": this.state.page + 1,
                           "moreMessage": "",
-                          "first": false
-                      }, () => {
-
-                          console.log(this.state.topicdetail);
-
+                          "first": false,
+                          showLoading:false
                       });
 
                   } else {
@@ -142,7 +141,8 @@ class ZhaoDaToTopic extends React.Component {
                           topicdetail,
                           "page": this.state.page + 1,
                           "nomore": false,
-                          "moreMessage": ""
+                          "moreMessage": "",
+                          showLoading:false
                       });
 
                   }
@@ -172,12 +172,14 @@ class ZhaoDaToTopic extends React.Component {
                   this.setState({
                       topicdetail,
                       "nomore": true,
-                      "moreMessage": "没有更多问题"
+                      "moreMessage": "没有更多问题",
+                      showLoading:false
                   });
 
               } else if (data.code === "E01") {
 
-                  this.setState({"topicdetail": {}});
+                  this.setState({"topicdetail": {},
+                  showLoading:false});
 
               }
 
@@ -187,7 +189,7 @@ class ZhaoDaToTopic extends React.Component {
 
     render () {
 
-        const {topicdetail} = this.state;
+        const {topicdetail, showLoading} = this.state;
 
         const questionsList = topicdetail.questions.map((value, i) =>
             <AnswerMain isTopic="0" key={i} data={value} />
@@ -223,7 +225,7 @@ class ZhaoDaToTopic extends React.Component {
                         <li className="active">全部</li>
                         <li>精华</li>
                     </ul>
-                    {questionsList}
+                    {showLoading?<Loading />: questionsList}
 
                 </div>
                 <p className="fetchmore">{this.state.moreMessage}</p>

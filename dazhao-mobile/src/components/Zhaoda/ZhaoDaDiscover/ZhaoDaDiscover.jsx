@@ -1,16 +1,17 @@
 import React from "react";
 import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaDiscover.scss";
+import Loading from "../../Public/Loading/Loading.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 
 class ZhaoDaDiscover extends React.Component {
-    constructor (props) {
+    constructor(props) {
 
         super(props);
         this.state = {
-            "hotTopics": [
-            ],
+            showLoading: true,
+            "hotTopics": [],
             "goodAnswer": [
                 // {
                 //     "uid": 1,
@@ -51,32 +52,26 @@ class ZhaoDaDiscover extends React.Component {
 
     }
 
-    componentDidMount () {
+    componentDidMount() {
 
         this.fetchHotTopic();
 
     }
 
     // 精品回答
-    fetchGoodAnswer () {
-
-    }
+    fetchGoodAnswer() {}
 
     // 热门话题
-    fetchHotTopic () {
+    fetchHotTopic() {
 
-
-        ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).
-        then((data) => {
-
+        ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1"}).then((data) => {
 
             if (data.code === "S01") {
 
                 // 查询成功
                 const hotTopic = data.contents.slice(0, 10);
 
-
-                this.setState({"hotTopics": hotTopic});
+                this.setState({"hotTopics": hotTopic, showLoading: false});
 
             } else if (data.code === "E01") {
 
@@ -89,52 +84,57 @@ class ZhaoDaDiscover extends React.Component {
 
     }
 
-    render () {
+    render() {
 
-        const {goodAnswer, hotTopics} = this.state;
+        const {goodAnswer, hotTopics, showLoading} = this.state;
 
-        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic="0" key={i} data={value} />);
+        const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic="0" key={i} data={value}/>);
 
-        const LatestDynamicList = hotTopics.map((elem, index) =>
-            <div className="Citems" key={index}>
-                <Link to={`/totopic/${elem.tid}`}>
-                    <span className="img">
-                        <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
+        const LatestDynamicList = hotTopics.map((elem, index) => <div className="Citems" key={index}>
+            <Link to={`/totopic/${elem.tid}`}>
+                <span className="img">
+                    <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题"/>
+                </span>
+                <div className="detail">
+                    <span className="span2">{elem.topicname}</span>
+                    <span className="care">
+                        <span>回答:{elem.questionnum}</span>
+                        <span>关注:{elem.care}</span>
                     </span>
-                    <div className="detail">
-                        <span className="span2">{elem.topicname}</span>
-                        <span className="care">
-                            <span>回答:{elem.questionnum}</span>
-                            <span>关注:{elem.care}</span>
-                        </span>
-                    </div>
-                </Link>
-            </div>
-            );
-
+                </div>
+            </Link>
+        </div>);
 
         return (
-            <div className="ZhaoDaDiscover">
-                <div id="dynamic">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>热门话题</div>
-                    <div className="content">
-                        <div className="citemswrap">
-                            {LatestDynamicList}
+          <div>{
+            showLoading
+                ? <Loading/>
+                : <div className="ZhaoDaDiscover">
+
+                        <div id="dynamic">
+                            <div className="title">
+                                <span><img src="/src/images/latest.png"/></span>热门话题</div>
+                            <div className="content">
+                                <div className="citemswrap">
+                                    {LatestDynamicList}
+                                </div>
+                                <div className="Formore1">
+                                    <Link to="/topic">更多话题</Link>
+                                </div>
+
+                            </div>
                         </div>
-                        <div className="Formore1"><Link to="/topic">更多话题</Link></div>
+                        <div id="latest">
+                            <div className="title">
+                                <span><img src="/src/images/latest.png"/></span>精品回答
+                            </div>
 
+                            {AnswerMainList}
 
+                        </div>
                     </div>
-                </div>
-                <div id="latest">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>精品回答
-          </div>
-
-                    {AnswerMainList}
-
-                </div>
-            </div>
-        );
+        }
+      </div>);
 
     }
 }
