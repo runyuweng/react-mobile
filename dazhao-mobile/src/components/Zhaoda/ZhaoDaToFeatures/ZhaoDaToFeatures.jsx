@@ -160,9 +160,9 @@ class ZhaoDaToFeatures extends React.Component {
 
     setSelect (colid) {
 
-        ajax({"url": `/zhaoda/carezhuanlan?zhuanlanid=${colid}`}).
+        ajax({"url": `/zhaoda/zhuanlan/subscribezhuanlan?colid=${colid}`}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "S01") {
 
                 var data = JSON.parse(JSON.stringify(this.state)).data;

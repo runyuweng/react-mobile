@@ -42,18 +42,20 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
         this.props.changeBottomState(false);
 
-        this.setState({"topic": this.props.location.query.topic}, () => {
+        this.setState({"qid": this.props.location.query.qid}, () => {
 
-            this.fetchUser(this.state.topic);
+            this.fetchUser(this.state.qid);
 
         });
 
     }
 
-    fetchUser (topic) {
+    fetchUser (qid) {
 
-        ajax({"url": `/zhaoda/fetchuser?topic=${topic}`}).
+        ajax({"url": `/zhaoda/user/recommenduser?qid=${qid}`}).
       then((data) => {
+
+        console.log(data)
 
           if (data.code === "S01") {
 
@@ -73,20 +75,23 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     invitetoanswer (userid, index) {
 
-        if (this.state.user[index].isInvited) {
+        
+
+        if (this.state.user[index].status === 1) {
 
             this.props.changeMessageContent("已经邀请过了");
 
         } else {
 
-            ajax({"url": `/zhaoda/invitetoanswer?userid=${userid}`}).
-            then((data) => {
 
+            ajax({"url": `/zhaoda/question/inviteanswer?uid=${userid}`}).
+            then((data) => {
+                console.log(data)
                 if (data.code === "S01") {
 
                     const user = JSON.parse(JSON.stringify(this.state)).user;
 
-                    user[index].isInvited = !this.state.user[index].isInvited;
+                    user[index].status = (this.state.user[index].status === 0) ? 1 : 0;
 
                     this.setState({user});
 
@@ -112,11 +117,11 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                         <img src={value.img} alt="用户头像" />
                     </span>
                     <p>
-                        <span>{value.name}</span><br />
-                        <span>{value.job}</span>
+                        <span>{value.nickname}</span><br />
+                        <span>{value.intro}</span>
                     </p>
                 </div>
-                <span className="right" onClick={this.invitetoanswer.bind(this, value.sid, index)}>{value.isInvited ? "已邀请" : "邀请回答"}</span>
+                <span className="right" onClick={this.invitetoanswer.bind(this, value.uid, index)}>{value.status === 1 ? "已邀请" : "邀请回答"}</span>
             </div>
             );
 

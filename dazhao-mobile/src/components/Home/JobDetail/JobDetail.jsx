@@ -46,7 +46,7 @@ class JobDetail extends React.Component {
 
         ajax({"url": `/zhaoda/jobs/jobinfo?id=${id}`}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "S01") {
 
                 this.setState({"data": data.contents[0]});
@@ -70,9 +70,9 @@ class JobDetail extends React.Component {
 
     careJob (companyid, jobid) {
 
-        ajax({"url": `/careJob?companyid=${companyid}&jobid=${jobid}`}).
+        ajax({"url": `/zhaoda/job/subscribejob?jobid=1jobid=${jobid}`}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "S01") {
 
                 this.setState({"isSealed": !this.state.isSealed});

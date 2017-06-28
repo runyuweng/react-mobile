@@ -9,29 +9,13 @@ class ZhaoDaTalk extends React.Component {
 
         super(props);
         this.state = {
-            "keyword": this.props.location.query.keyword,
+            "keyword": this.props.location.query.keyword || "",
             "topics": [
                 {
                     "id": 1,
                     "img": "/src/images/pople.png",
-                    "topic_title": "研究生",
-                    "question_num": 12,
-                    "care": 24,
-                    "isCared": false
-                },
-                {
-                    "id": 2,
-                    "img": "/src/images/pople.png",
-                    "topic_title": "研究生就业",
-                    "question_num": 12,
-                    "care": 24,
-                    "isCared": false
-                },
-                {
-                    "id": 3,
-                    "img": "/src/images/pople.png",
-                    "topic_title": "考研究生",
-                    "question_num": 12,
+                    "topicname": "研究生",
+                    "questionnum": 12,
                     "care": 24,
                     "isCared": false
                 }
@@ -46,14 +30,16 @@ class ZhaoDaTalk extends React.Component {
     componentDidMount () {
 
         console.log(this.props.location.query.keyword);
-        this.fetchTopics(this.state.keyword);
+        //this.fetchTopics(this.state.keyword);
 
     }
 
     fetchTopics (keyword) {
 
-        ajax({"url": `/zhaoda/topics?keyword=${keyword}`}).
+        ajax({"url": `/zhaoda/topic/searchtopic?keyword=${keyword}`}).
         then((data) => {
+
+            console.log(data)
 
             if (data.code === "S01") {
 
@@ -67,13 +53,17 @@ class ZhaoDaTalk extends React.Component {
 
         });
 
+        this.setState({
+            "keyword" : ""
+        })
+
     }
 
     setCare (topicId, index) {
 
-        ajax({"url": `/zhaoda/careTopic?topicId=${topicId}`}).
+        ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${topicId}`}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "S01") {
 
                 const topics = JSON.parse(JSON.stringify(this.state)).topics;
@@ -104,14 +94,14 @@ class ZhaoDaTalk extends React.Component {
                         </span>
                     </Link>
                     <p>
-                        <span>{value.topic_title}</span><br />
+                        <span>{value.topicname}</span><br />
                         <span>
-                            <em>问题：<b>{value.question_num}</b></em>
+                            <em>问题：<b>{value.questionnum}</b></em>
                             <em>关注：<b>{value.care}</b></em>
                         </span>
                     </p>
                 </div>
-                <span className="right" onClick={this.setCare.bind(this, value.id, index)}>{value.isCared ? "取消关注" : "+关注"}</span>
+                <span className="right" onClick={this.setCare.bind(this, value.tid, index)}>{value.isCared ? "取消关注" : "+关注"}</span>
             </div>
             );
 
@@ -128,7 +118,7 @@ class ZhaoDaTalk extends React.Component {
 
                                 this.setState({"keyword": e.target.value});
 
-                            }} placeholder="研究生" value={this.state.keyword}
+                            }} placeholder="输入要搜索关键字" value={this.state.keyword}
                             />
                             <span onClick={this.fetchTopics.bind(this, keyword)}>搜索</span>
                         </div>

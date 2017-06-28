@@ -25,43 +25,9 @@ class ZhaoDaIndex extends React.Component {
                     "imgsrc": "/src/images/topicImg.png",
                     "name": "Michael",
                     "position": "骨灰级猎头、WIT总裁"
-                },
-                {
-                    "id": 2,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                },
-                {
-                    "id": 3,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                },
-                {
-                    "id": 4,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                } // 人气行家
+                }
             ],
             "latestZhuanlan": [
-                {
-                    "tid": "2",
-                    "colposter": "/src/images/zhuanlan.png",
-                    "colposterbig": "/src/images/zhuanlan.png",
-                    "colid": "1",
-                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname": "#光爸说# 第一期——写简历的正确姿势"
-                },
-                {
-                    "tid": "2",
-                    "colposter": "/src/images/zhuanlan.png",
-                    "colposterbig": "/src/images/zhuanlan.png",
-                    "colid": "1",
-                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname": "#光爸说# 第一期——写简历的正确姿势"
-                },
                 {
                     "tid": "2",
                     "colposter": "/src/images/zhuanlan.png",
@@ -76,16 +42,6 @@ class ZhaoDaIndex extends React.Component {
                     "id": "3",
                     "img": "/src/images/1487917069l108992947.png",
                     "description": "图片一"
-                },
-                {
-                    "id": "3",
-                    "img": "/src/images/1481979697l859459990.png",
-                    "description": "图片二"
-                },
-                {
-                    "id": "3",
-                    "img": "/src/images/1481189424l698185646.png",
-                    "description": "图片三"
                 }
             ],
             "nowshow": 0,
@@ -170,7 +126,7 @@ class ZhaoDaIndex extends React.Component {
         ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`, obj: this}).
       then((data) => {
         if (!this.state.lock) {
-
+            console.log(data)
           if (data.contents.length > 0) {
 
               const newQ = this.state.latestDynamic;
@@ -269,7 +225,7 @@ class ZhaoDaIndex extends React.Component {
 
                 this.setState({"latestZhuanlan": zhuanlan});
 
-            } else if (date.code === "E01") {
+            } else if (data.code === "E01") {
 
                 // 如果查询出错，启用备用数据
                 this.setState({"latestZhuanlan": this.state.latestZhuanlan});
