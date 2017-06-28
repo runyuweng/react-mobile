@@ -47,15 +47,15 @@ var config = {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-        new AppCachePlugin({
-            cache: [
-                'index.js',
-                'index.html'
-            ],
-            network: ['*'],
-            output: './cache.appcache'
-        })
-        ,
+        // new AppCachePlugin({
+        //     cache: [
+        //         'index.js',
+        //         'index.html'
+        //     ],
+        //     network: ['*'],
+        //     output: './cache.appcache'
+        // })
+        // ,
         new webpack.optimize.UglifyJsPlugin({
             beauty: false,
             comments: false,
