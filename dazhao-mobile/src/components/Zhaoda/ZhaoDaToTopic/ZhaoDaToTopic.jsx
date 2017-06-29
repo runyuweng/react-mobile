@@ -26,7 +26,7 @@ class ZhaoDaToTopic extends React.Component {
             "nomore": false,
             "moreMessage": "",
             "first": true,
-            showLoading:true
+            "showLoading": true
         };
         this.fetchQuestion = this.fetchQuestion.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
@@ -113,7 +113,7 @@ class ZhaoDaToTopic extends React.Component {
                           "page": this.state.page + 1,
                           "moreMessage": "",
                           "first": false,
-                          showLoading:false
+                          "showLoading": false
                       });
 
                   } else {
@@ -142,7 +142,7 @@ class ZhaoDaToTopic extends React.Component {
                           "page": this.state.page + 1,
                           "nomore": false,
                           "moreMessage": "",
-                          showLoading:false
+                          "showLoading": false
                       });
 
                   }
@@ -173,13 +173,15 @@ class ZhaoDaToTopic extends React.Component {
                       topicdetail,
                       "nomore": true,
                       "moreMessage": "没有更多问题",
-                      showLoading:false
+                      "showLoading": false
                   });
 
               } else if (data.code === "E01") {
 
-                  this.setState({"topicdetail": {},
-                  showLoading:false});
+                  this.setState({
+                      "topicdetail": {},
+                      "showLoading": false
+                  });
 
               }
 
@@ -225,7 +227,7 @@ class ZhaoDaToTopic extends React.Component {
                         <li className="active">全部</li>
                         <li>精华</li>
                     </ul>
-                    {showLoading?<Loading />: questionsList}
+                    {showLoading ? <Loading /> : questionsList}
 
                 </div>
                 <p className="fetchmore">{this.state.moreMessage}</p>

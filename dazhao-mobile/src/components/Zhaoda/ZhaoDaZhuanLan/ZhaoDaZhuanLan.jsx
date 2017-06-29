@@ -12,22 +12,10 @@ class ZhaoDaZhuanLan extends React.Component {
             "keyword": this.props.location.query.keyword,
             "zhuanlan": [
                 {
-                    "id": 1,
-                    "img": "/src/images/pople.png",
-                    "zhuanlan_title": "#麦力达#第一期---考研那些事儿",
-                    "zhuanlan_intro": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
-                },
-                {
-                    "id": 2,
-                    "img": "/src/images/pople.png",
-                    "zhuanlan_title": "#麦力达#第一期---考研那些事儿",
-                    "zhuanlan_intro": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
-                },
-                {
-                    "id": 3,
-                    "img": "/src/images/pople.png",
-                    "zhuanlan_title": "#麦力达#第一期---考研那些事儿",
-                    "zhuanlan_intro": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
+                    "qid": 1,
+                    "colposter": "/src/images/pople.png",
+                    "colname": "#麦力达#第一期---考研那些事儿",
+                    "coldescription": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
                 }
             ]
         };
@@ -38,14 +26,16 @@ class ZhaoDaZhuanLan extends React.Component {
 
     componentDidMount () {
 
-        this.fetchZhuanlan(this.state.keyword);
+        // This.fetchZhuanlan(this.state.keyword);
 
     }
 
     fetchZhuanlan (keyword) {
 
-        ajax({"url": `/zhaoda/zhuanlan?keyword=${keyword}`}).
+        ajax({"url": `/zhaoda/zhuanlan/searchzhuanlan?keyword=${keyword}`}).
         then((data) => {
+
+            console.log(data);
 
             if (data.code === "S01") {
 
@@ -59,20 +49,22 @@ class ZhaoDaZhuanLan extends React.Component {
 
         });
 
+        this.setState({"keyword": ""});
+
     }
     render () {
 
         const {keyword, zhuanlan} = this.state;
         const zhuanlanList = zhuanlan.map((value, index) =>
             <div key={index} className="item">
-                <Link to={`/tofeature?colid=${value.id}`}>
+                <Link to={`/tofeature?colid=${value.tid}`}>
                     <div className="left">
                         <span className="circle1">
-                            <img src={value.img} alt="专栏" />
+                            <img src={value.colposter} alt="专栏" />
                         </span>
                         <p>
-                            <span>{value.zhuanlan_title}</span><br />
-                            <span>{value.zhuanlan_intro}</span>
+                            <span>{value.colname}</span><br />
+                            <span>{value.coldescription}</span>
                         </p>
                     </div>
                 </Link>
@@ -92,7 +84,7 @@ class ZhaoDaZhuanLan extends React.Component {
 
                                 this.setState({"keyword": e.target.value});
 
-                            }} placeholder="研究生" value={this.state.keyword}
+                            }} placeholder="输入要搜索的关键字" value={this.state.keyword}
                             />
                             <span onClick={this.fetchZhuanlan.bind(this, keyword)}>搜索</span>
                         </div>

@@ -58,9 +58,10 @@ class ZhaoDaComents extends React.Component {
 
     fetchCommnets (aid) {
 
-        ajax({"url": `/zhaoda/getcomment?aid=${aid}`}).
+        ajax({"url": `/zhaoda/answer/getcomments?aid=1${aid}`}).
       then((data) => {
 
+          console.log(data);
           if (data.code === "S01") {
 
               const comment = data.contents;
@@ -69,7 +70,7 @@ class ZhaoDaComents extends React.Component {
 
           } else if (data.code === "E01") {
 
-              this.setState({"comment": {}});
+              this.setState({"comment": {"comments": []}});
 
           }
 
@@ -77,7 +78,7 @@ class ZhaoDaComents extends React.Component {
 
     }
 
-    deliverComment () {
+    deliverComment (aid) {
 
         // Post请求
         if (this.state.comment_input === "") {
@@ -89,7 +90,7 @@ class ZhaoDaComents extends React.Component {
             ajax({
                 "url": "/zhaoda/delivercomment",
                 "method": "POST",
-                "data": `data=${this.state.comment_input}`
+                "data": `aid=${aid}&data=${this.state.comment_input}`
             }).
             then((data) => {
 
@@ -160,7 +161,7 @@ class ZhaoDaComents extends React.Component {
 
                     }} type="text" placeholder="非常不错的建议"
                     />
-                    <span onClick={this.deliverComment}>发表评论</span>
+                    <span onClick={this.deliverComment.bind(this, this.state.aid)}>发表评论</span>
                 </div>
             </div>
         );

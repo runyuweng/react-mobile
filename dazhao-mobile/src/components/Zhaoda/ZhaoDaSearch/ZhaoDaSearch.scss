@@ -6,7 +6,8 @@
         .items{
             padding:0.16rem 0.14rem 0.14rem;
             border-top:0.01rem solid #D8D8D8;
-            span{
+            overflow: hidden;
+            >a>span{
                     font-size:0.15rem;
                     font-family:"苹方";
                     color:#333333;

@@ -243,7 +243,7 @@ class ZhaoDaToQuestion extends React.Component {
                 <div className="toQuestionFooter">
                     <Link to={{
                         "pathname": "/invitetoanswer",
-                        "query": {topic}
+                        "query": {"qid": this.props.params.qid}
                     }}
                     >
                         <span>邀请回答</span>

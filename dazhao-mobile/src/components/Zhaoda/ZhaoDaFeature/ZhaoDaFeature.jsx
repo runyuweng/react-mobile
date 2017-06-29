@@ -52,13 +52,14 @@ class ZhaoDaFeature extends React.Component {
         ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1"}).
         then((data) => {
 
+            console.log(data);
             if (data.code === "S01") {
 
                 const zhuanlan = data.contents;
 
                 this.setState({zhuanlan});
 
-            } else if (date.code === "E01") {
+            } else if (data.code === "E01") {
 
                 // 如果查询出错，启用备用数据
                 this.setState({"zhuanlan": []});

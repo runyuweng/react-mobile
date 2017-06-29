@@ -32,7 +32,10 @@ class Home extends React.Component {
             "enterpriseLoading": true
         });
 
-        ajax({"url": "/zhaoda/getjobs?page=1", obj: this}).
+        ajax({
+            "url": "/zhaoda/getjobs?page=1",
+            "obj": this
+        }).
         then((data) => {
 
             if (!this.state.lock) {
@@ -50,7 +53,10 @@ class Home extends React.Component {
 
         });
 
-        ajax({"url": "/zhaoda/jobs/enterprise?industryid=-1&page=1", obj: this}).
+        ajax({
+            "url": "/zhaoda/jobs/enterprise?industryid=-1&page=1",
+            "obj": this
+        }).
         then((data) => {
 
             if (!this.state.lock) {
@@ -99,68 +105,72 @@ class Home extends React.Component {
         this.setState(newState);
         newState = {};
 
-        ajax({"url": type === "jobs" ? `/zhaoda/getjobs?page=${this.state.jobsPage}` : `/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`, obj: this}).
+        ajax({
+            "url": type === "jobs" ? `/zhaoda/getjobs?page=${this.state.jobsPage}` : `/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`,
+            "obj": this
+        }).
         then((data) => {
 
-          if (!this.state.lock) {
+            if (!this.state.lock) {
 
-            if (data.code === "S01") {
+                if (data.code === "S01") {
 
-                if (type === "jobs") {
+                    if (type === "jobs") {
 
-                    this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
+                        this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
 
-                        let newState = {};
+                            let newState = {};
 
-                        newState[`${type}Loading`] = false;
-                        newState[`${type}Page`] = this.state[`${type}Page`] + 1;
+                            newState[`${type}Loading`] = false;
+                            newState[`${type}Page`] = this.state[`${type}Page`] + 1;
 
-                        this.setState(newState);
-                        newState = {};
+                            this.setState(newState);
+                            newState = {};
 
-                    });
+                        });
 
-                } else if (type === "enterprise") {
+                    } else if (type === "enterprise") {
 
-                    this.setState({"enterprise": this.state.enterprise.concat(data.contents)}, () => {
+                        this.setState({"enterprise": this.state.enterprise.concat(data.contents)}, () => {
 
-                        let newState = {};
+                            let newState = {};
 
-                        newState[`${type}Loading`] = false;
-                        newState[`${type}Page`] = this.state[`${type}Page`] + 1;
+                            newState[`${type}Loading`] = false;
+                            newState[`${type}Page`] = this.state[`${type}Page`] + 1;
 
-                        this.setState(newState);
-                        newState = {};
+                            this.setState(newState);
+                            newState = {};
 
-                    });
+                        });
+
+                    }
+
+
+                } else if (data.code === "S02") {
+
+                    let newState = {};
+
+                    newState[`${type}Loading`] = false;
+
+                    this.props.changeMessageContent("已加载完全部");
+
+                    this.setState(newState);
+                    newState = {};
+
+                } else if (date.code === "E01") {
+
+                    let newState = {};
+
+                    newState[`${type}Loading`] = false;
+
+                    this.props.changeMessageContent("请求错误，请稍后重试");
+
+                    this.setState(newState);
+                    newState = {};
 
                 }
 
-
-            } else if (data.code === "S02") {
-
-                let newState = {};
-
-                newState[`${type}Loading`] = false;
-
-                this.props.changeMessageContent("已加载完全部");
-
-                this.setState(newState);
-                newState = {};
-
-            } else if (date.code === "E01") {
-
-                let newState = {};
-
-                newState[`${type}Loading`] = false;
-
-                this.props.changeMessageContent("请求错误，请稍后重试");
-
-                this.setState(newState);
-                newState = {};
-
             }
-          }
 
         });
 

@@ -12,23 +12,9 @@ class ZhaoDaUser extends React.Component {
             "username": this.props.location.query.user,
             "users": [
                 {
-                    "id": 1,
+                    "uid": 1,
                     "img": "/src/images/pople.png",
-                    "user_name": "Michael",
-                    "job": "国际教练协会（ICF）认证教练",
-                    "isCared": false
-                },
-                {
-                    "id": 2,
-                    "img": "/src/images/pople.png",
-                    "user_name": "Michael",
-                    "job": "国际教练协会（ICF）认证教练",
-                    "isCared": false
-                },
-                {
-                    "id": 3,
-                    "img": "/src/images/pople.png",
-                    "user_name": "Michael",
+                    "nickname": "Michael",
                     "job": "国际教练协会（ICF）认证教练",
                     "isCared": false
                 }
@@ -42,15 +28,16 @@ class ZhaoDaUser extends React.Component {
 
     componentDidMount () {
 
-        this.fetchUsers(this.state.username);
+        // This.fetchUsers(this.state.username);
 
     }
 
     fetchUsers (username) {
 
-        ajax({"url": `/zhaoda/users?username=${username}`}).
+        ajax({"url": `/zhaoda/user/searchuser?username=${username}`}).
         then((data) => {
 
+            console.log(data);
             if (data.code === "S01") {
 
                 this.setState({"users": data.contents});
@@ -63,18 +50,21 @@ class ZhaoDaUser extends React.Component {
 
         });
 
+        this.setState({"keyword": ""});
+
     }
 
     setCare (userId, index) {
 
-        ajax({"url": `/zhaoda/careUsers?userId=${userId}`}).
+        ajax({"url": `/zhaoda/user/subscribeuser?uid=${userId}`}).
         then((data) => {
 
+            console.log(data);
             if (data.code === "S01") {
 
                 const users = JSON.parse(JSON.stringify(this.state)).users;
 
-                users[index].isCared = !this.state.users[index].isCared;
+                users[index].status = this.state.users[index].status === 0 ? 1 : 0;
 
                 this.setState({users});
 
@@ -98,11 +88,11 @@ class ZhaoDaUser extends React.Component {
                         <img src={value.img} alt="用户" />
                     </span>
                     <p>
-                        <span>{value.user_name}</span><br />
+                        <span>{value.nickname}</span><br />
                         <span>{value.job}</span>
                     </p>
                 </div>
-                <span className="right" onClick={this.setCare.bind(this, value.id, index)}>{value.isCared ? "取消关注" : "+关注"}</span>
+                <span className="right" onClick={this.setCare.bind(this, value.uid, index)}>{value.status === 1 ? "取消关注" : "+关注"}</span>
             </div>
             );
 
@@ -119,7 +109,7 @@ class ZhaoDaUser extends React.Component {
 
                                 this.setState({"username": e.target.value});
 
-                            }} placeholder="Michael" value={this.state.username}
+                            }} placeholder="输入要搜索关键字" value={this.state.username}
                             />
                             <span onClick={this.fetchUsers.bind(this, username)}>搜索</span>
                         </div>

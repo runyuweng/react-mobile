@@ -76,7 +76,11 @@ class AnswerMain extends React.Component {
                     </Link>
                     <div className="more">
                         <span><b><img onClick={this.setLike.bind(this, qid, aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
-                        <Link to="/coments">
+                        <Link to={{
+                            "pathname": "/coments",
+                            "query": {aid}
+                        }}
+                        >
                             <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
                         </Link>
                         <span><b><img src="/src/images/cang.png" /></b>收藏</span>

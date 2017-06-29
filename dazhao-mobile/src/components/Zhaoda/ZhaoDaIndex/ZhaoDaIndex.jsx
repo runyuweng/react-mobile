@@ -25,43 +25,9 @@ class ZhaoDaIndex extends React.Component {
                     "imgsrc": "/src/images/topicImg.png",
                     "name": "Michael",
                     "position": "骨灰级猎头、WIT总裁"
-                },
-                {
-                    "id": 2,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                },
-                {
-                    "id": 3,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                },
-                {
-                    "id": 4,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                } // 人气行家
+                }
             ],
             "latestZhuanlan": [
-                {
-                    "tid": "2",
-                    "colposter": "/src/images/zhuanlan.png",
-                    "colposterbig": "/src/images/zhuanlan.png",
-                    "colid": "1",
-                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname": "#光爸说# 第一期——写简历的正确姿势"
-                },
-                {
-                    "tid": "2",
-                    "colposter": "/src/images/zhuanlan.png",
-                    "colposterbig": "/src/images/zhuanlan.png",
-                    "colid": "1",
-                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname": "#光爸说# 第一期——写简历的正确姿势"
-                },
                 {
                     "tid": "2",
                     "colposter": "/src/images/zhuanlan.png",
@@ -76,23 +42,13 @@ class ZhaoDaIndex extends React.Component {
                     "id": "3",
                     "img": "/src/images/1487917069l108992947.png",
                     "description": "图片一"
-                },
-                {
-                    "id": "3",
-                    "img": "/src/images/1481979697l859459990.png",
-                    "description": "图片二"
-                },
-                {
-                    "id": "3",
-                    "img": "/src/images/1481189424l698185646.png",
-                    "description": "图片三"
                 }
             ],
             "nowshow": 0,
             "getmore": false,
             "latestDynamicPage": 1,
             "nomore": false,
-            lock: false
+            "lock": false
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -136,7 +92,7 @@ class ZhaoDaIndex extends React.Component {
 
     componentWillUnmount () {
 
-        this.setState({lock: true})
+        this.setState({"lock": true});
 
         clearInterval(this.state.autoCarousel);
 
@@ -145,20 +101,25 @@ class ZhaoDaIndex extends React.Component {
     // 获取轮播图片
     fetchCarouselpic () {
 
-        ajax({"url": "/zhaoda/carouselpic", obj: this}).
+        ajax({
+            "url": "/zhaoda/carouselpic",
+            "obj": this
+        }).
         then((data) => {
-          if (!this.state.lock) {
 
-            if (data.code === "S01") {
+            if (!this.state.lock) {
 
-                this.setState({"carouselpic": data.contents});
+                if (data.code === "S01") {
 
-            } else if (data.code === "E01") {
+                    this.setState({"carouselpic": data.contents});
 
-                this.setState({"carouselpic": this.state.carouselpic});
+                } else if (data.code === "E01") {
+
+                    this.setState({"carouselpic": this.state.carouselpic});
+
+                }
 
             }
-          }
 
         });
 
@@ -167,45 +128,51 @@ class ZhaoDaIndex extends React.Component {
     // 最新动态
     fetchLatestDynamic () {
 
-        ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`, obj: this}).
+        ajax({
+            "url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`,
+            "obj": this
+        }).
       then((data) => {
-        if (!this.state.lock) {
 
-          if (data.contents.length > 0) {
+          if (!this.state.lock) {
 
-              const newQ = this.state.latestDynamic;
+              console.log(data);
+              if (data.contents.length > 0) {
 
-              data.contents.map((value) => {
+                  const newQ = this.state.latestDynamic;
 
-                  newQ.push({
-                      "qid": value.question.qid,
-                      "aid": value.aid,
-                      "topic": value.question.topics,
-                      "theme": value.question.qtitle,
-                      "name": value.user.nickname,
-                      "vip": value.user.vip,
-                      "remark": value.remark,
-                      "agree": value.question.agree,
-                      "comment": value.content,
-                      "collect": value.collect,
-                      "job": value.user.position
+                  data.contents.map((value) => {
+
+                      newQ.push({
+                          "qid": value.question.qid,
+                          "aid": value.aid,
+                          "topic": value.question.topics,
+                          "theme": value.question.qtitle,
+                          "name": value.user.nickname,
+                          "vip": value.user.vip,
+                          "remark": value.remark,
+                          "agree": value.question.agree,
+                          "comment": value.content,
+                          "collect": value.collect,
+                          "job": value.user.position
+                      });
+                      this.setState({
+                          "latestDynamic": newQ,
+                          "getmore": true
+                      });
+
                   });
+
+              } else {
+
                   this.setState({
-                      "latestDynamic": newQ,
-                      "getmore": true
+                      "getmore": true,
+                      "nomore": true
                   });
 
-              });
-
-          } else {
-
-              this.setState({
-                  "getmore": true,
-                  "nomore": true
-              });
+              }
 
           }
-        }
 
       });
 
@@ -228,24 +195,29 @@ class ZhaoDaIndex extends React.Component {
     // 热门话题
     fetchHotTopic () {
 
-        ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1", obj: this}).
+        ajax({
+            "url": "/zhaoda/topic/hottopics?categoryid=-1",
+            "obj": this
+        }).
         then((data) => {
-          if (!this.state.lock) {
 
-            if (data.code === "S01") {
+            if (!this.state.lock) {
+
+                if (data.code === "S01") {
 
                 // 查询成功
-                const hotTopic = data.contents.slice(0, 5);
+                    const hotTopic = data.contents.slice(0, 5);
 
-                this.setState({hotTopic});
+                    this.setState({hotTopic});
 
-            } else if (data.code === "E01") {
+                } else if (data.code === "E01") {
 
                 // 如果查询出错，启用备用数据
-                this.setState({"hotTopic": this.state.hotTopic});
+                    this.setState({"hotTopic": this.state.hotTopic});
+
+                }
 
             }
-          }
 
         });
 
@@ -259,23 +231,28 @@ class ZhaoDaIndex extends React.Component {
     // 最新专栏
     fetchLatestZhuanlan () {
 
-        ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1", obj: this}).
+        ajax({
+            "url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1",
+            "obj": this
+        }).
         then((data) => {
-          if (!this.state.lock) {
 
-            if (data.code === "S01") {
+            if (!this.state.lock) {
 
-                const zhuanlan = data.contents.slice(0, 5);
+                if (data.code === "S01") {
 
-                this.setState({"latestZhuanlan": zhuanlan});
+                    const zhuanlan = data.contents.slice(0, 5);
 
-            } else if (date.code === "E01") {
+                    this.setState({"latestZhuanlan": zhuanlan});
+
+                } else if (data.code === "E01") {
 
                 // 如果查询出错，启用备用数据
-                this.setState({"latestZhuanlan": this.state.latestZhuanlan});
+                    this.setState({"latestZhuanlan": this.state.latestZhuanlan});
+
+                }
 
             }
-          }
 
         });
 

@@ -9,27 +9,8 @@ class ZhaoDaSearch extends React.Component {
 
         super(props);
         this.state = {
-            "keyword": this.props.location.query.keyword,
-            "response": [
-                {
-                    "id": 1,
-                    "answer_id": 1,
-                    "title": "研究生和本科学历在求职过程中真的会有很大影响吗？",
-                    "answer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学..."
-                },
-                {
-                    "id": 2,
-                    "answer_id": 2,
-                    "title": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "answer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学..."
-                },
-                {
-                    "id": 3,
-                    "answer_id": 3,
-                    "title": "研究生和本科学历在求职过程中真的会有很大影响吗？",
-                    "answer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学..."
-                }
-            ]
+            "keyword": this.props.location.query.keyword || "",
+            "response": []
         };
         this.fetchQuestions = this.fetchQuestions.bind(this);
 
@@ -38,15 +19,16 @@ class ZhaoDaSearch extends React.Component {
     componentDidMount () {
 
         console.log(this.props.location.query.keyword);
-        this.fetchQuestions(this.state.keyword);
+        // This.fetchQuestions(this.state.keyword);
 
     }
 
     fetchQuestions (keyword) {
 
-        ajax({"url": `/zhaoda/questions?keyword=${keyword}`}).
+        ajax({"url": `/zhaoda/question/searchquestion?keyword=${keyword}`}).
         then((data) => {
 
+            console.log(data);
             if (data.code === "S01") {
 
                 this.setState({"response": data.contents});
@@ -59,23 +41,29 @@ class ZhaoDaSearch extends React.Component {
 
         });
 
+
+        this.setState({"keyword": ""});
+
     }
 
     render () {
 
         const {keyword, response} = this.state;
+
+        console.log(response);
         const responseList = response.map((item) =>
-            <div className="items" key={item.id}>
-                <Link to={`/toquestion/${item.id}`}><span>{item.title}</span></Link>
+            <div className="items" key={item.qid}>
+                <Link to={`/toquestion/${item.qid}`}><span>{item.qtitle}</span></Link>
                 <Link to={{
                     "pathname": "/response",
                     "query": {
-                        "aid": item.answer_id,
-                        "qtitle": item.title
+                        "aid": item.answers[0].aid,
+                        "qtitle": item.qtitle
                     }
                 }}
-                ><p>{item.answer}</p></Link>
+                ><p dangerouslySetInnerHTML={{"__html": item.answers[0].content}} /></Link>
             </div>
+
       );
 
 
@@ -92,7 +80,7 @@ class ZhaoDaSearch extends React.Component {
 
                                 this.setState({"keyword": e.target.value});
 
-                            }} placeholder="研究生" value={this.state.keyword}
+                            }} placeholder="输入要搜索关键字" value={this.state.keyword}
                             />
                             <span onClick={this.fetchQuestions.bind(this, keyword)}>搜索</span>
                         </div>
