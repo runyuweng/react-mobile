@@ -17,7 +17,7 @@ class ZhaoDaTalk extends React.Component {
                     "topicname": "研究生",
                     "questionnum": 12,
                     "care": 24,
-                    "isCared": false
+                    "isguanzhu": false
                 }
             ]
         };
@@ -68,7 +68,7 @@ class ZhaoDaTalk extends React.Component {
 
                 const topics = JSON.parse(JSON.stringify(this.state)).topics;
 
-                topics[index].isCared = !this.state.topics[index].isCared;
+                topics[index].isguanzhu = !this.state.topics[index].isguanzhu;
 
                 this.setState({topics});
 
@@ -101,7 +101,7 @@ class ZhaoDaTalk extends React.Component {
                         </span>
                     </p>
                 </div>
-                <span className="right" onClick={this.setCare.bind(this, value.tid, index)}>{value.isCared ? "取消关注" : "+关注"}</span>
+                <span className="right" onClick={this.setCare.bind(this, value.tid, index)}>{value.isguanzhu ? "取消关注" : "+关注"}</span>
             </div>
             );
 

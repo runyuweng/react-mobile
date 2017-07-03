@@ -34,7 +34,7 @@ class JobDetail extends React.Component {
                 "require": "",
                 "similarJobs": []
             },
-            "isSealed": false
+            "isSelected": false
 
         };
 
@@ -70,12 +70,12 @@ class JobDetail extends React.Component {
 
     careJob (companyid, jobid) {
 
-        ajax({"url": `/zhaoda/job/subscribejob?jobid=1jobid=${jobid}`}).
+        ajax({"url": `/zhaoda/job/subscribejob?jobid=${jobid}`}).
         then((data) => {
             console.log(data)
             if (data.code === "S01") {
 
-                this.setState({"isSealed": !this.state.isSealed});
+                this.setState({"isSelected": !this.state.isSelected});
 
             } else {
                 // 出错
@@ -195,7 +195,7 @@ class JobDetail extends React.Component {
 
                 <div className="bottom">
                     <span>发送简历</span>
-                    <span onClick={this.careJob.bind(this, data.company.companyid, data.jobid)}>收藏</span>
+                    <span onClick={this.careJob.bind(this, data.company.companyid, data.jobid)}>{this.state.isSelected ? "取消收藏" : "收藏"}</span>
                 </div>
             </div>
         );

@@ -3,62 +3,105 @@ import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import "./ZhaoDaDiscover.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
+import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
 
 class ZhaoDaDiscover extends React.Component {
     constructor (props) {
 
         super(props);
         this.state = {
-            "hotTopics": [
-            ],
-            "goodAnswer": [
-                // {
-                //     "uid": 1,
-                //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                //     "name": "Michal",
-                //     "job": "骨灰级教练",
-                //     "imgsrc": "/src/images/vip.png",
-                //     "remark": 9,
-                //     "agree": 14,
-                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                //     "collect": false
-                // },
-                // {
-                //     "uid": 2,
-                //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                //     "name": "Michal",
-                //     "job": "骨灰级教练",
-                //     "imgsrc": "/src/images/vip.png",
-                //     "remark": 12,
-                //     "agree": 14,
-                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                //     "collect": false
-                // },
-                // {
-                //     "uid": 3,
-                //     "theme": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                //     "name": "Michal",
-                //     "job": "骨灰级教练",
-                //     "imgsrc": "/src/images/vip.png",
-                //     "remark": 13,
-                //     "agree": 14,
-                //     "comment": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                //     "collect": false
-                // }
-            ]
+            "hotTopics": [],
+            "goodAnswer": [],
+            "page" : 1,
+            "nomore": false,
+            "getmore": false,
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
-
+        this.fetchGoodAnswer = this.fetchGoodAnswer.bind(this);
     }
 
     componentDidMount () {
 
         this.fetchHotTopic();
-
+        this.fetchGoodAnswer(this.state.page);
     }
 
     // 精品回答
     fetchGoodAnswer () {
+      ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.page}`, obj: this}).
+      then((data) => {
+        if (data.code === "S01") {
+          // console.log(typeof this.state.page)
+          const newQ = this.state.goodAnswer;
+          var page = parseInt(this.state.page, 10)+1;
+
+          data.contents.map((value) => {
+
+              newQ.push({
+                  "qid": value.question.qid,
+                  "aid": value.aid,
+                  "topic": value.question.topics,
+                  "theme": value.question.qtitle,
+                  "name": value.user.nickname,
+                  "vip": value.user.vip,
+                  "remark": value.remark,
+                  "agree": value.question.agree,
+                  "comment": value.content,
+                  "collect": value.collect,
+                  "job": value.user.position
+              });
+              this.setState({
+                  "goodAnswer": newQ,
+                  "getmore": true
+              });
+
+          });
+
+        }else if(data.code === "S02"){
+            const newQ = this.state.goodAnswer;
+
+            data.contents.map((value) => {
+
+              newQ.push({
+                  "qid": value.question.qid,
+                  "aid": value.aid,
+                  "topic": value.question.topics,
+                  "theme": value.question.qtitle,
+                  "name": value.user.nickname,
+                  "vip": value.user.vip,
+                  "remark": value.remark,
+                  "agree": value.question.agree,
+                  "comment": value.content,
+                  "collect": value.collect,
+                  "job": value.user.position
+              });
+
+            });
+            this.setState({
+                "goodAnswer": newQ,
+                "getmore": true,
+                "nomore": true              
+            });
+          }else {
+
+              console.log('E01')
+
+          }
+
+      })
+    }
+    
+       // 加载更多
+    getMore () {
+
+        this.setState({
+            "page": parseInt(this.state.page) + 1,
+            "getmore": false
+        }, () => {
+
+            this.fetchGoodAnswer();
+
+        });
 
     }
 
@@ -91,7 +134,7 @@ class ZhaoDaDiscover extends React.Component {
 
     render () {
 
-        const {goodAnswer, hotTopics} = this.state;
+        const {goodAnswer, hotTopics ,nomore, getmore} = this.state;
 
         const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic="0" key={i} data={value} />);
 
@@ -127,10 +170,21 @@ class ZhaoDaDiscover extends React.Component {
                     </div>
                 </div>
                 <div id="latest">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>精品回答
-          </div>
+                    <div className="title"><span><img src="/src/images/latest.png" /></span>精品回答</div>
 
                     {AnswerMainList}
+
+
+                    {
+                        nomore ? ""
+                        : <div className="Formore" onClick={() => {
+
+                            this.getMore();
+
+                        }}
+                          >{ !getmore ? <LoadingMore /> : "加载更多" }</div>
+                    }
+                    {nomore ? <p className="nomore">没有更多了...</p> : ""}
 
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.scss";
 import ajax from "../../../services/ajax";
 import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
-import {Link} from "react-router";
+import {Link, browserHistory } from "react-router";
 
 
 class Home extends React.Component {
@@ -18,7 +18,8 @@ class Home extends React.Component {
             "jobsLoading": false,
             "enterpriseLoading": false,
             "jobsPage": 1,
-            "enterprisePage": 1
+            "enterprisePage": 1,
+            "searchPage" : false
         };
 
     }
@@ -84,8 +85,11 @@ class Home extends React.Component {
             this.props.changeMessageContent("搜索不能为空");
 
         } else {
-
-            console.log("搜索");
+            
+            sessionStorage.setItem("searchCon", this.state.search)
+            this.setState({
+                "searchPage" : true
+            })
 
         }
 
@@ -234,7 +238,14 @@ class Home extends React.Component {
 
                         }} value={search} type="text" placeholder="搜索期望中的公司、岗位、地点"
                         />
-                        <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
+                        {
+                            this.state.searchPage ?
+                            <Link to="/searchPage">
+                                <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
+                            </Link> :
+                            <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
+                        }
+                        
                     </div>
                 </header>
 

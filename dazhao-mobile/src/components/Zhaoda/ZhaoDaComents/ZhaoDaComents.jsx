@@ -11,33 +11,34 @@ class ZhaoDaComents extends React.Component {
         super(props);
         this.state = {
             "comment_input": "",
-            "comment": {
-                "id": 1,
-                "name": "Michael",
-                "vip": true,
-                "job": "骨灰级教练",
-                "answer_content": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学",
-                "comments": [
-                    {
-                        "sid": 1,
-                        "commentator_name": "李华",
-                        "img": "/src/images/pople.png",
-                        "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
-                    },
-                    {
-                        "sid": 1,
-                        "commentator_name": "李华",
-                        "img": "/src/images/pople.png",
-                        "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
-                    },
-                    {
-                        "sid": 1,
-                        "commentator_name": "李华",
-                        "img": "/src/images/pople.png",
-                        "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
-                    }
-                ]
-            }
+            "comment": []
+            // {
+            //     "id": 1,
+            //     "name": "Michael",
+            //     "vip": true,
+            //     "job": "骨灰级教练",
+            //     "answer_content": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学",
+            //     "comments": [
+            //         {
+            //             "sid": 1,
+            //             "commentator_name": "李华",
+            //             "img": "/src/images/pople.png",
+            //             "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
+            //         },
+            //         {
+            //             "sid": 1,
+            //             "commentator_name": "李华",
+            //             "img": "/src/images/pople.png",
+            //             "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
+            //         },
+            //         {
+            //             "sid": 1,
+            //             "commentator_name": "李华",
+            //             "img": "/src/images/pople.png",
+            //             "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
+            //         }
+            //     ]
+            // }
         };
         this.fetchCommnets = this.fetchCommnets.bind(this);
         this.deliverComment = this.deliverComment.bind(this);
@@ -58,14 +59,14 @@ class ZhaoDaComents extends React.Component {
 
     fetchCommnets (aid) {
 
-        ajax({"url": `/zhaoda/answer/getcomments?aid=1${aid}`}).
+        ajax({"url": `/zhaoda/answer/getcomments?aid=${aid}`}).
       then((data) => {
             console.log(data)
           if (data.code === "S01") {
 
               const comment = data.contents;
 
-              this.setState({comment});
+              this.setState({"comment" : comment});
 
           } else if (data.code === "E01") {
 
@@ -91,21 +92,23 @@ class ZhaoDaComents extends React.Component {
         } else {
 
             ajax({
-                "url": "/zhaoda/delivercomment",
+                "url": "/zhaoda/answer/addcomment",
                 "method": "POST",
                 "data": `aid=${aid}&data=${this.state.comment_input}`
             }).
             then((data) => {
+                console.log(data)
 
                 if (data.code === "S01") {
 
-                    const comment = data.contents;
 
-                    this.setState({comment});
+                    //const comment = data.contents;
+
+                    //this.setState({comment});
 
                 } else if (data.code === "E01") {
 
-                    this.setState({"comment": {}});
+                    //this.setState({"comment": []});
 
                 }
 
@@ -119,11 +122,11 @@ class ZhaoDaComents extends React.Component {
 
         const {comment} = this.state;
 
-        const commentList = comment.comments.map((value, index) =>
+        const commentList = comment.map((value, index) =>
             <div className="commentItem" key={index}>
-                <div className="name"><span>{value.commentator_name}</span><span className="userpic"><img src={value.img} alt="user" /></span></div>
+                <div className="name"><span>{value.user.nickname}</span><span className="userpic"><img src={value.user.img} alt="user" /></span></div>
                 <div className="comment">
-                    {value.comment_content}
+                    {value.ccontent}
                 </div>
             </div>
             );
