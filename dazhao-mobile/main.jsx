@@ -13,6 +13,7 @@ import HomeShRecruit from "./src/components/Home/ShRecruit/ShRecruit.jsx";
 import HomeEnterprise from "./src/components/Home/Enterprise/Enterprise.jsx";
 import HomeIntern from "./src/components/Home/Intern/Intern.jsx";
 import HomePositions from "./src/components/Home/Positions/Positions.jsx";
+import SearchPage from "./src/components/Home/SearchPage/SearchPage.jsx";
 
 // 职官部分
 import ZhiGuanHome from "./src/components/ZhiGuan/Home/Home.jsx";
@@ -120,6 +121,7 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="schoolRecruit" component={HomeShRecruit} />
         <Route path="enterprise" component={HomeEnterprise} />
         <Route path="intern" component={HomeIntern} />
+        <Route path="searchPage" component={SearchPage} />
 
         <Route path="mine" component={Mine} />
         <Route path="cvcenter" component={MineCvCenter} />

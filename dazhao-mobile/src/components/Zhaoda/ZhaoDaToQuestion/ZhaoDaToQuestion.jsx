@@ -44,43 +44,49 @@ class ZhaoDaToQuestion extends React.Component {
 
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
+          console.log(data)
+          if(data.code === "S01"){
 
-          const newQ = {
-              "qid": data.contents.qid,
-              "title": data.contents.qtitle,
-              "authorAnswer": data.contents.qcontent,
-              "authorName": data.contents.user.nickname,
-              "time": data.contents.date,
-              "careNum": data.contents.agree,
-              "isCare": data.contents.collect,
-              "authorpic": data.contents.user.img || "/src/images/user.png"
-          };
-          const newOtherAnswers = [];
+              const newQ = {
+                  "qid": data.contents.qid,
+                  "title": data.contents.qtitle,
+                  "authorAnswer": data.contents.qcontent,
+                  "authorName": data.contents.user.nickname,
+                  "time": data.contents.date,
+                  "careNum": data.contents.agree,
+                  "isCare": data.contents.collect,
+                  "authorpic": data.contents.user.img || "/src/images/user.png"
+              };
+              const newOtherAnswers = [];
 
-          data.contents.answers.map((value, i) => {
+              data.contents.answers.map((value, i) => {
 
-              newOtherAnswers.push({
-                  "aid": value.aid,
-                  "name": value.user.nickname,
-                  "position": value.user.position,
-                  "vip": value.user.vip,
-                  "remark": value.remark,
-                  "agree": value.agree,
-                  "collect": value.collect,
-                  "comment": value.content
+                  newOtherAnswers.push({
+                      "aid": value.aid,
+                      "name": value.user.nickname,
+                      "position": value.user.position,
+                      "vip": value.user.vip,
+                      "remark": value.remark,
+                      "agree": value.agree,
+                      "collect": value.collect,
+                      "comment": value.content
+                  });
+
+              });
+              this.setState({
+                  "question": newQ,
+                  "otherAnswers": newOtherAnswers
+              }, () => {
+
+                  const showshadow = !(newQ.authorAnswer.length < this.refs.carecontent.clientWidth / 14 * 2);
+
+                  this.setState({showshadow});
+
               });
 
-          });
-          this.setState({
-              "question": newQ,
-              "otherAnswers": newOtherAnswers
-          }, () => {
-
-              const showshadow = !(newQ.authorAnswer.length < this.refs.carecontent.clientWidth / 14 * 2);
-
-              this.setState({showshadow});
-
-          });
+           }else if (data.code === "E01") {
+             
+           }
 
       });
 
@@ -88,8 +94,10 @@ class ZhaoDaToQuestion extends React.Component {
 
     setCare (qid) {
 
-        ajax({"url": `/zhaoda/carequestion?qid=${qid}`}).
+        ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
       then((data) => {
+
+        console.log(data)
 
           if (data.code === "S01") {
 
@@ -110,9 +118,9 @@ class ZhaoDaToQuestion extends React.Component {
 
     setAgree (qid, aid, index) {
 
-        ajax({"url": `/zhaoda/setLike?qid=${qid}&aid=${aid}`}).
+        ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
       then((data) => {
-
+          console.log(data)
           if (data.code === "S01") {
 
             // 关注状态改变
@@ -130,11 +138,11 @@ class ZhaoDaToQuestion extends React.Component {
 
     }
 
-    setSelected (qid, aid, index) {
+    setSelected ( aid, index) {
 
-        ajax({"url": `/zhaoda/selecteanswer?qid=${qid}&aid=${aid}`}).
+        ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
       then((data) => {
-
+          //console.log(data)
           if (data.code === "S01") {
 
             // 收藏状态改变
@@ -188,7 +196,7 @@ class ZhaoDaToQuestion extends React.Component {
                         >
                             <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
                         </Link>
-                        <span onClick={this.setSelected.bind(this, question.qid, value.aid, num)}><b><img src="/src/images/cang.png" /></b>收藏</span>
+                        <span onClick={this.setSelected.bind(this, value.aid, num)}><b><img src="/src/images/cang.png" /></b>{value.collect ? "已收藏" : "收藏"}</span>
                     </div>
                 </div>
             </article>
@@ -230,7 +238,7 @@ class ZhaoDaToQuestion extends React.Component {
                             </div>
                             <div className="right">
                                 <span><em>{question.careNum}</em>人关注</span>
-                                <span onClick={this.setCare.bind(this, question.qid)}>+关注</span>
+                                <span onClick={this.setCare.bind(this, question.qid)}>{question.isCare ? "取消关注" : "+关注"}</span>
                             </div>
                         </div>
                     </div>

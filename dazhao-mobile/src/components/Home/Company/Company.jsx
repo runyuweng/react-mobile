@@ -25,31 +25,58 @@ class Company extends React.Component {
                 "jobs": []
             }
         };
-
+        this.setCare = this.setCare.bind(this);
     }
 
     componentDidMount () {
 
         const id = this.props.params.id;
 
-        ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
-        then((data) => {
+        this.setState({
+            "cid" : id
+        },()=>{
 
-            const tooLong = data.contents[0].introduce.length > this.refs.companyintro.clientWidth / 14 * 8;
+            ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
+            then((data) => {
+                console.log(data)
+                if (data.code === "S01") {
+
+                    const tooLong = data.contents[0].introduce.length > this.refs.companyintro.clientWidth / 14 * 8;
 
 
-            this.setState({
-                "data": data.contents[0],
-                tooLong
+                    this.setState({
+                        "data": data.contents[0],
+                        tooLong
+                    });
+
+                }else if (data.code === "E01") {
+                    
+                }
+
             });
 
-        });
+        })
 
+    }
+
+    setCare(cid){
+        ajax({"url": `/zhaoda/company/subscribecompany?companyid=${cid}`}).
+        then((data) => {
+            console.log(data)
+            if (data.code === "S01") {
+
+                alert("已经关注")
+
+            }else if (data.code === "E01") {
+                
+            }
+
+        });
     }
 
     render () {
 
-        const {current, showMore, data} = this.state;
+        const {current, showMore, data, cid} = this.state;
 
         const jobs = (data.jobs || []).map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
             <div className="position">
@@ -70,7 +97,21 @@ class Company extends React.Component {
         return (
             <div className="Company">
                 <header>
-                    <TopBar border="border" title="企业详情" img="/src/images/love.png" />
+                    {/*<TopBar border="border" title="企业详情" img="/src/images/love.png" />*/}
+                    <div className="TopBar">
+                        <div className="content" style={{"borderBottom": "1px solid #DBDBDB"}}>
+                            <span onClick={(e) => {
+
+                                history.back();
+
+                            }}>
+                                <img src="/src/images/arrow-left.png" />
+                            </span>
+                            <span>企业详情</span>
+
+                            <span onClick={this.setCare.bind(this,cid)}><img src="/src/images/love.png" /></span>
+                        </div>
+                    </div>
                 </header>
 
                 <div id="jobTop">

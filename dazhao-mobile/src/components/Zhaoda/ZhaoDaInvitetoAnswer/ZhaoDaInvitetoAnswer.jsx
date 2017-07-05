@@ -73,8 +73,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     }
 
-    invitetoanswer (userid, index) {
-
+    invitetoanswer (qid, userid, index) {
 
         if (this.state.user[index].status === 1) {
 
@@ -83,7 +82,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
         } else {
 
 
-            ajax({"url": `/zhaoda/question/inviteanswer?uid=${userid}`}).
+            ajax({"url": `/zhaoda/question/inviteanswer?qid=${qid}&id=${userid}`}).
             then((data) => {
 
                 console.log(data);
@@ -109,7 +108,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     render () {
 
-        const {user} = this.state;
+        const {user , qid} = this.state;
         const userList = user.map((value, index) =>
             <div key={index} className="item">
                 <div className="left">
@@ -121,7 +120,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                         <span>{value.intro}</span>
                     </p>
                 </div>
-                <span className="right" onClick={this.invitetoanswer.bind(this, value.uid, index)}>{value.status === 1 ? "已邀请" : "邀请回答"}</span>
+                <span className="right" onClick={this.invitetoanswer.bind(this, qid, value.uid, index)}>{value.status === 1 ? "已邀请" : "邀请回答"}</span>
             </div>
             );
 

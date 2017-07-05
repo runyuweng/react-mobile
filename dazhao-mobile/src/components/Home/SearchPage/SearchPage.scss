@@ -1,0 +1,36 @@
+#searchPage{
+	header{
+        background:#FFFFFF;
+        height:.45rem;
+        border-bottom: .01rem solid rgba(234,234,234,1);
+        padding:0 .12rem;
+        border-bottom: none;
+        .search{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin:0 auto;
+                text-align:center;
+                font-size:0.16rem;
+                height:.45rem;
+                input{
+                    width:78%;
+                    height:0.28rem;
+                    border: 1px #e5e5e5 solid;
+                    border-radius:0.42rem;
+                    font-size:0.13rem;
+                    font-family:"苹方";
+                    color:#999999;
+                    text-indent:0.1rem;
+                    box-sizing:border-box;
+                    background: #f8f8f8;
+                }
+                span{
+                    font-size:0.14rem;
+                    font-family:"苹方";
+                    color:#21c6cd;;
+                    line-height:0.28rem;
+                }
+        }
+    }
+}

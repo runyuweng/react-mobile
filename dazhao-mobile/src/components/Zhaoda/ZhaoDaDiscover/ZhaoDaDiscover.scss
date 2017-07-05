@@ -1,9 +1,10 @@
 .ZhaoDaDiscover{
     margin-bottom: .72rem;
-      #dynamic{
+    #dynamic{
         width:100%;
         background:#f8f8f8;
         font-size: 0;
+        
         .title{
             font-family:"苹方";
             font-size:0.16rem;
@@ -22,7 +23,7 @@
             }
         }
 
-
+        
         .content{
             border:0.01rem #D8D8D8 solid;
             background:#FFFFFF;
@@ -116,6 +117,27 @@
                 }
             }
         }
-
+        
+    }
+    #latest{
+        .Formore{
+            width:92%;
+            height:0.4rem;
+            border:0.01rem #21c5cd solid;
+            color:#21c5cd;
+            font-size:0.14rem;
+            text-align:center;
+            line-height:0.4rem;
+            border-radius:0.05rem;
+            margin:0.3rem auto 0;
+            a{
+                color:#21c5cd;
+            }
+        }
+        .nomore{
+            font-size: .14rem;
+            color:#ADADAD;
+            text-align: center;
+        }
     }
 }

@@ -28,7 +28,7 @@ class AnswerMain extends React.Component {
 
     setLike (qid, aid) {
 
-        ajax({"url": `/zhaoda/setLike?qid=${qid}&aid=${aid}`}).
+        ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
       then((data) => {
 
           if (data.code === "S01") {

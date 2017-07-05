@@ -81,7 +81,7 @@ class ConcernUser extends React.Component {
 
         ? ajax({"url": `/zhaoda/user/mysubscribeuser?page=${page}`}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "S01") {
 
                 const caredUsers = data.contents;
@@ -132,10 +132,10 @@ class ConcernUser extends React.Component {
             <div key={index} className="item">
                 <div className="left">
                     <span className="circle">
-                        <img src={elem.userimg} alt="头像" />
+                        <img src={elem.img} alt="头像" />
                     </span>
                     <p>
-                        <span>{elem.name}</span><br />
+                        <span>{elem.nickname}</span><br />
                         <span>{elem.position}</span>
                     </p>
                 </div>
