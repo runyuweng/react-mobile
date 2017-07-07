@@ -3,6 +3,7 @@ import "./AnswerMain.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 
+
 class AnswerMain extends React.Component {
     constructor (props) {
 

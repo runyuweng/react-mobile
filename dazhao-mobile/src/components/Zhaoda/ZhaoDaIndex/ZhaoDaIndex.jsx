@@ -4,6 +4,7 @@ import "./ZhaoDaIndex.scss";
 import ajax from "../../../services/ajax.js";
 import {Link} from "react-router";
 import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
+import LoadingBlock from "../../Public/Loading/LoadingBlock.jsx";
 
 class ZhaoDaIndex extends React.Component {
     constructor (props) {
@@ -48,7 +49,10 @@ class ZhaoDaIndex extends React.Component {
             "getmore": false,
             "latestDynamicPage": 1,
             "nomore": false,
-            "lock": false
+            "lock": false,
+            loading1: true,
+            loading2: true,
+            loading3:true
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -208,7 +212,10 @@ class ZhaoDaIndex extends React.Component {
                 // 查询成功
                     const hotTopic = data.contents.slice(0, 5);
 
-                    this.setState({hotTopic});
+                    this.setState({
+                      hotTopic:hotTopic,
+                      loading1:false
+                    });
 
                 } else if (data.code === "E01") {
 
@@ -243,7 +250,10 @@ class ZhaoDaIndex extends React.Component {
 
                     const zhuanlan = data.contents.slice(0, 5);
 
-                    this.setState({"latestZhuanlan": zhuanlan});
+                    this.setState({
+                      "latestZhuanlan": zhuanlan,
+                      loading2: false
+                    });
 
                 } else if (data.code === "E01") {
 
@@ -347,7 +357,7 @@ class ZhaoDaIndex extends React.Component {
 
     render () {
 
-        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore} = this.state;
+        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;
 
 
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
@@ -438,7 +448,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic1" ref="topic1" className="content">
-                            {hotTopicList}
+                            {loading1?<LoadingBlock/>:hotTopicList}
                         </div>
                     </div>
 
@@ -450,7 +460,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic2" ref="topic2" className="content">
-                            {popularityPopleList}
+                            {loading2?<LoadingBlock/>:popularityPopleList}
                         </div>
                     </div>
 
@@ -462,7 +472,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic3" ref="topic3" className="content" >
-                            {latestZhuanlanList}
+                            {loading3?<LoadingBlock/>:latestZhuanlanList}
                         </div>
                     </div>
 

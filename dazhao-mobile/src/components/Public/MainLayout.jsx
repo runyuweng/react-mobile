@@ -16,6 +16,14 @@ class MainLayout extends React.Component {
 
     }
 
+    componentDidMount(){
+      scrollTo(0,0);
+    }
+    
+    componentWillReceiveProps(){
+      scrollTo(0,0);
+    }
+
     render () {
 
         const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise", "/tologin", "/login", "/register", "/response", "/toquestion"],
