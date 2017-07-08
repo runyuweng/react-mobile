@@ -7,6 +7,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, './'),
         filename: 'index.js',
+        chunkFilename: 'static/js/[name].chunk.js'
     },
 
     devServer: {
@@ -46,6 +47,10 @@ var config = {
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+          name: "commons",
+          filename: 'static/js/common.js'
         }),
         // new AppCachePlugin({
         //     cache: [

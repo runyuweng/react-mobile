@@ -20,12 +20,12 @@ import ZhiGuanHome from "./src/components/ZhiGuan/Home/Home.jsx";
 
 // 招答部分
 import Zhaoda from "./src/components/Zhaoda/Zhaoda/Zhaoda.jsx";
-import ZhaoDaDiscover from "./src/components/Zhaoda/ZhaoDaDiscover/ZhaoDaDiscover.jsx";
-import ZhaoDaFeature from "./src/components/Zhaoda/ZhaoDaFeature/ZhaoDaFeature.jsx";
+// import ZhaoDaIndex from "./src/components/Zhaoda/ZhaoDaIndex/ZhaoDaIndex.jsx";
+// import ZhaoDaDiscover from "./src/components/Zhaoda/ZhaoDaDiscover/ZhaoDaDiscover.jsx";
+// import ZhaoDaFeature from "./src/components/Zhaoda/ZhaoDaFeature/ZhaoDaFeature.jsx";
 import ZhaoDaMessage from "./src/components/Zhaoda/ZhaoDaMessage/ZhaoDaMessage.jsx";
 import ZhaoDaToFeatures from "./src/components/Zhaoda/ZhaoDaToFeatures/ZhaoDaToFeatures.jsx";
 import ZhaoDaToTopic from "./src/components/Zhaoda/ZhaoDaToTopic/ZhaoDaToTopic.jsx";
-import ZhaoDaIndex from "./src/components/Zhaoda/ZhaoDaIndex/ZhaoDaIndex.jsx";
 import ZhaoDaTopic from "./src/components/Zhaoda/ZhaoDaTopic/ZhaoDaTopic.jsx";
 import ZhaoDaSearch from "./src/components/Zhaoda/ZhaoDaSearch/ZhaoDaSearch.jsx";
 import ZhaoDaToQuestion from "./src/components/Zhaoda/ZhaoDaToQuestion/ZhaoDaToQuestion.jsx";
@@ -85,6 +85,21 @@ function requireAuth (nextState, replace) {
 
 }
 
+const getZhaoDaIndex = (location, cb) => {
+  require.ensure([],function(require){
+    cb(null, require('./src/components/Zhaoda/ZhaoDaIndex/ZhaoDaIndex.jsx').default);
+  }, 'ZhaoDaIndex')
+};
+const getZhaoDaDiscover = (location, cb) => {
+  require.ensure([],function(require){
+    cb(null, require('./src/components/Zhaoda/ZhaoDaDiscover/ZhaoDaDiscover.jsx').default);
+  }, 'ZhaoDaDiscover')
+};
+const getZhaoDaFeature = (location, cb) => {
+  require.ensure([],function(require){
+    cb(null, require('./src/components/Zhaoda/ZhaoDaFeature/ZhaoDaFeature.jsx').default);
+  }, 'ZhaoDaFeature')
+};
 
 const Routes = () => <Router history={hashHistory}>
     <Route path="/" component={MainLayout}>
@@ -92,10 +107,10 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="zhiGuan" component={ZhiGuanHome} />
         <Route path="home" component={Home} />
         <Route path="Zhaoda" component={Zhaoda}>
-            <IndexRoute component={ZhaoDaIndex} />
-            <Route path="main" component={ZhaoDaIndex} />
-            <Route path="discover" component={ZhaoDaDiscover} />
-            <Route path="feature" component={ZhaoDaFeature} />
+            <IndexRoute getComponent={getZhaoDaIndex} />
+            <Route path="main" getComponent={getZhaoDaIndex} />
+            <Route path="discover" getComponent={getZhaoDaDiscover} />
+            <Route path="feature" component={getZhaoDaFeature} />
         </Route>
         <Route path="topic" component={ZhaoDaTopic} />
         <Route path="message" component={ZhaoDaMessage} />
