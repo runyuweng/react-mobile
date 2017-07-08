@@ -4,6 +4,7 @@ import "../../Public/AnswerMain/AnswerMain.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class ZhaoDaToFeatures extends React.Component {
 
@@ -66,7 +67,8 @@ class ZhaoDaToFeatures extends React.Component {
                     "collect": false, // 是否收藏
                     "time": "2016年11月30日"// 提问时间
                 }
-            ]
+            ],
+            showLoading: true
         };
         this.fetchAlbum = this.fetchAlbum.bind(this);
         this.fetchZhuanlanDe = this.fetchZhuanlanDe.bind(this);
@@ -80,7 +82,7 @@ class ZhaoDaToFeatures extends React.Component {
         this.props.changeBottomState(false);
 
 
-        this.setState({"commentWidth": this.refs.comment.clientWidth},
+        this.setState({},
         () => {
 
             const answers = JSON.parse(JSON.stringify(this.state)).answers;
@@ -108,7 +110,7 @@ class ZhaoDaToFeatures extends React.Component {
 
             const myData = data.contents;
 
-            this.setState({"data": myData}, () => {
+            this.setState({"data": myData, showLoading: false}, () => {
 
                 this.fetchAlbum(this.state.albumNum);
 
@@ -133,7 +135,8 @@ class ZhaoDaToFeatures extends React.Component {
 
                 }
                 this.setState({
-                    album,
+                    "commentWidth": this.refs.comment.clientWidth,
+                    album:album,
                     "loading": false,
                     "albumHaveShowAll": albumNum === -1
                 });
@@ -181,7 +184,7 @@ class ZhaoDaToFeatures extends React.Component {
 
     render () {
 
-        const {data, album, answers, commentWidth} = this.state;
+        const {data, album, answers, commentWidth, showLoading} = this.state;
 
         const albumList = album.map((value, i) => <div className="albunItems" key={i}>
             <span><img src={"/src/images/zhuanlan.png" || value.colposter} /></span>
@@ -232,112 +235,115 @@ class ZhaoDaToFeatures extends React.Component {
         };
 
         return (
-            <div className="ZhaoDaToFeatures">
-                <header>
-                    <video id="video" controls poster="/src/images/zhuanlan.png" >
-                        <source src={data.video} />
-                    </video>
-                    <div className="TopBar">
-                        <span onClick={(e) => {
+            <div>
+                {showLoading?<Loading/>:
+                <div className="ZhaoDaToFeatures">
+                    <header>
+                        <video id="video" controls poster="/src/images/zhuanlan.png" >
+                            <source src={data.video} />
+                        </video>
+                        <div className="TopBar">
+                            <span onClick={(e) => {
 
-                            history.back();
+                                history.back();
 
-                        }}
-                        >
-                            <img src="/src/images/Back_left.png" />
-                        </span>
-                    </div>
-                    <div className="videoM">
-                        <div className="videoL">
-                            <span><img src="/src/images/eye.png" /></span>
-                            <em><b>{data.playtimes}</b>次播放</em>
+                            }}
+                            >
+                                <img src="/src/images/Back_left.png" />
+                            </span>
                         </div>
-                        <div className="videoR">
-                            <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
-                            <span><img src="/src/images/top.png" /></span>
-                        </div>
-                    </div>
-                    <div id="videoMessage">
-                        <div className="zhuanlandescrip">
-                            <div className="vTitle">
-                                <h3>{data.colname}</h3>
-                                <span><em>简介</em><img onClick={() => {
-
-                                    this.setState({"shortIntroStretch": !this.state.shortIntroStretch});
-
-                                }} src={this.state.shortIntroStretch ? "/src/images/Back_top.png" : "/src/images/Back_down.png"}
-                                                 /></span>
+                        <div className="videoM">
+                            <div className="videoL">
+                                <span><img src="/src/images/eye.png" /></span>
+                                <em><b>{data.playtimes}</b>次播放</em>
                             </div>
-                            {this.state.shortIntroStretch ? <p>{data.coldescription}</p> : ""}
+                            <div className="videoR">
+                                <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
+                                <span><img src="/src/images/top.png" /></span>
+                            </div>
                         </div>
-                        <div className="guestIntro">
-                            <h3>嘉宾介绍</h3>
-                            <div className="intro">
-                                <span className="circle">
-                                    <img src={"/src/images/pople.png" || data.guest.img} alt="嘉宾" />
-                                </span>
-                                <div className="introR">
+                        <div id="videoMessage">
+                            <div className="zhuanlandescrip">
+                                <div className="vTitle">
+                                    <h3>{data.colname}</h3>
+                                    <span><em>简介</em><img onClick={() => {
 
-                                    <span><em>{data.guest.nickname}</em>{data.guest.vip ? <img src="/src/images/vip.png" /> : ""}</span>
-                                    <span style={{"display": !this.state.guestIntroStretch ? "WebKitBox" : "inline"}}>{data.guest.position}</span>
+                                        this.setState({"shortIntroStretch": !this.state.shortIntroStretch});
 
+                                    }} src={this.state.shortIntroStretch ? "/src/images/Back_top.png" : "/src/images/Back_down.png"}
+                                                    /></span>
                                 </div>
+                                {this.state.shortIntroStretch ? <p>{data.coldescription}</p> : ""}
                             </div>
-                            {
-                                !this.state.guestIntroStretch
+                            <div className="guestIntro">
+                                <h3>嘉宾介绍</h3>
+                                <div className="intro">
+                                    <span className="circle">
+                                        <img src={"/src/images/pople.png" || data.guest.img} alt="嘉宾" />
+                                    </span>
+                                    <div className="introR">
 
-                                    ? data.guest.position.length > 20
-                                    ? <span
-                                        onClick={() => {
+                                        <span><em>{data.guest.nickname}</em>{data.guest.vip ? <img src="/src/images/vip.png" /> : ""}</span>
+                                        <span style={{"display": !this.state.guestIntroStretch ? "WebKitBox" : "inline"}}>{data.guest.position}</span>
 
-                                            this.setState({"guestIntroStretch": true});
+                                    </div>
+                                </div>
+                                {
+                                    !this.state.guestIntroStretch
 
-                                        }}
-                                        className="more"
-                                      >
-                                        <em>展开</em>
-                                        <img src="/src/images/Back_down.png" />
-                                    </span> : ""
+                                        ? data.guest.position.length > 20
+                                        ? <span
+                                            onClick={() => {
+
+                                                this.setState({"guestIntroStretch": true});
+
+                                            }}
+                                            className="more"
+                                        >
+                                            <em>展开</em>
+                                            <img src="/src/images/Back_down.png" />
+                                        </span> : ""
 
 
-                                 : ""
-                            }
+                                    : ""
+                                }
+                            </div>
                         </div>
-                    </div>
-                </header>
-
-
-                <div id="album">
-                    <h3>专辑列表</h3>
-                    {albumList}
-
-                    {
-                        !this.state.albumHaveShowAll
-                        ? <div className="Formore" onClick={() => {
-
-                            this.setState({"loading": true}, () => {
-
-                                this.fetchAlbum(-1);
-
-                            });
-
-                        }}
-                          >{ this.state.loading ? <LoadingMore /> : "查看全部" }</div> : ""
-                    }
-
-                </div>
-
-                <div className="guestAnswer">
-                    <header className="ul">
-                        <ul>
-                            <li className="active">嘉宾解答</li>
-                            <li>热问榜单</li>
-                        </ul>
                     </header>
 
-                    {answerList}
 
-                </div>
+                    <div id="album">
+                        <h3>专辑列表</h3>
+                        {albumList}
+
+                        {
+                            !this.state.albumHaveShowAll
+                            ? <div className="Formore" onClick={() => {
+
+                                this.setState({"loading": true}, () => {
+
+                                    this.fetchAlbum(-1);
+
+                                });
+
+                            }}
+                            >{ this.state.loading ? <LoadingMore /> : "查看全部" }</div> : ""
+                        }
+
+                    </div>
+
+                    <div className="guestAnswer">
+                        <header className="ul">
+                            <ul>
+                                <li className="active">嘉宾解答</li>
+                                <li>热问榜单</li>
+                            </ul>
+                        </header>
+
+                        {answerList}
+
+                    </div>
+                </div>}
             </div>
         );
 

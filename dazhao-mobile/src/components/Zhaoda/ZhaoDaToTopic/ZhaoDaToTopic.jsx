@@ -14,10 +14,10 @@ class ZhaoDaToTopic extends React.Component {
             "categoryId": 1,
             "topicId": 1,
             "topicdetail": {
-                "topicImg": "/src/images/pople.png",
-                "topicTitle": "职业素养",
-                "answer": 16,
-                "care": 10,
+                "topicImg": "",
+                "topicTitle": "",
+                "answer": "",
+                "care": "",
                 "isCared": false,
                 "questions": [
                 ]
@@ -179,8 +179,7 @@ class ZhaoDaToTopic extends React.Component {
               } else if (data.code === "E01") {
 
                   this.setState({
-                      "topicdetail": {},
-                      "showLoading": false
+                      "topicdetail": {}
                   });
 
               }
@@ -213,11 +212,13 @@ class ZhaoDaToTopic extends React.Component {
                     </div>
                 </header>
                 <div className="topM">
-                    <span className="peopleLog"><img src={topicdetail.topicImg} /></span>
-                    <span className="mTitl">{topicdetail.topicTitle}</span>
+                    <span className="peopleLog">{showLoading ? "" : <img src={topicdetail.topicImg} />}</span>
+                    <span className="mTitl">{showLoading ? <div className="block" /> : topicdetail.topicTitle}</span>
                     <div className="care">
-                        <span>问答：<em>{topicdetail.answer}</em></span>
-                        <span>关注：<em>{topicdetail.care}</em></span>
+                        {showLoading ? <div className="block" /> : <div>
+                            <span>问答：<em>{topicdetail.answer||0}</em></span>
+                            <span>关注：<em>{topicdetail.care||0}</em></span>
+                        </div>}
                     </div>
                     <sapn className="attention">+关注</sapn>
                 </div>

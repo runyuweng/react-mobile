@@ -21,29 +21,29 @@ class ZhaoDaIndex extends React.Component {
 
             ],
             "popularityPople": [
-                {
-                    "id": 1,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                }
+                // {
+                //     "id": 1,
+                //     "imgsrc": "/src/images/topicImg.png",
+                //     "name": "Michael",
+                //     "position": "骨灰级猎头、WIT总裁"
+                // }
             ],
             "latestZhuanlan": [
-                {
-                    "tid": "2",
-                    "colposter": "/src/images/zhuanlan.png",
-                    "colposterbig": "/src/images/zhuanlan.png",
-                    "colid": "1",
-                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname": "#光爸说# 第一期——写简历的正确姿势"
-                }
+                // {
+                //     "tid": "2",
+                //     "colposter": "/src/images/zhuanlan.png",
+                //     "colposterbig": "/src/images/zhuanlan.png",
+                //     "colid": "1",
+                //     "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                //     "colname": "#光爸说# 第一期——写简历的正确姿势"
+                // }
             ],
             "carouselpic": [
-                {
-                    "id": "3",
-                    "img": "/src/images/1487917069l108992947.png",
-                    "description": "图片一"
-                }
+                // {
+                //     "id": "3",
+                //     "img": "/src/images/1487917069l108992947.png",
+                //     "description": "图片一"
+                // }
             ],
             "nowshow": 0,
             "getmore": false,
@@ -252,7 +252,7 @@ class ZhaoDaIndex extends React.Component {
 
                     this.setState({
                         "latestZhuanlan": zhuanlan,
-                        "loading2": false
+                        "loading3": false
                     });
 
                 } else if (data.code === "E01") {
@@ -274,7 +274,7 @@ class ZhaoDaIndex extends React.Component {
             // 触屏开始
         elem.addEventListener("touchstart", (e) => {
 
-            e.preventDefault();
+            // E.preventDefault();
             const _this = elem;
             let isStart = true;
             const event = e || window.event;
@@ -364,14 +364,16 @@ class ZhaoDaIndex extends React.Component {
 
         const hotTopicList = hotTopic.map((elem, index) =>
             <div className="img" key={index}>
-                <span className="span1">
-                    <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
-                </span>
-                <span className="span2">{elem.topicname}</span>
-                <span className="care">
-                    <span>回答:{elem.question}</span>
-                    <span>关注:{elem.care}</span>
-                </span>
+                <Link to={`/totopic/${elem.tid}`}>
+                    <span className="span1">
+                        <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
+                    </span>
+                    <span className="span2">{elem.topicname}</span>
+                    <span className="care">
+                        <span>回答:{elem.questionnum}</span>
+                        <span>关注:{elem.care}</span>
+                    </span>
+                </Link>
             </div>
             );
 
@@ -389,8 +391,10 @@ class ZhaoDaIndex extends React.Component {
 
         const latestZhuanlanList = latestZhuanlan.map((elem, index) =>
             <div className="img" key={index}>
-                <img src={"/src/images/zhuanlan.png" || elem.colposter} />
-                <p>{elem.colname}</p>
+                <Link to={`tofeature?colid=${elem.colid}`}>
+                    <img src={"/src/images/zhuanlan.png" || elem.colposter} />
+                    <p>{elem.colname}</p>
+                </Link>
             </div>
             );
 
