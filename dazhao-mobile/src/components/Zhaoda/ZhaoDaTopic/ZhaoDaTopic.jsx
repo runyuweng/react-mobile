@@ -3,6 +3,7 @@ import "./ZhaoDaTopic.scss";
 import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class ZhaoDaTopic extends React.Component {
 
@@ -16,7 +17,8 @@ class ZhaoDaTopic extends React.Component {
             "currentX": 0,
             "topicCategory": [],
             "topics": [],
-            "active": 0
+            "active": 0,
+            showLoading: true
         };
         this.topicClick = this.topicClick.bind(this);
 
@@ -26,7 +28,7 @@ class ZhaoDaTopic extends React.Component {
     componentDidMount () {
 
 
-        this.props.changeBottomState(true);
+        this.props.changeBottomState(false);
 
 
         this._touchEvent(this.refs.navbar);
@@ -41,7 +43,7 @@ class ZhaoDaTopic extends React.Component {
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1 "}).
         then((data) => {
 
-            this.setState({"topics": data.contents});
+            this.setState({"topics": data.contents,showLoading:false});
 
         });
 
@@ -147,7 +149,7 @@ class ZhaoDaTopic extends React.Component {
 
     render () {
 
-        const {topicCategory, topics, active} = this.state;
+        const {topicCategory, topics, active, showLoading} = this.state;
 
         const topicCategoryList = topicCategory.map((elem, index) => <li onClick={this.topicClick.bind(this, index, elem.id)} className={active == index ? "active" : ""} key={index}>{elem.topictypename}</li>);
         const topicsList = topics.map((elem, index) =>
@@ -163,15 +165,19 @@ class ZhaoDaTopic extends React.Component {
             );
 
         return (
-            <div className="container ZhaoDaTopic">
-                <header>
-                    <TopBar title="话题广场" border="noboder" />
-                    <div className="select">
-                        <ul ref="navbar">{topicCategoryList}</ul>
-                    </div>
-                </header>
-                <div className="content">
-                    <div className="itemGroup">{topicsList}</div>
+            <div>
+               
+                <div className="container ZhaoDaTopic">
+                    <header>
+                        <TopBar title="话题广场" border="noboder" />
+                        <div className="select">
+                            <ul ref="navbar">{topicCategoryList}</ul>
+                        </div>
+                    </header>
+                     {showLoading?<Loading/>:
+                    <div className="content">
+                        <div className="itemGroup">{topicsList}</div>
+                    </div>}
                 </div>
             </div>
         );

@@ -9,7 +9,7 @@ class ZhaoDaSearch extends React.Component {
 
         super(props);
         this.state = {
-            "keyword": this.props.location.query.keyword || "",
+            "keyword": this.props.params.keyword || "",
             "response": []
         };
         this.fetchQuestions = this.fetchQuestions.bind(this);
@@ -18,8 +18,10 @@ class ZhaoDaSearch extends React.Component {
 
     componentDidMount () {
 
-        console.log(this.props.location.query.keyword);
+        // Console.log(this.props.location.query.keyword);
         // This.fetchQuestions(this.state.keyword);
+
+        this.props.changeBottomState(false);
 
     }
 
@@ -87,32 +89,16 @@ class ZhaoDaSearch extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/search",
-                                "query": {"keyword": this.state.keyword}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/search/${this.state.keyword}`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/talk",
-                                "query": {"keyword": this.state.keyword}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/talk/${this.state.keyword}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/zhuanlan",
-                                "query": {"keyword": this.state.keyword}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/zhuanlan/${this.state.keyword}`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/user",
-                                "query": {"user": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/user/${this.state.keyword}`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

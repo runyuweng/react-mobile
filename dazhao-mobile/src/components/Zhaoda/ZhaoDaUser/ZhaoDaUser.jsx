@@ -9,7 +9,7 @@ class ZhaoDaUser extends React.Component {
 
         super(props);
         this.state = {
-            "username": this.props.location.query.user,
+            "username": this.props.params.keyword,
             "users": [
                 {
                     "uid": 1,
@@ -116,32 +116,16 @@ class ZhaoDaUser extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/search",
-                                "query": {"keyword": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/search/${this.state.username}`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/talk",
-                                "query": {"keyword": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/talk/${this.state.username}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/zhuanlan",
-                                "query": {"keyword": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/zhuanlan/${this.state.username}`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/user",
-                                "query": {"user": this.state.username}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/user/${this.state.username}`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

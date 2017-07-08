@@ -99,7 +99,7 @@ const Routes = () => <Router history={hashHistory}>
         </Route>
         <Route path="topic" component={ZhaoDaTopic} />
         <Route path="message" component={ZhaoDaMessage} />
-        <Route path="search" component={ZhaoDaSearch} />
+        <Route path="search/:keyword" component={ZhaoDaSearch} />
         <Route path="response/:qtitle/:aid" component={ZhaoDaResponse} />
         <Route path="quiz" component={ZhaoDaQuiz} />
         <Route path="consult" component={ZhaoDaConsult} />
@@ -107,9 +107,9 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="toquestion/:qid" component={ZhaoDaToQuestion} />
         <Route path="tofeature" component={ZhaoDaToFeatures} />
         <Route path="totopic/:tid" component={ZhaoDaToTopic} />
-        <Route path="user" component={ZhaoDaUser} />
-        <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
-        <Route path="talk" component={ZhaoDaTalk} />
+        <Route path="user/:keyword" component={ZhaoDaUser} />
+        <Route path="zhuanlan/:keyword" component={ZhaoDaZhuanLan} />
+        <Route path="talk/:keyword" component={ZhaoDaTalk} />
         <Route path="choosetopic" component={ZhaoDaChooseTopic} />
         <Route path="coments" component={ZhaoDaComents} />
         <Route path="addanswer/:qid" component={ZhaoDaAddAnswer} />
@@ -136,6 +136,7 @@ const Routes = () => <Router history={hashHistory}>
         </Route>
         <Route path="invitation" component={MineInvitation} />
         <Route path="activity" component={MineActivity} />
+
         <Route path="minezhaoda" component={MineZhaoDa}>
             <Route path="concern" component={MineConcern}>
                 <IndexRoute component={MineConcernQuestion} />
@@ -146,6 +147,7 @@ const Routes = () => <Router history={hashHistory}>
             <Route path="quiz" component={MineQuiz} />
             <Route path="answer" component={MineAnswers} />
         </Route>
+
         <Route path="favoritepage" component={MineFavoritePage}>
             <Route path="favoritejobs" component={MineFavoriteJobs} />
             <Route path="favoritecompanys" component={MineFavoriteCompanys} />

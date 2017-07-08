@@ -186,7 +186,7 @@ class ZhaoDaToQuestion extends React.Component {
                     </div>
                     <Link to={`/response/${question.title}/${value.aid}`}>
                         <div
-                            className="comment"
+                            className="comment1"
                             ref="input"
                             dangerouslySetInnerHTML={{"__html": value.comment}}
                         />

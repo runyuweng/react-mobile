@@ -73,7 +73,10 @@ class AnswerMain extends React.Component {
                         }
                     </div>
                     <Link to={`/toquestion/${qid}`}>
-                        <div className="comment">{comment}</div>
+                        <div
+                          className="comment"
+                          dangerouslySetInnerHTML={{"__html": comment}}
+                      />
                     </Link>
                     <div className="more">
                         <span><b><img onClick={this.setLike.bind(this, qid, aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
