@@ -178,9 +178,7 @@ class ZhaoDaToTopic extends React.Component {
 
               } else if (data.code === "E01") {
 
-                  this.setState({
-                      "topicdetail": {}
-                  });
+                  this.setState({"topicdetail": {}});
 
               }
 
@@ -216,8 +214,8 @@ class ZhaoDaToTopic extends React.Component {
                     <span className="mTitl">{showLoading ? <div className="block" /> : topicdetail.topicTitle}</span>
                     <div className="care">
                         {showLoading ? <div className="block" /> : <div>
-                            <span>问答：<em>{topicdetail.answer||0}</em></span>
-                            <span>关注：<em>{topicdetail.care||0}</em></span>
+                            <span>问答：<em>{topicdetail.answer || 0}</em></span>
+                            <span>关注：<em>{topicdetail.care || 0}</em></span>
                         </div>}
                     </div>
                     <sapn className="attention">+关注</sapn>

@@ -68,7 +68,7 @@ class ZhaoDaToFeatures extends React.Component {
                     "time": "2016年11月30日"// 提问时间
                 }
             ],
-            showLoading: true
+            "showLoading": true
         };
         this.fetchAlbum = this.fetchAlbum.bind(this);
         this.fetchZhuanlanDe = this.fetchZhuanlanDe.bind(this);
@@ -110,7 +110,10 @@ class ZhaoDaToFeatures extends React.Component {
 
             const myData = data.contents;
 
-            this.setState({"data": myData, showLoading: false}, () => {
+            this.setState({
+                "data": myData,
+                "showLoading": false
+            }, () => {
 
                 this.fetchAlbum(this.state.albumNum);
 
@@ -136,7 +139,7 @@ class ZhaoDaToFeatures extends React.Component {
                 }
                 this.setState({
                     "commentWidth": this.refs.comment.clientWidth,
-                    album:album,
+                    album,
                     "loading": false,
                     "albumHaveShowAll": albumNum === -1
                 });
@@ -236,8 +239,8 @@ class ZhaoDaToFeatures extends React.Component {
 
         return (
             <div>
-                {showLoading?<Loading/>:
-                <div className="ZhaoDaToFeatures">
+                {showLoading ? <Loading />
+                : <div className="ZhaoDaToFeatures">
                     <header>
                         <video id="video" controls poster="/src/images/zhuanlan.png" >
                             <source src={data.video} />
@@ -271,7 +274,7 @@ class ZhaoDaToFeatures extends React.Component {
                                         this.setState({"shortIntroStretch": !this.state.shortIntroStretch});
 
                                     }} src={this.state.shortIntroStretch ? "/src/images/Back_top.png" : "/src/images/Back_down.png"}
-                                                    /></span>
+                                                     /></span>
                                 </div>
                                 {this.state.shortIntroStretch ? <p>{data.coldescription}</p> : ""}
                             </div>
@@ -299,7 +302,7 @@ class ZhaoDaToFeatures extends React.Component {
 
                                             }}
                                             className="more"
-                                        >
+                                          >
                                             <em>展开</em>
                                             <img src="/src/images/Back_down.png" />
                                         </span> : ""
@@ -327,7 +330,7 @@ class ZhaoDaToFeatures extends React.Component {
                                 });
 
                             }}
-                            >{ this.state.loading ? <LoadingMore /> : "查看全部" }</div> : ""
+                              >{ this.state.loading ? <LoadingMore /> : "查看全部" }</div> : ""
                         }
 
                     </div>
