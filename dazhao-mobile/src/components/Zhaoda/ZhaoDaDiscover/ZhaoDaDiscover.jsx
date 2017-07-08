@@ -14,83 +14,94 @@ class ZhaoDaDiscover extends React.Component {
             "showLoading": true,
             "hotTopics": [],
             "goodAnswer": [],
-            "page" : 1,
+            "page": 1,
             "nomore": false,
             "getmore": false
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
         this.fetchGoodAnswer = this.fetchGoodAnswer.bind(this);
+
     }
 
     componentDidMount () {
 
         this.fetchHotTopic();
         this.fetchGoodAnswer(this.state.page);
+
     }
 
     // 精品回答
     fetchGoodAnswer () {
-      ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.page}`, obj: this}).
+
+        ajax({
+            "url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.page}`,
+            "obj": this
+        }).
       then((data) => {
-        if (data.code === "S01") {
-          // console.log(typeof this.state.page)
-          const newQ = this.state.goodAnswer;
-          var page = parseInt(this.state.page, 10)+1;
 
-          data.contents.map((value) => {
+          if (data.code === "S01") {
 
-              newQ.push({
-                  "qid": value.question.qid,
-                  "aid": value.aid,
-                  "topic": value.question.topics,
-                  "theme": value.question.qtitle,
-                  "name": value.user.nickname,
-                  "vip": value.user.vip,
-                  "remark": value.remark,
-                  "agree": value.question.agree,
-                  "comment": value.content,
-                  "collect": value.collect,
-                  "job": value.user.position
+          // Console.log(typeof this.state.page)
+              const newQ = this.state.goodAnswer;
+              const page = parseInt(this.state.page, 10) + 1;
+
+              data.contents.map((value) => {
+
+                  newQ.push({
+                      "qid": value.question.qid,
+                      "aid": value.aid,
+                      "topic": value.question.topics,
+                      "theme": value.question.qtitle,
+                      "name": value.user.nickname,
+                      "vip": value.user.vip,
+                      "remark": value.remark,
+                      "agree": value.question.agree,
+                      "comment": value.content,
+                      "collect": value.collect,
+                      "job": value.user.position
+                  });
+                  this.setState({
+                      "goodAnswer": newQ,
+                      "getmore": true
+                  });
+
+              });
+
+          } else if (data.code === "S02") {
+
+              const newQ = this.state.goodAnswer;
+
+              data.contents.map((value) => {
+
+                  newQ.push({
+                      "qid": value.question.qid,
+                      "aid": value.aid,
+                      "topic": value.question.topics,
+                      "theme": value.question.qtitle,
+                      "name": value.user.nickname,
+                      "vip": value.user.vip,
+                      "remark": value.remark,
+                      "agree": value.question.agree,
+                      "comment": value.content,
+                      "collect": value.collect,
+                      "job": value.user.position
+                  });
+
               });
               this.setState({
                   "goodAnswer": newQ,
-                  "getmore": true
+                  "getmore": true,
+                  "nomore": true
               });
 
-          });
+          } else {
 
-        }else if(data.code === "S02"){
-            const newQ = this.state.goodAnswer;
-
-            data.contents.map((value) => {
-
-              newQ.push({
-                  "qid": value.question.qid,
-                  "aid": value.aid,
-                  "topic": value.question.topics,
-                  "theme": value.question.qtitle,
-                  "name": value.user.nickname,
-                  "vip": value.user.vip,
-                  "remark": value.remark,
-                  "agree": value.question.agree,
-                  "comment": value.content,
-                  "collect": value.collect,
-                  "job": value.user.position
-              });
-
-            });
-            this.setState({
-                "goodAnswer": newQ,
-                "getmore": true,
-                "nomore": true
-            });
-          }else {
-
-              console.log('E01')
+              console.log("E01");
 
           }
 
-      })
+      });
+
     }
 
        // 加载更多
@@ -136,7 +147,7 @@ class ZhaoDaDiscover extends React.Component {
 
     render () {
 
-        const {goodAnswer, hotTopics ,nomore, getmore, showLoading} = this.state;
+        const {goodAnswer, hotTopics, nomore, getmore, showLoading} = this.state;
 
         const AnswerMainList = goodAnswer.map((value, i) => <AnswerMain isTopic="0" key={i} data={value} />);
 
@@ -175,12 +186,12 @@ class ZhaoDaDiscover extends React.Component {
                         </div>
                     </div>
 
-                <div id="latest">
-                    <div className="title"><span><img src="/src/images/latest.png" /></span>精品回答</div>
+                    <div id="latest">
+                        <div className="title"><span><img src="/src/images/latest.png" /></span>精品回答</div>
 
                         {AnswerMainList}
 
-                    {
+                        {
                         nomore ? ""
                         : <div className="Formore" onClick={() => {
 
@@ -189,10 +200,10 @@ class ZhaoDaDiscover extends React.Component {
                         }}
                           >{ !getmore ? <LoadingMore /> : "加载更多" }</div>
                     }
-                    {nomore ? <p className="nomore">没有更多了...</p> : ""}
+                        {nomore ? <p className="nomore">没有更多了...</p> : ""}
 
+                    </div>
                 </div>
-              </div>
         }
             </div>);
 

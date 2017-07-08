@@ -50,9 +50,9 @@ class ZhaoDaIndex extends React.Component {
             "latestDynamicPage": 1,
             "nomore": false,
             "lock": false,
-            loading1: true,
-            loading2: true,
-            loading3:true
+            "loading1": true,
+            "loading2": true,
+            "loading3": true
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -213,8 +213,8 @@ class ZhaoDaIndex extends React.Component {
                     const hotTopic = data.contents.slice(0, 5);
 
                     this.setState({
-                      hotTopic:hotTopic,
-                      loading1:false
+                        hotTopic,
+                        "loading1": false
                     });
 
                 } else if (data.code === "E01") {
@@ -251,8 +251,8 @@ class ZhaoDaIndex extends React.Component {
                     const zhuanlan = data.contents.slice(0, 5);
 
                     this.setState({
-                      "latestZhuanlan": zhuanlan,
-                      loading2: false
+                        "latestZhuanlan": zhuanlan,
+                        "loading2": false
                     });
 
                 } else if (data.code === "E01") {
@@ -448,7 +448,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic1" ref="topic1" className="content">
-                            {loading1?<LoadingBlock/>:hotTopicList}
+                            {loading1 ? <LoadingBlock /> : hotTopicList}
                         </div>
                     </div>
 
@@ -460,7 +460,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic2" ref="topic2" className="content">
-                            {loading2?<LoadingBlock/>:popularityPopleList}
+                            {loading2 ? <LoadingBlock /> : popularityPopleList}
                         </div>
                     </div>
 
@@ -472,7 +472,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic3" ref="topic3" className="content" >
-                            {loading3?<LoadingBlock/>:latestZhuanlanList}
+                            {loading3 ? <LoadingBlock /> : latestZhuanlanList}
                         </div>
                     </div>
 

@@ -14,43 +14,43 @@ class LoadingBlock extends React.Component {
     render () {
 
         return (
-          <div>
-            <div className="block img">
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
+            <div>
+                <div className="block img">
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                </div>
+                <div className="block img">
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                </div>
+                <div className="block img">
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                </div>
+                <div className="block img">
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                </div>
+                <div className="block img">
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                    <div className="item" />
+                </div>
             </div>
-            <div className="block img">
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-            </div>
-            <div className="block img">
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-            </div>
-            <div className="block img">
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-            </div>
-            <div className="block img">
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-            </div>
-          </div>
         );
 
     }

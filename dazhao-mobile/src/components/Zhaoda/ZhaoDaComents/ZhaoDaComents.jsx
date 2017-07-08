@@ -67,7 +67,7 @@ class ZhaoDaComents extends React.Component {
 
               const comment = data.contents;
 
-              this.setState({"comment" : comment});
+              this.setState({comment});
 
           } else if (data.code === "E01") {
 
@@ -94,18 +94,19 @@ class ZhaoDaComents extends React.Component {
                 "data": `aid=${aid}&data=${this.state.comment_input}`
             }).
             then((data) => {
-                console.log(data)
+
+                console.log(data);
 
                 if (data.code === "S01") {
 
 
-                    //const comment = data.contents;
+                    // Const comment = data.contents;
 
-                    //this.setState({comment});
+                    // This.setState({comment});
 
                 } else if (data.code === "E01") {
 
-                    //this.setState({"comment": []});
+                    // This.setState({"comment": []});
 
                 }
 

@@ -206,11 +206,11 @@ class JobDetail extends React.Component {
                         <div className="jobWrap">{jobs}</div>
 
                     </div>
-                <div className="bottom">
-                    <span>发送简历</span>
-                    <span onClick={this.careJob.bind(this, data.company.companyid, data.jobid)}>{this.state.isSelected ? "取消收藏" : "收藏"}</span>
-                </div>
-              </div>}
+                    <div className="bottom">
+                        <span>发送简历</span>
+                        <span onClick={this.careJob.bind(this, data.company.companyid, data.jobid)}>{this.state.isSelected ? "取消收藏" : "收藏"}</span>
+                    </div>
+                </div>}
             </div>
         );
 

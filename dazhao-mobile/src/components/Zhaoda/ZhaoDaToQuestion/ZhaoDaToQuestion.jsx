@@ -4,6 +4,7 @@ import TopBar from "../../Public/TopBar/TopBar.jsx";
 import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class ZhaoDaToQuestion extends React.Component {
 
@@ -16,7 +17,8 @@ class ZhaoDaToQuestion extends React.Component {
             "question": {},
             "otherAnswers": [],
             "stretch": false,
-            "showshadow": true
+            "showshadow": true,
+            "showLoading": true
         };
 
         this.stretchClick = this.stretchClick.bind(this);
@@ -44,8 +46,9 @@ class ZhaoDaToQuestion extends React.Component {
 
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
-          console.log(data)
-          if(data.code === "S01"){
+
+          console.log(data);
+          if (data.code === "S01") {
 
               const newQ = {
                   "qid": data.contents.qid,
@@ -75,7 +78,8 @@ class ZhaoDaToQuestion extends React.Component {
               });
               this.setState({
                   "question": newQ,
-                  "otherAnswers": newOtherAnswers
+                  "otherAnswers": newOtherAnswers,
+                  "showLoading": false
               }, () => {
 
                   const showshadow = !(newQ.authorAnswer.length < this.refs.carecontent.clientWidth / 14 * 2);
@@ -84,9 +88,9 @@ class ZhaoDaToQuestion extends React.Component {
 
               });
 
-           }else if (data.code === "E01") {
-             
-           }
+          } else if (data.code === "E01") {
+
+          }
 
       });
 
@@ -97,7 +101,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
       then((data) => {
 
-        console.log(data)
+          console.log(data);
 
           if (data.code === "S01") {
 
@@ -120,7 +124,8 @@ class ZhaoDaToQuestion extends React.Component {
 
         ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
       then((data) => {
-          console.log(data)
+
+          console.log(data);
           if (data.code === "S01") {
 
             // 关注状态改变
@@ -138,11 +143,12 @@ class ZhaoDaToQuestion extends React.Component {
 
     }
 
-    setSelected ( aid, index) {
+    setSelected (aid, index) {
 
         ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
       then((data) => {
-          //console.log(data)
+
+          // Console.log(data)
           if (data.code === "S01") {
 
             // 收藏状态改变
@@ -162,7 +168,7 @@ class ZhaoDaToQuestion extends React.Component {
 
     render () {
 
-        const {topic, question, otherAnswers} = this.state;
+        const {topic, question, otherAnswers, showLoading} = this.state;
 
         const otherAnswersList = otherAnswers.map((value, num) =>
             <article key={num}>
@@ -178,7 +184,7 @@ class ZhaoDaToQuestion extends React.Component {
                             ? <em>，{value.position}</em> : ""
                         }
                     </div>
-                    <Link to="/response">
+                    <Link to={`/response/${question.title}/${value.aid}`}>
                         <div
                             contentEditable
                             className="comment"
@@ -207,59 +213,62 @@ class ZhaoDaToQuestion extends React.Component {
                 <header>
                     <TopBar title="问题" border="border" />
                 </header>
+                {showLoading ? <Loading />
+                : <div>
 
-                <div className="question" onClick={() => {
+                    <div className="question" onClick={() => {
 
-                    history.go(-1);
+                        history.go(-1);
 
-                }}
-                >
-                    <span className="title">父话题：<span className="topTopic">{topic}</span></span>
-                    <span className="img"><img src="/src/images/Back_Button.png" /></span>
-                </div>
+                    }}
+                    >
+                        <span className="title">父话题：<span className="topTopic">{topic}</span></span>
+                        <span className="img"><img src="/src/images/Back_Button.png" /></span>
+                    </div>
 
-                <div className="careTopic">
-                    <span className="caretitle">{question.title}</span>
-                    <div className="caremain">
-                        <span ref="carecontent" className="carecontent" style={{"height": this.state.showshadow ? this.state.stretch ? "auto" : ".8rem" : "auto"}}>
-                            {question.authorAnswer}
-                            {this.state.showshadow ? !this.state.stretch ? <span className="shade" /> : "" : ""}
-                        </span>
-                        {
-                            this.state.showshadow
-                            ? !this.state.stretch
-                                ? <span className="strech" onClick={this.stretchClick}>展开查看全部<span><img src="/src/images/down.png" /></span></span> : "" : ""
-                        }
-                        <div className="bottom clearfix">
-                            <div className="left">
-                                <span><img src={question.authorpic} /></span>
-                                <span>{question.authorName}</span>
-                                <span>{question.time}</span>
-                            </div>
-                            <div className="right">
-                                <span><em>{question.careNum}</em>人关注</span>
-                                <span onClick={this.setCare.bind(this, question.qid)}>{question.isCare ? "取消关注" : "+关注"}</span>
+                    <div className="careTopic">
+                        <span className="caretitle">{question.title}</span>
+                        <div className="caremain">
+                            <span ref="carecontent" className="carecontent" style={{"height": this.state.showshadow ? this.state.stretch ? "auto" : ".8rem" : "auto"}}>
+                                {question.authorAnswer}
+                                {this.state.showshadow ? !this.state.stretch ? <span className="shade" /> : "" : ""}
+                            </span>
+                            {
+                                this.state.showshadow
+                                ? !this.state.stretch
+                                    ? <span className="strech" onClick={this.stretchClick}>展开查看全部<span><img src="/src/images/down.png" /></span></span> : "" : ""
+                            }
+                            <div className="bottom clearfix">
+                                <div className="left">
+                                    <span><img src={question.authorpic} /></span>
+                                    <span>{question.authorName}</span>
+                                    <span>{question.time}</span>
+                                </div>
+                                <div className="right">
+                                    <span><em>{question.careNum}</em>人关注</span>
+                                    <span onClick={this.setCare.bind(this, question.qid)}>{question.isCare ? "取消关注" : "+关注"}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <span className="answers"><em>{ otherAnswers.length }</em>个回答</span>
+                    <span className="answers"><em>{ otherAnswers.length }</em>个回答</span>
 
-                <div className="AnswerMain">{otherAnswersList}</div>
+                    <div className="AnswerMain">{otherAnswersList}</div>
 
-                <div className="toQuestionFooter">
-                    <Link to={{
-                        "pathname": "/invitetoanswer",
-                        "query": {"qid": this.props.params.qid}
-                    }}
-                    >
-                        <span>邀请回答</span>
-                    </Link>
-                    <Link to={`/addanswer/${this.props.params.qid}`}>
-                        <span>添加回答</span>
-                    </Link>
-                </div>
+                    <div className="toQuestionFooter">
+                        <Link to={{
+                            "pathname": "/invitetoanswer",
+                            "query": {"qid": this.props.params.qid}
+                        }}
+                        >
+                            <span>邀请回答</span>
+                        </Link>
+                        <Link to={`/addanswer/${this.props.params.qid}`}>
+                            <span>添加回答</span>
+                        </Link>
+                    </div>
+                </div>}
 
             </div>
         );

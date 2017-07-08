@@ -16,12 +16,16 @@ class MainLayout extends React.Component {
 
     }
 
-    componentDidMount(){
-      scrollTo(0,0);
+    componentDidMount () {
+
+        scrollTo(0, 0);
+
     }
-    
-    componentWillReceiveProps(){
-      scrollTo(0,0);
+
+    componentWillReceiveProps () {
+
+        scrollTo(0, 0);
+
     }
 
     render () {

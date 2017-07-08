@@ -108,7 +108,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     render () {
 
-        const {user , qid} = this.state;
+        const {user, qid} = this.state;
         const userList = user.map((value, index) =>
             <div key={index} className="item">
                 <div className="left">
