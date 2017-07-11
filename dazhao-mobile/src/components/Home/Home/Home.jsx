@@ -243,7 +243,7 @@ class Home extends React.Component {
                             <Link to="/searchPage">
                                 <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
                             </Link> :
-                            <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
+                            <span onClick={this.searchDetail()}><img src="/src/images/搜素.png" /></span>
                         }
                         
                     </div>

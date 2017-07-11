@@ -52,7 +52,7 @@ class SearchPage extends React.Component {
 
         !this.state.nomore
 
-        ? ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
+        ? ajax({"url": `/zhaoda/user/user111question?page=${page}`}).
         then((data) => {
 
             if (data.code === "S01") {
