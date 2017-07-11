@@ -4,6 +4,7 @@ import "./ZhaoDaIndex.scss";
 import ajax from "../../../services/ajax.js";
 import {Link} from "react-router";
 import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
+import LoadingBlock from "../../Public/Loading/LoadingBlock.jsx";
 
 class ZhaoDaIndex extends React.Component {
     constructor (props) {
@@ -20,35 +21,38 @@ class ZhaoDaIndex extends React.Component {
 
             ],
             "popularityPople": [
-                {
-                    "id": 1,
-                    "imgsrc": "/src/images/topicImg.png",
-                    "name": "Michael",
-                    "position": "骨灰级猎头、WIT总裁"
-                }
+                // {
+                //     "id": 1,
+                //     "imgsrc": "/src/images/topicImg.png",
+                //     "name": "Michael",
+                //     "position": "骨灰级猎头、WIT总裁"
+                // }
             ],
             "latestZhuanlan": [
-                {
-                    "tid": "2",
-                    "colposter": "/src/images/zhuanlan.png",
-                    "colposterbig": "/src/images/zhuanlan.png",
-                    "colid": "1",
-                    "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                    "colname": "#光爸说# 第一期——写简历的正确姿势"
-                }
+                // {
+                //     "tid": "2",
+                //     "colposter": "/src/images/zhuanlan.png",
+                //     "colposterbig": "/src/images/zhuanlan.png",
+                //     "colid": "1",
+                //     "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
+                //     "colname": "#光爸说# 第一期——写简历的正确姿势"
+                // }
             ],
             "carouselpic": [
-                {
-                    "id": "3",
-                    "img": "/src/images/1487917069l108992947.png",
-                    "description": "图片一"
-                }
+                // {
+                //     "id": "3",
+                //     "img": "/src/images/1487917069l108992947.png",
+                //     "description": "图片一"
+                // }
             ],
             "nowshow": 0,
             "getmore": false,
             "latestDynamicPage": 1,
             "nomore": false,
-            lock: false
+            "lock": false,
+            "loading1": true,
+            "loading2": true,
+            "loading3": true
 
         };
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
@@ -92,7 +96,7 @@ class ZhaoDaIndex extends React.Component {
 
     componentWillUnmount () {
 
-        this.setState({lock: true})
+        this.setState({"lock": true});
 
         clearInterval(this.state.autoCarousel);
 
@@ -101,20 +105,25 @@ class ZhaoDaIndex extends React.Component {
     // 获取轮播图片
     fetchCarouselpic () {
 
-        ajax({"url": "/zhaoda/carouselpic", obj: this}).
+        ajax({
+            "url": "/zhaoda/carouselpic",
+            "obj": this
+        }).
         then((data) => {
-          if (!this.state.lock) {
 
-            if (data.code === "S01") {
+            if (!this.state.lock) {
 
-                this.setState({"carouselpic": data.contents});
+                if (data.code === "S01") {
 
-            } else if (data.code === "E01") {
+                    this.setState({"carouselpic": data.contents});
 
-                this.setState({"carouselpic": this.state.carouselpic});
+                } else if (data.code === "E01") {
+
+                    this.setState({"carouselpic": this.state.carouselpic});
+
+                }
 
             }
-          }
 
         });
 
@@ -123,45 +132,51 @@ class ZhaoDaIndex extends React.Component {
     // 最新动态
     fetchLatestDynamic () {
 
-        ajax({"url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`, obj: this}).
+        ajax({
+            "url": `/zhaoda/zhaoda/boutiqueanswer?page=${this.state.latestDynamicPage}`,
+            "obj": this
+        }).
       then((data) => {
-        if (!this.state.lock) {
-            console.log(data)
-          if (data.contents.length > 0) {
 
-              const newQ = this.state.latestDynamic;
+          if (!this.state.lock) {
 
-              data.contents.map((value) => {
+              console.log(data);
+              if (data.contents.length > 0) {
 
-                  newQ.push({
-                      "qid": value.question.qid,
-                      "aid": value.aid,
-                      "topic": value.question.topics,
-                      "theme": value.question.qtitle,
-                      "name": value.user.nickname,
-                      "vip": value.user.vip,
-                      "remark": value.remark,
-                      "agree": value.question.agree,
-                      "comment": value.content,
-                      "collect": value.collect,
-                      "job": value.user.position
+                  const newQ = this.state.latestDynamic;
+
+                  data.contents.map((value) => {
+
+                      newQ.push({
+                          "qid": value.question.qid,
+                          "aid": value.aid,
+                          "topic": value.question.topics,
+                          "theme": value.question.qtitle,
+                          "name": value.user.nickname,
+                          "vip": value.user.vip,
+                          "remark": value.remark,
+                          "agree": value.question.agree,
+                          "comment": value.content,
+                          "collect": value.collect,
+                          "job": value.user.position
+                      });
+                      this.setState({
+                          "latestDynamic": newQ,
+                          "getmore": true
+                      });
+
                   });
+
+              } else {
+
                   this.setState({
-                      "latestDynamic": newQ,
-                      "getmore": true
+                      "getmore": true,
+                      "nomore": true
                   });
 
-              });
-
-          } else {
-
-              this.setState({
-                  "getmore": true,
-                  "nomore": true
-              });
+              }
 
           }
-        }
 
       });
 
@@ -184,24 +199,32 @@ class ZhaoDaIndex extends React.Component {
     // 热门话题
     fetchHotTopic () {
 
-        ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1", obj: this}).
+        ajax({
+            "url": "/zhaoda/topic/hottopics?categoryid=-1",
+            "obj": this
+        }).
         then((data) => {
-          if (!this.state.lock) {
 
-            if (data.code === "S01") {
+            if (!this.state.lock) {
+
+                if (data.code === "S01") {
 
                 // 查询成功
-                const hotTopic = data.contents.slice(0, 5);
+                    const hotTopic = data.contents.slice(0, 5);
 
-                this.setState({hotTopic});
+                    this.setState({
+                        hotTopic,
+                        "loading1": false
+                    });
 
-            } else if (data.code === "E01") {
+                } else if (data.code === "E01") {
 
                 // 如果查询出错，启用备用数据
-                this.setState({"hotTopic": this.state.hotTopic});
+                    this.setState({"hotTopic": this.state.hotTopic});
+
+                }
 
             }
-          }
 
         });
 
@@ -215,23 +238,31 @@ class ZhaoDaIndex extends React.Component {
     // 最新专栏
     fetchLatestZhuanlan () {
 
-        ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1", obj: this}).
+        ajax({
+            "url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1",
+            "obj": this
+        }).
         then((data) => {
-          if (!this.state.lock) {
 
-            if (data.code === "S01") {
+            if (!this.state.lock) {
 
-                const zhuanlan = data.contents.slice(0, 5);
+                if (data.code === "S01") {
 
-                this.setState({"latestZhuanlan": zhuanlan});
+                    const zhuanlan = data.contents.slice(0, 5);
 
-            } else if (data.code === "E01") {
+                    this.setState({
+                        "latestZhuanlan": zhuanlan,
+                        "loading3": false
+                    });
+
+                } else if (data.code === "E01") {
 
                 // 如果查询出错，启用备用数据
-                this.setState({"latestZhuanlan": this.state.latestZhuanlan});
+                    this.setState({"latestZhuanlan": this.state.latestZhuanlan});
+
+                }
 
             }
-          }
 
         });
 
@@ -243,7 +274,7 @@ class ZhaoDaIndex extends React.Component {
             // 触屏开始
         elem.addEventListener("touchstart", (e) => {
 
-            e.preventDefault();
+            // E.preventDefault();
             const _this = elem;
             let isStart = true;
             const event = e || window.event;
@@ -326,21 +357,23 @@ class ZhaoDaIndex extends React.Component {
 
     render () {
 
-        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore} = this.state;
+        const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;
 
 
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
 
         const hotTopicList = hotTopic.map((elem, index) =>
             <div className="img" key={index}>
-                <span className="span1">
-                    <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
-                </span>
-                <span className="span2">{elem.topicname}</span>
-                <span className="care">
-                    <span>回答:{elem.question}</span>
-                    <span>关注:{elem.care}</span>
-                </span>
+                <Link to={`/totopic/${elem.tid}`}>
+                    <span className="span1">
+                        <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
+                    </span>
+                    <span className="span2">{elem.topicname}</span>
+                    <span className="care">
+                        <span>回答:{elem.questionnum}</span>
+                        <span>关注:{elem.care}</span>
+                    </span>
+                </Link>
             </div>
             );
 
@@ -358,8 +391,10 @@ class ZhaoDaIndex extends React.Component {
 
         const latestZhuanlanList = latestZhuanlan.map((elem, index) =>
             <div className="img" key={index}>
-                <img src={"/src/images/zhuanlan.png" || elem.colposter} />
-                <p>{elem.colname}</p>
+                <Link to={`tofeature?colid=${elem.colid}`}>
+                    <img src={"/src/images/zhuanlan.png" || elem.colposter} />
+                    <p>{elem.colname}</p>
+                </Link>
             </div>
             );
 
@@ -417,7 +452,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic1" ref="topic1" className="content">
-                            {hotTopicList}
+                            {loading1 ? <LoadingBlock /> : hotTopicList}
                         </div>
                     </div>
 
@@ -429,7 +464,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic2" ref="topic2" className="content">
-                            {popularityPopleList}
+                            {loading2 ? <LoadingBlock /> : popularityPopleList}
                         </div>
                     </div>
 
@@ -441,7 +476,7 @@ class ZhaoDaIndex extends React.Component {
                             </Link>
                         </div>
                         <div id="topic3" ref="topic3" className="content" >
-                            {latestZhuanlanList}
+                            {loading3 ? <LoadingBlock /> : latestZhuanlanList}
                         </div>
                     </div>
 

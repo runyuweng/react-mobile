@@ -2,6 +2,7 @@ import React from "react";
 import "./ZhaoDaInvitetoAnswer.scss";
 import TopBar from "../../Public/TopBar/TopBar.jsx";
 import ajax from "../../../services/ajax.js";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class ZhaoDaInvitetoAnswer extends React.Component {
 
@@ -10,28 +11,15 @@ class ZhaoDaInvitetoAnswer extends React.Component {
         super(props);
         this.state = {
             "user": [
-                {
-                    "sid": 1,
-                    "name": "Michael",
-                    "img": "/src/images/pople.png",
-                    "job": "国际教练协会（ICF）认证教练",
-                    "isInvited": false
-                },
-                {
-                    "sid": 2,
-                    "name": "Michael",
-                    "img": "/src/images/pople.png",
-                    "job": "国际教练协会（ICF）认证教练",
-                    "isInvited": false
-                },
-                {
-                    "sid": 3,
-                    "name": "Michael",
-                    "img": "/src/images/pople.png",
-                    "job": "国际教练协会（ICF）认证教练",
-                    "isInvited": true
-                }
-            ]
+                // {
+                //     "sid": 1,
+                //     "name": "Michael",
+                //     "img": "/src/images/pople.png",
+                //     "job": "国际教练协会（ICF）认证教练",
+                //     "isInvited": false
+                // }
+            ],
+            showLoading: true
         };
         this.fetchUser = this.fetchUser.bind(this);
         this.invitetoanswer = this.invitetoanswer.bind(this);
@@ -55,28 +43,23 @@ class ZhaoDaInvitetoAnswer extends React.Component {
         ajax({"url": `/zhaoda/user/recommenduser?qid=${qid}`}).
       then((data) => {
 
-        console.log(data)
+          console.log(data);
 
           if (data.code === "S01") {
 
               const user = data.contents;
 
-              this.setState({user});
-
-          } else if (data.code === "E01") {
-
-              this.setState({"user": []});
+              this.setState({
+                  user:user,
+                  showLoading: false
+              });
 
           }
-
       });
 
     }
 
     invitetoanswer (qid, userid, index) {
-
-        console.log(qid,userid)
-        
 
         if (this.state.user[index].status === 1) {
 
@@ -87,12 +70,13 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
             ajax({"url": `/zhaoda/question/inviteanswer?qid=${qid}&id=${userid}`}).
             then((data) => {
-                console.log(data)
+
+                console.log(data);
                 if (data.code === "S01") {
 
                     const user = JSON.parse(JSON.stringify(this.state)).user;
 
-                    user[index].status = (this.state.user[index].status === 0) ? 1 : 0;
+                    user[index].status = this.state.user[index].status === 0 ? 1 : 0;
 
                     this.setState({user});
 
@@ -110,12 +94,12 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     render () {
 
-        const {user , qid} = this.state;
+        const {user, qid, showLoading} = this.state;
         const userList = user.map((value, index) =>
             <div key={index} className="item">
                 <div className="left">
                     <span className="circle">
-                        <img src={value.img} alt="用户头像" />
+                        <img src={value.img||''} alt="用户头像" />
                     </span>
                     <p>
                         <span>{value.nickname}</span><br />
@@ -131,9 +115,10 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                 <header>
                     <TopBar title="邀请回答" border="boder" />
                 </header>
+                {showLoading?<Loading />:
                 <div className="answercontent">
                     {userList}
-                </div>
+                </div>}
             </div>
         );
 

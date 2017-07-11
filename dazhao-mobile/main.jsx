@@ -20,12 +20,12 @@ import ZhiGuanHome from "./src/components/ZhiGuan/Home/Home.jsx";
 
 // 招答部分
 import Zhaoda from "./src/components/Zhaoda/Zhaoda/Zhaoda.jsx";
-import ZhaoDaDiscover from "./src/components/Zhaoda/ZhaoDaDiscover/ZhaoDaDiscover.jsx";
-import ZhaoDaFeature from "./src/components/Zhaoda/ZhaoDaFeature/ZhaoDaFeature.jsx";
+// import ZhaoDaIndex from "./src/components/Zhaoda/ZhaoDaIndex/ZhaoDaIndex.jsx";
+// import ZhaoDaDiscover from "./src/components/Zhaoda/ZhaoDaDiscover/ZhaoDaDiscover.jsx";
+// import ZhaoDaFeature from "./src/components/Zhaoda/ZhaoDaFeature/ZhaoDaFeature.jsx";
 import ZhaoDaMessage from "./src/components/Zhaoda/ZhaoDaMessage/ZhaoDaMessage.jsx";
 import ZhaoDaToFeatures from "./src/components/Zhaoda/ZhaoDaToFeatures/ZhaoDaToFeatures.jsx";
 import ZhaoDaToTopic from "./src/components/Zhaoda/ZhaoDaToTopic/ZhaoDaToTopic.jsx";
-import ZhaoDaIndex from "./src/components/Zhaoda/ZhaoDaIndex/ZhaoDaIndex.jsx";
 import ZhaoDaTopic from "./src/components/Zhaoda/ZhaoDaTopic/ZhaoDaTopic.jsx";
 import ZhaoDaSearch from "./src/components/Zhaoda/ZhaoDaSearch/ZhaoDaSearch.jsx";
 import ZhaoDaToQuestion from "./src/components/Zhaoda/ZhaoDaToQuestion/ZhaoDaToQuestion.jsx";
@@ -85,6 +85,23 @@ function requireAuth (nextState, replace) {
 
 }
 
+const getZhaoDaIndex = (location, cb) => {
+  require.ensure([],function(require){
+    cb(null, require('./src/components/Zhaoda/ZhaoDaIndex/ZhaoDaIndex.jsx').default);
+  }, 'ZhaoDaIndex')
+};
+
+const getZhaoDaDiscover = (location, cb) => {
+  require.ensure([],function(require){
+    cb(null, require('./src/components/Zhaoda/ZhaoDaDiscover/ZhaoDaDiscover.jsx').default);
+  }, 'ZhaoDaDiscover')
+};
+
+const getZhaoDaFeature = (location, cb) => {
+  require.ensure([],function(require){
+    cb(null, require('./src/components/Zhaoda/ZhaoDaFeature/ZhaoDaFeature.jsx').default);
+  }, 'ZhaoDaFeature')
+};
 
 const Routes = () => <Router history={hashHistory}>
     <Route path="/" component={MainLayout}>
@@ -92,25 +109,24 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="zhiGuan" component={ZhiGuanHome} />
         <Route path="home" component={Home} />
         <Route path="Zhaoda" component={Zhaoda}>
-            <IndexRoute component={ZhaoDaIndex} />
-            <Route path="main" component={ZhaoDaIndex} />
-            <Route path="discover" component={ZhaoDaDiscover} />
-            <Route path="feature" component={ZhaoDaFeature} />
+            <IndexRoute getComponent={getZhaoDaIndex} />
+            <Route path="main" getComponent={getZhaoDaIndex} />
+            <Route path="discover" getComponent={getZhaoDaDiscover} />
+            <Route path="feature" getComponent={getZhaoDaFeature} />
         </Route>
         <Route path="topic" component={ZhaoDaTopic} />
         <Route path="message" component={ZhaoDaMessage} />
-        <Route path="search" component={ZhaoDaSearch} />
-        <Route path="response" component={ZhaoDaResponse} />
-            //
-            <Route path="quiz" component={ZhaoDaQuiz} />
+        <Route path="search/:keyword" component={ZhaoDaSearch} />
+        <Route path="response/:qtitle/:aid" component={ZhaoDaResponse} />
+        <Route path="quiz" component={ZhaoDaQuiz} />
         <Route path="consult" component={ZhaoDaConsult} />
         <Route path="detail" component={ZhaoDaQuesDetail} />
         <Route path="toquestion/:qid" component={ZhaoDaToQuestion} />
         <Route path="tofeature" component={ZhaoDaToFeatures} />
         <Route path="totopic/:tid" component={ZhaoDaToTopic} />
-        <Route path="user" component={ZhaoDaUser} />
-        <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
-        <Route path="talk" component={ZhaoDaTalk} />
+        <Route path="user/:keyword" component={ZhaoDaUser} />
+        <Route path="zhuanlan/:keyword" component={ZhaoDaZhuanLan} />
+        <Route path="talk/:keyword" component={ZhaoDaTalk} />
         <Route path="choosetopic" component={ZhaoDaChooseTopic} />
         <Route path="coments" component={ZhaoDaComents} />
         <Route path="addanswer/:qid" component={ZhaoDaAddAnswer} />
@@ -137,6 +153,7 @@ const Routes = () => <Router history={hashHistory}>
         </Route>
         <Route path="invitation" component={MineInvitation} />
         <Route path="activity" component={MineActivity} />
+
         <Route path="minezhaoda" component={MineZhaoDa}>
             <Route path="concern" component={MineConcern}>
                 <IndexRoute component={MineConcernQuestion} />
@@ -147,6 +164,7 @@ const Routes = () => <Router history={hashHistory}>
             <Route path="quiz" component={MineQuiz} />
             <Route path="answer" component={MineAnswers} />
         </Route>
+
         <Route path="favoritepage" component={MineFavoritePage}>
             <Route path="favoritejobs" component={MineFavoriteJobs} />
             <Route path="favoritecompanys" component={MineFavoriteCompanys} />

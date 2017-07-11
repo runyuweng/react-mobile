@@ -81,7 +81,8 @@ class ConcernUser extends React.Component {
 
         ? ajax({"url": `/zhaoda/user/mysubscribeuser?page=${page}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 const caredUsers = data.contents;

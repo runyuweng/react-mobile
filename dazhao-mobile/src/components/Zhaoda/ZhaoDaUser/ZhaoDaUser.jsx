@@ -9,7 +9,7 @@ class ZhaoDaUser extends React.Component {
 
         super(props);
         this.state = {
-            "username": this.props.location.query.user,
+            "username": this.props.params.keyword,
             "users": [
                 {
                     "uid": 1,
@@ -28,7 +28,7 @@ class ZhaoDaUser extends React.Component {
 
     componentDidMount () {
 
-        //this.fetchUsers(this.state.username);
+        // This.fetchUsers(this.state.username);
 
     }
 
@@ -36,7 +36,8 @@ class ZhaoDaUser extends React.Component {
 
         ajax({"url": `/zhaoda/user/searchuser?username=${username}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 this.setState({"users": data.contents});
@@ -49,9 +50,7 @@ class ZhaoDaUser extends React.Component {
 
         });
 
-        this.setState({
-            "keyword" : ""
-        })
+        this.setState({"keyword": ""});
 
     }
 
@@ -59,12 +58,13 @@ class ZhaoDaUser extends React.Component {
 
         ajax({"url": `/zhaoda/user/subscribeuser?uid=${userId}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 const users = JSON.parse(JSON.stringify(this.state)).users;
 
-                users[index].status = (this.state.users[index].status === 0) ? 1 : 0;
+                users[index].status = this.state.users[index].status === 0 ? 1 : 0;
 
                 this.setState({users});
 
@@ -92,7 +92,7 @@ class ZhaoDaUser extends React.Component {
                         <span>{value.job}</span>
                     </p>
                 </div>
-                <span className="right" onClick={this.setCare.bind(this, value.uid, index)}>{value.status === 1? "取消关注" : "+关注"}</span>
+                <span className="right" onClick={this.setCare.bind(this, value.uid, index)}>{value.status === 1 ? "取消关注" : "+关注"}</span>
             </div>
             );
 
@@ -116,32 +116,16 @@ class ZhaoDaUser extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/search",
-                                "query": {"keyword": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/search/${this.state.username}`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/talk",
-                                "query": {"keyword": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/talk/${this.state.username}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/zhuanlan",
-                                "query": {"keyword": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/zhuanlan/${this.state.username}`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/user",
-                                "query": {"user": this.state.username}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/user/${this.state.username}`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

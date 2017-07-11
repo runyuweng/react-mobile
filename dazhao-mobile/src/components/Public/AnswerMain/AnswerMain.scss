@@ -52,7 +52,7 @@
                 font-weight:normal;
             }
         }
-        .comment{
+        .comment1{
             width:100%;
             font-size:0.14rem;
             font-family:"苹方";
@@ -62,7 +62,31 @@
             overflow : hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height:0.3rem;
+            img{
+              max-width: 3rem;
+            }
+            ul{
+              display: block;
+              line-height:0.25rem;
+            }
+            p,span{
+              line-height:0.25rem;
+            }
+        }
+        .comment{
+            width:100%;
+            font-size:0.14rem;
+            font-family:"苹方";
+            line-height:0.25rem;
+            max-height: .99rem;
+            color:#666666;
+            margin:0.15rem 0rem;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            // -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             img{
               max-width: 3rem;
@@ -103,7 +127,7 @@
             line-height:0.2rem;
             a{
                 color:#ADADAD;
-                margin-right:0.2rem;   
+                margin-right:0.2rem;
             }
             a>span{
 

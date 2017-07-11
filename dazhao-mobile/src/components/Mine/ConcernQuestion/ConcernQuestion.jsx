@@ -22,7 +22,7 @@ class ConcernQuestion extends React.Component {
 
     componentDidMount () {
 
-        //this.props.changeBottomState(false);
+        // This.props.changeBottomState(false);
 
         window.addEventListener("scroll", this.handleScroll);
         this.fetchQuestions(this.state.page);
@@ -60,7 +60,8 @@ class ConcernQuestion extends React.Component {
         !this.state.nomore
         ? ajax({"url": `/zhaoda/question/mycarequestion?page=${page}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 const questions = data.contents;

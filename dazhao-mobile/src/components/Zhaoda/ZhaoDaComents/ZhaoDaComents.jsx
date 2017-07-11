@@ -24,18 +24,6 @@ class ZhaoDaComents extends React.Component {
             //             "commentator_name": "李华",
             //             "img": "/src/images/pople.png",
             //             "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
-            //         },
-            //         {
-            //             "sid": 1,
-            //             "commentator_name": "李华",
-            //             "img": "/src/images/pople.png",
-            //             "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
-            //         },
-            //         {
-            //             "sid": 1,
-            //             "commentator_name": "李华",
-            //             "img": "/src/images/pople.png",
-            //             "comment_content": "谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。谢谢老师的指点。"
             //         }
             //     ]
             // }
@@ -61,20 +49,17 @@ class ZhaoDaComents extends React.Component {
 
         ajax({"url": `/zhaoda/answer/getcomments?aid=${aid}`}).
       then((data) => {
-            console.log(data)
+
+          console.log(data);
           if (data.code === "S01") {
 
               const comment = data.contents;
 
-              this.setState({"comment" : comment});
+              this.setState({comment});
 
           } else if (data.code === "E01") {
 
-            this.setState({
-                "comment": {
-                    "comments":[]
-                }
-            });
+              this.setState({"comment": {"comments": []}});
 
           }
 
@@ -94,21 +79,25 @@ class ZhaoDaComents extends React.Component {
             ajax({
                 "url": "/zhaoda/answer/addcomment",
                 "method": "POST",
-                "data": `aid=${aid}&data=${this.state.comment_input}`
+                "data": `aid=${aid}&content=${this.state.comment_input}`
             }).
             then((data) => {
-                console.log(data)
+
+                console.log(data);
 
                 if (data.code === "S01") {
 
+                    this.setState({
+                        "comment_input" : ""
+                    },()=>{
 
-                    //const comment = data.contents;
+                        this.fetchCommnets(aid);
 
-                    //this.setState({comment});
+                    });
 
                 } else if (data.code === "E01") {
 
-                    //this.setState({"comment": []});
+                    // This.setState({"comment": []});
 
                 }
 
@@ -161,13 +150,13 @@ class ZhaoDaComents extends React.Component {
                     </div>
                 </div>
                 <div className="commentbox">
-                    <input onChange={(e) => {
+                    <input value={this.state.comment_input} onChange={(e) => {
 
                         this.setState({"comment_input": e.target.value});
 
                     }} type="text" placeholder="非常不错的建议"
                     />
-                    <span onClick={this.deliverComment.bind(this,this.state.aid)}>发表评论</span>
+                    <span onClick={this.deliverComment.bind(this, this.state.aid)}>发表评论</span>
                 </div>
             </div>
         );

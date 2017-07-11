@@ -3,6 +3,7 @@ import "./AnswerMain.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 
+
 class AnswerMain extends React.Component {
     constructor (props) {
 
@@ -33,7 +34,7 @@ class AnswerMain extends React.Component {
 
           if (data.code === "S01") {
 
-              this.setState({"agree": this.state.agree + 1});
+              this.setState({"agree": parseInt(this.state.agree) + 1});
 
           } else if (data.code === "S04") {
                 // 点过赞了
@@ -72,15 +73,18 @@ class AnswerMain extends React.Component {
                         }
                     </div>
                     <Link to={`/toquestion/${qid}`}>
-                        <div className="comment">{comment}</div>
+                        <div
+                          className="comment"
+                          dangerouslySetInnerHTML={{"__html": comment}}
+                      />
                     </Link>
                     <div className="more">
                         <span><b><img onClick={this.setLike.bind(this, qid, aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
                         <Link to={{
-                                "pathname": "/coments",
-                                "query": {"aid": aid}
-                            }}
-                            >
+                            "pathname": "/coments",
+                            "query": {aid}
+                        }}
+                        >
                             <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
                         </Link>
                         <span><b><img src="/src/images/cang.png" /></b>收藏</span>

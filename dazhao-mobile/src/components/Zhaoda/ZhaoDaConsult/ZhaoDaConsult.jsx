@@ -14,6 +14,11 @@ class ZhaoDaConsult extends React.Component {
 
     }
 
+    componentDidMount () {
+
+        this.props.changeBottomState(false);
+
+    }
 
     handleChange (e) {
 

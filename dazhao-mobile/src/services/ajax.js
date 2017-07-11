@@ -4,7 +4,7 @@ import { hashHistory } from "react-router";
 export default function ajax(options) {
 
     let config = {
-        url: 'http://115.159.159.79' + options.url,
+        url: 'http://123.207.35.100' + options.url,
         method: options.method || "GET",
         async: options.async || true,
         data: options.data || '',

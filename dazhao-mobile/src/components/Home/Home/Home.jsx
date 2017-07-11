@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.scss";
 import ajax from "../../../services/ajax";
 import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
-import {Link, browserHistory } from "react-router";
+import {Link, browserHistory} from "react-router";
 
 
 class Home extends React.Component {
@@ -19,7 +19,7 @@ class Home extends React.Component {
             "enterpriseLoading": false,
             "jobsPage": 1,
             "enterprisePage": 1,
-            "searchPage" : false
+            "searchPage": false
         };
 
     }
@@ -33,7 +33,10 @@ class Home extends React.Component {
             "enterpriseLoading": true
         });
 
-        ajax({"url": "/zhaoda/getjobs?page=1", obj: this}).
+        ajax({
+            "url": "/zhaoda/getjobs?page=1",
+            "obj": this
+        }).
         then((data) => {
 
             if (!this.state.lock) {
@@ -51,7 +54,10 @@ class Home extends React.Component {
 
         });
 
-        ajax({"url": "/zhaoda/jobs/enterprise?industryid=-1&page=1", obj: this}).
+        ajax({
+            "url": "/zhaoda/jobs/enterprise?industryid=-1&page=1",
+            "obj": this
+        }).
         then((data) => {
 
             if (!this.state.lock) {
@@ -85,11 +91,9 @@ class Home extends React.Component {
             this.props.changeMessageContent("搜索不能为空");
 
         } else {
-            
-            sessionStorage.setItem("searchCon", this.state.search)
-            this.setState({
-                "searchPage" : true
-            })
+
+            sessionStorage.setItem("searchCon", this.state.search);
+            this.setState({"searchPage": true});
 
         }
 
@@ -103,68 +107,72 @@ class Home extends React.Component {
         this.setState(newState);
         newState = {};
 
-        ajax({"url": type === "jobs" ? `/zhaoda/getjobs?page=${this.state.jobsPage}` : `/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`, obj: this}).
+        ajax({
+            "url": type === "jobs" ? `/zhaoda/getjobs?page=${this.state.jobsPage}` : `/zhaoda/jobs/enterprise?industryid=-1&page=${this.state.enterprisePage}`,
+            "obj": this
+        }).
         then((data) => {
 
-          if (!this.state.lock) {
+            if (!this.state.lock) {
 
-            if (data.code === "S01") {
+                if (data.code === "S01") {
 
-                if (type === "jobs") {
+                    if (type === "jobs") {
 
-                    this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
+                        this.setState({"jobs": this.state.jobs.concat(data.contents)}, () => {
 
-                        let newState = {};
+                            let newState = {};
 
-                        newState[`${type}Loading`] = false;
-                        newState[`${type}Page`] = this.state[`${type}Page`] + 1;
+                            newState[`${type}Loading`] = false;
+                            newState[`${type}Page`] = this.state[`${type}Page`] + 1;
 
-                        this.setState(newState);
-                        newState = {};
+                            this.setState(newState);
+                            newState = {};
 
-                    });
+                        });
 
-                } else if (type === "enterprise") {
+                    } else if (type === "enterprise") {
 
-                    this.setState({"enterprise": this.state.enterprise.concat(data.contents)}, () => {
+                        this.setState({"enterprise": this.state.enterprise.concat(data.contents)}, () => {
 
-                        let newState = {};
+                            let newState = {};
 
-                        newState[`${type}Loading`] = false;
-                        newState[`${type}Page`] = this.state[`${type}Page`] + 1;
+                            newState[`${type}Loading`] = false;
+                            newState[`${type}Page`] = this.state[`${type}Page`] + 1;
 
-                        this.setState(newState);
-                        newState = {};
+                            this.setState(newState);
+                            newState = {};
 
-                    });
+                        });
+
+                    }
+
+
+                } else if (data.code === "S02") {
+
+                    let newState = {};
+
+                    newState[`${type}Loading`] = false;
+
+                    this.props.changeMessageContent("已加载完全部");
+
+                    this.setState(newState);
+                    newState = {};
+
+                } else if (date.code === "E01") {
+
+                    let newState = {};
+
+                    newState[`${type}Loading`] = false;
+
+                    this.props.changeMessageContent("请求错误，请稍后重试");
+
+                    this.setState(newState);
+                    newState = {};
 
                 }
 
-
-            } else if (data.code === "S02") {
-
-                let newState = {};
-
-                newState[`${type}Loading`] = false;
-
-                this.props.changeMessageContent("已加载完全部");
-
-                this.setState(newState);
-                newState = {};
-
-            } else if (date.code === "E01") {
-
-                let newState = {};
-
-                newState[`${type}Loading`] = false;
-
-                this.props.changeMessageContent("请求错误，请稍后重试");
-
-                this.setState(newState);
-                newState = {};
-
             }
-          }
 
         });
 
@@ -239,13 +247,13 @@ class Home extends React.Component {
                         }} value={search} type="text" placeholder="搜索期望中的公司、岗位、地点"
                         />
                         {
-                            this.state.searchPage ?
-                            <Link to="/searchPage">
+                            this.state.searchPage
+                            ? <Link to="/searchPage">
                                 <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
-                            </Link> :
-                            <span onClick={this.searchDetail()}><img src="/src/images/搜素.png" /></span>
+                            </Link>
+                            : <span onClick={() => this.searchDetail()}><img src="/src/images/搜素.png" /></span>
                         }
-                        
+
                     </div>
                 </header>
 

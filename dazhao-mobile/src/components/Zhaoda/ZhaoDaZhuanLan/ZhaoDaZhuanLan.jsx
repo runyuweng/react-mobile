@@ -9,7 +9,7 @@ class ZhaoDaZhuanLan extends React.Component {
 
         super(props);
         this.state = {
-            "keyword": this.props.location.query.keyword,
+            "keyword": this.props.params.keyword,
             "zhuanlan": [
                 {
                     "qid": 1,
@@ -26,7 +26,7 @@ class ZhaoDaZhuanLan extends React.Component {
 
     componentDidMount () {
 
-        //this.fetchZhuanlan(this.state.keyword);
+        // This.fetchZhuanlan(this.state.keyword);
 
     }
 
@@ -35,7 +35,7 @@ class ZhaoDaZhuanLan extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/searchzhuanlan?keyword=${keyword}`}).
         then((data) => {
 
-            console.log(data)
+            console.log(data);
 
             if (data.code === "S01") {
 
@@ -49,9 +49,7 @@ class ZhaoDaZhuanLan extends React.Component {
 
         });
 
-        this.setState({
-            "keyword" : ""
-        })
+        this.setState({"keyword": ""});
 
     }
     render () {
@@ -93,32 +91,16 @@ class ZhaoDaZhuanLan extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/search",
-                                "query": {"keyword": this.state.keyword}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/search/${this.state.keyword}`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/talk",
-                                "query": {"keyword": this.state.keyword}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/talk/${this.state.keyword}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/zhuanlan",
-                                "query": {"keyword": this.state.keyword}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/zhuanlan/${this.state.keyword}`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={{
-                                "pathname": "/user",
-                                "query": {"user": ""}
-                            }}
-                            >
+                            <Link activeClassName="active" to={`/user/${this.state.keyword}`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

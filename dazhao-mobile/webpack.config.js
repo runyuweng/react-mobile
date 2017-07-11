@@ -7,6 +7,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, './'),
         filename: 'index.js',
+        chunkFilename: 'static/js/[name].chunk.js'
     },
 
     devServer: {
@@ -47,22 +48,26 @@ var config = {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-        new AppCachePlugin({
-            cache: [
-                'index.js',
-                'index.html'
-            ],
-            network: ['*'],
-            output: './cache.appcache'
-        })
-        ,
-        new webpack.optimize.UglifyJsPlugin({
-            beauty: false,
-            comments: false,
-            compress: {
-                warnings: false
-            }
-        })
+        new webpack.optimize.CommonsChunkPlugin({
+          name: "commons",
+          filename: 'static/js/common.js'
+        }),
+        // new AppCachePlugin({
+        //     cache: [
+        //         'index.js',
+        //         'index.html'
+        //     ],
+        //     network: ['*'],
+        //     output: './cache.appcache'
+        // })
+        // ,
+        // new webpack.optimize.UglifyJsPlugin({
+        //     beauty: false,
+        //     comments: false,
+        //     compress: {
+        //         warnings: false
+        //     }
+        // })
     ]
 }
 

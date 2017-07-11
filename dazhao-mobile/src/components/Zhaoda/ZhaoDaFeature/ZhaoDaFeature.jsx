@@ -2,6 +2,7 @@ import React from "react";
 import "./ZhaoDaFeature.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class ZhaoDaFeature extends React.Component {
 
@@ -9,32 +10,8 @@ class ZhaoDaFeature extends React.Component {
 
         super(props);
         this.state = {
-            "zhuanlan": [
-                {
-                    "imgsrc": "/src/images/zhuanlan.png",
-                    "topic": "#麦力达#第一期--考研那些事儿..",
-                    "name": "Michal",
-                    "vip": true,
-                    "theme": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
-
-                },
-                {
-                    "imgsrc": "/src/images/zhuanlan.png",
-                    "topic": "#麦力达#第一期--考研那些事儿..",
-                    "name": "Michal",
-                    "vip": true,
-                    "theme": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
-
-                },
-                {
-                    "imgsrc": "/src/images/zhuanlan.png",
-                    "topic": "#麦力达#第一期--考研那些事儿..",
-                    "name": "Michal",
-                    "vip": true,
-                    "theme": "读研？工作？跨专业？选热门？如何选择变成现在最合适的 如何选择编程未来最正确的？"
-
-                }
-            ]
+            "zhuanlan": [],
+            "showLoading": true
         };
         this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
 
@@ -51,17 +28,16 @@ class ZhaoDaFeature extends React.Component {
 
         ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1"}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 const zhuanlan = data.contents;
 
-                this.setState({zhuanlan});
-
-            } else if (data.code === "E01") {
-
-                // 如果查询出错，启用备用数据
-                this.setState({"zhuanlan": []});
+                this.setState({
+                    zhuanlan,
+                    "showLoading": false
+                });
 
             }
 
@@ -71,7 +47,7 @@ class ZhaoDaFeature extends React.Component {
 
     render () {
 
-        const {zhuanlan} = this.state;
+        const {zhuanlan, showLoading} = this.state;
 
         const ZhuanLanList = zhuanlan.map((elem, index) =>
             <div className="feature" key={index}>
@@ -99,10 +75,10 @@ class ZhaoDaFeature extends React.Component {
             );
 
         return (
-            <div className="ZhaoDaFeature">
-
-                {ZhuanLanList}
-
+            <div>
+                {showLoading ? <Loading /> : <div className="ZhaoDaFeature">
+                    {ZhuanLanList}
+                </div>}
             </div>
         );
 

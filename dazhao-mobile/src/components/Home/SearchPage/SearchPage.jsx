@@ -1,33 +1,36 @@
-import React from 'react';
-import './SearchPage.scss';
-import { Link } from 'react-router';
+import React from "react";
+import "./SearchPage.scss";
+import {Link} from "react-router";
 import ajax from "../../../services/ajax";
 
 class SearchPage extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-    	"keyword" : "",
-  	 	"jobs" : [],
+    constructor (props) {
+
+        super(props);
+        this.state = {
+    	"keyword": "",
+  	 	"jobs": [],
     	"page": 1,
-        "nomore": false,
-        "moreMessage": ""
-    };
-    this.handleScroll = this.handleScroll.bind(this);	
-  }
+            "nomore": false,
+            "moreMessage": ""
+        };
+        this.handleScroll = this.handleScroll.bind(this);
 
-  componentDidMount() {
+    }
+
+    componentDidMount () {
+
   	 const searchCon = sessionStorage.getItem("searchCon");
-  	 this.setState({
-  	 	"keyword" : searchCon
-  	 },()=>{
 
-		this.fetchQuestions(this.state.page);
-        window.addEventListener("scroll", this.handleScroll);
+  	 this.setState({"keyword": searchCon}, () => {
 
-  	 })
-  }
+       this.fetchQuestions(this.state.page);
+       window.addEventListener("scroll", this.handleScroll);
+
+  	 });
+
+    }
 
     handleScroll (e) {
 
@@ -52,7 +55,7 @@ class SearchPage extends React.Component {
 
         !this.state.nomore
 
-        ? ajax({"url": `/zhaoda/user/user111question?page=${page}`}).
+        ? ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
         then((data) => {
 
             if (data.code === "S01") {
@@ -72,7 +75,7 @@ class SearchPage extends React.Component {
                 this.setState({
                     "jobs": this.state.jobs.concat(jobs),
                     "nomore": true,
-                    "moreMessage": "没有更多提问"                
+                    "moreMessage": "没有更多提问"
                 });
 
             } else if (data.code === "S03") {
@@ -96,56 +99,58 @@ class SearchPage extends React.Component {
 
     }
 
-  render() {
+    render () {
 
-	const { jobs } = this.state;
+        const {jobs} = this.state;
 
   	const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
 
-        <div className="jobitems" key={i}>
-            <span className="pics"><img src={value.company.img} /></span>
-            <div className="jobintro">
-                <h2>{value.job_name}</h2>
-                <h3>{value.company.name}</h3>
-                <span>
-                    <em>{value.company.city}</em>
-                    <em>{value.education}</em>
-                </span>
-                <span>
-                    <em>{value.company.type}</em>
-                    <b>|</b>
-                    <em>外商独资</em>
-                    <b>|</b>
-                    <em>{value.company.stage}</em>
-                    <b>|</b>
-                    <em>{value.company.numbers}</em>
-                </span>
-            </div>
-        </div>
-    </Link>);
-    return (
-      <div id="searchPage">
-      	<header>
-            <div className="search">
-                <Link to="/">
-                    <span >取消</span>
-                </Link>
-                <input type="text" onChange={(e) => {
-
-                    this.setState({"keyword": e.target.value});
-
-                }} placeholder="Michael" value={this.state.keyword}
-                />
-                <span>搜索</span>
-            </div>
-        </header>
-
-        <div className="jobWrap">{jobList}</div>
-        <p className="fetchmore">{this.state.moreMessage}</p>
-
+      <div className="jobitems" key={i}>
+          <span className="pics"><img src={value.company.img} /></span>
+          <div className="jobintro">
+              <h2>{value.job_name}</h2>
+              <h3>{value.company.name}</h3>
+              <span>
+                  <em>{value.company.city}</em>
+                  <em>{value.education}</em>
+              </span>
+              <span>
+                  <em>{value.company.type}</em>
+                  <b>|</b>
+                  <em>外商独资</em>
+                  <b>|</b>
+                  <em>{value.company.stage}</em>
+                  <b>|</b>
+                  <em>{value.company.numbers}</em>
+              </span>
+          </div>
       </div>
-    );
-  }
+  </Link>);
+
+        return (
+            <div id="searchPage">
+                <header>
+                    <div className="search">
+                        <Link to="/">
+                            <span >取消</span>
+                        </Link>
+                        <input type="text" onChange={(e) => {
+
+                            this.setState({"keyword": e.target.value});
+
+                        }} placeholder="Michael" value={this.state.keyword}
+                        />
+                        <span>搜索</span>
+                    </div>
+                </header>
+
+                <div className="jobWrap">{jobList}</div>
+                <p className="fetchmore">{this.state.moreMessage}</p>
+
+            </div>
+        );
+
+    }
 }
 
 export default SearchPage;
