@@ -30,6 +30,8 @@ class Enterprise extends React.Component {
             "tips": "加载更多"
         };
 
+        this.handleScroll = this.handleScroll.bind(this);
+
     }
 
     componentDidMount () {
@@ -43,21 +45,40 @@ class Enterprise extends React.Component {
 
         });
 
-        this.loadData(() => {
+        this.loadData();
 
-            this.handleLoad(document);
+        window.addEventListener("scroll", this.handleScroll);
 
-        });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);
+    }
+
+    handleScroll (e) {
+
+        const scrollTop = document.body.scrollTop;
+        const innerHeight = window.innerHeight;
+        const docHeight = document.body.scrollHeight;
+
+        console.log(scrollTop, innerHeight, docHeight);
+
+        scrollTop >= (docHeight - innerHeight)
+        ? (() => {
+
+            this.loadData("loadMore");
+
+        })() : "";
 
     }
 
     loadData (id, type) {
 
-        // 通过arguments来判断是不是加载更多
-        const data = JSON.parse(JSON.stringify(this.state.data));
 
         this.setState({"tips": "加载中..."});
 
+        // 通过arguments来判断是不是加载更多
+        const data = JSON.parse(JSON.stringify(this.state.data));
 
         if (id && type) {
 
@@ -66,6 +87,8 @@ class Enterprise extends React.Component {
         }
         ajax({"url": `/zhaoda/company/condition?province=${data.province}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
+
+            console.log(data)
 
             const enterprise = (arguments.length === 1 ? this.state.enterprise.concat(data.contents || []) : data.contents) || [];
 
@@ -88,51 +111,53 @@ class Enterprise extends React.Component {
             });
 
         });
+
+        Object.assign(data, {"page": data.page + 1});
         this.setState({data});
 
     }
 
-    handleLoad (elem) {
+    // handleLoad (elem) {
 
-        const that = this;
+    //     const that = this;
 
-        elem.addEventListener("touchstart", (e) => {
+    //     elem.addEventListener("touchstart", (e) => {
 
-            const height = document.body.scrollHeight;
-            const event = e || window.event;
-            const startPoint = event.touches[0].pageY;
+    //         const height = document.body.scrollHeight;
+    //         const event = e || window.event;
+    //         const startPoint = event.touches[0].pageY;
 
-            elem.addEventListener("touchmove", (e) => {
+    //         elem.addEventListener("touchmove", (e) => {
 
-                const event = e || window.event;
-                const currentY = event.touches[0].pageY;
-                const changeY = currentY - startPoint;
+    //             const event = e || window.event;
+    //             const currentY = event.touches[0].pageY;
+    //             const changeY = currentY - startPoint;
 
-                if (document.body.scrollHeight >= height && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
+    //             if (document.body.scrollHeight >= height && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
 
-                    document.body.style.height = `${document.body.offsetHeight + 1}px`;
+    //                 document.body.style.height = `${document.body.offsetHeight + 1}px`;
 
-                }
+    //             }
 
-            });
-            elem.addEventListener("touchend", (e) => {
+    //         });
+    //         elem.addEventListener("touchend", (e) => {
 
-                if (height < document.body.offsetHeight && this.state.tips === "加载更多") {
+    //             if (height < document.body.offsetHeight && this.state.tips === "加载更多") {
 
-                    document.body.style.height = "auto";
-                    const data = JSON.parse(JSON.stringify(this.state.data));
+    //                 document.body.style.height = "auto";
+    //                 const data = JSON.parse(JSON.stringify(this.state.data));
 
-                    data.page = parseInt(data.page) + 1;
-                    this.setState({data});
-                    that.loadData("loadMore");
+    //                 data.page = parseInt(data.page) + 1;
+    //                 this.setState({data});
+    //                 that.loadData("loadMore");
 
-                }
+    //             }
 
-            });
+    //         });
 
-        });
+    //     });
 
-    }
+    // }
 
     changeCategory (id) {
 
@@ -172,36 +197,30 @@ class Enterprise extends React.Component {
     render () {
 
         const {industry, enterprise, showLoading, reset, tips} = this.state;
-        const enterpriseList = enterprise.map((value, i) =>
-            <Link to={`/company/${value.companyid}`} key={i}>
-                <div className="jobitems" key={i}>
-
-                    <div className="pics">
-                        <img src={value.img} />
-                    </div>
-                    <div className="jobintro">
-                        <h2>{value.name}<span>认证</span></h2>
-                        <h3>
-                            <span>[<em>{value.jobs.length}</em>个]</span>
-                            {value.jobs.length > 0 ? value.jobs.map((value, i) =>
-                                <span key={i}>{value.job_name}、</span>
-                            ) : "暂无"}
-                        </h3>
-                        <span className="address">
-                            <em>{value.city}</em>
-                        </span>
-                        <span>
-                            <em>互联网(暂无)</em>
-                            <b>|</b>
-                            <em>外商独资(暂无)</em>
-                            <b>|</b>
-                            <em>{value.stage}</em>
-                            <b>|</b>
-                            <em>{value.numbers}</em>
-                        </span>
-                    </div>
+        
+        const enterpriseList = enterprise.map((value, i) => <Link to={`/company/${value.companyid}`} key={i}>
+            <div className="jobitems">
+                <span className="pics">
+                    <img src={value.img} />
+                </span>
+                <div className="jobintro">
+                    <h2>{value.name}<span>认证</span></h2>
+                    <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>JAVAEE研发工程</span>、<span>JAVAEE研发工程</span></h3>
+                    <span className="address">
+                        <em>{value.city}</em>
+                    </span>
+                    <span>
+                        <em>{value.type}</em>
+                        <b>|</b>
+                        <em>外商独资</em>
+                        <b>|</b>
+                        <em>{value.stage}</em>
+                        <b>|</b>
+                        <em>{value.numbers}</em>
+                    </span>
                 </div>
-            </Link>);
+            </div>
+        </Link>);
 
         return (
             <div className="Enterprise">
@@ -221,6 +240,8 @@ class Enterprise extends React.Component {
                     </div>
 
                 </div>
+
+                <p className="fetchmore">{this.state.tips}</p>
 
             </div>
         );

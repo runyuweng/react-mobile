@@ -23,7 +23,8 @@ class Company extends React.Component {
                 "Authentication": false,
                 "introduce": "",
                 "jobs": []
-            }
+            },
+            "isSelected" : false
         };
         this.setCare = this.setCare.bind(this);
 
@@ -67,7 +68,9 @@ class Company extends React.Component {
             console.log(data);
             if (data.code === "S01") {
 
-                alert("已经关注");
+                this.setState({
+                    "isSelected" : !this.state.isSelected
+                })
 
             } else if (data.code === "E01") {
 
@@ -113,7 +116,13 @@ class Company extends React.Component {
                             </span>
                             <span>企业详情</span>
 
-                            <span onClick={this.setCare.bind(this, cid)}><img src="/src/images/love.png" /></span>
+                            {
+                                this.state.isSelected ?
+                                <span className="logo">
+                                    <object onClick={this.setCare.bind(this, cid)} data="/src/images/isSelected.svg" type="image/svg+xml" />
+                                </span>
+                                : <span><img onClick={this.setCare.bind(this, cid)} src="/src/images/love.png" /></span>
+                            }
                         </div>
                     </div>
                 </header>

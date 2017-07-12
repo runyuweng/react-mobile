@@ -19,8 +19,7 @@ class ZhaoDaToTopic extends React.Component {
                 "answer": "",
                 "care": "",
                 "isCared": false,
-                "questions": [
-                ]
+                "questions": []
             },
             "page": 1,
             "nomore": false,
@@ -68,12 +67,28 @@ class ZhaoDaToTopic extends React.Component {
 
     }
 
+    setCare(tid){
+      ajax({"url" : `/zhaoda/topic/subscribetopic?topicid=${tid}`})
+      .then((data) => {
+        if (data.code === "S01") {
+            var topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
+            topicdetail.isCared = !this.state.topicdetail.isCared;
+
+            this.setState({
+              "topicdetail" : topicdetail
+            })
+        }
+      })
+    }
+
     fetchQuestion (page) {
 
         !this.state.nomore
 
         ? ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=${page}`}).
           then((data) => {
+
+            console.log(data)
 
               if (data.code === "S01") {
 
@@ -86,6 +101,7 @@ class ZhaoDaToTopic extends React.Component {
                       newQ.topicTitle = data.contents.topicname;
                       newQ.answer = data.contents.questionnum;
                       newQ.care = data.contents.care;
+                      newQ.isCared = data.contents.isguanzhu;
                       newQ.topicImg = data.contents.img;
                   // NewQ.topicImg = "/src/images/pople.png";
                       newQ.questions = [];
@@ -218,7 +234,7 @@ class ZhaoDaToTopic extends React.Component {
                             <span>关注：<em>{topicdetail.care || 0}</em></span>
                         </div>}
                     </div>
-                    <sapn className="attention">+关注</sapn>
+                    <sapn onClick={this.setCare.bind(this,this.props.params.tid)} className="attention">{topicdetail.isCared ? "已关注" : "+关注"}</sapn>
                 </div>
 
                 <div className="topicM">

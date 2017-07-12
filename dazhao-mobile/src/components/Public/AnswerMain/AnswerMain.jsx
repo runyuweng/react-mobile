@@ -27,7 +27,7 @@ class AnswerMain extends React.Component {
 
     }
 
-    setLike (qid, aid) {
+    setLike (aid) {
 
         ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
       then((data) => {
@@ -40,6 +40,28 @@ class AnswerMain extends React.Component {
                 // 点过赞了
           } else if (data.code === "E01") {
                 // 出错
+          }
+
+      });
+
+    }
+
+    setSelected (aid) {
+
+        ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
+      then((data) => {
+            
+          console.log(data)
+          if (data.code === "S01") {
+
+            // 收藏状态改变
+              this.setState({
+                "collect" : !this.state.collect
+              });
+
+          } else if (data.code === "E01") {
+            // 出错
+
           }
 
       });
@@ -87,7 +109,11 @@ class AnswerMain extends React.Component {
                         >
                             <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
                         </Link>
-                        <span><b><img src="/src/images/cang.png" /></b>收藏</span>
+                        {
+                            collect ?
+                            <span onClick={this.setSelected.bind(this, aid)}><b><img src="/src/images/cang.png" /></b>已收藏</span> :
+                            <span onClick={this.setSelected.bind(this, aid)}><b><img src="/src/images/cang.png" /></b>收藏</span>
+                        }
                     </div>
                 </article>
 

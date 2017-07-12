@@ -1,5 +1,12 @@
 .Company{
     margin-bottom: .375rem;
+    .logo{
+        display:inline-block;
+        object{
+            width: .2rem;
+            height: .18rem;
+        }
+    }
     #jobTop{
         font-size: 0;
         display: flex;

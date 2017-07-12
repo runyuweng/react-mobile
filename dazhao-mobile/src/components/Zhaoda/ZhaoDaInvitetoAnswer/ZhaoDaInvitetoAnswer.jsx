@@ -10,16 +10,9 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
         super(props);
         this.state = {
-            "user": [
-                // {
-                //     "sid": 1,
-                //     "name": "Michael",
-                //     "img": "/src/images/pople.png",
-                //     "job": "国际教练协会（ICF）认证教练",
-                //     "isInvited": false
-                // }
-            ],
-            showLoading: true
+            "user": [],
+            showLoading: true,
+            "norecommenduser" : false
         };
         this.fetchUser = this.fetchUser.bind(this);
         this.invitetoanswer = this.invitetoanswer.bind(this);
@@ -47,12 +40,22 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
           if (data.code === "S01") {
 
+            if (data.contents.length > 0) {
+
               const user = data.contents;
 
               this.setState({
                   user:user,
                   showLoading: false
               });
+
+            }else{
+
+                this.setState({
+                    "norecommenduser" : true
+                })
+
+            }
 
           }
       });
@@ -115,6 +118,11 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                 <header>
                     <TopBar title="邀请回答" border="boder" />
                 </header>
+                {
+                    this.state.norecommenduser ? 
+
+                    <p className="noruser">对不起，暂时没有推荐用户！</p> : ""
+                }
                 {showLoading?<Loading />:
                 <div className="answercontent">
                     {userList}

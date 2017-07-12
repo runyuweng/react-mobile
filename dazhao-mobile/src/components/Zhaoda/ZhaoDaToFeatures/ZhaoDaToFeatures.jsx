@@ -20,7 +20,7 @@ class ZhaoDaToFeatures extends React.Component {
             "data": {
                 "video": "http://html5videoformatconverter.com/data/images/happyfit2.ogv",
                 "playtimes": 204, // 播放次数
-                "concern": true, // 是否关注
+                "collect": false, // 是否关注
                 "colname": "#麦力答#第一期----考研那些事儿",
                 "coldescription": " 读研？工作？跨专业？选热门？如何让选择变成现在最适合的？如何让选择变成未来组以正确的？请听--麦力答",
                 "guest": {// 嘉宾信息
@@ -107,7 +107,7 @@ class ZhaoDaToFeatures extends React.Component {
 
         ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
         then((data) => {
-
+            console.log(data)
             const myData = data.contents;
 
             this.setState({
@@ -261,7 +261,15 @@ class ZhaoDaToFeatures extends React.Component {
                                 <em><b>{data.playtimes}</b>次播放</em>
                             </div>
                             <div className="videoR">
-                                <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
+                                {
+                                    data.collect ?
+                                    
+                                    <span className="logo">
+                                        <object onClick={this.setSelect.bind(this, data.colid)} data="/src/images/isSelected.svg" type="image/svg+xml" />
+                                    </span> :
+
+                                    <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
+                                }
                                 <span><img src="/src/images/top.png" /></span>
                             </div>
                         </div>

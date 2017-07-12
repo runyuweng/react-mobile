@@ -91,16 +91,16 @@ class ZhaoDaZhuanLan extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={`/search/${this.state.keyword}`}>
+                            <Link activeClassName="active" to={`/search`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={`/talk/${this.state.keyword}`}>
+                            <Link activeClassName="active" to={`/talk`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={`/zhuanlan/${this.state.keyword}`}>
+                            <Link activeClassName="active" to={`/zhuanlan`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={`/user/${this.state.keyword}`}>
+                            <Link activeClassName="active" to={`/user`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

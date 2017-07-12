@@ -28,20 +28,12 @@
                     }
                 }
                 p{
-
-                    //height: .6rem;
-                    // display: -webkit-flex;
-                    // display: -moz-flex;
-                    // display: -ms-flex;
-                    // display: -o-flex;
-                    // display: flex;
-                    // flex-direction: column;
-                    // justify-content: center;
                     span:nth-of-type(1){
                         font-weight: bold;
                         font-size: .14rem;
                         color:#FFCF03;
-                        line-height: .25rem;
+                        height: .19rem;
+                        line-height: .19rem;
                     }
                     span:nth-of-type(2){
                         display:inline-block;
@@ -49,6 +41,7 @@
                         text-overflow: ellipsis;
                         font-size: .13rem;
                         color:#ADADAD;
+                        height: .25rem;
                         line-height: .25rem;
                     }
                 }

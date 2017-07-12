@@ -116,16 +116,16 @@ class ZhaoDaUser extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={`/search/${this.state.username}`}>
+                            <Link activeClassName="active" to={`/search`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={`/talk/${this.state.username}`}>
+                            <Link activeClassName="active" to={`/talk`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={`/zhuanlan/${this.state.username}`}>
+                            <Link activeClassName="active" to={`/zhuanlan`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={`/user/${this.state.username}`}>
+                            <Link activeClassName="active" to={`/user`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

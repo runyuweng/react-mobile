@@ -15,36 +15,11 @@ class ZhaoDaIndex extends React.Component {
             "nowX": 0, // 鼠标移动后的位置
             "delateX": 0, // 移动的距离
             "currentX": 0,
-            "latestDynamic": [
-            ],
-            "hotTopic": [
-
-            ],
-            "popularityPople": [
-                // {
-                //     "id": 1,
-                //     "imgsrc": "/src/images/topicImg.png",
-                //     "name": "Michael",
-                //     "position": "骨灰级猎头、WIT总裁"
-                // }
-            ],
-            "latestZhuanlan": [
-                // {
-                //     "tid": "2",
-                //     "colposter": "/src/images/zhuanlan.png",
-                //     "colposterbig": "/src/images/zhuanlan.png",
-                //     "colid": "1",
-                //     "coldescription": "简历，不简单！该如何写？要注意哪些地方？请听——光爸说",
-                //     "colname": "#光爸说# 第一期——写简历的正确姿势"
-                // }
-            ],
-            "carouselpic": [
-                // {
-                //     "id": "3",
-                //     "img": "/src/images/1487917069l108992947.png",
-                //     "description": "图片一"
-                // }
-            ],
+            "latestDynamic": [],
+            "hotTopic": [],
+            "popularityPople": [],
+            "latestZhuanlan": [],
+            "carouselpic": [],
             "nowshow": 0,
             "getmore": false,
             "latestDynamicPage": 1,
@@ -91,6 +66,7 @@ class ZhaoDaIndex extends React.Component {
         this.fetchLatestZhuanlan();
         this.fetchLatestDynamic();
         this.fetchCarouselpic();
+        this.fetchPopularity();
 
     }
 
@@ -137,10 +113,9 @@ class ZhaoDaIndex extends React.Component {
             "obj": this
         }).
       then((data) => {
-
+        console.log(data)
           if (!this.state.lock) {
 
-              console.log(data);
               if (data.contents.length > 0) {
 
                   const newQ = this.state.latestDynamic;
@@ -155,7 +130,7 @@ class ZhaoDaIndex extends React.Component {
                           "name": value.user.nickname,
                           "vip": value.user.vip,
                           "remark": value.remark,
-                          "agree": value.question.agree,
+                          "agree": value.agree,
                           "comment": value.content,
                           "collect": value.collect,
                           "job": value.user.position
@@ -232,7 +207,33 @@ class ZhaoDaIndex extends React.Component {
 
     // 人气行家
     fetchPopularity () {
+        ajax({
+            "url": "/zhaoda/user/hotexpert",
+            "obj": this
+        }).
+        then((data) => {
+            if (!this.state.lock) {
 
+                if (data.code === "S01") {
+
+                    // 查询成功
+                    const popularityPople = data.contents;
+
+                    this.setState({
+                        "popularityPople" : popularityPople,
+                        "loading2": false
+                    });
+
+                } else if (data.code === "E01") {
+
+                // 如果查询出错，启用备用数据
+                    this.setState({"popularityPople": []});
+
+                }
+
+            }
+
+        });
     }
 
     // 最新专栏
@@ -359,7 +360,6 @@ class ZhaoDaIndex extends React.Component {
 
         const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;
 
-
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
 
         const hotTopicList = hotTopic.map((elem, index) =>
@@ -380,11 +380,11 @@ class ZhaoDaIndex extends React.Component {
         const popularityPopleList = popularityPople.map((elem, index) =>
             <div className="img" key={index}>
                 <span className="span1" >
-                    <img src={elem.imgsrc} alt="人气行家" />
+                    <img src={elem.img} alt="人气行家" />
                 </span>
-                <span className="span2">{elem.name}</span>
+                <span className="span2">{elem.nickname}</span>
                 <span className="care">
-                    {elem.position}
+                    {elem.label}
                 </span>
             </div>
             );
