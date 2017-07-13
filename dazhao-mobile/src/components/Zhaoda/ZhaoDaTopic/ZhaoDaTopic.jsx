@@ -42,7 +42,6 @@ class ZhaoDaTopic extends React.Component {
 
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1 "}).
         then((data) => {
-
             this.setState({"topics": data.contents,showLoading:false});
 
         });

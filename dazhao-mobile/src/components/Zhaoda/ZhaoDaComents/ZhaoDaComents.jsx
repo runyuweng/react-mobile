@@ -11,28 +11,28 @@ class ZhaoDaComents extends React.Component {
         super(props);
         this.state = {
             "comment_input": "",
-            "comment": 
-            {
-                "id": 1,
-                "name": "Michael",
-                "vip": true,
-                "job": "骨灰级教练",
-                "answer_content": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学",
-                "comments": []
+            "comment": {
+                "nickname" : "",
+                "vip" : false,
+                "position" : "",
+                "content" : "",
+                "comments" : []
             }
         };
         this.fetchCommnets = this.fetchCommnets.bind(this);
         this.deliverComment = this.deliverComment.bind(this);
-
+        this.fetchAnswer = this.fetchAnswer.bind(this);
     }
 
     componentDidMount () {
 
         this.props.changeBottomState(false);
 
-        this.setState({"aid": this.props.location.query.aid}, () => {
-
-            this.fetchCommnets(this.state.aid);
+        this.setState({
+            "aid": this.props.location.query.aid}, () => {
+            
+            this.fetchAnswer(this.state.aid);
+            //this.fetchCommnets(this.state.aid);
 
         });
 
@@ -41,14 +41,19 @@ class ZhaoDaComents extends React.Component {
     //获取回答详情
     fetchAnswer (aid) {
 
-        ajax({"url": `/zhaoda/getanswer?aid=${aid}`}).
+        ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
       then((data) => {
 
           console.log(data);
           if (data.code === "S01") {
 
-              var comment = data.contents;
-              comment[comments] = [];
+              var result = data.contents;
+              var comment={};
+              comment.nickname = result.user.nickname;
+              comment.vip = result.user.vip;
+              comment.position = result.user.position;
+              comment.content = result.content;
+              comment.comments = [];
 
               this.setState({
                 "comment" : comment
@@ -60,7 +65,14 @@ class ZhaoDaComents extends React.Component {
 
           } else if (data.code === "E01") {
 
-              this.setState({"comment": {"comments": []}});
+            var comment={};
+            comment.nickname = "";
+            comment.vip = false;
+            comment.position = "";
+            comment.content = "";
+            comment.comments = [];
+
+            this.setState({"comment": comment});
 
           }
 
@@ -74,19 +86,21 @@ class ZhaoDaComents extends React.Component {
         ajax({"url": `/zhaoda/answer/getcomments?aid=${aid}`}).
       then((data) => {
 
-          console.log(data);
+          //console.log(data);
           if (data.code === "S01") {
 
-              const comment = data.contents;
+            var comment = JSON.parse(JSON.stringify(this.state)).comment;
+            comment.comments = this.state.comment.comments.concat(data.contents);
 
-              this.setState({
-                "comment" : {
-                    "comments": comment
-              }});
+            console.log(comment)
+
+            this.setState({
+                "comment" : comment
+            });
 
           } else if (data.code === "E01") {
 
-              this.setState({"comment": {"comments": []}});
+              //
 
           }
 
@@ -138,14 +152,19 @@ class ZhaoDaComents extends React.Component {
 
         const {comment} = this.state;
 
-        const commentList = comment.comments.map((value, index) =>
-            <div className="commentItem" key={index}>
-                <div className="name"><span>{value.user.nickname}</span><span className="userpic"><img src={value.user.img} alt="user" /></span></div>
-                <div className="comment">
-                    {value.ccontent}
+        const commentList = comment.comments.map((value, index) => {
+
+            console.log(value)
+
+            return(
+                <div className="commentItem" key={index}>
+                    <div className="name"><span>{ value.user.nickname }</span><span className="userpic"><img src={ value.user.img} alt="user" /></span></div>
+                    <div className="comment">
+                        {value.ccontent}
+                    </div>
                 </div>
-            </div>
-            );
+            )
+        });
 
         return (
             <div className="ZhaoDaComents">
@@ -154,20 +173,26 @@ class ZhaoDaComents extends React.Component {
                 </header>
                 <div className="comentsmain">
                     <div className="comenttop">
-                        <Link to="/response">
+                        <Link to={{
+                            "pathname" : "/response",
+                            "query" : {
+                                "aid" : this.state.aid,
+                                "qtitle" : this.props.location.query.qtitle
+                            }
+                        }}>
                             <div className="left">
                                 <div className="publisher">
-                                    {comment.name}
+                                    {comment.nickname}
                                     {
-                                    comment.vip
-                                        ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
-                                }
-                                ，
-                                <span>{comment.job}</span>
+                                        comment.vip
+                                            ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
+                                    }
+                                    {
+                                        comment.position
+                                        ? <em>，{comment.position}</em> : ""
+                                    }
                                 </div>
-                                <div className="specialistComment">
-                                    {comment.answer_content}
-                                </div>
+                                <div className="specialistComment" dangerouslySetInnerHTML={{__html:comment.content}}></div>
                             </div>
                             <span><img src="/src/images/Back_Button.png" alt="right" /></span>
                         </Link>

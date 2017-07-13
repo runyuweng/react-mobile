@@ -1,23 +1,66 @@
 import React from "react";
 import "./Mine.scss";
 import {Link} from "react-router";
+import ajax from "../../../services/ajax.js";
 
 class Mine extends React.Component {
 
     constructor (props) {
 
         super(props);
-        this.state = {"login": false};
+        this.state = {
+            "personalMsg" : {
+                "sid" : 1,
+                "name" : "周新城",
+                "sex" : "男",
+                "img" : "/boy.png",
+                "school" : "山东大学",
+                "major" : "机械设计制造及自动化",
+                "delivered" : 12,
+                "need_interview" : 0
+            }
+        };
+
+        this.fetchUserMsg = this.fetchUserMsg.bind(this);
 
     }
     componentDidMount () {
 
         this.props.changeBottomState(true);
         // Ajax get personal data
+        const login = sessionStorage.getItem("login");
+        this.setState({
+            "login" : login
+        },() => {
+
+            if (login) {
+                this.fetchUserMsg();
+            }else {
+                console.log('未登录')
+            }
+
+        })
+
+        console.log(sessionStorage.getItem("login"))
+
+    }
+
+    fetchUserMsg(){
+
+        ajax({"url": "/zhaoda/getuserinfo"})
+        .then((data) => {
+            if (data.code === "S01") {
+                this.setState({
+                    "personalMsg" : data.contents
+                })
+            }
+        })
 
     }
 
     render () {
+
+        const { personalMsg } = this.state;
 
         return (
             <div className="Mine">
@@ -29,16 +72,16 @@ class Mine extends React.Component {
                         </div>
                         <span className="edit">编辑</span>
                     </div>
-                    {this.state.login ? <p><em>周新城</em><span><img src="/src/images/man.png" /></span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
+                    {this.state.login ? <p><em>{ personalMsg.name }</em><span><img src="/src/images/man.png" /></span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">
                         <div className="school">
-                            <span>{this.state.login ? "山东大学" : "大招一百"}</span><br />
-                            <span>{this.state.login ? "机械设计制造及自动化" : "专注于职业教育和校园招聘"}</span>
+                            <span>{this.state.login ? personalMsg.school : "大招一百"}</span><br />
+                            <span>{this.state.login ? personalMsg.major : "专注于职业教育和校园招聘"}</span>
                         </div>
                         <div className="fans">
-                            <span><b>0</b><br />已投递</span>
+                            <span><b>{personalMsg.delivered}</b><br />已投递</span>
                             <em />
-                            <span><b>0</b><br />待面试</span>
+                            <span><b>{personalMsg.need_interview}</b><br />待面试</span>
                         </div>
                     </div>
                 </header>

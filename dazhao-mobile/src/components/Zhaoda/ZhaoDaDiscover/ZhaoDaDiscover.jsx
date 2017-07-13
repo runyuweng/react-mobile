@@ -39,6 +39,8 @@ class ZhaoDaDiscover extends React.Component {
         }).
       then((data) => {
 
+        console.log(data)
+
           if (data.code === "S01") {
 
           // Console.log(typeof this.state.page)
@@ -55,7 +57,7 @@ class ZhaoDaDiscover extends React.Component {
                       "name": value.user.nickname,
                       "vip": value.user.vip,
                       "remark": value.remark,
-                      "agree": value.question.agree,
+                      "agree": value.agree,
                       "comment": value.content,
                       "collect": value.collect,
                       "job": value.user.position

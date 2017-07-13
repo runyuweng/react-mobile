@@ -184,7 +184,13 @@ class ZhaoDaToQuestion extends React.Component {
                             ? <em>，{value.position}</em> : ""
                         }
                     </div>
-                    <Link to={`/response/${question.title}/${value.aid}`}>
+                    <Link to={{
+                      "pathname" : "/response",
+                      "query" : {
+                        "aid" : value.aid,
+                        "qtitle" : question.title
+                      }
+                    }}>
                         <div
                             className="comment1"
                             ref="input"
@@ -196,7 +202,10 @@ class ZhaoDaToQuestion extends React.Component {
                         <span><b><img onClick={this.setAgree.bind(this, question.qid, value.aid, num)} src="/src/images/zan.png" /></b>赞同{value.agree}</span>
                         <Link to={{
                             "pathname": "/coments",
-                            "query": {"aid": value.aid}
+                            "query": {
+                              "aid": value.aid,
+                              "qtitle" : question.title
+                            }
                         }}
                         >
                             <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
