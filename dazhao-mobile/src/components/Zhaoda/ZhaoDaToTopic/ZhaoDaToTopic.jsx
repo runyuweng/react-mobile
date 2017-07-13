@@ -137,7 +137,6 @@ class ZhaoDaToTopic extends React.Component {
                       const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
 
                       data.contents.questionlist.map((value, i) => {
-
                           topicdetail.questions.push({
                               "qid": value.qid,
                               "id": value.tid,
@@ -169,7 +168,7 @@ class ZhaoDaToTopic extends React.Component {
                   const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
 
                   data.contents.questionlist.map((value, i) => {
-
+                      
                       topicdetail.questions.push({
                           "qid": value.qid,
                           "id": value.tid,

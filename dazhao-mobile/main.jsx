@@ -117,7 +117,7 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="topic" component={ZhaoDaTopic} />
         <Route path="message" component={ZhaoDaMessage} />
         <Route path="search" component={ZhaoDaSearch} />
-        <Route path="response/:qtitle/:aid" component={ZhaoDaResponse} />
+        <Route path="response" component={ZhaoDaResponse} />
         <Route path="quiz" component={ZhaoDaQuiz} />
         <Route path="consult" component={ZhaoDaConsult} />
         <Route path="detail" component={ZhaoDaQuesDetail} />

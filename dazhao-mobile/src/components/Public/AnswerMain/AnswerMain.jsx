@@ -46,9 +46,9 @@ class AnswerMain extends React.Component {
 
     }
 
-    setSelected (aid) {
+    setSelected (qid) {
 
-        ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
+        ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
       then((data) => {
             
           console.log(data)
@@ -104,15 +104,18 @@ class AnswerMain extends React.Component {
                         <span><b><img onClick={this.setLike.bind(this, qid, aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
                         <Link to={{
                             "pathname": "/coments",
-                            "query": {aid}
+                            "query": {
+                                aid,
+                                "qtitle" : theme
+                            }
                         }}
                         >
                             <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
                         </Link>
                         {
                             collect ?
-                            <span onClick={this.setSelected.bind(this, aid)}><b><img src="/src/images/cang.png" /></b>已收藏</span> :
-                            <span onClick={this.setSelected.bind(this, aid)}><b><img src="/src/images/cang.png" /></b>收藏</span>
+                            <span onClick={this.setSelected.bind(this, qid)}><b><img src="/src/images/cang.png" /></b>已收藏</span> :
+                            <span onClick={this.setSelected.bind(this, qid)}><b><img src="/src/images/cang.png" /></b>收藏</span>
                         }
                     </div>
                 </article>
