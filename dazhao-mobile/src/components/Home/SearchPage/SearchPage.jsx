@@ -13,7 +13,8 @@ class SearchPage extends React.Component {
         	 	"jobs": [],
           	"page": 1,
             "nomore": false,
-            "moreMessage": ""
+            "moreMessage": "",
+            active:'GONGSI'
         };
         this.fetchJobs = this.fetchJobs.bind(this);
     }
@@ -55,7 +56,7 @@ class SearchPage extends React.Component {
 
     render () {
 
-        const {jobs} = this.state;
+        const {jobs,active} = this.state;
 
       	const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
 
@@ -81,6 +82,21 @@ class SearchPage extends React.Component {
           </div>
       </Link>);
 
+      const words = [
+        {name:'公司',id:'GONGSI'},
+        {name:'岗位',id:'GANGWEI'},
+        {name:'地点',id:'DIDIAN'}
+      ]
+
+      const items = words.map((d,i)=>{
+        return <li
+          key={d.id}
+          className={d.id===active?'active':''}
+          onClick={()=>{
+            this.setState({active:d.id})
+          }}>{d.name}</li>
+      })
+
         return (
             <div id="searchPage">
                 <header>
@@ -97,8 +113,16 @@ class SearchPage extends React.Component {
                         <span onClick={this.fetchJobs}>搜索</span>
                     </div>
                 </header>
+                <nav>
+                    <ul>
+                        {items}
+                    </ul>
+                </nav>
 
-                <div className="jobWrap">{jobList}</div>
+                {/*<div className="jobWrap">{jobList}</div>*/}
+                <div className="tips">
+                  此功能正在完善中...
+                </div>
 
             </div>
         );
