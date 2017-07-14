@@ -48,10 +48,10 @@ var config = {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-          name: "commons",
-          filename: 'static/js/common.js'
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //   name: "commons",
+        //   filename: 'static/js/common.js'
+        // }),
         // new AppCachePlugin({
         //     cache: [
         //         'index.js',

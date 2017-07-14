@@ -65,7 +65,7 @@ class ShRecruit extends React.Component {
         const innerHeight = window.innerHeight;
         const docHeight = document.body.scrollHeight;
 
-        scrollTop >= (docHeight - innerHeight)
+        scrollTop >= docHeight - innerHeight
         ? (() => {
 
             this.loadData("loadMore");

@@ -107,7 +107,8 @@ class ZhaoDaToFeatures extends React.Component {
 
         ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             const myData = data.contents;
 
             this.setState({
@@ -262,13 +263,13 @@ class ZhaoDaToFeatures extends React.Component {
                             </div>
                             <div className="videoR">
                                 {
-                                    data.collect ?
-                                    
-                                    <span className="logo">
-                                        <object onClick={this.setSelect.bind(this, data.colid)} data="/src/images/isSelected.svg" type="image/svg+xml" />
-                                    </span> :
+                                    data.collect
 
-                                    <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
+                                    ? <span className="logo">
+                                        <object onClick={this.setSelect.bind(this, data.colid)} data="/src/images/isSelected.svg" type="image/svg+xml" />
+                                    </span>
+
+                                    : <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
                                 }
                                 <span><img src="/src/images/top.png" /></span>
                             </div>

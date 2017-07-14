@@ -75,9 +75,11 @@ class JobDetail extends React.Component {
 
         ajax({"url": `/zhaoda/job/subscribejob?jobid=${jobid}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
+                this.props.changeMessageContent("操作成功");
                 this.setState({"isSelected": !this.state.isSelected});
 
             } else {

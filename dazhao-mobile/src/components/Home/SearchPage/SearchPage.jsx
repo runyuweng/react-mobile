@@ -14,9 +14,10 @@ class SearchPage extends React.Component {
           	"page": 1,
             "nomore": false,
             "moreMessage": "",
-            active:'GONGSI'
+            "active": "GONGSI"
         };
         this.fetchJobs = this.fetchJobs.bind(this);
+
     }
 
     componentDidMount () {
@@ -35,14 +36,13 @@ class SearchPage extends React.Component {
 
         ajax({"url": `/zhaoda/job/searchjob?keyword=${this.state.keyword}`}).
         then((data) => {
+
             console.log(data);
             if (data.code === "S01") {
 
                 const jobs = data.contents;
 
-                this.setState({
-                    "jobs": this.state.jobs.concat(jobs)
-                });
+                this.setState({"jobs": this.state.jobs.concat(jobs)});
 
             } else if (data.code === "E01") {
 
@@ -56,7 +56,7 @@ class SearchPage extends React.Component {
 
     render () {
 
-        const {jobs,active} = this.state;
+        const {jobs, active} = this.state;
 
       	const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
 
@@ -82,20 +82,30 @@ class SearchPage extends React.Component {
           </div>
       </Link>);
 
-      const words = [
-        {name:'公司',id:'GONGSI'},
-        {name:'岗位',id:'GANGWEI'},
-        {name:'地点',id:'DIDIAN'}
-      ]
+        const words = [
+            {
+                "name": "公司",
+                "id": "GONGSI"
+            },
+            {
+                "name": "岗位",
+                "id": "GANGWEI"
+            },
+            {
+                "name": "地点",
+                "id": "DIDIAN"
+            }
+        ];
 
-      const items = words.map((d,i)=>{
-        return <li
-          key={d.id}
-          className={d.id===active?'active':''}
-          onClick={()=>{
-            this.setState({active:d.id})
-          }}>{d.name}</li>
-      })
+        const items = words.map((d, i) => <li
+            key={d.id}
+            className={d.id === active ? "active" : ""}
+            onClick={() => {
+
+                this.setState({"active": d.id});
+
+            }}
+                                          >{d.name}</li>);
 
         return (
             <div id="searchPage">
@@ -119,7 +129,7 @@ class SearchPage extends React.Component {
                     </ul>
                 </nav>
 
-                {/*<div className="jobWrap">{jobList}</div>*/}
+                {/* <div className="jobWrap">{jobList}</div>*/}
                 <div className="tips">
                   此功能正在完善中...
                 </div>

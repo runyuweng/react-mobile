@@ -12,33 +12,33 @@ class ZhaoDaComents extends React.Component {
         this.state = {
             "comment_input": "",
             "comment": {
-                "nickname" : "",
-                "vip" : false,
-                "position" : "",
-                "content" : "",
-                "comments" : []
+                "nickname": "",
+                "vip": false,
+                "position": "",
+                "content": "",
+                "comments": []
             }
         };
         this.fetchCommnets = this.fetchCommnets.bind(this);
         this.deliverComment = this.deliverComment.bind(this);
         this.fetchAnswer = this.fetchAnswer.bind(this);
+
     }
 
     componentDidMount () {
 
         this.props.changeBottomState(false);
 
-        this.setState({
-            "aid": this.props.location.query.aid}, () => {
-            
+        this.setState({"aid": this.props.location.query.aid}, () => {
+
             this.fetchAnswer(this.state.aid);
-            //this.fetchCommnets(this.state.aid);
+            // This.fetchCommnets(this.state.aid);
 
         });
 
     }
 
-    //获取回答详情
+    // 获取回答详情
     fetchAnswer (aid) {
 
         ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
@@ -47,56 +47,55 @@ class ZhaoDaComents extends React.Component {
           console.log(data);
           if (data.code === "S01") {
 
-              var result = data.contents;
-              var comment={};
+              const result = data.contents;
+              var comment = {};
+
               comment.nickname = result.user.nickname;
               comment.vip = result.user.vip;
               comment.position = result.user.position;
               comment.content = result.content;
               comment.comments = [];
 
-              this.setState({
-                "comment" : comment
-              },() => {
+              this.setState({comment}, () => {
 
-                this.fetchCommnets(aid);
+                  this.fetchCommnets(aid);
 
               });
 
           } else if (data.code === "E01") {
 
-            var comment={};
-            comment.nickname = "";
-            comment.vip = false;
-            comment.position = "";
-            comment.content = "";
-            comment.comments = [];
+              var comment = {};
 
-            this.setState({"comment": comment});
+              comment.nickname = "";
+              comment.vip = false;
+              comment.position = "";
+              comment.content = "";
+              comment.comments = [];
+
+              this.setState({comment});
 
           }
 
       });
 
     }
-    
-    //获取回答所属评论
+
+    // 获取回答所属评论
     fetchCommnets (aid) {
 
         ajax({"url": `/zhaoda/answer/getcomments?aid=${aid}`}).
       then((data) => {
 
-          //console.log(data);
+          // Console.log(data);
           if (data.code === "S01") {
 
-            var comment = JSON.parse(JSON.stringify(this.state)).comment;
-            comment.comments = this.state.comment.comments.concat(data.contents);
+              const comment = JSON.parse(JSON.stringify(this.state)).comment;
 
-            console.log(comment)
+              comment.comments = this.state.comment.comments.concat(data.contents);
 
-            this.setState({
-                "comment" : comment
-            });
+              console.log(comment);
+
+              this.setState({comment});
 
           } else if (data.code === "E01") {
 
@@ -128,9 +127,7 @@ class ZhaoDaComents extends React.Component {
 
                 if (data.code === "S01") {
 
-                    this.setState({
-                        "comment_input" : ""
-                    },()=>{
+                    this.setState({"comment_input": ""}, () => {
 
                         this.fetchCommnets(aid);
 
@@ -154,16 +151,17 @@ class ZhaoDaComents extends React.Component {
 
         const commentList = comment.comments.map((value, index) => {
 
-            console.log(value)
+            console.log(value);
 
-            return(
+            return (
                 <div className="commentItem" key={index}>
-                    <div className="name"><span>{ value.user.nickname }</span><span className="userpic"><img src={ value.user.img} alt="user" /></span></div>
+                    <div className="name"><span>{ value.user.nickname }</span><span className="userpic"><img src={value.user.img} alt="user" /></span></div>
                     <div className="comment">
                         {value.ccontent}
                     </div>
                 </div>
-            )
+            );
+
         });
 
         return (
@@ -174,12 +172,13 @@ class ZhaoDaComents extends React.Component {
                 <div className="comentsmain">
                     <div className="comenttop">
                         <Link to={{
-                            "pathname" : "/response",
-                            "query" : {
-                                "aid" : this.state.aid,
-                                "qtitle" : this.props.location.query.qtitle
+                            "pathname": "/response",
+                            "query": {
+                                "aid": this.state.aid,
+                                "qtitle": this.props.location.query.qtitle
                             }
-                        }}>
+                        }}
+                        >
                             <div className="left">
                                 <div className="publisher">
                                     {comment.nickname}
@@ -192,7 +191,7 @@ class ZhaoDaComents extends React.Component {
                                         ? <em>，{comment.position}</em> : ""
                                     }
                                 </div>
-                                <div className="specialistComment" dangerouslySetInnerHTML={{__html:comment.content}}></div>
+                                <div className="specialistComment" dangerouslySetInnerHTML={{"__html": comment.content}} />
                             </div>
                             <span><img src="/src/images/Back_Button.png" alt="right" /></span>
                         </Link>

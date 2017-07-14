@@ -2,7 +2,7 @@ import React from "react";
 import "./AnswerMain.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
-
+const PropTypes = require("prop-types");
 
 class AnswerMain extends React.Component {
     constructor (props) {
@@ -34,12 +34,19 @@ class AnswerMain extends React.Component {
 
           if (data.code === "S01") {
 
+              this.context.changeMessageContent("成功");
               this.setState({"agree": parseInt(this.state.agree) + 1});
 
           } else if (data.code === "S04") {
+
                 // 点过赞了
+              this.context.changeMessageContent("您已点过赞");
+
           } else if (data.code === "E01") {
+
                 // 出错
+              this.context.changeMessageContent("操作失败请重试");
+
           }
 
       });
@@ -50,17 +57,18 @@ class AnswerMain extends React.Component {
 
         ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
       then((data) => {
-            
-          console.log(data)
+
+          console.log(data);
           if (data.code === "S01") {
 
-            // 收藏状态改变
-              this.setState({
-                "collect" : !this.state.collect
-              });
+              // 收藏状态改变
+              this.context.changeMessageContent("操作成功");
+              this.setState({"collect": !this.state.collect});
 
           } else if (data.code === "E01") {
+
             // 出错
+              this.context.changeMessageContent("操作失败请重试");
 
           }
 
@@ -96,9 +104,9 @@ class AnswerMain extends React.Component {
                     </div>
                     <Link to={`/toquestion/${qid}`}>
                         <div
-                          className="comment"
-                          dangerouslySetInnerHTML={{"__html": comment}}
-                      />
+                            className="comment"
+                            dangerouslySetInnerHTML={{"__html": comment}}
+                        />
                     </Link>
                     <div className="more">
                         <span><b><img onClick={this.setLike.bind(this, qid, aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
@@ -106,16 +114,16 @@ class AnswerMain extends React.Component {
                             "pathname": "/coments",
                             "query": {
                                 aid,
-                                "qtitle" : theme
+                                "qtitle": theme
                             }
                         }}
                         >
                             <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
                         </Link>
                         {
-                            collect ?
-                            <span onClick={this.setSelected.bind(this, qid)}><b><img src="/src/images/cang.png" /></b>已收藏</span> :
-                            <span onClick={this.setSelected.bind(this, qid)}><b><img src="/src/images/cang.png" /></b>收藏</span>
+                            collect
+                            ? <span onClick={this.setSelected.bind(this, qid)}><b><img src="/src/images/star.png" /></b>已收藏</span>
+                            : <span onClick={this.setSelected.bind(this, qid)}><b><img src="/src/images/cang.png" /></b>收藏</span>
                         }
                     </div>
                 </article>
@@ -125,4 +133,7 @@ class AnswerMain extends React.Component {
 
     }
 }
+
+AnswerMain.contextTypes = {"changeMessageContent": PropTypes.object};
+
 export default AnswerMain;

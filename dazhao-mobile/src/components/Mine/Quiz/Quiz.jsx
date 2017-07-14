@@ -1,7 +1,7 @@
 import React from "react";
 import "./Quiz.scss";
 import ajax from "../../../services/ajax.js";
-import { Link } from 'react-router';
+import {Link} from "react-router";
 
 class Quiz extends React.Component {
 
@@ -61,7 +61,7 @@ class Quiz extends React.Component {
         ? ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
         then((data) => {
 
-            console.log(data)
+            console.log(data);
 
             if (data.code === "S01") {
 

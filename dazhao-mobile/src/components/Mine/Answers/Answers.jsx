@@ -70,8 +70,8 @@ class Answers extends React.Component {
         ? ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
         then((data) => {
 
-            console.log(data)
-    
+            console.log(data);
+
             if (data.code === "S01") {
 
                 const answers = data.contents;
@@ -107,7 +107,7 @@ class Answers extends React.Component {
                 // 出错
                 this.setState({
                     "answers": [],
-                    "moreMessage" : "暂无回答"
+                    "moreMessage": "暂无回答"
                 });
 
 

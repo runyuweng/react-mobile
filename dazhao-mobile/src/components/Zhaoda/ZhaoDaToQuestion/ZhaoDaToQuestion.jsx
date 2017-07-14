@@ -5,6 +5,7 @@ import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 import Loading from "../../Public/Loading/Loading.jsx";
+const PropTypes = require("prop-types");
 
 class ZhaoDaToQuestion extends React.Component {
 
@@ -99,24 +100,29 @@ class ZhaoDaToQuestion extends React.Component {
     setCare (qid) {
 
         ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
-      then((data) => {
+        then((data) => {
 
-          console.log(data);
-
-          if (data.code === "S01") {
+            if (data.code === "S01") {
 
             // 关注状态改变
-              const question = JSON.parse(JSON.stringify(this.state)).question;
+                const question = JSON.parse(JSON.stringify(this.state)).question;
 
-              question.isCare = !this.state.question.isCare;
-              this.setState({question});
+                question.isCare = !this.state.question.isCare;
+                this.setState({question}, () => {
+
+                    this.context.changeMessageContent("操作成功");
+
+                });
 
 
-          } else if (data.code === "E01") {
+            } else if (data.code === "E01") {
+
             // 出错
-          }
+                this.context.changeMessageContent("操作失败请重试");
 
-      });
+            }
+
+        });
 
     }
 
@@ -148,7 +154,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
       then((data) => {
 
-          console.log(data)
+          console.log(data);
           if (data.code === "S01") {
 
             // 收藏状态改变
@@ -185,12 +191,13 @@ class ZhaoDaToQuestion extends React.Component {
                         }
                     </div>
                     <Link to={{
-                      "pathname" : "/response",
-                      "query" : {
-                        "aid" : value.aid,
-                        "qtitle" : question.title
-                      }
-                    }}>
+                        "pathname": "/response",
+                        "query": {
+                            "aid": value.aid,
+                            "qtitle": question.title
+                        }
+                    }}
+                    >
                         <div
                             className="comment1"
                             ref="input"
@@ -203,8 +210,8 @@ class ZhaoDaToQuestion extends React.Component {
                         <Link to={{
                             "pathname": "/coments",
                             "query": {
-                              "aid": value.aid,
-                              "qtitle" : question.title
+                                "aid": value.aid,
+                                "qtitle": question.title
                             }
                         }}
                         >
@@ -283,5 +290,5 @@ class ZhaoDaToQuestion extends React.Component {
 
     }
 }
-
+ZhaoDaToQuestion.contextTypes = {"changeMessageContent": PropTypes.object};
 export default ZhaoDaToQuestion;

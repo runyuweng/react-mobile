@@ -3,6 +3,7 @@ import "./ZhaoDaInvitetoAnswer.scss";
 import TopBar from "../../Public/TopBar/TopBar.jsx";
 import ajax from "../../../services/ajax.js";
 import Loading from "../../Public/Loading/Loading.jsx";
+const PropTypes = require("prop-types");
 
 class ZhaoDaInvitetoAnswer extends React.Component {
 
@@ -11,8 +12,8 @@ class ZhaoDaInvitetoAnswer extends React.Component {
         super(props);
         this.state = {
             "user": [],
-            showLoading: true,
-            "norecommenduser" : false
+            "showLoading": true,
+            "norecommenduser": false
         };
         this.fetchUser = this.fetchUser.bind(this);
         this.invitetoanswer = this.invitetoanswer.bind(this);
@@ -40,24 +41,23 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
           if (data.code === "S01") {
 
-            if (data.contents.length > 0) {
+              if (data.contents.length > 0) {
 
-              const user = data.contents;
+                  const user = data.contents;
 
-              this.setState({
-                  user:user,
-                  showLoading: false
-              });
+                  this.setState({
+                      user,
+                      "showLoading": false
+                  });
 
-            }else{
+              } else {
 
-                this.setState({
-                    "norecommenduser" : true
-                })
+                  this.setState({"norecommenduser": true});
 
-            }
+              }
 
           }
+
       });
 
     }
@@ -82,10 +82,12 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                     user[index].status = this.state.user[index].status === 0 ? 1 : 0;
 
                     this.setState({user});
+                    this.context.changeMessageContent("操作成功");
 
                 } else if (data.code === "E01") {
 
                     this.setState({"user": []});
+                    this.context.changeMessageContent("操作失败请重试");
 
                 }
 
@@ -102,14 +104,14 @@ class ZhaoDaInvitetoAnswer extends React.Component {
             <div key={index} className="item">
                 <div className="left">
                     <span className="circle">
-                        <img src={value.img||''} alt="用户头像" />
+                        <img src={value ? value.img : ""} alt="用户头像" />
                     </span>
                     <p>
-                        <span>{value.nickname}</span><br />
-                        <span>{value.intro}</span>
+                        <span>{value ? value.nickname : ""}</span><br />
+                        <span>{value ? value.intro : ""}</span>
                     </p>
                 </div>
-                <span className="right" onClick={this.invitetoanswer.bind(this, qid, value.uid, index)}>{value.status === 1 ? "已邀请" : "邀请回答"}</span>
+                <span className="right" onClick={this.invitetoanswer.bind(this, qid, value ? value.uid : "", index)}>{(value ? value.status : "") === 1 ? "已邀请" : "邀请回答"}</span>
             </div>
             );
 
@@ -119,12 +121,12 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                     <TopBar title="邀请回答" border="boder" />
                 </header>
                 {
-                    this.state.norecommenduser ? 
+                    this.state.norecommenduser
 
-                    <p className="noruser">对不起，暂时没有推荐用户！</p> : ""
+                    ? <p className="noruser">对不起，暂时没有推荐用户！</p> : ""
                 }
-                {showLoading?<Loading />:
-                <div className="answercontent">
+                {showLoading ? <Loading />
+                : <div className="answercontent">
                     {userList}
                 </div>}
             </div>
@@ -132,5 +134,5 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     }
 }
-
+ZhaoDaInvitetoAnswer.contextTypes = {"changeMessageContent": PropTypes.object};
 export default ZhaoDaInvitetoAnswer;

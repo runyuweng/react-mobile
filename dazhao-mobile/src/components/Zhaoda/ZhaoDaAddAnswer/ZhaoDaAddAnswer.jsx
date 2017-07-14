@@ -13,7 +13,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
             "html": "",
             "fileStore": {},
             "qid": props.params.qid,
-            bottom:0
+            "bottom": 0
         };
         this.submitClick = this.submitClick.bind(this);
 
@@ -219,7 +219,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
                     ref="input"
                     dangerouslySetInnerHTML={{"__html": this.state.html}}
                 />
-              <footer name="footer" style={{'bottom':this.state.bottom}}>
+                <footer name="footer" style={{"bottom": this.state.bottom}}>
                     <img src="/src/images/icon/pic.png" onClick={() => this.addPicture()} />
                 </footer>
             </div>

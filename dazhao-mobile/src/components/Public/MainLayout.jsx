@@ -6,6 +6,7 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {observer} from "mobx-react";
 import AppState from "../../store/AppState";
 const appState = new AppState();
+const PropTypes = require("prop-types");
 
 @observer
 class MainLayout extends React.Component {
@@ -28,9 +29,15 @@ class MainLayout extends React.Component {
 
     }
 
+    getChildContext () {
+
+        return {"changeMessageContent": appState.changeMessageContent};
+
+    }
+
     render () {
 
-        const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise", "/tologin", "/login", "/register", "/response", "/toquestion","/searchPage"],
+        const enterList = ["/", "/Zhaoda/main", "/mine", "/zhiGuan", "/notify", "/cvcenter", "/growrecord", "/schoolRecruit", "/intern", "/enterprise", "/tologin", "/login", "/register", "/response", "/toquestion", "/searchPage"],
             pathname = this.props.location.pathname;
         let animate = false;
 
@@ -104,5 +111,7 @@ class MainLayout extends React.Component {
 
     }
 }
+
+MainLayout.childContextTypes = {"changeMessageContent": PropTypes.object};
 
 export default MainLayout;

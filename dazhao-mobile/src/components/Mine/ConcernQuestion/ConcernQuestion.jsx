@@ -1,7 +1,7 @@
 import React from "react";
 import "./ConcernQuestion.scss";
 import ajax from "../../../services/ajax.js";
-import { Link } from 'react-router';
+import {Link} from "react-router";
 
 class ConcernQuestion extends React.Component {
 

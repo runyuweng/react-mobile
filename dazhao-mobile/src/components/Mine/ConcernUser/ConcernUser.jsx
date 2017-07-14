@@ -25,6 +25,7 @@ class ConcernUser extends React.Component {
         this.fetchUsers = this.fetchUsers.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
         this.setCaredState = this.setCaredState.bind(this);
+
     }
 
     componentDidMount () {
@@ -62,20 +63,27 @@ class ConcernUser extends React.Component {
 
     }
 
-    setCaredState(uid){
+    setCaredState (uid) {
+
         ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${uid}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "S01") {
 
                 this.setState({
-                    "nomore" : false,
-                    "caredUsers" : []
-                },() => {
+                    "nomore": false,
+                    "caredUsers": []
+                }, () => {
+
                     this.fetchUsers(this.state.page);
-                })
+
+                });
+
             }
-        })
+
+        });
+
     }
 
 
@@ -144,7 +152,7 @@ class ConcernUser extends React.Component {
                         <span>{elem.position}</span>
                     </p>
                 </div>
-                <span onClick={this.setCaredState.bind(this,elem.uid)} className="right">+取消关注</span>
+                <span onClick={this.setCaredState.bind(this, elem.uid)} className="right">+取消关注</span>
             </div>
             );
 

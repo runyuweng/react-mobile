@@ -18,7 +18,7 @@ class ZhaoDaTopic extends React.Component {
             "topicCategory": [],
             "topics": [],
             "active": 0,
-            showLoading: true
+            "showLoading": true
         };
         this.topicClick = this.topicClick.bind(this);
 
@@ -42,7 +42,11 @@ class ZhaoDaTopic extends React.Component {
 
         ajax({"url": "/zhaoda/topic/hottopics?categoryid=-1 "}).
         then((data) => {
-            this.setState({"topics": data.contents,showLoading:false});
+
+            this.setState({
+                "topics": data.contents,
+                "showLoading": false
+            });
 
         });
 
@@ -165,7 +169,7 @@ class ZhaoDaTopic extends React.Component {
 
         return (
             <div>
-               
+
                 <div className="container ZhaoDaTopic">
                     <header>
                         <TopBar title="话题广场" border="noboder" />
@@ -173,8 +177,8 @@ class ZhaoDaTopic extends React.Component {
                             <ul ref="navbar">{topicCategoryList}</ul>
                         </div>
                     </header>
-                     {showLoading?<Loading/>:
-                    <div className="content">
+                    {showLoading ? <Loading />
+                    : <div className="content">
                         <div className="itemGroup">{topicsList}</div>
                     </div>}
                 </div>

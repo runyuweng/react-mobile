@@ -30,6 +30,8 @@ class ZhaoDaIndex extends React.Component {
             "loading3": true
 
         };
+
+        console.log(this.props);
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
         this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
         this.fetchLatestDynamic = this.fetchLatestDynamic.bind(this);
@@ -113,7 +115,8 @@ class ZhaoDaIndex extends React.Component {
             "obj": this
         }).
       then((data) => {
-        console.log(data)
+
+          console.log(data);
           if (!this.state.lock) {
 
               if (data.contents.length > 0) {
@@ -207,11 +210,13 @@ class ZhaoDaIndex extends React.Component {
 
     // 人气行家
     fetchPopularity () {
+
         ajax({
             "url": "/zhaoda/user/hotexpert",
             "obj": this
         }).
         then((data) => {
+
             if (!this.state.lock) {
 
                 if (data.code === "S01") {
@@ -220,7 +225,7 @@ class ZhaoDaIndex extends React.Component {
                     const popularityPople = data.contents;
 
                     this.setState({
-                        "popularityPople" : popularityPople,
+                        popularityPople,
                         "loading2": false
                     });
 
@@ -234,6 +239,7 @@ class ZhaoDaIndex extends React.Component {
             }
 
         });
+
     }
 
     // 最新专栏
@@ -360,7 +366,10 @@ class ZhaoDaIndex extends React.Component {
 
         const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;
 
-        const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain key={i} data={value} />);
+        const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain
+            key={i}
+            data={value}
+                                                               />);
 
         const hotTopicList = hotTopic.map((elem, index) =>
             <div className="img" key={index}>

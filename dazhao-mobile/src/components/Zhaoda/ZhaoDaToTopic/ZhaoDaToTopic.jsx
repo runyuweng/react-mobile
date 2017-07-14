@@ -4,6 +4,7 @@ import {Link} from "react-router";
 import AnswerMain from "../../Public/AnswerMain/AnswerMain.jsx";
 import ajax from "../../../services/ajax.js";
 import Loading from "../../Public/Loading/Loading.jsx";
+const PropTypes = require("prop-types");
 
 class ZhaoDaToTopic extends React.Component {
 
@@ -67,18 +68,31 @@ class ZhaoDaToTopic extends React.Component {
 
     }
 
-    setCare(tid){
-      ajax({"url" : `/zhaoda/topic/subscribetopic?topicid=${tid}`})
-      .then((data) => {
-        if (data.code === "S01") {
-            var topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
-            topicdetail.isCared = !this.state.topicdetail.isCared;
+    setCare (tid) {
 
-            this.setState({
-              "topicdetail" : topicdetail
-            })
-        }
-      })
+        ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${tid}`}).
+      then((data) => {
+
+          if (data.code === "S01") {
+
+              const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
+
+              topicdetail.isCared = !this.state.topicdetail.isCared;
+
+              this.setState({topicdetail}, () => {
+
+                  this.context.changeMessageContent("操作成功");
+
+              });
+
+          } else {
+
+              this.context.changeMessageContent("操作失败请重试");
+
+          }
+
+      });
+
     }
 
     fetchQuestion (page) {
@@ -88,7 +102,7 @@ class ZhaoDaToTopic extends React.Component {
         ? ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=${page}`}).
           then((data) => {
 
-            console.log(data)
+              console.log(data);
 
               if (data.code === "S01") {
 
@@ -137,6 +151,7 @@ class ZhaoDaToTopic extends React.Component {
                       const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
 
                       data.contents.questionlist.map((value, i) => {
+
                           topicdetail.questions.push({
                               "qid": value.qid,
                               "id": value.tid,
@@ -168,7 +183,7 @@ class ZhaoDaToTopic extends React.Component {
                   const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
 
                   data.contents.questionlist.map((value, i) => {
-                      
+
                       topicdetail.questions.push({
                           "qid": value.qid,
                           "id": value.tid,
@@ -233,7 +248,7 @@ class ZhaoDaToTopic extends React.Component {
                             <span>关注：<em>{topicdetail.care || 0}</em></span>
                         </div>}
                     </div>
-                    <sapn onClick={this.setCare.bind(this,this.props.params.tid)} className="attention">{topicdetail.isCared ? "已关注" : "+关注"}</sapn>
+                    <sapn onClick={this.setCare.bind(this, this.props.params.tid)} className="attention">{topicdetail.isCared ? "已关注" : "+关注"}</sapn>
                 </div>
 
                 <div className="topicM">
@@ -251,4 +266,5 @@ class ZhaoDaToTopic extends React.Component {
     }
 }
 
+ZhaoDaToTopic.contextTypes = {"changeMessageContent": PropTypes.object};
 export default ZhaoDaToTopic;

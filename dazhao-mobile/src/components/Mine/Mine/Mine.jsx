@@ -9,15 +9,15 @@ class Mine extends React.Component {
 
         super(props);
         this.state = {
-            "personalMsg" : {
-                "sid" : 1,
-                "name" : "周新城",
-                "sex" : "男",
-                "img" : "/boy.png",
-                "school" : "山东大学",
-                "major" : "机械设计制造及自动化",
-                "delivered" : 12,
-                "need_interview" : 0
+            "personalMsg": {
+                "sid": 1,
+                "name": "周新城",
+                "sex": "男",
+                "img": "/boy.png",
+                "school": "山东大学",
+                "major": "机械设计制造及自动化",
+                "delivered": 12,
+                "need_interview": 0
             }
         };
 
@@ -29,38 +29,43 @@ class Mine extends React.Component {
         this.props.changeBottomState(true);
         // Ajax get personal data
         const login = sessionStorage.getItem("login");
-        this.setState({
-            "login" : login
-        },() => {
+
+        this.setState({login}, () => {
 
             if (login) {
+
                 this.fetchUserMsg();
-            }else {
-                console.log('未登录')
+
+            } else {
+
+                console.log("未登录");
+
             }
 
-        })
+        });
 
-        console.log(sessionStorage.getItem("login"))
+        console.log(sessionStorage.getItem("login"));
 
     }
 
-    fetchUserMsg(){
+    fetchUserMsg () {
 
-        ajax({"url": "/zhaoda/getuserinfo"})
-        .then((data) => {
+        ajax({"url": "/zhaoda/getuserinfo"}).
+        then((data) => {
+
             if (data.code === "S01") {
-                this.setState({
-                    "personalMsg" : data.contents
-                })
+
+                this.setState({"personalMsg": data.contents});
+
             }
-        })
+
+        });
 
     }
 
     render () {
 
-        const { personalMsg } = this.state;
+        const {personalMsg} = this.state;
 
         return (
             <div className="Mine">

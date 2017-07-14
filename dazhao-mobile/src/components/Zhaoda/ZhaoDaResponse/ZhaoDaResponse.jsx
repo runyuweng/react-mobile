@@ -33,8 +33,8 @@ class ZhaoDaResponse extends React.Component {
 
 
         this.setState({
-            "aid" : this.props.location.query.aid,
-            "title" : this.props.location.query.qtitle
+            "aid": this.props.location.query.aid,
+            "title": this.props.location.query.qtitle
         }, () => {
 
             this.fetchAnswer(this.state.aid);
@@ -48,7 +48,7 @@ class ZhaoDaResponse extends React.Component {
         ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
         then((data) => {
 
-            console.log(data)
+            console.log(data);
 
             if (data.code === "S01") {
 
@@ -111,7 +111,7 @@ class ZhaoDaResponse extends React.Component {
                             }
 
                         </div>
-                        <div dangerouslySetInnerHTML={{__html: answerdetail.answer}}></div>
+                        <div dangerouslySetInnerHTML={{"__html": answerdetail.answer}} />
                         <time>{answerdetail.time}</time>
                     </div>
                     <div className="blank" />

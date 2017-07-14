@@ -51,8 +51,10 @@ class Enterprise extends React.Component {
 
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
+
         window.removeEventListener("scroll", this.handleScroll);
+
     }
 
     handleScroll (e) {
@@ -63,7 +65,7 @@ class Enterprise extends React.Component {
 
         console.log(scrollTop, innerHeight, docHeight);
 
-        scrollTop >= (docHeight - innerHeight)
+        scrollTop >= docHeight - innerHeight
         ? (() => {
 
             this.loadData("loadMore");
@@ -88,7 +90,7 @@ class Enterprise extends React.Component {
         ajax({"url": `/zhaoda/company/condition?province=${data.province}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
 
-            console.log(data)
+            console.log(data);
 
             const enterprise = (arguments.length === 1 ? this.state.enterprise.concat(data.contents || []) : data.contents) || [];
 
@@ -117,39 +119,39 @@ class Enterprise extends React.Component {
 
     }
 
-    // handleLoad (elem) {
+    // HandleLoad (elem) {
 
-    //     const that = this;
+    //     Const that = this;
 
-    //     elem.addEventListener("touchstart", (e) => {
+    //     Elem.addEventListener("touchstart", (e) => {
 
-    //         const height = document.body.scrollHeight;
-    //         const event = e || window.event;
-    //         const startPoint = event.touches[0].pageY;
+    //         Const height = document.body.scrollHeight;
+    //         Const event = e || window.event;
+    //         Const startPoint = event.touches[0].pageY;
 
-    //         elem.addEventListener("touchmove", (e) => {
+    //         Elem.addEventListener("touchmove", (e) => {
 
-    //             const event = e || window.event;
-    //             const currentY = event.touches[0].pageY;
-    //             const changeY = currentY - startPoint;
+    //             Const event = e || window.event;
+    //             Const currentY = event.touches[0].pageY;
+    //             Const changeY = currentY - startPoint;
 
-    //             if (document.body.scrollHeight >= height && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
+    //             If (document.body.scrollHeight >= height && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
 
-    //                 document.body.style.height = `${document.body.offsetHeight + 1}px`;
+    //                 Document.body.style.height = `${document.body.offsetHeight + 1}px`;
 
     //             }
 
     //         });
-    //         elem.addEventListener("touchend", (e) => {
+    //         Elem.addEventListener("touchend", (e) => {
 
-    //             if (height < document.body.offsetHeight && this.state.tips === "加载更多") {
+    //             If (height < document.body.offsetHeight && this.state.tips === "加载更多") {
 
-    //                 document.body.style.height = "auto";
-    //                 const data = JSON.parse(JSON.stringify(this.state.data));
+    //                 Document.body.style.height = "auto";
+    //                 Const data = JSON.parse(JSON.stringify(this.state.data));
 
-    //                 data.page = parseInt(data.page) + 1;
-    //                 this.setState({data});
-    //                 that.loadData("loadMore");
+    //                 Data.page = parseInt(data.page) + 1;
+    //                 This.setState({data});
+    //                 That.loadData("loadMore");
 
     //             }
 
@@ -197,7 +199,7 @@ class Enterprise extends React.Component {
     render () {
 
         const {industry, enterprise, showLoading, reset, tips} = this.state;
-        
+
         const enterpriseList = enterprise.map((value, i) => <Link to={`/company/${value.companyid}`} key={i}>
             <div className="jobitems">
                 <span className="pics">
