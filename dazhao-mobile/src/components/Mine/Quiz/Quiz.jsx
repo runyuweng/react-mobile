@@ -1,6 +1,7 @@
 import React from "react";
 import "./Quiz.scss";
 import ajax from "../../../services/ajax.js";
+import { Link } from 'react-router';
 
 class Quiz extends React.Component {
 
@@ -60,6 +61,8 @@ class Quiz extends React.Component {
         ? ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
         then((data) => {
 
+            console.log(data)
+
             if (data.code === "S01") {
 
                 const questions = data.contents;
@@ -106,10 +109,12 @@ class Quiz extends React.Component {
 
         const {questions} = this.state;
         const questionsList = questions.map((elem, index) =>
-            <div key={index} className="question">
-                <h3>{elem.qtitle}</h3>
-                <span><em>{elem.answer}</em>个回答</span>
-            </div>
+            <Link to={`/toquestion/${elem.qid}`}>
+                <div key={index} className="question">
+                    <h3>{elem.qtitle}</h3>
+                    <span><em>{elem.answer}</em>个回答</span>
+                </div>
+            </Link>
             );
 
 

@@ -15,18 +15,6 @@ class ConcernUser extends React.Component {
                 //     Userimg:"src/images/pople.png",
                 //     Name:"Michael",
                 //     Position:'国际教练协会（IFC）认证教练国际教练协会（IFC）认证教练'
-                // },
-                // {
-                //     Id:2,
-                //     Userimg:"src/images/pople.png",
-                //     Name:"Michael",
-                //     Position:'国际教练协会（IFC）认证教练国际教练协会（IFC）认证教练'
-                // },
-                // {
-                //     Id:3,
-                //     Userimg:"src/images/pople.png",
-                //     Name:"Michael",
-                //     Position:'国际教练协会（IFC）认证教练国际教练协会（IFC）认证教练'
                 // }
             ],
             "page": 1,
@@ -36,7 +24,7 @@ class ConcernUser extends React.Component {
         };
         this.fetchUsers = this.fetchUsers.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
-
+        this.setCaredState = this.setCaredState.bind(this);
     }
 
     componentDidMount () {
@@ -72,6 +60,22 @@ class ConcernUser extends React.Component {
         })() : "";
 
 
+    }
+
+    setCaredState(uid){
+        ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${uid}`}).
+        then((data) => {
+            console.log(data)
+            if (data.code === "S01") {
+
+                this.setState({
+                    "nomore" : false,
+                    "caredUsers" : []
+                },() => {
+                    this.fetchUsers(this.state.page);
+                })
+            }
+        })
     }
 
 
@@ -140,7 +144,7 @@ class ConcernUser extends React.Component {
                         <span>{elem.position}</span>
                     </p>
                 </div>
-                <span className="right">+取消关注</span>
+                <span onClick={this.setCaredState.bind(this,elem.uid)} className="right">+取消关注</span>
             </div>
             );
 

@@ -53,7 +53,7 @@ class FavoriteCompanys extends React.Component {
 
     fetchCollectionEnterprise (page) {
 
-        ajax({"url": `/collectionenterprise?page=${page}`}).
+        ajax({"url": `/zhaoda/job/mycarecompany?page=${page}`}).
         then((data) => {
 
             if (data.code === "S01") {

@@ -17,7 +17,7 @@ class ConcernTopic extends React.Component {
         };
         this.fetchConcernTopic = this.fetchConcernTopic.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
-
+        this.setCaredState = this.setCaredState.bind(this);
     }
 
     componentDidMount () {
@@ -54,6 +54,22 @@ class ConcernTopic extends React.Component {
 
     }
 
+    setCaredState(topicid){
+        ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${topicid}`}).
+        then((data) => {
+            
+            if (data.code === "S01") {
+
+                this.setState({
+                    "nomore" : false,
+                    "topics" : []
+                },() => {
+                    this.fetchConcernTopic(this.state.page);
+                })
+            }
+        })
+    }
+
 
     fetchConcernTopic (page) {
 
@@ -61,6 +77,8 @@ class ConcernTopic extends React.Component {
 
         ? ajax({"url": `/zhaoda/topic/mycaretopic?page=${page}`}).
         then((data) => {
+
+            console.log(data.code)
 
             if (data.code === "S01") {
 
@@ -122,7 +140,7 @@ class ConcernTopic extends React.Component {
                         </span>
                     </p>
                 </div>
-                <span className="right">+取消关注</span>
+                <span onClick={this.setCaredState.bind(this,elem.tid)} className="right">+取消关注</span>
             </div>
             );
 

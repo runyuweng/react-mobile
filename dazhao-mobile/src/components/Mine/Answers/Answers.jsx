@@ -16,22 +16,6 @@ class Answers extends React.Component {
                     "agree": 14,
                     "remark": 9,
                     "collect": false
-                },
-                {
-                    "uid": 2,
-                    "question": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "answer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "agree": 14,
-                    "remark": 9,
-                    "collect": false
-                },
-                {
-                    "uid": 3,
-                    "question": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "answer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "agree": 14,
-                    "remark": 9,
-                    "collect": false
                 }
             ],
 
@@ -86,6 +70,8 @@ class Answers extends React.Component {
         ? ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
         then((data) => {
 
+            console.log(data)
+    
             if (data.code === "S01") {
 
                 const answers = data.contents;
@@ -111,15 +97,19 @@ class Answers extends React.Component {
 
                 // SO3表示没有任何提问
                 this.setState({
-                    "questions": [],
+                    "answers": [],
                     "nocareQuestion": true,
                     "nomore": true
                 });
 
-            } else if (data.code === "EO1") {
+            } else if (data.code === "E01") {
 
                 // 出错
-                this.setState({"answers": []});
+                this.setState({
+                    "answers": [],
+                    "moreMessage" : "暂无回答"
+                });
+
 
             } else if (data.code === "E03") {
                // 未登录

@@ -1,6 +1,7 @@
 import React from "react";
 import "./ConcernQuestion.scss";
 import ajax from "../../../services/ajax.js";
+import { Link } from 'react-router';
 
 class ConcernQuestion extends React.Component {
 
@@ -109,10 +110,12 @@ class ConcernQuestion extends React.Component {
 
         const {questions} = this.state;
         const questionsList = questions.map((elem, index) =>
-            <div key={index} className="question">
-                <h3>{elem.qtitle}</h3>
-                <span><em>{elem.answernum}</em>个回答</span>
-            </div>
+            <Link to={`/toquestion/${elem.qid}`}>
+                <div key={index} className="question">
+                    <h3>{elem.qtitle}</h3>
+                    <span><em>{elem.answer}</em>个回答</span>
+                </div>
+            </Link>
             );
 
         return (
