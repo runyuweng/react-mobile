@@ -5,6 +5,7 @@ import ajax from "../../../services/ajax.js";
 import {Link} from "react-router";
 import LoadingMore from "../../Public/Loading/LoadingMore.jsx";
 import LoadingBlock from "../../Public/Loading/LoadingBlock.jsx";
+//const PropTypes = require("prop-types");
 
 class ZhaoDaIndex extends React.Component {
     constructor (props) {
@@ -37,11 +38,12 @@ class ZhaoDaIndex extends React.Component {
         this.fetchLatestDynamic = this.fetchLatestDynamic.bind(this);
         this.fetchPopularity = this.fetchPopularity.bind(this);
         this.fetchCarouselpic = this.fetchCarouselpic.bind(this);
-
+        this.showMessge = this.showMessge.bind(this);
     }
 
     componentDidMount () {
-
+        
+        // console.log(this.context)
 
         [this.refs.topic1, this.refs.topic2, this.refs.topic3].map((elem) => {
 
@@ -69,7 +71,6 @@ class ZhaoDaIndex extends React.Component {
         this.fetchLatestDynamic();
         this.fetchCarouselpic();
         this.fetchPopularity();
-
     }
 
     componentWillUnmount () {
@@ -362,6 +363,12 @@ class ZhaoDaIndex extends React.Component {
 
     }
 
+    // 提示信息
+    showMessge(){
+        // console.log(this.context.user)
+        this.context.myProps.changeMessageContent("功能未开放");
+    }
+
     render () {
 
         const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;
@@ -387,7 +394,7 @@ class ZhaoDaIndex extends React.Component {
             );
 
         const popularityPopleList = popularityPople.map((elem, index) =>
-            <div className="img" key={index}>
+            <div onClick={() => {this.showMessge()}} className="img" key={index}>
                 <span className="span1" >
                     <img src={elem.img} alt="人气行家" />
                 </span>
@@ -469,7 +476,7 @@ class ZhaoDaIndex extends React.Component {
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/special.png" /></b>人气行家</span>
                             <Link to="">
-                                <span className="all">全部行家<b><img src="/src/images/seeMore.png" /></b></span>
+                                <span className="all" onClick={() => {this.showMessge()}}>全部行家<b><img src="/src/images/seeMore.png" /></b></span>
                             </Link>
                         </div>
                         <div id="topic2" ref="topic2" className="content">
@@ -498,6 +505,10 @@ class ZhaoDaIndex extends React.Component {
         );
 
     }
+}
+
+ZhaoDaIndex.contextTypes = {
+  myProps: React.PropTypes.object
 }
 
 export default ZhaoDaIndex;

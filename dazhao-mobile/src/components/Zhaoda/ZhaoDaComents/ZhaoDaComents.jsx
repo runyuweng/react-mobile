@@ -90,16 +90,16 @@ class ZhaoDaComents extends React.Component {
         ajax({"url": `/zhaoda/answer/getcomments?aid=${aid}`}).
       then((data) => {
 
-          // Console.log(data);
+          // console.log(data);
           if (data.code === "S01") {
 
               const comment = JSON.parse(JSON.stringify(this.state)).comment;
 
-              comment.comments = this.state.comment.comments.concat(data.contents);
+              comment.comments = data.contents;
 
-              console.log(comment);
 
               this.props.changeMessageContent(data.message);
+
               this.setState({
                   comment,
                   "loading": false
@@ -132,8 +132,6 @@ class ZhaoDaComents extends React.Component {
             }).
             then((data) => {
 
-                console.log(data);
-
                 if (data.code === "S01") {
 
                     this.setState({"comment_input": ""}, () => {
@@ -162,8 +160,6 @@ class ZhaoDaComents extends React.Component {
         const {comment, loading} = this.state;
 
         const commentList = comment.comments.map((value, index) => {
-
-            console.log(value);
 
             return (
                 <div className="commentItem" key={index}>

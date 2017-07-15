@@ -123,11 +123,18 @@ class ZhaoDaToFeatures extends React.Component {
         });
 
     }
+    
+    // 点击专辑列表选项重新获取数据
+    componentWillReceiveProps(nextProps){
+        this.fetchZhuanlanDe();
+    }
 
     fetchAlbum (albumNum) {
 
         ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).
         then((data) => {
+
+            console.log(data)
 
             if (data.code === "S21") {
 
@@ -190,13 +197,20 @@ class ZhaoDaToFeatures extends React.Component {
 
         const {data, album, answers, commentWidth, showLoading} = this.state;
 
-        const albumList = album.map((value, i) => <div className="albunItems" key={i}>
-            <span><img src={"/src/images/zhuanlan.png" || value.colposter} /></span>
-            <div className="itemsR">
-                <h3>{value.colname}</h3>
-                <span><em>{value.playtimes}</em>次播放</span>
-            </div>
-        </div>);
+        const albumList = album.map((value, i) => 
+            <Link to={{
+                "pathname" : "/tofeature",
+                "query" : {"colid": value.colid}
+            }}>
+                <div className="albunItems" key={i}>
+                    <span><img src={"/src/images/zhuanlan.png" || value.colposter} /></span>
+                    <div className="itemsR">
+                        <h3>{value.colname}</h3>
+                        <span><em>{value.playtimes}</em>次播放</span>
+                    </div>
+                </div>
+            </Link>
+        );
 
         const answerList = answers.map((value, i) => {
 

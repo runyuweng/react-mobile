@@ -92,7 +92,7 @@ class MainLayout extends React.Component {
                       </Link>
                   </div>
                   <div>
-                      <Link to="/Zhaoda" className="bg zhaoda" activeClassName="zhaoda2">
+                      <Link to="/Zhaoda/main" className="bg zhaoda" activeClassName="zhaoda2">
                           <div>
                               <p>招答</p>
                           </div>

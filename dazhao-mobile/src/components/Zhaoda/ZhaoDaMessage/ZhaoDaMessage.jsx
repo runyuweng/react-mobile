@@ -10,36 +10,11 @@ class ZhaoDaMessage extends React.Component {
 
         super(props);
         this.state = {
-            "showLoading": true,
+            "showLoading": false,
             "limit": 3,
-            "informs": [
-                // {
-                //     "questionId": 1,
-                //     "answerers": ["Michael", "李刚", "Simon", "Michael", "李刚"],
-                //     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
-                // },
-                // {
-                //     "questionId": 2,
-                //     "answerers": ["Kangkang", "李刚", "Jane", "李刚"],
-                //     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
-                // },
-                // {
-                //     "questionId": 3,
-                //     "answerers": ["Simon", "Michael", "李刚", "Simon"],
-                //     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
-                // },
-                // {
-                //     "questionId": 4,
-                //     "answerers": ["Michael", "李刚", "Simon"],
-                //     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
-                // },
-                // {
-                //     "questionId": 5,
-                //     "answerers": ["Michael"],
-                //     "topic": "研究生和本科学历在求职过程中真的会有很大差别吗？"
-                // }
-            ],
-            "page": 1
+            "informs": [],
+            "page": 1,
+            "current" : 1
         };
         this.fetchInform = this.fetchInform.bind(this);
 
@@ -60,8 +35,9 @@ class ZhaoDaMessage extends React.Component {
         then((data) => {
 
             if (data.code === "E01") {
-
-                this.setState({"informs": []});
+                
+                this.props.changeMessageContent(data.message);
+                //this.setState({"informs": []});
 
             } else if (data.code === "S01") {
 
@@ -75,7 +51,7 @@ class ZhaoDaMessage extends React.Component {
 
     render () {
 
-        const {informs, limit, showLoading} = this.state;
+        const {informs, limit, showLoading, current} = this.state;
 
         const InformsList = informs.map((elem, index) => {
 
@@ -119,17 +95,31 @@ class ZhaoDaMessage extends React.Component {
                 <TopBar title="消息" border="boder" />
                 <nav>
                     <ul>
-                        <li className="active">通知</li>
-                        <li>私信</li>
-                        <li>系统</li>
+                        <li onClick={() => {
+                            this.setState({
+                                "current" : 1
+                            })
+                        }} className={current === 1 ? "active" : ""}>通知</li>
+                        <li onClick={() => {
+                            this.setState({
+                                "current" : 2
+                            })
+                        }} className={current === 2 ? "active" : ""}>私信</li>
+                        <li onClick={() => {
+                            this.setState({
+                                "current" : 3
+                            })
+                        }} className={current === 3 ? "active" : ""}>系统</li>
                     </ul>
                 </nav>
                 {showLoading ? <Loading />
-                : <div id="MessageMain">
+                : 
+                    <div id="MessageMain">
+                        
+                        {current === 1 ? InformsList : current === 2 ? "" : current === 3 ? "" : ""}
 
-                    {InformsList}
-
-                </div>}
+                    </div>
+                }
             </div>
         );
 
