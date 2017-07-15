@@ -206,7 +206,7 @@ class Enterprise extends React.Component {
                     <img src={value.img} />
                 </span>
                 <div className="jobintro">
-                    <h2>{value.name}<span>认证</span></h2>
+                    <h2>{value.name}{value.Authentication ? <span>认证</span> : ""}</h2>
                     <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>JAVAEE研发工程</span>、<span>JAVAEE研发工程</span></h3>
                     <span className="address">
                         <em>{value.city}</em>

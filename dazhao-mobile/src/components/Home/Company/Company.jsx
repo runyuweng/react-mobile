@@ -3,6 +3,7 @@ import "./Company.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax";
 import TopBar from "../../Public/TopBar/TopBar.jsx";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class Company extends React.Component {
     constructor (props) {
@@ -24,7 +25,8 @@ class Company extends React.Component {
                 "introduce": "",
                 "jobs": []
             },
-            "isSelected": false
+            "isSelected": false,
+            "loading": true
         };
         this.setCare = this.setCare.bind(this);
 
@@ -42,12 +44,16 @@ class Company extends React.Component {
                 console.log(data);
                 if (data.code === "S01") {
 
-                    const tooLong = data.contents[0].introduce.length > this.refs.companyintro.clientWidth / 14 * 8;
-
 
                     this.setState({
                         "data": data.contents[0],
-                        tooLong
+                        "loading": false
+                    }, () => {
+
+                        const tooLong = data.contents[0].introduce.length > this.refs.companyintro.clientWidth / 14 * 8;
+
+                        this.setState({tooLong});
+
                     });
 
                 } else if (data.code === "E01") {
@@ -83,7 +89,7 @@ class Company extends React.Component {
 
     render () {
 
-        const {current, showMore, data, cid} = this.state;
+        const {current, showMore, data, cid, loading} = this.state;
 
         const jobs = (data.jobs || []).map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
             <div className="position">
@@ -127,49 +133,50 @@ class Company extends React.Component {
                         </div>
                     </div>
                 </header>
+                {loading ? <Loading /> : <div>
 
-                <div id="jobTop">
-                    <span className="joblog"><img src={data.img} /></span>
-                    <h2>{data.name}</h2>
-                    <div>
-                        <span><img src="/src/images/source58.png" /><em>上海</em></span>
-                        {data.Authentication ? <span>认证</span> : ""}
+                    <div id="jobTop">
+                        <span className="joblog"><img src={data.img} /></span>
+                        <h2>{data.name}</h2>
+                        <div>
+                            <span><img src="/src/images/source58.png" /><em>上海</em></span>
+                            {data.Authentication ? <span>认证</span> : ""}
+                        </div>
+                        <p>
+                            <span>{data.industry || "未知"}</span>
+                            <em>|</em>
+                            <span>{data.nature || "未知"}</span>
+                            <em>|</em>
+                            <span>{data.stage || "未知"}</span>
+                            <em>|</em>
+                            <span>{data.numbers || "未知"}</span>
+                        </p>
                     </div>
-                    <p>
-                        <span>{data.industry || "未知"}</span>
-                        <em>|</em>
-                        <span>{data.nature || "未知"}</span>
-                        <em>|</em>
-                        <span>{data.stage || "未知"}</span>
-                        <em>|</em>
-                        <span>{data.numbers || "未知"}</span>
-                    </p>
-                </div>
 
-                <div className="companyMain">
-                    <ul>
-                        <li className={current === "part1" ? "active" : ""} onClick={() => {
+                    <div className="companyMain">
+                        <ul>
+                            <li className={current === "part1" ? "active" : ""} onClick={() => {
 
-                            this.setState({"current": "part1"});
+                                this.setState({"current": "part1"});
 
-                        }}
-                        >企业介绍</li>
-                        <li className={current === "part2" ? "active" : ""} onClick={() => {
+                            }}
+                            >企业介绍</li>
+                            <li className={current === "part2" ? "active" : ""} onClick={() => {
 
-                            this.setState({"current": "part2"});
+                                this.setState({"current": "part2"});
 
-                        }}
-                        >招聘岗位</li>
-                        <li className={current === "part3" ? "active" : ""} onClick={() => {
+                            }}
+                            >招聘岗位</li>
+                            <li className={current === "part3" ? "active" : ""} onClick={() => {
 
-                            this.setState({"current": "part3"});
+                                this.setState({"current": "part3"});
 
-                        }}
-                        >空中宣讲</li>
-                    </ul>
+                            }}
+                            >空中宣讲</li>
+                        </ul>
 
 
-                    {current === "part1"
+                        {current === "part1"
                         ? <div>
                             <div className="careTopic">
                                 <span className="caretitle">企业介绍：</span>
@@ -206,13 +213,19 @@ class Company extends React.Component {
                     : ""}
 
 
-                    {current === "part2" ? <div className="positions">
-                        {jobs}
-                    </div>
+                        {current === "part2" ? <div className="positions">
+                            {jobs}
+                        </div>
+                    : ""}
+
+                        {current === "part3" ? <div className="positions">
+                            <div className="tips">此功能暂未开放...</div>
+                        </div>
                     : ""}
 
 
-                </div>
+                    </div>
+                </div>}
 
             </div>
         );

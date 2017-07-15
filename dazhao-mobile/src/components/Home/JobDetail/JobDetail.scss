@@ -249,6 +249,10 @@ body{
             }
 
             .map{
+              a{
+                color:#21c6cd;
+                
+              }
                 display:inline-block;
                 width:.38rem;
                 height:.19rem;
@@ -280,11 +284,11 @@ body{
                     height:.18rem;
                 }
             }
-        
+
     }
     #homeMain{
         font-size: 0;
-        
+
         .jobWrap{
             border-top:.01rem solid #EAEAEA;
         }

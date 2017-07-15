@@ -50,6 +50,8 @@ class JobDetail extends React.Component {
 
             if (data.code === "S01") {
 
+                console.log(data);
+
                 this.setState({
                     "data": data.contents[0],
                     "showLoading": false
@@ -106,13 +108,13 @@ class JobDetail extends React.Component {
                         <em>{value.education || "未知"}</em>
                     </span>
                     <span>
-                        <em>{value.company.type || "未知"}</em>
+                        <em>{value.company.industry || "行业未知"}</em>
                         <b>|</b>
-                        <em>{value.company.nature || "未知"}</em>
+                        <em>{value.company.nature || "资产类型未知"}</em>
                         <b>|</b>
-                        <em>{value.company.stage || "未知"}</em>
+                        <em>{value.company.stage || "阶段未知"}</em>
                         <b>|</b>
-                        <em>{value.company.numbers || "未知"}</em>
+                        <em>{value.company.numbers || "人数未知"}</em>
                     </span>
                 </div>
             </div>
@@ -152,18 +154,18 @@ class JobDetail extends React.Component {
                             <div className="jobitems">
                                 <div className="jobintro">
                                     <h2>{data.company.name || "未知"}
-                                        <span>认证</span>
+                                        {data.company.Authentication ? <span>认证</span> : ""}
                                     </h2>
                                     <h3>
                                         <span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、</h3>
                                     <span>
-                                        <em>{data.company.type || "未知"}</em>
+                                        <em>{data.company.industry || "行业未知"}</em>
                                         <b>|</b>
-                                        <em>{data.company.nature || "未知"}</em>
+                                        <em>{data.company.nature || "资产类型未知"}</em>
                                         <b>|</b>
-                                        <em>{data.company.stage || "未知"}</em>
+                                        <em>{data.company.stage || "阶段未知"}</em>
                                         <b>|</b>
-                                        <em>{data.company.numbers || "未知"}</em>
+                                        <em>{data.company.numbers || "人数未知"}</em>
                                     </span>
                                 </div>
                                 <span><img src="/src/images/Back_Button.png" /></span>
@@ -196,7 +198,18 @@ class JobDetail extends React.Component {
                                     <span>{data.location || "未知"}</span>
                                 </p>
                             </div>
-                            <span className="map">地图</span>
+                            <span className="map" onClick={() => {
+
+                                if (!data.location) {
+
+                                    this.props.changeMessageContent("地址未知，请求无效");
+
+                                }
+
+                            }}
+                            >
+                                <a href={`bdnavi://query?name=${data.location}`}>地图</a>
+                            </span>
                         </div>
 
                     </div>
@@ -209,7 +222,12 @@ class JobDetail extends React.Component {
 
                     </div>
                     <div className="bottom">
-                        <span>发送简历</span>
+                        <span onClick={() => {
+
+                            this.props.changeMessageContent("此功能暂未开放");
+
+                        }}
+                        >发送简历</span>
                         <span onClick={this.careJob.bind(this, data.company.companyid, data.jobid)}>{this.state.isSelected ? "取消收藏" : "收藏"}</span>
                     </div>
                 </div>}

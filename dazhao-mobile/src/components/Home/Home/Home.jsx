@@ -19,7 +19,8 @@ class Home extends React.Component {
             "enterpriseLoading": false,
             "jobsPage": 1,
             "enterprisePage": 1,
-            "searchPage": false
+            "searchPage": true,
+            "currentNum": 0
         };
 
     }
@@ -75,11 +76,28 @@ class Home extends React.Component {
 
         });
 
+        const bannerChange = setInterval(() => {
+
+            if (this.state.currentNum < 2) {
+
+                this.setState({"currentNum": Number(this.state.currentNum) + 1});
+
+            } else {
+
+                this.setState({"currentNum": 0});
+
+            }
+
+        }, 4000);
+
+        this.setState({bannerChange});
+
     }
 
     componentWillUnmount () {
 
         this.setState({"lock": true});
+        clearInterval(this.state.bannerChange);
 
     }
 
@@ -88,7 +106,7 @@ class Home extends React.Component {
         // Ajax
         if (this.state.search === "") {
 
-            this.props.changeMessageContent("搜索不能为空");
+            // This.props.changeMessageContent("搜索不能为空");
 
         } else {
 
@@ -182,8 +200,19 @@ class Home extends React.Component {
     render () {
 
 
-        const {search, jobs, jobsLoading, enterprise, enterpriseLoading} = this.state;
+        const {search, jobs, jobsLoading, enterprise, enterpriseLoading, currentNum} = this.state;
+        const images = ["/src/images/banner1.jpg", "/src/images/banner2.png", "/src/images/banner3.png"];
+        const activeList = ["active0", "active1", "active2"];
+        const dotList = images.map((value, i) =>
+            <div key={i} onClick={() => {
 
+                this.setState({"currentNum": i});
+
+            }}
+            >.</div>
+      );
+        const currentImage = images[currentNum];
+        const activeStyle = activeList[currentNum];
         const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
 
             <div className="jobitems" key={i}>
@@ -207,14 +236,13 @@ class Home extends React.Component {
                 </div>
             </div>
         </Link>);
-
         const enterpriseList = enterprise.map((value, i) => <Link to={`/company/${value.companyid}`} key={i}>
             <div className="jobitems">
                 <span className="pics">
                     <img src={value.img} />
                 </span>
                 <div className="jobintro">
-                    <h2>{value.name}<span>认证</span></h2>
+                    <h2>{value.name}{value.Authentication ? <span>认证</span> : ""}</h2>
                     <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>JAVAEE研发工程</span>、<span>JAVAEE研发工程</span></h3>
                     <span className="address">
                         <em>{value.city}</em>
@@ -258,22 +286,12 @@ class Home extends React.Component {
                 </header>
 
                 <div id="show">
-                    <div id="myCarousel" className="carousel slide" data-ride="carousel">
-
-                        <ol className="carousel-indicators">
-                            <li className="active" />
-                            <li />
-                            <li />
-                        </ol>
-
-                        <div className="carousel-inner">
-                            <div className="item active" />
-                            <div className="item" />
-                            <div className="item" />
-                        </div>
-
+                    <img src={currentImage} />
+                    <div className={`rotation ${activeStyle}`}>
+                        {dotList}
                     </div>
                 </div>
+
 
                 <div className="experience">
                     <div>
@@ -296,7 +314,12 @@ class Home extends React.Component {
                         </Link>
                     </div>
 
-                    <div>
+                    <div onClick={() => {
+
+                        this.props.changeMessageContent("功能暂时未开放");
+
+                    }}
+                    >
                         <Link to="/">
                             <span><img src="/src/images/homeIcon4.png" />
                                 <em>空中宣讲</em></span>
