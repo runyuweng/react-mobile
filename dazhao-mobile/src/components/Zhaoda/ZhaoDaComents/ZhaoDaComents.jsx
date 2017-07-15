@@ -52,7 +52,7 @@ class ZhaoDaComents extends React.Component {
               const result = data.contents;
               var comment = {};
 
-              comment.nickname = result.user ? result.user.nickname : "";
+              comment.nickname = result.user ? result.user.nickname : "匿名用户";
               comment.vip = result.user ? result.user.vip : "";
               comment.position = result.user ? result.user.position : "";
               comment.content = result.content;

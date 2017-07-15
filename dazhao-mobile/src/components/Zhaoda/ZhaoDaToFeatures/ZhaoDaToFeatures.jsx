@@ -181,6 +181,7 @@ class ZhaoDaToFeatures extends React.Component {
             } else if (data.code === "E01") {
 
             }
+            this.props.changeMessageContent(data.message)
 
         });
 
@@ -243,6 +244,7 @@ class ZhaoDaToFeatures extends React.Component {
                 {showLoading ? <Loading />
                 : <div className="ZhaoDaToFeatures">
                     <header>
+                      {console.log('video',data.video)}
                         <video id="video" controls poster="/src/images/zhuanlan.png" >
                             <source src={data.video} />
                         </video>
@@ -271,7 +273,7 @@ class ZhaoDaToFeatures extends React.Component {
 
                                     : <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
                                 }
-                                <span><img src="/src/images/top.png" /></span>
+                                <span onClick={()=>{this.props.changeMessageContent('暂未提供分享功能')}}><img src="/src/images/top.png" /></span>
                             </div>
                         </div>
                         <div id="videoMessage">

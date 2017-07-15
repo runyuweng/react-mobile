@@ -101,7 +101,7 @@ class ZhaoDaResponse extends React.Component {
                     <div className="comment">
                         <div className="author">
                             <span><img src={answerdetail.imgsrc} /></span>
-                            <em>{answerdetail.name}</em>
+                            <em>{answerdetail.name||'匿名用户'}</em>
                             {
                                 answerdetail.vip
                                     ? <span><img src="/src/images/vip.png" /></span> : ""
