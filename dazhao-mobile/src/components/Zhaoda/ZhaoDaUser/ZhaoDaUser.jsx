@@ -11,13 +11,13 @@ class ZhaoDaUser extends React.Component {
         this.state = {
             "username": this.props.params.keyword,
             "users": [
-                {
-                    "uid": 1,
-                    "img": "/src/images/pople.png",
-                    "nickname": "Michael",
-                    "job": "国际教练协会（ICF）认证教练",
-                    "isCared": false
-                }
+                // {
+                //     "uid": 1,
+                //     "img": "/src/images/pople.png",
+                //     "nickname": "Michael",
+                //     "job": "国际教练协会（ICF）认证教练",
+                //     "isCared": false
+                // }
             ]
         };
 
@@ -40,17 +40,18 @@ class ZhaoDaUser extends React.Component {
             console.log(data);
             if (data.code === "S01") {
 
+                this.props.changeMessageContent(data.message);
                 this.setState({"users": data.contents});
 
             } else if (data.code === "E01") {
 
                 this.setState({"users": []});
+                this.props.changeMessageContent(data.message);
 
             }
 
         });
 
-        this.setState({"keyword": ""});
 
     }
 
@@ -67,10 +68,12 @@ class ZhaoDaUser extends React.Component {
                 users[index].status = this.state.users[index].status === 0 ? 1 : 0;
 
                 this.setState({users});
+                this.props.changeMessageContent(data.message);
 
             } else if (data.code === "E01") {
 
                 // This.setState({"topics": []});
+                this.props.changeMessageContent(data.message);
 
             }
 
@@ -116,16 +119,16 @@ class ZhaoDaUser extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={"/search"}>
+                            <Link to={`/search/${this.state.username}`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={"/talk"}>
+                            <Link to={`/talk/${this.state.username}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={"/zhuanlan"}>
+                            <Link to={`/zhuanlan/${this.state.username}`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={"/user"}>
+                            <Link className="active" to={`/user/${this.state.username}`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

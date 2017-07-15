@@ -34,7 +34,7 @@ class ZhaoDaResponse extends React.Component {
 
         this.setState({
             "aid": this.props.location.query.aid,
-            "title": this.props.location.query.qtitle
+            "title": this.props.location.query.qtitle || ""
         }, () => {
 
             this.fetchAnswer(this.state.aid);
@@ -64,11 +64,12 @@ class ZhaoDaResponse extends React.Component {
                 this.setState({
                     answerdetail,
                     "showLoading": false
-
                 });
+                this.props.changeMessageContent(data.message);
 
-            } else if (data.code === "E01") {
+            } else {
 
+                this.props.changeMessageContent(data.message);
                 this.setState({"answerdetail": {}});
 
             }

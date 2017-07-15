@@ -116,19 +116,21 @@ const Routes = () => <Router history={hashHistory}>
         </Route>
         <Route path="topic" component={ZhaoDaTopic} />
         <Route path="message" component={ZhaoDaMessage} />
-        <Route path="search" component={ZhaoDaSearch} />
-        <Route path="response" component={ZhaoDaResponse} />
+        <Route path="search/:keyword" component={ZhaoDaSearch} />
+        // <Route path="response" component={ZhaoDaResponse} />
+        <Route path="response/:aid/:qtitle" component={ZhaoDaResponse} />
+
         <Route path="quiz" component={ZhaoDaQuiz} />
         <Route path="consult" component={ZhaoDaConsult} />
         <Route path="detail" component={ZhaoDaQuesDetail} />
         <Route path="toquestion/:qid" component={ZhaoDaToQuestion} />
         <Route path="tofeature" component={ZhaoDaToFeatures} />
         <Route path="totopic/:tid" component={ZhaoDaToTopic} />
-        <Route path="user" component={ZhaoDaUser} />
-        <Route path="zhuanlan" component={ZhaoDaZhuanLan} />
-        <Route path="talk" component={ZhaoDaTalk} />
+        <Route path="user/:keyword" component={ZhaoDaUser} />
+        <Route path="zhuanlan/:keyword" component={ZhaoDaZhuanLan} />
+        <Route path="talk/:keyword" component={ZhaoDaTalk} />
         <Route path="choosetopic" component={ZhaoDaChooseTopic} />
-        <Route path="coments" component={ZhaoDaComents} />
+        <Route path="coments/:aid/:qtitle" component={ZhaoDaComents} />
         <Route path="addanswer/:qid" component={ZhaoDaAddAnswer} />
         <Route path="invitetoanswer" component={ZhaoDaInvitetoAnswer} />
 

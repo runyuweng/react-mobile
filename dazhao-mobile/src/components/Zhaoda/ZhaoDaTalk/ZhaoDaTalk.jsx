@@ -11,14 +11,14 @@ class ZhaoDaTalk extends React.Component {
         this.state = {
             "keyword": this.props.params.keyword || "",
             "topics": [
-                {
-                    "id": 1,
-                    "img": "/src/images/pople.png",
-                    "topicname": "研究生",
-                    "questionnum": 12,
-                    "care": 24,
-                    "isguanzhu": false
-                }
+                // {
+                //     "id": 1,
+                //     "img": "/src/images/pople.png",
+                //     "topicname": "研究生",
+                //     "questionnum": 12,
+                //     "care": 24,
+                //     "isguanzhu": false
+                // }
             ]
         };
 
@@ -44,16 +44,20 @@ class ZhaoDaTalk extends React.Component {
             if (data.code === "S01") {
 
                 this.setState({"topics": data.contents});
+                this.props.changeMessageContent(data.message);
+
 
             } else if (data.code === "E01") {
 
                 this.setState({"topics": []});
+                this.props.changeMessageContent(data.message);
+
 
             }
 
         });
 
-        this.setState({"keyword": ""});
+        // This.setState({"keyword": ""});
 
     }
 
@@ -124,16 +128,16 @@ class ZhaoDaTalk extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={"/search"}>
+                            <Link to={`/search/${this.state.keyword}`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={"/talk"}>
+                            <Link className="active" to={`/talk/${this.state.keyword}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={"/zhuanlan"}>
+                            <Link to={`/zhuanlan/${this.state.keyword}`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={"/user"}>
+                            <Link to={`/user/${this.state.keyword}`}>
                                 <li>用户</li>
                             </Link>
                         </ul>

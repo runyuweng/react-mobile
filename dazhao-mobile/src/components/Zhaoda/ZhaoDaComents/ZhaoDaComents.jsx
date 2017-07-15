@@ -3,6 +3,7 @@ import "./ZhaoDaComents.scss";
 import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class ZhaoDaComents extends React.Component {
 
@@ -17,7 +18,8 @@ class ZhaoDaComents extends React.Component {
                 "position": "",
                 "content": "",
                 "comments": []
-            }
+            },
+            "loading": true
         };
         this.fetchCommnets = this.fetchCommnets.bind(this);
         this.deliverComment = this.deliverComment.bind(this);
@@ -29,7 +31,7 @@ class ZhaoDaComents extends React.Component {
 
         this.props.changeBottomState(false);
 
-        this.setState({"aid": this.props.location.query.aid}, () => {
+        this.setState({"aid": this.props.params.aid}, () => {
 
             this.fetchAnswer(this.state.aid);
             // This.fetchCommnets(this.state.aid);
@@ -50,15 +52,16 @@ class ZhaoDaComents extends React.Component {
               const result = data.contents;
               var comment = {};
 
-              comment.nickname = result.user.nickname;
-              comment.vip = result.user.vip;
-              comment.position = result.user.position;
+              comment.nickname = result.user ? result.user.nickname : "";
+              comment.vip = result.user ? result.user.vip : "";
+              comment.position = result.user ? result.user.position : "";
               comment.content = result.content;
               comment.comments = [];
 
               this.setState({comment}, () => {
 
                   this.fetchCommnets(aid);
+                  this.props.changeMessageContent(data.message);
 
               });
 
@@ -73,6 +76,7 @@ class ZhaoDaComents extends React.Component {
               comment.comments = [];
 
               this.setState({comment});
+              this.props.changeMessageContent(data.message);
 
           }
 
@@ -95,11 +99,16 @@ class ZhaoDaComents extends React.Component {
 
               console.log(comment);
 
-              this.setState({comment});
+              this.props.changeMessageContent(data.message);
+              this.setState({
+                  comment,
+                  "loading": false
+              });
 
           } else if (data.code === "E01") {
 
               //
+              this.props.changeMessageContent(data.message);
 
           }
 
@@ -130,12 +139,15 @@ class ZhaoDaComents extends React.Component {
                     this.setState({"comment_input": ""}, () => {
 
                         this.fetchCommnets(aid);
+                        this.props.changeMessageContent(data.message);
 
                     });
 
                 } else if (data.code === "E01") {
 
-                    // This.setState({"comment": []});
+                    this.props.changeMessageContent(data.message);
+
+                    This.setState({"comment": []});
 
                 }
 
@@ -147,7 +159,7 @@ class ZhaoDaComents extends React.Component {
 
     render () {
 
-        const {comment} = this.state;
+        const {comment, loading} = this.state;
 
         const commentList = comment.comments.map((value, index) => {
 
@@ -155,7 +167,7 @@ class ZhaoDaComents extends React.Component {
 
             return (
                 <div className="commentItem" key={index}>
-                    <div className="name"><span>{ value.user.nickname }</span><span className="userpic"><img src={value.user.img} alt="user" /></span></div>
+                    <div className="name"><span>{ value.user ? value.user.nickname : "" }</span><span className="userpic"><img src={value.user ? value.user.img : ""} alt="user" /></span></div>
                     <div className="comment">
                         {value.ccontent}
                     </div>
@@ -169,46 +181,43 @@ class ZhaoDaComents extends React.Component {
                 <header>
                     <TopBar title="评论" border="boder" />
                 </header>
-                <div className="comentsmain">
-                    <div className="comenttop">
-                        <Link to={{
-                            "pathname": "/response",
-                            "query": {
-                                "aid": this.state.aid,
-                                "qtitle": this.props.location.query.qtitle
-                            }
-                        }}
-                        >
-                            <div className="left">
-                                <div className="publisher">
-                                    {comment.nickname}
-                                    {
+                {loading ? <Loading />
+                : <div>
+                    <div className="comentsmain">
+                        <div className="comenttop">
+                            <Link to={`/response/${this.state.aid}/${this.props.params.qtitle}`}>
+                                <div className="left">
+                                    <div className="publisher">
+                                        {comment.nickname}
+                                        {
                                         comment.vip
                                             ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
                                     }
-                                    {
+                                        {
                                         comment.position
                                         ? <em>，{comment.position}</em> : ""
                                     }
+                                    </div>
+                                    <div className="specialistComment" dangerouslySetInnerHTML={{"__html": comment.content}} />
                                 </div>
-                                <div className="specialistComment" dangerouslySetInnerHTML={{"__html": comment.content}} />
-                            </div>
-                            <span><img src="/src/images/Back_Button.png" alt="right" /></span>
-                        </Link>
+                                <span><img src="/src/images/Back_Button.png" alt="right" /></span>
+                            </Link>
+                        </div>
+                        <div className="comments">
+                            {commentList}
+                        </div>
                     </div>
-                    <div className="comments">
-                        {commentList}
+                    <div className="commentbox">
+                        <input value={this.state.comment_input} onChange={(e) => {
+
+                            this.setState({"comment_input": e.target.value});
+
+                        }} type="text" placeholder="非常不错的建议"
+                        />
+                        <span onClick={this.deliverComment.bind(this, this.state.aid)}>发表评论</span>
                     </div>
-                </div>
-                <div className="commentbox">
-                    <input value={this.state.comment_input} onChange={(e) => {
 
-                        this.setState({"comment_input": e.target.value});
-
-                    }} type="text" placeholder="非常不错的建议"
-                    />
-                    <span onClick={this.deliverComment.bind(this, this.state.aid)}>发表评论</span>
-                </div>
+                </div>}
             </div>
         );
 

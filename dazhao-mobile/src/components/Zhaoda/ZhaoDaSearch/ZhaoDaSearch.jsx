@@ -34,17 +34,17 @@ class ZhaoDaSearch extends React.Component {
             if (data.code === "S01") {
 
                 this.setState({"response": data.contents});
+                this.props.changeMessageContent(data.message);
 
             } else if (data.code === "E01") {
 
                 this.setState({"response": []});
+                this.props.changeMessageContent(data.message);
 
             }
 
         });
 
-
-        this.setState({"keyword": ""});
 
     }
 
@@ -89,16 +89,16 @@ class ZhaoDaSearch extends React.Component {
                     </header>
                     <nav>
                         <ul>
-                            <Link activeClassName="active" to={"/search"}>
+                            <Link className="active" to={`/search/${this.state.keyword}`}>
                                 <li>问答</li>
                             </Link>
-                            <Link activeClassName="active" to={"/talk"}>
+                            <Link to={`/talk/${this.state.keyword}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link activeClassName="active" to={"/zhuanlan"}>
+                            <Link to={`/zhuanlan/${this.state.keyword}`}>
                                 <li>专栏</li>
                             </Link>
-                            <Link activeClassName="active" to={"/user"}>
+                            <Link to={`/user/${this.state.keyword}`}>
                                 <li>用户</li>
                             </Link>
                         </ul>
