@@ -20,7 +20,7 @@ class ZhaoDaSearch extends React.Component {
 
         // Console.log(this.props.location.query.keyword);
         // This.fetchQuestions(this.state.keyword);
-
+        this.fetchQuestions(this.state.keyword);
         this.props.changeBottomState(false);
 
     }

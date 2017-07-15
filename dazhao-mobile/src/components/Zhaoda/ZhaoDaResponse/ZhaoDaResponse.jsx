@@ -33,8 +33,8 @@ class ZhaoDaResponse extends React.Component {
 
 
         this.setState({
-            "aid": this.props.location.query.aid,
-            "title": this.props.location.query.qtitle || ""
+            "aid": this.props.params.aid,
+            "title": this.props.params.qtitle || ""
         }, () => {
 
             this.fetchAnswer(this.state.aid);

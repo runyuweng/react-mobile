@@ -15,51 +15,15 @@ class ChooseTopic extends React.Component {
             "choosedtopic": [],
             "choosedid": [],
             "isSubmit": false,
-            "specialists": [
-                // {
-                //     "nickname": "Michael",
-                //     "label": "骨灰级猎头",
-                //     "img": "/src/images/pople.png",
-                //     "selected": false
-                // },
-                // {
-                //     "nickname": "Michael",
-                //     "label": "骨灰级猎头",
-                //     "img": "/src/images/pople.png",
-                //     "selected": false
-                // },
-                // {
-                //     "nickname": "Michael",
-                //     "label": "骨灰级猎头",
-                //     "img": "/src/images/pople.png",
-                //     "selected": false
-                // },
-                // {
-                //     "nickname": "Michael",
-                //     "label": "骨灰级猎头",
-                //     "img": "/src/images/pople.png",
-                //     "selected": false
-                // },
-                // {
-                //     "nickname": "Michael",
-                //     "label": "骨灰级猎头",
-                //     "img": "/src/images/pople.png",
-                //     "selected": false
-                // },
-                // {
-                //     "nickname": "Michael",
-                //     "label": "骨灰级猎头",
-                //     "img": "/src/images/pople.png",
-                //     "selected": false
-                // }
-            ],
-            "invited": []
+            "specialists": [],
+            "invited": [],
+            "qid" : 1
         };
         this.handleClick = this.handleClick.bind(this);
         this.cancleChecked = this.cancleChecked.bind(this);
         this.submitClick = this.submitClick.bind(this);
         this.selectClick = this.selectClick.bind(this);
-
+        this.forMore = this.forMore.bind(this);
     }
 
     selectClick (index, uid) {
@@ -113,7 +77,7 @@ class ChooseTopic extends React.Component {
 
     }
 
-  // 提交
+    // 提交
     submitClick () {
 
         if (this.state.choosedid.length > 0) {
@@ -135,6 +99,8 @@ class ChooseTopic extends React.Component {
                     }).
                 then((data) => {
 
+                    //console.log(data)
+
                     const newData = [];
 
                     data.contents.map((value, i) => {
@@ -143,6 +109,7 @@ class ChooseTopic extends React.Component {
                         newData[i].selected = false;
 
                     });
+
                     this.setState({"specialists": data.contents ? newData : []});
 
                 });
@@ -187,18 +154,17 @@ class ChooseTopic extends React.Component {
         if (this.state.invited.length > 0) {
 
             ajax({
-                "url": "/zhaoda/question/inviteanswer",
-                "method": "POST",
-                "data": `id=${this.state.invited.join(",")}`
+                "url": `/zhaoda/question/inviteanswer?qid=${this.state.qid}&id=${this.state.invited.join(',')}`
             }).
         then((data) => {
+
+            console.log(data)
 
             if (data.code === "S01") {
 
                 this.props.changeMessageContent("邀请成功");
                 hashHistory.push({
-                    "pathname": "Zhaoda",
-                    "query": {}
+                    "pathname":  `/toquestion/${this.state.qid}`
                 });
 
             }
@@ -214,6 +180,11 @@ class ChooseTopic extends React.Component {
 
     }
 
+    // 查看更多
+    forMore(){
+        this.props.changeMessageContent("该功能完善中...");
+    }
+
     handleChange (e) {
 
         this.setState({"title": e.target.value}, () => {
@@ -222,7 +193,7 @@ class ChooseTopic extends React.Component {
 
                 ajax({"url": `/zhaoda/topic/similartopic?topicname=${this.state.title}`}).
           then((data) => {
-
+                console.log(data)
               if (data.contents) {
 
                   const newData = JSON.parse(JSON.stringify(data.contents));
@@ -289,11 +260,6 @@ class ChooseTopic extends React.Component {
                 <div className="choosemain">
                     <div className="choosedtopic">
                         { choosedtopicList }
-                        {/*
-                <span>职业素养<em>X</em></span>
-                <span>职业素养<em>X</em></span>
-                <span>职业素养<em>X</em></span>
-            */}
                     </div>
                     <div className="topicfilter">
                         <span><img src="/src/images/搜素.png" alt="搜索" /></span>
@@ -301,24 +267,6 @@ class ChooseTopic extends React.Component {
                     </div>
                     <div className="topicfound">
                         { topicsList }
-                        {/*
-                <div className="topicitem">
-                    <span><img src="/src/images/icon/agree.png" alt="checked" /></span>
-                    <span>职业素养</span>
-                </div>
-                <div className="topicitem">
-                    <span></span>
-                    <span>职业规划</span>
-                </div>
-                <div className="topicitem">
-                    <span></span>
-                    <span>求职技巧</span>
-                </div>
-                <div className="topicitem">
-                    <span></span>
-                    <span>求职面试</span>
-                </div>
-            */}
                     </div>
                 </div>
 
@@ -331,7 +279,7 @@ class ChooseTopic extends React.Component {
                     {specialistsList}
                 </div>
                 <div className="bottombutton">
-                    <span>查看更多</span>
+                    <span onClick={() => {this.forMore()}}>查看更多</span>
                     <span onClick={() => {
 
                         this.handleInvite();

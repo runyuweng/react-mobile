@@ -26,7 +26,8 @@ class ZhaoDaToTopic extends React.Component {
             "nomore": false,
             "moreMessage": "",
             "first": true,
-            "showLoading": true
+            "showLoading": true,
+            "current" : 1
         };
         this.fetchQuestion = this.fetchQuestion.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
@@ -67,7 +68,8 @@ class ZhaoDaToTopic extends React.Component {
         })() : "";
 
     }
-
+    
+    // 话题关注
     setCare (tid) {
 
         ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${tid}`}).
@@ -94,7 +96,8 @@ class ZhaoDaToTopic extends React.Component {
       });
 
     }
-
+  
+    // 获取话题详情
     fetchQuestion (page) {
 
         !this.state.nomore
@@ -129,7 +132,7 @@ class ZhaoDaToTopic extends React.Component {
                               "id": value.tid,
                               "name": value.user.nickname,
                               "theme": value.qtitle,
-                              "comment": value.qcontent,
+                              "comment": value.content || "内容未知",
                               "agree": value.agree,
                               "remark": value.answer,
                               "collect": value.collect,
@@ -157,7 +160,7 @@ class ZhaoDaToTopic extends React.Component {
                               "id": value.tid,
                               "name": value.user.nickname,
                               "theme": value.qtitle,
-                              "comment": value.qcontent,
+                              "comment": value.content || "内容未知",
                               "agree": value.agree,
                               "remark": value.answer,
                               "collect": value.collect,
@@ -180,7 +183,13 @@ class ZhaoDaToTopic extends React.Component {
               } else if (data.code === "S02") {
 
                 // 没有更多
-                  const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
+                  var topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
+
+                  topicdetail.topicTitle = data.contents.topicname;
+                  topicdetail.answer = data.contents.questionnum;
+                  topicdetail.care = data.contents.care;
+                  topicdetail.isCared = data.contents.isguanzhu;
+                  topicdetail.topicImg = data.contents.img;
 
                   data.contents.questionlist.map((value, i) => {
 
@@ -189,7 +198,7 @@ class ZhaoDaToTopic extends React.Component {
                           "id": value.tid,
                           "name": value.user.nickname,
                           "theme": value.qtitle,
-                          "comment": value.qcontent,
+                          "comment": value.content || "内容未知",
                           "agree": value.agree,
                           "remark": value.answer,
                           "collect": value.collect,
@@ -218,7 +227,7 @@ class ZhaoDaToTopic extends React.Component {
 
     render () {
 
-        const {topicdetail, showLoading} = this.state;
+        const {topicdetail, showLoading, current} = this.state;
 
         const questionsList = topicdetail.questions.map((value, i) =>
             <AnswerMain isTopic="0" key={i} data={value} />
@@ -244,8 +253,8 @@ class ZhaoDaToTopic extends React.Component {
                     <span className="mTitl">{showLoading ? <div className="block" /> : topicdetail.topicTitle}</span>
                     <div className="care">
                         {showLoading ? <div className="block" /> : <div>
-                            <span>问答：<em>{topicdetail.answer || 0}</em></span>
-                            <span>关注：<em>{topicdetail.care || 0}</em></span>
+                            <span>问答：<em>{topicdetail.answer}</em></span>
+                            <span>关注：<em>{topicdetail.care}</em></span>
                         </div>}
                     </div>
                     <sapn onClick={this.setCare.bind(this, this.props.params.tid)} className="attention">{topicdetail.isCared ? "已关注" : "+关注"}</sapn>
@@ -253,10 +262,18 @@ class ZhaoDaToTopic extends React.Component {
 
                 <div className="topicM">
                     <ul>
-                        <li className="active">全部</li>
-                        <li>精华</li>
+                        <li onClick={() => {
+                          this.setState({
+                            "current" : 1
+                          })
+                        }} className={current === 1 ? "active" : ""}>全部</li>
+                        <li onClick={() => {
+                          this.setState({
+                            "current" : 2
+                          })
+                        }} className={current === 2 ? "active" : ""}>精华</li>
                     </ul>
-                    {showLoading ? <Loading /> : questionsList}
+                    {showLoading ? <Loading /> : current === 1 ? questionsList : ""}
 
                 </div>
                 <p className="fetchmore">{this.state.moreMessage}</p>

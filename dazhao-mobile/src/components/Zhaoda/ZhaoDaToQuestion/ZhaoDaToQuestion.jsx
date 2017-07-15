@@ -42,7 +42,8 @@ class ZhaoDaToQuestion extends React.Component {
         this.fetchQuestion();
 
     }
-
+    
+    // 获取问题相关
     fetchQuestion () {
 
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
@@ -57,7 +58,7 @@ class ZhaoDaToQuestion extends React.Component {
                   "authorAnswer": data.contents.qcontent,
                   "authorName": data.contents.user.nickname,
                   "time": data.contents.date,
-                  "careNum": data.contents.agree,
+                  "careNum": data.contents.care || 0,
                   "isCare": data.contents.collect,
                   "authorpic": data.contents.user.img || "/src/images/user.png"
               };
@@ -96,7 +97,8 @@ class ZhaoDaToQuestion extends React.Component {
       });
 
     }
-
+    
+    // 问题关注
     setCare (qid) {
 
         ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
@@ -107,7 +109,9 @@ class ZhaoDaToQuestion extends React.Component {
             // 关注状态改变
                 const question = JSON.parse(JSON.stringify(this.state)).question;
 
+                var num = this.state.question.isCare === true ? -1 : 1;
                 question.isCare = !this.state.question.isCare;
+                question.careNum = (this.state.question.careNum + num) >= 0 ? this.state.question.careNum + num : 0;
                 this.setState({question}, () => {
 
                     this.context.changeMessageContent("操作成功");
@@ -125,7 +129,8 @@ class ZhaoDaToQuestion extends React.Component {
         });
 
     }
-
+    
+    // 点赞
     setAgree (qid, aid, index) {
 
         ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
@@ -149,6 +154,7 @@ class ZhaoDaToQuestion extends React.Component {
 
     }
 
+    // 回答收藏
     setSelected (aid, index) {
 
         ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
@@ -190,13 +196,7 @@ class ZhaoDaToQuestion extends React.Component {
                             ? <em>，{value.position}</em> : ""
                         }
                     </div>
-                    <Link to={{
-                        "pathname": "/response",
-                        "query": {
-                            "aid": value.aid,
-                            "qtitle": question.title
-                        }
-                    }}
+                    <Link to={`response/${value.aid}/${question.title}`}
                     >
                         <div
                             className="comment1"
@@ -207,13 +207,7 @@ class ZhaoDaToQuestion extends React.Component {
                     </Link>
                     <div className="more">
                         <span><b><img onClick={this.setAgree.bind(this, question.qid, value.aid, num)} src="/src/images/zan.png" /></b>赞同{value.agree}</span>
-                        <Link to={{
-                            "pathname": "/coments",
-                            "query": {
-                                "aid": value.aid,
-                                "qtitle": question.title
-                            }
-                        }}
+                        <Link to={`/coments/${value.aid}/${question.title}`}
                         >
                             <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
                         </Link>
