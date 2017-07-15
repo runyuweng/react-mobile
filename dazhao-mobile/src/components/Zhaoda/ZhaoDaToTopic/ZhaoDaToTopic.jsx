@@ -27,7 +27,7 @@ class ZhaoDaToTopic extends React.Component {
             "moreMessage": "",
             "first": true,
             "showLoading": true,
-            "current" : 1
+            "current": 1
         };
         this.fetchQuestion = this.fetchQuestion.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
@@ -68,7 +68,7 @@ class ZhaoDaToTopic extends React.Component {
         })() : "";
 
     }
-    
+
     // 话题关注
     setCare (tid) {
 
@@ -96,7 +96,7 @@ class ZhaoDaToTopic extends React.Component {
       });
 
     }
-  
+
     // 获取话题详情
     fetchQuestion (page) {
 
@@ -183,7 +183,7 @@ class ZhaoDaToTopic extends React.Component {
               } else if (data.code === "S02") {
 
                 // 没有更多
-                  var topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
+                  const topicdetail = JSON.parse(JSON.stringify(this.state)).topicdetail;
 
                   topicdetail.topicTitle = data.contents.topicname;
                   topicdetail.answer = data.contents.questionnum;
@@ -263,15 +263,17 @@ class ZhaoDaToTopic extends React.Component {
                 <div className="topicM">
                     <ul>
                         <li onClick={() => {
-                          this.setState({
-                            "current" : 1
-                          })
-                        }} className={current === 1 ? "active" : ""}>全部</li>
+
+                            this.setState({"current": 1});
+
+                        }} className={current === 1 ? "active" : ""}
+                        >全部</li>
                         <li onClick={() => {
-                          this.setState({
-                            "current" : 2
-                          })
-                        }} className={current === 2 ? "active" : ""}>精华</li>
+
+                            this.setState({"current": 2});
+
+                        }} className={current === 2 ? "active" : ""}
+                        >精华</li>
                     </ul>
                     {showLoading ? <Loading /> : current === 1 ? questionsList : ""}
 

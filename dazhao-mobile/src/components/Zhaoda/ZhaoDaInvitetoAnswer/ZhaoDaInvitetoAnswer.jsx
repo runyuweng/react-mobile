@@ -24,7 +24,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
         this.props.changeBottomState(false);
 
-        this.setState({"qid": this.props.location.query.qid}, () => {
+        this.setState({"qid": this.props.params.qid}, () => {
 
             this.fetchUser(this.state.qid);
 
@@ -55,6 +55,10 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                   this.setState({"norecommenduser": true});
 
               }
+
+          } else {
+
+              this.props.changeMessageContent(data.message);
 
           }
 
@@ -87,7 +91,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
                 } else if (data.code === "E01") {
 
                     this.setState({"user": []});
-                    this.context.changeMessageContent("操作失败请重试");
+                    this.props.changeMessageContent(date.message);
 
                 }
 

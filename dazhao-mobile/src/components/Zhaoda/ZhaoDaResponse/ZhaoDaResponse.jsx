@@ -65,7 +65,6 @@ class ZhaoDaResponse extends React.Component {
                     answerdetail,
                     "showLoading": false
                 });
-                this.props.changeMessageContent(data.message);
 
             } else {
 
@@ -101,7 +100,7 @@ class ZhaoDaResponse extends React.Component {
                     <div className="comment">
                         <div className="author">
                             <span><img src={answerdetail.imgsrc} /></span>
-                            <em>{answerdetail.name||'匿名用户'}</em>
+                            <em>{answerdetail.name || "匿名用户"}</em>
                             {
                                 answerdetail.vip
                                     ? <span><img src="/src/images/vip.png" /></span> : ""

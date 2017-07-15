@@ -11,16 +11,16 @@ class Zhaoda extends React.Component {
 
     }
 
-    getChildContext() {
-        return {
-          myProps: this.props
-        }
+    getChildContext () {
+
+        return {"myProps": this.props};
+
     }
 
 
     componentDidMount () {
 
-        //this.props.changeMessageContent("该功能完善中...");
+        // This.props.changeMessageContent("该功能完善中...");
 
         this.props.changeBottomState(true);
 
@@ -77,8 +77,6 @@ class Zhaoda extends React.Component {
     }
 }
 
-Zhaoda.childContextTypes = {
-  myProps: React.PropTypes.object
-}
+Zhaoda.childContextTypes = {"myProps": React.PropTypes.object};
 
 export default Zhaoda;

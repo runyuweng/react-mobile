@@ -61,7 +61,6 @@ class ZhaoDaComents extends React.Component {
               this.setState({comment}, () => {
 
                   this.fetchCommnets(aid);
-                  this.props.changeMessageContent(data.message);
 
               });
 
@@ -90,15 +89,12 @@ class ZhaoDaComents extends React.Component {
         ajax({"url": `/zhaoda/answer/getcomments?aid=${aid}`}).
       then((data) => {
 
-          // console.log(data);
+          // Console.log(data);
           if (data.code === "S01") {
 
               const comment = JSON.parse(JSON.stringify(this.state)).comment;
 
               comment.comments = data.contents;
-
-
-              this.props.changeMessageContent(data.message);
 
               this.setState({
                   comment,
@@ -159,18 +155,14 @@ class ZhaoDaComents extends React.Component {
 
         const {comment, loading} = this.state;
 
-        const commentList = comment.comments.map((value, index) => {
-
-            return (
-                <div className="commentItem" key={index}>
-                    <div className="name"><span>{ value.user ? value.user.nickname : "" }</span><span className="userpic"><img src={value.user ? value.user.img : ""} alt="user" /></span></div>
-                    <div className="comment">
-                        {value.ccontent}
-                    </div>
+        const commentList = comment.comments.map((value, index) =>
+            <div className="commentItem" key={index}>
+                <div className="name"><span>{ value.user ? value.user.nickname : "匿名用户" }</span><span className="userpic"><img src={value.user ? value.user.img : ""} alt="user" /></span></div>
+                <div className="comment">
+                    {value.ccontent}
                 </div>
+            </div>
             );
-
-        });
 
         return (
             <div className="ZhaoDaComents">
@@ -184,7 +176,7 @@ class ZhaoDaComents extends React.Component {
                             <Link to={`/response/${this.state.aid}/${this.props.params.qtitle}`}>
                                 <div className="left">
                                     <div className="publisher">
-                                        {comment.nickname}
+                                        {comment.nickname || "匿名用户"}
                                         {
                                         comment.vip
                                             ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
@@ -208,7 +200,7 @@ class ZhaoDaComents extends React.Component {
 
                             this.setState({"comment_input": e.target.value});
 
-                        }} type="text" placeholder="非常不错的建议"
+                        }} type="text" placeholder="请输入评论后点击发表"
                         />
                         <span onClick={this.deliverComment.bind(this, this.state.aid)}>发表评论</span>
                     </div>

@@ -118,7 +118,7 @@ class SearchPage extends React.Component {
 
                             this.setState({"keyword": e.target.value});
 
-                        }} placeholder="Michael" value={this.state.keyword}
+                        }} placeholder="搜索期望中的公司、岗位、地点" value={this.state.keyword}
                         />
                         <span onClick={this.fetchJobs}>搜索</span>
                     </div>

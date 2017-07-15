@@ -14,7 +14,7 @@ class ZhaoDaMessage extends React.Component {
             "limit": 3,
             "informs": [],
             "page": 1,
-            "current" : 1
+            "current": 1
         };
         this.fetchInform = this.fetchInform.bind(this);
 
@@ -35,9 +35,9 @@ class ZhaoDaMessage extends React.Component {
         then((data) => {
 
             if (data.code === "E01") {
-                
+
                 this.props.changeMessageContent(data.message);
-                //this.setState({"informs": []});
+                // This.setState({"informs": []});
 
             } else if (data.code === "S01") {
 
@@ -96,29 +96,31 @@ class ZhaoDaMessage extends React.Component {
                 <nav>
                     <ul>
                         <li onClick={() => {
-                            this.setState({
-                                "current" : 1
-                            })
-                        }} className={current === 1 ? "active" : ""}>通知</li>
+
+                            this.setState({"current": 1});
+
+                        }} className={current === 1 ? "active" : ""}
+                        >通知</li>
                         <li onClick={() => {
-                            this.setState({
-                                "current" : 2
-                            })
-                        }} className={current === 2 ? "active" : ""}>私信</li>
+
+                            this.setState({"current": 2});
+
+                        }} className={current === 2 ? "active" : ""}
+                        >私信</li>
                         <li onClick={() => {
-                            this.setState({
-                                "current" : 3
-                            })
-                        }} className={current === 3 ? "active" : ""}>系统</li>
+
+                            this.setState({"current": 3});
+
+                        }} className={current === 3 ? "active" : ""}
+                        >系统</li>
                     </ul>
                 </nav>
                 {showLoading ? <Loading />
-                : 
-                    <div id="MessageMain">
-                        
-                        {current === 1 ? InformsList : current === 2 ? "" : current === 3 ? "" : ""}
+                : <div id="MessageMain">
 
-                    </div>
+                    {current === 1 ? InformsList : current === 2 ? "" : current === 3 ? "" : ""}
+
+                </div>
                 }
             </div>
         );

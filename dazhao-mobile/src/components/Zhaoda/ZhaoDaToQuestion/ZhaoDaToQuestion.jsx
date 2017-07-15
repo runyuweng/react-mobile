@@ -42,7 +42,7 @@ class ZhaoDaToQuestion extends React.Component {
         this.fetchQuestion();
 
     }
-    
+
     // 获取问题相关
     fetchQuestion () {
 
@@ -97,7 +97,7 @@ class ZhaoDaToQuestion extends React.Component {
       });
 
     }
-    
+
     // 问题关注
     setCare (qid) {
 
@@ -109,9 +109,10 @@ class ZhaoDaToQuestion extends React.Component {
             // 关注状态改变
                 const question = JSON.parse(JSON.stringify(this.state)).question;
 
-                var num = this.state.question.isCare === true ? -1 : 1;
+                const num = this.state.question.isCare === true ? -1 : 1;
+
                 question.isCare = !this.state.question.isCare;
-                question.careNum = (this.state.question.careNum + num) >= 0 ? this.state.question.careNum + num : 0;
+                question.careNum = this.state.question.careNum + num >= 0 ? this.state.question.careNum + num : 0;
                 this.setState({question}, () => {
 
                     this.context.changeMessageContent("操作成功");
@@ -129,7 +130,7 @@ class ZhaoDaToQuestion extends React.Component {
         });
 
     }
-    
+
     // 点赞
     setAgree (qid, aid, index) {
 
@@ -186,7 +187,7 @@ class ZhaoDaToQuestion extends React.Component {
             <article key={num}>
                 <div>
                     <div className="publisher" key={num}>
-                        {value.name}
+                        {value.name || "匿名用户"}
                         {
                             value.vip
                                 ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
@@ -196,8 +197,7 @@ class ZhaoDaToQuestion extends React.Component {
                             ? <em>，{value.position}</em> : ""
                         }
                     </div>
-                    <Link to={`response/${value.aid}/${question.title}`}
-                    >
+                    <Link to={`response/${value.aid}/${question.title}`}>
                         <div
                             className="comment1"
                             ref="input"
@@ -207,8 +207,7 @@ class ZhaoDaToQuestion extends React.Component {
                     </Link>
                     <div className="more">
                         <span><b><img onClick={this.setAgree.bind(this, question.qid, value.aid, num)} src="/src/images/zan.png" /></b>赞同{value.agree}</span>
-                        <Link to={`/coments/${value.aid}/${question.title}`}
-                        >
+                        <Link to={`/coments/${value.aid}/${question.title}`}>
                             <span><b><img src="/src/images/comment.png" /></b>评论{value.remark}</span>
                         </Link>
                         <span onClick={this.setSelected.bind(this, value.aid, num)}><b><img src="/src/images/cang.png" /></b>{value.collect ? "已收藏" : "收藏"}</span>
@@ -266,11 +265,7 @@ class ZhaoDaToQuestion extends React.Component {
                     <div className="AnswerMain">{otherAnswersList}</div>
 
                     <div className="toQuestionFooter">
-                        <Link to={{
-                            "pathname": "/invitetoanswer",
-                            "query": {"qid": this.props.params.qid}
-                        }}
-                        >
+                        <Link to={`/invitetoanswer/${this.props.params.qid}`} >
                             <span>邀请回答</span>
                         </Link>
                         <Link to={`/addanswer/${this.props.params.qid}`}>

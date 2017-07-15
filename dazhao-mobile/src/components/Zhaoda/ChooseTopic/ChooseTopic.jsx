@@ -17,13 +17,14 @@ class ChooseTopic extends React.Component {
             "isSubmit": false,
             "specialists": [],
             "invited": [],
-            "qid" : 1
+            "qid": 1
         };
         this.handleClick = this.handleClick.bind(this);
         this.cancleChecked = this.cancleChecked.bind(this);
         this.submitClick = this.submitClick.bind(this);
         this.selectClick = this.selectClick.bind(this);
         this.forMore = this.forMore.bind(this);
+
     }
 
     selectClick (index, uid) {
@@ -99,7 +100,7 @@ class ChooseTopic extends React.Component {
                     }).
                 then((data) => {
 
-                    //console.log(data)
+                    // Console.log(data)
 
                     const newData = [];
 
@@ -153,19 +154,15 @@ class ChooseTopic extends React.Component {
 
         if (this.state.invited.length > 0) {
 
-            ajax({
-                "url": `/zhaoda/question/inviteanswer?qid=${this.state.qid}&id=${this.state.invited.join(',')}`
-            }).
+            ajax({"url": `/zhaoda/question/inviteanswer?qid=${this.state.qid}&id=${this.state.invited.join(",")}`}).
         then((data) => {
 
-            console.log(data)
+            console.log(data);
 
             if (data.code === "S01") {
 
                 this.props.changeMessageContent("邀请成功");
-                hashHistory.push({
-                    "pathname":  `/toquestion/${this.state.qid}`
-                });
+                hashHistory.push({"pathname": `/toquestion/${this.state.qid}`});
 
             }
 
@@ -181,8 +178,10 @@ class ChooseTopic extends React.Component {
     }
 
     // 查看更多
-    forMore(){
+    forMore () {
+
         this.props.changeMessageContent("该功能完善中...");
+
     }
 
     handleChange (e) {
@@ -193,7 +192,8 @@ class ChooseTopic extends React.Component {
 
                 ajax({"url": `/zhaoda/topic/similartopic?topicname=${this.state.title}`}).
           then((data) => {
-                console.log(data)
+
+              console.log(data);
               if (data.contents) {
 
                   const newData = JSON.parse(JSON.stringify(data.contents));
@@ -279,7 +279,12 @@ class ChooseTopic extends React.Component {
                     {specialistsList}
                 </div>
                 <div className="bottombutton">
-                    <span onClick={() => {this.forMore()}}>查看更多</span>
+                    <span onClick={() => {
+
+                        this.forMore();
+
+                    }}
+                    >查看更多</span>
                     <span onClick={() => {
 
                         this.handleInvite();

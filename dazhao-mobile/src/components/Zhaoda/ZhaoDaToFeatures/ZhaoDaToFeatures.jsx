@@ -123,10 +123,12 @@ class ZhaoDaToFeatures extends React.Component {
         });
 
     }
-    
+
     // 点击专辑列表选项重新获取数据
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps (nextProps) {
+
         this.fetchZhuanlanDe();
+
     }
 
     fetchAlbum (albumNum) {
@@ -134,7 +136,7 @@ class ZhaoDaToFeatures extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).
         then((data) => {
 
-            console.log(data)
+            console.log(data);
 
             if (data.code === "S21") {
 
@@ -188,7 +190,7 @@ class ZhaoDaToFeatures extends React.Component {
             } else if (data.code === "E01") {
 
             }
-            this.props.changeMessageContent(data.message)
+            this.props.changeMessageContent(data.message);
 
         });
 
@@ -198,11 +200,12 @@ class ZhaoDaToFeatures extends React.Component {
 
         const {data, album, answers, commentWidth, showLoading} = this.state;
 
-        const albumList = album.map((value, i) => 
+        const albumList = album.map((value, i) =>
             <Link to={{
-                "pathname" : "/tofeature",
-                "query" : {"colid": value.colid}
-            }}>
+                "pathname": "/tofeature",
+                "query": {"colid": value.colid}
+            }}
+            >
                 <div className="albunItems" key={i}>
                     <span><img src={"/src/images/zhuanlan.png" || value.colposter} /></span>
                     <div className="itemsR">
@@ -258,7 +261,7 @@ class ZhaoDaToFeatures extends React.Component {
                 {showLoading ? <Loading />
                 : <div className="ZhaoDaToFeatures">
                     <header>
-                      {console.log('video',data.video)}
+                        {console.log("video", data.video)}
                         <video id="video" controls poster="/src/images/zhuanlan.png" >
                             <source src={data.video} />
                         </video>
@@ -287,7 +290,12 @@ class ZhaoDaToFeatures extends React.Component {
 
                                     : <span><img onClick={this.setSelect.bind(this, data.colid)} src="/src/images/love.png" /></span>
                                 }
-                                <span onClick={()=>{this.props.changeMessageContent('暂未提供分享功能')}}><img src="/src/images/top.png" /></span>
+                                <span onClick={() => {
+
+                                    this.props.changeMessageContent("暂未提供分享功能");
+
+                                }}
+                                ><img src="/src/images/top.png" /></span>
                             </div>
                         </div>
                         <div id="videoMessage">

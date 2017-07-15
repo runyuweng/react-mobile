@@ -28,7 +28,7 @@ class ZhaoDaSearchTop extends React.Component {
 
                             this.setState({"keyword": e.target.value});
 
-                        }} placeholder="Michael" value={this.state.keyword}
+                        }} placeholder="请输入关键词搜索" value={this.state.keyword}
                         />
                         <span>搜索</span>
                     </div>

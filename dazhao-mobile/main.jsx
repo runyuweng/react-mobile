@@ -132,7 +132,7 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="choosetopic" component={ZhaoDaChooseTopic} />
         <Route path="coments/:aid/:qtitle" component={ZhaoDaComents} />
         <Route path="addanswer/:qid" component={ZhaoDaAddAnswer} />
-        <Route path="invitetoanswer" component={ZhaoDaInvitetoAnswer} />
+        <Route path="invitetoanswer/:qid" component={ZhaoDaInvitetoAnswer} />
 
         <Route path="jobdetail/:id" component={HomeJobDetail} />
         <Route path="company/:id" component={HomeCompany} />

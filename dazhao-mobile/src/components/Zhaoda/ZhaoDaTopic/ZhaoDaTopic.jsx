@@ -54,11 +54,17 @@ class ZhaoDaTopic extends React.Component {
 
     topicClick (index, id) {
 
-        this.setState({"active": index});
+        this.setState({
+            "active": index,
+            "showLoading": true
+        });
         ajax({"url": `/zhaoda/topic/hottopics?categoryid=${id}`}).
         then((data) => {
 
-            this.setState({"topics": data.contents});
+            this.setState({
+                "topics": data.contents,
+                "showLoading": false
+            });
 
         });
 
