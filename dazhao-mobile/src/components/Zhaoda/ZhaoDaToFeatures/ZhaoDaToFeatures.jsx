@@ -249,8 +249,8 @@ class ZhaoDaToFeatures extends React.Component {
                 : <div className="ZhaoDaToFeatures">
                     <header>
                         {console.log("video", data.video)}
-                        <video id="video" controls poster="/src/images/zhuanlan.png" >
-                            <source src={data.video} />
+                        <video id="video" controls poster={"/src/images/zhuanlan.png" || data.colposterbig} >
+                            <source src={data.videourl} />
                         </video>
                         <div className="TopBar">
                             <span onClick={(e) => {

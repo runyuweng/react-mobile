@@ -33,7 +33,7 @@ class ZhaoDaMessage extends React.Component {
 
         ajax({"url": `/zhaoda/message/information?page=${page}`}).
         then((data) => {
-
+            console.log(data)
             if (data.code === "E01") {
 
                 this.props.changeMessageContent(data.message);
@@ -83,7 +83,7 @@ class ZhaoDaMessage extends React.Component {
                         {elem.answerers.length > limit ? ` 等${elem.answerers.length}人`
                     : elem.answerers.length === 1 ? " " : ` ${elem.answerers.length}人`}
                     回答了你的问题：</span>
-                    <p>{elem.topic}</p>
+                    <p>{elem.qtitle}</p>
                 </div>
             );
 

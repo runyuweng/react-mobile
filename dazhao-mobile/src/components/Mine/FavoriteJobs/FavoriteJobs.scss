@@ -1,5 +1,6 @@
 #favoriteJobs{
     border-top:.01rem solid #EAEAEA;
+    border-bottom:.01rem solid #EAEAEA;
 
     .jobitems{
         background:#fff;
@@ -84,8 +85,8 @@
 
     }
 
-    .jobitems:nth-last-of-type(1){
-        border-bottom:.01rem solid #EAEAEA;
+    a:nth-last-of-type(1){
+        background-color: red;
         .jobintro{
             border-bottom:none;
         }

@@ -152,6 +152,7 @@ class Register extends React.Component {
 
                         }}
                     />
+                    <button className="verify" onClick={() => this.verifyTel()}>发送验证码{time ? ` ${time}s` : ""}</button>
                     <p>设置密码</p>
                     <input value={pwd} type="password" placeholder="请输入密码"
                         onChange={(e) => {
@@ -160,7 +161,6 @@ class Register extends React.Component {
 
                         }}
                     />
-                    <button className="verify" onClick={() => this.verifyTel()}>发送验证码{time ? ` ${time}s` : ""}</button>
                     <p className="agree">
                         <span onClick={this.handleAgree.bind(this)}>
                             {agree ? <img src="/src/images/icon/agree.png" /> : ""}

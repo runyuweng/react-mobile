@@ -96,11 +96,11 @@ class ChooseTopic extends React.Component {
                     ajax({
                         "url": "/zhaoda/question/askquestion",
                         "method": "POST",
-                        "data": `qtitle=${sessionStorage.getItem("question")}&qcontent=${sessionStorage.getItem("detail")}&tid=[${this.state.choosedid.join(",")}]`
+                        "data": `qtitle=${sessionStorage.getItem("question")}&qcontent=${sessionStorage.getItem("detail")}&tid=${this.state.choosedid.join(",")}`
                     }).
                 then((data) => {
 
-                    // Console.log(data)
+                    // console.log(data)
 
                     const newData = [];
 
@@ -111,7 +111,10 @@ class ChooseTopic extends React.Component {
 
                     });
 
-                    this.setState({"specialists": data.contents ? newData : []});
+                    this.setState({
+                        "specialists": data.contents ? newData : [],
+                        "qid" : data.lastestqid
+                    });
 
                 });
 
