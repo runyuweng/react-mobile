@@ -14,7 +14,7 @@ class ZhaoDaToQuestion extends React.Component {
 
         super(props);
         this.state = {
-            "topic": "考研",
+            "topic": [],
             "question": {},
             "otherAnswers": [],
             "stretch": false,
@@ -78,10 +78,17 @@ class ZhaoDaToQuestion extends React.Component {
                   });
 
               });
+              
+              var topic = [];
+              data.contents.topics.map((elem) => {
+                topic.push(elem.topicname);
+              });
+
               this.setState({
                   "question": newQ,
                   "otherAnswers": newOtherAnswers,
-                  "showLoading": false
+                  "showLoading": false,
+                  "topic": topic
               }, () => {
 
                   const showshadow = !(newQ.authorAnswer.length < this.refs.carecontent.clientWidth / 14 * 2);
@@ -147,8 +154,15 @@ class ZhaoDaToQuestion extends React.Component {
               this.setState({otherAnswers});
 
 
+          } else if (data.code === "S04") {
+            // 已经点过赞了
+            
+            this.context.changeMessageContent(data.message);
+
           } else if (data.code === "E01") {
             // 出错
+            
+            this.context.changeMessageContent(data.message);
           }
 
       });
@@ -182,6 +196,12 @@ class ZhaoDaToQuestion extends React.Component {
     render () {
 
         const {topic, question, otherAnswers, showLoading} = this.state;
+
+        const topicList = topic.map((elem, index) => {
+          return(
+            <span key={index} className="topTopic">{elem}</span>
+          )
+        })
 
         const otherAnswersList = otherAnswers.map((value, num) =>
             <article key={num}>
@@ -230,7 +250,7 @@ class ZhaoDaToQuestion extends React.Component {
 
                     }}
                     >
-                        <span className="title">父话题：<span className="topTopic">{topic}</span></span>
+                        <span className="title">父话题：{topicList}</span>
                         <span className="img"><img src="/src/images/Back_Button.png" /></span>
                     </div>
 

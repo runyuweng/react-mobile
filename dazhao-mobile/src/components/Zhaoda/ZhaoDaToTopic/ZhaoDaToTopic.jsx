@@ -132,7 +132,7 @@ class ZhaoDaToTopic extends React.Component {
                               "id": value.tid,
                               "name": value.user.nickname,
                               "theme": value.qtitle,
-                              "comment": value.content || "内容未知",
+                              "comment": value.qcontent,
                               "agree": value.agree,
                               "remark": value.answer,
                               "collect": value.collect,
@@ -160,7 +160,7 @@ class ZhaoDaToTopic extends React.Component {
                               "id": value.tid,
                               "name": value.user.nickname,
                               "theme": value.qtitle,
-                              "comment": value.content || "内容未知",
+                              "comment": value.qcontent,
                               "agree": value.agree,
                               "remark": value.answer,
                               "collect": value.collect,
@@ -198,7 +198,7 @@ class ZhaoDaToTopic extends React.Component {
                           "id": value.tid,
                           "name": value.user.nickname,
                           "theme": value.qtitle,
-                          "comment": value.content || "内容未知",
+                          "comment": value.qcontent,
                           "agree": value.agree,
                           "remark": value.answer,
                           "collect": value.collect,
@@ -230,7 +230,7 @@ class ZhaoDaToTopic extends React.Component {
         const {topicdetail, showLoading, current} = this.state;
 
         const questionsList = topicdetail.questions.map((value, i) =>
-            <AnswerMain isTopic="0" key={i} data={value} />
+            <AnswerMain toquestion="1" isTopic="0" key={i} data={value} />
         );
 
 
