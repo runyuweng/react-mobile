@@ -8,8 +8,9 @@ class ZhaoDaSearch extends React.Component {
     constructor (props) {
 
         super(props);
+        console.log('params',this.props.params.splat);
         this.state = {
-            "keyword": this.props.params.keyword || "",
+            "keyword": this.props.params.splat || "",
             "response": []
         };
         this.fetchQuestions = this.fetchQuestions.bind(this);
@@ -59,11 +60,11 @@ class ZhaoDaSearch extends React.Component {
                 <Link to={{
                     "pathname": "/response",
                     "query": {
-                        "aid": item.answers[0].aid,
+                        "aid": item.answers ? item.answers[0].aid : 1,
                         "qtitle": item.qtitle
                     }
                 }}
-                ><p dangerouslySetInnerHTML={{"__html": item.answers[0].content}} /></Link>
+                ><p dangerouslySetInnerHTML={{"__html": item.answers ? item.answers[0].content : "未知"}} /></Link>
             </div>
 
       );

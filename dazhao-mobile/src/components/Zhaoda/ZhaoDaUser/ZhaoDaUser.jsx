@@ -9,7 +9,7 @@ class ZhaoDaUser extends React.Component {
 
         super(props);
         this.state = {
-            "username": this.props.params.keyword,
+            "username": this.props.params.splat,
             "users": [
                 // {
                 //     "uid": 1,

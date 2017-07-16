@@ -9,7 +9,7 @@ class ZhaoDaTalk extends React.Component {
 
         super(props);
         this.state = {
-            "keyword": this.props.params.keyword || "",
+            "keyword": this.props.params.splat || "",
             "topics": [
                 // {
                 //     "id": 1,

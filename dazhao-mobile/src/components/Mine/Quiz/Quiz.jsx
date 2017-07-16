@@ -64,7 +64,8 @@ class Quiz extends React.Component {
             console.log(data);
 
             if (data.code === "S01") {
-
+                
+                this.context.changeMessageContent(data.message);
                 const questions = data.contents;
 
                 this.setState({
@@ -74,7 +75,8 @@ class Quiz extends React.Component {
                 });
 
             } else if (data.code === "S02") {
-
+                
+                this.context.changeMessageContent(data.message);
                 const questions = data.contents;
 
                 this.setState({
@@ -85,6 +87,8 @@ class Quiz extends React.Component {
 
             } else if (data.code === "S03") {
 
+                this.context.changeMessageContent(data.message);
+
                 // SO3表示没有任何提问
                 this.setState({
                     "questions": [],
@@ -93,7 +97,8 @@ class Quiz extends React.Component {
                 });
 
             } else if (data.code === "E01") {
-
+                
+                this.context.changeMessageContent(data.message);
                 this.setState({"questions": []});
 
             } else if (data.code === "E03") {
@@ -126,5 +131,9 @@ class Quiz extends React.Component {
         );
 
     }
+}
+
+Quiz.contextTypes = {
+    changeMessageContent : React.PropTypes.func
 }
 export default Quiz;

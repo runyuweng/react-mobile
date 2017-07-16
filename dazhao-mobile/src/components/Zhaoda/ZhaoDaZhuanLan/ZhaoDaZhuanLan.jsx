@@ -9,7 +9,7 @@ class ZhaoDaZhuanLan extends React.Component {
 
         super(props);
         this.state = {
-            "keyword": this.props.params.keyword,
+            "keyword": this.props.params.splat,
             "zhuanlan": [
                 // {
                 //     "qid": 1,

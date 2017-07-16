@@ -13,7 +13,7 @@ var config = {
     devServer: {
         inline: true,
         host: '127.0.0.1',
-        // host: '192.168.137.2',
+        // host: '192.168.23.1',
         port: 7777
     },
 
@@ -44,7 +44,7 @@ var config = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env':{
+            'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
