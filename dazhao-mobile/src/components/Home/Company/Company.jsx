@@ -18,7 +18,7 @@ class Company extends React.Component {
                 "location": "",
                 "url": "",
                 "type": "",
-                "nature": "",
+                "zichantype": "",
                 "stage": "",
                 "numbers": "",
                 "Authentication": false,
@@ -102,7 +102,7 @@ class Company extends React.Component {
                         <em>{value.location || "未知"}</em>
                         <em>{value.education || "未知"}</em>
                     </span>
-                    <span>{value.time || "未知"}</span>
+                    <span>{`${new Date(value.updatetime).getFullYear()}年${new Date(value.updatetime).getMonth()}月${new Date(value.updatetime).getDay()}日` || "未知"}</span>
                 </div>
             </div>
         </Link>);
@@ -145,7 +145,7 @@ class Company extends React.Component {
                         <p>
                             <span>{data.industry || "未知"}</span>
                             <em>|</em>
-                            <span>{data.nature || "未知"}</span>
+                            <span>{data.zichantype || "未知"}</span>
                             <em>|</em>
                             <span>{data.stage || "未知"}</span>
                             <em>|</em>
@@ -202,7 +202,7 @@ class Company extends React.Component {
 
                             <div className="compangMsg">
                                 <h3>企业基本信息：</h3>
-                                <p>企业性质：<span>{data.nature || "未知"}</span></p>
+                                <p>企业性质：<span>{data.zichantype || "未知"}</span></p>
                                 <p>发展阶段：<span>{data.stage || "未知"}</span></p>
                                 <p>企业领域：<span />{data.type || "未知"}</p>
                                 <p>企业规模：<span>{data.numbers || "未知"}</span></p>

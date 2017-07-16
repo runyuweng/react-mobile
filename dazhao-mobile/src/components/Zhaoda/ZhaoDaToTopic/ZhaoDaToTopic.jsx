@@ -132,7 +132,7 @@ class ZhaoDaToTopic extends React.Component {
                               "id": value.tid,
                               "name": value.user.nickname,
                               "theme": value.qtitle,
-                              "comment": value.content || "内容未知",
+                              "comment": value.qcontent || "内容未知",
                               "agree": value.agree,
                               "remark": value.answer,
                               "collect": value.collect,

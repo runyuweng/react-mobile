@@ -2,6 +2,7 @@ import React from "react";
 import "./Mine.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
+import Loading from "../../Public/Loading/Loading.jsx";
 
 class Mine extends React.Component {
 
@@ -10,15 +11,16 @@ class Mine extends React.Component {
         super(props);
         this.state = {
             "personalMsg": {
-                "sid": 1,
-                "name": "周新城",
-                "sex": "男",
-                "img": "/boy.png",
-                "school": "山东大学",
-                "major": "机械设计制造及自动化",
-                "delivered": 12,
-                "need_interview": 0
-            }
+                // "sid": 1,
+                // "name": "周新城",
+                // "sex": "男",
+                // "img": "/boy.png",
+                // "school": "山东大学",
+                // "major": "机械设计制造及自动化",
+                // "delivered": 12,
+                // "need_interview": 0
+            },
+            showLoading:true
         };
 
         this.fetchUserMsg = this.fetchUserMsg.bind(this);
@@ -58,12 +60,13 @@ class Mine extends React.Component {
 
     fetchUserMsg () {
 
-        ajax({"url": "/zhaoda/getuserinfo"}).
+        ajax({"url": "/zhaoda/user/userdetail"}).
         then((data) => {
 
             if (data.code === "S01") {
 
-                this.setState({"personalMsg": data.contents});
+                this.setState({"personalMsg": data.contents,
+                showLoading:false});
 
             }
 
@@ -73,10 +76,13 @@ class Mine extends React.Component {
 
     render () {
 
-        const {personalMsg} = this.state;
+        const {personalMsg, showLoading} = this.state;
 
         return (
+          <div>
+          {showLoading?<Loading />:
             <div className="Mine">
+
                 <header className="head">
                     <div className="top">
                         <span className="imgone">{this.state.login ? <img src="/src/images/boy1.png" className="blur" /> : ""}</span>
@@ -85,16 +91,16 @@ class Mine extends React.Component {
                         </div>
                         <span className="edit">编辑</span>
                     </div>
-                    {this.state.login ? <p><em>{ personalMsg.name }</em><span><img src="/src/images/man.png" /></span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
+                    {this.state.login ? <p><em>{ personalMsg.username }</em><span>{ personalMsg.sex?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">
                         <div className="school">
-                            <span>{this.state.login ? personalMsg.school : "大招一百"}</span><br />
-                            <span>{this.state.login ? personalMsg.major : "专注于职业教育和校园招聘"}</span>
+                            <span>{this.state.login ? personalMsg.school||"学校未知" : "学校未知"}</span><br />
+                            <span>{this.state.login ? personalMsg.major||"专业未知" : "专业未知"}</span>
                         </div>
                         <div className="fans">
-                            <span><b>{personalMsg.delivered}</b><br />已投递</span>
+                            <span><b>{personalMsg.delivered||0}</b><br />已投递</span>
                             <em />
-                            <span><b>{personalMsg.need_interview}</b><br />待面试</span>
+                            <span><b>{personalMsg.need_interview||0}</b><br />待面试</span>
                         </div>
                     </div>
                 </header>
@@ -128,7 +134,8 @@ class Mine extends React.Component {
                     <p><em>账号设置</em><span><img src="/src/images/Back_Button.png" /></span></p>
                     <p><em>建议反馈</em><span><img src="/src/images/Back_Button.png" /></span></p>
                 </div>
-            </div>
+            </div>}
+          </div>
         );
 
     }

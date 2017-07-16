@@ -49,7 +49,8 @@ export default function ajax(options) {
           }
         },
         verify:()=>{
-          const data = !config.noParse?JSON.parse(xhr.responseText):xhr.responseText;
+          const data = (!config.noParse)?(JSON.parse(xhr.responseText)):xhr.responseText;
+          console.log('data',data);
           if(data.code === "E03"){
             hashHistory.push({
                 pathname: 'tologin',
@@ -86,7 +87,7 @@ export default function ajax(options) {
         return new Promise(
             function(resolve, reject) {
                 tool.setToken();
-                resolve(tool.verify())
+                resolve(tool.verify());
             }
         );
     } else {

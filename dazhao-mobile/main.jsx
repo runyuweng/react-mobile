@@ -72,9 +72,11 @@ import ToLogin from "./src/components/Verify/Login/ToLogin.jsx";
 import Login from "./src/components/Verify/Login/Login.jsx";
 import Register from "./src/components/Verify/Register/Register.jsx";
 
+import { setCookie, getCookie, delCookie } from './src/services/tools.js'
+
 function requireAuth (nextState, replace) {
 
-    if (true) {
+    if (!getCookie('token')) {
 
         replace({
             "pathname": "/tologin",

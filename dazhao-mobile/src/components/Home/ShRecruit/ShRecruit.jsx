@@ -167,7 +167,7 @@ class ShRecruit extends React.Component {
                         <span>
                             <em>{value.company.type}</em>
                             <b>|</b>
-                            <em>外商独资(暂无)</em>
+                            <em>{value.company.zichantype||'资产类型未知'}</em>
                             <b>|</b>
                             <em>{value.company.stage}</em>
                             <b>|</b>

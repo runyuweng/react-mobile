@@ -110,7 +110,7 @@ class JobDetail extends React.Component {
                     <span>
                         <em>{value.company.industry || "行业未知"}</em>
                         <b>|</b>
-                        <em>{value.company.nature || "资产类型未知"}</em>
+                        <em>{value.company.zichantype || "资产类型未知"}</em>
                         <b>|</b>
                         <em>{value.company.stage || "阶段未知"}</em>
                         <b>|</b>
@@ -161,7 +161,7 @@ class JobDetail extends React.Component {
                                     <span>
                                         <em>{data.company.industry || "行业未知"}</em>
                                         <b>|</b>
-                                        <em>{data.company.nature || "资产类型未知"}</em>
+                                        <em>{data.company.zichantype || "资产类型未知"}</em>
                                         <b>|</b>
                                         <em>{data.company.stage || "阶段未知"}</em>
                                         <b>|</b>
