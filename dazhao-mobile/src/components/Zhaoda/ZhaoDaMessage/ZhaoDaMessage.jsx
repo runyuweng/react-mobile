@@ -77,14 +77,16 @@ class ZhaoDaMessage extends React.Component {
             });
 
             return (
-                <div className="zhaodamessage" key={index}>
-                    <span className="who">
-                        {FromList}
-                        {elem.answerers.length > limit ? ` 等${elem.answerers.length}人`
-                    : elem.answerers.length === 1 ? " " : ` ${elem.answerers.length}人`}
-                    回答了你的问题：</span>
-                    <p>{elem.qtitle}</p>
-                </div>
+                <Link to={`/toquestion/${elem.qid}`}>
+                    <div className="zhaodamessage" key={index}>
+                        <span className="who">
+                            {FromList}
+                            {elem.answerers.length > limit ? ` 等${elem.answerers.length}人`
+                        : elem.answerers.length === 1 ? " " : ` ${elem.answerers.length}人`}
+                        回答了你的问题：</span>
+                        <p>{elem.qtitle}</p>
+                    </div>
+                </Link>
             );
 
         });
