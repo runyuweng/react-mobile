@@ -59,7 +59,7 @@ class AnswerMain extends React.Component {
         ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
       then((data) => {
 
-          console.log(data);
+           
           if (data.code === "S01") {
 
               // 收藏状态改变

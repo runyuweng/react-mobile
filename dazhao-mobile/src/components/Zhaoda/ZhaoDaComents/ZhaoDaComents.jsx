@@ -46,7 +46,7 @@ class ZhaoDaComents extends React.Component {
         ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
       then((data) => {
 
-          console.log(data);
+           
           if (data.code === "S01") {
 
               const result = data.contents;
@@ -89,7 +89,7 @@ class ZhaoDaComents extends React.Component {
         ajax({"url": `/zhaoda/answer/getcomments?aid=${aid}`}).
       then((data) => {
 
-          // Console.log(data);
+          //  
           if (data.code === "S01") {
 
               const comment = JSON.parse(JSON.stringify(this.state)).comment;

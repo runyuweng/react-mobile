@@ -41,7 +41,7 @@ class Company extends React.Component {
             ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
             then((data) => {
 
-                console.log(data);
+                 
                 if (data.code === "S01") {
 
 
@@ -71,7 +71,7 @@ class Company extends React.Component {
         ajax({"url": `/zhaoda/company/subscribecompany?companyid=${cid}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 this.setState({"isSelected": !this.state.isSelected});

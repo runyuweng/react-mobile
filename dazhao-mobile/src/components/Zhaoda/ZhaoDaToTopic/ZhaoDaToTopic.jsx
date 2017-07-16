@@ -105,7 +105,7 @@ class ZhaoDaToTopic extends React.Component {
         ? ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=${page}`}).
           then((data) => {
 
-              console.log(data);
+               
 
               if (data.code === "S01") {
 

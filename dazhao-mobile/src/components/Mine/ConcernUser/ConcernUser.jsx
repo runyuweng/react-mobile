@@ -61,7 +61,7 @@ class ConcernUser extends React.Component {
         ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${uid}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 this.context.changeMessageContent(data.message);
@@ -89,7 +89,7 @@ class ConcernUser extends React.Component {
         ? ajax({"url": `/zhaoda/user/mysubscribeuser?page=${page}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 this.context.changeMessageContent(data.message);

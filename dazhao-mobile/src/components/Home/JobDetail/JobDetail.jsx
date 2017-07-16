@@ -50,7 +50,7 @@ class JobDetail extends React.Component {
 
             if (data.code === "S01") {
 
-                console.log(data);
+                 
 
                 this.setState({
                     "data": data.contents[0],
@@ -78,7 +78,7 @@ class JobDetail extends React.Component {
         ajax({"url": `/zhaoda/job/subscribejob?jobid=${jobid}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 this.props.changeMessageContent("操作成功");

@@ -39,7 +39,7 @@ class ZhaoDaDiscover extends React.Component {
         }).
       then((data) => {
 
-          console.log(data);
+           
 
           if (data.code === "S01") {
 

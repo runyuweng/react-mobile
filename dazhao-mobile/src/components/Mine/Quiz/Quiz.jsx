@@ -61,7 +61,7 @@ class Quiz extends React.Component {
         ? ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
         then((data) => {
 
-            console.log(data);
+             
 
             if (data.code === "S01") {
                 

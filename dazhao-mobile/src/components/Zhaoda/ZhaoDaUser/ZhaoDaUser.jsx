@@ -37,7 +37,7 @@ class ZhaoDaUser extends React.Component {
         ajax({"url": `/zhaoda/user/searchuser?username=${username}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 this.props.changeMessageContent(data.message);
@@ -60,7 +60,7 @@ class ZhaoDaUser extends React.Component {
         ajax({"url": `/zhaoda/user/subscribeuser?uid=${userId}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 const users = JSON.parse(JSON.stringify(this.state)).users;

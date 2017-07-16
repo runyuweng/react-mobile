@@ -31,7 +31,7 @@ class ZhaoDaSearch extends React.Component {
         ajax({"url": `/zhaoda/question/searchquestion?keyword=${keyword}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 this.setState({"response": data.contents});

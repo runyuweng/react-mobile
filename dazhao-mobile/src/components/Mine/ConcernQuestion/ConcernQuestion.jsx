@@ -62,7 +62,7 @@ class ConcernQuestion extends React.Component {
         ? ajax({"url": `/zhaoda/question/mycarequestion?page=${page}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 const questions = data.contents;

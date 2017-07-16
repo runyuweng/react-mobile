@@ -94,7 +94,7 @@ class ZhaoDaToFeatures extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
         then((data) => {
 
-            console.log(data);
+             
             const myData = data.contents;
 
             this.setState({
@@ -123,7 +123,7 @@ class ZhaoDaToFeatures extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).
         then((data) => {
 
-            console.log(data);
+             
 
             if (data.code === "S21") {
 
@@ -166,7 +166,7 @@ class ZhaoDaToFeatures extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/subscribezhuanlan?colid=${colid}`}).
         then((data) => {
 
-            console.log(data);
+             
             if (data.code === "S01") {
 
                 var data = JSON.parse(JSON.stringify(this.state)).data;

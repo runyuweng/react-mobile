@@ -85,7 +85,6 @@ class ConcernTopic extends React.Component {
         ? ajax({"url": `/zhaoda/topic/mycaretopic?page=${page}`}).
         then((data) => {
 
-            console.log(data.code);
 
             if (data.code === "S01") {
 
@@ -124,7 +123,7 @@ class ConcernTopic extends React.Component {
                 });
 
             } else if (data.code === "E01") {
-        
+
                 this.setState({"topics": []},() => {
                     this.context.changeMessageContent(data.message)
                 });

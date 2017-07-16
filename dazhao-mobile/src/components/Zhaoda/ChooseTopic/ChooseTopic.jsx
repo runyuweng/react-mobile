@@ -100,7 +100,6 @@ class ChooseTopic extends React.Component {
                     }).
                 then((data) => {
 
-                    // console.log(data)
 
                     const newData = [];
 
@@ -160,7 +159,7 @@ class ChooseTopic extends React.Component {
             ajax({"url": `/zhaoda/question/inviteanswer?qid=${this.state.qid}&id=${this.state.invited.join(",")}`}).
         then((data) => {
 
-            console.log(data);
+
 
             if (data.code === "S01") {
 
@@ -196,7 +195,7 @@ class ChooseTopic extends React.Component {
                 ajax({"url": `/zhaoda/topic/similartopic?topicname=${this.state.title}`}).
           then((data) => {
 
-              console.log(data);
+
               if (data.contents) {
 
                   const newData = JSON.parse(JSON.stringify(data.contents));

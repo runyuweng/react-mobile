@@ -32,7 +32,6 @@ class ZhaoDaIndex extends React.Component {
 
         };
 
-        console.log(this.props);
         this.fetchHotTopic = this.fetchHotTopic.bind(this);
         this.fetchLatestZhuanlan = this.fetchLatestZhuanlan.bind(this);
         this.fetchLatestDynamic = this.fetchLatestDynamic.bind(this);
@@ -119,7 +118,7 @@ class ZhaoDaIndex extends React.Component {
         }).
       then((data) => {
 
-          console.log(data);
+
           if (!this.state.lock) {
 
               if (data.contents.length > 0) {

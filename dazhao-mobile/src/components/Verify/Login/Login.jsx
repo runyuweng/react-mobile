@@ -33,11 +33,9 @@ class Login extends React.Component {
 
           if (data.code === "S01") {
 
-              sessionStorage.setItem("login", true);
               this.props.changeMessageContent("登录成功");
               hashHistory.push({
-                  "pathname": "mine",
-                  "query": {"login": true}
+                  "pathname": "mine"
               });
 
           } else {

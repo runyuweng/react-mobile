@@ -49,7 +49,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
 
-          console.log(data);
+           
           if (data.code === "S01") {
 
               const newQ = {
@@ -144,7 +144,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
       then((data) => {
 
-          console.log(data);
+           
           if (data.code === "S01") {
 
             // 关注状态改变
@@ -175,7 +175,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
       then((data) => {
 
-          console.log(data);
+           
           if (data.code === "S01") {
 
             // 收藏状态改变

@@ -48,7 +48,7 @@ class ZhaoDaResponse extends React.Component {
         ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
         then((data) => {
 
-            console.log(data);
+             
 
             if (data.code === "S01") {
 

@@ -37,24 +37,7 @@ class Mine extends React.Component {
         // this.props.changeMessageContent("1")
 
         this.props.changeBottomState(true);
-        // Ajax get personal data
-        const login = sessionStorage.getItem("login");
-
-        this.setState({login}, () => {
-
-            if (login) {
-
-                this.fetchUserMsg();
-
-            } else {
-
-                console.log("未登录");
-
-            }
-
-        });
-
-        console.log(sessionStorage.getItem("login"));
+        this.fetchUserMsg();
 
     }
 
@@ -85,17 +68,17 @@ class Mine extends React.Component {
 
                 <header className="head">
                     <div className="top">
-                        <span className="imgone">{this.state.login ? <img src="/src/images/boy1.png" className="blur" /> : ""}</span>
+                        <span className="imgone">{true ? <img src="/src/images/boy1.png" className="blur" /> : ""}</span>
                         <div className="circle1">
                             <span className="circle2"><img src="/src/images/boy.png" /></span>
                         </div>
                         <span className="edit">编辑</span>
                     </div>
-                    {this.state.login ? <p><em>{ personalMsg.username }</em><span>{ personalMsg.sex?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
+                    {true ? <p><em>{ personalMsg.username }</em><span>{ personalMsg.sex?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">
                         <div className="school">
-                            <span>{this.state.login ? personalMsg.school||"学校未知" : "学校未知"}</span><br />
-                            <span>{this.state.login ? personalMsg.major||"专业未知" : "专业未知"}</span>
+                            <span>{true ? personalMsg.school||"学校未知" : "学校未知"}</span><br />
+                            <span>{true ? personalMsg.major||"专业未知" : "专业未知"}</span>
                         </div>
                         <div className="fans">
                             <span><b>{personalMsg.delivered||0}</b><br />已投递</span>
