@@ -1,6 +1,7 @@
 #favoriteCompany{
     font-size: 0;
     border-top:.01rem solid #EAEAEA;
+    border-bottom:.01rem solid #EAEAEA;
     .jobitems{
         background:#fff;
         padding:.15rem 0 0 .13rem;
@@ -54,15 +55,20 @@
                 line-height: .19rem;
                 color:#999999;
                 font-weight: normal;
-                em{
-                    font-style: normal;
-                }
+                width: 95%;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                box-sizing: border-box;
                 span{
                     font-family: "苹方";
                     font-size: .13rem;
                     line-height: .18rem;
                     color:#999999;
                     font-weight: normal;
+                    em{
+                        font-style: normal;
+                    }
                 }
             }
 
@@ -100,8 +106,8 @@
     }
 
 
-    .jobitems:nth-last-of-type(1){
-        border-bottom:.01rem solid #EAEAEA;
+    a:nth-last-of-type(1){
+        background-color: #fff;
         .jobintro{
             border-bottom:none;
         }

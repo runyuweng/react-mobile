@@ -27,11 +27,7 @@
         }
     }
     #MessageMain {
-        .zhaodamessage:nth-of-type(1),
-        .zhaodamessage:nth-of-type(2),
-        .zhaodamessage:nth-of-type(3) {
-            background: #EAF9F9;
-        }
+        border-top: .01rem solid #d8d8d8;
         .zhaodamessage {
             display: flex;
             flex-direction: column;
