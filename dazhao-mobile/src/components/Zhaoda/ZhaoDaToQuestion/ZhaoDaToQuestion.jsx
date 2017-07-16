@@ -49,7 +49,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/question/questioninfo?qid=${this.props.params.qid}`}).
       then((data) => {
 
-           
+
           if (data.code === "S01") {
 
               const newQ = {
@@ -78,7 +78,7 @@ class ZhaoDaToQuestion extends React.Component {
                   });
 
               });
-              
+
               var topic = [];
               data.contents.topics.map((elem) => {
                 topic.push(elem.topicname);
@@ -144,7 +144,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
       then((data) => {
 
-           
+
           if (data.code === "S01") {
 
             // 关注状态改变
@@ -156,12 +156,12 @@ class ZhaoDaToQuestion extends React.Component {
 
           } else if (data.code === "S04") {
             // 已经点过赞了
-            
+
             this.context.changeMessageContent(data.message);
 
           } else if (data.code === "E01") {
             // 出错
-            
+
             this.context.changeMessageContent(data.message);
           }
 
@@ -175,7 +175,7 @@ class ZhaoDaToQuestion extends React.Component {
         ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
       then((data) => {
 
-           
+
           if (data.code === "S01") {
 
             // 收藏状态改变
@@ -246,7 +246,7 @@ class ZhaoDaToQuestion extends React.Component {
 
                     <div className="question" onClick={() => {
 
-                        history.go(-1);
+                        // history.go(-1);
 
                     }}
                     >
