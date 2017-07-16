@@ -95,6 +95,8 @@ class ConcernTopic extends React.Component {
                     "topics": this.state.topics.concat(topics),
                     "page": this.state.page + 1,
                     "moreMessage": ""
+                },() => {
+                    this.context.changeMessageContent(data.message)
                 });
 
             } else if (data.code === "S02") {
@@ -106,6 +108,8 @@ class ConcernTopic extends React.Component {
                     "topics": this.state.topics.concat(topics),
                     "nomore": true,
                     "moreMessage": "没有更多提问"
+                },() => {
+                    this.context.changeMessageContent(data.message)
                 });
 
             } else if (data.code === "S03") {
@@ -115,11 +119,15 @@ class ConcernTopic extends React.Component {
                     "topics": [],
                     "nocareQuestion": true,
                     "nomore": true
+                },() => {
+                    this.context.changeMessageContent(data.message)
                 });
 
             } else if (data.code === "E01") {
-
-                this.setState({"topics": this.state.topics});
+        
+                this.setState({"topics": []},() => {
+                    this.context.changeMessageContent(data.message)
+                });
 
             } else if (data.code === "E03") {
                // 未登录
@@ -170,6 +178,10 @@ class ConcernTopic extends React.Component {
         );
 
     }
+}
+
+ConcernTopic.contextTypes = {
+    changeMessageContent : React.PropTypes.func
 }
 
 export default ConcernTopic;

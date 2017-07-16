@@ -8,17 +8,7 @@ class Answers extends React.Component {
 
         super(props);
         this.state = {
-            "answers": [
-                {
-                    "uid": 1,
-                    "question": "研究生和本科学历在求职过程中真的会有很大差别吗？",
-                    "answer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学...",
-                    "agree": 14,
-                    "remark": 9,
-                    "collect": false
-                }
-            ],
-
+            "answers": [],
             "page": 1,
             "nomore": false,
             "moreMessage": ""
@@ -73,7 +63,8 @@ class Answers extends React.Component {
             console.log(data);
 
             if (data.code === "S01") {
-
+                
+                this.context.changeMessageContent(data.message);
                 const answers = data.contents;
 
                 this.setState({
@@ -83,6 +74,8 @@ class Answers extends React.Component {
                 });
 
             } else if (data.code === "S02") {
+
+                this.context.changeMessageContent(data.message);
 
                 // 没有更多
                 const answers = data.contents;
@@ -95,6 +88,8 @@ class Answers extends React.Component {
 
             } else if (data.code === "S03") {
 
+                this.context.changeMessageContent(data.message);
+
                 // SO3表示没有任何提问
                 this.setState({
                     "answers": [],
@@ -103,6 +98,8 @@ class Answers extends React.Component {
                 });
 
             } else if (data.code === "E01") {
+
+                this.context.changeMessageContent(data.message);
 
                 // 出错
                 this.setState({
@@ -143,6 +140,10 @@ class Answers extends React.Component {
         );
 
     }
+}
+
+Answers.contextTypes = {
+    changeMessageContent : React.PropTypes.func
 }
 
 export default Answers;

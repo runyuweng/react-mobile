@@ -17,22 +17,8 @@ class ZhaoDaToFeatures extends React.Component {
             "albumHaveShowAll": false,
             "guestIntroStretch": false,
             "shortIntroStretch": true,
-            "data": {
-                "video": "http://html5videoformatconverter.com/data/images/happyfit2.ogv",
-                "playtimes": 204, // 播放次数
-                "collect": false, // 是否关注
-                "colname": "#麦力答#第一期----考研那些事儿",
-                "coldescription": " 读研？工作？跨专业？选热门？如何让选择变成现在最适合的？如何让选择变成未来组以正确的？请听--麦力答",
-                "guest": {// 嘉宾信息
-                    "img": "/src/images/pople.png",
-                    "nickname": "",
-                    "vip": true, // 是否是VIP
-                    "position": "国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练、WIT Advisory Group总裁国际教练协会（ICF）认证教练"
-                },
-                "uid": ""
-            },
-            "album": [// 专辑列表
-            ],
+            "data": {},
+            "album": [],// 专辑列表
             "answers": [
                 {
                     "id": 1,
@@ -102,7 +88,7 @@ class ZhaoDaToFeatures extends React.Component {
         this.fetchZhuanlanDe();
 
     }
-
+    
     fetchZhuanlanDe () {
 
         ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
@@ -128,7 +114,8 @@ class ZhaoDaToFeatures extends React.Component {
     componentWillReceiveProps(nextProps){
         this.fetchZhuanlanDe();
     }
-
+    
+    // 专辑列表
     fetchAlbum (albumNum) {
 
         ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).

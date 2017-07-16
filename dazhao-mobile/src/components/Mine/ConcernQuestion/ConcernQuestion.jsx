@@ -67,6 +67,8 @@ class ConcernQuestion extends React.Component {
 
                 const questions = data.contents;
 
+                this.context.changeMessageContent(data.message);
+
                 this.setState({
                     "questions": this.state.questions.concat(questions),
                     "page": this.state.page + 1,
@@ -74,8 +76,9 @@ class ConcernQuestion extends React.Component {
                 });
 
             } else if (data.code === "S02") {
-
+            
                 // 已到最后一页
+                this.context.changeMessageContent(data.message);
                 const questions = data.contents;
 
                 this.setState({
@@ -87,6 +90,7 @@ class ConcernQuestion extends React.Component {
             } else if (data.code === "S03") {
 
                 // SO3表示没有关注的话题
+                this.context.changeMessageContent(data.message);
                 this.setState({
                     "questions": [],
                     "nocareQuestion": true,
@@ -94,6 +98,8 @@ class ConcernQuestion extends React.Component {
                 });
 
             } else if (data.code === "E01") {
+
+                this.context.changeMessageContent(data.message);
 
                 this.setState({"questions": []});
 
@@ -137,5 +143,9 @@ class ConcernQuestion extends React.Component {
         );
 
     }
+}
+
+ConcernQuestion.contextTypes = {
+    changeMessageContent : React.PropTypes.func
 }
 export default ConcernQuestion;

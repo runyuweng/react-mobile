@@ -9,14 +9,7 @@ class ConcernUser extends React.Component {
         super(props);
         this.state = {
 
-            "caredUsers": [
-                // {
-                //     Id:1,
-                //     Userimg:"src/images/pople.png",
-                //     Name:"Michael",
-                //     Position:'国际教练协会（IFC）认证教练国际教练协会（IFC）认证教练'
-                // }
-            ],
+            "caredUsers": [],
             "page": 1,
             "nocareQuestion": false,
             "nomore": false,
@@ -71,6 +64,8 @@ class ConcernUser extends React.Component {
             console.log(data);
             if (data.code === "S01") {
 
+                this.context.changeMessageContent(data.message);
+
                 this.setState({
                     "nomore": false,
                     "caredUsers": []
@@ -97,6 +92,7 @@ class ConcernUser extends React.Component {
             console.log(data);
             if (data.code === "S01") {
 
+                this.context.changeMessageContent(data.message);
                 const caredUsers = data.contents;
 
                 this.setState({
@@ -106,6 +102,8 @@ class ConcernUser extends React.Component {
                 });
 
             } else if (data.code === "S02") {
+
+                this.context.changeMessageContent(data.message);
 
                 // 没有更多
                 const caredUsers = data.contents;
@@ -118,6 +116,8 @@ class ConcernUser extends React.Component {
 
             } else if (data.code === "S03") {
 
+                this.context.changeMessageContent(data.message);
+
                 // SO3表示没有关注的话题
                 this.setState({
                     "caredUsers": [],
@@ -127,7 +127,9 @@ class ConcernUser extends React.Component {
 
             } else if (data.code === "E01") {
 
-                this.setState({"caredUsers": this.state.caredUsers});
+                this.context.changeMessageContent(data.message);
+
+                this.setState({"caredUsers": []});
 
             } else if (data.code === "E03") {
                // 未登录
@@ -176,6 +178,10 @@ class ConcernUser extends React.Component {
         );
 
     }
+}
+
+ConcernUser.contextTypes = {
+    changeMessageContent : React.PropTypes.func
 }
 
 export default ConcernUser;

@@ -98,6 +98,8 @@ class ZhaoDaMessage extends React.Component {
                         <li onClick={() => {
                             this.setState({
                                 "current" : 1
+                            },() => {
+                                this.fetchInform(this.state.page);
                             })
                         }} className={current === 1 ? "active" : ""}>通知</li>
                         <li onClick={() => {
@@ -116,7 +118,7 @@ class ZhaoDaMessage extends React.Component {
                 : 
                     <div id="MessageMain">
                         
-                        {current === 1 ? InformsList : current === 2 ? "" : current === 3 ? "" : ""}
+                        {current === 1 ? InformsList : current === 2 ? <p className="noFunc">此功能尚未开通...</p> : current === 3 ? <p className="noFunc">此功能尚未开通...</p> : ""}
 
                     </div>
                 }

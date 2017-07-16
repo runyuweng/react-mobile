@@ -58,15 +58,20 @@ class FavoriteCompanys extends React.Component {
 
             if (data.code === "S01") {
 
+                this.context.changeMessageContent(data.message);
+
                 const enterprise = data.contents;
 
                 this.setState({"enterprise": this.state.enterprise.push(enterprise)});
 
             } else if (data.code === "S02") {
 
-            } else {
+                this.context.changeMessageContent(data.message);
 
-                this.setState({"enterprise": this.state.enterprise});
+            } else if(data.code === "E01"){
+                
+                this.context.changeMessageContent(data.message);
+                this.setState({"enterprise": []});
 
             }
 
@@ -120,6 +125,10 @@ class FavoriteCompanys extends React.Component {
         );
 
     }
+}
+
+FavoriteCompanys.contextTypes = {
+    changeMessageContent : React.PropTypes.func
 }
 
 export default FavoriteCompanys;

@@ -24,7 +24,15 @@ class Mine extends React.Component {
         this.fetchUserMsg = this.fetchUserMsg.bind(this);
 
     }
+
+    getChildContext(){
+        return {
+            changeMessageContent : this.props.changeMessageContent
+        }
+    }
     componentDidMount () {
+
+        // this.props.changeMessageContent("1")
 
         this.props.changeBottomState(true);
         // Ajax get personal data
@@ -124,6 +132,10 @@ class Mine extends React.Component {
         );
 
     }
+}
+
+Mine.childContextTypes = {
+    changeMessageContent: React.PropTypes.func
 }
 
 export default Mine;

@@ -226,14 +226,17 @@
             display: flex;
             justify-content: flex-start;
             span{
+                width: 42%;
+                // min-width: 1.44rem;
                 display:inline-block;
                 text-align: center;
                 img{
-                    width:1.44rem;
-                    height: .83rem;
+                    width:100%;
+                    // height: .83rem;
                 }
             }
             .itemsR{
+                flex:1;
                 box-sizing:box-sizing;
                 padding-left: 3%;
                 display: flex;

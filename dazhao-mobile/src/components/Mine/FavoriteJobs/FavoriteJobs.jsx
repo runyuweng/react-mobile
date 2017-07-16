@@ -55,16 +55,20 @@ class FavoriteJobs extends React.Component {
 
             console.log(data);
             if (data.code === "S01") {
-
+                
+                this.context.changeMessageContent(data.message);
                 const jobs = data.contents;
 
                 this.setState({"jobs": this.state.jobs.push(jobs)});
 
             } else if (data.code === "S02") {
 
-            } else {
+                this.context.changeMessageContent(data.message);
 
-                this.setState({"jobs": this.state.jobs});
+            } else if(data.code === "E01"){
+                
+                this.context.changeMessageContent(data.message);
+                this.setState({"jobs": []});
 
             }
 
@@ -103,6 +107,10 @@ class FavoriteJobs extends React.Component {
         );
 
     }
+}
+
+FavoriteJobs.contextTypes = {
+    changeMessageContent : React.PropTypes.func
 }
 
 export default FavoriteJobs;
