@@ -275,7 +275,8 @@ class ZhaoDaToTopic extends React.Component {
                         }} className={current === 2 ? "active" : ""}
                         >精华</li>
                     </ul>
-                    {showLoading ? <Loading /> : current === 1 ? questionsList : ""}
+                    {showLoading ? <Loading /> : current === 1 ? questionsList :
+                      <div className="tips">暂无</div>}
 
                 </div>
                 <p className="fetchmore">{this.state.moreMessage}</p>
