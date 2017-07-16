@@ -10,16 +10,7 @@ class Mine extends React.Component {
 
         super(props);
         this.state = {
-            "personalMsg": {
-                // "sid": 1,
-                // "name": "周新城",
-                // "sex": "男",
-                // "img": "/boy.png",
-                // "school": "山东大学",
-                // "major": "机械设计制造及自动化",
-                // "delivered": 12,
-                // "need_interview": 0
-            },
+            "personalMsg": {},
             showLoading:true
         };
 
