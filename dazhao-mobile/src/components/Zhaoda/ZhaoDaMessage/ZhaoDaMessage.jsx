@@ -40,7 +40,9 @@ class ZhaoDaMessage extends React.Component {
                 // This.setState({"informs": []});
 
             } else if (data.code === "S01") {
-
+                
+                // 查询成功，消息提示
+                this.props.changeMessageContent(data.message);
                 this.setState({"informs": data.contents});
 
             }

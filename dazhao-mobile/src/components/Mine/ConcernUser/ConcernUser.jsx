@@ -45,7 +45,7 @@ class ConcernUser extends React.Component {
         scrollTop === docHeight - innerHeight
         ? (() => {
 
-            this.setState({"moreMessage": this.state.nomore ? "没有更多提问" : "正在加载中"}, () => {
+            this.setState({"moreMessage": this.state.nomore ? "没有更多关注" : "正在加载中..."}, () => {
 
                 this.fetchUsers(this.state.page);
 
@@ -111,7 +111,7 @@ class ConcernUser extends React.Component {
                 this.setState({
                     "caredUsers": this.state.caredUsers.concat(caredUsers),
                     "nomore": true,
-                    "moreMessage": "没有更多提问"
+                    "moreMessage": "没有更多关注"
                 });
 
             } else if (data.code === "S03") {

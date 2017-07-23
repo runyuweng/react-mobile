@@ -1,6 +1,7 @@
 import React from "react";
 import "./ConcernTopic.scss";
 import ajax from "../../../services/ajax.js";
+import { Link } from 'react-router';
 
 class ConcernTopic extends React.Component {
 
@@ -141,21 +142,23 @@ class ConcernTopic extends React.Component {
 
         const {topics} = this.state;
         const topicsList = topics.map((elem, index) =>
-            <div key={index} className="item">
-                <div className="left">
-                    <span className="circle">
-                        <img src={elem.topicimg} alt={elem.topicname} />
-                    </span>
-                    <p>
-                        <span>{elem.topicname}</span><br />
-                        <span>
-                            <em>问题：<b>{elem.questionnum}</b></em>
-                            <em>关注：<b>{elem.care}</b></em>
+            <Link to={`/totopic/${elem.tid}`}>
+                <div key={index} className="item">
+                    <div className="left">
+                        <span className="circle">
+                            <img src={elem.img} alt={elem.topicname} />
                         </span>
-                    </p>
+                        <p>
+                            <span>{elem.topicname}</span><br />
+                            <span>
+                                <em>问题：<b>{elem.questionnum}</b></em>
+                                <em>关注：<b>{elem.care}</b></em>
+                            </span>
+                        </p>
+                    </div>
+                    <span onClick={this.setCaredState.bind(this, elem.tid)} className="right">+取消关注</span>
                 </div>
-                <span onClick={this.setCaredState.bind(this, elem.tid)} className="right">+取消关注</span>
-            </div>
+            </Link>
             );
 
         return (

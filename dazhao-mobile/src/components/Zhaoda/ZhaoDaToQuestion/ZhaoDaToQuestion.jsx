@@ -246,7 +246,7 @@ class ZhaoDaToQuestion extends React.Component {
 
                     <div className="question" onClick={() => {
 
-                        // history.go(-1);
+                        {/* history.go(-1); */}
 
                     }}
                     >

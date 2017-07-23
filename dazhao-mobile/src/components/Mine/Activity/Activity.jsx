@@ -25,11 +25,13 @@ class Activity extends React.Component {
         then((data) => {
 
             if (data.code === "S01") {
-
+                //请求成功，显示提示消息
+                this.props.changeMessageContent(data.message);
                 this.setState({"activities": data.contents});
 
             } else if (data.code === "E01") {
-
+                // 获取失败
+                this.props.changeMessageContent(data.message);
                 this.setState({"activities": []});
 
             }
