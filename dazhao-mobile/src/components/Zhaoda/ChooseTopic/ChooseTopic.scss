@@ -1,18 +1,21 @@
 #chooseTopic{
     header{
         background:#FFFFFF;
-        padding:0.07rem 0 0.08rem;
+        padding:0.12rem 0 0.13rem;
         border-bottom:0.01rem #ADADAD solid;
+        height: .45rem;
+        box-sizing: border-box;
         .search{
                 width:96%;
                 margin:0 auto;
                 text-align:center;
-                font-size:0.16rem;
+                font-size:0.14rem;
                 span{
-                    font-size:0.17rem;
+                    font-size:0.14rem;
                     font-family:"苹方";
                     color:#21c6cd;
-                    line-height:0.3rem;
+                    line-height:0.2rem;
+                    display: inline-block;
                 }
                 span:nth-of-type(1){
                     margin:0 0.08rem 0 0;
@@ -23,6 +26,7 @@
                     color:#000000;
                 }
                 span:nth-of-type(3){
+                    width: .42rem;
                     margin:0 0 0 0.08rem;
                 }
         }
@@ -43,8 +47,8 @@
                 margin-right: 0;
             }
             .chooseditem{
-                width: 32%;
-                margin-right: 2%;
+                width: 29%;
+                margin-right: 6.5%;
                 display: -webkit-inline-flex;
                 display: -moz-inline-flex;
                 display: -ms-inline-flex;
@@ -56,7 +60,6 @@
                 color:#fff;
                 background: #21c6cd;
                 font-size: .13rem;
-                padding: .04rem .08rem;
                 border-radius: .05rem;
                 margin-bottom: .15rem;
                 box-sizing: border-box;
@@ -79,7 +82,7 @@
             display: -o-flex;
             display: flex;
             align-items: center;
-            height: .4rem;
+            height: .45rem;
             background: #f8f8f8;
             border-radius: .05rem;
             span{
@@ -94,7 +97,7 @@
                 height: .3rem;
                 background: #f8f8f8;
                 color:#333333;
-                font-size: .13rem;
+                font-size: .14rem;
                 outline:none;
                 border:none;
             }
@@ -112,13 +115,13 @@
                 height: .36rem;
                 border-bottom: .01rem solid #d8d8d8;
                 span:nth-of-type(1){
-                    width: .16rem;
-                    height: .16rem;
+                    width: .21rem;
+                    height: .21rem;
                     display: inline-block;
                     background: #d8d8d8;
                     border-radius: .04rem;
                     img{
-                        height: .16rem;
+                        height: .21rem;
                     }
                 }
 
@@ -126,6 +129,8 @@
                     font-size: .13rem;
                     color:#666666;
                     margin-left: .08rem;
+                    display: inline-block;
+                    line-height: .18rem;
                 }
             }
         }
@@ -157,7 +162,7 @@
                 span{
                     display: inline-block;
                     img{
-                        height: .2rem;
+                        height: .23rem;
                     }
                 }
             }
@@ -166,7 +171,7 @@
                 font-weight: bold;
                 font-family: "苹方";
                 color:#333333;
-                line-height: .24rem;
+                line-height: .2rem;
                 margin: .12rem 0;
                 text-align: center;
             }
@@ -204,7 +209,7 @@
                             bottom:0;
                             right:-0.06rem;
                             img{
-                                width: .24rem;
+                                width: .26rem;
                             }
                         }
                     }

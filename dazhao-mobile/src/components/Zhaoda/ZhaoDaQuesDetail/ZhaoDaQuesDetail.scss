@@ -2,18 +2,19 @@
     background:#fff;
     header{
         background:#FFFFFF;
-        padding:0.07rem 0 0.08rem;
+        padding:0.12rem 0;
         border-bottom:0.01rem #ADADAD solid;
         .search{
                 width:96%;
                 margin:0 auto;
                 text-align:center;
-                font-size:0.16rem;
+                font-size:0.14rem;
                 span{
-                    font-size:0.17rem;
+                    font-size:0.14rem;
                     font-family:"苹方";
                     color:#21c6cd;
-                    line-height:0.3rem;
+                    line-height:0.2rem;
+                    display: inline-block;
                 }
                 span:nth-of-type(1){
                     margin:0 0.08rem 0 0;
@@ -25,6 +26,7 @@
                 }
                 span:nth-of-type(3){
                     margin:0 0 0 0.08rem;
+                    color: #21c6cd;
                 }
         }
     }
@@ -36,10 +38,11 @@
             width:100%;
             resize:none;
             border:none;
-            font-size:0.16rem;
+            font-size:0.14rem;
             font-family:"苹方";
-            color:#ADADAD;
+            color:#adadad;
             margin:.24rem 0 0;
+            line-height: .2rem;
         }
     }
     .blank{

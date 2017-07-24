@@ -36,8 +36,7 @@
             float:right;
             cursor:pointer;
             img{
-              width: .1rem;
-              height: .18rem;
+              height: .14rem;
             }
         }
 
@@ -130,6 +129,10 @@
                         font-family:"苹方";
                         font-size:0.13rem;
                         color:#ADADAD;
+                        height: .18rem;
+                        line-height: .18rem;
+                        box-sizing: border-box;
+                        display: inline-block;
                         em{
                             font-style: normal;
                         }
@@ -141,10 +144,11 @@
                         background:#fff;
                         border-radius:.03rem;
                         text-align: center;
-                        line-height: .25rem;
+                        line-height: .23rem;
                         margin-left: .1rem;
                         color:#21c6cd;
                         border:.01rem solid #21c6cd;
+                        box-sizing: border-box;
                     }
                 }
             }
@@ -156,6 +160,9 @@
         font-size:0.13rem;
         color:#999999;
         margin:.16rem 0 .16rem .12rem;
+        height: .18rem;
+        line-height: .18rem;
+        box-sizing: border-box;
         em{
             font-style: normal;
         }

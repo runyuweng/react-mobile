@@ -255,7 +255,7 @@ class ChooseTopic extends React.Component {
 
                         }}
                         >上一步</span>
-                        <span>选择话题</span>
+                        <span>提问-问题详情</span>
                         <span onClick={this.submitClick}>提交</span>
                     </div>
                 </header>

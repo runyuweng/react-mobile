@@ -57,7 +57,7 @@
             font-size:0.14rem;
             font-family:"苹方";
             line-height:0.25rem;
-            color:#666666;
+            color:#464646;
             margin:0.15rem 0rem;
             overflow : hidden;
             text-overflow: ellipsis;
@@ -81,7 +81,7 @@
             font-family:"苹方";
             line-height:0.25rem;
             max-height: .99rem;
-            color:#666666;
+            color:#464646;
             margin:0.15rem 0rem;
             overflow : hidden;
             text-overflow: ellipsis;
@@ -122,9 +122,9 @@
             width:100%;
             font-size:0.14rem;
             font-family:"苹方";
-            color:#ADADAD;
+            color:#adadad;
             margin:0.15rem 0rem 0;
-            line-height:0.2rem;
+            line-height:0.18rem;
             a{
                 color:#ADADAD;
                 margin-right:0.2rem;
@@ -137,6 +137,8 @@
                 display:inline-flex;
                 align-items:center;
                 margin-right:0.2rem;
+                height: .18rem;
+                box-sizing: border-box;
                 b{
                     display:inline-block;
                     width:0.16rem;
@@ -145,7 +147,6 @@
                 }
             }
             img{
-                width:0.15rem;
                 height:0.15rem;
             }
         }

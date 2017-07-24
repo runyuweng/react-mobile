@@ -6,7 +6,7 @@
         color:#666666;
         font-weight: normal;
         line-height: .25rem;
-        padding:.1rem .31rem .1rem .24rem;
+        padding:.07rem .31rem .07rem .24rem;
         border-bottom:.01rem solid #EAEAEA;
         margin-top: .2rem;
         background:#fff;
@@ -33,14 +33,14 @@
                     color:#666666;
                     font-weight: bold;
                     display: block;
-                    line-height: .25rem;
+                    line-height: .2rem;
                 }
                 span:nth-of-type(2){
                     display: block;
                     font-family: "苹方";
                     font-size: .13rem;
                     color:#ADADAD;
-                    line-height: .25rem;
+                    line-height: .18rem;
                     em{
                         font-style: normal;
                         margin-left: .2rem;
@@ -56,12 +56,13 @@
                     font-size: .13rem;
                     font-style: normal;
                     text-align: center;
-                    line-height: .25rem;
+                    line-height: .23rem;
                     display: inline-block;
                     border:.01rem solid #21C6CD;
                     color:#21C6CD;
                     border-radius:.05rem;
                     margin-left: .08rem;
+                    box-sizing: border-box;
                 }
             }
         }
@@ -75,7 +76,7 @@
             border-top: .01rem solid #D8D8D8;
         }
         p{
-            padding:.14rem .24rem .14rem .31rem;
+            padding:.11rem .24rem .11rem .31rem;
             border-bottom: .01rem solid #D8D8D8;
             line-height: .25rem;
             display: flex;

@@ -63,7 +63,7 @@ class ZhaoDaConsult extends React.Component {
 
                         }}
                         >取消</span>
-                        <span>提问</span>
+                        <span>提问-填写标题</span>
                         {question ? <span onClick={() => {
 
                             sessionStorage.setItem("question", this.state.question);

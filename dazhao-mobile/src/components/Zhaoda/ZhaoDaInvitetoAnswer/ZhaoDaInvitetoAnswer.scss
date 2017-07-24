@@ -47,12 +47,14 @@
                         font-weight: bold;
                         font-size: .14rem;
                         color:#666666;
-                        line-height: .25rem;
+                        height: .22rem;
+                        line-height: .22rem;
                     }
                     span:nth-of-type(2){
                         font-size: .13rem;
                         color:#ADADAD;
-                        line-height: .25rem;
+                        height: .18rem;
+                        line-height: .18rem;
                         overflow : hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
@@ -70,7 +72,8 @@
                 border-radius:.03rem;
                 font-size: .14rem;
                 text-align: center;
-                line-height: .25rem;
+                line-height: .23rem;
+                box-sizing: border-box;
             }
         }
     }

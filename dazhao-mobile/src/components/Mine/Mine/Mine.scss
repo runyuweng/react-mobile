@@ -2,6 +2,7 @@
     margin-bottom: .72rem;
     .head{
         background:#fff;
+        border-bottom: .01rem solid #d8d8d8;
         .top{
             width:100%;
             height:1.62rem;
@@ -52,18 +53,22 @@
                 font-size: .14rem;
                 right:4%;
                 top:12%;
-                padding:.06rem .1rem;
-                border-radius:.1rem;
+                border-radius:.05rem;
+                width: .45rem;
+                height: .25rem;
+                text-align: center;
+                line-height: .25rem;
             }
         }
 
         p{
             font-family: "苹方";
             font-size:.16rem;
+            height: .22rem;
+            line-height: .22rem;
             color:#333333;
             text-align: center;
-            margin-top: .24rem;
-            margin-bottom: .3rem;
+            margin: .26rem 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -88,13 +93,15 @@
             align-items: center;
             margin:0 .31rem;
             font-size: 0rem;
-            padding-bottom: .21rem;
+            padding-bottom: .13rem;
             .school{
                 span{
+                    display: inline-block;
                     font-family: "苹方";
                     font-size:.13rem ;
                     color:#ADADAD;
-                    line-height: .24rem;
+                    line-height: .18rem;
+                    height: .18rem;
                 }
             }
             .fans{
@@ -106,11 +113,14 @@
                     font-family: "苹方";
                     font-size:.13rem ;
                     color:#ADADAD;
-                    line-height: .24rem;
+                    line-height: .18rem;
                     b{
                         font-weight: bold;
                         color:#333333;
                         font-size: .15rem;
+                        display: inline-block;
+                        height: .21rem;
+                        line-height: .21rem;
                     }
                 }
                 em{
@@ -127,6 +137,8 @@
         background:#fff;
         font-size: 0rem;
         margin: .16rem 0;
+        height: .82rem;
+        box-sizing: border-box;
         div{
             display: inline-flex;
             width:33%;
@@ -162,7 +174,7 @@
         background:#fff;
         border-top: .01rem solid #D8D8D8;
         p{
-            padding:.14rem .24rem .14rem .31rem;
+            padding:.11rem .24rem .11rem .31rem;
             border-bottom: .01rem solid #D8D8D8;
             line-height: .25rem;
             display: flex;

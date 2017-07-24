@@ -32,7 +32,7 @@ class ZhaoDaQuesDetail extends React.Component {
 
                         }}
                         >上一步</span>
-                        <span>问题详情</span>
+                        <span>提问-问题详情</span>
                         {detail ? <Link to="choosetopic">
                             <span onClick={() => {
 
