@@ -62,9 +62,9 @@
                 display:block;
                 color:#21c6cd;
                 width:0.6rem;
-                height:0.28rem;
+                height:0.26rem;
                 margin-left:0.14rem;
-                line-height:0.28rem;
+                line-height:0.24rem;
                 border-radius:0.28rem;
                 font-size:0.13rem;
                 font-family:"苹方";
@@ -98,9 +98,13 @@
                 width:0.4rem;
                 text-align:center;
                 line-height:0.35rem;
+                font-size: .15rem;
+                color:#333;
             }
             .active{
                 border-bottom:0.02rem #21c6cd solid;
+            }
+            .active>li{
                 color:#21c6cd;
             }
         }

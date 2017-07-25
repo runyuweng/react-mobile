@@ -38,13 +38,16 @@
       // background: red;
       position: relative;
       .active{
-        border-bottom: .02rem solid #000;
+        border-bottom: .02rem solid #21c6cd;
+        color: #21c6cd;
       }
       li{
         line-height: .33rem;
         width: .66rem;
         text-align: center;
         display:inline-block;
+        color: #333;
+        font-size: .14rem;
       }
     }
   }
@@ -88,7 +91,7 @@
             width:100%;
             text-align:center;
             font-family:"苹方";
-            font-size: .115rem;
+            font-size: .12rem;
             color: #fff;
             position:absolute;
             bottom:10%;

@@ -230,7 +230,7 @@ class ZhaoDaToTopic extends React.Component {
         const {topicdetail, showLoading, current} = this.state;
 
         const questionsList = topicdetail.questions.map((value, i) =>
-            <AnswerMain toquestion="1" isTopic="0" key={i} data={value} />
+            <AnswerMain toquestion="1" isTopic="0" key={i} data={value} showPublisher="0"/>
         );
 
 

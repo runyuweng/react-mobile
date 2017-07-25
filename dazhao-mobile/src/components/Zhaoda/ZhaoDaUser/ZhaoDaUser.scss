@@ -32,17 +32,18 @@
                         font-weight: bold;
                         font-size: .14rem;
                         color:#FFCF03;
-                        height: .19rem;
-                        line-height: .19rem;
+                        height: .22rem;
+                        line-height: .22rem;
+                        display: inline-block;
                     }
                     span:nth-of-type(2){
                         display:inline-block;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         font-size: .13rem;
-                        color:#ADADAD;
-                        height: .25rem;
-                        line-height: .25rem;
+                        color:#adadad;
+                        height: .18rem;
+                        line-height: .18rem;
                     }
                 }
             }
@@ -50,12 +51,12 @@
                 display:inline-block;
                 color:#21c6cd;
                 width:.62rem;
-                height:.25rem;
+                height:.24rem;
                 border:.01rem solid #21c6cd;
                 border-radius:.03rem;
-                font-size: .14rem;
+                font-size: .13rem;
                 text-align: center;
-                line-height: .25rem;
+                line-height: .24rem;
             }
         }
         background:#fff;

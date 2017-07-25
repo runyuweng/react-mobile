@@ -21,7 +21,8 @@ class AnswerMain extends React.Component {
             "agree": this.props.data.agree || "0",
             "remark": this.props.data.remark || "0",
             "collect": this.props.data.collect || false,
-            "toquestion": this.props.toquestion || "0"
+            "toquestion": this.props.toquestion || "0",
+            "showPublisher": this.props.showPublisher || "1"
         };
 
         this.setLike = this.setLike.bind(this);
@@ -79,7 +80,7 @@ class AnswerMain extends React.Component {
 
     render () {
 
-        const {qid, aid, isTopic, topic, theme, name, job, vip, comment, agree, remark, collect, toquestion} = this.state;
+        const {qid, aid, isTopic, topic, theme, name, job, vip, comment, agree, remark, collect, toquestion, showPublisher} = this.state;
 
         const topicsList = topic.map((value, i) =>
                 i === 0 ? value.topicname : `，${value.topicname}`
@@ -92,17 +93,20 @@ class AnswerMain extends React.Component {
                     <Link to={`/toquestion/${qid}`}>
                         <p className="theme">{theme}</p>
                     </Link>
-                    <div className="publisher">
-                        {name}
-                        {
-                            vip
-                                ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
-                        }
-                        {
-                            job
-                            ? <em>，{job}</em> : ""
-                        }
-                    </div>
+                    {
+                      showPublisher === "1" ?
+                      <div className="publisher">
+                          {name}
+                          {
+                              vip
+                                  ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
+                          }
+                          {
+                              job
+                              ? <em>，{job}</em> : ""
+                          }
+                      </div> : ""
+                    }
                     <Link to={`/toquestion/${qid}`}>
                         <div
                             className="comment"
