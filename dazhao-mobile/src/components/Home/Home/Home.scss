@@ -133,7 +133,7 @@
         font-size: 0rem;
         div{
             display: inline-flex;
-            width:25%;
+            width:calc(100% / 3);
             height:.82rem;
             border-top:.01rem solid #EAEAEA;
             border-bottom:.01rem solid #EAEAEA;
@@ -158,9 +158,6 @@
         }
         div:nth-of-type(2){
             border:.01rem solid #EAEAEA;
-        }
-        div:nth-last-of-type(1){
-            border-left:.01rem solid #EAEAEA;
         }
     }
 

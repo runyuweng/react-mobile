@@ -167,12 +167,6 @@ class Company extends React.Component {
 
                             }}
                             >招聘岗位</li>
-                            <li className={current === "part3" ? "active" : ""} onClick={() => {
-
-                                this.setState({"current": "part3"});
-
-                            }}
-                            >空中宣讲</li>
                         </ul>
 
 

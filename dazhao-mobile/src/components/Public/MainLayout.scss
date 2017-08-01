@@ -37,7 +37,7 @@ footer {
     right: 0;
     box-shadow: 0.01rem 0.01rem 0.03rem #999;
     background: #fff;
-    height: 0.57rem;
+    height: 0.5rem;
     display: flex;
     align-items: center;
     /*垂直居中*/
@@ -78,6 +78,18 @@ footer {
         background: url("/src/images/mine2.png");
         color: #21C6CD;
     }
+    
+
+    .home ,
+    .home2,
+    .zhiguan,
+    .zhiguan2,
+    .zhaoda,
+    .zhaoda2,
+    .mine,
+    .mine2{
+        background-size:auto .2rem;
+    }
 
     .bg {
         display: flex;
@@ -90,19 +102,19 @@ footer {
     }
 
     img {
-        width: 25px;
-        height: 25px;
+        // width: 25px;
+        height: 20px;
     }
 
     & > div {
-        font-size: 0.12rem;
+        font-size: 0.11rem;
         text-align: center;
         flex-grow: 1;
     }
 
     .icon {
-        width: 0.25rem;
-        height: 0.25rem;
+        // width: 0.25rem;
+        height: 0.20rem;
     }
 }
 

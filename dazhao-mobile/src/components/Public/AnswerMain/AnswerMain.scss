@@ -75,12 +75,15 @@
               line-height:0.25rem;
             }
         }
+        .comment>*{
+            font-size: .14rem;
+        }
         .comment{
             width:100%;
             font-size:0.14rem;
             font-family:"苹方";
             line-height:0.25rem;
-            max-height: .99rem;
+            max-height: .5rem;
             color:#464646;
             margin:0.15rem 0rem;
             overflow : hidden;

@@ -266,7 +266,7 @@ class ZhaoDaIndex extends React.Component {
 
                 } else if (data.code === "E01") {
 
-                // 如果查询出错，启用备用数据
+                    // 如果查询出错，启用备用数据
                     this.setState({"latestZhuanlan": this.state.latestZhuanlan});
 
                 }
@@ -376,10 +376,7 @@ class ZhaoDaIndex extends React.Component {
 
         const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;
 
-        const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain
-            key={i}
-            data={value}
-                                                               />);
+        const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain showPublisher="0" key={i} data={value} />);
 
         const hotTopicList = hotTopic.map((elem, index) =>
             <div className="img" key={index}>
@@ -472,7 +469,7 @@ class ZhaoDaIndex extends React.Component {
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/hot.png" /></b>热门话题</span>
                             <Link to="/topic">
-                                <span className="all">全部话题<b /><img src="/src/images/seeMore.png" /></span>
+                                <span className="all">全部话题<b><img src="/src/images/seeMore.png" /></b></span>
                             </Link>
                         </div>
                         <div id="topic1" ref="topic1" className="content">

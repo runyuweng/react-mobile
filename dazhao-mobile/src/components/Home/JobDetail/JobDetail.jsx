@@ -191,25 +191,13 @@ class JobDetail extends React.Component {
                     <div className="jobAddDetail">
                         <h2 className="jobAddress">
                             <span><img src="/src/images/source55.png" /></span>工作地址
-                    </h2>
+                        </h2>
                         <div className="jobwrap">
                             <div className="address">
                                 <p>
                                     <span>{data.location || "未知"}</span>
                                 </p>
                             </div>
-                            <span className="map" onClick={() => {
-
-                                if (!data.location) {
-
-                                    this.props.changeMessageContent("地址未知，请求无效");
-
-                                }
-
-                            }}
-                            >
-                                <a href={`bdnavi://query?name=${data.location}`}>地图</a>
-                            </span>
                         </div>
 
                     </div>

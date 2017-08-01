@@ -40,7 +40,7 @@ class Enterprise extends React.Component {
 
         ajax({"url": "/zhaoda/industry/category"}).
         then((data) => {
-
+            console.log(data)
             this.setState({"industry": data.contents});
 
         });
@@ -86,13 +86,10 @@ class Enterprise extends React.Component {
             data[type] = id;
 
         }
-        ajax({"url": `/zhaoda/company/condition?province=${data.province}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
+        ajax({"url": `/zhaoda/jobs/enterprise?province=${data.province}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
 
-
-
             const enterprise = (arguments.length === 1 ? this.state.enterprise.concat(data.contents || []) : data.contents) || [];
-
 
             this.setState({
                 enterprise,
@@ -118,49 +115,8 @@ class Enterprise extends React.Component {
 
     }
 
-    // HandleLoad (elem) {
-
-    //     Const that = this;
-
-    //     Elem.addEventListener("touchstart", (e) => {
-
-    //         Const height = document.body.scrollHeight;
-    //         Const event = e || window.event;
-    //         Const startPoint = event.touches[0].pageY;
-
-    //         Elem.addEventListener("touchmove", (e) => {
-
-    //             Const event = e || window.event;
-    //             Const currentY = event.touches[0].pageY;
-    //             Const changeY = currentY - startPoint;
-
-    //             If (document.body.scrollHeight >= height && document.body.scrollHeight <= height + 25 && changeY < 0 && this.state.tips === "加载更多") {
-
-    //                 Document.body.style.height = `${document.body.offsetHeight + 1}px`;
-
-    //             }
-
-    //         });
-    //         Elem.addEventListener("touchend", (e) => {
-
-    //             If (height < document.body.offsetHeight && this.state.tips === "加载更多") {
-
-    //                 Document.body.style.height = "auto";
-    //                 Const data = JSON.parse(JSON.stringify(this.state.data));
-
-    //                 Data.page = parseInt(data.page) + 1;
-    //                 This.setState({data});
-    //                 That.loadData("loadMore");
-
-    //             }
-
-    //         });
-
-    //     });
-
-    // }
-
     changeCategory (id) {
+        alert(id)
 
         this.setState({
             "showLoading": true,

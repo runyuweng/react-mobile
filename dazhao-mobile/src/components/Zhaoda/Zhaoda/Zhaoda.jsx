@@ -48,18 +48,18 @@ class Zhaoda extends React.Component {
                     <ul>
                         <Link to="/Zhaoda/main" activeClassName="active">
                             <li>
-                首页
-              </li>
+                                首页
+                            </li>
                         </Link>
                         <Link to="/Zhaoda/discover" activeClassName="active">
                             <li>
-                发现
-              </li>
+                                发现
+                            </li>
                         </Link>
-                        <Link to="/Zhaoda/feature" activeClassName="active">
+                        <Link to="/Zhaoda/feature" style={{display: "none"}} activeClassName="active">
                             <li>
-                专栏
-              </li>
+                                专栏
+                            </li>
                         </Link>
                         <Link to="/message"><li>消息</li></Link>
                     </ul>

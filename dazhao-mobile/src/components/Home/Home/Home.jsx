@@ -297,32 +297,23 @@ class Home extends React.Component {
                     <div>
                         <Link to="/schoolRecruit">
                             <span><img src="/src/images/homeIcon1.png" />
-                                <em>校招</em></span>
+                                <em>校招</em>
+                            </span>
                         </Link>
                     </div>
                     <div>
                         <Link to="/intern">
                             <span><img src="/src/images/homeIcon2.png" />
-                                <em>实习</em></span>
+                                <em>实习</em>
+                            </span>
                         </Link>
                     </div>
 
                     <div>
                         <Link to="/enterprise">
                             <span><img src="/src/images/homeIcon3.png" />
-                                <em>企业</em></span>
-                        </Link>
-                    </div>
-
-                    <div onClick={() => {
-
-                        this.props.changeMessageContent("功能暂时未开放");
-
-                    }}
-                    >
-                        <Link to="/">
-                            <span><img src="/src/images/homeIcon4.png" />
-                                <em>空中宣讲</em></span>
+                                <em>企业</em>
+                            </span>
                         </Link>
                     </div>
                 </div>
