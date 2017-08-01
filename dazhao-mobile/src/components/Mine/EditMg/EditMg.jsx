@@ -2,6 +2,7 @@ import React from "react";
 import "./EditMg.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
+import Select from './Select.jsx';
 
 class EditMg extends React.Component {
     constructor (props) {
@@ -23,7 +24,12 @@ class EditMg extends React.Component {
                 }
             },
             "showtopDiv": false,
-            "showWhich": -1
+            "showWhich": -1,
+            "showSelect":false,
+            "type":'',
+            "city":{},
+            "province":{},
+            "politics":{}
         };
         this.fetchBasicMessage = this.fetchBasicMessage.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -106,6 +112,19 @@ class EditMg extends React.Component {
 
     }
 
+    handleSubmit = () => {
+        const data = {
+            city: this.state.city || null,
+            province: this.state.province || null,
+            politics: this.state.politics || null,
+            name: this.state.name || null,
+            sex: this.state.sex|| null,
+            edu: this.state.edu|| null,
+            phone: this.state.phone|| null,
+            email:this.state.email|| null,
+        }
+    }
+
     render () {
 
         const {basicMessage} = this.state;
@@ -130,6 +149,7 @@ class EditMg extends React.Component {
             <li key={i}>{i + 1}</li>
             );
 
+
         return (
             <div className="EditMg">
                 <div className="TopBar">
@@ -142,7 +162,7 @@ class EditMg extends React.Component {
                         <img src="/src/images/arrow-left.png" />
                     </span>
                     <span>编辑基本信息</span>
-                    <span>保存</span>
+                    <span onClick = {this.handleSubmit}>保存</span>
                 </div>
 
                 <div className="edititems">
@@ -164,16 +184,15 @@ class EditMg extends React.Component {
 
                     <div className="setSex">
                         <em>性别</em>
-                        <p>
-                            <span onClick={() => {
+                        <p onClick={() => {
 
                                 this.setState({
                                     "showWhich": 1,
                                     "showtopDiv": true
                                 });
 
-                            }}
-                            >{basicMessage.sex}</span>
+                            }}>
+                            <span>{basicMessage.sex}</span>
                         </p>
                     </div>
 
@@ -213,17 +232,21 @@ class EditMg extends React.Component {
 
                     <div>
                         <em>现居地</em>
-                        <p>
-                            <span><em>省份</em><img src="/src/images/Back_Button.png" /></span>
-                            <span><em>城市</em><img src="/src/images/Back_Button.png" /></span>
+                        <p className="place">
+                            <span onClick={()=>{
+                                this.setState({showSelect: true, type: 'province'})
+                                }}><em>{this.state.province.name||'省份'}</em><img src="/src/images/Back_Button.png" /></span>
+                            <span onClick={()=>{
+                                this.setState({showSelect:true, type: 'city'})
+                                }}><em>{this.state.city.name||'城市'}</em><img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
 
                     <div>
                         <em>政治面貌</em>
-                        <p>
+                        <p onClick={()=>{this.setState({showSelect:true, type: 'politics'})}}>
                             {/* <span>{basicMessage.hopeCity}</span>*/}
-                            <span>选择政治面貌</span>
+                            <span>{this.state.politics.name||'选择政治面貌'}</span>
                             <span> <img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
@@ -247,6 +270,20 @@ class EditMg extends React.Component {
                             </div>
                         </div> : ""
                 }
+                {this.state.showSelect ? <Select
+                    type = {this.state.type}
+                    handleChange={(type, id, name)=>{
+                        this.setState({
+                            [type]:{id, name}
+                        },()=>{
+                            console.log(this.state);
+                            this.setState({showSelect: false, type: ''})
+                        })
+                    }}
+                    handleClose={()=>{
+                    this.setState({showSelect: false, type: ''})
+                    }}/>
+                 : ''}
 
 
             </div>
