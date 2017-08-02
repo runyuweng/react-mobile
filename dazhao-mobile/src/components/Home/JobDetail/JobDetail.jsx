@@ -134,7 +134,7 @@ class JobDetail extends React.Component {
                         </h2>
                         <div>
                             <span><img src="/src/images/source58.png" />
-                                <em>{data.location.slice(0, 3) || "未知"}...</em>
+                                <em>{data.location || "未知"}</em>
                             </span>
                             <span><img src="/src/images/source59.png" />
                                 <em>{data.education || "未知"}</em>

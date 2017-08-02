@@ -75,8 +75,9 @@
               line-height:0.25rem;
             }
         }
-        .comment>*{
-            font-size: .14rem;
+        .comment *{
+            font-size: .14rem !important;
+            color: #666 !important;
         }
         .comment{
             width:100%;

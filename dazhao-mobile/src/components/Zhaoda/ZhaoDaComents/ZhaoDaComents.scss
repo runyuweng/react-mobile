@@ -1,9 +1,11 @@
 .ZhaoDaComents{
     position: relative;
     .comentsmain{
+        // background-color: #fff;
         .comenttop{
             background: #fff;
             padding: .15rem;
+            border-bottom: .01rem solid #d8d8d8;
             a{
                 font-size: 0;
                 display: -webkit-flex;
@@ -126,8 +128,8 @@
         bottom:0;
         width: 100%;
         input{
-            width: 2.84rem;
-            height: .29rem;
+            width: 76%;
+            height: .28rem;
             background: #f8f8f8;
             border:.01rem solid #E5E5E5;
             border-radius: .14rem;
@@ -137,10 +139,12 @@
             text-indent: .1rem;
         }
         span{
+            width: .56rem;
             color:#21c6cd;
             font-size: .14rem;
             margin-left: .08rem;
             cursor: pointer;
+            height: .2rem;
         }
     }
 }

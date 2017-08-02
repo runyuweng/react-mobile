@@ -132,6 +132,6 @@ class AnswerMain extends React.Component {
     }
 }
 
-AnswerMain.contextTypes = {"changeMessageContent": PropTypes.object};
+AnswerMain.contextTypes = {"changeMessageContent": PropTypes.func};
 
 export default AnswerMain;

@@ -60,11 +60,11 @@ class ZhaoDaSearch extends React.Component {
                 <Link to={{
                     "pathname": "/response",
                     "query": {
-                        "aid": item.answers ? item.answers[0].aid : 1,
+                        "aid": item.answers.length > 0 ? item.answers[0].aid : 1,
                         "qtitle": item.qtitle
                     }
                 }}
-                ><p dangerouslySetInnerHTML={{"__html": item.answers ? item.answers[0].content : "未知"}} /></Link>
+                ><p dangerouslySetInnerHTML={{"__html": item.answers.length > 0 ? item.answers[0].content : "未知"}} /></Link>
             </div>
 
       );
@@ -95,9 +95,6 @@ class ZhaoDaSearch extends React.Component {
                             </Link>
                             <Link to={`/talk/${this.state.keyword}`}>
                                 <li>话题</li>
-                            </Link>
-                            <Link to={`/zhuanlan/${this.state.keyword}`}>
-                                <li>专栏</li>
                             </Link>
                             <Link to={`/user/${this.state.keyword}`}>
                                 <li>用户</li>

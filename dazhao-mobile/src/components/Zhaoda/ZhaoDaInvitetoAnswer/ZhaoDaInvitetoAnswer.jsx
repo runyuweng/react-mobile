@@ -138,5 +138,5 @@ class ZhaoDaInvitetoAnswer extends React.Component {
 
     }
 }
-ZhaoDaInvitetoAnswer.contextTypes = {"changeMessageContent": PropTypes.object};
+ZhaoDaInvitetoAnswer.contextTypes = {"changeMessageContent": PropTypes.func};
 export default ZhaoDaInvitetoAnswer;

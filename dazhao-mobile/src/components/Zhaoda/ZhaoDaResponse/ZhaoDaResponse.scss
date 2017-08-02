@@ -37,7 +37,7 @@
         font-size:0.16rem;
         padding:0.24rem .12rem 0;
         background:#FFFFFF;
-
+        min-height: 4rem;
         .author{
             display:flex;
             margin:0 0 .24rem 0;
@@ -92,5 +92,42 @@
     .blank{
         height:.6rem;
         background:#FFFFFF;
+        margin-bottom: .5rem;
+    }
+    .responseBottom{
+        font-size: 0;
+        height: .5rem;
+        border-top: .01rem solid #d8d8d8;
+        box-sizing: border-box;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        ul{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            height: .5rem;
+            align-items: center;
+            background-color: #fff;
+            li{
+                width: calc(100% / 3);
+                span{
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    object{
+                        height: .21rem;
+                    }
+                }
+                span:nth-of-type(2){
+                    font-size: .11rem;
+                    color:#666;
+                    text-align: center;
+                    margin-top: .02rem;
+                }   
+            }
+        }
     }
 }

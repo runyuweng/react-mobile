@@ -19,12 +19,16 @@ class ZhaoDaResponse extends React.Component {
                 "name": "Michal",
                 "position": "骨灰级教练，WIT Advisory Group 总裁",
                 "answer": "这个问题，还得要看企业的需求，比如说一些企业的技术岗位，这些企业在招聘介绍里就会写清楚研究生学历还是本科学历；对于一些管理类的岗位的话，本身不是很需要学历的岗位，只要你的综合能力强，研究生还是本科神差距就不是很大。所以总的来说，还是要看你想去什么样的企业，想从事什么样的工作，然后决定读不读研或者读什么专业的研究生。",
-                "time": "2017-1-12"
+                "time": "2017-1-12",
+                "agree": 0,
+                "remark": 0,
+                "collect": false
             },
             "showLoading": true
         };
         this.fetchAnswer = this.fetchAnswer.bind(this);
-
+        this.setSelected = this.setSelected.bind(this);
+        this.setAgree = this.setAgree.bind(this);
     }
 
     componentDidMount () {
@@ -43,12 +47,68 @@ class ZhaoDaResponse extends React.Component {
 
     }
 
+    // 回答收藏
+    setSelected (aid) {
+
+        ajax({"url": `/zhaoda/answer/subscribeanswer?aid=${aid}`}).
+      then((data) => {
+
+
+          if (data.code === "S01") {
+
+            // 收藏状态改变
+              const answerdetail = JSON.parse(JSON.stringify(this.state)).answerdetail;
+
+              answerdetail.collect = !this.state.answerdetail.collect;
+              this.setState({answerdetail});
+
+          } else if (data.code === "E01") {
+            // 出错
+
+          }
+
+      });
+
+    }
+
+    // 点赞
+    setAgree (aid) {
+
+        ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
+      then((data) => {
+            
+          // console.log(data)
+
+          if (data.code === "S01") {
+
+            // 关注状态改变
+              const answerdetail = JSON.parse(JSON.stringify(this.state)).answerdetail;
+
+              answerdetail.agree = this.state.answerdetail.agree + 1;
+              this.setState({answerdetail});
+
+
+          } else if (data.code === "S04") {
+            // 已经点过赞了
+
+            this.context.changeMessageContent(data.message);
+
+          } else if (data.code === "E01") {
+            // 出错
+
+            this.context.changeMessageContent(data.message);
+          }
+
+      });
+
+    }
+
     fetchAnswer (aid) {
 
         ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
         then((data) => {
 
-             
+             console.log(data)
 
             if (data.code === "S01") {
 
@@ -60,6 +120,9 @@ class ZhaoDaResponse extends React.Component {
                 answerdetail.name = data.contents.user.nickname;
                 answerdetail.position = data.contents.user.position;
                 answerdetail.time = data.contents.date;
+                answerdetail.agree = data.contents.agree;
+                answerdetail.remark = data.contents.remark;
+                answerdetail.collect = data.contents.collect;
 
                 this.setState({
                     answerdetail,
@@ -79,7 +142,7 @@ class ZhaoDaResponse extends React.Component {
 
     render () {
 
-        const {title, answerdetail, showLoading} = this.state;
+        const {title, answerdetail, showLoading, aid} = this.state;
 
         return (
             <div className="ZhaoDaResponse">
@@ -116,6 +179,31 @@ class ZhaoDaResponse extends React.Component {
                     </div>
                     <div className="blank" />
                 </div>}
+
+                <div className="responseBottom">
+                    <ul>
+                        <li>
+                            <span onClick={this.setAgree.bind(this, aid)}>
+                                <object data="/src/images/icon/赞同.svg" type="image/svg+xml"></object>
+                            </span>
+                            <span>赞同({answerdetail.agree})</span>
+                        </li>
+                        <li>
+                            <Link to={`/coments/${aid}/${title}`}>
+                                <span>
+                                    <object data="/src/images/icon/评论.svg" type="image/svg+xml"></object>
+                                </span>
+                                <span>评论({answerdetail.remark})</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <span onClick={this.setSelected.bind(this, aid)}>
+                                <object data={answerdetail.collect ? "/src/images/icon/已收藏.svg" : "/src/images/icon/收藏.svg"} type="image/svg+xml"></object>
+                            </span>
+                            <span>收藏</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         );
 

@@ -10,16 +10,7 @@ class ZhaoDaTalk extends React.Component {
         super(props);
         this.state = {
             "keyword": this.props.params.splat || "",
-            "topics": [
-                // {
-                //     "id": 1,
-                //     "img": "/src/images/pople.png",
-                //     "topicname": "研究生",
-                //     "questionnum": 12,
-                //     "care": 24,
-                //     "isguanzhu": false
-                // }
-            ]
+            "topics": []
         };
 
         this.fetchTopics = this.fetchTopics.bind(this);
@@ -29,8 +20,7 @@ class ZhaoDaTalk extends React.Component {
 
     componentDidMount () {
 
-        console.log(this.props.location.query.keyword);
-        // This.fetchTopics(this.state.keyword);
+        this.fetchTopics(this.state.keyword);
 
     }
 
@@ -134,9 +124,6 @@ class ZhaoDaTalk extends React.Component {
                             <Link className="active" to={`/talk/${this.state.keyword}`}>
                                 <li>话题</li>
                             </Link>
-                            <Link to={`/zhuanlan/${this.state.keyword}`}>
-                                <li>专栏</li>
-                            </Link>
                             <Link to={`/user/${this.state.keyword}`}>
                                 <li>用户</li>
                             </Link>
@@ -146,49 +133,7 @@ class ZhaoDaTalk extends React.Component {
                 <div className="usermain">
 
                     {topicsList}
-                    {/*
-                    <div className="item">
-                        <div className="left">
-                            <span className="circle" />
-                            <p>
-                                <span>研究生</span><br />
-                                <span>
-                                    <em>问题：<b>16</b></em>
-                                    <em>关注：<b>101</b></em>
-                                </span>
-                            </p>
-                        </div>
-                        <span className="right">+关注</span>
-                    </div>
 
-                    <div className="item">
-                        <div className="left">
-                            <span className="circle" />
-                            <p>
-                                <span>研究生</span><br />
-                                <span>
-                                    <em>问题：<b>16</b></em>
-                                    <em>关注：<b>101</b></em>
-                                </span>
-                            </p>
-                        </div>
-                        <span className="right">+关注</span>
-                    </div>
-
-                    <div className="item">
-                        <div className="left">
-                            <span className="circle" />
-                            <p>
-                                <span>研究生</span><br />
-                                <span>
-                                    <em>问题：<b>16</b></em>
-                                    <em>关注：<b>101</b></em>
-                                </span>
-                            </p>
-                        </div>
-                        <span className="right">+关注</span>
-                    </div>
-                */}
                 </div>
             </div>
         );

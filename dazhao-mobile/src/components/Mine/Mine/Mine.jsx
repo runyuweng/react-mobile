@@ -63,7 +63,7 @@ class Mine extends React.Component {
                         <div className="circle1">
                             <span className="circle2"><img src="/src/images/boy.png" /></span>
                         </div>
-                        <span className="edit">编辑</span>
+                        <Link to="/edit"><span className="edit" >编辑</span></Link>
                     </div>
                     {true ? <p><em>{ personalMsg.username }</em><span>{ personalMsg.sex?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">

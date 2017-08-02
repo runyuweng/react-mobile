@@ -14,12 +14,15 @@
                     font-weight:bold;
                     line-height:0.24rem;
             }
-            p{
-                    font-size:0.14rem;
+            >a>p{
                     font-family:"苹方";
-                    color:#666666;
-                    line-height:0.25rem;
+                    color:#666 !important;
                     margin-top:0.1rem;
+                    height: .4rem !important;
+                    overflow: hidden;
+            }
+            >a>p *{
+                font-size:0.14rem !important;
             }
             b{
                 color:#FFD112;

@@ -19,7 +19,7 @@ class ZhaoDaComents extends React.Component {
                 "content": "",
                 "comments": []
             },
-            "loading": true
+            "loading": false
         };
         this.fetchCommnets = this.fetchCommnets.bind(this);
         this.deliverComment = this.deliverComment.bind(this);
@@ -78,6 +78,7 @@ class ZhaoDaComents extends React.Component {
               this.props.changeMessageContent(data.message);
 
           }
+            this.setState({loading: false})
 
       });
 
@@ -178,9 +179,9 @@ class ZhaoDaComents extends React.Component {
                                     <div className="publisher">
                                         {comment.nickname || "匿名用户"}
                                         {
-                                        comment.vip
+                                          comment.vip
                                             ? <span className="vip"><img src="/src/images/vip.png" /></span> : ""
-                                    }
+                                        }
                                         {
                                         comment.position
                                         ? <em>，{comment.position}</em> : ""

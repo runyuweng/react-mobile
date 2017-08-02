@@ -299,5 +299,5 @@ class ZhaoDaToQuestion extends React.Component {
 
     }
 }
-ZhaoDaToQuestion.contextTypes = {"changeMessageContent": PropTypes.object};
+ZhaoDaToQuestion.contextTypes = {"changeMessageContent": PropTypes.func};
 export default ZhaoDaToQuestion;

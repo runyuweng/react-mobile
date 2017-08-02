@@ -45,7 +45,13 @@
                     margin-right: .06rem;
                 }
                 em{
+                    width: .4rem;
                     font-style: normal;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
             span:nth-of-type(2){
@@ -234,6 +240,11 @@
                     font-size: .13rem;
                     color: #999999;
                 }
+            }
+        }
+        a:nth-last-of-type(1){
+            >.position{
+                border-bottom: none;
             }
         }
         .tips{

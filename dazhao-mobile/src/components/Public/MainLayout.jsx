@@ -112,6 +112,6 @@ class MainLayout extends React.Component {
     }
 }
 
-MainLayout.childContextTypes = {"changeMessageContent": PropTypes.object};
+MainLayout.childContextTypes = {"changeMessageContent": PropTypes.func};
 
 export default MainLayout;

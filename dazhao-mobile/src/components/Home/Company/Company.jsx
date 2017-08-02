@@ -40,7 +40,8 @@ class Company extends React.Component {
 
             ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
             then((data) => {
-
+                
+                console.log(data)
                  
                 if (data.code === "S01") {
 
@@ -139,7 +140,7 @@ class Company extends React.Component {
                         <span className="joblog"><img src={data.img} /></span>
                         <h2>{data.name}</h2>
                         <div>
-                            <span><img src="/src/images/source58.png" /><em>上海</em></span>
+                            <span><img src="/src/images/source58.png" /><em>{data.city}</em></span>
                             {data.Authentication ? <span>认证</span> : ""}
                         </div>
                         <p>
@@ -209,11 +210,6 @@ class Company extends React.Component {
 
                         {current === "part2" ? <div className="positions">
                             {jobs}
-                        </div>
-                    : ""}
-
-                        {current === "part3" ? <div className="positions">
-                            <div className="tips">此功能暂未开放...</div>
                         </div>
                     : ""}
 

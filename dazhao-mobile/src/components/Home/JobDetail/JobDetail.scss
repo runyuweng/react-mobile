@@ -55,6 +55,12 @@ body{
                 }
                 em{
                     font-style: normal;
+                    width: .4rem;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
             }
         }
@@ -415,7 +421,7 @@ body{
         border-top: .01rem solid #eaeaea;
         span{
             display:inline-block;
-            width:1.7rem;
+            width:45.3%;
             height:.37rem;
             border-radius:.04rem;
             font-size: .14rem;

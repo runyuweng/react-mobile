@@ -38,7 +38,7 @@
                 flex-wrap:wrap;
             }
             .Citems{
-                width:1.73rem;
+                width:46.1%;
                 height:0.6rem;
                 border:0.01rem #D8D8D8 solid;
                 background:#FFFFFF;
@@ -51,18 +51,18 @@
                 .img{
                     display:block;
                     width:.6rem;
-                    height:0.6rem;
+                    height:0.58rem;
                     background:#e5e5e5;
                     img{
                         width:.6rem;
-                        height:0.6rem;
+                        height:0.58rem;
                     }
                 }
                 .detail{
                     display:flex;
                     flex-direction: column;
                     justify-content: space-around;
-                    width:1.13rem;
+                    width:calc(100% - 60px);
                     height:0.6rem;
                     position:absolute;
                     top:0rem;
@@ -79,8 +79,8 @@
 
                     .span2{
                         display: inline-block;
-                        width: 93%;
-                        padding-left: 7%;
+                        width: 95%;
+                        padding-left: 5%;
                         height:0.14rem;
                         line-height:0.14rem;
                         font-size:0.14rem;
@@ -130,6 +130,7 @@
             line-height:0.38rem;
             border-radius:0.05rem;
             margin:0.3rem auto 0;
+            background-color: #fff;
             a{
                 color:#21c5cd;
             }

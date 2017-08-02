@@ -10,15 +10,7 @@ class ZhaoDaUser extends React.Component {
         super(props);
         this.state = {
             "username": this.props.params.splat,
-            "users": [
-                // {
-                //     "uid": 1,
-                //     "img": "/src/images/pople.png",
-                //     "nickname": "Michael",
-                //     "job": "国际教练协会（ICF）认证教练",
-                //     "isCared": false
-                // }
-            ]
+            "users": []
         };
 
         this.fetchUsers = this.fetchUsers.bind(this);
@@ -28,7 +20,7 @@ class ZhaoDaUser extends React.Component {
 
     componentDidMount () {
 
-        // This.fetchUsers(this.state.username);
+        this.fetchUsers(this.state.username);
 
     }
 
@@ -124,9 +116,6 @@ class ZhaoDaUser extends React.Component {
                             </Link>
                             <Link to={`/talk/${this.state.username}`}>
                                 <li>话题</li>
-                            </Link>
-                            <Link to={`/zhuanlan/${this.state.username}`}>
-                                <li>专栏</li>
                             </Link>
                             <Link className="active" to={`/user/${this.state.username}`}>
                                 <li>用户</li>

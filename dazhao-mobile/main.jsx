@@ -65,6 +65,7 @@ import MineFavoritePage from "./src/components/Mine/FavoritePage/FavoritePage.js
 import MineFavoriteJobs from "./src/components/Mine/FavoriteJobs/FavoriteJobs.jsx";
 import MineFavoriteCompanys from "./src/components/Mine/FavoriteCompanys/FavoriteCompanys.jsx";
 
+import EditMg from "./src/components/Mine/EditMg/EditMg.jsx";
 import ZhaoDaQuiz from "./src/components/Zhaoda/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 
 // 用户验证
@@ -173,6 +174,7 @@ const Routes = () => <Router history={hashHistory}>
             <Route path="favoritejobs" component={MineFavoriteJobs} />
             <Route path="favoritecompanys" component={MineFavoriteCompanys} />
         </Route>
+        <Route path="edit" component={EditMg}></Route>
         <Route path="tologin" component={ToLogin} />
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />

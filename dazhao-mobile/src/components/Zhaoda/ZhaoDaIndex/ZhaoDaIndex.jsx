@@ -45,7 +45,7 @@ class ZhaoDaIndex extends React.Component {
 
         // Console.log(this.context)
 
-        [this.refs.topic1, this.refs.topic2, this.refs.topic3].map((elem) => {
+        [this.refs.topic1].map((elem) => {
 
             this._touchEvent(elem);
 
@@ -474,35 +474,6 @@ class ZhaoDaIndex extends React.Component {
                         </div>
                         <div id="topic1" ref="topic1" className="content">
                             {loading1 ? <LoadingBlock /> : hotTopicList}
-                        </div>
-                    </div>
-
-                    <div className="topic topic2">
-                        <div className="head">
-                            <span className="hot"><b><img src="/src/images/special.png" /></b>人气行家</span>
-                            <Link to="">
-                                <span className="all" onClick={() => {
-
-                                    this.showMessge();
-
-                                }}
-                                >全部行家<b><img src="/src/images/seeMore.png" /></b></span>
-                            </Link>
-                        </div>
-                        <div id="topic2" ref="topic2" className="content">
-                            {loading2 ? <LoadingBlock /> : popularityPopleList}
-                        </div>
-                    </div>
-
-                    <div className="topic topic3">
-                        <div className="head">
-                            <span className="hot"><b><img src="/src/images/special.png" /></b>最新专栏</span>
-                            <Link to="/Zhaoda/feature">
-                                <span className="all">全部专栏<b><img src="/src/images/seeMore.png" /></b></span>
-                            </Link>
-                        </div>
-                        <div id="topic3" ref="topic3" className="content" >
-                            {loading3 ? <LoadingBlock /> : latestZhuanlanList}
                         </div>
                     </div>
 
