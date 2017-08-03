@@ -116,7 +116,7 @@ class ConcernQuestion extends React.Component {
 
         const {questions} = this.state;
         const questionsList = questions.map((elem, index) =>
-            <Link to={`/toquestion/${elem.qid}`}>
+            <Link key={index} to={`/toquestion/${elem.qid}`}>
                 <div key={index} className="question">
                     <h3>{elem.qtitle}</h3>
                     <span><em>{elem.answer}</em>个回答</span>

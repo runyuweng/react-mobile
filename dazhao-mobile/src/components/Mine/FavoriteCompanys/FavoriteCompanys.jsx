@@ -10,36 +10,7 @@ class FavoriteCompanys extends React.Component {
         super(props);
         this.state = {
             "page": 1,
-            "enterprise": [
-                // {
-                //     "company_id": "0",
-                //     "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
-                //     "company_name": "阿里巴巴网络技术有限公司",
-                //     "company_city": "上海",
-                //     "company_type": "互联网",
-                //     "company_stage": "上市",
-                //     "company_numbers": "100人以上",
-                //     "jobs": [
-                //         "算法实习",
-                //         "JAVA",
-                //         "web"
-                //     ]
-                // },
-                // {
-                //     "company_id": "1",
-                //     "img": "http://www.dazhao100.com/update/1491443750l009127445.png",
-                //     "company_name": "阿里巴巴网络技术有限公司",
-                //     "company_city": "上海",
-                //     "company_type": "互联网",
-                //     "company_stage": "上市",
-                //     "company_numbers": "100人以上",
-                //     "jobs": [
-                //         "算法实习",
-                //         "JAVA",
-                //         "web"
-                //     ]
-                // }
-            ]
+            "enterprise": []
         };
 
         this.fetchCollectionEnterprise = this.fetchCollectionEnterprise.bind(this);
@@ -78,6 +49,8 @@ class FavoriteCompanys extends React.Component {
                 this.context.changeMessageContent(data.message);
                 this.setState({"enterprise": []});
 
+            }else{
+                this.context.changeMessageContent(data.message);
             }
 
         });
@@ -98,8 +71,8 @@ class FavoriteCompanys extends React.Component {
 
 
             return (
-                <Link to={`/company/${value.companyid}`}>
-                    <div className="jobitems" key={i}>
+                <Link key={i} to={`/company/${value.companyid}`}>
+                    <div className="jobitems">
                         <span className="pics">
                             <img src={value.img} />
                         </span>
