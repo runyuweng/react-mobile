@@ -142,8 +142,8 @@ class ConcernTopic extends React.Component {
 
         const {topics} = this.state;
         const topicsList = topics.map((elem, index) =>
-            <Link to={`/totopic/${elem.tid}`}>
-                <div key={index} className="item">
+            <Link key={index} to={`/totopic/${elem.tid}`}>
+                <div className="item">
                     <div className="left">
                         <span className="circle">
                             <img src={elem.img} alt={elem.topicname} />
