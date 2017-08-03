@@ -4,6 +4,8 @@ import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 import Select from './Select.jsx';
 
+
+
 class EditMg extends React.Component {
     constructor (props) {
 
@@ -12,9 +14,8 @@ class EditMg extends React.Component {
 
             "basicMessage": {
                 "img": "/src/images/pople.png",
-                "name": "周新城",
-                "sex": "男",
-                "bestEducation": "",
+                "name": "",
+                "sex": "",
                 "phone": "",
                 "email": "",
                 "political_status": "",
@@ -29,7 +30,8 @@ class EditMg extends React.Component {
             "type":'',
             "city":{},
             "province":{},
-            "politics":{}
+            "politics":{},
+            edu:{}
         };
         this.fetchBasicMessage = this.fetchBasicMessage.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -93,18 +95,39 @@ class EditMg extends React.Component {
 
     fetchBasicMessage () {
 
-        ajax({"url": `/basicmessage?resumeid=${this.props.location.query.resumeid}`}).
+        ajax({"url": `/zhaoda/user/myuserinfo`}).
         then((data) => {
+            console.log(data)
 
             if (data.code === "S01") {
 
-                const basicMessage = data.contents;
+                const basicMessage = {
+                    "img": data.contents.img,
+                    "name": data.contents.nickname,
+                    "sex": data.contents.sex,
+                    "bestEducation": data.contents.edu,
+                    "phone": data.contents.phone,
+                    "email": data.contents.email,
+                };
 
-                this.setState({basicMessage});
-
-            } else if (data.code === "E01") {
-
-                this.setState({"basicMessage": {}});
+                this.setState({basicMessage,
+                    city: {
+                        id: data.contents.city,
+                        name: data.contents.city,
+                    },
+                    province: {
+                        id: data.contents.province,
+                        name: data.contents.province,
+                    },
+                    politics:{
+                        id: data.contents.politics,
+                        name: data.contents.politics,
+                    },
+                    edu: {
+                        id: data.contents.edu,
+                        name: data.contents.edu,
+                    }
+                });
 
             }
 
@@ -114,15 +137,25 @@ class EditMg extends React.Component {
 
     handleSubmit = () => {
         const data = {
-            city: this.state.city || null,
-            province: this.state.province || null,
-            politics: this.state.politics || null,
-            name: this.state.name || null,
-            sex: this.state.sex|| null,
-            edu: this.state.edu|| null,
-            phone: this.state.phone|| null,
-            email:this.state.email|| null,
+            city: this.state.city.name || null,
+            province: this.state.province.name || null,
+            politics: this.state.politics.name || null,
+            name: this.state.basicMessage.name || null,
+            sex: this.state.basicMessage.sex|| null,
+            edu: this.state.edu.id|| null
         }
+        // ajax({
+        //     "url": "zhaoda/user/edituserinfo",
+        //     "method": "POST",
+        //     "data": `city=${data.account}&province=${data.province}&politics=${data.politics}&name=${data.name}&sex=${data.sex}&edu=${data.edu}`
+        // }).then((data)=>{
+        //     console.log(data)
+        // })
+        ajax({"url":`/zhaoda/user/edituserinfo?city=${data.city}&province=${data.province}&politics=${data.politics}&name=${data.name}&sex=${data.sex}&edu=${data.edu}`})
+        .then((data)=>{
+            console.log(data)
+        })
+        console.log(data,this.state);
     }
 
     render () {
@@ -131,10 +164,6 @@ class EditMg extends React.Component {
 
         const sexList = ["保密", "男", "女"].map((value, i) =>
             <input key={i} type="button" onClick={this.setSexAndEdu} name="sex" value={value} />
-            );
-
-        const eduList = ["大专", "本科", "硕士", "博士", "其他"].map((value, i) =>
-            <input key={i} type="button" onClick={this.setSexAndEdu} name="edu" value={value} />
             );
 
         const bodyList = this.state.showWhich === 1 ? sexList : this.state.showWhich === 2 ? eduList : "";
@@ -148,6 +177,14 @@ class EditMg extends React.Component {
         const dayList = Array.from(new Array(30)).map((value, i) =>
             <li key={i}>{i + 1}</li>
             );
+
+        const eduList = {
+            '3':'大专',
+            '4':'本科',
+            '5':'硕士',
+            '6':'博士',
+            '7':'学士'
+        }
 
 
         return (
@@ -177,8 +214,7 @@ class EditMg extends React.Component {
                     <div className="name">
                         <em>姓名</em>
                         <p>
-                            {/* <span>{basicMessage.name}</span>*/}
-                            <input type="text" value={this.state.basicMessage.name} name="name" onChange={this.handleChange} />
+                            <input style={{color: '#999'}} type="text" value={this.state.basicMessage.name} name="name" onChange={this.handleChange} />
                         </p>
                     </div>
 
@@ -192,15 +228,14 @@ class EditMg extends React.Component {
                                 });
 
                             }}>
-                            <span>{basicMessage.sex}</span>
+                            <span style={{color: '#999'}}>{basicMessage.sex}</span>
                         </p>
                     </div>
 
                     <div>
                         <em>手机号</em>
                         <p>
-                            {/* <span>{basicMessage.phone}</span>*/}
-                            <input type="text" value={this.state.basicMessage.phone} placeholder="输入手机号" name="phone" onChange={this.handleChange} />
+                            <input disabled type="text" value={this.state.basicMessage.phone} placeholder="手机号" name="phone" onChange={this.handleChange} />
                         </p>
 
                     </div>
@@ -208,8 +243,7 @@ class EditMg extends React.Component {
                     <div>
                         <em>邮箱号</em>
                         <p>
-                            {/* <span>{basicMessage.email}</span>*/}
-                            <input type="text" value={this.state.basicMessage.email} placeholder="输入邮箱地址" name="email" onChange={this.handleChange} />
+                            <input disabled type="text" value={this.state.basicMessage.email} placeholder="邮箱" name="email" onChange={this.handleChange} />
                         </p>
                     </div>
 
@@ -217,14 +251,11 @@ class EditMg extends React.Component {
                         <em>最高学历</em>
                         <p onClick={() => {
 
-                            this.setState({
-                                "showWhich": 2,
-                                "showtopDiv": true
-                            });
+                            this.setState({showSelect: true, type: 'edu'})
 
                         }}
                         >
-                            <span>{this.state.basicMessage.bestEducation === "" ? "选择最高学历" : this.state.basicMessage.bestEducation}</span>
+                            <span>{eduList[String(this.state.edu.id)] || "选择最高学历" }</span>
                             <span> <img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
@@ -237,8 +268,12 @@ class EditMg extends React.Component {
                                 this.setState({showSelect: true, type: 'province'})
                                 }}><em>{this.state.province.name||'省份'}</em><img src="/src/images/Back_Button.png" /></span>
                             <span onClick={()=>{
-                                this.setState({showSelect:true, type: 'city'})
-                                }}><em>{this.state.city.name||'城市'}</em><img src="/src/images/Back_Button.png" /></span>
+                                if(this.state.province.id &&  this.state.province.name !== this.state.province.id ){
+                                    this.setState({showSelect:true, type: 'city'})
+                                }else{
+                                    this.props.changeMessageContent("请选择省份");
+                                }
+                                }}><em>{this.state.city.name ? this.state.city.name :'城市'}</em><img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
 
@@ -272,7 +307,13 @@ class EditMg extends React.Component {
                 }
                 {this.state.showSelect ? <Select
                     type = {this.state.type}
+                    province = {this.state.province.id}
                     handleChange={(type, id, name)=>{
+                        if(type === "province" && id !== this.state.province.id){
+                            this.setState({
+                                city: {}
+                            })
+                        }
                         this.setState({
                             [type]:{id, name}
                         },()=>{

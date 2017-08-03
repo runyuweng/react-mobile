@@ -27,62 +27,74 @@ export default class Select extends React.Component {
       }
     }
 
+    fetchProvince = () => {
+      ajax({"url": "/zhaoda/position/getprovince"}).then((data)=>{
+        const newData = data.contents.map((d)=>{return {id: d.provincecode,name: d.provincename}})
+        this.setState({
+          data: newData
+        })
+      })
+    }
+    fetchCity = () => {
+      ajax({"url": `/zhaoda/position/getcity?province=${this.props.province}`}).then((data)=>{
+        const newData = data.contents.map((d)=>{return {id: d.cityid,name: d.cityname}})
+        this.setState({
+          data: newData
+        })
+      })
+    }
+
     fetchDate = () => {
       switch(this.state.type){
         case 'city':
-          this.setState({
-            data: [
-              {
-                id: 1,
-                name: '武汉',
-              },
-                            {
-                id: 2,
-                name: '常州',
-              },
-                            {
-                id: 3,
-                name: '北京',
-              }
-            ]
-          });
+          this.fetchCity();
           break;
         case 'province':
-          this.setState({
-            data:[
-              {
-                id: 1,
-                name: '湖北',
-              },
-                            {
-                id: 2,
-                name: '江苏',
-              },
-                            {
-                id: 3,
-                name: '浙江',
-              }
-            ]
-          });
+          this.fetchProvince();
           break;
         case 'politics':
           this.setState({
             data:[
               {
-                id: 1,
+                id: '党员',
                 name: '党员',
               },
-                            {
-                id: 2,
+              {
+                id: '团员',
                 name: '团员',
               },
-                            {
-                id: 3,
-                name: '少先队员',
+              {
+                id: '群众',
+                name: '群众',
               }
             ]
           });
           break;
+          case 'edu':
+            this.setState({
+              data:[
+              {
+                id: '3',
+                name: '大专',
+              },
+              {
+                id: '4',
+                name: '本科',
+              },
+              {
+                id: '5',
+                name: '硕士',
+              },
+              {
+                id: '6',
+                name: '博士',
+              },
+              {
+                id: '7',
+                name: '学士',
+              }
+            ]
+            })
           default:break;
       }
     }

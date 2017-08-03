@@ -182,6 +182,8 @@
         margin-bottom: .1rem;
       }
       .mainbody {
+        height: 2rem;
+        overflow: scroll;
         input[type=button] {
           width: 100%;
           border: none;
