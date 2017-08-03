@@ -144,18 +144,15 @@ class EditMg extends React.Component {
             sex: this.state.basicMessage.sex|| null,
             edu: this.state.edu.id|| null
         }
-        // ajax({
-        //     "url": "zhaoda/user/edituserinfo",
-        //     "method": "POST",
-        //     "data": `city=${data.account}&province=${data.province}&politics=${data.politics}&name=${data.name}&sex=${data.sex}&edu=${data.edu}`
-        // }).then((data)=>{
-        //     console.log(data)
-        // })
+
         ajax({"url":`/zhaoda/user/edituserinfo?city=${data.city}&province=${data.province}&politics=${data.politics}&name=${data.name}&sex=${data.sex}&edu=${data.edu}`})
         .then((data)=>{
-            console.log(data)
+            if(data.code === 'S01'){
+              this.props.changeMessageContent("保存成功");
+            }else{
+              this.props.changeMessageContent("保存失败，请重试");
+            }
         })
-        console.log(data,this.state);
     }
 
     render () {
