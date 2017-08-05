@@ -65,7 +65,7 @@ class Mine extends React.Component {
                         </div>
                         <Link to="/edit"><span className="edit" >编辑</span></Link>
                     </div>
-                    {true ? <p><em>{ personalMsg.username }</em><span>{ personalMsg.sex?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
+                    {true ? <p><em>{ personalMsg.username }</em><span>{ personalMsg.sex==='女'?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">
                         <div className="school">
                             <span>{true ? personalMsg.school||"学校未知" : "学校未知"}</span><br />
