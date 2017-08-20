@@ -1,7 +1,7 @@
 import React from "react";
 import "./FavoriteJobs.scss";
 import ajax from "../../../services/ajax.js";
-import { Link } from 'react-router';
+import {Link} from "react-router";
 
 class FavoriteJobs extends React.Component {
 
@@ -27,24 +27,24 @@ class FavoriteJobs extends React.Component {
         ajax({"url": `/zhaoda/job/mycarejob?page=${page}`}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
-                
+
                 this.context.changeMessageContent(data.message);
                 const jobs = data.contents;
 
                 this.setState({"jobs": this.state.jobs.concat(jobs)});
 
             } else if (data.code === "S02") {
-                
+
                 this.context.changeMessageContent(data.message);
 
                 const jobs = data.contents;
 
                 this.setState({"jobs": this.state.jobs.concat(jobs)});
 
-            } else if(data.code === "E01"){
-                
+            } else if (data.code === "E01") {
+
                 this.context.changeMessageContent(data.message);
                 this.setState({"jobs": []});
 
@@ -54,12 +54,11 @@ class FavoriteJobs extends React.Component {
 
     }
 
-    
 
     render () {
 
         const {jobs} = this.state;
-        const jobList = jobs.map((value, i) => 
+        const jobList = jobs.map((value, i) =>
             <Link key={i} to={`/jobdetail/${value.jobid}`}>
                 <div className="jobitems" key={i}>
                     <span className="pics"><img src={value.company.img} /></span>
@@ -93,8 +92,6 @@ class FavoriteJobs extends React.Component {
     }
 }
 
-FavoriteJobs.contextTypes = {
-    changeMessageContent : React.PropTypes.func
-}
+FavoriteJobs.contextTypes = {"changeMessageContent": React.PropTypes.func};
 
 export default FavoriteJobs;

@@ -33,14 +33,15 @@ class ZhaoDaMessage extends React.Component {
 
         ajax({"url": `/zhaoda/message/information?page=${page}`}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             if (data.code === "E01") {
 
                 this.props.changeMessageContent(data.message);
                 // This.setState({"informs": []});
 
             } else if (data.code === "S01") {
-                
+
                 // 查询成功，消息提示
                 this.props.changeMessageContent(data.message);
                 this.setState({"informs": data.contents});
@@ -101,12 +102,14 @@ class ZhaoDaMessage extends React.Component {
                     <ul>
                         <li onClick={() => {
 
-                            this.setState({
-                                "current" : 1
-                            },() => {
+                            this.setState({"current": 1}, () => {
+
                                 this.fetchInform(this.state.page);
-                            })
-                        }} className={current === 1 ? "active" : ""}>通知</li>
+
+                            });
+
+                        }} className={current === 1 ? "active" : ""}
+                        >通知</li>
                         <li onClick={() => {
 
                             this.setState({"current": 2});
@@ -123,10 +126,9 @@ class ZhaoDaMessage extends React.Component {
                 </nav>
                 {showLoading ? <Loading />
 
-                :
-                    <div id="MessageMain">
+                : <div id="MessageMain">
 
-                        {current === 1 ? InformsList : current === 2 ? <p className="noFunc">此功能尚未开通...</p> : current === 3 ? <p className="noFunc">此功能尚未开通...</p> : ""}
+                    {current === 1 ? InformsList : current === 2 ? <p className="noFunc">此功能尚未开通...</p> : current === 3 ? <p className="noFunc">此功能尚未开通...</p> : ""}
 
                     {current === 1 ? InformsList : current === 2 ? "" : current === 3 ? "" : ""}
 

@@ -37,7 +37,7 @@ class SearchPage extends React.Component {
         ajax({"url": `/zhaoda/job/searchjob?keyword=${this.state.keyword}`}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
 
                 const jobs = data.contents;

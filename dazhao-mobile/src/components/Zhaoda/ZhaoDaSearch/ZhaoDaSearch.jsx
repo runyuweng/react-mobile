@@ -8,7 +8,7 @@ class ZhaoDaSearch extends React.Component {
     constructor (props) {
 
         super(props);
-        console.log('params',this.props.params.splat);
+        console.log("params", this.props.params.splat);
         this.state = {
             "keyword": this.props.params.splat || "",
             "response": []
@@ -31,7 +31,7 @@ class ZhaoDaSearch extends React.Component {
         ajax({"url": `/zhaoda/question/searchquestion?keyword=${keyword}`}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
 
                 this.setState({"response": data.contents});

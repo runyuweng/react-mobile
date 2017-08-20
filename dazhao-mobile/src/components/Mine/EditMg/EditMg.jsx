@@ -2,8 +2,7 @@ import React from "react";
 import "./EditMg.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
-import Select from './Select.jsx';
-
+import Select from "./Select.jsx";
 
 
 class EditMg extends React.Component {
@@ -26,12 +25,12 @@ class EditMg extends React.Component {
             },
             "showtopDiv": false,
             "showWhich": -1,
-            "showSelect":false,
-            "type":'',
-            "city":{},
-            "province":{},
-            "politics":{},
-            edu:{}
+            "showSelect": false,
+            "type": "",
+            "city": {},
+            "province": {},
+            "politics": {},
+            "edu": {}
         };
         this.fetchBasicMessage = this.fetchBasicMessage.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -95,9 +94,10 @@ class EditMg extends React.Component {
 
     fetchBasicMessage () {
 
-        ajax({"url": `/zhaoda/user/myuserinfo`}).
+        ajax({"url": "/zhaoda/user/myuserinfo"}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
 
             if (data.code === "S01") {
 
@@ -107,25 +107,26 @@ class EditMg extends React.Component {
                     "sex": data.contents.sex,
                     "bestEducation": data.contents.edu,
                     "phone": data.contents.phone,
-                    "email": data.contents.email,
+                    "email": data.contents.email
                 };
 
-                this.setState({basicMessage,
-                    city: {
-                        id: data.contents.city,
-                        name: data.contents.city,
+                this.setState({
+                    basicMessage,
+                    "city": {
+                        "id": data.contents.city,
+                        "name": data.contents.city
                     },
-                    province: {
-                        id: data.contents.province,
-                        name: data.contents.province,
+                    "province": {
+                        "id": data.contents.province,
+                        "name": data.contents.province
                     },
-                    politics:{
-                        id: data.contents.politics,
-                        name: data.contents.politics,
+                    "politics": {
+                        "id": data.contents.politics,
+                        "name": data.contents.politics
                     },
-                    edu: {
-                        id: data.contents.edu,
-                        name: data.contents.edu,
+                    "edu": {
+                        "id": data.contents.edu,
+                        "name": data.contents.edu
                     }
                 });
 
@@ -136,23 +137,31 @@ class EditMg extends React.Component {
     }
 
     handleSubmit = () => {
-        const data = {
-            city: this.state.city.name || null,
-            province: this.state.province.name || null,
-            politics: this.state.politics.name || null,
-            name: this.state.basicMessage.name || null,
-            sex: this.state.basicMessage.sex|| null,
-            edu: this.state.edu.id|| null
-        }
 
-        ajax({"url":`/zhaoda/user/edituserinfo?city=${data.city}&province=${data.province}&politics=${data.politics}&name=${data.name}&sex=${data.sex}&edu=${data.edu}`})
-        .then((data)=>{
-            if(data.code === 'S01'){
-              this.props.changeMessageContent("保存成功");
-            }else{
-              this.props.changeMessageContent("保存失败，请重试");
+        const data = {
+            "city": this.state.city.name || null,
+            "province": this.state.province.name || null,
+            "politics": this.state.politics.name || null,
+            "name": this.state.basicMessage.name || null,
+            "sex": this.state.basicMessage.sex || null,
+            "edu": this.state.edu.id || null
+        };
+
+        ajax({"url": `/zhaoda/user/edituserinfo?city=${data.city}&province=${data.province}&politics=${data.politics}&name=${data.name}&sex=${data.sex}&edu=${data.edu}`}).
+        then((data) => {
+
+            if (data.code === "S01") {
+
+                this.props.changeMessageContent("保存成功");
+
+            } else {
+
+                this.props.changeMessageContent("保存失败，请重试");
+
             }
-        })
+
+        });
+
     }
 
     render () {
@@ -176,12 +185,12 @@ class EditMg extends React.Component {
             );
 
         const eduList = {
-            '3':'大专',
-            '4':'本科',
-            '5':'硕士',
-            '6':'博士',
-            '7':'学士'
-        }
+            "3": "大专",
+            "4": "本科",
+            "5": "硕士",
+            "6": "博士",
+            "7": "学士"
+        };
 
 
         return (
@@ -196,7 +205,7 @@ class EditMg extends React.Component {
                         <img src="/src/images/arrow-left.png" />
                     </span>
                     <span>编辑基本信息</span>
-                    <span onClick = {this.handleSubmit}>保存</span>
+                    <span onClick={this.handleSubmit}>保存</span>
                 </div>
 
                 <div className="edititems">
@@ -211,7 +220,7 @@ class EditMg extends React.Component {
                     <div className="name">
                         <em>姓名</em>
                         <p>
-                            <input style={{color: '#999'}} type="text" value={this.state.basicMessage.name} name="name" onChange={this.handleChange} />
+                            <input style={{"color": "#999"}} type="text" value={this.state.basicMessage.name} name="name" onChange={this.handleChange} />
                         </p>
                     </div>
 
@@ -219,13 +228,14 @@ class EditMg extends React.Component {
                         <em>性别</em>
                         <p onClick={() => {
 
-                                this.setState({
-                                    "showWhich": 1,
-                                    "showtopDiv": true
-                                });
+                            this.setState({
+                                "showWhich": 1,
+                                "showtopDiv": true
+                            });
 
-                            }}>
-                            <span style={{color: '#999'}}>{basicMessage.sex}</span>
+                        }}
+                        >
+                            <span style={{"color": "#999"}}>{basicMessage.sex}</span>
                         </p>
                     </div>
 
@@ -248,7 +258,10 @@ class EditMg extends React.Component {
                         <em>最高学历</em>
                         <p onClick={() => {
 
-                            this.setState({showSelect: true, type: 'edu'})
+                            this.setState({
+                                "showSelect": true,
+                                "type": "edu"
+                            });
 
                         }}
                         >
@@ -261,24 +274,48 @@ class EditMg extends React.Component {
                     <div>
                         <em>现居地</em>
                         <p className="place">
-                            <span onClick={()=>{
-                                this.setState({showSelect: true, type: 'province'})
-                                }}><em>{this.state.province.name||'省份'}</em><img src="/src/images/Back_Button.png" /></span>
-                            <span onClick={()=>{
-                                if(this.state.province.id &&  this.state.province.name !== this.state.province.id ){
-                                    this.setState({showSelect:true, type: 'city'})
-                                }else{
+                            <span onClick={() => {
+
+                                this.setState({
+                                    "showSelect": true,
+                                    "type": "province"
+                                });
+
+                            }}
+                            ><em>{this.state.province.name || "省份"}</em><img src="/src/images/Back_Button.png" /></span>
+                            <span onClick={() => {
+
+                                if (this.state.province.id && this.state.province.name !== this.state.province.id) {
+
+                                    this.setState({
+                                        "showSelect": true,
+                                        "type": "city"
+                                    });
+
+                                } else {
+
                                     this.props.changeMessageContent("请选择省份");
+
                                 }
-                                }}><em>{this.state.city.name ? this.state.city.name :'城市'}</em><img src="/src/images/Back_Button.png" /></span>
+
+                            }}
+                            ><em>{this.state.city.name ? this.state.city.name : "城市"}</em><img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
 
                     <div>
                         <em>政治面貌</em>
-                        <p onClick={()=>{this.setState({showSelect:true, type: 'politics'})}}>
+                        <p onClick={() => {
+
+                            this.setState({
+                                "showSelect": true,
+                                "type": "politics"
+                            });
+
+                        }}
+                        >
                             {/* <span>{basicMessage.hopeCity}</span>*/}
-                            <span>{this.state.politics.name||'选择政治面貌'}</span>
+                            <span>{this.state.politics.name || "选择政治面貌"}</span>
                             <span> <img src="/src/images/Back_Button.png" /></span>
                         </p>
                     </div>
@@ -303,25 +340,41 @@ class EditMg extends React.Component {
                         </div> : ""
                 }
                 {this.state.showSelect ? <Select
-                    type = {this.state.type}
-                    province = {this.state.province.id}
-                    handleChange={(type, id, name)=>{
-                        if(type === "province" && id !== this.state.province.id){
-                            this.setState({
-                                city: {}
-                            })
+                    type={this.state.type}
+                    province={this.state.province.id}
+                    handleChange={(type, id, name) => {
+
+                        if (type === "province" && id !== this.state.province.id) {
+
+                            this.setState({"city": {}});
+
                         }
                         this.setState({
-                            [type]:{id, name}
-                        },()=>{
+                            [type]: {
+                                id,
+                                name
+                            }
+                        }, () => {
+
                             console.log(this.state);
-                            this.setState({showSelect: false, type: ''})
-                        })
+                            this.setState({
+                                "showSelect": false,
+                                "type": ""
+                            });
+
+                        });
+
                     }}
-                    handleClose={()=>{
-                    this.setState({showSelect: false, type: ''})
-                    }}/>
-                 : ''}
+                    handleClose={() => {
+
+                        this.setState({
+                            "showSelect": false,
+                            "type": ""
+                        });
+
+                    }}
+                                         />
+                 : ""}
 
 
             </div>

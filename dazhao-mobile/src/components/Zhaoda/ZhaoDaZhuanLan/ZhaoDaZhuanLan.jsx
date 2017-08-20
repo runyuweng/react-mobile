@@ -35,7 +35,6 @@ class ZhaoDaZhuanLan extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/searchzhuanlan?keyword=${keyword}`}).
         then((data) => {
 
-             
 
             if (data.code === "S01") {
 

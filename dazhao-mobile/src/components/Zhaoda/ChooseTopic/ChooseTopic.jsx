@@ -112,7 +112,7 @@ class ChooseTopic extends React.Component {
 
                     this.setState({
                         "specialists": data.contents ? newData : [],
-                        "qid" : data.lastestqid
+                        "qid": data.lastestqid
                     });
 
                 });
@@ -158,7 +158,6 @@ class ChooseTopic extends React.Component {
 
             ajax({"url": `/zhaoda/question/inviteanswer?qid=${this.state.qid}&id=${this.state.invited.join(",")}`}).
         then((data) => {
-
 
 
             if (data.code === "S01") {

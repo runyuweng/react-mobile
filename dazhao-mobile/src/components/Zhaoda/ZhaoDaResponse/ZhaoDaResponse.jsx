@@ -29,6 +29,7 @@ class ZhaoDaResponse extends React.Component {
         this.fetchAnswer = this.fetchAnswer.bind(this);
         this.setSelected = this.setSelected.bind(this);
         this.setAgree = this.setAgree.bind(this);
+
     }
 
     componentDidMount () {
@@ -56,17 +57,19 @@ class ZhaoDaResponse extends React.Component {
 
           if (data.code === "S01") {
 
-            this.props.changeMessageContent(data.message);
+              this.props.changeMessageContent(data.message);
 
             // 收藏状态改变
-            const answerdetail = JSON.parse(JSON.stringify(this.state)).answerdetail;
+              const answerdetail = JSON.parse(JSON.stringify(this.state)).answerdetail;
 
-            answerdetail.collect = !this.state.answerdetail.collect;
-            this.setState({answerdetail});
+              answerdetail.collect = !this.state.answerdetail.collect;
+              this.setState({answerdetail});
 
           } else if (data.code === "E01") {
+
             // 出错
-            this.props.changeMessageContent(data.message);
+              this.props.changeMessageContent(data.message);
+
           }
 
       });
@@ -78,12 +81,12 @@ class ZhaoDaResponse extends React.Component {
 
         ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
       then((data) => {
-            
-          // console.log(data)
+
+          // Console.log(data)
 
           if (data.code === "S01") {
 
-            this.props.changeMessageContent(data.message);
+              this.props.changeMessageContent(data.message);
 
             // 关注状态改变
               const answerdetail = JSON.parse(JSON.stringify(this.state)).answerdetail;
@@ -93,14 +96,17 @@ class ZhaoDaResponse extends React.Component {
 
 
           } else if (data.code === "S04") {
+
             // 已经点过赞了
 
-            this.props.changeMessageContent(data.message);
+              this.props.changeMessageContent(data.message);
 
           } else if (data.code === "E01") {
+
             // 出错
 
-            this.props.changeMessageContent(data.message);
+              this.props.changeMessageContent(data.message);
+
           }
 
       });
@@ -112,7 +118,7 @@ class ZhaoDaResponse extends React.Component {
         ajax({"url": `/zhaoda/question/answerinfo?aid=${aid}`}).
         then((data) => {
 
-             console.log(data)
+            console.log(data);
 
             if (data.code === "S01") {
 
@@ -188,22 +194,22 @@ class ZhaoDaResponse extends React.Component {
                     <ul>
                         <li>
                             <span onClick={this.setAgree.bind(this, aid)}>
-                                <object data="/src/images/icon/赞同.svg" type="image/svg+xml"></object>
+                                <object data="/src/images/icon/赞同.svg" type="image/svg+xml" />
                             </span>
                             <span>赞同({answerdetail.agree})</span>
                         </li>
                         <li>
                             <Link to={`/coments/${aid}/${title}`}>
                                 <span>
-                                    <object data="/src/images/icon/评论.svg" type="image/svg+xml"></object>
+                                    <object data="/src/images/icon/评论.svg" type="image/svg+xml" />
                                 </span>
                                 <span>评论({answerdetail.remark})</span>
                             </Link>
                         </li>
                         <li>
                             <span onClick={this.setSelected.bind(this, aid)}>
-                                {/*<object data={answerdetail.collect ? "/src/images/icon/已收藏.svg" : "/src/images/icon/收藏.svg"} type="image/svg+xml"></object>*/}
-                                <object data="/src/images/icon/收藏.svg" type="image/svg+xml"></object>
+                                {/* <object data={answerdetail.collect ? "/src/images/icon/已收藏.svg" : "/src/images/icon/收藏.svg"} type="image/svg+xml"></object>*/}
+                                <object data="/src/images/icon/收藏.svg" type="image/svg+xml" />
                             </span>
                             <span>{answerdetail.collect ? "已收藏" : "收藏"}</span>
                         </li>

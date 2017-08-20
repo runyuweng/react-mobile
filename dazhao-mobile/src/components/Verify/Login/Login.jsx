@@ -34,9 +34,7 @@ class Login extends React.Component {
           if (data.code === "S01") {
 
               this.props.changeMessageContent("登录成功");
-              hashHistory.push({
-                  "pathname": "mine"
-              });
+              hashHistory.push({"pathname": "mine"});
 
           } else {
 

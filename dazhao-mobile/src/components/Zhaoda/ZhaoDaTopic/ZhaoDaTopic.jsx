@@ -28,7 +28,7 @@ class ZhaoDaTopic extends React.Component {
     componentDidMount () {
 
         this.context.changeBottomState(true);
-    
+
 
         this._touchEvent(this.refs.navbar);
 
@@ -193,8 +193,6 @@ class ZhaoDaTopic extends React.Component {
     }
 }
 
-ZhaoDaTopic.contextTypes = {
-    changeBottomState : React.PropTypes.func
-}
+ZhaoDaTopic.contextTypes = {"changeBottomState": React.PropTypes.func};
 
 export default ZhaoDaTopic;

@@ -18,7 +18,7 @@ class ZhaoDaToFeatures extends React.Component {
             "guestIntroStretch": false,
             "shortIntroStretch": true,
             "data": {},
-            "album": [],// 专辑列表
+            "album": [], // 专辑列表
             "answers": [
                 {
                     "id": 1,
@@ -88,13 +88,13 @@ class ZhaoDaToFeatures extends React.Component {
         this.fetchZhuanlanDe();
 
     }
-    
+
     fetchZhuanlanDe () {
 
         ajax({"url": `/zhaoda/zhuanlan/zhuanlaninfo?colid=${this.props.location.query.colid}`}).
         then((data) => {
 
-             
+
             const myData = data.contents;
 
             this.setState({
@@ -116,14 +116,13 @@ class ZhaoDaToFeatures extends React.Component {
         this.fetchZhuanlanDe();
 
     }
-    
+
     // 专辑列表
     fetchAlbum (albumNum) {
 
         ajax({"url": `/zhaoda/zhuanlan/album?page=-1&uid=${this.state.data.uid}`}).
         then((data) => {
 
-             
 
             if (data.code === "S21") {
 
@@ -166,7 +165,7 @@ class ZhaoDaToFeatures extends React.Component {
         ajax({"url": `/zhaoda/zhuanlan/subscribezhuanlan?colid=${colid}`}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
 
                 var data = JSON.parse(JSON.stringify(this.state)).data;

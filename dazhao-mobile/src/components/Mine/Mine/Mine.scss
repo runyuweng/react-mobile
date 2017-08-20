@@ -1,202 +1,198 @@
-.Mine{
-    margin-bottom: .72rem;
-    .head{
-        background:#fff;
-        border-bottom: .01rem solid #d8d8d8;
-        .top{
-            width:100%;
-            height:1.62rem;
-            background: url('/src/images/personalBg.png');
-            background-size: cover;
-            font-size: 0;
-            position: relative;
-            .imgone{
-                width:100%;
-                height:1.62rem;
-                display: inline-block;
-                text-align: center;
-                .blur{
-                    height:1.62rem;
-                    opacity: 0.1;
-                    filter: alpha(opacity=10);
-                }
-            }
-            .circle1{
-                width:.95rem;
-                height:.95rem;
-                border-radius:50%;
-                background:#FFFFFF;
-                position: relative;
-                margin: -.78rem auto;
-                .circle2{
-                    width:.89rem;
-                    height:.89rem;
-                    border-radius:50%;
-                    position:absolute;
-                    top:.03rem;
-                    left:.03rem;
-                    background:#f7f7f7;
-                    display:flex;
-                    justify-content:center;
-                    overflow: hidden;
-                    img{
-                        width:.66rem;
-                        height:.83rem;
-                        margin-top:.08rem;
-                    }
-                }
-            }
-            .edit{
-                position:absolute;
-                border:.01rem #fff solid;
-                color:#fff;
-                font-size: .14rem;
-                right:4%;
-                top:12%;
-                border-radius:.05rem;
-                width: .45rem;
-                height: .25rem;
-                text-align: center;
-                line-height: .25rem;
-            }
+.Mine {
+  margin-bottom: .72rem;
+  .head {
+    background: #fff;
+    border-bottom: .01rem solid #d8d8d8;
+    .top {
+      width: 100%;
+      height: 1.62rem;
+      background: url('/src/images/personalBg.png');
+      background-size: cover;
+      font-size: 0;
+      position: relative;
+      .imgone {
+        width: 100%;
+        height: 1.62rem;
+        display: inline-block;
+        text-align: center;
+        .blur {
+          height: 1.62rem;
+          opacity: 0.1;
+          filter: alpha(opacity=10);
         }
-
-        p{
-            font-family: "苹方";
-            font-size:.16rem;
-            height: .22rem;
-            line-height: .22rem;
-            color:#333333;
-            text-align: center;
-            margin: .26rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            em{
-                font-style: normal;
-            }
-            span{
-                width:.18rem;
-                height:.18rem;
-                display:inline-block;
-                margin-left: .08rem;
-                img{
-                    width:.18rem;
-                    height:.18rem;
-                }
-            }
-
+      }
+      .circle1 {
+        width: .95rem;
+        height: .95rem;
+        border-radius: 50%;
+        background: #FFFFFF;
+        position: relative;
+        margin: -.78rem auto;
+        .circle2 {
+          width: .89rem;
+          height: .89rem;
+          border-radius: 50%;
+          position: absolute;
+          top: .03rem;
+          left: .03rem;
+          background: #f7f7f7;
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+          img {
+            width: .66rem;
+            height: .83rem;
+            margin-top: .08rem;
+          }
         }
-        .intro{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin:0 .31rem;
-            font-size: 0rem;
-            padding-bottom: .13rem;
-            .school{
-                span{
-                    display: inline-block;
-                    font-family: "苹方";
-                    font-size:.13rem ;
-                    color:#ADADAD;
-                    line-height: .18rem;
-                    height: .18rem;
-                }
-            }
-            .fans{
-                display: flex;
-                align-items: center;
-                span{
-                    display: inline-block;
-                    text-align: center;
-                    font-family: "苹方";
-                    font-size:.13rem ;
-                    color:#ADADAD;
-                    line-height: .18rem;
-                    b{
-                        font-weight: bold;
-                        color:#333333;
-                        font-size: .15rem;
-                        display: inline-block;
-                        height: .21rem;
-                        line-height: .21rem;
-                    }
-                }
-                em{
-                    display: inline-block;
-                    height:.4rem;
-                    border:.01rem solid #EAEAEA;
-                    margin:0rem .24rem;
-                }
-            }
-        }
+      }
+      .edit {
+        position: absolute;
+        border: .01rem #fff solid;
+        color: #fff;
+        font-size: .14rem;
+        right: 4%;
+        top: 12%;
+        border-radius: .05rem;
+        width: .45rem;
+        height: .25rem;
+        text-align: center;
+        line-height: .25rem;
+      }
     }
-
-    .experience{
-        background:#fff;
-        font-size: 0rem;
-        margin: .16rem 0;
-        height: .82rem;
-        box-sizing: border-box;
-        div{
-            display: inline-flex;
-            width:33%;
-            height:.82rem;
-            border-bottom:.01rem solid #EAEAEA;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            span{
-                display:inline-block;
-                img{
-                    height:.24rem;
-                }
-            }
-            em{
-                display: block;
-                font-style: normal;
-                font-size: .13rem;
-                font-family: "苹方";
-                color:#ADADAD;
-                line-height: .24rem;
-                margin-top: .06rem;
-            }
+    p {
+      font-family: "苹方";
+      font-size: .16rem;
+      height: .22rem;
+      line-height: .22rem;
+      color: #333333;
+      text-align: center;
+      margin: .26rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      em {
+        font-style: normal;
+      }
+      span {
+        width: .18rem;
+        height: .18rem;
+        display: inline-block;
+        margin-left: .08rem;
+        img {
+          width: .18rem;
+          height: .18rem;
         }
-        div:nth-of-type(2){
-            border:.01rem solid #EAEAEA;
-            border-top: none;
-        }
+      }
     }
-
-    .options{
-        font-size: 0rem;
-        background:#fff;
-        border-top: .01rem solid #D8D8D8;
-        p{
-            padding:.11rem .24rem .11rem .31rem;
-            border-bottom: .01rem solid #D8D8D8;
-            line-height: .25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            em{
-                font-style: normal;
-                font-family: "苹方";
-                font-size: .14rem;
-                color:#666666;
-            }
-            span{
-                display:inline-block;
-                width:.14rem;
-                height:.18rem;
-                cursor:pointer;
-                img{
-                    width:.10rem;
-                    height:.14rem;
-                }
-            }
+    .intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 .31rem;
+      font-size: 0rem;
+      padding-bottom: .13rem;
+      .school {
+        span {
+          display: inline-block;
+          font-family: "苹方";
+          font-size: .13rem;
+          color: #ADADAD;
+          line-height: .18rem;
+          height: .18rem;
         }
+      }
+      .fans {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        span {
+          display: inline-block;
+          text-align: center;
+          font-family: "苹方";
+          font-size: .13rem;
+          color: #ADADAD;
+          line-height: .18rem;
+          b {
+            font-weight: bold;
+            color: #333333;
+            font-size: .15rem;
+            display: inline-block;
+            height: .21rem;
+            line-height: .21rem;
+          }
+        }
+        em {
+          display: inline-block;
+          height: .4rem;
+          border: .01rem solid #EAEAEA;
+          margin: 0rem .24rem;
+        }
+      }
     }
-
+  }
+  .experience {
+    background: #fff;
+    font-size: 0rem;
+    margin: .16rem 0;
+    height: .82rem;
+    box-sizing: border-box;
+    div {
+      display: inline-flex;
+      width: 33%;
+      height: .82rem;
+      border-bottom: .01rem solid #EAEAEA;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      span {
+        display: inline-block;
+        img {
+          height: .24rem;
+        }
+      }
+      em {
+        display: block;
+        font-style: normal;
+        font-size: .13rem;
+        font-family: "苹方";
+        color: #ADADAD;
+        line-height: .24rem;
+        margin-top: .06rem;
+      }
+    }
+    div:nth-of-type(2) {
+      border: .01rem solid #EAEAEA;
+      border-top: none;
+    }
+  }
+  .options {
+    font-size: 0rem;
+    background: #fff;
+    border-top: .01rem solid #D8D8D8;
+    p {
+      padding: .11rem .24rem .11rem .31rem;
+      border-bottom: .01rem solid #D8D8D8;
+      line-height: .25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      em {
+        font-style: normal;
+        font-family: "苹方";
+        font-size: .14rem;
+        color: #666666;
+      }
+      span {
+        display: inline-block;
+        width: .14rem;
+        height: .18rem;
+        cursor: pointer;
+        img {
+          width: .10rem;
+          height: .14rem;
+        }
+      }
+    }
+  }
 }

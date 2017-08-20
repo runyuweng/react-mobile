@@ -29,7 +29,7 @@ class ZhaoDaFeature extends React.Component {
         ajax({"url": "/zhaoda/zhuanlan/lastestzhuanlan?page=-1"}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
 
                 const zhuanlan = data.contents;

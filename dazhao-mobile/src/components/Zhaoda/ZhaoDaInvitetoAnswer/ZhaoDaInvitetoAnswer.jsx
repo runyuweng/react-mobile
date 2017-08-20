@@ -37,7 +37,6 @@ class ZhaoDaInvitetoAnswer extends React.Component {
         ajax({"url": `/zhaoda/user/recommenduser?qid=${qid}`}).
       then((data) => {
 
-           
 
           if (data.code === "S01") {
 
@@ -78,7 +77,7 @@ class ZhaoDaInvitetoAnswer extends React.Component {
             ajax({"url": `/zhaoda/question/inviteanswer?qid=${qid}&id=${userid}`}).
             then((data) => {
 
-                 
+
                 if (data.code === "S01") {
 
                     const user = JSON.parse(JSON.stringify(this.state)).user;

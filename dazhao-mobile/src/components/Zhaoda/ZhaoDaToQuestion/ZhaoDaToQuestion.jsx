@@ -79,16 +79,19 @@ class ZhaoDaToQuestion extends React.Component {
 
               });
 
-              var topic = [];
+              const topic = [];
+
               data.contents.topics.map((elem) => {
-                topic.push(elem.topicname);
+
+                  topic.push(elem.topicname);
+
               });
 
               this.setState({
                   "question": newQ,
                   "otherAnswers": newOtherAnswers,
                   "showLoading": false,
-                  "topic": topic
+                  topic
               }, () => {
 
                   const showshadow = !(newQ.authorAnswer.length < this.refs.carecontent.clientWidth / 14 * 2);
@@ -155,14 +158,17 @@ class ZhaoDaToQuestion extends React.Component {
 
 
           } else if (data.code === "S04") {
+
             // 已经点过赞了
 
-            this.context.changeMessageContent(data.message);
+              this.context.changeMessageContent(data.message);
 
           } else if (data.code === "E01") {
+
             // 出错
 
-            this.context.changeMessageContent(data.message);
+              this.context.changeMessageContent(data.message);
+
           }
 
       });
@@ -197,11 +203,9 @@ class ZhaoDaToQuestion extends React.Component {
 
         const {topic, question, otherAnswers, showLoading} = this.state;
 
-        const topicList = topic.map((elem, index) => {
-          return(
+        const topicList = topic.map((elem, index) =>
             <span key={index} className="topTopic">{elem}</span>
-          )
-        })
+          );
 
         const otherAnswersList = otherAnswers.map((value, num) =>
             <article key={num}>
@@ -246,7 +250,7 @@ class ZhaoDaToQuestion extends React.Component {
 
                     <div className="question" onClick={() => {
 
-                        {/* history.go(-1); */}
+                        { /* History.go(-1); */ }
 
                     }}
                     >

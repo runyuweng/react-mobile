@@ -11,6 +11,8 @@ class Home extends React.Component {
     }
 
     componentDidMount () {
+        this.props.changeBottomState(true);
+        
 
         const bannerChange = setInterval(() => {
 

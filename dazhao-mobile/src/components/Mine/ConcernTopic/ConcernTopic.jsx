@@ -1,7 +1,7 @@
 import React from "react";
 import "./ConcernTopic.scss";
 import ajax from "../../../services/ajax.js";
-import { Link } from 'react-router';
+import {Link} from "react-router";
 
 class ConcernTopic extends React.Component {
 
@@ -95,8 +95,10 @@ class ConcernTopic extends React.Component {
                     "topics": this.state.topics.concat(topics),
                     "page": this.state.page + 1,
                     "moreMessage": ""
-                },() => {
-                    this.context.changeMessageContent(data.message)
+                }, () => {
+
+                    this.context.changeMessageContent(data.message);
+
                 });
 
             } else if (data.code === "S02") {
@@ -108,8 +110,10 @@ class ConcernTopic extends React.Component {
                     "topics": this.state.topics.concat(topics),
                     "nomore": true,
                     "moreMessage": "没有更多关注"
-                },() => {
-                    this.context.changeMessageContent(data.message)
+                }, () => {
+
+                    this.context.changeMessageContent(data.message);
+
                 });
 
             } else if (data.code === "S03") {
@@ -119,14 +123,18 @@ class ConcernTopic extends React.Component {
                     "topics": [],
                     "nocareQuestion": true,
                     "nomore": true
-                },() => {
-                    this.context.changeMessageContent(data.message)
+                }, () => {
+
+                    this.context.changeMessageContent(data.message);
+
                 });
 
             } else if (data.code === "E01") {
 
-                this.setState({"topics": []},() => {
-                    this.context.changeMessageContent(data.message)
+                this.setState({"topics": []}, () => {
+
+                    this.context.changeMessageContent(data.message);
+
                 });
 
             } else if (data.code === "E03") {
@@ -142,7 +150,7 @@ class ConcernTopic extends React.Component {
 
         const {topics} = this.state;
         const topicsList = topics.map((elem, index) =>
-           
+
             <div className="item">
                 <Link key={index} to={`/totopic/${elem.tid}`}>
                     <div className="left">
@@ -183,8 +191,6 @@ class ConcernTopic extends React.Component {
     }
 }
 
-ConcernTopic.contextTypes = {
-    changeMessageContent : React.PropTypes.func
-}
+ConcernTopic.contextTypes = {"changeMessageContent": React.PropTypes.func};
 
 export default ConcernTopic;

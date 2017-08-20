@@ -54,8 +54,9 @@ class Answers extends React.Component {
 
 
     fetchAnswer (page) {
-        ajax({"url": `/zhaoda/user/myanswers?page=11`}).
-        then((data)=>{})
+
+        ajax({"url": "/zhaoda/user/myanswers?page=11"}).
+        then((data) => {});
 
         !this.state.nomore
 
@@ -63,7 +64,7 @@ class Answers extends React.Component {
         then((data) => {
 
             if (data.code === "S01") {
-                
+
                 this.context.changeMessageContent(data.message);
                 const answers = data.contents;
 
@@ -89,9 +90,10 @@ class Answers extends React.Component {
             } else if (data.code === "S03") {
 
                 this.context.changeMessageContent(data.message);
-                console.log(data)
+                console.log(data);
                 const answers = data.contents;
                 // SO3表示没有任何提问
+
                 this.setState({
                     "answers": this.state.answers.concat(answers),
                     "nocareQuestion": true,
@@ -109,7 +111,7 @@ class Answers extends React.Component {
                 });
 
 
-            } 
+            }
 
         }) : "";
 
@@ -118,16 +120,17 @@ class Answers extends React.Component {
     render () {
 
         const {answers} = this.state;
-        console.log(answers)
-        const answersList = answers.map(elem =><article key={elem.aid}>
-                <p className="theme">{elem.question.qtitle}</p>
-                <div className="comment">{elem.answer}</div>
-                <div className="more">
-                    <span><b><img src="/src/images/zan.png" /></b>赞同{elem.agree}</span>
-                    <span><b><img src="/src/images/comment.png" /></b>评论{elem.remark}</span>
-                    <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-                </div>
-            </article>
+
+        console.log(answers);
+        const answersList = answers.map((elem) => <article key={elem.aid}>
+            <p className="theme">{elem.question.qtitle}</p>
+            <div className="comment">{elem.answer}</div>
+            <div className="more">
+                <span><b><img src="/src/images/zan.png" /></b>赞同{elem.agree}</span>
+                <span><b><img src="/src/images/comment.png" /></b>评论{elem.remark}</span>
+                <span><b><img src="/src/images/cang.png" /></b>收藏</span>
+            </div>
+        </article>
             );
 
         return (
@@ -140,8 +143,6 @@ class Answers extends React.Component {
     }
 }
 
-Answers.contextTypes = {
-    changeMessageContent : React.PropTypes.func
-}
+Answers.contextTypes = {"changeMessageContent": React.PropTypes.func};
 
 export default Answers;

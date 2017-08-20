@@ -60,7 +60,7 @@ class AnswerMain extends React.Component {
         ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
       then((data) => {
 
-           
+
           if (data.code === "S01") {
 
               // 收藏状态改变
@@ -94,8 +94,8 @@ class AnswerMain extends React.Component {
                         <p className="theme">{theme}</p>
                     </Link>
                     {
-                      showPublisher === "1" ?
-                      <div className="publisher">
+                      showPublisher === "1"
+                      ? <div className="publisher">
                           {name}
                           {
                               vip

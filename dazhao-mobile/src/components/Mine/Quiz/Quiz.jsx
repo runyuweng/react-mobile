@@ -61,10 +61,9 @@ class Quiz extends React.Component {
         ? ajax({"url": `/zhaoda/user/userquestion?page=${page}`}).
         then((data) => {
 
-             
 
             if (data.code === "S01") {
-                
+
                 this.context.changeMessageContent(data.message);
                 const questions = data.contents;
 
@@ -75,7 +74,7 @@ class Quiz extends React.Component {
                 });
 
             } else if (data.code === "S02") {
-                
+
                 this.context.changeMessageContent(data.message);
                 const questions = data.contents;
 
@@ -97,7 +96,7 @@ class Quiz extends React.Component {
                 });
 
             } else if (data.code === "E01") {
-                
+
                 this.context.changeMessageContent(data.message);
                 this.setState({"questions": []});
 
@@ -133,7 +132,5 @@ class Quiz extends React.Component {
     }
 }
 
-Quiz.contextTypes = {
-    changeMessageContent : React.PropTypes.func
-}
+Quiz.contextTypes = {"changeMessageContent": React.PropTypes.func};
 export default Quiz;

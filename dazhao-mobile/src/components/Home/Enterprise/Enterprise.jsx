@@ -40,7 +40,8 @@ class Enterprise extends React.Component {
 
         ajax({"url": "/zhaoda/industry/category"}).
         then((data) => {
-            console.log(data)
+
+            console.log(data);
             this.setState({"industry": data.contents});
 
         });
@@ -116,7 +117,8 @@ class Enterprise extends React.Component {
     }
 
     changeCategory (id) {
-        alert(id)
+
+        alert(id);
 
         this.setState({
             "showLoading": true,

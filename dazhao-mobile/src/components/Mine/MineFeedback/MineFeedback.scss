@@ -1,0 +1,55 @@
+.Feedback {
+  header {
+    background: #FFFFFF;
+    padding: 0.07rem 0 0.08rem;
+    border-bottom: 1px solid #E4E4E4;
+    .search {
+      width: 96%;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.16rem;
+      span {
+        font-size: 0.17rem;
+        font-family: "苹方";
+        color: #21c6cd;
+        line-height: 0.3rem;
+      }
+      span:nth-of-type(1) {
+        margin: 0 0.08rem 0 0;
+        img {
+          width: 0.1rem;
+        }
+      }
+      span:nth-of-type(2) {
+        display: inline-block;
+        width: 70%;
+        color: #000000;
+      }
+      span:nth-of-type(3) {
+        color: #21c6cd;
+        margin: 0 0 0 0.08rem;
+      }
+      a {
+        color: #21c6cd;
+      }
+    }
+  }
+  textarea {
+    color: #aaa;
+    height: 500px;
+    width: 92%;
+    padding: 4%;
+    &:-moz-placeholder {
+      color: #aaa;
+    }
+    &::-webkit-input-placeholder {
+      color: #aaa;
+    }
+    &:-moz-placeholder {
+      color: #aaa;
+    }
+    &:-ms-input-placeholder {
+      color: #aaa;
+    }
+  }
+}

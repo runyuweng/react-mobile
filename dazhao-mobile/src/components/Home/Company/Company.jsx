@@ -40,9 +40,9 @@ class Company extends React.Component {
 
             ajax({"url": `/zhaoda/company/companyinfo?cid=${id}`}).
             then((data) => {
-                
-                console.log(data)
-                 
+
+                console.log(data);
+
                 if (data.code === "S01") {
 
 
@@ -67,12 +67,85 @@ class Company extends React.Component {
 
     }
 
+    formatDtate = (date) => {
+
+        if (isNaN(Date.parse(date))) {
+
+            return "未知";
+
+        }
+        const parseDate = Math.abs((Date.parse(new Date()) - Date.parse(date)) / (24 * 60 * 60 * 1000));
+
+        if (parseDate < 7) {
+
+            return "一周内";
+
+        } else if (parseDate < 14) {
+
+            return "两周内";
+
+        } else if (parseDate < 21) {
+
+            return "三周内";
+
+        } else if (parseDate < 30) {
+
+            return "一月内";
+
+        } else if (parseDate < 60) {
+
+            return "两月内";
+
+        } else if (parseDate < 90) {
+
+            return "三月内";
+
+        } else if (parseDate < 120) {
+
+            return "四月内";
+
+        } else if (parseDate < 150) {
+
+            return "五月内";
+
+        } else if (parseDate < 180) {
+
+            return "六月内";
+
+        } else if (parseDate < 210) {
+
+    return "七月内";
+
+} else if (parseDate < 240) {
+
+    return "八月内";
+
+} else if (parseDate < 270) {
+
+    return "九月内";
+
+} else if (parseDate < 300) {
+
+    return "十月内";
+
+} else if (parseDate < 365) {
+
+    return "一年内";
+
+} else if (parseDate > 365) {
+
+    return "超过一年";
+
+}
+
+    }
+
     setCare (cid) {
 
         ajax({"url": `/zhaoda/company/subscribecompany?companyid=${cid}`}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
 
                 this.setState({"isSelected": !this.state.isSelected});
@@ -103,7 +176,7 @@ class Company extends React.Component {
                         <em>{value.location || "未知"}</em>
                         <em>{value.education || "未知"}</em>
                     </span>
-                    <span>{`${new Date(value.updatetime).getFullYear()}年${new Date(value.updatetime).getMonth()}月${new Date(value.updatetime).getDay()}日` || "未知"}</span>
+                    <span>{this.formatDtate(value.updatetime)}</span>
                 </div>
             </div>
         </Link>);

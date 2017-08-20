@@ -196,11 +196,13 @@ class ZhaoDaAddAnswer extends React.PureComponent {
     }
 
     handleFocus = () => {
-        if(this.state.html === '填写回答内容...'){
-            this.setState({
-                html: ''
-            })
+
+        if (this.state.html === "填写回答内容...") {
+
+            this.setState({"html": ""});
+
         }
+
     }
 
     render () {

@@ -1,7 +1,7 @@
 import React from "react";
 import "./FavoriteCompanys.scss";
 import ajax from "../../../services/ajax.js";
-import { Link } from 'react-router';
+import {Link} from "react-router";
 
 class FavoriteCompanys extends React.Component {
 
@@ -44,13 +44,15 @@ class FavoriteCompanys extends React.Component {
 
                 this.setState({"enterprise": this.state.enterprise.concat(enterprise)});
 
-            } else if(data.code === "E01"){
-                
+            } else if (data.code === "E01") {
+
                 this.context.changeMessageContent(data.message);
                 this.setState({"enterprise": []});
 
-            }else{
+            } else {
+
                 this.context.changeMessageContent(data.message);
+
             }
 
         });
@@ -107,8 +109,6 @@ class FavoriteCompanys extends React.Component {
     }
 }
 
-FavoriteCompanys.contextTypes = {
-    changeMessageContent : React.PropTypes.func
-}
+FavoriteCompanys.contextTypes = {"changeMessageContent": React.PropTypes.func};
 
 export default FavoriteCompanys;

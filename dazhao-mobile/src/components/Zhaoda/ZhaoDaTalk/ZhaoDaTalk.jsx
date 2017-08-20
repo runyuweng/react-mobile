@@ -29,7 +29,6 @@ class ZhaoDaTalk extends React.Component {
         ajax({"url": `/zhaoda/topic/searchtopic?keyword=${keyword}`}).
         then((data) => {
 
-             
 
             if (data.code === "S01") {
 
@@ -56,7 +55,7 @@ class ZhaoDaTalk extends React.Component {
         ajax({"url": `/zhaoda/topic/subscribetopic?topicid=${topicId}`}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
 
                 const topics = JSON.parse(JSON.stringify(this.state)).topics;

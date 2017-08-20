@@ -62,7 +62,7 @@ class ConcernQuestion extends React.Component {
         ? ajax({"url": `/zhaoda/question/mycarequestion?page=${page}`}).
         then((data) => {
 
-             
+
             if (data.code === "S01") {
 
                 const questions = data.contents;
@@ -76,7 +76,7 @@ class ConcernQuestion extends React.Component {
                 });
 
             } else if (data.code === "S02") {
-            
+
                 // 已到最后一页
                 this.context.changeMessageContent(data.message);
                 const questions = data.contents;
@@ -145,7 +145,5 @@ class ConcernQuestion extends React.Component {
     }
 }
 
-ConcernQuestion.contextTypes = {
-    changeMessageContent : React.PropTypes.func
-}
+ConcernQuestion.contextTypes = {"changeMessageContent": React.PropTypes.func};
 export default ConcernQuestion;

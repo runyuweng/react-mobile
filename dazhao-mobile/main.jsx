@@ -64,6 +64,8 @@ import MineAnswers from "./src/components/Mine/Answers/Answers.jsx";
 import MineFavoritePage from "./src/components/Mine/FavoritePage/FavoritePage.jsx";
 import MineFavoriteJobs from "./src/components/Mine/FavoriteJobs/FavoriteJobs.jsx";
 import MineFavoriteCompanys from "./src/components/Mine/FavoriteCompanys/FavoriteCompanys.jsx";
+import MineFeedback from "./src/components/Mine/MineFeedback/MineFeedback.jsx";
+
 
 import EditMg from "./src/components/Mine/EditMg/EditMg.jsx";
 import ZhaoDaQuiz from "./src/components/Zhaoda/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
@@ -72,12 +74,13 @@ import ZhaoDaQuiz from "./src/components/Zhaoda/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
 import ToLogin from "./src/components/Verify/Login/ToLogin.jsx";
 import Login from "./src/components/Verify/Login/Login.jsx";
 import Register from "./src/components/Verify/Register/Register.jsx";
+import Reset from "./src/components/Verify/Reset/Reset.jsx";
 
-import { setCookie, getCookie, delCookie } from './src/services/tools.js'
+import {delCookie, getCookie, setCookie} from "./src/services/tools.js";
 
 function requireAuth (nextState, replace) {
 
-    if (!getCookie('token')) {
+    if (!getCookie("token")) {
 
         replace({
             "pathname": "/tologin",
@@ -118,13 +121,13 @@ const Routes = () => <Router history={hashHistory}>
             <Route path="feature" component={ZhaoDaFeature} />
             <Route path="topic" component={ZhaoDaTopic} />
         </Route>
-        <Route path="message" component={ZhaoDaMessage}  onEnter={requireAuth}/>
+        <Route path="message" component={ZhaoDaMessage} onEnter={requireAuth} />
         // <Route path="response" component={ZhaoDaResponse} />
         <Route path="response/:aid/:qtitle" component={ZhaoDaResponse} />
 
         <Route path="quiz" component={ZhaoDaQuiz} />
-        <Route path="consult" component={ZhaoDaConsult}  onEnter={requireAuth} />
-        <Route path="detail" component={ZhaoDaQuesDetail}  onEnter={requireAuth} />
+        <Route path="consult" component={ZhaoDaConsult} onEnter={requireAuth} />
+        <Route path="detail" component={ZhaoDaQuesDetail} onEnter={requireAuth} />
         <Route path="toquestion/:qid" component={ZhaoDaToQuestion} />
         <Route path="tofeature" component={ZhaoDaToFeatures} />
         <Route path="totopic/:tid" component={ZhaoDaToTopic} />
@@ -132,9 +135,9 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="user/*" component={ZhaoDaUser} />
         <Route path="zhuanlan/*" component={ZhaoDaZhuanLan} />
         <Route path="talk/*" component={ZhaoDaTalk} />
-        <Route path="choosetopic" component={ZhaoDaChooseTopic}  onEnter={requireAuth} />
+        <Route path="choosetopic" component={ZhaoDaChooseTopic} onEnter={requireAuth} />
         <Route path="coments/:aid/:qtitle" component={ZhaoDaComents} />
-        <Route path="addanswer/:qid" component={ZhaoDaAddAnswer}  onEnter={requireAuth}  />
+        <Route path="addanswer/:qid" component={ZhaoDaAddAnswer} onEnter={requireAuth} />
         <Route path="invitetoanswer/:qid" component={ZhaoDaInvitetoAnswer} onEnter={requireAuth} />
 
         <Route path="jobdetail/:id" component={HomeJobDetail} />
@@ -145,19 +148,20 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="searchPage" component={SearchPage} />
 
         <Route path="mine" component={Mine} onEnter={requireAuth} />
-        <Route path="cvcenter" component={MineCvCenter}  onEnter={requireAuth} />
-        <Route path="growrecord" component={MineGrowRecord}  onEnter={requireAuth} />
-        <Route path="notify" component={MineNotify}  onEnter={requireAuth} />
-        <Route path="cvmessage/:uid" component={MineCvMessage}  onEnter={requireAuth} />
-        <Route path="edmessage" component={MineEditMg}  onEnter={requireAuth} />
-        <Route path="edupexp" component={MineEduEx}  onEnter={requireAuth} />
-        <Route path="practice" component={MinePractice}  onEnter={requireAuth} />
+        <Route path="cvcenter" component={MineCvCenter} onEnter={requireAuth} />
+        <Route path="growrecord" component={MineGrowRecord} onEnter={requireAuth} />
+        <Route path="notify" component={MineNotify} onEnter={requireAuth} />
+        <Route path="cvmessage/:uid" component={MineCvMessage} onEnter={requireAuth} />
+        <Route path="edmessage" component={MineEditMg} onEnter={requireAuth} />
+        <Route path="edupexp" component={MineEduEx} onEnter={requireAuth} />
+        <Route path="practice" component={MinePractice} onEnter={requireAuth} />
         <Route path="dropinbox" component={MineDropInBox} onEnter={requireAuth} >
             <Route path="platformdropin" component={MinePlatformDropIn} />
             <Route path="emaildropin" component={MineEmailDropIn} />
         </Route>
-        <Route path="invitation" component={MineInvitation} onEnter={requireAuth}  />
-        <Route path="activity" component={MineActivity}  onEnter={requireAuth} />
+        <Route path="invitation" component={MineInvitation} onEnter={requireAuth} />
+        <Route path="activity" component={MineActivity} onEnter={requireAuth} />
+        <Route path="feedback" component={MineFeedback} onEnter={requireAuth} />
 
         <Route path="minezhaoda" component={MineZhaoDa} onEnter={requireAuth} >
             <Route path="concern" component={MineConcern}>
@@ -170,13 +174,14 @@ const Routes = () => <Router history={hashHistory}>
             <Route path="answer" component={MineAnswers} />
         </Route>
 
-        <Route path="favoritepage" component={MineFavoritePage}  onEnter={requireAuth} >
+        <Route path="favoritepage" component={MineFavoritePage} onEnter={requireAuth} >
             <Route path="favoritejobs" component={MineFavoriteJobs} />
             <Route path="favoritecompanys" component={MineFavoriteCompanys} />
         </Route>
-        <Route path="edit" component={EditMg}></Route>
+        <Route path="edit" component={EditMg} />
         <Route path="tologin" component={ToLogin} />
         <Route path="login" component={Login} />
+        <Route path="reset" component={Reset} />
         <Route path="register" component={Register} />
     </Route>
 </Router>;

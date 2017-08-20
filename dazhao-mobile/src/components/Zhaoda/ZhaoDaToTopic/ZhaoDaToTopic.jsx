@@ -108,7 +108,6 @@ class ZhaoDaToTopic extends React.Component {
         ? ajax({"url": `/zhaoda/topic/topicinfo?tid=${this.props.params.tid}&page=${page}`}).
           then((data) => {
 
-               
 
               if (data.code === "S01") {
 
@@ -233,7 +232,7 @@ class ZhaoDaToTopic extends React.Component {
         const {topicdetail, showLoading, current} = this.state;
 
         const questionsList = topicdetail.questions.map((value, i) =>
-            <AnswerMain toquestion="1" isTopic="0" key={i} data={value} showPublisher="0"/>
+            <AnswerMain toquestion="1" isTopic="0" key={i} data={value} showPublisher="0" />
         );
 
 
@@ -278,8 +277,8 @@ class ZhaoDaToTopic extends React.Component {
                         }} className={current === 2 ? "active" : ""}
                         >精华</li>
                     </ul>
-                    {showLoading ? <Loading /> : current === 1 ? questionsList :
-                      <div className="tips">暂无</div>}
+                    {showLoading ? <Loading /> : current === 1 ? questionsList
+                      : <div className="tips">暂无</div>}
 
                 </div>
                 <p className="fetchmore">{this.state.moreMessage}</p>

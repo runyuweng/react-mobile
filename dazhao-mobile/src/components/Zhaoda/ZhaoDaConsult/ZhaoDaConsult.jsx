@@ -8,7 +8,7 @@ class ZhaoDaConsult extends React.Component {
 
         super(props);
         this.state = {
-            "question": sessionStorage.getItem("question")||'',
+            "question": sessionStorage.getItem("question") || "",
             "answer": []
         };
 

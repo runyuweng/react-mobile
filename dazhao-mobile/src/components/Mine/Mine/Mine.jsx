@@ -3,6 +3,9 @@ import "./Mine.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 import Loading from "../../Public/Loading/Loading.jsx";
+import {
+    delCookie
+  } from "../../../services/tools.js";
 
 class Mine extends React.Component {
 
@@ -11,21 +14,21 @@ class Mine extends React.Component {
         super(props);
         this.state = {
             "personalMsg": {},
-            showLoading:true
+            "showLoading": true
         };
 
         this.fetchUserMsg = this.fetchUserMsg.bind(this);
 
     }
 
-    getChildContext(){
-        return {
-            changeMessageContent : this.props.changeMessageContent
-        }
+    getChildContext () {
+
+        return {"changeMessageContent": this.props.changeMessageContent};
+
     }
     componentDidMount () {
 
-        // this.props.changeMessageContent("1")
+        // This.props.changeMessageContent("1")
 
         this.props.changeBottomState(true);
         this.fetchUserMsg();
@@ -39,8 +42,34 @@ class Mine extends React.Component {
 
             if (data.code === "S01") {
 
-                this.setState({"personalMsg": data.contents,
-                showLoading:false});
+                this.setState({
+                    "personalMsg": data.contents,
+                    "showLoading": false
+                });
+
+            }
+
+        });
+
+    }
+
+    logout = () => {
+
+        ajax({
+            "url": "/zhaoda/user/userdetail",
+            "method": "POST"
+        }).
+        then((data) => {
+
+            if (data.code === "S01") {
+
+                delCookie("token");
+                hashHistory.push({"pathname": "login"});
+                this.context.changeMessageContent("退出成功");
+
+            } else {
+
+                this.context.changeMessageContent(data.message);
 
             }
 
@@ -53,9 +82,9 @@ class Mine extends React.Component {
         const {personalMsg, showLoading} = this.state;
 
         return (
-          <div>
-          {showLoading?<Loading />:
-            <div className="Mine">
+            <div>
+                {showLoading ? <Loading />
+            : <div className="Mine">
 
                 <header className="head">
                     <div className="top">
@@ -65,16 +94,18 @@ class Mine extends React.Component {
                         </div>
                         <Link to="/edit"><span className="edit" >编辑</span></Link>
                     </div>
-                    {true ? <p><em>{ personalMsg.nickname || '待完善' }</em><span>{ personalMsg.sex==='女'?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
+                    {true ? <p><em>{ personalMsg.nickname || "待完善" }</em><span>{ personalMsg.sex === "女" ? <img src="/src/images/girl.png" /> : <img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">
-                        <div className="school">
+                        {/* <div className="school">
                             <span>{true ? personalMsg.school||"学校未知" : "学校未知"}</span><br />
                             <span>{true ? personalMsg.major||"专业未知" : "专业未知"}</span>
-                        </div>
+                        </div> */}
                         <div className="fans">
-                            <span><b>{personalMsg.delivered||0}</b><br />已投递</span>
+                            <span><b>{personalMsg.delivered || 0}</b><br />已投递</span>
                             <em />
-                            <span><b>{personalMsg.need_interview||0}</b><br />待面试</span>
+                            <span><b>{personalMsg.need_interview || 0}</b><br />待面试</span>
+                            <em />
+                            <span><b>{personalMsg.need_interview || 0}</b><br />被邀约</span>
                         </div>
                     </div>
                 </header>
@@ -104,19 +135,21 @@ class Mine extends React.Component {
                     <Link to="minezhaoda/concern/concernquestion">
                         <p><em>我的招答</em><span><img src="/src/images/Back_Button.png" /></span></p>
                     </Link>
-                    <p><em>听课记录</em><span><img src="/src/images/Back_Button.png" /></span></p>
-                    <p><em>账号设置</em><span><img src="/src/images/Back_Button.png" /></span></p>
-                    <p><em>建议反馈</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    <Link to="reset">
+                        <p><em>修改密码</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    </Link>
+                    <Link to="feedback">
+                        <p><em>建议反馈</em><span><img src="/src/images/Back_Button.png" /></span></p>
+                    </Link>
+                    <p onClick={this.logout}><em>退出登录</em><span><img src="/src/images/Back_Button.png" /></span></p>
                 </div>
             </div>}
-          </div>
+            </div>
         );
 
     }
 }
 
-Mine.childContextTypes = {
-    changeMessageContent: React.PropTypes.func
-}
+Mine.childContextTypes = {"changeMessageContent": React.PropTypes.func};
 
 export default Mine;
