@@ -80,36 +80,36 @@ class ZhaoDaResponse extends React.Component {
     setAgree (aid) {
 
         ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
-      then((data) => {
+        then((data) => {
 
-          // Console.log(data)
+            // Console.log(data)
 
-          if (data.code === "S01") {
+            if (data.code === "S01") {
 
-              this.props.changeMessageContent(data.message);
+                this.props.changeMessageContent(data.message);
 
-            // 关注状态改变
-              const answerdetail = JSON.parse(JSON.stringify(this.state)).answerdetail;
+                // 关注状态改变
+                const answerdetail = JSON.parse(JSON.stringify(this.state)).answerdetail;
 
-              answerdetail.agree = this.state.answerdetail.agree + 1;
-              this.setState({answerdetail});
+                answerdetail.agree = this.state.answerdetail.agree + 1;
+                this.setState({answerdetail});
 
 
-          } else if (data.code === "S04") {
+            } else if (data.code === "S04") {
 
-            // 已经点过赞了
+                // 已经点过赞了
 
-              this.props.changeMessageContent(data.message);
+                this.props.changeMessageContent(data.message);
 
-          } else if (data.code === "E01") {
+            } else if (data.code === "E01") {
 
-            // 出错
+                // 出错
 
-              this.props.changeMessageContent(data.message);
+                this.props.changeMessageContent(data.message);
 
-          }
+            }
 
-      });
+        });
 
     }
 
@@ -192,16 +192,16 @@ class ZhaoDaResponse extends React.Component {
 
                 <div className="responseBottom">
                     <ul>
-                        <li>
-                            <span onClick={this.setAgree.bind(this, aid)}>
-                                <object data="/src/images/icon/赞同.svg" type="image/svg+xml" />
+                        <li onClick={this.setAgree.bind(this, aid)}>
+                            <span>
+                                {answerdetail.collect ?<img src="/src/images/icon/赞.png" />:<img src="/src/images/icon/赞1.png" />}
                             </span>
                             <span>赞同({answerdetail.agree})</span>
                         </li>
                         <li>
                             <Link to={`/coments/${aid}/${title}`}>
                                 <span>
-                                    <object data="/src/images/icon/评论.svg" type="image/svg+xml" />
+                                    <img src="/src/images/icon/评论.png" />
                                 </span>
                                 <span>评论({answerdetail.remark})</span>
                             </Link>
@@ -209,7 +209,8 @@ class ZhaoDaResponse extends React.Component {
                         <li>
                             <span onClick={this.setSelected.bind(this, aid)}>
                                 {/* <object data={answerdetail.collect ? "/src/images/icon/已收藏.svg" : "/src/images/icon/收藏.svg"} type="image/svg+xml"></object>*/}
-                                <object data="/src/images/icon/收藏.svg" type="image/svg+xml" />
+                                {answerdetail.collect ?<img src="/src/images/star1.png" />:<img src="/src/images/icon/star_empty.png" />}
+                                
                             </span>
                             <span>{answerdetail.collect ? "已收藏" : "收藏"}</span>
                         </li>

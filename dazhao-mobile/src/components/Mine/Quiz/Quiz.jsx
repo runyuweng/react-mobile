@@ -64,7 +64,6 @@ class Quiz extends React.Component {
 
             if (data.code === "S01") {
 
-                this.context.changeMessageContent(data.message);
                 const questions = data.contents;
 
                 this.setState({

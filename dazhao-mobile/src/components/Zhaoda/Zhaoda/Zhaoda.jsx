@@ -63,7 +63,7 @@ class Zhaoda extends React.Component {
                                 专栏
                             </li>
                         </Link>
-                        <Link to="/message"><li>消息</li></Link>
+                        <Link to="/minezhaoda/concern/concernquestion"><li>我的</li></Link>
                     </ul>
                 </nav>
                 <ReactCSSTransitionGroup

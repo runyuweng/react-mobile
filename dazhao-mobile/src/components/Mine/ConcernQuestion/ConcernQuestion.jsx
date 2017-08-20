@@ -67,8 +67,6 @@ class ConcernQuestion extends React.Component {
 
                 const questions = data.contents;
 
-                this.context.changeMessageContent(data.message);
-
                 this.setState({
                     "questions": this.state.questions.concat(questions),
                     "page": this.state.page + 1,

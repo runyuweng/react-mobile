@@ -35,6 +35,9 @@ class MineZhaoDa extends React.Component {
                         <Link to="minezhaoda/answer" activeClassName="active">
                             <li>回答</li>
                         </Link>
+                        <Link to="/message">
+                            <li>消息</li>
+                        </Link>
                     </ul>
                 </nav>
                 <div>{this.props.children}</div>
