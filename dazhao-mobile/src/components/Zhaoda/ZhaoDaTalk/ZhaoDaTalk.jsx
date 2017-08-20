@@ -81,7 +81,7 @@ class ZhaoDaTalk extends React.Component {
         const topicsList = topics.map((value, index) =>
             <div key={index} className="item">
                 <div className="left">
-                    <Link to={`/totopic/${value.id}`}>
+                    <Link to={`/totopic/${value.tid}`}>
                         <span className="circle">
                             <img src={value.img} alt="话题" />
                         </span>
@@ -104,7 +104,7 @@ class ZhaoDaTalk extends React.Component {
                 <div className="ZhaoDaSearchTop">
                     <header>
                         <div className="search">
-                            <Link to="/Zhaoda/main">
+                            <Link to="/Zhaoda">
                                 <span >取消</span>
                             </Link>
                             <input type="text" onChange={(e) => {

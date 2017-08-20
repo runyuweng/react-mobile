@@ -116,8 +116,8 @@ const Routes = () => <Router history={hashHistory}>
             <Route path="main" component={ZhaoDaIndex} />
             <Route path="discover" component={ZhaoDaDiscover} />
             <Route path="feature" component={ZhaoDaFeature} />
+            <Route path="topic" component={ZhaoDaTopic} />
         </Route>
-        <Route path="topic" component={ZhaoDaTopic} />
         <Route path="message" component={ZhaoDaMessage}  onEnter={requireAuth}/>
         // <Route path="response" component={ZhaoDaResponse} />
         <Route path="response/:aid/:qtitle" component={ZhaoDaResponse} />

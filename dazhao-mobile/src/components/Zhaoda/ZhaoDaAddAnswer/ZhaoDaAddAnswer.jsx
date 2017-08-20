@@ -10,7 +10,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
         super(props);
         this.state = {
             "answerContent": "",
-            "html": "",
+            "html": "填写回答内容...",
             "fileStore": {},
             "qid": props.params.qid,
             "bottom": 0
@@ -195,6 +195,14 @@ class ZhaoDaAddAnswer extends React.PureComponent {
 
     }
 
+    handleFocus = () => {
+        if(this.state.html === '填写回答内容...'){
+            this.setState({
+                html: ''
+            })
+        }
+    }
+
     render () {
 
         return (
@@ -214,6 +222,7 @@ class ZhaoDaAddAnswer extends React.PureComponent {
                 <input name="file" type="file" ref="file" style={{"display": "none"}} onChange={() => this.handleFile()} />
 
                 <div
+                    onFocus={this.handleFocus}
                     contentEditable
                     className="answercontent"
                     ref="input"

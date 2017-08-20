@@ -232,7 +232,7 @@ class EditMg extends React.Component {
                     <div>
                         <em>手机号</em>
                         <p>
-                            <input disabled type="text" value={this.state.basicMessage.phone} placeholder="手机号" name="phone" onChange={this.handleChange} />
+                            <span>{this.state.basicMessage.phone}</span>
                         </p>
 
                     </div>
@@ -240,7 +240,7 @@ class EditMg extends React.Component {
                     <div>
                         <em>邮箱号</em>
                         <p>
-                            <input disabled type="text" value={this.state.basicMessage.email} placeholder="邮箱" name="email" onChange={this.handleChange} />
+                            <span>{this.state.basicMessage.email}</span>
                         </p>
                     </div>
 

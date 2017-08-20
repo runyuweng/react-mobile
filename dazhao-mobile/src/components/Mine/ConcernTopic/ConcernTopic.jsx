@@ -107,7 +107,7 @@ class ConcernTopic extends React.Component {
                 this.setState({
                     "topics": this.state.topics.concat(topics),
                     "nomore": true,
-                    "moreMessage": "没有更多提问"
+                    "moreMessage": "没有更多关注"
                 },() => {
                     this.context.changeMessageContent(data.message)
                 });
@@ -142,8 +142,9 @@ class ConcernTopic extends React.Component {
 
         const {topics} = this.state;
         const topicsList = topics.map((elem, index) =>
-            <Link key={index} to={`/totopic/${elem.tid}`}>
-                <div className="item">
+           
+            <div className="item">
+                <Link key={index} to={`/totopic/${elem.tid}`}>
                     <div className="left">
                         <span className="circle">
                             <img src={elem.img} alt={elem.topicname} />
@@ -156,9 +157,9 @@ class ConcernTopic extends React.Component {
                             </span>
                         </p>
                     </div>
-                    <span onClick={this.setCaredState.bind(this, elem.tid)} className="right">+取消关注</span>
-                </div>
-            </Link>
+                </Link>
+                <span onClick={this.setCaredState.bind(this, elem.tid)} className="right">取消关注</span>
+            </div>
             );
 
         return (

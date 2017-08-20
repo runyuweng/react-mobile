@@ -84,7 +84,7 @@ class ZhaoDaUser extends React.Component {
                     </span>
                     <p>
                         <span>{value.nickname}</span><br />
-                        <span>{value.job}</span>
+                        <span>{value.intro}</span>
                     </p>
                 </div>
                 <span className="right" onClick={this.setCare.bind(this, value.uid, index)}>{value.status === 1 ? "取消关注" : "+关注"}</span>
@@ -97,7 +97,7 @@ class ZhaoDaUser extends React.Component {
                 <div className="ZhaoDaSearchTop">
                     <header>
                         <div className="search">
-                            <Link to="/Zhaoda/main">
+                            <Link to="/Zhaoda">
                                 <span >取消</span>
                             </Link>
                             <input type="text" onChange={(e) => {

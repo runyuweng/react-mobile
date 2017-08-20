@@ -468,7 +468,7 @@ class ZhaoDaIndex extends React.Component {
                     <div className="topic topic1">
                         <div className="head">
                             <span className="hot"><b><img src="/src/images/hot.png" /></b>热门话题</span>
-                            <Link to="/topic">
+                            <Link to="/Zhaoda/topic">
                                 <span className="all">全部话题<b><img src="/src/images/seeMore.png" /></b></span>
                             </Link>
                         </div>

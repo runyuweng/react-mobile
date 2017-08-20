@@ -59,13 +59,13 @@ class Mine extends React.Component {
 
                 <header className="head">
                     <div className="top">
-                        <span className="imgone">{true ? <img src="/src/images/boy1.png" className="blur" /> : ""}</span>
+                        <span className="imgone">{true ? <img src={personalMsg.img || "/src/images/boy.png"} className="blur" /> : ""}</span>
                         <div className="circle1">
-                            <span className="circle2"><img src="/src/images/boy.png" /></span>
+                            <span className="circle2"><img src={personalMsg.img || "/src/images/boy.png"} /></span>
                         </div>
                         <Link to="/edit"><span className="edit" >编辑</span></Link>
                     </div>
-                    {true ? <p><em>{ personalMsg.username }</em><span>{ personalMsg.sex==='女'?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
+                    {true ? <p><em>{ personalMsg.nickname || '待完善' }</em><span>{ personalMsg.sex==='女'?<img src="/src/images/girl.png" />:<img src="/src/images/man.png" />}</span></p> : <Link to="/tologin"><p>点击登录</p></Link>}
                     <div className="intro">
                         <div className="school">
                             <span>{true ? personalMsg.school||"学校未知" : "学校未知"}</span><br />

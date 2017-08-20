@@ -28,6 +28,8 @@ class Zhaoda extends React.Component {
 
     render () {
 
+        console.log()
+
         return (
             <div className="container zhaoda">
                 <header>
@@ -46,7 +48,7 @@ class Zhaoda extends React.Component {
                 </header>
                 <nav>
                     <ul>
-                        <Link to="/Zhaoda/main" activeClassName="active">
+                        <Link to="/Zhaoda" activeClassName={this.props.router.location.pathname === '/Zhaoda'?"active":''}>
                             <li>
                                 首页
                             </li>

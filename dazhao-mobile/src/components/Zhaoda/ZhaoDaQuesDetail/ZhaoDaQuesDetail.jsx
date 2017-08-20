@@ -7,7 +7,7 @@ class ZhaoDaQuesDetail extends React.Component {
     constructor (props) {
 
         super(props);
-        this.state = {"detail": ""};
+        this.state = {"detail": sessionStorage.getItem("detail") || ""};
 
     }
 

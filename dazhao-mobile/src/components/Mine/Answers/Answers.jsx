@@ -54,13 +54,13 @@ class Answers extends React.Component {
 
 
     fetchAnswer (page) {
+        ajax({"url": `/zhaoda/user/myanswers?page=11`}).
+        then((data)=>{})
 
         !this.state.nomore
 
         ? ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
         then((data) => {
-
-             
 
             if (data.code === "S01") {
                 
@@ -89,10 +89,11 @@ class Answers extends React.Component {
             } else if (data.code === "S03") {
 
                 this.context.changeMessageContent(data.message);
-
+                console.log(data)
+                const answers = data.contents;
                 // SO3表示没有任何提问
                 this.setState({
-                    "answers": [],
+                    "answers": this.state.answers.concat(answers),
                     "nocareQuestion": true,
                     "nomore": true
                 });
@@ -108,10 +109,7 @@ class Answers extends React.Component {
                 });
 
 
-            } else if (data.code === "E03") {
-               // 未登录
-
-            }
+            } 
 
         }) : "";
 
@@ -120,9 +118,9 @@ class Answers extends React.Component {
     render () {
 
         const {answers} = this.state;
-        const answersList = answers.map((elem, index) =>
-            <article key={index}>
-                <p className="theme">{elem.question}</p>
+        console.log(answers)
+        const answersList = answers.map(elem =><article key={elem.aid}>
+                <p className="theme">{elem.question.qtitle}</p>
                 <div className="comment">{elem.answer}</div>
                 <div className="more">
                     <span><b><img src="/src/images/zan.png" /></b>赞同{elem.agree}</span>

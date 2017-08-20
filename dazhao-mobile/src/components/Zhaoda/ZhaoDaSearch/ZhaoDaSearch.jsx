@@ -76,7 +76,7 @@ class ZhaoDaSearch extends React.Component {
                 <div className="ZhaoDaSearchTop">
                     <header>
                         <div className="search">
-                            <Link to="/Zhaoda/main">
+                            <Link to="/Zhaoda">
                                 <span >取消</span>
                             </Link>
                             <input type="text" onChange={(e) => {

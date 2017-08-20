@@ -182,7 +182,7 @@ class ZhaoDaDiscover extends React.Component {
                                 {LatestDynamicList}
                             </div>
                             <div className="Formore1">
-                                <Link to="/topic">更多话题</Link>
+                                <Link to="/Zhaoda/topic">更多话题</Link>
                             </div>
 
                         </div>

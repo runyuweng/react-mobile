@@ -39,6 +39,7 @@ class ZhaoDaToTopic extends React.Component {
         this.props.changeBottomState(false);
 
         window.addEventListener("scroll", this.handleScroll);
+
         this.fetchQuestion(this.state.page);
 
     }
@@ -82,6 +83,8 @@ class ZhaoDaToTopic extends React.Component {
               topicdetail.isCared = !this.state.topicdetail.isCared;
 
               this.setState({topicdetail}, () => {
+
+                  this.fetchQuestion(1);
 
                   this.context.changeMessageContent("操作成功");
 

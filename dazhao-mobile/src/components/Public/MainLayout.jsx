@@ -31,7 +31,10 @@ class MainLayout extends React.Component {
 
     getChildContext () {
 
-        return {"changeMessageContent": appState.changeMessageContent};
+        return {
+            "changeMessageContent": appState.changeMessageContent,
+            "changeBottomState": appState.changeBottomState
+        };
 
     }
 
@@ -92,7 +95,7 @@ class MainLayout extends React.Component {
                       </Link>
                   </div>
                   <div>
-                      <Link to="/Zhaoda/main" className="bg zhaoda" activeClassName="zhaoda2">
+                      <Link to="/Zhaoda" className="bg zhaoda" activeClassName="zhaoda2">
                           <div>
                               <p>招答</p>
                           </div>
@@ -112,6 +115,9 @@ class MainLayout extends React.Component {
     }
 }
 
-MainLayout.childContextTypes = {"changeMessageContent": PropTypes.func};
+MainLayout.childContextTypes = {
+    "changeMessageContent": PropTypes.func,
+    "changeBottomState": PropTypes.func
+};
 
 export default MainLayout;
