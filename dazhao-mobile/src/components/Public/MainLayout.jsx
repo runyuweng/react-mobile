@@ -88,11 +88,11 @@ class MainLayout extends React.Component {
                       </IndexLink>
                   </div>
                   <div>
-                      <Link to="/zhiGuan" className="bg zhiguan" activeClassName="zhiguan2">
+                      <a href="http://www.dazhao100.com/wx/" className="bg zhiguan" activeClassName="zhiguan2">
                           <div>
                               <p>职观</p>
                           </div>
-                      </Link>
+                      </a>
                   </div>
                   <div>
                       <Link to="/Zhaoda" className="bg zhaoda" activeClassName="zhaoda2">

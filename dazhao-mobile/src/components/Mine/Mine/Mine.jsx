@@ -1,6 +1,6 @@
 import React from "react";
 import "./Mine.scss";
-import {Link} from "react-router";
+import {Link, hashHistory} from "react-router";
 import ajax from "../../../services/ajax.js";
 import Loading from "../../Public/Loading/Loading.jsx";
 import {
@@ -56,7 +56,7 @@ class Mine extends React.Component {
     logout = () => {
 
         ajax({
-            "url": "/zhaoda/user/userdetail",
+            "url": "/zhaoda/quitlogin",
             "method": "POST"
         }).
         then((data) => {

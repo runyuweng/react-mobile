@@ -70,7 +70,7 @@ class Login extends React.Component {
                     />
 
                     <p>输入密码</p>
-                    <input value={pwd} type="text" placeholder="请输入您的密码"
+                    <input value={pwd} type="password" placeholder="请输入您的密码"
                         onChange={(e) => {
 
                             this.setState({"pwd": e.target.value});

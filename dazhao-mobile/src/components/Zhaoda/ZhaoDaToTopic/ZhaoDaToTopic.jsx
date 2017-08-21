@@ -126,10 +126,12 @@ class ZhaoDaToTopic extends React.Component {
                       newQ.questions = [];
 
                       newQ.questions.concat(questions);
-
+                    console.log(data.contents.questionlist)
                       data.contents.questionlist.map((value, i) => {
 
                           newQ.questions.push({
+                              iszan: value.answers[0].iszan,
+                              aid: value.answers[0].aid,
                               "qid": value.qid,
                               "id": value.tid,
                               "name": value.user.nickname,
@@ -158,6 +160,8 @@ class ZhaoDaToTopic extends React.Component {
                       data.contents.questionlist.map((value, i) => {
 
                           topicdetail.questions.push({
+                            iszan: value.answers[0].iszan,
+                            aid: value.answers[0].aid,
                               "qid": value.qid,
                               "id": value.tid,
                               "name": value.user.nickname,
@@ -230,6 +234,7 @@ class ZhaoDaToTopic extends React.Component {
     render () {
 
         const {topicdetail, showLoading, current} = this.state;
+        console.log(topicdetail)
 
         const questionsList = topicdetail.questions.map((value, i) =>
             <AnswerMain toquestion="1" isTopic="0" key={i} data={value} showPublisher="0" />

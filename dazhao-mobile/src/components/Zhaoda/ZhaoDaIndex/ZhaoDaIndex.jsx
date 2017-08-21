@@ -128,6 +128,7 @@ class ZhaoDaIndex extends React.Component {
                   data.contents.map((value) => {
 
                       newQ.push({
+                          'iszan': value.iszan,
                           "qid": value.question.qid,
                           "aid": value.aid,
                           "topic": value.question.topics,
@@ -375,7 +376,7 @@ class ZhaoDaIndex extends React.Component {
     render () {
 
         const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;
-
+        console.log(latestDynamic)
         const AnswerMainList = latestDynamic.map((value, i) => <AnswerMain showPublisher="0" key={i} data={value} />);
 
         const hotTopicList = hotTopic.map((elem, index) =>

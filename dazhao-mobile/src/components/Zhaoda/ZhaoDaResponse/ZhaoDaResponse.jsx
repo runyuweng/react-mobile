@@ -125,6 +125,7 @@ class ZhaoDaResponse extends React.Component {
                 const answerdetail = {};
 
                 answerdetail.answer = data.contents.content;
+                answerdetail.iszan = data.contents.iszan;
                 answerdetail.imgsrc = data.contents.user.img;
                 answerdetail.vip = data.contents.user.vip;
                 answerdetail.name = data.contents.user.nickname;
@@ -194,7 +195,7 @@ class ZhaoDaResponse extends React.Component {
                     <ul>
                         <li onClick={this.setAgree.bind(this, aid)}>
                             <span>
-                                {answerdetail.collect ?<img src="/src/images/icon/赞.png" />:<img src="/src/images/icon/赞1.png" />}
+                                {answerdetail.iszan ?<img src="/src/images/icon/赞.png" />:<img src="/src/images/icon/赞1.png" />}
                             </span>
                             <span>赞同({answerdetail.agree})</span>
                         </li>

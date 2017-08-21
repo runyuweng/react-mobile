@@ -49,6 +49,7 @@ class ZhaoDaDiscover extends React.Component {
               data.contents.map((value) => {
 
                   newQ.push({
+                      iszan:value.iszan,
                       "qid": value.question.qid,
                       "aid": value.aid,
                       "topic": value.question.topics,

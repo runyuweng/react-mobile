@@ -28,9 +28,9 @@ class Reset extends React.Component {
         if (this.state.newPwd1 === this.state.newPwd2) {
 
             ajax({
-                "url": "/zhaoda/login",
+                "url": "/zhaoda/user/resetpwd",
                 "method": "POST",
-                "data": `newPwd=${this.state.newPwd1}&pwd=${this.state.pwd}`
+                "data": `newpwd=${this.state.newPwd1}&pwd=${this.state.pwd}`
             }).
         then((data) => {
 
@@ -92,7 +92,7 @@ class Reset extends React.Component {
                         }}
                     />
 
-                    <button className="register" onClick={() => this.handleReset()}>登录</button>
+                    <button className="register" onClick={() => this.handleReset()}>提交</button>
                 </div>
             </div>
         );

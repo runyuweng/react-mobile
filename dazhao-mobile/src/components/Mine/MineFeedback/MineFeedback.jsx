@@ -23,7 +23,7 @@ class Feedback extends React.PureComponent {
         if (this.state.text) {
 
             ajax({
-                "url": "/zhaoda/feedback",
+                "url": "/zhaoda/feedback ",
                 "method": "POST",
                 "data": `text=${this.state.text}`
             }).

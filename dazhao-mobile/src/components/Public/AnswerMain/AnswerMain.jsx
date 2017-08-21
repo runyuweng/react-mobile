@@ -9,6 +9,7 @@ class AnswerMain extends React.Component {
 
         super(props);
         this.state = {
+            iszan: this.props.data.iszan || '',
             "qid": this.props.data.qid || "",
             "aid": this.props.data.aid || "",
             "isTopic": this.props.isTopic || "1",
@@ -80,7 +81,7 @@ class AnswerMain extends React.Component {
 
     render () {
 
-        const {qid, aid, isTopic, topic, theme, name, job, vip, comment, agree, remark, collect, toquestion, showPublisher} = this.state;
+        const {iszan, qid, aid, isTopic, topic, theme, name, job, vip, comment, agree, remark, collect, toquestion, showPublisher} = this.state;
 
         const topicsList = topic.map((value, i) =>
                 i === 0 ? value.topicname : `，${value.topicname}`
@@ -114,7 +115,10 @@ class AnswerMain extends React.Component {
                         />
                     </Link>
                     <div className="more">
-                        <span><b><img onClick={this.setLike.bind(this, qid, aid)} src="/src/images/zan.png" /></b>赞同{agree}</span>
+                        <span>
+                            <b><img onClick={this.setLike.bind(this, qid, aid)} src={iszan?'/src/images/icon/赞.png':"/src/images/zan.png"} /></b>
+                            赞同{agree}
+                        </span>
                         <Link to={toquestion === "0" ? `/coments/${aid}/${theme}` : `/toquestion/${qid}`}>
                             <span><b><img src="/src/images/comment.png" /></b>评论{remark}</span>
                         </Link>
