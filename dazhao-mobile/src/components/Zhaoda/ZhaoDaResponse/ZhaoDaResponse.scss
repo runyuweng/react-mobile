@@ -38,6 +38,9 @@
         padding:0.24rem .12rem 0;
         background:#FFFFFF;
         min-height: 4rem;
+        img{
+            max-width: 100%;
+        }
         .author{
             display:flex;
             margin:0 0 .24rem 0;

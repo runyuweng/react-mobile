@@ -38,7 +38,10 @@ class AnswerMain extends React.Component {
           if (data.code === "S01") {
 
               this.context.changeMessageContent("成功");
-              this.setState({"agree": parseInt(this.state.agree) + 1});
+              this.setState({
+                  "agree": parseInt(this.state.agree) + 1,
+                  iszan: true
+                });
 
           } else if (data.code === "S04") {
 

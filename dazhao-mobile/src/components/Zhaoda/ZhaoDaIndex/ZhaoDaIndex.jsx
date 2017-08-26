@@ -383,7 +383,7 @@ class ZhaoDaIndex extends React.Component {
             <div className="img" key={index}>
                 <Link to={`/totopic/${elem.tid}`}>
                     <span className="span1">
-                        <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
+                        <img src={elem.img || "/src/images/topicImg.png"} alt="热门话题" />
                     </span>
                     <span className="span2">{elem.topicname}</span>
                     <span className="care">

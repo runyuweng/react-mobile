@@ -2,6 +2,7 @@ import React from "react";
 import "./MineFeedback.scss";
 import ajax from "../../../services/ajax.js";
 import {hashHistory} from "react-router";
+import TopBar from "../../Public/TopBar/TopBar.jsx";
 
 class Feedback extends React.PureComponent {
 
@@ -56,7 +57,7 @@ class Feedback extends React.PureComponent {
         return (
             <div className="Feedback">
                 <header>
-                    <div className="search">
+                    {/* <div className="search">
                         <span onClick={() => {
 
                             history.go(-1);
@@ -65,7 +66,8 @@ class Feedback extends React.PureComponent {
                         ><img src="/src/images/arrow-left.png" /></span>
                         <span>建议反馈</span>
                         <span onClick={this.submitClick}>提交</span>
-                    </div>
+                    </div> */}
+                    <TopBar title="建议反馈" others={<a onClick={this.submitClick}>提交</a>}/>
                 </header>
 
                 <textarea

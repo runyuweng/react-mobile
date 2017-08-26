@@ -23,6 +23,14 @@ class Login extends React.Component {
     }
 
     handleLogin () {
+        if(!this.state.account){
+            this.props.changeMessageContent('请输入账号后再试');
+            return;           
+        }
+        if(!this.state.pwd){
+            this.props.changeMessageContent('请输入密码后再试');
+            return;           
+        }
 
         ajax({
             "url": "/zhaoda/login",

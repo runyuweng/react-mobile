@@ -163,7 +163,7 @@ class ZhaoDaTopic extends React.Component {
         const topicsList = topics.map((elem, index) =>
             <Link to={`/totopic/${elem.tid}`} key={index}>
                 <div className="item" key={index}>
-                    <span><img src="/src/images/topicImg.png" /></span>
+                    <span><img src={elem.img || "/src/images/topicImg.png"} /></span>
                     <span>
                         <p>{elem.topicname}</p>
                         <p>{elem.questionnum}个问题</p>

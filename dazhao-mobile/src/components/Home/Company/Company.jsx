@@ -200,7 +200,7 @@ class Company extends React.Component {
                             {
                                 this.state.isSelected
                                 ? <span className="logo">
-                                    <object onClick={this.setCare.bind(this, cid)} data="/src/images/isSelected.svg" type="image/svg+xml" />
+                                    <img onClick={this.setCare.bind(this, cid)} src="/src/images/love1.png" />
                                 </span>
                                 : <span><img onClick={this.setCare.bind(this, cid)} src="/src/images/love.png" /></span>
                             }

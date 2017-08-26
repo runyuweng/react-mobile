@@ -83,7 +83,7 @@ class ZhaoDaToQuestion extends React.Component {
 
               data.contents.topics.map((elem) => {
 
-                  topic.push(elem.topicname);
+                  topic.push(elem);
 
               });
 
@@ -203,8 +203,7 @@ class ZhaoDaToQuestion extends React.Component {
 
         const {topic, question, otherAnswers, showLoading} = this.state;
 
-        const topicList = topic.map((elem, index) =>
-            <span key={index} className="topTopic">{elem}</span>
+        const topicList = topic.map((elem, index) =><Link to={`/totopic/${elem.tid}`}><span key={index} className="topTopic">{elem.topicname}</span></Link>
           );
 
         const otherAnswersList = otherAnswers.map((value, num) =>

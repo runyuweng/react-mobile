@@ -239,7 +239,7 @@ class EditMg extends React.Component {
                         </p>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <em>手机号</em>
                         <p>
                             <span>{this.state.basicMessage.phone}</span>
@@ -252,7 +252,7 @@ class EditMg extends React.Component {
                         <p>
                             <span>{this.state.basicMessage.email}</span>
                         </p>
-                    </div>
+                    </div> */}
 
                     <div>
                         <em>最高学历</em>

@@ -156,7 +156,7 @@ class ZhaoDaDiscover extends React.Component {
         const LatestDynamicList = hotTopics.map((elem, index) => <div className="Citems" key={index}>
             <Link to={`/totopic/${elem.tid}`}>
                 <span className="img">
-                    <img src={"/src/images/topicImg.png" || elem.img} alt="热门话题" />
+                    <img src={elem.img || "/src/images/topicImg.png" } alt="热门话题" />
                 </span>
                 <div className="detail">
                     <span className="span2">{elem.topicname}</span>

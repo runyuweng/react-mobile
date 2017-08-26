@@ -137,7 +137,7 @@ class ZhaoDaToTopic extends React.Component {
                               "name": value.user.nickname,
                               "theme": value.qtitle,
                               "comment": value.qcontent || "内容未知",
-                              "agree": value.agree,
+                              "agree": value.answers[0].agree,
                               "remark": value.answer,
                               "collect": value.collect,
                               "vip": value.user.vip
@@ -167,7 +167,7 @@ class ZhaoDaToTopic extends React.Component {
                               "name": value.user.nickname,
                               "theme": value.qtitle,
                               "comment": value.qcontent,
-                              "agree": value.agree,
+                              "agree": value.answers[0].agree,
                               "remark": value.answer,
                               "collect": value.collect,
                               "vip": value.user.vip

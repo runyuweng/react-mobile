@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --hot",
+    "dev": "webpack-dev-server --hot",
     "lint": "eslint **/*.jsx",
     "lint-html": "eslint **/*.jsx -f html -o ./reports/lint-results.html",
-    "lint-fix": "eslint --fix **/*.jsx"
+    "lint-fix": "eslint --fix **/*.jsx",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
