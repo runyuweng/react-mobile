@@ -65,6 +65,11 @@ class ZhaoDaSearch extends React.Component {
                     }
                 }}
                 ><p dangerouslySetInnerHTML={{"__html": item.answers.length > 0 ? item.answers[0].content : "未知"}} /></Link>
+                <div className="more">
+                    <span><b><img src="/src/images/zan.png" /></b>赞同{item.agree}</span>
+                    <span><b><img src="/src/images/comment.png" /></b>评论{item.remark}</span>
+                    <span><b><img src="/src/images/cang.png" /></b>收藏</span>
+                </div>
             </div>
 
       );

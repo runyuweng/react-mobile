@@ -132,14 +132,14 @@ class JobDetail extends React.Component {
                             <span>[{data.salary || "未知"}]</span>
                         </h2>
                         <div>
-                            <span><img src="/src/images/source58.png" />
-                                <em>{data.location || "未知"}</em>
+                            <span style={{width: '40%',textAlign:'right'}}><img src="/src/images/source58.png" />
+                                <span className='limit'>{data.location || "未知"}</span>
                             </span>
-                            <span><img src="/src/images/source59.png" />
-                                <em>{data.education || "未知"}</em>
+                            <span style={{width: '20%',textAlign:'center'}}><img src="/src/images/source59.png" />
+                                <span className='limit'>{data.education || "未知"}</span>
                             </span>
-                            <span><img src="/src/images/source61.png" />
-                                <em>{data.type || "未知"}</em>
+                            <span style={{width: '40%',textAlign:'left'}}><img src="/src/images/source61.png" />
+                                <span className='limit'>{data.type || "未知"}</span>
                             </span>
                         </div>
                         <p>

@@ -4,7 +4,7 @@
         font-size:0.16rem;
         background:#FFFFFF;
         .items{
-            padding:0.16rem 0.14rem 0.14rem;
+            padding:0.16rem 0.14rem 0 0.14rem;
             border-top:0.01rem solid #D8D8D8;
             overflow: hidden;
             >a>span{
@@ -26,6 +26,29 @@
             }
             b{
                 color:#FFD112;
+            }
+            .more{
+                width:100%;
+                font-size:0.14rem;
+                font-family:"苹方";
+                color:#ADADAD;
+                margin:0.15rem 0rem;
+                line-height:0.2rem;
+                span{
+                    display:inline-flex;
+                    align-items:center;
+                    margin-right:0.2rem;
+                    b{
+                        display:inline-block;
+                        width:0.16rem;
+                        height:0.16rem;
+                        margin-right:0.06rem;
+                    }
+                }
+                img{
+                    width:0.15rem;
+                    height:0.15rem;
+                }
             }
         }
 

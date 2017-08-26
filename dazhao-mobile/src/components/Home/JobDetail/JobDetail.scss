@@ -43,24 +43,31 @@ body{
         }
 
         div{
+            width: 100%;
             span{
-                display: inline-flex;
-                align-items: center;
+                vertical-align: bottom;
+                display: inline-block;
+                // display: inline-flex;
+                // align-items: center;
                 font-size: .13rem;
                 color:#999999;
-                margin-right: .12rem;
+                // margin-right: .12rem;
+                // display: -webkit-box;
+                // -webkit-line-clamp: 1;
                 img{
                     height:.16rem;
                     margin-right: .06rem;
                 }
-                em{
+                .limit{
                     font-style: normal;
-                    width: .4rem;
-                    display: -webkit-box;
+                    white-space: nowrap;
+                    max-width: 1rem;
+                    // display: -webkit-box;
                     -webkit-line-clamp: 1;
                     text-overflow: ellipsis;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
+                    height: .2rem;
                 }
             }
         }
