@@ -239,9 +239,9 @@ class EditMg extends React.Component {
                         </p>
                     </div>
 
-                    {/* <div>
+                    <div>
                         <em>手机号</em>
-                        <p>
+                        <p onClick={()=>{this.props.changeMessageContent("该字段不支持编辑");}}>
                             <span>{this.state.basicMessage.phone}</span>
                         </p>
 
@@ -249,10 +249,10 @@ class EditMg extends React.Component {
 
                     <div>
                         <em>邮箱号</em>
-                        <p>
+                        <p onClick={()=>{this.props.changeMessageContent("该字段不支持编辑");}}>
                             <span>{this.state.basicMessage.email}</span>
                         </p>
-                    </div> */}
+                    </div> 
 
                     <div>
                         <em>最高学历</em>
