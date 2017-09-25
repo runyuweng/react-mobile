@@ -66,6 +66,7 @@ import MineFavoriteJobs from "./src/components/Mine/FavoriteJobs/FavoriteJobs.js
 import MineFavoriteCompanys from "./src/components/Mine/FavoriteCompanys/FavoriteCompanys.jsx";
 import MineFeedback from "./src/components/Mine/MineFeedback/MineFeedback.jsx";
 
+import ResumePreview from "./src/components/Mine/ResumePreview/ResumePreview.jsx";
 
 import EditMg from "./src/components/Mine/EditMg/EditMg.jsx";
 import ZhaoDaQuiz from "./src/components/Zhaoda/ZhaoDaQuiz/ZhaoDaQuiz.jsx";
@@ -79,16 +80,12 @@ import Reset from "./src/components/Verify/Reset/Reset.jsx";
 import {delCookie, getCookie, setCookie} from "./src/services/tools.js";
 
 function requireAuth (nextState, replace) {
-
     if (!getCookie("token")) {
-
         replace({
             "pathname": "/tologin",
             "state": {"nextPathname": nextState.location.pathname}
         });
-
     }
-
 }
 
 // Const getZhaoDaIndex = (location, cb) => {
@@ -152,7 +149,7 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="growrecord" component={MineGrowRecord} onEnter={requireAuth} />
         <Route path="notify" component={MineNotify} onEnter={requireAuth} />
         <Route path="cvmessage/:uid" component={MineCvMessage} onEnter={requireAuth} />
-        <Route path="edmessage" component={MineEditMg} onEnter={requireAuth} />
+        <Route path="edmessage/:id" component={MineEditMg} onEnter={requireAuth} />
         <Route path="edupexp" component={MineEduEx} onEnter={requireAuth} />
         <Route path="practice" component={MinePractice} onEnter={requireAuth} />
         <Route path="dropinbox" component={MineDropInBox} onEnter={requireAuth} >
@@ -162,6 +159,9 @@ const Routes = () => <Router history={hashHistory}>
         <Route path="invitation" component={MineInvitation} onEnter={requireAuth} />
         <Route path="activity" component={MineActivity} onEnter={requireAuth} />
         <Route path="feedback" component={MineFeedback} onEnter={requireAuth} />
+
+        {/*简历预览*/}
+        <Route path="preview/:id" component={ResumePreview} onEnter={requireAuth} />
 
         <Route path="minezhaoda" component={MineZhaoDa} onEnter={requireAuth} >
             <Route path="concern" component={MineConcern}>

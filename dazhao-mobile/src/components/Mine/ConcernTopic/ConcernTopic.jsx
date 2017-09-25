@@ -181,7 +181,7 @@ class ConcernTopic extends React.Component {
                         </div> : ""
                 }
                 {
-                    this.state.topics.length > 0
+                    this.state.nocareQuestion
                     ? ""
                     : <p className="fetchmore">{this.state.moreMessage}</p>
                 }

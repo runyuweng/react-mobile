@@ -49,6 +49,7 @@ class JobDetail extends React.Component {
         ajax({"url": `/zhaoda/jobs/jobinfo?id=${id}`}).then((data) => {
 
             if (data.code === "S01") {
+                console.log(data)
 
 
                 this.setState({
@@ -98,7 +99,7 @@ class JobDetail extends React.Component {
 
         const jobs = data.similarJobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
             <div className="jobitems">
-                <span className="pics"><img src="/src/images/ali.png" /></span>
+                <span className="pics"><img src={value.company.img} /></span>
                 <div className="jobintro">
                     <h2>{value.job_name || "未知"}</h2>
                     <h3>{value.company.name || "未知"}</h3>
@@ -127,19 +128,19 @@ class JobDetail extends React.Component {
                 {showLoading ? <Loading />
                 : <div>
                     <div id="jobTop">
-                        <span className="joblog"><img src="/src/images/ali.png" /></span>
+                        <span className="joblog"><img src={data.company.img} /></span>
                         <h2>{data.job_name || "未知"}
                             <span>[{data.salary || "未知"}]</span>
                         </h2>
                         <div>
-                            <span style={{width: '40%',textAlign:'right'}}><img src="/src/images/source58.png" />
-                                <span className='limit'>{data.location || "未知"}</span>
+                            <span><img src="/src/images/source58.png" />
+                                <em>{data.location || "未知"}</em>
                             </span>
-                            <span style={{width: '20%',textAlign:'center'}}><img src="/src/images/source59.png" />
-                                <span className='limit'>{data.education || "未知"}</span>
+                            <span><img src="/src/images/source59.png" />
+                                <em>{data.education || "未知"}</em>
                             </span>
-                            <span style={{width: '40%',textAlign:'left'}}><img src="/src/images/source61.png" />
-                                <span className='limit'>{data.type || "未知"}</span>
+                            <span><img src="/src/images/source61.png" />
+                                <em>{data.type || "未知"}</em>
                             </span>
                         </div>
                         <p>

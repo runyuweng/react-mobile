@@ -33,6 +33,10 @@
             font-size: 0;
             margin-left: 3%;
             h2{
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 font-family: "苹方";
                 font-size: .15rem;
                 font-weight: bold;

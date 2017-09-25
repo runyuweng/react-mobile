@@ -26,12 +26,13 @@
             display:inline-block;
             border-bottom:.01rem solid #EAEAEA;
             padding-bottom:.14rem;
+            padding-right: .24rem;
             margin-left: 3%;
             h2{
                 font-family: "苹方";
                 font-size: .15rem;
                 font-weight: bold;
-                color:#333333;
+                color:#333;
                 margin:0;
                 line-height: .24rem;
                 display: flex;
@@ -46,7 +47,7 @@
                     line-height: .2rem;
                     text-align: center;
                     font-weight: normal;
-                    margin: .02rem .12rem 0;
+                    margin: .02rem .12rem 0 .05rem;
                     box-sizing: border-box;
                 }
             }

@@ -1,0 +1,287 @@
+.ResumePreviewBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .ResumePreviewTitle {
+        position: relative;
+        .share {
+            position: absolute;
+            top: .12rem;
+            right: .15rem;
+            width: .15rem;
+            height: .2rem;
+            background: url(/src/images/share.svg) center center no-repeat;
+            background-size: 100% 100%;
+            z-index: 99999;
+        }
+    }
+    .ResumePreview {
+        position: absolute;
+        top: .45rem;
+        left: 0;
+        width: 100%;
+        height: calc(100% - .45rem);
+        background-color: #666;
+        .iframeContent {
+            position: absolute;
+            top: .12rem;
+            left: 50%;
+            width: 95%;
+            height: calc(100% - .9rem);
+            transform: translate3d(-50%, 0, 0);
+            overflow-y: scroll;
+            canvas {
+                width: 100% !important;
+                height: auto !important;
+            }
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                scrolling: 0;
+            }
+        }
+    }
+    .ResumePreviewBottom {
+        position: fixed;
+        bottom: 0;
+        left:0;
+        width: 100%;
+        display: flex;
+        background-color: #fff;
+        & > div {
+            flex: 1;
+            height:.6rem;
+        }
+        a {
+            display: block;
+            width: 1.7rem;
+            height: .37rem;
+            margin: .12rem auto 0;
+            line-height: .36rem;
+            font-family: PingFangSC-Regular;
+            font-size:14px;
+            text-align: center;
+            border-radius: .05rem;
+            span {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .ResumeSendBtn {
+            a {
+                color: #fff;
+                background-color: #51d3d9;
+                border: 1px solid #51d3d9;
+            }
+        }
+        .ResumeDownloadBtn {
+            a {
+                color: #51d3d9;
+                background-color: #fff;
+                border: 1px solid #51d3d9;
+            }
+        }
+    }
+    .sendResumeBox * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .sendResumeBox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, .5);
+        .container {
+            width: 95%;
+            margin: .68rem auto 0;
+            -webkit-border-radius: .05rem;
+            -moz-border-radius: .05rem;
+            border-radius: .15rem;
+            background-color: #f9f9f9;
+            background-image: url(/src/images/send-email-bg.svg);
+            background-size: 100%;
+        }
+        .content {
+            padding: .2rem .25rem 0;
+            & > h2 {
+                font-family:PingFangSC-Regular;
+                font-size: .17rem;
+                color:#000000;
+                letter-spacing:-0.01px;
+                text-align: center;
+            }
+            & > p {
+                font-family:PingFangSC-Regular;
+                font-size:13px;
+                color:#999999;
+                text-align: center;
+                &.first {
+                    margin-top: .14rem;
+                }
+                &.second {
+                    margin-bottom: .28rem;
+                }
+            }
+            .resumeTitleContent {
+                .row {
+                    display: flex;
+                    font-size: .13rem;
+                    text-align: center;
+                    margin-bottom:.15rem;
+                    label,div {
+                        height: .25rem;
+                        line-height:.25rem;
+                    }
+                    & > label {
+                        width: 26%;
+                        padding-right: .05rem;
+                        font-family:PingFangSC-Regular;
+                        font-size:13px;
+                        color:#666;
+                        text-align: center;
+                    }
+                    & > div {
+                        width: 74%;
+                        input {
+                            width: 100%;
+                            height: .25rem;
+                            padding-left: .05rem;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            font-family:PingFangSC-Regular;
+                            font-size:13px;
+                            color:#666;
+                            border: 1px solid #ddd;
+                            background-color: #f9f9f9;
+                            &::-webkit-input-placeholder { color: #c7c7cc }
+                        }
+                    }
+                }
+            }
+        }
+        .textarea {
+            width: 100%;
+            height:1.24rem;
+            overflow: auto;
+            margin-bottom: .13rem;
+            border: 1px solid #ddd;
+            textarea {
+                display: block;
+                width: 100%;
+                height: 100%;
+                padding: .05px;
+                resize: none;
+                border: none;
+                outline: none;
+                font-size: .13rem;
+                color:#666;
+                letter-spacing:-0px;
+                line-height:20px;
+                background-color: #f9f9f9;
+            }
+        }
+        .sendBtnBox {
+            display: flex;
+            & > div {
+                flex: 1;
+                height: .42rem;
+                line-height: .42rem;
+                text-align: center;
+                font-family:PingFangSC-Regular;
+                font-size: .17rem;
+                color: #707070;
+                letter-spacing:-0.01px;
+                background-color: #f9f9f9;
+                border-top: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+            }
+            .resetBtn {
+                border-radius: 0 0 0 .15rem;
+            }
+            .sendBtn {
+                color:#21c6cd;
+                border-radius: 0 0 .15rem 0;
+                border-right:none;
+            }
+        }
+    }
+    .wxShareTips {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.5);
+        z-index: 10000;
+        .tipsContent {
+            position: absolute;
+            right: .13rem;
+            top: .13rem;
+            width: 70%;
+            height: 35%;
+            background:  url(/src/images/wechat-tips.png) center center no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+    .browShareTips {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.5);
+        z-index: 10000;
+        .tipsContent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1.8rem;
+            text-align: center;
+            background-color: #efefef;
+            &>p {
+                margin: .17rem 0 .14rem;
+                font-size: .14rem;
+                color: #000;
+                font-family:PingFangSC-Regular;
+            }
+            .copyIcon {
+                p {
+                    margin-top: .02rem;
+                    font-family: PingFangSC-Regular;
+                    font-size: .12rem;
+                    color: #808080;
+                }
+                .copyIconBox {
+                    width: .54rem;
+                    height: .54rem;
+                    margin: auto;
+                    background: url(/src/images/copy.svg) center center no-repeat;
+                    background-size: 100% 100%;
+                    border-radius: 50%;
+                }
+            }
+            .resetBtn {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: .4rem;
+                text-align: center;
+                line-height: .4rem;
+                background-color: #fff;
+                font-family:PingFangSC-Regular;
+                font-size: .14rem;
+                color: #808080;
+            }
+        }
+    }
+}

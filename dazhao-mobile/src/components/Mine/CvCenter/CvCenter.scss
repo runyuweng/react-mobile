@@ -7,33 +7,42 @@
         font-weight: normal;
         line-height: .25rem;
         padding:.07rem .31rem .07rem .24rem;
-        border-bottom:.01rem solid #EAEAEA;
+        border-bottom: 1px solid #e4e4e4;
         margin-top: .2rem;
         background:#fff;
     }
-    .main{
+    .main {
+        overflow: hidden;
         font-size: 0rem;
         background:#fff;
         padding: 0rem .31rem 0rem .24rem;
-
-        .cvitems:nth-of-type(1)
-        {
-            border-bottom:.01rem solid #EAEAEA;
+        &.height {
+            max-height: 1.73rem;
         }
-
+        .cvitems {
+            border-bottom: 1px solid #e4e4e4;
+        }
+        .cvitems:last-child {
+            border-bottom: none;
+        }
         .cvitems{
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding:.24rem 0;
             .cvleft{
+                width: 2rem;
                 span:nth-of-type(1){
-                    font-family: "苹方";
-                    font-size: .14rem;
-                    color:#666666;
-                    font-weight: bold;
-                    display: block;
-                    line-height: .2rem;
+                    a {
+                        width: 100%;
+                        text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+                        font-family: "苹方";
+                        font-size: .14rem;
+                        color:#666666;
+                        font-weight: bold;
+                        display: block;
+                        line-height: .2rem;
+                    }
                 }
                 span:nth-of-type(2){
                     display: block;
@@ -49,8 +58,9 @@
             }
 
             .cvright{
+                width: 1.18rem;
                 em{
-                    width:.5rem;
+                    width:.48rem;
                     height:.25rem;
                     font-family: "苹方";
                     font-size: .13rem;
@@ -64,10 +74,36 @@
                     margin-left: .08rem;
                     box-sizing: border-box;
                 }
+                a {
+                    display: inline-block;
+                    em {
+                        margin-left: 0;
+                    }
+                }
             }
         }
     }
-
+    .resume-list {
+        .more {
+            padding: 0 .31rem 0 .24rem;
+            margin: auto;
+            background-color: #fff;
+            span {
+                display: block;
+                width: 100%;
+                height:.35rem;
+                line-height: .35rem;
+                font-size:12px;
+                color:#21c6cd;
+                text-align: center;
+                border-top: 1px solid #e4e4e4;
+                img {
+                    width: 14px;
+                    height: 9px;
+                }
+            }
+        }
+    }
     .options{
         font-size: 0rem;
         background:#fff;
@@ -100,9 +136,9 @@
                     border-radius: 50%;
                     background: red;
                     color:#fff;
-                    font-size: .13rem;
+                    font-size: .1rem;
                     text-align: center;
-                    line-height: .24rem;
+                    line-height: .2rem;
                     margin-left: .1rem;
                     box-sizing: border-box;
                 }

@@ -4,6 +4,8 @@ import TopBar from "../../Public/TopBar/TopBar.jsx";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 
+import axios from 'axios';
+
 class CvMessage extends React.Component {
 
     constructor (props) {
@@ -88,58 +90,52 @@ class CvMessage extends React.Component {
             }
 
         };
-        this.fetchResume = this.fetchResume.bind(this);
-
+        // this.fetchResume = this.fetchResume.bind(this);
+        this.getInitData = this.getInitData.bind(this);
     }
 
     componentDidMount () {
-
+        this.getInitData()
         this.props.changeBottomState(false);
-        this.fetchResume();
-
+        // this.fetchResume();
     }
 
+    getInitData() {
+        axios.get(`http://www.dzdz.com/api.php?u=getResumesBasic&resumes_id=${this.props.params.uid}`).then((data)=>{
+            console.log(data)
+            const basicMessage = data.data.listjson
+        })
+    }
 
     // 获取基本信息
-    fetchResume () {
+    // fetchResume () {
 
-        ajax({"url": `/getresume?resumeid=${this.props.params.uid}`}).
-        then((data) => {
-
-            if (data.code === "S01") {
-
-                const basicMessage = data.contents.basicMessage;
-                const eduexperience = data.contents.eduexperience;
-                const practiceExpre = data.contents.practiceExpre;
-                const projectExpre = data.contents.projectExpre;
-
-                this.setState({
-                    basicMessage,
-                    eduexperience,
-                    practiceExpre,
-                    projectExpre
-                });
-
-            } else if (data.code === "E01") {
-
-                this.setState({
-                    "basicMessage": {},
-                    "eduexperience": {},
-                    "practiceExpre": {},
-                    "projectExpre": {}
-                });
-
-            }
-
-        });
-
-    }
-
+    //     ajax({"url": `/getresume?resumeid=${this.props.params.uid}`}).
+    //     then((data) => {
+    //         if (data.code === "S01") {
+    //             const basicMessage = data.contents.basicMessage;
+    //             const eduexperience = data.contents.eduexperience;
+    //             const practiceExpre = data.contents.practiceExpre;
+    //             const projectExpre = data.contents.projectExpre;
+    //             this.setState({
+    //                 basicMessage,
+    //                 eduexperience,
+    //                 practiceExpre,
+    //                 projectExpre
+    //             });
+    //         } else if (data.code === "E01") {
+    //             this.setState({
+    //                 "basicMessage": {},
+    //                 "eduexperience": {},
+    //                 "practiceExpre": {},
+    //                 "projectExpre": {}
+    //             });
+    //         }
+    //     });
+    // }
 
     render () {
-
         const {basicMessage, eduexperience, practiceExpre, projectExpre, schoolExpre} = this.state;
-
 
         const eduMore = eduexperience.experience.more ? eduexperience.experience.more : [];
         const eduMoreList = eduMore.map((value, i) =>
@@ -148,9 +144,9 @@ class CvMessage extends React.Component {
 
         const practiceList = practiceExpre.experience.map((elem, index) => {
 
-            const practiceDetailList = elem.practiceDetail.map((value, i) =>
+        const practiceDetailList = elem.practiceDetail.map((value, i) =>
                 <p key={i} className="cvtext">·&nbsp;&nbsp;{value}</p>
-                );
+            );
 
 
             return (

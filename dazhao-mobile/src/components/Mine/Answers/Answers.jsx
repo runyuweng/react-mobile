@@ -123,7 +123,7 @@ class Answers extends React.Component {
         console.log(answers);
         const answersList = answers.map((elem) => <article key={elem.aid}>
             <p className="theme">{elem.question.qtitle}</p>
-            <div className="comment">111{elem.answer}</div>
+            <div className="comment">{elem.answer}</div>
             <div className="more">
                 <span><b><img src="/src/images/zan.png" /></b>赞同{elem.agree}</span>
                 <span><b><img src="/src/images/comment.png" /></b>评论{elem.remark}</span>

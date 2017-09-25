@@ -43,32 +43,24 @@ body{
         }
 
         div{
-            width: 100%;
             span{
-                vertical-align: bottom;
-                display: inline-block;
-                // display: inline-flex;
-                // align-items: center;
+                display: inline-flex;
+                align-items: center;
                 font-size: .13rem;
                 color:#999999;
-                // margin-right: .12rem;
-                // display: -webkit-box;
-                // -webkit-line-clamp: 1;
+                margin-right: .12rem;
                 img{
                     height:.16rem;
                     margin-right: .06rem;
                 }
-                .limit{
-                    text-align: left;
+                em{
                     font-style: normal;
-                    white-space: nowrap;
-                    max-width: 1rem;
-                    // display: -webkit-box;
+                    width: .4rem;
+                    display: -webkit-box;
                     -webkit-line-clamp: 1;
                     text-overflow: ellipsis;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
-                    height: .2rem;
                 }
             }
         }
@@ -99,7 +91,7 @@ body{
             justify-content: space-between;
             align-items: center;
             background:#fff;
-            padding:.12rem;
+            padding:.12rem 0;
             padding-right: .16rem;
             border-top: .01rem solid rgba(234,234,234,1);
             .jobintro{

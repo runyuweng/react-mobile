@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="930" viewBox="0 0 700 930">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #f9f9f9;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        fill: #ffa4b8;
+      }
+
+      .cls-5 {
+        fill: #a8e6f4;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Alert_Background" data-name="Alert Background" class="cls-1" width="700" height="930" rx="26" ry="26"/>
+    </clipPath>
+  </defs>
+  <title>画板 79</title>
+  <g id="简历预览">
+    <g id="窗口1">
+      <rect id="Alert_Background-2" data-name="Alert Background" class="cls-2" width="700" height="930" rx="26" ry="26"/>
+      <g class="cls-3">
+        <g>
+          <polygon class="cls-4" points="-101.04 172.22 111.11 -5.79 100.41 -18.55 65.64 -18.55 -101.04 121.31 -101.04 172.22"/>
+          <polygon class="cls-5" points="-101.04 275.21 233.84 -5.79 223.13 -18.55 188.37 -18.55 -101.04 224.29 -101.04 275.21"/>
+          <polygon class="cls-4" points="-101.04 378.19 356.57 -5.79 345.86 -18.55 311.1 -18.55 -101.04 327.27 -101.04 378.19"/>
+          <polygon class="cls-5" points="-101.04 481.17 479.3 -5.79 468.59 -18.55 433.82 -18.55 -101.04 430.26 -101.04 481.17"/>
+          <polygon class="cls-4" points="-101.04 584.15 602.03 -5.79 591.32 -18.55 556.55 -18.55 -101.04 533.24 -101.04 584.15"/>
+          <polygon class="cls-5" points="-101.04 687.14 724.76 -5.79 714.05 -18.55 679.28 -18.55 -101.04 636.22 -101.04 687.14"/>
+          <path class="cls-4" d="M-101,790.12,823,14.72V-4.11A14.44,14.44,0,0,0,808.6-18.55H802L-101,739.2Z"/>
+          <path class="cls-5" d="M-86.6,842h46.46L823,117.71V66.79L-96.32,838.22A14.37,14.37,0,0,0-86.6,842Z"/>
+          <polygon class="cls-4" points="82.59 842 823.04 220.69 823.04 169.77 21.91 842 82.59 842"/>
+          <polygon class="cls-5" points="205.32 842 823.04 323.67 823.04 272.75 144.64 842 205.32 842"/>
+          <polygon class="cls-4" points="328.05 842 823.04 426.65 823.04 375.74 267.37 842 328.05 842"/>
+          <polygon class="cls-5" points="450.78 842 823.04 529.63 823.04 478.72 390.1 842 450.78 842"/>
+          <polygon class="cls-4" points="573.51 842 823.04 632.62 823.04 581.7 512.83 842 573.51 842"/>
+          <polygon class="cls-5" points="696.24 842 823.04 735.6 823.04 684.68 635.56 842 696.24 842"/>
+        </g>
+      </g>
+      <rect id="Alert_Background-3" data-name="Alert Background" class="cls-2" x="11.67" y="10" width="676.67" height="910" rx="20" ry="20"/>
+    </g>
+  </g>
+</svg>

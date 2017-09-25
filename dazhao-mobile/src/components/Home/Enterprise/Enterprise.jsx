@@ -76,7 +76,6 @@ class Enterprise extends React.Component {
 
     loadData (id, type) {
 
-
         this.setState({"tips": "加载中..."});
 
         // 通过arguments来判断是不是加载更多
@@ -89,6 +88,8 @@ class Enterprise extends React.Component {
         }
         ajax({"url": `/zhaoda/jobs/enterprise?province=${data.province}&sort=${data.sort}&degree=${data.degree}&industryid=${this.state.industryid}&page=${data.page}`}).
         then((data) => {
+
+            console.log(data)
 
             const enterprise = (arguments.length === 1 ? this.state.enterprise.concat(data.contents || []) : data.contents) || [];
 

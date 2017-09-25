@@ -3,104 +3,137 @@ import "./EditMg.scss";
 import {Link} from "react-router";
 import ajax from "../../../services/ajax.js";
 import Select from "./Select.jsx";
-
+import axios from 'axios';
+import {getCookie} from "../../../services/tools";
+import qs from "qs";
 
 class EditMg extends React.Component {
-    constructor (props) {
+    handleSubmit = () => {
+        axios.post(`http://www.dazhao100.com/api.php?u=editResumesBasic&resumes_id=${this.props.params.id}&uid=${getCookie("uid")}`, qs.stringify({
+                img: this.state.img,
+                title: this.state.title,
+                truename: this.state.truename,
+                mobile: this.state.mobile,
+                email: this.state.email,
+                expectwork: this.state.expectwork,
+            })
+        ).then((data) => {
+            this.props.changeMessageContent(data.data.errortip);
+        })
+    }
 
+    constructor(props) {
         super(props);
         this.state = {
-
-            "basicMessage": {
-                "img": "/src/images/pople.png",
-                "name": "",
-                "sex": "",
-                "phone": "",
-                "email": "",
-                "political_status": "",
-                "current_add": {
-                    "province": "",
-                    "city": ""
-                }
-            },
-            "showtopDiv": false,
-            "showWhich": -1,
-            "showSelect": false,
-            "type": "",
-            "city": {},
-            "province": {},
-            "politics": {},
-            "edu": {}
+            "files": [],
+            "multiple": true,
+            "basicMessage": {},
+            "showChoose": false,
+            "bus": [],
+            "posi": [],
+            "staff": '',
+            "showUploadBox": false
         };
-        this.fetchBasicMessage = this.fetchBasicMessage.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.setSexAndEdu = this.setSexAndEdu.bind(this);
-
+        this.getInitData = this.getInitData.bind(this)
+        this.showWorkWillChoose = this.showWorkWillChoose.bind(this)
+        this.closeChoose = this.closeChoose.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleChangePost = this.handleChangePost.bind(this)
+        this.selectChoose = this.selectChoose.bind(this)
+        this.showUploadImgBox = this.showUploadImgBox.bind(this)
+        this.cancleClick = this.cancleClick.bind(this)
+        this.handleUploadChange = this.handleUploadChange.bind(this)
     }
 
-    componentDidMount () {
-
-        this.props.changeBottomState(false);
-        this.fetchBasicMessage();
-
+    getInitData() {
+        axios.get(`http://www.dazhao100.com/api.php?u=getResumesBasic&resumes_id=${this.props.params.id}&uid=${getCookie("uid")}`).then((data) => {
+            const {title, truename, mobile, email, img, expectwork} = data.data.listjson
+            this.setState({title, truename, mobile, email, img, expectwork})
+        })
     }
 
+    showWorkWillChoose() {
+        this.setState({"showChoose": !this.state.showChoose})
+        axios.get("http://www.dazhao100.com/api.php?u=getIndBase").then((data) => {
+            const bus = data.data.listjson
+            bus.unshift(
+                {parameter: "", tilte: "请选择"}
+            )
+            this.setState({bus})
+        })
+    }
 
-    handleChange (e) {
+    componentDidMount() {
+        this.getInitData()
+    }
 
-        const basicMessage = JSON.parse(JSON.stringify(this.state)).basicMessage;
+    closeChoose() {
+        this.setState({"showChoose": !this.state.showChoose})
+    }
 
-        if (e.target.name === "name") {
-
-            Object.assign(basicMessage, {"name": e.target.value});
-
-        } else if (e.target.name === "phone") {
-
-            Object.assign(basicMessage, {"phone": e.target.value});
-
-        } else if (e.target.name === "email") {
-
-            Object.assign(basicMessage, {"email": e.target.value});
-
-        } else if (e.target.name === "political_status") {
-
-            Object.assign(basicMessage, {"political_status": e.target.value});
-
+    selectChoose() {
+        if(this.state.staff  == "请选择") {
+            this.props.changeMessageContent("请选择正确的意向！");
+        } else {
+            this.setState({
+                "expectwork": this.state.staff
+            })
+            this.setState({"showChoose": !this.state.showChoose})
+            this.setState({"posi":[]})
         }
-        this.setState({basicMessage});
-
     }
-
-    setSexAndEdu (e) {
-
-        const basicMessage = JSON.parse(JSON.stringify(this.state)).basicMessage;
-
-        if (this.state.showWhich === 1) {
-
-            Object.assign(basicMessage, {"sex": e.target.value});
-
-        } else if (this.state.showWhich === 2) {
-
-            Object.assign(basicMessage, {"bestEducation": e.target.value});
-
+    showUploadImgBox() {
+        this.setState({"showUploadBox": !this.state.showUploadBox})
+    }
+    cancleClick() {
+        this.setState({"showUploadBox": !this.state.showUploadBox})
+    }
+    handleUploadChange(e) {
+        e.preventDefault()
+        let file = e.target.files[0];
+        if (!/image/.test(file.type)) {
+            this.props.changeMessageContent('文件格式出错！');
+            return;
         }
-        this.setState({
-            basicMessage,
-            "showtopDiv": !this.state.showtopDiv
-        });
-
+        let formData = new FormData();
+        formData.append('image', file);
+        axios({
+            method: 'post',
+            url: 'http://www.dazhao100.com/api.php?u=upimg',
+            data: formData,
+            headers: {'Content-Type': 'multipart/form-data'}
+        }).then((data) => {
+            console.log(data)
+            if(data.data.error == "0") {
+                this.props.changeMessageContent('头像上传成功！');
+                this.setState({"showUploadBox": !this.state.showUploadBox})
+                this.setState({
+                    "img": `http://www.dazhao100.com/${data.data.links}`
+                })
+            }
+        })
     }
 
+    handleChange(e) {
+        axios.get(`http://www.dazhao100.com/api.php?u=getExampleSection&module=Internship&parameter=${e.target.value}`).then((data) => {
+            const posi = data.data.listjson
+            console.log(posi)
+            posi.unshift(
+                {section_id: "", section: "请选择"}
+            )
+            this.setState({posi})
+        })
+    }
 
-    fetchBasicMessage () {
+    handleChangePost(e) {
+        console.log(e)
+        this.setState({"staff": e.target.value})
+    }
 
-        ajax({"url": "/zhaoda/user/myuserinfo"}).
-        then((data) => {
-
+    fetchBasicMessage() {
+        ajax({"url": "/zhaoda/user/myuserinfo"}).then((data) => {
             console.log(data);
-
             if (data.code === "S01") {
-
                 const basicMessage = {
                     "img": data.contents.img,
                     "name": data.contents.nickname,
@@ -109,7 +142,6 @@ class EditMg extends React.Component {
                     "phone": data.contents.phone,
                     "email": data.contents.email
                 };
-
                 this.setState({
                     basicMessage,
                     "city": {
@@ -129,257 +161,134 @@ class EditMg extends React.Component {
                         "name": data.contents.edu
                     }
                 });
-
             }
-
         });
-
     }
 
-    handleSubmit = () => {
-
-        const data = {
-            "city": this.state.city.name || null,
-            "province": this.state.province.name || null,
-            "politics": this.state.politics.name || null,
-            "name": this.state.basicMessage.name || null,
-            "sex": this.state.basicMessage.sex || null,
-            "edu": this.state.edu.id || null
-        };
-
-        ajax({"url": `/zhaoda/user/edituserinfo?city=${data.city}&province=${data.province}&politics=${data.politics}&name=${data.name}&sex=${data.sex}&edu=${data.edu}`}).
-        then((data) => {
-
-            if (data.code === "S01") {
-
-                this.props.changeMessageContent("保存成功");
-
-            } else {
-
-                this.props.changeMessageContent("保存失败，请重试");
-
-            }
-
-        });
-
-    }
-
-    render () {
-
+    render() {
         const {basicMessage} = this.state;
-
-        const sexList = ["保密", "男", "女"].map((value, i) =>
-            <input key={i} type="button" onClick={this.setSexAndEdu} name="sex" value={value} />
-            );
-
-        const bodyList = this.state.showWhich === 1 ? sexList : this.state.showWhich === 2 ? eduList : "";
-
-        const yearList = Array.from(new Array(100)).map((value, i) => <li key={i}>{new Date().getFullYear() - i}</li>);
-
-        const monthList = Array.from(new Array(12)).map((value, i) =>
-            <li key={i}>{i + 1}</li>
-            );
-
-        const dayList = Array.from(new Array(30)).map((value, i) =>
-            <li key={i}>{i + 1}</li>
-            );
-
-        const eduList = {
-            "3": "大专",
-            "4": "本科",
-            "5": "硕士",
-            "6": "博士",
-            "7": "学士"
-        };
-
+        const {bus} = this.state;
+        const {posi} = this.state;
+        const busHtml = bus.map((e, i) =>
+            <option key={i} value={e.parameter}>{e.tilte}</option>
+        )
+        const posiHtml = posi.map((e, i) =>
+            <option key={i}>{e.section}</option>
+        )
 
         return (
             <div className="EditMg">
                 <div className="TopBar">
                     <span onClick={(e) => {
-
                         history.back();
-
                     }}
                     >
-                        <img src="/src/images/arrow-left.png" />
+                        <img src="/src/images/arrow-left.png"/>
                     </span>
                     <span>编辑基本信息</span>
                     <span onClick={this.handleSubmit}>保存</span>
                 </div>
 
                 <div className="edititems">
-                    <div>
-                        <em>简历照片</em>
-                        <p>
-                            <span><img src={basicMessage.img} alt="pic" /></span>
-                            <span> <img src="/src/images/Back_Button.png" /></span>
-                        </p>
-                    </div>
+                    <form action="">
+                        <div className="row">
+                            <em>简历照片</em>
+                            <p onClick={this.showUploadImgBox}>
+                                <span><img src={this.state.img}/></span>
+                                <span> <img src="/src/images/Back_Button.png" /></span>
+                                {/*<input type="file" className="fileUpload"/>*/}
+                            </p>
+                        </div>
+                        <div className="name row">
+                            <em>简历名称</em>
+                            <p>
+                                <input type="text" value={this.state.title} onChange={(e) => {
+                                    this.setState({"title": e.target.value});
+                                }}/>
+                            </p>
+                        </div>
+                        <div className="name row">
+                            <em>姓名</em>
+                            <p>
+                                <input type="text" value={this.state.truename} onChange={(e) => {
+                                    this.setState({"truename": e.target.value});
+                                }}/>
+                            </p>
+                        </div>
 
-                    <div className="name">
-                        <em>姓名</em>
-                        <p>
-                            <input style={{"color": "#999"}} type="text" value={this.state.basicMessage.name} name="name" onChange={this.handleChange} />
-                        </p>
-                    </div>
+                        <div className="row">
+                            <em>联系电话</em>
+                            <p>
+                                <input type="text" value={this.state.mobile} placeholder={"请填写联系电话"} onChange={(e) => {
+                                    this.setState({"mobile": e.target.value});
+                                }}/>
+                            </p>
+                        </div>
 
-                    <div className="setSex">
-                        <em>性别</em>
-                        <p onClick={() => {
-
-                            this.setState({
-                                "showWhich": 1,
-                                "showtopDiv": true
-                            });
-
-                        }}
-                        >
-                            <span style={{"color": "#999"}}>{basicMessage.sex}</span>
-                        </p>
-                    </div>
-
-                    <div>
-                        <em>手机号</em>
-                        <p onClick={()=>{this.props.changeMessageContent("该字段不支持编辑");}}>
-                            <span>{this.state.basicMessage.phone}</span>
-                        </p>
-
-                    </div>
-
-                    <div>
-                        <em>邮箱号</em>
-                        <p onClick={()=>{this.props.changeMessageContent("该字段不支持编辑");}}>
-                            <span>{this.state.basicMessage.email}</span>
-                        </p>
-                    </div> 
-
-                    <div>
-                        <em>最高学历</em>
-                        <p onClick={() => {
-
-                            this.setState({
-                                "showSelect": true,
-                                "type": "edu"
-                            });
-
-                        }}
-                        >
-                            <span>{eduList[String(this.state.edu.id)] || "选择最高学历" }</span>
-                            <span> <img src="/src/images/Back_Button.png" /></span>
-                        </p>
-                    </div>
-
-
-                    <div>
-                        <em>现居地</em>
-                        <p className="place">
-                            <span onClick={() => {
-
-                                this.setState({
-                                    "showSelect": true,
-                                    "type": "province"
-                                });
-
-                            }}
-                            ><em>{this.state.province.name || "省份"}</em><img src="/src/images/Back_Button.png" /></span>
-                            <span onClick={() => {
-
-                                if (this.state.province.id && this.state.province.name !== this.state.province.id) {
-
-                                    this.setState({
-                                        "showSelect": true,
-                                        "type": "city"
-                                    });
-
-                                } else {
-
-                                    this.props.changeMessageContent("请选择省份");
-
-                                }
-
-                            }}
-                            ><em>{this.state.city.name ? this.state.city.name : "城市"}</em><img src="/src/images/Back_Button.png" /></span>
-                        </p>
-                    </div>
-
-                    <div>
-                        <em>政治面貌</em>
-                        <p onClick={() => {
-
-                            this.setState({
-                                "showSelect": true,
-                                "type": "politics"
-                            });
-
-                        }}
-                        >
-                            {/* <span>{basicMessage.hopeCity}</span>*/}
-                            <span>{this.state.politics.name || "选择政治面貌"}</span>
-                            <span> <img src="/src/images/Back_Button.png" /></span>
-                        </p>
-                    </div>
+                        <div className="row">
+                            <em>联系邮箱</em>
+                            <p>
+                                <input type="text" value={this.state.email} placeholder={"请填写联系邮箱"} onChange={(e) => {
+                                    this.setState({"email": e.target.email});
+                                }}/>
+                            </p>
+                        </div>
+                        <div className="row">
+                            <em>求职意向</em>
+                            <p>
+                                <span>{this.state.expectwork}</span>
+                                <em className="workWill" onClick={this.showWorkWillChoose}>求职意向</em>
+                            </p>
+                        </div>
+                    </form>
                 </div>
+
                 {
-                    this.state.showtopDiv
-                        ? <div ref="topDiv" className="topDiv">
-                            <div className="centermain">
-                                <div className="mainhead">请选择</div>
-                                <div className="mainbody">
-                                    {bodyList}
+                    this.state.showChoose ? <div className="chooseBox">
+                        <div className="chooseContent">
+                            <p>选择求职意向</p>
+                            <form action="">
+                                <div className="selectBtn">
+                                    <select onChange={this.handleChange}>
+                                        {busHtml}
+                                    </select>
                                 </div>
-                                <div className="mainfooter">
-                                    <span onClick={() => {
-
-                                        this.setState({"showtopDiv": false});
-
-                                    }}
-                                    >取消</span>
+                                <div className="selectBtn">
+                                    <select onChange={this.handleChangePost}>
+                                        {posiHtml}
+                                    </select>
                                 </div>
-                            </div>
-                        </div> : ""
+                                <div className="btnBox">
+                                    <div onClick={this.closeChoose}>取消</div>
+                                    <div onClick={this.selectChoose}>添加</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> : ''
                 }
-                {this.state.showSelect ? <Select
-                    type={this.state.type}
-                    province={this.state.province.id}
-                    handleChange={(type, id, name) => {
 
-                        if (type === "province" && id !== this.state.province.id) {
-
-                            this.setState({"city": {}});
-
-                        }
-                        this.setState({
-                            [type]: {
-                                id,
-                                name
-                            }
-                        }, () => {
-
-                            console.log(this.state);
-                            this.setState({
-                                "showSelect": false,
-                                "type": ""
-                            });
-
-                        });
-
-                    }}
-                    handleClose={() => {
-
-                        this.setState({
-                            "showSelect": false,
-                            "type": ""
-                        });
-
-                    }}
-                                         />
-                 : ""}
-
-
+                {
+                    this.state.showUploadBox ? <div id="deleteModal">
+                        <div className="dialog">
+                            <div className="deleteheader">上传照片</div>
+                            <div className="deletemain">
+                                <p>手机上传图像不支持裁剪和编辑</p>
+                                <p>建议电脑登录大招网操作</p>
+                                <p>www.dazhao100.com</p>
+                            </div>
+                            <div className="deletefooter">
+                                <span onClick={this.cancleClick}>取消</span>
+                                <span>
+                                    仍要上传
+                                    <input type="file" onChange={this.handleUploadChange} />
+                                </span>
+                            </div>
+                        </div>
+                    </div> : ''
+                }
             </div>
         );
-
     }
 }
+
 export default EditMg;

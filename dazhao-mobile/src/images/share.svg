@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <title>分享</title>
+  <g id="图层_2" data-name="图层 2">
+    <g id="简历预览">
+      <g>
+        <polygon class="cls-1" points="9.03 7.72 8.04 6.75 14.95 0 21.86 6.75 20.88 7.72 14.95 1.93 9.03 7.72 9.03 7.72"/>
+        <polygon class="cls-1" points="14.25 1.4 15.65 1.4 15.65 26.16 14.25 26.16 14.25 1.4 14.25 1.4"/>
+        <polygon class="cls-1" points="30 40 0 40 0 10.7 11.14 10.7 11.14 12.07 1.4 12.07 1.4 38.63 28.6 38.63 28.6 12.07 19.15 12.07 19.15 10.7 30 10.7 30 40 30 40"/>
+      </g>
+    </g>
+  </g>
+</svg>

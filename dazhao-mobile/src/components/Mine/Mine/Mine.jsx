@@ -3,84 +3,75 @@ import "./Mine.scss";
 import {Link, hashHistory} from "react-router";
 import ajax from "../../../services/ajax.js";
 import Loading from "../../Public/Loading/Loading.jsx";
+import axios from "axios";
 import {
-    delCookie
+    delCookie,setCookie,getCookie
   } from "../../../services/tools.js";
 
 class Mine extends React.Component {
-
     constructor (props) {
-
         super(props);
         this.state = {
             "personalMsg": {},
-            "showLoading": true
+            "showLoading": true,
+            "callforNum": 0,
+            "invitNum": 0,
+            "openingsNum": 0
         };
 
         this.fetchUserMsg = this.fetchUserMsg.bind(this);
-
+        this.getInitData = this.getInitData.bind(this)
     }
 
     getChildContext () {
-
         return {"changeMessageContent": this.props.changeMessageContent};
-
     }
     componentDidMount () {
-
+        this.getInitData()
         // This.props.changeMessageContent("1")
-
         this.props.changeBottomState(true);
         this.fetchUserMsg();
+    }
 
+    getInitData() {
+        axios.get(`http://www.dazhao100.com/api.php?u=personCount&uid=${getCookie("uid")}`).then((data) => {
+            console.log(data)
+            const {openingsNum, collectNum, invitNum} = data.data.listjson
+            this.setState({ openingsNum, collectNum, invitNum })
+        })
     }
 
     fetchUserMsg () {
-
         ajax({"url": "/zhaoda/user/userdetail"}).
         then((data) => {
-
             if (data.code === "S01") {
-
+                setCookie("uid", data.contents.uid)
                 this.setState({
                     "personalMsg": data.contents,
                     "showLoading": false
                 });
-
             }
-
         });
-
     }
 
     logout = () => {
-
         ajax({
             "url": "/zhaoda/quitlogin",
             "method": "POST"
         }).
         then((data) => {
-
             if (data.code === "S01") {
-
                 delCookie("token");
                 hashHistory.push({"pathname": "login"});
                 this.context.changeMessageContent("退出成功");
-
             } else {
-
                 this.context.changeMessageContent(data.message);
-
             }
-
         });
-
     }
 
     render () {
-
         const {personalMsg, showLoading} = this.state;
-
         return (
             <div>
                 {showLoading ? <Loading />
@@ -101,20 +92,20 @@ class Mine extends React.Component {
                             <span>{true ? personalMsg.major||"专业未知" : "专业未知"}</span>
                         </div> */}
                         <div className="fans">
-                            <span><b>{personalMsg.delivered || 0}</b><br />已投递</span>
+                            <span><Link  to="dropinbox/platformdropin"><b>{this.state.openingsNum || 0}</b><br />已投递</Link></span>
                             <em />
-                            <span><b>{personalMsg.need_interview || 0}</b><br />待面试</span>
+                            <span><Link to={"invitation"}><b>{this.state.callforNum || 0}</b><br />待面试</Link></span>
                             <em />
-                            <span><b>{personalMsg.need_interview || 0}</b><br />被邀约</span>
+                            <span><Link to={"invitation"}><b>{this.state.invitNum || 0}</b><br />被邀约</Link></span>
                         </div>
                     </div>
                 </header>
                 <div className="experience">
                     <div>
-                        <a href="http://www.dazhao100.com/wx/i/mystudy">
+                        <Link to="/growrecord">
                             <span><img src="/src/images/grow.png" />
                                 <em>听课记录</em></span>
-                        </a>
+                        </Link>
                     </div>
                     <div>
                         <Link to="/cvcenter">

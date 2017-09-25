@@ -5,6 +5,7 @@ export function verifyTel(str){
      return true;
    }
 }
+
 export function checkEmail(str){
     var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
     return reg.test(str);
@@ -31,4 +32,15 @@ export function delCookie(name){
     var cval=getCookie(name);
     if(cval!=null)
     document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+}
+
+export function getUrlPara(para) {
+  var url = window.location.href.split('?')[1],
+    paras = url.split('&'),
+    obj = {}
+
+  paras.forEach(function(e, i) {
+    obj[paras[i].split('=')[0]] = paras[i].split('=')[1]
+  })
+  return obj[para];
 }

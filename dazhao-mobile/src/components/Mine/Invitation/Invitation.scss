@@ -8,14 +8,15 @@
             background: #fff;
             margin-bottom: .16rem;
             p:nth-of-type(1){
-                color:#21c6cd;
-                font-size: .16rem;
+                font-size: .14rem;
+                color: #21c6cd;
                 line-height: .24rem;
+                font-weight:bold;
             }
             p:nth-of-type(2){
-                color:#333333;
-                font-size: .15rem;
-                line-height: .24rem;
+                color:#999;
+                font-size: .13rem;
+                line-height: .2rem;
             }
             .clearfix{
                 overflow: hidden;
@@ -24,14 +25,18 @@
             div{
                 color:#333333;
                 font-size: .15rem;
-                line-height: .24rem;
+                time {
+                    font-size: .12rem;
+                    color: #adadad;
+                }
                 .dropinmain{
                     margin-top: .16rem;
-                    border-top: .01rem solid #ADADAD;
+                    border-top: 1px solid #d8d8d8;
                     padding: .16rem 0 0;
+                    color: #51d3d9;
                     p{
                         font-size: .14rem;
-                        color:#21c6cd;
+                        color: #51d3d9;
                     }
                 }
                 span{

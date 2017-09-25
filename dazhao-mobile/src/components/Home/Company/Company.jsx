@@ -44,6 +44,7 @@ class Company extends React.Component {
                 console.log(data);
 
                 if (data.code === "S01") {
+                    console.log(data)
 
 
                     this.setState({
@@ -200,7 +201,7 @@ class Company extends React.Component {
                             {
                                 this.state.isSelected
                                 ? <span className="logo">
-                                    <img onClick={this.setCare.bind(this, cid)} src="/src/images/love1.png" />
+                                    <object onClick={this.setCare.bind(this, cid)} data="/src/images/isSelected.svg" type="image/svg+xml" />
                                 </span>
                                 : <span><img onClick={this.setCare.bind(this, cid)} src="/src/images/love.png" /></span>
                             }

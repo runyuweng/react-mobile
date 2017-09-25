@@ -38,7 +38,6 @@ class Login extends React.Component {
             "data": `account=${this.state.account}&pwd=${this.state.pwd}`
         }).
       then((data) => {
-
           if (data.code === "S01") {
 
               this.props.changeMessageContent("登录成功");
