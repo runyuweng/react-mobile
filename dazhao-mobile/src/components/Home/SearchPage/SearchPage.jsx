@@ -10,7 +10,7 @@ class SearchPage extends React.Component {
         super(props);
         this.state = {
           	"keyword": "",
-        	 	"jobs": [],
+        	"jobs": [],
           	"page": 1,
             "nomore": false,
             "moreMessage": "",
@@ -34,7 +34,7 @@ class SearchPage extends React.Component {
 
     fetchJobs () {
 
-        ajax({"url": `/zhaoda/job/searchjob?keyword=${this.state.keyword}`}).
+        ajax({"url": `/zhaoda/job/searchjob?keyword=${this.state.keyword}&type=${this.state.active}`}).
         then((data) => {
 
 
