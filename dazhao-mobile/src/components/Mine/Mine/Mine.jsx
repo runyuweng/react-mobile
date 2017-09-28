@@ -129,9 +129,9 @@ class Mine extends React.Component {
                     <Link to="reset">
                         <p><em>修改密码</em><span><img src="/src/images/Back_Button.png" /></span></p>
                     </Link>
-                    <Link to="feedback">
+                    {/* <Link to="feedback">
                         <p><em>建议反馈</em><span><img src="/src/images/Back_Button.png" /></span></p>
-                    </Link>
+                    </Link> */}
                     <p onClick={this.logout}><em>退出登录</em><span><img src="/src/images/Back_Button.png" /></span></p>
                 </div>
             </div>}

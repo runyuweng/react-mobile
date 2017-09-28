@@ -1,6 +1,7 @@
 import React from "react";
 import "./Answers.scss";
 import ajax from "../../../services/ajax.js";
+import {Link} from "react-router";
 
 class Answers extends React.Component {
 
@@ -62,6 +63,7 @@ class Answers extends React.Component {
 
         ? ajax({"url": `/zhaoda/user/myanswers?page=${page}`}).
         then((data) => {
+            console.log(data);
 
             if (data.code === "S01") {
 
@@ -122,13 +124,15 @@ class Answers extends React.Component {
 
         console.log(answers);
         const answersList = answers.map((elem) => <article key={elem.aid}>
-            <p className="theme">{elem.question.qtitle}</p>
-            <div className="comment">{elem.answer}</div>
-            <div className="more">
-                <span><b><img src="/src/images/zan.png" /></b>赞同{elem.agree}</span>
-                <span><b><img src="/src/images/comment.png" /></b>评论{elem.remark}</span>
-                <span><b><img src="/src/images/cang.png" /></b>收藏</span>
-            </div>
+            <Link to={`/response/${elem.aid}/${elem.question.qtitle}`}>
+                <p className="theme">{elem.question.qtitle}</p>
+                <div className="comment">{elem.content}</div>
+                <div className="more">
+                    <span><b><img src="/src/images/zan.png" /></b>赞同{elem.agree}</span>
+                    <span><b><img src="/src/images/comment.png" /></b>评论{elem.remark}</span>
+                    <span><b><img src="/src/images/cang.png" /></b>收藏</span>
+                </div>
+            </Link>
         </article>
             );
 

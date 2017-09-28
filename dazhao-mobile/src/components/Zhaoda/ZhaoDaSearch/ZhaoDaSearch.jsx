@@ -66,7 +66,6 @@ class ZhaoDaSearch extends React.Component {
                 }}
                 ><p dangerouslySetInnerHTML={{"__html": item.answers.length > 0 ? item.answers[0].content : "未知"}} /></Link>
             </div>
-
       );
 
 

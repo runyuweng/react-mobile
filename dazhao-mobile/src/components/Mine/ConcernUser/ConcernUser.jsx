@@ -154,7 +154,7 @@ class ConcernUser extends React.Component {
                         <span>{elem.position}</span>
                     </p>
                 </div>
-                <span onClick={this.setCaredState.bind(this, elem.uid)} className="right">+取消关注</span>
+                <span onClick={this.setCaredState.bind(this, elem.uid)} className="right">取消关注</span>
             </div>
             );
 

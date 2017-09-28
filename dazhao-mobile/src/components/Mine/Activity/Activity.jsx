@@ -27,6 +27,7 @@ class Activity extends React.Component {
             if (data.code === "S01") {
 
                 // 请求成功，显示提示消息
+                console.log(data)
                 this.props.changeMessageContent(data.message);
                 this.setState({"activities": data.contents});
 

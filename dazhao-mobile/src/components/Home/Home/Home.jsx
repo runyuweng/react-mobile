@@ -272,7 +272,7 @@ class Home extends React.Component {
 
                             this.setState({"search": e.target.value});
 
-                        }} value={search} type="text" placeholder="搜索期望中的公司、岗位、地点"
+                        }} value={search} type="text" placeholder="搜索期望中的公司、岗位"
                         />
                         {
                             this.state.searchPage

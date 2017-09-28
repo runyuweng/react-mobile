@@ -44,7 +44,6 @@ class Company extends React.Component {
                 console.log(data);
 
                 if (data.code === "S01") {
-                    console.log(data)
 
 
                     this.setState({

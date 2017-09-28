@@ -90,10 +90,6 @@ class SearchPage extends React.Component {
             {
                 "name": "岗位",
                 "id": "GANGWEI"
-            },
-            {
-                "name": "地点",
-                "id": "DIDIAN"
             }
         ];
 
@@ -118,7 +114,7 @@ class SearchPage extends React.Component {
 
                             this.setState({"keyword": e.target.value});
 
-                        }} placeholder="搜索期望中的公司、岗位、地点" value={this.state.keyword}
+                        }} placeholder="搜索期望中的公司、岗位" value={this.state.keyword}
                         />
                         <span onClick={this.fetchJobs}>搜索</span>
                     </div>

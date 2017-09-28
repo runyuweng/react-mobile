@@ -104,7 +104,7 @@ class JobDetail extends React.Component {
                     <h2>{value.job_name || "未知"}</h2>
                     <h3>{value.company.name || "未知"}</h3>
                     <span>
-                        <em>{value.location || "未知"}</em>
+                        <em>{value.company.city || "未知"}</em>
                         <em>{value.education || "未知"}</em>
                     </span>
                     <span>

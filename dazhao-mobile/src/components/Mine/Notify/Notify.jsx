@@ -71,14 +71,18 @@ class Notify extends React.Component {
                 </header>
 
                 <div className="experience">
-                    <div>
-                        <span><img src="/src/images/state.png" />
-                            <em>投递状态</em></span>
-                    </div>
-                    <div>
-                        <span><img src="/src/images/invite.png" />
-                            <em>校招邀约</em></span>
-                    </div>
+                    <Link to='dropinbox/platformdropin'>
+                        <div>
+                            <span><img src="/src/images/state.png" />
+                                <em>投递状态</em></span>
+                        </div>
+                    </Link>
+                    <Link to='invitation'>
+                        <div>
+                            <span><img src="/src/images/invite.png" />
+                                <em>校招邀约</em></span>
+                        </div>
+                    </Link>
                     <Link to="/activity">
                         <div>
                             <span><img src="/src/images/zdmessage.png" />
