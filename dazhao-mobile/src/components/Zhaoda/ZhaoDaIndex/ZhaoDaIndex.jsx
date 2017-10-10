@@ -373,6 +373,58 @@ class ZhaoDaIndex extends React.Component {
 
     }
 
+        setLike (aid) {
+
+        ajax({"url": `/zhaoda/answer/dianzananswer?aid=${aid}`}).
+      then((data) => {
+
+          if (data.code === "S01") {
+
+              this.context.changeMessageContent("成功");
+              this.setState({
+                  "agree": parseInt(this.state.agree) + 1,
+                  iszan: true
+                });
+
+          } else if (data.code === "S04") {
+
+                // 点过赞了
+              this.context.changeMessageContent("您已点过赞");
+
+          } else if (data.code === "E01") {
+
+                // 出错
+              this.context.changeMessageContent("操作失败请重试");
+
+          }
+
+      });
+
+    }
+
+    setSelected (qid) {
+
+        ajax({"url": `/zhaoda/question/subscribequestion?qid=${qid}`}).
+      then((data) => {
+
+
+          if (data.code === "S01") {
+
+              // 收藏状态改变
+              this.context.changeMessageContent("操作成功");
+              this.setState({"collect": !this.state.collect});
+
+          } else if (data.code === "E01") {
+
+            // 出错
+              this.context.changeMessageContent("操作失败请重试");
+
+          }
+
+      });
+
+    }
+
     render () {
 
         const {latestDynamic, hotTopic, popularityPople, latestZhuanlan, carouselpic, nowshow, getmore, nomore, loading1, loading2, loading3} = this.state;

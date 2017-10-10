@@ -45,7 +45,7 @@ class ConcernTopic extends React.Component {
         scrollTop === docHeight - innerHeight
         ? (() => {
 
-            this.setState({"moreMessage": this.state.nomore ? "没有更多关注" : "正在加载中"}, () => {
+            this.setState({"moreMessage": this.state.nomore ? "" : "正在加载中"}, () => {
 
                 this.fetchConcernTopic(this.state.page);
 
@@ -109,7 +109,7 @@ class ConcernTopic extends React.Component {
                 this.setState({
                     "topics": this.state.topics.concat(topics),
                     "nomore": true,
-                    "moreMessage": "没有更多关注"
+                    "moreMessage": ""
                 }, () => {
 
                     this.context.changeMessageContent(data.message);

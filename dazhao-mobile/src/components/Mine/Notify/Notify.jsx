@@ -10,30 +10,30 @@ class Notify extends React.Component {
         super(props);
         this.state = {
             "noyifymessage": [
-                {
-                    "id": 1,
-                    "img": "/src/images/file.png",
-                    "messagetitle": "投递状态更新",
-                    "time": "14:30",
-                    "message": "企业已接收到您投递的简历。",
-                    "job": "企业服务部实习生"
-                },
-                {
-                    "id": 3,
-                    "img": "/src/images/file.png",
-                    "messagetitle": "投递状态更新",
-                    "time": "14:30",
-                    "message": "企业已接收到您投递的简历。",
-                    "job": "企业服务部实习生"
-                },
-                {
-                    "id": 2,
-                    "img": "/src/images/file.png",
-                    "messagetitle": "投递状态更新",
-                    "time": "14:30",
-                    "message": "企业已接收到您投递的简历。",
-                    "job": "企业服务部实习生"
-                }
+                // {
+                //     "id": 1,
+                //     "img": "/src/images/file.png",
+                //     "messagetitle": "投递状态更新",
+                //     "time": "14:30",
+                //     "message": "企业已接收到您投递的简历。",
+                //     "job": "企业服务部实习生"
+                // },
+                // {
+                //     "id": 3,
+                //     "img": "/src/images/file.png",
+                //     "messagetitle": "投递状态更新",
+                //     "time": "14:30",
+                //     "message": "企业已接收到您投递的简历。",
+                //     "job": "企业服务部实习生"
+                // },
+                // {
+                //     "id": 2,
+                //     "img": "/src/images/file.png",
+                //     "messagetitle": "投递状态更新",
+                //     "time": "14:30",
+                //     "message": "企业已接收到您投递的简历。",
+                //     "job": "企业服务部实习生"
+                // }
             ]
         };
 

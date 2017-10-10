@@ -102,10 +102,10 @@ class Mine extends React.Component {
                 </header>
                 <div className="experience">
                     <div>
-                        <Link to="/growrecord">
+                        <a href="http://www.dazhao100.com/wx/i/mystudy">
                             <span><img src="/src/images/grow.png" />
                                 <em>听课记录</em></span>
-                        </Link>
+                        </a>
                     </div>
                     <div>
                         <Link to="/cvcenter">

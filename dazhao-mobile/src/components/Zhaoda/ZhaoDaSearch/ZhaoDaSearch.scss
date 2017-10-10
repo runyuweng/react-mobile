@@ -33,4 +33,38 @@
             border-bottom:0.01rem solid #D8D8D8;
         }
     }
+    .more{
+        width:100%;
+        font-size:0.14rem;
+        font-family:"苹方";
+        color:#adadad;
+        margin:0.15rem 0rem 0;
+        line-height:0.18rem;
+        a{
+            color:#ADADAD;
+            margin-right:0.2rem;
+        }
+        a>span{
+
+            margin-right:0;
+        }
+        span{
+            display:inline-flex;
+            align-items:center;
+            margin-right:0.2rem;
+            height: .18rem;
+            box-sizing: border-box;
+            font-size: .13rem;
+            color: #adadad;
+            b{
+                display:inline-block;
+                width:0.16rem;
+                height:0.16rem;
+                margin-right:0.06rem;
+            }
+        }
+        img{
+            height:0.15rem;
+        }
+    }
 }
