@@ -47,6 +47,7 @@ class Company extends React.Component {
 
 
                     this.setState({
+                        isSelected: data.contents[0].isguanzhu,
                         "data": data.contents[0],
                         "loading": false
                     }, () => {
@@ -199,8 +200,8 @@ class Company extends React.Component {
 
                             {
                                 this.state.isSelected
-                                ? <span className="logo">
-                                    <object onClick={this.setCare.bind(this, cid)} data="/src/images/isSelected.svg" type="image/svg+xml" />
+                                ? <span>
+                                    <img onClick={this.setCare.bind(this, cid)} src="/src/images/love1.png" style={{width:'.21rem',height:'.21rem'}}/>
                                 </span>
                                 : <span><img onClick={this.setCare.bind(this, cid)} src="/src/images/love.png" /></span>
                             }

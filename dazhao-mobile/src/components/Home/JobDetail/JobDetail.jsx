@@ -53,6 +53,7 @@ class JobDetail extends React.Component {
 
 
                 this.setState({
+                    isSelected:data.contents[0].isguanzhu,
                     "data": data.contents[0],
                     "showLoading": false
                 });

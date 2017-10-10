@@ -14,13 +14,15 @@ class SearchPage extends React.Component {
           	"page": 1,
             "nomore": false,
             "moreMessage": "",
-            "active": "GONGSI"
+            "active": "GANGWEI",
+            enterprise:[]
         };
         this.fetchJobs = this.fetchJobs.bind(this);
 
     }
 
     componentDidMount () {
+        this.props.changeBottomState(false);
 
   	 const searchCon = sessionStorage.getItem("searchCon");
 
@@ -34,29 +36,82 @@ class SearchPage extends React.Component {
 
     fetchJobs () {
 
-        ajax({"url": `/zhaoda/job/searchjob?keyword=${this.state.keyword}&type=${this.state.active}`}).
-        then((data) => {
+        if(this.state.active === "GONGSI" ){
+            // ajax({"url": `/zhaoda/job/searchjob?keyword=${this.state.keyword}&type=${this.state.active}`}).
+            ajax({"url": `/zhaoda/company/searchcompany?keyword=${this.state.keyword}`}).
+            then((data) => {
+                console.log(data)
+
+                if (data.code === "S01") {
+
+                    const enterprise = data.contents;
+
+                    this.setState({"enterprise": (enterprise)});
+
+                } else if (data.code === "E01") {
+                    this.props.changeMessageContent("暂无相关内容");
+                    
+
+                    this.setState({"enterprise": []});
+
+                }
+
+            });
+        }else{
+            ajax({"url": `/zhaoda/job/searchjob?keyword=${this.state.keyword}`}).
+            then((data) => {
+                console.log(data)
+    
+    
+                if (data.code === "S01") {
+    
+                    const jobs = data.contents;
+    
+                    this.setState({"jobs": jobs});
+    
+                } else if (data.code === "E01") {
+    
+                    this.props.changeMessageContent("暂无相关内容");
+                    this.setState({"jobs": []});
+    
+                }
+    
+            });
+
+        }
 
 
-            if (data.code === "S01") {
-
-                const jobs = data.contents;
-
-                this.setState({"jobs": this.state.jobs.concat(jobs)});
-
-            } else if (data.code === "E01") {
-
-                this.setState({"jobs": []});
-
-            }
-
-        });
 
     }
 
+
     render () {
 
-        const {jobs, active} = this.state;
+        const {jobs, enterprise, active} = this.state;
+
+        const enterpriseList = enterprise.map((value, i) => <Link to={`/company/${value.companyid}`} key={i}>
+            <div className="jobitems">
+                <span className="pics">
+                    <img src={value.img} />
+                </span>
+                <div className="jobintro">
+                    <h2>{value.name}{value.Authentication ? <span>认证</span> : ""}</h2>
+                    <h3><span>[<em>8</em>个]推荐算法实习</span>、<span>JAVA研发工程</span>、<span>JAVAEE研发工程</span>、<span>JAVAEE研发工程</span></h3>
+                    <span className="address">
+                        <em>{value.city}</em>
+                    </span>
+                    <span>
+                        <em>{value.type}</em>
+                        <b>|</b>
+                        <em>外商独资</em>
+                        <b>|</b>
+                        <em>{value.stage}</em>
+                        <b>|</b>
+                        <em>{value.numbers}</em>
+                    </span>
+                </div>
+            </div>
+        </Link>);
 
       	const jobList = jobs.map((value, i) => <Link to={`/jobdetail/${value.jobid}`} key={i}>
 
@@ -84,13 +139,13 @@ class SearchPage extends React.Component {
 
         const words = [
             {
+                "name": "岗位",
+                "id": "GANGWEI"
+            },{
                 "name": "公司",
                 "id": "GONGSI"
             },
-            {
-                "name": "岗位",
-                "id": "GANGWEI"
-            }
+            
         ];
 
         const items = words.map((d, i) => <li
@@ -98,7 +153,10 @@ class SearchPage extends React.Component {
             className={d.id === active ? "active" : ""}
             onClick={() => {
 
-                this.setState({"active": d.id});
+                this.setState({"active": d.id},()=>{
+                this.fetchJobs();
+
+                });
 
             }}
                                           >{d.name}</li>);
@@ -124,11 +182,13 @@ class SearchPage extends React.Component {
                         {items}
                     </ul>
                 </nav>
-
-                {/* <div className="jobWrap">{jobList}</div>*/}
-                <div className="tips">
-                  此功能正在完善中...
-                </div>
+                {this.state.active === 'GANGWEI'? 
+                <div className="jobs">
+                    {jobList}
+                </div>:
+                <div className="en">
+                    {enterpriseList}
+                </div>}
 
             </div>
         );

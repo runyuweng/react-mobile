@@ -71,4 +71,193 @@
 			font-size:0.13rem;
 			color: #999;
 		}
+		.en{
+			.jobitems{
+				background:#fff;
+				padding:.15rem 0 0 .13rem;
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				// height: 1.1rem;
+				box-sizing: border-box;
+				.pics{
+						display:inline-flex;
+						// width:.6rem;
+						width: 19%;
+						height:.6rem;
+						// margin-right: .12rem;
+						background:#fff;
+						justify-content: center;
+						align-items: center;
+						box-sizing: border-box;
+						img{
+								max-width:.58rem;
+								border:.01rem solid #EAEAEA;
+						}
+				}
+	
+				.jobintro{
+						width: 78%;
+						padding-bottom: .14rem;
+						margin-left: 3%;
+						box-sizing: border-box;
+						border-bottom: .01rem solid #EAEAEA;
+						font-size: 0;
+						box-sizing: border-box;
+						h2{
+								font-family: "苹方";
+								font-size: .15rem;
+								font-weight: bold;
+								color:#333333;
+								margin:0;
+								line-height: .24rem;
+						}
+						h3{
+							font-size: .13rem;
+							line-height: .19rem;
+							color:#999999;
+							font-weight: normal;
+							width: 95%;
+							overflow:hidden;
+							text-overflow:ellipsis;
+							white-space: nowrap;
+							box-sizing: border-box;
+							span{
+									font-family: "苹方";
+									font-size: .13rem;
+									line-height: .18rem;
+									color:#999999;
+									font-weight: normal;
+									em{
+											font-style: normal;
+									}
+							}
+					}
+	
+						span:nth-of-type(1){
+								display:inline-block;
+								// em{
+								// 		font-family: "苹方";
+								// 		font-size: .13rem;
+								// 		color:#999999;
+								// 		font-style: normal;
+								// 		line-height: .18rem;
+								// }
+								// em:nth-last-of-type(1){
+								// 		margin-left: .12rem;
+								// }
+						}
+	
+						span:nth-of-type(2){
+								// display: block;
+								width: 100%;
+								white-space: nowrap;
+								overflow:hidden;
+								text-overflow:ellipsis;
+								em{
+										font-family: "苹方";
+										font-size: .13rem;
+										color:#999999;
+										font-style: normal;
+										line-height: .18rem;
+								}
+								b{
+										font-weight: normal;
+										margin:0 .06rem;
+										font-size: .14rem;
+										color:#999999;
+								}
+						}
+				}			
+			}
+		}
+		.jobs {
+
+		.jobitems{
+			background:#fff;
+			padding:.15rem 0 0 .13rem;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			// height: 1.1rem;
+			box-sizing: border-box;
+			.pics{
+					display:inline-flex;
+					// width:.6rem;
+					width: 19%;
+					height:.6rem;
+					// margin-right: .12rem;
+					background:#fff;
+					justify-content: center;
+					align-items: center;
+					box-sizing: border-box;
+					img{
+							max-width:.58rem;
+							border:.01rem solid #EAEAEA;
+					}
+			}
+
+			.jobintro{
+					width: 78%;
+					padding-bottom: .14rem;
+					margin-left: 3%;
+					box-sizing: border-box;
+					border-bottom: .01rem solid #EAEAEA;
+					font-size: 0;
+					box-sizing: border-box;
+					h2{
+							font-family: "苹方";
+							font-size: .15rem;
+							font-weight: bold;
+							color:#333333;
+							margin:0;
+							line-height: .24rem;
+					}
+					h3{
+							font-family: "苹方";
+							font-size: .14rem;
+							line-height: .19rem;
+							color:#666666;
+					}
+
+					span:nth-of-type(1){
+							display:inline-block;
+							em{
+									font-family: "苹方";
+									font-size: .13rem;
+									color:#999999;
+									font-style: normal;
+									line-height: .18rem;
+							}
+							em:nth-last-of-type(1){
+									margin-left: .12rem;
+							}
+					}
+
+					span:nth-of-type(2){
+							display: block;
+							width: 100%;
+							white-space: nowrap;
+							overflow:hidden;
+							text-overflow:ellipsis;
+							em{
+									font-family: "苹方";
+									font-size: .13rem;
+									color:#999999;
+									font-style: normal;
+									line-height: .18rem;
+							}
+							b{
+									font-weight: normal;
+									margin:0 .06rem;
+									font-size: .14rem;
+									color:#999999;
+							}
+					}
+			}			
+		}
+
+	}
 }
